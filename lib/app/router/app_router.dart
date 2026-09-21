@@ -7,6 +7,7 @@ import '../../features/book_bites/presentation/pages/book_bites_page.dart';
 import '../../features/catalog/presentation/pages/book_detail_page.dart';
 import '../../features/catalog/presentation/pages/catalog_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/p2p/presentation/pages/p2p_detail_page.dart';
 import '../../features/p2p/presentation/pages/p2p_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 
@@ -83,7 +84,8 @@ class AppRouter {
       GoRoute(
         path: '/p2p/:id',
         name: 'p2p-detail',
-        builder: (context, state) => const PlaceholderPage(title: 'Listing'),
+        builder: (context, state) =>
+            P2pDetailPage(listingId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: '/login',

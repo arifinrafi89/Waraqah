@@ -84,6 +84,6 @@ void main() {
     await tester.tap(find.text('Clean Code').first);
     await tester.pumpAndSettle();
 
-    expect(find.text('Listing'), findsWidgets);
+    expect(find.text('Clean Code'), findsWidgets);
   });
 }
