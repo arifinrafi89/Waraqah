@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/providers/book_providers.dart';
 import '../../../../core/theme/app_palette.dart';
@@ -21,6 +22,13 @@ class BookBitesPage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: palette.bg,
       appBar: AppBar(title: const Text('Book-Bites')),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 76),
+        child: FloatingActionButton(
+          onPressed: () => context.pushNamed('book-bites-create'),
+          child: const Icon(Icons.add),
+        ),
+      ),
       body: SafeArea(
         bottom: false,
         child: ListView.separated(

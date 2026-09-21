@@ -27,7 +27,7 @@ final homeBookFilterProvider =
 final homeBookSortProvider =
     StateProvider<BookSort>((ref) => BookSort.none);
 
-final postsProvider = Provider<List<Post>>(
+final postsProvider = StateProvider<List<Post>>(
   (ref) => ref.watch(postRepositoryProvider).getPosts(),
 );
 

@@ -6,6 +6,7 @@ import '../../core/widgets/placeholder_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/book_bites/presentation/pages/book_bites_page.dart';
+import '../../features/book_bites/presentation/pages/create_post_page.dart';
 import '../../features/catalog/presentation/pages/book_detail_page.dart';
 import '../../features/catalog/presentation/pages/catalog_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
@@ -82,6 +83,11 @@ class AppRouter {
         name: 'book-detail',
         builder: (context, state) =>
             BookDetailPage(bookId: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: '/book-bites/create',
+        name: 'book-bites-create',
+        builder: (context, state) => const CreatePostPage(),
       ),
       GoRoute(
         path: '/p2p/:id',
