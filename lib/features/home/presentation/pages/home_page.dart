@@ -8,8 +8,10 @@ import '../../../../core/theme/theme_controller.dart';
 import '../../../../core/theme/theme_family.dart';
 import '../../../../core/models/book.dart';
 import '../../../../core/providers/book_providers.dart';
+import '../../../../core/widgets/book_filter_chip_row.dart';
 import '../../../../core/widgets/glass_container.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
+import '../../../../core/widgets/sort_menu_button.dart';
 import '../../domain/models/p2p_listing.dart';
 import '../../domain/models/post.dart';
 import '../../domain/models/profile.dart';
@@ -69,12 +71,17 @@ class HomePage extends ConsumerWidget {
               slivers: [
                 const SliverToBoxAdapter(child: SizedBox(height: 4)),
                 const SliverToBoxAdapter(child: AyahCard()),
-                const SliverToBoxAdapter(child: _FilterChipRow()),
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(_gutter, 16, _gutter, 0),
+                    child: BookFilterChipRow(filterProvider: homeBookFilterProvider),
+                  ),
+                ),
                 SliverToBoxAdapter(
                   child: _Section(
                     title: 'Book-Bites',
                     subtitle: 'What readers are sharing',
-                    trailing: 'See all',
+                    trailing: const _SeeAllLabel(),
                     child: const _BookBitesStrip(),
                   ),
                 ),
@@ -82,7 +89,7 @@ class HomePage extends ConsumerWidget {
                   child: _Section(
                     title: 'New Books',
                     subtitle: 'Cheapest price across vendors',
-                    trailing: 'Sort',
+                    trailing: SortMenuButton(sortProvider: homeBookSortProvider),
                     child: const _NewBooksGrid(),
                   ),
                 ),
@@ -90,7 +97,7 @@ class HomePage extends ConsumerWidget {
                   child: _Section(
                     title: 'From Students Near You',
                     subtitle: 'Second-hand · IUT campus',
-                    trailing: 'See all',
+                    trailing: const _SeeAllLabel(),
                     child: const _P2pStrip(),
                   ),
                 ),
@@ -222,50 +229,25 @@ class _AppBarIconButton extends StatelessWidget {
   }
 }
 
-class _FilterChipRow extends ConsumerWidget {
-  const _FilterChipRow();
+class _SeeAllLabel extends StatelessWidget {
+  const _SeeAllLabel();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final palette = Theme.of(context).extension<AppPalette>()!;
-    final selected = ref.watch(homeBookFilterProvider);
-
-    Widget chip(HomeBookFilter filter, String label) {
-      final active = selected == filter;
-      return Padding(
-        padding: const EdgeInsets.only(right: 8),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(999),
-          onTap: () => ref.read(homeBookFilterProvider.notifier).state = filter,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-            decoration: BoxDecoration(
-              color: active ? palette.accent : palette.surface,
-              border: Border.all(color: active ? palette.accent : palette.border),
-              borderRadius: BorderRadius.circular(999),
-            ),
-            child: Text(
-              label,
-              style: TextStyle(
-                fontSize: 12.5,
-                fontWeight: FontWeight.w700,
-                color: active ? palette.accentInk : palette.textDim,
-              ),
-            ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          'See all',
+          style: TextStyle(
+            fontSize: 11.5,
+            fontWeight: FontWeight.w800,
+            color: palette.accent,
           ),
         ),
-      );
-    }
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(_gutter, 16, _gutter, 0),
-      child: Row(
-        children: [
-          chip(HomeBookFilter.all, 'All Books'),
-          chip(HomeBookFilter.beneficial, 'Beneficial'),
-          chip(HomeBookFilter.nonBeneficial, 'Non-Beneficial'),
-        ],
-      ),
+        Icon(Icons.chevron_right_rounded, size: 14, color: palette.accent),
+      ],
     );
   }
 }
@@ -280,7 +262,7 @@ class _Section extends StatelessWidget {
 
   final String title;
   final String subtitle;
-  final String trailing;
+  final Widget trailing;
   final Widget child;
 
   @override
@@ -319,20 +301,7 @@ class _Section extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      trailing,
-                      style: TextStyle(
-                        fontSize: 11.5,
-                        fontWeight: FontWeight.w800,
-                        color: palette.accent,
-                      ),
-                    ),
-                    Icon(Icons.chevron_right_rounded, size: 14, color: palette.accent),
-                  ],
-                ),
+                trailing,
               ],
             ),
           ),

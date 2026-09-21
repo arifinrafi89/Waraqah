@@ -65,4 +65,69 @@ void main() {
       expect(find.text(entry.value), findsWidgets);
     });
   }
+
+  testWidgets('New Books filter chip narrows cards to matching isBeneficial value', (
+    tester,
+  ) async {
+    await _pumpHome(tester);
+
+    expect(find.text('Harry Potter and the Philosopher\'s Stone'), findsOneWidget);
+    expect(find.text('Sapiens: A Brief History of Humankind'), findsOneWidget);
+
+    await tester.tap(find.text('Non-Beneficial'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Harry Potter and the Philosopher\'s Stone'), findsOneWidget);
+    expect(find.text('Sapiens: A Brief History of Humankind'), findsNothing);
+  });
+
+  testWidgets('New Books sort control reorders cards by price then by rating', (
+    tester,
+  ) async {
+    await _pumpHome(tester);
+
+    await tester.scrollUntilVisible(
+      find.text('Sort'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.ensureVisible(find.text('Sort'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Sort'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Price: Low to High'));
+    await tester.pumpAndSettle();
+
+    var texts = tester.widgetList<Text>(find.byType(Text)).map((t) => t.data ?? '').toList();
+    expect(
+      texts.indexOf('Fortress of the Muslim'),
+      lessThan(texts.indexOf('Sapiens: A Brief History of Humankind')),
+    );
+    expect(
+      texts.indexOf('Sapiens: A Brief History of Humankind'),
+      lessThan(texts.indexOf('Clean Code')),
+    );
+
+    await tester.scrollUntilVisible(
+      find.text('Sort'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.ensureVisible(find.text('Sort'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Sort'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Rating: High to Low'));
+    await tester.pumpAndSettle();
+
+    texts = tester.widgetList<Text>(find.byType(Text)).map((t) => t.data ?? '').toList();
+    expect(
+      texts.indexOf('The Sealed Nectar'),
+      lessThan(texts.indexOf('Sapiens: A Brief History of Humankind')),
+    );
+    expect(
+      texts.indexOf('Sapiens: A Brief History of Humankind'),
+      lessThan(texts.indexOf('The Great Gatsby')),
+    );
+  });
 }

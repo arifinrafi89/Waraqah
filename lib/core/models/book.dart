@@ -8,6 +8,7 @@ class Book {
   final double price;
   final String currency;
   final bool isBeneficial;
+  final double rating;
 
   // Demo-only cross-vendor comparison fields (see docs/adr/0001).
   final String vendorName;
@@ -24,6 +25,7 @@ class Book {
     required this.price,
     required this.currency,
     required this.isBeneficial,
+    required this.rating,
     required this.vendorName,
     this.isBest = false,
     this.originalPrice,

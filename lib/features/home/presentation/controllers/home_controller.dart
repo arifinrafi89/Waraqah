@@ -12,9 +12,6 @@ import '../../domain/repositories/p2p_listing_repository.dart';
 import '../../domain/repositories/post_repository.dart';
 import '../../domain/repositories/profile_repository.dart';
 
-/// Home's "All Books / Beneficial / Non-Beneficial" filter chip selection.
-enum HomeBookFilter { all, beneficial, nonBeneficial }
-
 final postRepositoryProvider =
     Provider<PostRepository>((ref) => DummyPostRepository());
 
@@ -25,7 +22,10 @@ final p2pListingRepositoryProvider =
     Provider<P2pListingRepository>((ref) => DummyP2pListingRepository());
 
 final homeBookFilterProvider =
-    StateProvider<HomeBookFilter>((ref) => HomeBookFilter.all);
+    StateProvider<BookFilter>((ref) => BookFilter.all);
+
+final homeBookSortProvider =
+    StateProvider<BookSort>((ref) => BookSort.none);
 
 final postsProvider = Provider<List<Post>>(
   (ref) => ref.watch(postRepositoryProvider).getPosts(),
@@ -39,16 +39,10 @@ final p2pListingsProvider = Provider<List<P2pListing>>(
   (ref) => ref.watch(p2pListingRepositoryProvider).getListings(),
 );
 
-/// New Books grid, filtered by the active [homeBookFilterProvider] selection.
+/// New Books grid, filtered and sorted by the active selections.
 final filteredBooksProvider = Provider<List<Book>>((ref) {
   final filter = ref.watch(homeBookFilterProvider);
+  final sort = ref.watch(homeBookSortProvider);
   final books = ref.watch(booksProvider);
-  switch (filter) {
-    case HomeBookFilter.all:
-      return books;
-    case HomeBookFilter.beneficial:
-      return books.where((book) => book.isBeneficial).toList();
-    case HomeBookFilter.nonBeneficial:
-      return books.where((book) => !book.isBeneficial).toList();
-  }
+  return sortBooks(filterBooks(books, filter), sort);
 });
