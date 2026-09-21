@@ -8,8 +8,9 @@ import '../../../../core/theme/theme_controller.dart';
 import '../../../../core/theme/theme_family.dart';
 import '../../../../core/models/book.dart';
 import '../../../../core/providers/book_providers.dart';
+import '../../../../core/widgets/app_bottom_nav.dart';
 import '../../../../core/widgets/book_filter_chip_row.dart';
-import '../../../../core/widgets/glass_container.dart';
+import '../../../../core/widgets/book_grid_card.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
 import '../../../../core/widgets/sort_menu_button.dart';
 import '../../domain/models/p2p_listing.dart';
@@ -106,7 +107,7 @@ class HomePage extends ConsumerWidget {
             ),
           ),
           const Positioned(right: 18, bottom: 92, child: _AiFab()),
-          const Positioned(left: 14, right: 14, bottom: 16, child: _GlassBottomNav()),
+          const AppBottomNav(active: AppTab.home),
         ],
       ),
     );
@@ -469,140 +470,8 @@ class _NewBooksGrid extends ConsumerWidget {
         itemBuilder: (context, index) {
           final book = books[index];
           final chip = palette.chips[index % palette.chips.length];
-          return _BookGridCard(book: book, chip: chip);
+          return BookGridCard(book: book, chip: chip);
         },
-      ),
-    );
-  }
-}
-
-class _BookGridCard extends StatelessWidget {
-  const _BookGridCard({required this.book, required this.chip});
-
-  final Book book;
-  final Color chip;
-
-  @override
-  Widget build(BuildContext context) {
-    final palette = Theme.of(context).extension<AppPalette>()!;
-    return Container(
-      decoration: BoxDecoration(
-        color: palette.surface,
-        border: Border.all(color: palette.border),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: _CoverGradient(
-              color: chip,
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: [Colors.black.withValues(alpha: 0.72), Colors.transparent],
-                          stops: const [0, 0.6],
-                        ),
-                      ),
-                    ),
-                  ),
-                  if (book.isBest)
-                    Positioned(
-                      top: 8,
-                      left: 8,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
-                        decoration: BoxDecoration(
-                          color: palette.bg,
-                          borderRadius: BorderRadius.circular(7),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(Icons.star_rounded, size: 9, color: palette.accent),
-                            const SizedBox(width: 3),
-                            Text(
-                              'Best',
-                              style: TextStyle(fontSize: 9, fontWeight: FontWeight.w800, color: palette.accent),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  Positioned(
-                    left: 10,
-                    right: 10,
-                    bottom: 10,
-                    child: Text(
-                      book.title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 13, height: 1.25),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(11, 10, 11, 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  book.author,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: palette.textFaint),
-                ),
-                const SizedBox(height: 6),
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.end,
-                  spacing: 6,
-                  children: [
-                    Text(
-                      '৳${book.price.toStringAsFixed(0)}',
-                      style: TextStyle(
-                        fontSize: 14.5,
-                        fontWeight: FontWeight.w800,
-                        color: palette.text,
-                        fontFeatures: const [FontFeature.tabularFigures()],
-                      ),
-                    ),
-                    if (book.originalPrice != null)
-                      Text(
-                        '৳${book.originalPrice!.toStringAsFixed(0)}',
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: palette.textFaint,
-                          decoration: TextDecoration.lineThrough,
-                          fontFeatures: const [FontFeature.tabularFigures()],
-                        ),
-                      ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                  decoration: BoxDecoration(
-                    color: palette.surface2,
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: Text(
-                    '${book.vendorName} · lowest',
-                    style: TextStyle(fontSize: 9.5, fontWeight: FontWeight.w700, color: palette.textDim),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -762,89 +631,3 @@ class _AiFab extends StatelessWidget {
   }
 }
 
-class _GlassBottomNav extends StatelessWidget {
-  const _GlassBottomNav();
-
-  @override
-  Widget build(BuildContext context) {
-    final palette = Theme.of(context).extension<AppPalette>()!;
-    return GlassContainer(
-      blur: 18,
-      opacity: 0.55,
-      color: palette.surface,
-      borderRadius: BorderRadius.circular(24),
-      padding: const EdgeInsets.all(6),
-      child: Row(
-        children: [
-          _NavItem(icon: Icons.home_rounded, label: 'Home', active: true, onTap: () {}),
-          _NavItem(
-            icon: Icons.grid_view_rounded,
-            label: 'Catalog',
-            active: false,
-            onTap: () => context.pushNamed('catalog'),
-          ),
-          _NavItem(
-            icon: Icons.swap_horiz_rounded,
-            label: 'P2P',
-            active: false,
-            onTap: () => context.pushNamed('p2p'),
-          ),
-          _NavItem(
-            icon: Icons.forum_rounded,
-            label: 'Bites',
-            active: false,
-            onTap: () => context.pushNamed('book-bites'),
-          ),
-          _NavItem(
-            icon: Icons.person_rounded,
-            label: 'Profile',
-            active: false,
-            onTap: () => context.pushNamed('profile'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _NavItem extends StatelessWidget {
-  const _NavItem({required this.icon, required this.label, required this.active, required this.onTap});
-
-  final IconData icon;
-  final String label;
-  final bool active;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final palette = Theme.of(context).extension<AppPalette>()!;
-    return Expanded(
-      child: InkWell(
-        borderRadius: BorderRadius.circular(18),
-        onTap: onTap,
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          decoration: BoxDecoration(
-            color: active ? palette.accent : Colors.transparent,
-            borderRadius: BorderRadius.circular(18),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon, size: 19, color: active ? palette.accentInk : palette.textFaint),
-              const SizedBox(height: 3),
-              Text(
-                label,
-                style: TextStyle(
-                  fontSize: 9.5,
-                  fontWeight: FontWeight.w800,
-                  color: active ? palette.accentInk : palette.textFaint,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
