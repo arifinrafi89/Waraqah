@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/widgets/app_bottom_nav.dart';
 import '../../core/widgets/placeholder_page.dart';
+import '../../features/book_bites/presentation/pages/book_bites_page.dart';
 import '../../features/catalog/presentation/pages/catalog_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/p2p/presentation/pages/p2p_page.dart';
@@ -56,8 +57,7 @@ class AppRouter {
               GoRoute(
                 path: '/book-bites',
                 name: 'book-bites',
-                builder: (context, state) =>
-                    const PlaceholderPage(title: 'Book-Bites'),
+                builder: (context, state) => const BookBitesPage(),
               ),
             ],
           ),
