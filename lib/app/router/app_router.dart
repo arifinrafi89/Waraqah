@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/widgets/app_bottom_nav.dart';
 import '../../core/widgets/placeholder_page.dart';
+import '../../features/auth/presentation/pages/login_page.dart';
+import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/book_bites/presentation/pages/book_bites_page.dart';
 import '../../features/catalog/presentation/pages/book_detail_page.dart';
 import '../../features/catalog/presentation/pages/catalog_page.dart';
@@ -90,7 +92,12 @@ class AppRouter {
       GoRoute(
         path: '/login',
         name: 'login',
-        builder: (context, state) => const PlaceholderPage(title: 'Login'),
+        builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        path: '/register',
+        name: 'register',
+        builder: (context, state) => const RegisterPage(),
       ),
       GoRoute(
         path: '/ai-chat',

@@ -12,7 +12,6 @@ void main() {
       '/ai-chat': (title: 'AI Chat', scaffoldCount: 1),
       '/cart': (title: 'Cart', scaffoldCount: 1),
       '/search': (title: 'Search', scaffoldCount: 1),
-      '/login': (title: 'Login', scaffoldCount: 1),
     };
 
     for (final entry in routeTitles.entries) {
