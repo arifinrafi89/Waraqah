@@ -1,60 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AppTheme {
-  static const emeraldGreen = Color(0xFF064E3B);
-  static const lightEmerald = Color(0xFF10B981);
-  static const goldAccent = Color(0xFFF59E0B);
-  static const surfaceWhite = Color(0xFFF9FAFB);
+import 'app_palette.dart';
+import 'theme_family.dart';
 
-  static ThemeData get lightTheme {
-    return ThemeData(
+class AppTheme {
+  /// Amiri 400, RTL, ~23px, line-height 1.9 — Daily Ayah card only.
+  static TextStyle ayahTextStyle(AppPalette palette) {
+    return GoogleFonts.amiri(
+      color: palette.text,
+      fontSize: 23,
+      height: 1.9,
+    );
+  }
+
+  /// Reem Kufi 500 — wordmark and P2P cover title text only.
+  static TextStyle wordmarkTextStyle(AppPalette palette) {
+    return GoogleFonts.reemKufi(
+      color: palette.text,
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static ThemeData themeFor(ThemeFamily family) {
+    final palette = AppPalette.forFamily(family);
+    final brightness = family.brightness;
+
+    final base = ThemeData(
       useMaterial3: true,
+      brightness: brightness,
+      scaffoldBackgroundColor: palette.bg,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: emeraldGreen,
-        primary: emeraldGreen,
-        secondary: goldAccent,
-        surface: surfaceWhite,
+        seedColor: palette.accent,
+        brightness: brightness,
+        primary: palette.accent,
+        onPrimary: palette.accentInk,
+        surface: palette.surface,
+        onSurface: palette.text,
       ),
-      textTheme: GoogleFonts.poppinsTextTheme(),
-      cardTheme: CardThemeData(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
-        color: Colors.white.withOpacity(0.8),
+      extensions: [palette],
+    );
+
+    return base.copyWith(
+      textTheme: GoogleFonts.manropeTextTheme(base.textTheme).apply(
+        bodyColor: palette.text,
+        displayColor: palette.text,
       ),
       appBarTheme: AppBarTheme(
-        centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        titleTextStyle: GoogleFonts.philosopher(
-          color: emeraldGreen,
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
+        titleTextStyle: wordmarkTextStyle(palette).copyWith(fontSize: 22),
+      ),
+      cardTheme: CardThemeData(
+        elevation: 0,
+        color: palette.surface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: BorderSide(color: palette.border),
         ),
       ),
     );
   }
 
-  static ThemeData get darkTheme {
-    return ThemeData(
-      useMaterial3: true,
-      brightness: Brightness.dark,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: emeraldGreen,
-        brightness: Brightness.dark,
-        primary: lightEmerald,
-        secondary: goldAccent,
-      ),
-      textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme),
-      cardTheme: CardThemeData(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
-        color: Colors.black.withOpacity(0.3),
-      ),
-    );
-  }
+  static ThemeData get lightTheme => themeFor(ThemeFamily.nord);
+
+  static ThemeData get darkTheme => themeFor(ThemeFamily.forest);
 }
