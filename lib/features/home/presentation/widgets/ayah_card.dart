@@ -1,67 +1,75 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/widgets/glass_container.dart';
-import '../controllers/home_controller.dart';
 
-class AyahCard extends ConsumerWidget {
+import '../../../../core/theme/app_palette.dart';
+import '../../../../core/theme/app_theme.dart';
+
+/// Static Daily Ayah card — same ayah (Al-Baqarah 2:152) every load, per spec.
+class AyahCard extends StatelessWidget {
   const AyahCard({super.key});
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final ayah = ref.watch(ayahProvider);
+  static const _arabic =
+      'فَٱذْكُرُونِىٓ أَذْكُرْكُمْ وَٱشْكُرُوا۟ لِى وَلَا تَكْفُرُونِ';
+  static const _translation =
+      '"So remember Me; I will remember you. And be grateful to Me and do not deny Me."';
+  static const _reference = 'Surah Al-Baqarah · 2:152';
 
-    return GlassContainer(
-      padding: const EdgeInsets.all(20),
-      color: Theme.of(context).primaryColor,
-      opacity: 0.15,
+  @override
+  Widget build(BuildContext context) {
+    final palette = Theme.of(context).extension<AppPalette>()!;
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 18),
+      padding: const EdgeInsets.fromLTRB(18, 18, 18, 16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [palette.accentSoft, palette.surface],
+        ),
+        border: Border.all(color: palette.border),
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Icon(Icons.star_rounded, size: 14, color: palette.accent),
+              const SizedBox(width: 5),
               Text(
-                "Daily Ayah",
-                style: GoogleFonts.philosopher(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).primaryColor,
+                'AYAH OF THE DAY',
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 1.1,
+                  color: palette.accent,
                 ),
-              ),
-              Icon(
-                Icons.menu_book_rounded,
-                color: Theme.of(context).primaryColor,
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           Text(
-            ayah.text,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.amiri(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              height: 1.5,
-            ),
+            _arabic,
+            textAlign: TextAlign.right,
+            textDirection: TextDirection.rtl,
+            style: AppTheme.ayahTextStyle(palette),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 10),
           Text(
-            ayah.translation,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-              fontSize: 14,
+            _translation,
+            style: TextStyle(
+              fontSize: 13,
+              height: 1.55,
               fontStyle: FontStyle.italic,
-              color: Colors.black87,
+              color: palette.textDim,
             ),
           ),
           const SizedBox(height: 8),
           Text(
-            ayah.reference,
-            style: GoogleFonts.poppins(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: Theme.of(context).primaryColor.withOpacity(0.7),
+            _reference,
+            style: TextStyle(
+              fontSize: 11.5,
+              fontWeight: FontWeight.w800,
+              color: palette.textFaint,
             ),
           ),
         ],
