@@ -8,7 +8,6 @@ import '../../../../core/theme/theme_controller.dart';
 import '../../../../core/theme/theme_family.dart';
 import '../../../../core/models/book.dart';
 import '../../../../core/providers/book_providers.dart';
-import '../../../../core/widgets/app_bottom_nav.dart';
 import '../../../../core/widgets/book_filter_chip_row.dart';
 import '../../../../core/widgets/book_grid_card.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
@@ -62,7 +61,6 @@ class HomePage extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: palette.bg,
-      extendBody: true,
       appBar: _HomeAppBar(palette: palette),
       body: Stack(
         children: [
@@ -107,7 +105,6 @@ class HomePage extends ConsumerWidget {
             ),
           ),
           const Positioned(right: 18, bottom: 92, child: _AiFab()),
-          const AppBottomNav(active: AppTab.home),
         ],
       ),
     );

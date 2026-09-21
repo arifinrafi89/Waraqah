@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/theme/app_palette.dart';
-import '../../../../core/widgets/app_bottom_nav.dart';
 import '../../../../core/widgets/book_filter_chip_row.dart';
 import '../../../../core/widgets/book_grid_card.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
@@ -21,40 +20,34 @@ class CatalogPage extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: palette.bg,
-      extendBody: true,
       appBar: AppBar(title: const Text('Catalog')),
-      body: Stack(
-        children: [
-          SafeArea(
-            bottom: false,
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(_gutter, _gutter, _gutter, 140),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: SafeArea(
+        bottom: false,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(_gutter, _gutter, _gutter, 140),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: BookFilterChipRow(filterProvider: catalogBookFilterProvider),
-                      ),
-                      SortMenuButton(sortProvider: catalogBookSortProvider),
-                    ],
+                  Expanded(
+                    child: BookFilterChipRow(filterProvider: catalogBookFilterProvider),
                   ),
-                  const SizedBox(height: 14),
-                  ResponsiveBookGrid(
-                    itemCount: books.length,
-                    itemBuilder: (context, index) {
-                      final book = books[index];
-                      final chip = palette.chips[index % palette.chips.length];
-                      return BookGridCard(book: book, chip: chip);
-                    },
-                  ),
+                  SortMenuButton(sortProvider: catalogBookSortProvider),
                 ],
               ),
-            ),
+              const SizedBox(height: 14),
+              ResponsiveBookGrid(
+                itemCount: books.length,
+                itemBuilder: (context, index) {
+                  final book = books[index];
+                  final chip = palette.chips[index % palette.chips.length];
+                  return BookGridCard(book: book, chip: chip);
+                },
+              ),
+            ],
           ),
-          const AppBottomNav(active: AppTab.catalog),
-        ],
+        ),
       ),
     );
   }

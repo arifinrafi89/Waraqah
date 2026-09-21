@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/widgets/app_bottom_nav.dart';
 import '../../core/widgets/placeholder_page.dart';
 import '../../features/catalog/presentation/pages/catalog_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
@@ -7,36 +9,71 @@ class AppRouter {
   static final router = GoRouter(
     initialLocation: '/home',
     routes: [
-      GoRoute(
-        path: '/home',
-        name: 'home',
-        builder: (context, state) => const HomePage(),
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) => Scaffold(
+          body: Stack(
+            children: [
+              navigationShell,
+              AppBottomNav(
+                currentIndex: navigationShell.currentIndex,
+                onTap: navigationShell.goBranch,
+              ),
+            ],
+          ),
+        ),
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/home',
+                name: 'home',
+                builder: (context, state) => const HomePage(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/catalog',
+                name: 'catalog',
+                builder: (context, state) => const CatalogPage(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/p2p',
+                name: 'p2p',
+                builder: (context, state) => const PlaceholderPage(title: 'P2P'),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/book-bites',
+                name: 'book-bites',
+                builder: (context, state) =>
+                    const PlaceholderPage(title: 'Book-Bites'),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/profile',
+                name: 'profile',
+                builder: (context, state) => const PlaceholderPage(title: 'Profile'),
+              ),
+            ],
+          ),
+        ],
       ),
       GoRoute(
         path: '/login',
         name: 'login',
         builder: (context, state) => const PlaceholderPage(title: 'Login'),
-      ),
-      GoRoute(
-        path: '/catalog',
-        name: 'catalog',
-        builder: (context, state) => const CatalogPage(),
-      ),
-      GoRoute(
-        path: '/p2p',
-        name: 'p2p',
-        builder: (context, state) => const PlaceholderPage(title: 'P2P'),
-      ),
-      GoRoute(
-        path: '/book-bites',
-        name: 'book-bites',
-        builder: (context, state) =>
-            const PlaceholderPage(title: 'Book-Bites'),
-      ),
-      GoRoute(
-        path: '/profile',
-        name: 'profile',
-        builder: (context, state) => const PlaceholderPage(title: 'Profile'),
       ),
       GoRoute(
         path: '/ai-chat',

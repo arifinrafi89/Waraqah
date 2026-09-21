@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -58,6 +59,15 @@ class AppTheme {
           borderRadius: BorderRadius.circular(16),
           side: BorderSide(color: palette.border),
         ),
+      ),
+      // Cupertino's slide+fade reads smoother than Android's default
+      // FadeUpwards on pushed routes (login, cart, search, ai-chat).
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
+        },
       ),
     );
   }
