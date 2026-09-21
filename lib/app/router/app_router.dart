@@ -10,6 +10,7 @@ import '../../features/book_bites/presentation/pages/create_post_page.dart';
 import '../../features/catalog/presentation/pages/book_detail_page.dart';
 import '../../features/catalog/presentation/pages/catalog_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/p2p/presentation/pages/create_listing_page.dart';
 import '../../features/p2p/presentation/pages/p2p_detail_page.dart';
 import '../../features/p2p/presentation/pages/p2p_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
@@ -88,6 +89,11 @@ class AppRouter {
         path: '/book-bites/create',
         name: 'book-bites-create',
         builder: (context, state) => const CreatePostPage(),
+      ),
+      GoRoute(
+        path: '/p2p/create',
+        name: 'p2p-create',
+        builder: (context, state) => const CreateListingPage(),
       ),
       GoRoute(
         path: '/p2p/:id',

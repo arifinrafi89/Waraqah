@@ -26,6 +26,13 @@ class P2pPage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: palette.bg,
       appBar: AppBar(title: const Text('P2P')),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 76),
+        child: FloatingActionButton(
+          onPressed: () => context.pushNamed('p2p-create'),
+          child: const Icon(Icons.add),
+        ),
+      ),
       body: SafeArea(
         bottom: false,
         child: SingleChildScrollView(

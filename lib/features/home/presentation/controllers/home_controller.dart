@@ -35,7 +35,7 @@ final profilesProvider = Provider<List<Profile>>(
   (ref) => ref.watch(profileRepositoryProvider).getProfiles(),
 );
 
-final p2pListingsProvider = Provider<List<P2pListing>>(
+final p2pListingsProvider = StateProvider<List<P2pListing>>(
   (ref) => ref.watch(p2pListingRepositoryProvider).getListings(),
 );
 
