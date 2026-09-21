@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import '../../core/widgets/placeholder_page.dart';
+import '../../features/catalog/presentation/pages/catalog_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 
 class AppRouter {
@@ -19,7 +20,7 @@ class AppRouter {
       GoRoute(
         path: '/catalog',
         name: 'catalog',
-        builder: (context, state) => const PlaceholderPage(title: 'Catalog'),
+        builder: (context, state) => const CatalogPage(),
       ),
       GoRoute(
         path: '/p2p',

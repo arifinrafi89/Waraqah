@@ -9,7 +9,6 @@ void main() {
     tester,
   ) async {
     const routeTitles = {
-      '/catalog': 'Catalog',
       '/p2p': 'P2P',
       '/book-bites': 'Book-Bites',
       '/profile': 'Profile',

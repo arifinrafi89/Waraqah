@@ -1,8 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/data/dummy_book_repository.dart';
 import '../../../../core/models/book.dart';
-import '../../../../core/repositories/book_repository.dart';
+import '../../../../core/providers/book_providers.dart';
 import '../../data/repositories/dummy_p2p_listing_repository.dart';
 import '../../data/repositories/dummy_post_repository.dart';
 import '../../data/repositories/dummy_profile_repository.dart';
@@ -16,9 +15,6 @@ import '../../domain/repositories/profile_repository.dart';
 /// Home's "All Books / Beneficial / Non-Beneficial" filter chip selection.
 enum HomeBookFilter { all, beneficial, nonBeneficial }
 
-final bookRepositoryProvider =
-    Provider<BookRepository>((ref) => DummyBookRepository());
-
 final postRepositoryProvider =
     Provider<PostRepository>((ref) => DummyPostRepository());
 
@@ -30,10 +26,6 @@ final p2pListingRepositoryProvider =
 
 final homeBookFilterProvider =
     StateProvider<HomeBookFilter>((ref) => HomeBookFilter.all);
-
-final booksProvider = Provider<List<Book>>(
-  (ref) => ref.watch(bookRepositoryProvider).getBooks(),
-);
 
 final postsProvider = Provider<List<Post>>(
   (ref) => ref.watch(postRepositoryProvider).getPosts(),

@@ -7,6 +7,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/theme_controller.dart';
 import '../../../../core/theme/theme_family.dart';
 import '../../../../core/models/book.dart';
+import '../../../../core/providers/book_providers.dart';
 import '../../../../core/widgets/glass_container.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
 import '../../domain/models/p2p_listing.dart';
