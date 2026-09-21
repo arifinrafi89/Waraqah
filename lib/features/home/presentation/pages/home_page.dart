@@ -8,6 +8,7 @@ import '../../../../core/theme/theme_controller.dart';
 import '../../../../core/theme/theme_family.dart';
 import '../../../../core/models/book.dart';
 import '../../../../core/widgets/glass_container.dart';
+import '../../../../core/widgets/responsive_book_grid.dart';
 import '../../domain/models/p2p_listing.dart';
 import '../../domain/models/post.dart';
 import '../../domain/models/profile.dart';
@@ -493,15 +494,7 @@ class _NewBooksGrid extends ConsumerWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: _gutter),
-      child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 12,
-          mainAxisSpacing: 12,
-          childAspectRatio: 0.62,
-        ),
+      child: ResponsiveBookGrid(
         itemCount: books.length,
         itemBuilder: (context, index) {
           final book = books[index];
@@ -532,8 +525,7 @@ class _BookGridCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AspectRatio(
-            aspectRatio: 3 / 4,
+          Expanded(
             child: _CoverGradient(
               color: chip,
               child: Stack(
