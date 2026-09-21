@@ -657,7 +657,7 @@ class _P2pStrip extends ConsumerWidget {
     final profiles = {for (final p in ref.watch(profilesProvider)) p.id: p};
 
     return SizedBox(
-      height: 205,
+      height: 245,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: _gutter),
