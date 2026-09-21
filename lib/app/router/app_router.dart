@@ -4,6 +4,7 @@ import '../../core/widgets/app_bottom_nav.dart';
 import '../../core/widgets/placeholder_page.dart';
 import '../../features/catalog/presentation/pages/catalog_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/p2p/presentation/pages/p2p_page.dart';
 
 class AppRouter {
   static final router = GoRouter(
@@ -45,7 +46,7 @@ class AppRouter {
               GoRoute(
                 path: '/p2p',
                 name: 'p2p',
-                builder: (context, state) => const PlaceholderPage(title: 'P2P'),
+                builder: (context, state) => const P2pPage(),
               ),
             ],
           ),
@@ -69,6 +70,11 @@ class AppRouter {
             ],
           ),
         ],
+      ),
+      GoRoute(
+        path: '/p2p/:id',
+        name: 'p2p-detail',
+        builder: (context, state) => const PlaceholderPage(title: 'Listing'),
       ),
       GoRoute(
         path: '/login',
