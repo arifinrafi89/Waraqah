@@ -17,7 +17,7 @@ The UI-facing term for a `Post` on the social feed. Never used as a class/type n
 _Avoid_: using this as a Dart identifier.
 
 **P2pListing**:
-A second-hand book listing, optionally linked to a `Book` (`book_id` nullable), with `condition` (new/like_new/good/fair/poor), `price`, `photo_urls`, `status` (available/reserved/sold).
+A second-hand book listing, optionally linked to a `Book` (`book_id` nullable), with `condition` (`P2pCondition`: like_new/good/fair), `price`, `photo_urls`, `status` (available/reserved/sold).
 _Avoid_: Listing (ambiguous with future primary-marketplace listings).
 
 **Profile**:

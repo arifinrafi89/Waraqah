@@ -5,6 +5,7 @@ import '../../core/widgets/placeholder_page.dart';
 import '../../features/catalog/presentation/pages/catalog_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/p2p/presentation/pages/p2p_page.dart';
+import '../../features/profile/presentation/pages/profile_page.dart';
 
 class AppRouter {
   static final router = GoRouter(
@@ -65,7 +66,7 @@ class AppRouter {
               GoRoute(
                 path: '/profile',
                 name: 'profile',
-                builder: (context, state) => const PlaceholderPage(title: 'Profile'),
+                builder: (context, state) => const ProfilePage(),
               ),
             ],
           ),
