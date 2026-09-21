@@ -1,5 +1,5 @@
-import '../../domain/models/book.dart';
-import '../../domain/repositories/book_repository.dart';
+import '../models/book.dart';
+import '../repositories/book_repository.dart';
 
 class DummyBookRepository implements BookRepository {
   static final List<Book> _books = [

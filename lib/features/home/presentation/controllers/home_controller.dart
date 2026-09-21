@@ -1,14 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../data/repositories/dummy_book_repository.dart';
+import '../../../../core/data/dummy_book_repository.dart';
+import '../../../../core/models/book.dart';
+import '../../../../core/repositories/book_repository.dart';
 import '../../data/repositories/dummy_p2p_listing_repository.dart';
 import '../../data/repositories/dummy_post_repository.dart';
 import '../../data/repositories/dummy_profile_repository.dart';
-import '../../domain/models/book.dart';
 import '../../domain/models/p2p_listing.dart';
 import '../../domain/models/post.dart';
 import '../../domain/models/profile.dart';
-import '../../domain/repositories/book_repository.dart';
 import '../../domain/repositories/p2p_listing_repository.dart';
 import '../../domain/repositories/post_repository.dart';
 import '../../domain/repositories/profile_repository.dart';

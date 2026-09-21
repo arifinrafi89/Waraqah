@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:waraqah/features/home/data/repositories/dummy_book_repository.dart';
+import 'package:waraqah/core/data/dummy_book_repository.dart';
 import 'package:waraqah/features/home/data/repositories/dummy_p2p_listing_repository.dart';
 import 'package:waraqah/features/home/data/repositories/dummy_post_repository.dart';
 import 'package:waraqah/features/home/data/repositories/dummy_profile_repository.dart';

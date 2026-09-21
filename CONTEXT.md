@@ -28,6 +28,10 @@ _Avoid_: User (reserve for the auth-layer concept once auth exists).
 Flat, dummy-only fields (`vendorName`, `isBest`, `originalPrice`) added directly to the `Book` domain model to drive the New Books grid's price-comparison UI. Not part of the real `books` table shape — the schema stores one price per book; true cross-vendor comparison is a future extension (see ADR-0001). These fields are expected to be removed/reshaped when that extension lands.
 _Avoid_: Treating these as stable schema — they're a placeholder for a not-yet-built feature.
 
+**Local Catalog Store**:
+The single in-memory dummy `Book` list living in `lib/core/`, read by both Home and Catalog. Exists only because there's no Supabase backend yet; shaped to match the planned Supabase `books` table so swapping in the real API later is a repository-layer change, not a UI change.
+_Avoid_: Confusing this with "the real schema" (CONTEXT.md's existing term for the future Supabase schema) — the Local Catalog Store is a throwaway stand-in, discarded once Supabase lands.
+
 **AppPalette**:
 The `ThemeExtension` carrying one of the 6 design-brief color themes (Forest, Nord, Tokyo Night, Tokyo Day, Catppuccin Mocha, Catppuccin Latte). Selecting mode (light/dark) picks the family (3 options per mode); selection persists via SharedPreferences.
 _Avoid_: ColorScheme (that's the underlying Flutter type `AppPalette` wraps, not the concept users pick between).
