@@ -108,6 +108,19 @@ class _CatalogBookCard extends StatelessWidget {
                   '৳${book.price.toStringAsFixed(0)}',
                   style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w800, color: palette.text),
                 ),
+                const SizedBox(height: 8),
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 6),
+                      minimumSize: Size.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: const Text('Add to cart', style: TextStyle(fontSize: 11)),
+                  ),
+                ),
               ],
             ),
           ),

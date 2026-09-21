@@ -33,6 +33,12 @@ void main() {
     );
   });
 
+  testWidgets('catalog cards render an Add to cart button', (tester) async {
+    await _pumpCatalog(tester);
+
+    expect(find.text('Add to cart'), findsWidgets);
+  });
+
   testWidgets('filter chip narrows cards to matching isBeneficial value', (
     tester,
   ) async {
