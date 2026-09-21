@@ -1,0 +1,5 @@
+# Domain models mirror the planned Supabase schema during the pre-backend frontend phase
+
+Status: accepted
+
+We're building the frontend (Home screen and beyond) with hardcoded dummy data before Supabase exists. Domain classes (`Book`, `Post`, `P2pListing`, `Profile`) and their field names are shaped to match the tables in `tmp/Waraqah_supabase.pdf` rather than whatever's convenient for the current UI, so that wiring up the real Supabase client later is a data-layer swap (implementing the same repository interface) rather than a domain-model rewrite. The one deliberate exception: the Home "New Books" grid needs cross-vendor price comparison (Best badge, vendor badge, original price) that the real `books` table doesn't support yet (it stores one price per book — cross-vendor compare is a documented future schema extension). Those fields are added as flat, explicitly demo-only fields directly on `Book` rather than modeled as a proper `Book -> List<VendorOffer>` relationship, since inventing that relationship now would be guessing at a schema that hasn't been designed. They're expected to be reshaped or removed once the real extension lands.
