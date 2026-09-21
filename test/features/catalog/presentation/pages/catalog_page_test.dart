@@ -39,6 +39,19 @@ void main() {
     expect(find.text('Add to cart'), findsWidgets);
   });
 
+  testWidgets('tapping a book card navigates to its detail page', (
+    tester,
+  ) async {
+    await _pumpCatalog(tester);
+
+    final book = DummyBookRepository().getBooks().first;
+    await tester.tap(find.text(book.title).first);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Add to cart'), findsOneWidget);
+    expect(find.text(book.author), findsOneWidget);
+  });
+
   testWidgets('filter chip narrows cards to matching isBeneficial value', (
     tester,
   ) async {

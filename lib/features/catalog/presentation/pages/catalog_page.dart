@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_palette.dart';
 import '../../../../core/widgets/book_filter_chip_row.dart';
@@ -31,7 +32,9 @@ class CatalogPage extends ConsumerWidget {
               Row(
                 children: [
                   Expanded(
-                    child: BookFilterChipRow(filterProvider: catalogBookFilterProvider),
+                    child: BookFilterChipRow(
+                      filterProvider: catalogBookFilterProvider,
+                    ),
                   ),
                   SortMenuButton(sortProvider: catalogBookSortProvider),
                 ],
@@ -42,7 +45,14 @@ class CatalogPage extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   final book = books[index];
                   final chip = palette.chips[index % palette.chips.length];
-                  return BookGridCard(book: book, chip: chip);
+                  return BookGridCard(
+                    book: book,
+                    chip: chip,
+                    onTap: () => context.pushNamed(
+                      'book-detail',
+                      pathParameters: {'id': book.id},
+                    ),
+                  );
                 },
               ),
             ],
