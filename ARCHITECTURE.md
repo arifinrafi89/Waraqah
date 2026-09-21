@@ -100,6 +100,13 @@ Main routes will include:
 * `/book-bites`, `/book-bites/create`
 * `/ai-chat`, `/cart`, `/checkout`, `/orders`
 
+The five top-level tab routes (`/home`, `/catalog`, `/p2p`, `/book-bites`,
+`/profile`) are nested under a single `StatefulShellRoute.indexedStack` in
+`AppRouter`, so `AppBottomNav` renders once at the shell level instead of
+being duplicated per page, and each tab keeps its own scroll position when
+switching. Routes outside the shell (`/login`, `/cart`, `/search`,
+`/ai-chat`, ...) are pushed normally and don't show the bottom nav.
+
 # 9. Data Flow
 The UI is kept separate from backend and database implementation. The flow is:
 `Flutter UI -> Feature Controller -> Repository -> REST API -> Go Backend -> (PostgreSQL / Gemini API / Cloudinary)`
