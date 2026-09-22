@@ -13,6 +13,7 @@ import '../../../../core/widgets/book_filter_chip_row.dart';
 import '../../../../core/widgets/book_grid_card.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
 import '../../../../core/widgets/sort_menu_button.dart';
+import '../../../book_bites/data/book_bites_providers.dart';
 import '../../../book_bites/domain/models/post.dart';
 import '../../../cart/presentation/controllers/cart_controller.dart';
 import '../../../p2p/domain/models/p2p_listing.dart';
@@ -341,7 +342,7 @@ class _BookBitesStrip extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final palette = Theme.of(context).extension<AppPalette>()!;
-    final feed = ref.watch(homeBookBitesFeedProvider);
+    final feed = ref.watch(bookBitesFeedProvider);
 
     return SizedBox(
       height: 148,

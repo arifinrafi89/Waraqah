@@ -4,8 +4,6 @@ import '../../../../core/models/book.dart';
 import '../../../../core/models/profile.dart';
 import '../../../../core/providers/book_providers.dart';
 import '../../../../core/providers/profile_providers.dart';
-import '../../../book_bites/data/book_bites_providers.dart';
-import '../../../book_bites/domain/models/post.dart';
 import '../../../p2p/data/p2p_providers.dart';
 import '../../../p2p/domain/models/p2p_listing.dart';
 
@@ -23,22 +21,8 @@ final filteredBooksProvider = FutureProvider<List<Book>>((ref) async {
   return sortBooks(filterBooks(books, filter), sort);
 });
 
-/// Book-Bites strip: posts plus the author/book lookups it renders with.
-final homeBookBitesFeedProvider = FutureProvider<
-    ({List<Post> posts, Map<String, Profile> profiles, Map<String, Book> books})>(
-  (ref) async {
-    final posts = await ref.watch(postsProvider.future);
-    final profiles = {
-      for (final p in await ref.watch(profilesProvider.future)) p.id: p,
-    };
-    final books = {
-      for (final b in await ref.watch(booksProvider.future)) b.id: b,
-    };
-    return (posts: posts, profiles: profiles, books: books);
-  },
-);
-
-/// P2P strip: available listings plus the book/seller lookups it renders with.
+/// P2P strip: available listings (independent of the P2P page's own
+/// filter/sort selections) plus the book/seller lookups it renders with.
 final homeP2pFeedProvider = FutureProvider<
     ({
       List<P2pListing> listings,
