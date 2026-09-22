@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/providers/book_providers.dart';
 import '../../../../core/providers/profile_providers.dart';
 import '../../../../core/theme/app_palette.dart';
+import '../../../../core/widgets/async_value_view.dart';
 import '../../data/book_bites_providers.dart';
 import '../../domain/models/post.dart';
 
@@ -50,34 +51,37 @@ class _CreatePostPageState extends ConsumerState<CreatePostPage> {
     return Scaffold(
       backgroundColor: palette.bg,
       appBar: AppBar(title: const Text('New Book-Bite')),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(18),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                TextFormField(
-                  controller: _contentController,
-                  maxLines: 5,
-                  decoration: const InputDecoration(labelText: 'What are you reading?'),
-                  validator: (value) =>
-                      (value == null || value.isEmpty) ? 'Content is required' : null,
-                ),
-                const SizedBox(height: 14),
-                DropdownButtonFormField<String>(
-                  initialValue: _taggedBookId,
-                  decoration: const InputDecoration(labelText: 'Tag a book (optional)'),
-                  items: [
-                    for (final book in books)
-                      DropdownMenuItem(value: book.id, child: Text(book.title)),
-                  ],
-                  onChanged: (value) => setState(() => _taggedBookId = value),
-                ),
-                const SizedBox(height: 22),
-                FilledButton(onPressed: _submit, child: const Text('Post')),
-              ],
+      body: AsyncValueView(
+        value: books,
+        data: (books) => SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(18),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  TextFormField(
+                    controller: _contentController,
+                    maxLines: 5,
+                    decoration: const InputDecoration(labelText: 'What are you reading?'),
+                    validator: (value) =>
+                        (value == null || value.isEmpty) ? 'Content is required' : null,
+                  ),
+                  const SizedBox(height: 14),
+                  DropdownButtonFormField<String>(
+                    initialValue: _taggedBookId,
+                    decoration: const InputDecoration(labelText: 'Tag a book (optional)'),
+                    items: [
+                      for (final book in books)
+                        DropdownMenuItem(value: book.id, child: Text(book.title)),
+                    ],
+                    onChanged: (value) => setState(() => _taggedBookId = value),
+                  ),
+                  const SizedBox(height: 22),
+                  FilledButton(onPressed: _submit, child: const Text('Post')),
+                ],
+              ),
             ),
           ),
         ),
