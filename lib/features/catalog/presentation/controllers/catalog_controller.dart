@@ -10,9 +10,9 @@ final catalogBookSortProvider =
     StateProvider<BookSort>((ref) => BookSort.none);
 
 /// Catalog grid, filtered and sorted by the active selections.
-final filteredCatalogBooksProvider = Provider<List<Book>>((ref) {
+final filteredCatalogBooksProvider = FutureProvider<List<Book>>((ref) async {
   final filter = ref.watch(catalogBookFilterProvider);
   final sort = ref.watch(catalogBookSortProvider);
-  final books = ref.watch(booksProvider);
+  final books = await ref.watch(booksProvider.future);
   return sortBooks(filterBooks(books, filter), sort);
 });

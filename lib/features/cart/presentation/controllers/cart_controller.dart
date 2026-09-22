@@ -51,8 +51,10 @@ final cartCountProvider = Provider<int>(
       .fold(0, (total, item) => total + item.quantity),
 );
 
-final cartSubtotalProvider = Provider<double>((ref) {
-  final books = {for (final book in ref.watch(booksProvider)) book.id: book};
+final cartSubtotalProvider = FutureProvider<double>((ref) async {
+  final books = {
+    for (final book in await ref.watch(booksProvider.future)) book.id: book,
+  };
   return ref.watch(cartItemsProvider).fold(0.0, (total, item) {
     final book = books[item.bookId];
     if (book == null) return total;
@@ -60,6 +62,6 @@ final cartSubtotalProvider = Provider<double>((ref) {
   });
 });
 
-final cartTotalProvider = Provider<double>(
-  (ref) => ref.watch(cartSubtotalProvider) + deliveryFee,
+final cartTotalProvider = FutureProvider<double>(
+  (ref) async => await ref.watch(cartSubtotalProvider.future) + deliveryFee,
 );

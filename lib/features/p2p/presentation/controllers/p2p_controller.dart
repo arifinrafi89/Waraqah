@@ -13,11 +13,12 @@ final p2pSortProvider = StateProvider<P2pSort>((ref) => P2pSort.none);
 
 /// P2P feed grid: available-only listings, filtered and sorted by the
 /// active selections.
-final filteredP2pListingsProvider = Provider<List<P2pListing>>((ref) {
+final filteredP2pListingsProvider =
+    FutureProvider<List<P2pListing>>((ref) async {
   final condition = ref.watch(p2pConditionFilterProvider);
   final sort = ref.watch(p2pSortProvider);
-  final listings = ref
-      .watch(p2pListingsProvider)
+  final allListings = await ref.watch(p2pListingsProvider.future);
+  final listings = allListings
       .where((listing) => listing.status == P2pStatus.available)
       .where((listing) => condition == null || listing.condition == condition)
       .toList();
