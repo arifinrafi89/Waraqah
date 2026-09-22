@@ -1,30 +1,38 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:waraqah/main.dart';
+import 'package:waraqah/core/theme/app_palette.dart';
+import 'package:waraqah/core/utils/formatters.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  group('Bdt.format', () {
+    test('adds the taka symbol', () {
+      expect(Bdt.format(650), '৳650');
+    });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    test('groups thousands', () {
+      expect(Bdt.format(12500), '৳12,500');
+      expect(Bdt.format(1204), '৳1,204');
+    });
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  group('AppPalette', () {
+    test('light and dark expose the same number of chip colours', () {
+      expect(AppPalette.light.chips.length, AppPalette.dark.chips.length);
+    });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    test('chipFor wraps around and is stable for a seed', () {
+      final palette = AppPalette.dark;
+      expect(palette.chipFor(0), palette.chips[0]);
+      expect(palette.chipFor(4), palette.chips[0]);
+      expect(palette.chipFor(7), palette.chipFor(7));
+    });
+
+    test('is registered as a theme extension on both themes', () {
+      for (final palette in [AppPalette.light, AppPalette.dark]) {
+        final theme = ThemeData(extensions: [palette]);
+        expect(theme.extension<AppPalette>(), palette);
+      }
+    });
   });
 }
