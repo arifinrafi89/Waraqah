@@ -12,15 +12,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Waraqah: Flutter mobile app — book marketplace (new + P2P resale), social reading feed ("Book-Bites"), Gemini-powered AI reading assistant, Islamic content curation (Beneficial/Non-Beneficial tagging, daily Ayah on home screen). Backend is Go (REST API) + PostgreSQL, not in this repo — Flutter never talks to Postgres or holds the Gemini API key directly; all of that is proxied through the Go backend. Full design doc: `ARCHITECTURE.md`.
+Waraqah: Flutter mobile app — book marketplace (new + P2P resale), social reading feed ("Book-Bites"), Gemini-powered AI reading assistant, Islamic content curation (Beneficial/Non-Beneficial tagging, daily Ayah on home screen). Backend is not built yet and is still being worked out; the direction is Supabase (Postgres + Auth + Storage + Edge Functions), with catalog data from the Google Books / Open Library API. Flutter never talks to Postgres directly and never holds the Gemini API key. Until then the app runs on hardcoded dummy data (see `docs/adr/0001`). Full design doc: `ARCHITECTURE.md`.
 
 ## Architecture
 
 Feature-based "LEGO" architecture: each feature under `lib/features/<name>/` is a self-contained module with its own `presentation/`, `domain/`, `data/` layers (Clean Architecture per feature). Shared code (Book model, cross-feature interfaces, theming, network, storage) lives in `lib/core/`.
 
-Planned feature modules: `auth`, `home`, `catalog`, `p2p`, `book_bites`, `ai_assistant`, `cart`, `checkout`, `profile`. Currently only `home` is implemented.
+Feature modules: `auth`, `home`, `catalog`, `p2p`, `book_bites`, `profile` are implemented (UI, dummy data). `ai_assistant`, `cart`, `checkout` are not yet built.
 
-Data flow: `Flutter UI -> Feature Controller -> Repository -> REST API -> Go Backend -> (PostgreSQL / Gemini API / Cloudinary)`.
+Data flow: `Flutter UI -> Feature Controller -> Repository -> supabase_flutter -> Supabase (Postgres / Storage / Edge Function -> Gemini API)`. Today the repository layer returns dummy data instead.
 
 State management: Riverpod (`flutter_riverpod`), app-wide `ProviderScope` in `lib/main.dart`. Controllers/providers live under each feature's `presentation/controllers/`.
 
