@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_palette.dart';
+import '../../../../core/widgets/async_value_view.dart';
 import '../../../../core/widgets/centered_content.dart';
 import '../../data/order_providers.dart';
 import '../widgets/order_card.dart';
@@ -23,14 +24,17 @@ class OrdersPage extends ConsumerWidget {
       body: SafeArea(
         bottom: false,
         child: CenteredContent(
-          child: orders.isEmpty
-              ? _EmptyOrders(palette: palette)
-              : ListView.separated(
-                  padding: const EdgeInsets.all(_gutter),
-                  itemCount: orders.length,
-                  separatorBuilder: (context, index) => const SizedBox(height: 10),
-                  itemBuilder: (context, index) => OrderCard(order: orders[index]),
-                ),
+          child: AsyncValueView(
+            value: orders,
+            data: (orders) => orders.isEmpty
+                ? _EmptyOrders(palette: palette)
+                : ListView.separated(
+                    padding: const EdgeInsets.all(_gutter),
+                    itemCount: orders.length,
+                    separatorBuilder: (context, index) => const SizedBox(height: 10),
+                    itemBuilder: (context, index) => OrderCard(order: orders[index]),
+                  ),
+          ),
         ),
       ),
     );

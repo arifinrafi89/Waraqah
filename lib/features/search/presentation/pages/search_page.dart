@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/models/book.dart';
 import '../../../../core/theme/app_palette.dart';
+import '../../../../core/widgets/async_value_view.dart';
 import '../../../../core/widgets/book_grid_card.dart';
 import '../../../../core/widgets/centered_content.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
@@ -40,6 +41,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
   Widget build(BuildContext context) {
     final palette = Theme.of(context).extension<AppPalette>()!;
     final query = ref.watch(searchQueryProvider);
+    final books = ref.watch(booksProvider);
     final results = ref.watch(searchResultsProvider);
 
     return Scaffold(
@@ -69,10 +71,20 @@ class _SearchPageState extends ConsumerState<SearchPage> {
           child: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(_gutter, _gutter, _gutter, 140),
             child: query.isEmpty
-                ? _IdleState(palette: palette, onSelectGenre: _setQuery)
-                : results.isEmpty
-                ? _NoMatchesState(palette: palette, query: query)
-                : _ResultsState(palette: palette, results: results),
+                ? AsyncValueView(
+                    value: books,
+                    data: (books) => _IdleState(
+                      palette: palette,
+                      onSelectGenre: _setQuery,
+                      genres: books.map((b) => b.genre).toSet().toList(),
+                    ),
+                  )
+                : AsyncValueView(
+                    value: results,
+                    data: (results) => results.isEmpty
+                        ? _NoMatchesState(palette: palette, query: query)
+                        : _ResultsState(palette: palette, results: results),
+                  ),
           ),
         ),
       ),
@@ -80,15 +92,19 @@ class _SearchPageState extends ConsumerState<SearchPage> {
   }
 }
 
-class _IdleState extends ConsumerWidget {
-  const _IdleState({required this.palette, required this.onSelectGenre});
+class _IdleState extends StatelessWidget {
+  const _IdleState({
+    required this.palette,
+    required this.onSelectGenre,
+    required this.genres,
+  });
 
   final AppPalette palette;
   final ValueChanged<String> onSelectGenre;
+  final List<String> genres;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final genres = ref.watch(booksProvider).map((b) => b.genre).toSet().toList();
+  Widget build(BuildContext context) {
     final chips = palette.chips;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
