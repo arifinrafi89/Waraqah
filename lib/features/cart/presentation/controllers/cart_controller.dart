@@ -47,6 +47,10 @@ void removeFromCart(WidgetRef ref, String bookId) {
       items.where((item) => item.bookId != bookId).toList();
 }
 
+void clearCart(WidgetRef ref) {
+  ref.read(cartItemsProvider.notifier).state = const [];
+}
+
 final cartCountProvider = Provider<int>(
   (ref) => ref
       .watch(cartItemsProvider)

@@ -60,6 +60,30 @@ class AppTheme {
           side: BorderSide(color: palette.border),
         ),
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: palette.surface2,
+        labelStyle: TextStyle(color: palette.textDim),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: palette.border),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: palette.border),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: palette.accent, width: 1.5),
+        ),
+      ),
+      radioTheme: RadioThemeData(
+        fillColor: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.selected)
+              ? palette.accent
+              : palette.textFaint,
+        ),
+      ),
       // Cupertino's slide+fade reads smoother than Android's default
       // FadeUpwards on pushed routes (login, cart, search, ai-chat).
       pageTransitionsTheme: const PageTransitionsTheme(

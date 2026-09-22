@@ -10,7 +10,9 @@ import '../../features/book_bites/presentation/pages/create_post_page.dart';
 import '../../features/cart/presentation/pages/cart_page.dart';
 import '../../features/catalog/presentation/pages/book_detail_page.dart';
 import '../../features/catalog/presentation/pages/catalog_page.dart';
+import '../../features/checkout/presentation/pages/checkout_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/orders/presentation/pages/orders_page.dart';
 import '../../features/p2p/presentation/pages/create_listing_page.dart';
 import '../../features/p2p/presentation/pages/p2p_detail_page.dart';
 import '../../features/p2p/presentation/pages/p2p_page.dart';
@@ -125,7 +127,12 @@ class AppRouter {
       GoRoute(
         path: '/checkout',
         name: 'checkout',
-        builder: (context, state) => const PlaceholderPage(title: 'Checkout'),
+        builder: (context, state) => const CheckoutPage(),
+      ),
+      GoRoute(
+        path: '/orders',
+        name: 'orders',
+        builder: (context, state) => const OrdersPage(),
       ),
       GoRoute(
         path: '/search',
