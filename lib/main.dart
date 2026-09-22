@@ -31,7 +31,8 @@ class WaraqahApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Waraqah',
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
+      // One theme at a time: ThemeController resolves the persisted mode to a
+      // single family, so darkTheme/themeMode would only fight it.
       theme: AppTheme.themeFor(themeState.activeFamily),
       routerConfig: AppRouter.router,
     );

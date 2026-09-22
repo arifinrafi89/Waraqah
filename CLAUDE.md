@@ -26,7 +26,7 @@ State management: Riverpod (`flutter_riverpod`), app-wide `ProviderScope` in `li
 
 Routing: GoRouter, configured in `lib/app/router/app_router.dart` (`AppRouter.router`). New routes get added to the `routes` list there as features land. Planned routes per `ARCHITECTURE.md`: `/login`, `/register`, `/profile`, `/home`, `/catalog`, `/catalog/book/:id`, `/p2p`, `/p2p/:id`, `/p2p/create`, `/book-bites`, `/book-bites/create`, `/ai-chat`, `/cart`, `/checkout`, `/orders`.
 
-Theming: `lib/core/theme/app_theme.dart` exposes `AppTheme.lightTheme` / `AppTheme.darkTheme`, wired to system theme mode in `main.dart`.
+Theming: `lib/core/theme/app_theme.dart` exposes `AppTheme.lightTheme` / `AppTheme.darkTheme`. The app renders a single theme chosen by `ThemeController`'s persisted mode + family selection (`AppTheme.themeFor(activeFamily)`); it does not follow the system theme. `lightTheme`/`darkTheme` are convenience getters used by widget tests.
 
 ## Agent skills
 

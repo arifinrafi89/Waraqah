@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/models/book.dart';
 import '../../../../core/providers/book_providers.dart';
 import '../../../../core/providers/profile_providers.dart';
 import '../../../../core/theme/app_palette.dart';
@@ -10,12 +9,11 @@ import '../../../../core/utils/money.dart';
 import '../../../../core/widgets/centered_content.dart';
 import '../../../cart/domain/models/cart_item.dart';
 import '../../../cart/presentation/controllers/cart_controller.dart';
+import '../../../cart/presentation/widgets/summary_line.dart';
 import '../../../orders/domain/models/order.dart';
 import '../../../orders/presentation/controllers/order_controller.dart';
 
 const _gutter = 18.0;
-// Dummy data — no delivery pricing backend yet (ADR-0001), same fee as Cart.
-const _deliveryFee = 60.0;
 
 class CheckoutPage extends ConsumerStatefulWidget {
   const CheckoutPage({super.key});
@@ -87,7 +85,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
         if (books[item.bookId] case final book?) CartItemTotal(item: item, book: book),
     ];
     final subtotal = ref.watch(cartSubtotalProvider);
-    final total = subtotal + _deliveryFee;
+    final total = ref.watch(cartTotalProvider);
 
     return Scaffold(
       backgroundColor: palette.bg,
@@ -155,15 +153,6 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
       ),
     );
   }
-}
-
-class CartItemTotal {
-  const CartItemTotal({required this.item, required this.book});
-
-  final CartItem item;
-  final Book book;
-
-  double get lineTotal => book.price * item.quantity;
 }
 
 class _SectionCard extends StatelessWidget {
@@ -242,41 +231,11 @@ class _OrderSummary extends StatelessWidget {
             ),
           ),
         Divider(color: palette.border, height: 20),
-        _SummaryLine(label: 'Subtotal', value: taka(subtotal), palette: palette),
+        SummaryLine(label: 'Subtotal', value: taka(subtotal), palette: palette),
         const SizedBox(height: 4),
-        _SummaryLine(label: 'Delivery', value: taka(_deliveryFee), palette: palette),
+        SummaryLine(label: 'Delivery', value: taka(deliveryFee), palette: palette),
         const SizedBox(height: 4),
-        _SummaryLine(label: 'Total', value: taka(total), palette: palette, emphasize: true),
-      ],
-    );
-  }
-}
-
-class _SummaryLine extends StatelessWidget {
-  const _SummaryLine({
-    required this.label,
-    required this.value,
-    required this.palette,
-    this.emphasize = false,
-  });
-
-  final String label;
-  final String value;
-  final AppPalette palette;
-  final bool emphasize;
-
-  @override
-  Widget build(BuildContext context) {
-    final style = TextStyle(
-      fontSize: emphasize ? 15 : 13,
-      fontWeight: emphasize ? FontWeight.w800 : FontWeight.w600,
-      color: emphasize ? palette.text : palette.textDim,
-    );
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(label, style: style),
-        Text(value, style: style),
+        SummaryLine(label: 'Total', value: taka(total), palette: palette, emphasize: true),
       ],
     );
   }

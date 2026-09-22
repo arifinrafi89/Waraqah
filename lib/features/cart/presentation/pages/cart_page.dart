@@ -10,10 +10,9 @@ import '../../../../core/widgets/centered_content.dart';
 import '../../domain/models/cart_item.dart';
 import '../controllers/cart_controller.dart';
 import '../widgets/cart_row.dart';
+import '../widgets/summary_line.dart';
 
 const _gutter = 18.0;
-// Dummy data — no delivery pricing backend yet (ADR-0001).
-const _deliveryFee = 60.0;
 
 class CartPage extends ConsumerWidget {
   const CartPage({super.key});
@@ -49,7 +48,7 @@ class _CartBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final subtotal = ref.watch(cartSubtotalProvider);
-    final total = subtotal + _deliveryFee;
+    final total = ref.watch(cartTotalProvider);
 
     return Column(
       children: [
@@ -82,11 +81,11 @@ class _CartBody extends ConsumerWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _SummaryLine(label: 'Subtotal', value: taka(subtotal), palette: palette),
+              SummaryLine(label: 'Subtotal', value: taka(subtotal), palette: palette),
               const SizedBox(height: 4),
-              _SummaryLine(label: 'Delivery', value: taka(_deliveryFee), palette: palette),
+              SummaryLine(label: 'Delivery', value: taka(deliveryFee), palette: palette),
               const SizedBox(height: 4),
-              _SummaryLine(
+              SummaryLine(
                 label: 'Total',
                 value: taka(total),
                 palette: palette,
@@ -115,36 +114,6 @@ class _CartBody extends ConsumerWidget {
             ],
           ),
         ),
-      ],
-    );
-  }
-}
-
-class _SummaryLine extends StatelessWidget {
-  const _SummaryLine({
-    required this.label,
-    required this.value,
-    required this.palette,
-    this.emphasize = false,
-  });
-
-  final String label;
-  final String value;
-  final AppPalette palette;
-  final bool emphasize;
-
-  @override
-  Widget build(BuildContext context) {
-    final style = TextStyle(
-      fontSize: emphasize ? 15 : 13,
-      fontWeight: emphasize ? FontWeight.w800 : FontWeight.w600,
-      color: emphasize ? palette.text : palette.textDim,
-    );
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(label, style: style),
-        Text(value, style: style),
       ],
     );
   }

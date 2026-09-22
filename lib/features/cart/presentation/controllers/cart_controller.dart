@@ -65,3 +65,7 @@ final cartSubtotalProvider = Provider<double>((ref) {
     return total + book.price * item.quantity;
   });
 });
+
+final cartTotalProvider = Provider<double>(
+  (ref) => ref.watch(cartSubtotalProvider) + deliveryFee,
+);
