@@ -15,10 +15,10 @@ class _RecordingOrderRepository implements OrderRepository {
   final DummyOrderRepository _inner = DummyOrderRepository();
 
   @override
-  List<Order> getOrders() => _inner.getOrders();
+  Future<List<Order>> getOrders() => _inner.getOrders();
 
   @override
-  List<Order> addOrder(Order order) {
+  Future<List<Order>> addOrder(Order order) {
     added.add(order);
     return _inner.addOrder(order);
   }

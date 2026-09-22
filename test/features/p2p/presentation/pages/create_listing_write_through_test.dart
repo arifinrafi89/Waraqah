@@ -14,10 +14,10 @@ class _RecordingP2pListingRepository implements P2pListingRepository {
   final DummyP2pListingRepository _inner = DummyP2pListingRepository();
 
   @override
-  List<P2pListing> getListings() => _inner.getListings();
+  Future<List<P2pListing>> getListings() => _inner.getListings();
 
   @override
-  List<P2pListing> addListing(P2pListing listing) {
+  Future<List<P2pListing>> addListing(P2pListing listing) {
     added.add(listing);
     return _inner.addListing(listing);
   }

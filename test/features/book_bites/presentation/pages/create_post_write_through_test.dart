@@ -14,10 +14,10 @@ class _RecordingPostRepository implements PostRepository {
   final DummyPostRepository _inner = DummyPostRepository();
 
   @override
-  List<Post> getPosts() => _inner.getPosts();
+  Future<List<Post>> getPosts() => _inner.getPosts();
 
   @override
-  List<Post> addPost(Post post) {
+  Future<List<Post>> addPost(Post post) {
     added.add(post);
     return _inner.addPost(post);
   }

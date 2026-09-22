@@ -5,12 +5,12 @@ void main() {
   group('DummyPostRepository', () {
     final repo = DummyPostRepository();
 
-    test('returns enough posts to fill the Book-Bites strip', () {
-      expect(repo.getPosts().length, greaterThanOrEqualTo(8));
+    test('returns enough posts to fill the Book-Bites strip', () async {
+      expect((await repo.getPosts()).length, greaterThanOrEqualTo(8));
     });
 
-    test('posts have non-empty required fields', () {
-      for (final post in repo.getPosts()) {
+    test('posts have non-empty required fields', () async {
+      for (final post in await repo.getPosts()) {
         expect(post.id, isNotEmpty);
         expect(post.authorId, isNotEmpty);
         expect(post.content, isNotEmpty);

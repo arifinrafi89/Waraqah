@@ -6,12 +6,12 @@ void main() {
   group('DummyP2pListingRepository', () {
     final repo = DummyP2pListingRepository();
 
-    test('returns enough listings to fill the P2P strip', () {
-      expect(repo.getListings().length, greaterThanOrEqualTo(6));
+    test('returns enough listings to fill the P2P strip', () async {
+      expect((await repo.getListings()).length, greaterThanOrEqualTo(6));
     });
 
-    test('listings have non-empty required fields', () {
-      for (final listing in repo.getListings()) {
+    test('listings have non-empty required fields', () async {
+      for (final listing in await repo.getListings()) {
         expect(listing.id, isNotEmpty);
         expect(listing.sellerId, isNotEmpty);
         expect(listing.price, greaterThan(0));

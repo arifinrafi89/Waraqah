@@ -28,7 +28,7 @@ void main() {
     expect(find.text('Catalog'), findsWidgets);
     expect(find.byType(GridView), findsOneWidget);
     expect(
-      find.text(DummyBookRepository().getBooks().first.title),
+      find.text((await DummyBookRepository().getBooks()).first.title),
       findsOneWidget,
     );
   });
@@ -44,7 +44,7 @@ void main() {
   ) async {
     await _pumpCatalog(tester);
 
-    final book = DummyBookRepository().getBooks().first;
+    final book = (await DummyBookRepository().getBooks()).first;
     await tester.tap(find.text(book.title).first);
     await tester.pumpAndSettle();
 

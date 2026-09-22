@@ -41,7 +41,7 @@ void main() {
     'Place order on an invalid form shows field errors and creates no order',
     (tester) async {
       final container = await _pumpCheckout(tester);
-      final ordersBefore = container.read(ordersProvider).length;
+      final ordersBefore = (await container.read(ordersProvider.future)).length;
 
       await tester.tap(find.widgetWithText(ElevatedButton, 'Place order'));
       await tester.pumpAndSettle();
@@ -49,7 +49,7 @@ void main() {
       expect(find.text('Phone is required'), findsOneWidget);
       expect(find.text('Address line is required'), findsOneWidget);
       expect(find.text('City is required'), findsOneWidget);
-      expect(container.read(ordersProvider).length, ordersBefore);
+      expect((await container.read(ordersProvider.future)).length, ordersBefore);
     },
   );
 
@@ -75,7 +75,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(container.read(cartItemsProvider), isEmpty);
-      expect(container.read(ordersProvider).first.status.name, 'pending');
+      expect((await container.read(ordersProvider.future)).first.status.name, 'pending');
       expect(find.text('My Orders'), findsOneWidget);
     },
   );
