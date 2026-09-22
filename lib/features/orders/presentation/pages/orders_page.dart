@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_palette.dart';
 import '../../../../core/widgets/centered_content.dart';
-import '../controllers/order_controller.dart';
+import '../../data/order_providers.dart';
 import '../widgets/order_card.dart';
 
 const _gutter = 18.0;

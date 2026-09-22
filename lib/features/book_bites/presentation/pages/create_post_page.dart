@@ -3,9 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/providers/book_providers.dart';
+import '../../../../core/providers/profile_providers.dart';
 import '../../../../core/theme/app_palette.dart';
-import '../../../home/presentation/controllers/home_controller.dart';
-import '../../../home/domain/models/post.dart';
+import '../../data/book_bites_providers.dart';
+import '../../domain/models/post.dart';
 
 /// UI-shell only: author is the demo current user (`profile-1`), new posts
 /// go into the same in-memory `postsProvider` the Book-Bites feed reads.
@@ -17,8 +18,6 @@ class CreatePostPage extends ConsumerStatefulWidget {
 }
 
 class _CreatePostPageState extends ConsumerState<CreatePostPage> {
-  static const _currentUserId = 'profile-1';
-
   final _formKey = GlobalKey<FormState>();
   final _contentController = TextEditingController();
   String? _taggedBookId;
@@ -34,7 +33,7 @@ class _CreatePostPageState extends ConsumerState<CreatePostPage> {
 
     final post = Post(
       id: 'post-${DateTime.now().microsecondsSinceEpoch}',
-      authorId: _currentUserId,
+      authorId: currentProfileId,
       content: _contentController.text,
       createdAt: DateTime.now(),
       taggedBookIds: _taggedBookId == null ? const [] : [_taggedBookId!],

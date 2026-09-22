@@ -35,12 +35,13 @@ lib/
     +-- router/
           +-- app_router.dart
   core/
-    +-- network/
-    +-- storage/
+    +-- data/
+    +-- models/
+    +-- providers/
+    +-- repositories/
     +-- theme/
-    +-- widgets/
-    +-- services/
     +-- utils/
+    +-- widgets/
   features/
     +-- auth/
     +-- home/
@@ -59,6 +60,11 @@ feature/
   +-- domain/
   +-- data/
 ```
+
+Domain models shared by more than one feature (`Book`, `Profile`) live in
+`core/`; a model owned by a single feature (`Post`, `P2pListing`, `Order`,
+`CartItem`) lives in that feature's `domain/`. A feature may import another
+feature's `domain/` and `data/`, never its `presentation/`.
 
 # 5. Backend Architecture
 **Status: the backend is still being worked out.** Nothing is built yet.

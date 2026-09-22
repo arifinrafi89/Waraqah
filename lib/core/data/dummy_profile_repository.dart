@@ -1,5 +1,5 @@
-import '../../domain/models/profile.dart';
-import '../../domain/repositories/profile_repository.dart';
+import '../models/profile.dart';
+import '../repositories/profile_repository.dart';
 
 class DummyProfileRepository implements ProfileRepository {
   static const List<Profile> _profiles = [

@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../home/domain/models/p2p_listing.dart';
-import '../../../home/presentation/controllers/home_controller.dart';
+import '../../data/p2p_providers.dart';
+import '../../domain/models/p2p_listing.dart';
 
 /// P2P feed sort order.
 enum P2pSort { none, priceLowToHigh, priceHighToLow }

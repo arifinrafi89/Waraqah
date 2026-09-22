@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/models/book.dart';
+import '../../../../core/models/profile.dart';
 import '../../../../core/theme/app_palette.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/money.dart';
-import '../../../home/domain/models/p2p_listing.dart';
-import '../../../home/domain/models/profile.dart';
+import '../../domain/models/p2p_listing.dart';
 
 extension P2pConditionLabel on P2pCondition {
   String get label {

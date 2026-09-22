@@ -1,18 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../home/domain/models/p2p_listing.dart';
-import '../../../home/domain/models/profile.dart';
-import '../../../home/presentation/controllers/home_controller.dart';
-
-const currentProfileId = 'profile-1';
-
-/// The hardcoded current user, resolved from the shared profile-listing
-/// provider. No separate current-user/auth provider is introduced.
-final currentProfileProvider = Provider<Profile>((ref) {
-  return ref
-      .watch(profilesProvider)
-      .firstWhere((profile) => profile.id == currentProfileId);
-});
+import '../../../../core/providers/profile_providers.dart';
+import '../../../p2p/data/p2p_providers.dart';
+import '../../../p2p/domain/models/p2p_listing.dart';
 
 /// The current user's own listings, unfiltered by status — unlike the public
 /// P2P feed, reserved/sold listings still show here.

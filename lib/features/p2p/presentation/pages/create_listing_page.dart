@@ -3,9 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/providers/book_providers.dart';
+import '../../../../core/providers/profile_providers.dart';
 import '../../../../core/theme/app_palette.dart';
-import '../../../home/domain/models/p2p_listing.dart';
-import '../../../home/presentation/controllers/home_controller.dart';
+import '../../data/p2p_providers.dart';
+import '../../domain/models/p2p_listing.dart';
 
 /// UI-shell only: seller is the demo current user (`profile-1`), new
 /// listings go into the same in-memory `p2pListingsProvider` the P2P feed
@@ -18,8 +19,6 @@ class CreateListingPage extends ConsumerStatefulWidget {
 }
 
 class _CreateListingPageState extends ConsumerState<CreateListingPage> {
-  static const _currentUserId = 'profile-1';
-
   final _formKey = GlobalKey<FormState>();
   final _priceController = TextEditingController();
   String? _bookId;
@@ -36,7 +35,7 @@ class _CreateListingPageState extends ConsumerState<CreateListingPage> {
 
     final listing = P2pListing(
       id: 'p2p-${DateTime.now().microsecondsSinceEpoch}',
-      sellerId: _currentUserId,
+      sellerId: currentProfileId,
       bookId: _bookId,
       condition: _condition,
       price: double.parse(_priceController.text),

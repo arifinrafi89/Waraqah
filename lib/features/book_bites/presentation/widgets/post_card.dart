@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/models/book.dart';
+import '../../../../core/models/profile.dart';
 import '../../../../core/theme/app_palette.dart';
-import '../../../home/domain/models/post.dart';
-import '../../../home/domain/models/profile.dart';
+import '../../domain/models/post.dart';
 
 class PostCard extends StatelessWidget {
   const PostCard({

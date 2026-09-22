@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/theme/app_palette.dart';
-import '../../../home/domain/models/p2p_listing.dart';
+import '../../domain/models/p2p_listing.dart';
 import '../controllers/p2p_controller.dart';
 import 'p2p_grid_card.dart';
 

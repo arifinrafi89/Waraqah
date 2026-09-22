@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/providers/book_providers.dart';
 import '../../../../core/theme/app_palette.dart';
+import '../../../../core/providers/profile_providers.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
-import '../../../home/presentation/controllers/home_controller.dart';
 import '../controllers/p2p_controller.dart';
 import '../widgets/p2p_condition_chip_row.dart';
 import '../widgets/p2p_grid_card.dart';

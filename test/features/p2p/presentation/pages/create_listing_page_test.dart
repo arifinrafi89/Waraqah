@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:waraqah/app/router/app_router.dart';
 import 'package:waraqah/core/theme/app_theme.dart';
-import 'package:waraqah/features/home/domain/models/p2p_listing.dart';
+import 'package:waraqah/features/p2p/domain/models/p2p_listing.dart';
 
 Future<void> _pumpCreateListing(WidgetTester tester) async {
   AppRouter.router.go('/p2p/create');

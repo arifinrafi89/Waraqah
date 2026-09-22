@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/providers/book_providers.dart';
+import '../../../../core/providers/profile_providers.dart';
 import '../../../../core/theme/app_palette.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../../../home/presentation/controllers/home_controller.dart';
+import '../../data/p2p_providers.dart';
 import '../widgets/p2p_grid_card.dart' show P2pConditionLabel;
 
 /// Listing detail page for a single `/p2p/:id` entry, reusing the existing

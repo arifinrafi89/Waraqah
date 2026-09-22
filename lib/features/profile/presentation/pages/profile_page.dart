@@ -4,9 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/providers/book_providers.dart';
 import '../../../../core/theme/app_palette.dart';
+import '../../../../core/models/profile.dart';
+import '../../../../core/providers/profile_providers.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
-import '../../../home/domain/models/profile.dart';
-import '../../../home/presentation/controllers/home_controller.dart';
 import '../../../p2p/presentation/widgets/p2p_grid_card.dart';
 import '../controllers/profile_controller.dart';
 

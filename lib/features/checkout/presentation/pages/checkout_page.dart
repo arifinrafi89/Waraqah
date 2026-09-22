@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/models/book.dart';
 import '../../../../core/providers/book_providers.dart';
+import '../../../../core/providers/profile_providers.dart';
 import '../../../../core/theme/app_palette.dart';
 import '../../../../core/utils/money.dart';
 import '../../../../core/widgets/centered_content.dart';
@@ -11,7 +12,6 @@ import '../../../cart/domain/models/cart_item.dart';
 import '../../../cart/presentation/controllers/cart_controller.dart';
 import '../../../orders/domain/models/order.dart';
 import '../../../orders/presentation/controllers/order_controller.dart';
-import '../../../profile/presentation/controllers/profile_controller.dart';
 
 const _gutter = 18.0;
 // Dummy data — no delivery pricing backend yet (ADR-0001), same fee as Cart.
