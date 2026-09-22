@@ -17,6 +17,7 @@ import '../../features/p2p/presentation/pages/create_listing_page.dart';
 import '../../features/p2p/presentation/pages/p2p_detail_page.dart';
 import '../../features/p2p/presentation/pages/p2p_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
+import '../../features/search/presentation/pages/search_page.dart';
 
 class AppRouter {
   static final router = GoRouter(
@@ -137,7 +138,7 @@ class AppRouter {
       GoRoute(
         path: '/search',
         name: 'search',
-        builder: (context, state) => const PlaceholderPage(title: 'Search'),
+        builder: (context, state) => const SearchPage(),
       ),
     ],
   );

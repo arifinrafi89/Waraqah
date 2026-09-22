@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:waraqah/app/router/app_router.dart';
 import 'package:waraqah/core/theme/app_theme.dart';
+import 'package:waraqah/features/search/presentation/pages/search_page.dart';
 
 Future<void> _pumpHome(WidgetTester tester) async {
   AppRouter.router.go('/home');
@@ -48,7 +49,6 @@ void main() {
     MapEntry(find.text('P2P'), 'P2P'),
     MapEntry(find.text('Bites'), 'Book-Bites'),
     MapEntry(find.text('Profile'), 'Profile'),
-    MapEntry(find.byIcon(Icons.search_rounded), 'Search'),
     MapEntry(find.byIcon(Icons.shopping_bag_outlined), 'Cart'),
     MapEntry(find.byIcon(Icons.auto_awesome_rounded), 'AI Chat'),
   ];
@@ -65,6 +65,15 @@ void main() {
       expect(find.text(entry.value), findsWidgets);
     });
   }
+
+  testWidgets('tapping search icon navigates to SearchPage', (tester) async {
+    await _pumpHome(tester);
+
+    await tester.tap(find.byIcon(Icons.search_rounded));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(SearchPage), findsOneWidget);
+  });
 
   testWidgets('New Books filter chip narrows cards to matching isBeneficial value', (
     tester,

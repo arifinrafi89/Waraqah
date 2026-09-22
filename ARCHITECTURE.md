@@ -13,13 +13,14 @@ The main features are:
 # 2. Technology Stack
 * **Frontend:** Flutter / Dart
 * **Architecture:** Feature-Based LEGO Architecture
-* **Backend:** Go (REST API and business logic)
-* **Database:** PostgreSQL
+* **Backend:** Supabase — planned, not yet configured (see section 5)
+* **Database:** Postgres, hosted by Supabase
 * **AI:** Google Gemini API
 * **Navigation:** GoRouter
 * **Animation:** Rive
-* **Image Storage:** Cloudinary
-* **Communication:** REST API for Flutter-Go communication
+* **Image Storage:** Supabase Storage
+* **Catalog source:** Google Books API / Open Library API
+* **Communication:** `supabase_flutter` client (no hand-written REST layer)
 
 # 3. Architecture
 The Flutter application will follow a feature-based LEGO architecture. Each major feature will act as an independent building block containing its own UI, models, data handling, and business-related components. This makes the application easier to develop, test, maintain, debug, extend, and replace individual features. Shared functionality (the Book model, cross-feature interfaces, theming) will remain inside `core/`. Within each feature, internal code will follow Clean Architecture, separated into presentation, domain, and data layers.
@@ -60,25 +61,28 @@ feature/
 ```
 
 # 5. Backend Architecture
-The backend will be developed using Go. Flutter will communicate with the Go backend through REST APIs. 
+**Status: the backend is still being worked out.** Nothing is built yet.
+The app currently runs entirely on hardcoded dummy data (see ADR-0001), and
+every screen is a UI demo. The direction is Supabase, but it is not configured
+yet, so everything below is intent rather than a commitment.
 
-The Go backend will handle:
-* Authentication and User management.
-* Book catalog data, Vendor scraping, and price aggregation.
-* P2P listings and Social feed (Book-Bites).
-* AI requests and Ayah of the Day content.
-* Cart and checkout (mocked).
+The plan is to move almost everything to Supabase:
+* Authentication and user management — Supabase Auth.
+* Books, P2P listings, Book-Bites, cart and orders — Supabase Postgres, read and written through the `supabase_flutter` client.
+* Book covers and listing photos — Supabase Storage. Cloudinary is dropped.
+* Gemini requests — a Supabase Edge Function, so the app never holds the API key.
 
-The backend will communicate with PostgreSQL for persistent data. The Flutter application will not directly access the PostgreSQL database.
+Catalog data will come from the Google Books API or the Open Library API.
+There are no vendor scraper workers.
+
 The general architecture is:
-* Flutter App -> REST API -> Go Backend
-* Go Backend -> PostgreSQL
-* Go Backend -> Go Scraper Workers (Rokomari, Wafilife)
-* Go Backend -> Gemini API
-* Go Backend -> Cloudinary
+* Flutter App -> `supabase_flutter` -> Supabase
+* Supabase -> Postgres / Storage / Auth
+* Supabase Edge Function -> Gemini API
+* Supabase Edge Function -> Google Books API / Open Library API
 
 # 6. Database
-PostgreSQL will be used as the main database. PostgreSQL is suitable because the marketplace, P2P listings, and social feed data are relational, with clear foreign-key relationships. 
+Postgres, hosted by Supabase, will be used as the main database. It is suitable because the marketplace, P2P listings, and social feed data are relational, with clear foreign-key relationships. 
 Tables will include:
 * Users, Books, Book Listings (per-vendor price and edition data).
 * P2P Listings, Posts (Book-Bites), Post Likes, Book Tags.
@@ -87,8 +91,8 @@ Tables will include:
 # 7. Main Features
 * **7.1 Primary Marketplace:** Users can browse and buy new physical books and ebooks. It features price comparison across vendors, default sorting by cheapest first (ties broken by average review score), and displays reviews, previews, and ratings.
 * **7.2 Second-Hand Marketplace (P2P):** Aimed at students reselling course textbooks. It features a separate listing flow (condition reporting, pricing, photos) and is independent from the primary catalog.
-* **7.3 Book-Bites (Social Feed):** A lightweight, Twitter-style feed for short posts, reading progress, and quick reviews. It includes inline book tagging where tapping a tagged book opens its purchase page. The paginated feed is backed by PostgreSQL.
-* **7.4 AI Reading Assistant:** An embedded chatbot powered by the free Google Gemini API. The Go backend proxies all requests so the app never holds the API key. Catalog data is injected into the prompt so recommendations stay within Waraqah's own listings.
+* **7.3 Book-Bites (Social Feed):** A lightweight, Twitter-style feed for short posts, reading progress, and quick reviews. It includes inline book tagging where tapping a tagged book opens its purchase page. The paginated feed is backed by Postgres.
+* **7.4 AI Reading Assistant:** An embedded chatbot powered by the free Google Gemini API. A Supabase Edge Function proxies all requests so the app never holds the API key. Catalog data is injected into the prompt so recommendations stay within Waraqah's own listings.
 * **7.5 Islamic Curation:** Books are tagged Beneficial or Non-Beneficial and can be filtered accordingly. A daily Ayah of the Qur'an is shown at the top of the home screen.
 
 # 8. Navigation
@@ -98,7 +102,7 @@ Main routes will include:
 * `/home`, `/catalog`, `/catalog/book/:id`
 * `/p2p`, `/p2p/:id`, `/p2p/create`
 * `/book-bites`, `/book-bites/create`
-* `/ai-chat`, `/cart`, `/checkout`, `/orders`
+* `/ai-chat`, `/cart`, `/checkout`, `/orders`, `/search`
 
 The five top-level tab routes (`/home`, `/catalog`, `/p2p`, `/book-bites`,
 `/profile`) are nested under a single `StatefulShellRoute.indexedStack` in
@@ -109,29 +113,29 @@ switching. Routes outside the shell (`/login`, `/cart`, `/search`,
 
 # 9. Data Flow
 The UI is kept separate from backend and database implementation. The flow is:
-`Flutter UI -> Feature Controller -> Repository -> REST API -> Go Backend -> (PostgreSQL / Gemini API / Cloudinary)`
+`Flutter UI -> Feature Controller -> Repository -> supabase_flutter -> Supabase (Postgres / Storage / Edge Function -> Gemini API)`
 
 # 10. Security
-* Flutter will not connect directly to PostgreSQL.
+* Flutter will not connect directly to Postgres; all access goes through Supabase's API layer, guarded by row-level security.
 * Sensitive API keys (Gemini) will not be exposed in the Flutter app.
-* Authentication will be handled by the backend.
+* Authentication will be handled by Supabase Auth.
 * Orders and prices will be validated by the backend.
 * Checkout is mocked for this project; no real payment credentials are handled.
 
 # 11. Final Architecture
-The complete system is designed to keep Waraqah modular and simple. Flutter handles the mobile application, Go handles the backend, and PostgreSQL stores application data. Each major feature remains an independent LEGO-style module while communicating through clear interfaces and REST APIs.
+The complete system is designed to keep Waraqah modular and simple. Flutter handles the application, Supabase handles the backend, and Postgres stores application data. Each major feature remains an independent LEGO-style module, talking to the outside world through a repository interface — which is what makes today's dummy-data implementation swappable for Supabase later.
 
 ```text
                         Waraqah
                            |
             +--------------+--------------+
             |                             |
-       Flutter App                    Go Backend
+       Flutter App                     Supabase
             |                             |
-      LEGO Features               REST API / Logic
+      LEGO Features              Auth / API / Functions
             |                             |
   +----+----+----+----+         +---------+---------+
   |    |    |    |    |         |         |         |
-Catalog P2P Bites Cart      PostgreSQL  Gemini  Cloudinary
+Catalog P2P Bites Cart       Postgres  Storage   Gemini
   (AI Chat, Checkout, Islamic Curation)
 ```
