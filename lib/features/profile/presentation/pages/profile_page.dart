@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/providers/book_providers.dart';
 import '../../../../core/theme/app_palette.dart';
 import '../../../../core/models/profile.dart';
-import '../../../../core/providers/profile_providers.dart';
+import '../../../../core/widgets/async_value_view.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
 import '../../../p2p/presentation/widgets/p2p_grid_card.dart';
 import '../controllers/profile_controller.dart';
@@ -18,50 +17,50 @@ class ProfilePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final palette = Theme.of(context).extension<AppPalette>()!;
-    final profile = ref.watch(currentProfileProvider);
-    final listings = ref.watch(myListingsProvider);
-    final books = {for (final b in ref.watch(booksProvider)) b.id: b};
-    final profiles = {for (final p in ref.watch(profilesProvider)) p.id: p};
+    final page = ref.watch(profilePageProvider);
 
     return Scaffold(
       backgroundColor: palette.bg,
       appBar: AppBar(title: const Text('Profile')),
-      body: SafeArea(
-        bottom: false,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(_gutter, _gutter, _gutter, 140),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _ProfileHeader(profile: profile),
-              const SizedBox(height: 18),
-              const _MyOrdersRow(),
-              const SizedBox(height: 22),
-              Text(
-                'My Listings',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w800,
-                  color: palette.text,
+      body: AsyncValueView(
+        value: page,
+        data: (page) => SafeArea(
+          bottom: false,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(_gutter, _gutter, _gutter, 140),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _ProfileHeader(profile: page.profile),
+                const SizedBox(height: 18),
+                const _MyOrdersRow(),
+                const SizedBox(height: 22),
+                Text(
+                  'My Listings',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w800,
+                    color: palette.text,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 11),
-              ResponsiveBookGrid(
-                itemCount: listings.length,
-                itemBuilder: (context, index) {
-                  final listing = listings[index];
-                  final book = books[listing.bookId];
-                  final seller = profiles[listing.sellerId];
-                  final chip = palette.chips[index % palette.chips.length];
-                  return P2pGridCard(
-                    listing: listing,
-                    book: book,
-                    seller: seller,
-                    chip: chip,
-                  );
-                },
-              ),
-            ],
+                const SizedBox(height: 11),
+                ResponsiveBookGrid(
+                  itemCount: page.listings.length,
+                  itemBuilder: (context, index) {
+                    final listing = page.listings[index];
+                    final book = page.books[listing.bookId];
+                    final seller = page.profiles[listing.sellerId];
+                    final chip = palette.chips[index % palette.chips.length];
+                    return P2pGridCard(
+                      listing: listing,
+                      book: book,
+                      seller: seller,
+                      chip: chip,
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
