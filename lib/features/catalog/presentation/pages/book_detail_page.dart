@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/models/book.dart';
 import '../../../../core/providers/book_providers.dart';
 import '../../../../core/theme/app_palette.dart';
+import '../../../../core/widgets/async_value_view.dart';
 import '../../../cart/presentation/controllers/cart_controller.dart';
 
 /// Book detail page for a single `/catalog/book/:id` entry, reusing the
@@ -16,8 +18,26 @@ class BookDetailPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final palette = Theme.of(context).extension<AppPalette>()!;
     final books = ref.watch(booksProvider);
-    final book = books.where((b) => b.id == bookId).firstOrNull;
 
+    return AsyncValueView(
+      value: books,
+      data: (books) => _BookDetailBody(
+        palette: palette,
+        book: books.where((b) => b.id == bookId).firstOrNull,
+      ),
+    );
+  }
+}
+
+class _BookDetailBody extends ConsumerWidget {
+  const _BookDetailBody({required this.palette, required this.book});
+
+  final AppPalette palette;
+  final Book? book;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final book = this.book;
     if (book == null) {
       return Scaffold(
         backgroundColor: palette.bg,
