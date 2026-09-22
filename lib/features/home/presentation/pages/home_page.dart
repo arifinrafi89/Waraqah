@@ -8,16 +8,13 @@ import '../../../../core/theme/theme_controller.dart';
 import '../../../../core/theme/theme_family.dart';
 import '../../../../core/models/book.dart';
 import '../../../../core/models/profile.dart';
-import '../../../../core/providers/book_providers.dart';
+import '../../../../core/widgets/async_value_view.dart';
 import '../../../../core/widgets/book_filter_chip_row.dart';
 import '../../../../core/widgets/book_grid_card.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
 import '../../../../core/widgets/sort_menu_button.dart';
-import '../../../../core/providers/profile_providers.dart';
-import '../../../book_bites/data/book_bites_providers.dart';
 import '../../../book_bites/domain/models/post.dart';
 import '../../../cart/presentation/controllers/cart_controller.dart';
-import '../../../p2p/data/p2p_providers.dart';
 import '../../../p2p/domain/models/p2p_listing.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/ayah_card.dart';
@@ -344,25 +341,27 @@ class _BookBitesStrip extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final palette = Theme.of(context).extension<AppPalette>()!;
-    final posts = ref.watch(postsProvider);
-    final profiles = {for (final p in ref.watch(profilesProvider)) p.id: p};
-    final books = {for (final b in ref.watch(booksProvider)) b.id: b};
+    final feed = ref.watch(homeBookBitesFeedProvider);
 
     return SizedBox(
       height: 148,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: _gutter),
-        itemCount: posts.length,
-        separatorBuilder: (context, index) => const SizedBox(width: 10),
-        itemBuilder: (context, index) {
-          final post = posts[index];
-          final author = profiles[post.authorId];
-          final taggedBook =
-              post.taggedBookIds.isEmpty ? null : books[post.taggedBookIds.first];
-          final chip = palette.chips[index % palette.chips.length];
-          return _BiteCard(post: post, author: author, taggedBook: taggedBook, chip: chip);
-        },
+      child: AsyncValueView(
+        value: feed,
+        data: (feed) => ListView.separated(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: _gutter),
+          itemCount: feed.posts.length,
+          separatorBuilder: (context, index) => const SizedBox(width: 10),
+          itemBuilder: (context, index) {
+            final post = feed.posts[index];
+            final author = feed.profiles[post.authorId];
+            final taggedBook = post.taggedBookIds.isEmpty
+                ? null
+                : feed.books[post.taggedBookIds.first];
+            final chip = palette.chips[index % palette.chips.length];
+            return _BiteCard(post: post, author: author, taggedBook: taggedBook, chip: chip);
+          },
+        ),
       ),
     );
   }
@@ -467,22 +466,25 @@ class _NewBooksGrid extends ConsumerWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: _gutter),
-      child: ResponsiveBookGrid(
-        itemCount: books.length,
-        itemBuilder: (context, index) {
-          final book = books[index];
-          final chip = palette.chips[index % palette.chips.length];
-          return BookGridCard(
-            book: book,
-            chip: chip,
-            onAddToCart: () {
-              ref.read(cartItemsProvider.notifier).add(book.id);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Added to cart')),
-              );
-            },
-          );
-        },
+      child: AsyncValueView(
+        value: books,
+        data: (books) => ResponsiveBookGrid(
+          itemCount: books.length,
+          itemBuilder: (context, index) {
+            final book = books[index];
+            final chip = palette.chips[index % palette.chips.length];
+            return BookGridCard(
+              book: book,
+              chip: chip,
+              onAddToCart: () {
+                ref.read(cartItemsProvider.notifier).add(book.id);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Added to cart')),
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
@@ -494,24 +496,25 @@ class _P2pStrip extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final palette = Theme.of(context).extension<AppPalette>()!;
-    final listings = ref.watch(p2pListingsProvider).where((l) => l.status == P2pStatus.available).toList();
-    final books = {for (final b in ref.watch(booksProvider)) b.id: b};
-    final profiles = {for (final p in ref.watch(profilesProvider)) p.id: p};
+    final feed = ref.watch(homeP2pFeedProvider);
 
     return SizedBox(
       height: 245,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: _gutter),
-        itemCount: listings.length,
-        separatorBuilder: (context, index) => const SizedBox(width: 10),
-        itemBuilder: (context, index) {
-          final listing = listings[index];
-          final book = books[listing.bookId];
-          final seller = profiles[listing.sellerId];
-          final chip = palette.chips[index % palette.chips.length];
-          return _P2pCard(listing: listing, book: book, seller: seller, chip: chip);
-        },
+      child: AsyncValueView(
+        value: feed,
+        data: (feed) => ListView.separated(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: _gutter),
+          itemCount: feed.listings.length,
+          separatorBuilder: (context, index) => const SizedBox(width: 10),
+          itemBuilder: (context, index) {
+            final listing = feed.listings[index];
+            final book = feed.books[listing.bookId];
+            final seller = feed.profiles[listing.sellerId];
+            final chip = palette.chips[index % palette.chips.length];
+            return _P2pCard(listing: listing, book: book, seller: seller, chip: chip);
+          },
+        ),
       ),
     );
   }
