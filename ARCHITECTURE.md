@@ -48,11 +48,13 @@ lib/
     +-- catalog/
     +-- p2p/
     +-- book_bites/
-    +-- ai_assistant/
     +-- cart/
     +-- checkout/
+    +-- orders/
     +-- profile/
+    +-- search/
 ```
+`ai_assistant` is planned (see `CLAUDE.md`) but not yet built.
 Each feature may follow:
 ```text
 feature/
