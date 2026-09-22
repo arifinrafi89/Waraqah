@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/providers/book_providers.dart';
-import '../../../../core/providers/profile_providers.dart';
 import '../../../../core/theme/app_palette.dart';
 import '../../../../core/utils/money.dart';
+import '../../../../core/widgets/async_value_view.dart';
 import '../../../../core/widgets/centered_content.dart';
 import '../../../cart/domain/models/cart_item.dart';
 import '../../../cart/presentation/controllers/cart_controller.dart';
 import '../../../cart/presentation/widgets/summary_line.dart';
 import '../../../orders/data/order_providers.dart';
 import '../../../orders/domain/models/order.dart';
+import '../controllers/checkout_controller.dart';
 
 const _gutter = 18.0;
 
@@ -24,19 +24,12 @@ class CheckoutPage extends ConsumerStatefulWidget {
 
 class _CheckoutPageState extends ConsumerState<CheckoutPage> {
   final _formKey = GlobalKey<FormState>();
-  late final TextEditingController _nameController;
+  final _nameController = TextEditingController();
   final _phoneController = TextEditingController();
   final _addressController = TextEditingController();
   final _cityController = TextEditingController();
   PaymentMethod _paymentMethod = PaymentMethod.cashOnDelivery;
-
-  @override
-  void initState() {
-    super.initState();
-    _nameController = TextEditingController(
-      text: ref.read(currentProfileProvider).fullName,
-    );
-  }
+  bool _prefilledName = false;
 
   @override
   void dispose() {
@@ -77,14 +70,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
   Widget build(BuildContext context) {
     final palette = Theme.of(context).extension<AppPalette>()!;
     final cartItems = ref.watch(cartItemsProvider);
-    final books = {for (final book in ref.watch(booksProvider)) book.id: book};
-
-    final lineItems = [
-      for (final item in cartItems)
-        if (books[item.bookId] case final book?) CartItemTotal(item: item, book: book),
-    ];
-    final subtotal = ref.watch(cartSubtotalProvider);
-    final total = ref.watch(cartTotalProvider);
+    final page = ref.watch(checkoutPageProvider);
 
     return Scaffold(
       backgroundColor: palette.bg,
@@ -94,59 +80,75 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
         child: CenteredContent(
           child: cartItems.isEmpty
               ? _EmptyCheckout(palette: palette)
-              : Column(
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        padding: const EdgeInsets.fromLTRB(_gutter, _gutter, _gutter, 8),
-                        child: Form(
-                          key: _formKey,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _SectionCard(
-                                palette: palette,
-                                title: 'Order summary',
-                                child: _OrderSummary(
-                                  lineItems: lineItems,
-                                  subtotal: subtotal,
-                                  total: total,
-                                  palette: palette,
-                                ),
+              : AsyncValueView(
+                  value: page,
+                  data: (page) {
+                    if (!_prefilledName) {
+                      _nameController.text = page.profile.fullName;
+                      _prefilledName = true;
+                    }
+
+                    final lineItems = [
+                      for (final item in cartItems)
+                        if (page.books[item.bookId] case final book?)
+                          CartItemTotal(item: item, book: book),
+                    ];
+
+                    return Column(
+                      children: [
+                        Expanded(
+                          child: SingleChildScrollView(
+                            padding: const EdgeInsets.fromLTRB(_gutter, _gutter, _gutter, 8),
+                            child: Form(
+                              key: _formKey,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  _SectionCard(
+                                    palette: palette,
+                                    title: 'Order summary',
+                                    child: _OrderSummary(
+                                      lineItems: lineItems,
+                                      subtotal: page.subtotal,
+                                      total: page.total,
+                                      palette: palette,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 14),
+                                  _SectionCard(
+                                    palette: palette,
+                                    title: 'Delivery address',
+                                    child: _AddressForm(
+                                      nameController: _nameController,
+                                      phoneController: _phoneController,
+                                      addressController: _addressController,
+                                      cityController: _cityController,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 14),
+                                  _SectionCard(
+                                    palette: palette,
+                                    title: 'Payment method',
+                                    child: _PaymentMethodPicker(
+                                      selected: _paymentMethod,
+                                      onChanged: (method) =>
+                                          setState(() => _paymentMethod = method),
+                                      palette: palette,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              const SizedBox(height: 14),
-                              _SectionCard(
-                                palette: palette,
-                                title: 'Delivery address',
-                                child: _AddressForm(
-                                  nameController: _nameController,
-                                  phoneController: _phoneController,
-                                  addressController: _addressController,
-                                  cityController: _cityController,
-                                ),
-                              ),
-                              const SizedBox(height: 14),
-                              _SectionCard(
-                                palette: palette,
-                                title: 'Payment method',
-                                child: _PaymentMethodPicker(
-                                  selected: _paymentMethod,
-                                  onChanged: (method) =>
-                                      setState(() => _paymentMethod = method),
-                                  palette: palette,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    _BottomBar(
-                      total: total,
-                      palette: palette,
-                      onPlaceOrder: () => _placeOrder(lineItems, total),
-                    ),
-                  ],
+                        _BottomBar(
+                          total: page.total,
+                          palette: palette,
+                          onPlaceOrder: () => _placeOrder(lineItems, page.total),
+                        ),
+                      ],
+                    );
+                  },
                 ),
         ),
       ),
