@@ -12,6 +12,7 @@ import '../../../../core/widgets/book_filter_chip_row.dart';
 import '../../../../core/widgets/book_grid_card.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
 import '../../../../core/widgets/sort_menu_button.dart';
+import '../../../cart/presentation/controllers/cart_controller.dart';
 import '../../domain/models/p2p_listing.dart';
 import '../../domain/models/post.dart';
 import '../../domain/models/profile.dart';
@@ -125,6 +126,7 @@ class _HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
     final themeController = ref.read(themeControllerProvider.notifier);
     final families = ThemeFamily.familiesFor(themeState.mode);
     final isDark = themeState.mode == ThemeMode.dark;
+    final cartCount = ref.watch(cartCountProvider);
 
     return AppBar(
       titleSpacing: _gutter,
@@ -161,7 +163,7 @@ class _HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
         ),
         _AppBarIconButton(
           icon: Icons.shopping_bag_outlined,
-          badgeCount: 2,
+          badgeCount: cartCount == 0 ? null : cartCount,
           onTap: () => context.pushNamed('cart'),
         ),
         const SizedBox(width: _gutter - 8),
@@ -467,7 +469,16 @@ class _NewBooksGrid extends ConsumerWidget {
         itemBuilder: (context, index) {
           final book = books[index];
           final chip = palette.chips[index % palette.chips.length];
-          return BookGridCard(book: book, chip: chip);
+          return BookGridCard(
+            book: book,
+            chip: chip,
+            onAddToCart: () {
+              addToCart(ref, book.id);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Added to cart')),
+              );
+            },
+          );
         },
       ),
     );

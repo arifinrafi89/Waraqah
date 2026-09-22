@@ -7,6 +7,7 @@ import '../../../../core/widgets/book_filter_chip_row.dart';
 import '../../../../core/widgets/book_grid_card.dart';
 import '../../../../core/widgets/responsive_book_grid.dart';
 import '../../../../core/widgets/sort_menu_button.dart';
+import '../../../cart/presentation/controllers/cart_controller.dart';
 import '../controllers/catalog_controller.dart';
 
 const _gutter = 18.0;
@@ -52,6 +53,12 @@ class CatalogPage extends ConsumerWidget {
                       'book-detail',
                       pathParameters: {'id': book.id},
                     ),
+                    onAddToCart: () {
+                      addToCart(ref, book.id);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Added to cart')),
+                      );
+                    },
                   );
                 },
               ),

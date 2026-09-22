@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/book.dart';
 import '../theme/app_palette.dart';
+import '../utils/money.dart';
 
 /// Book cover + info card, shared by Home's New Books grid and Catalog.
 class BookGridCard extends StatelessWidget {
@@ -136,7 +137,7 @@ class BookGridCard extends StatelessWidget {
                     spacing: 6,
                     children: [
                       Text(
-                        '৳${book.price.toStringAsFixed(0)}',
+                        taka(book.price),
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
@@ -146,7 +147,7 @@ class BookGridCard extends StatelessWidget {
                       ),
                       if (book.originalPrice != null)
                         Text(
-                          '৳${book.originalPrice!.toStringAsFixed(0)}',
+                          taka(book.originalPrice!),
                           style: TextStyle(
                             fontSize: 10.5,
                             color: palette.textFaint,

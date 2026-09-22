@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/providers/book_providers.dart';
 import '../../../../core/theme/app_palette.dart';
+import '../../../cart/presentation/controllers/cart_controller.dart';
 
 /// Book detail page for a single `/catalog/book/:id` entry, reusing the
 /// existing `Book` model and `booksProvider` — no new domain concepts.
@@ -106,7 +107,12 @@ class BookDetailPage extends ConsumerWidget {
                 width: double.infinity,
                 height: 46,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    addToCart(ref, book.id);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Added to cart')),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: palette.accent,
                     foregroundColor: palette.accentInk,

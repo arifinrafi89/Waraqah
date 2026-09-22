@@ -10,7 +10,7 @@ void main() {
   ) async {
     const routeTitles = {
       '/ai-chat': (title: 'AI Chat', scaffoldCount: 1),
-      '/cart': (title: 'Cart', scaffoldCount: 1),
+      '/checkout': (title: 'Checkout', scaffoldCount: 1),
       '/search': (title: 'Search', scaffoldCount: 1),
     };
 

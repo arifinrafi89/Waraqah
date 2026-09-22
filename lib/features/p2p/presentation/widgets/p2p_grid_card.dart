@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/models/book.dart';
 import '../../../../core/theme/app_palette.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../core/utils/money.dart';
 import '../../../home/domain/models/p2p_listing.dart';
 import '../../../home/domain/models/profile.dart';
 
@@ -121,7 +122,7 @@ class P2pGridCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '৳${listing.price.toStringAsFixed(0)}',
+                    taka(listing.price),
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w800,
