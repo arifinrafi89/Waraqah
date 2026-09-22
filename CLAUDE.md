@@ -16,7 +16,7 @@ Waraqah: Flutter mobile app — book marketplace (new + P2P resale), social read
 
 ## Architecture
 
-Feature-based "LEGO" architecture: each feature under `lib/features/<name>/` is a self-contained module with its own `presentation/`, `domain/`, `data/` layers (Clean Architecture per feature). Shared code (Book model, cross-feature interfaces, theming, network, storage) lives in `lib/core/`.
+Feature-based "LEGO" architecture: each feature under `lib/features/<name>/` is a self-contained module with its own `presentation/`, `domain/`, `data/` layers (Clean Architecture per feature). Shared code (Book/Profile models, cross-feature interfaces, theming) lives in `lib/core/`.
 
 Feature modules: `auth`, `home`, `catalog`, `p2p`, `book_bites`, `profile`, `cart`, `checkout`, `orders`, `search` implemented (UI, dummy data); `ai_assistant` not yet built.
 
