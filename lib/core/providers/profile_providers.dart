@@ -7,7 +7,7 @@ import '../repositories/profile_repository.dart';
 final profileRepositoryProvider =
     Provider<ProfileRepository>((ref) => DummyProfileRepository());
 
-final profilesProvider = Provider<List<Profile>>(
+final profilesProvider = FutureProvider<List<Profile>>(
   (ref) => ref.watch(profileRepositoryProvider).getProfiles(),
 );
 
@@ -16,8 +16,7 @@ final profilesProvider = Provider<List<Profile>>(
 /// when Supabase Auth lands.
 const currentProfileId = 'profile-1';
 
-final currentProfileProvider = Provider<Profile>((ref) {
-  return ref
-      .watch(profilesProvider)
-      .firstWhere((profile) => profile.id == currentProfileId);
+final currentProfileProvider = FutureProvider<Profile>((ref) async {
+  final profiles = await ref.watch(profilesProvider.future);
+  return profiles.firstWhere((profile) => profile.id == currentProfileId);
 });

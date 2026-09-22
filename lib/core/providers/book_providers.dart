@@ -13,7 +13,7 @@ enum BookSort { none, priceLowToHigh, ratingHighToLow }
 final bookRepositoryProvider =
     Provider<BookRepository>((ref) => DummyBookRepository());
 
-final booksProvider = Provider<List<Book>>(
+final booksProvider = FutureProvider<List<Book>>(
   (ref) => ref.watch(bookRepositoryProvider).getBooks(),
 );
 

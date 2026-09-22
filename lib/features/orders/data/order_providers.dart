@@ -7,14 +7,15 @@ import 'repositories/dummy_order_repository.dart';
 final orderRepositoryProvider =
     Provider<OrderRepository>((ref) => DummyOrderRepository());
 
-class OrdersNotifier extends Notifier<List<Order>> {
+class OrdersNotifier extends AsyncNotifier<List<Order>> {
   @override
-  List<Order> build() => ref.watch(orderRepositoryProvider).getOrders();
+  Future<List<Order>> build() => ref.watch(orderRepositoryProvider).getOrders();
 
-  void place(Order order) {
-    state = ref.read(orderRepositoryProvider).addOrder(order);
+  Future<void> place(Order order) async {
+    final repository = ref.read(orderRepositoryProvider);
+    state = AsyncValue.data(await repository.addOrder(order));
   }
 }
 
 final ordersProvider =
-    NotifierProvider<OrdersNotifier, List<Order>>(OrdersNotifier.new);
+    AsyncNotifierProvider<OrdersNotifier, List<Order>>(OrdersNotifier.new);

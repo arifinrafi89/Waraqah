@@ -7,14 +7,15 @@ import 'repositories/dummy_post_repository.dart';
 final postRepositoryProvider =
     Provider<PostRepository>((ref) => DummyPostRepository());
 
-class PostsNotifier extends Notifier<List<Post>> {
+class PostsNotifier extends AsyncNotifier<List<Post>> {
   @override
-  List<Post> build() => ref.watch(postRepositoryProvider).getPosts();
+  Future<List<Post>> build() => ref.watch(postRepositoryProvider).getPosts();
 
-  void add(Post post) {
-    state = ref.read(postRepositoryProvider).addPost(post);
+  Future<void> add(Post post) async {
+    final repository = ref.read(postRepositoryProvider);
+    state = AsyncValue.data(await repository.addPost(post));
   }
 }
 
 final postsProvider =
-    NotifierProvider<PostsNotifier, List<Post>>(PostsNotifier.new);
+    AsyncNotifierProvider<PostsNotifier, List<Post>>(PostsNotifier.new);
