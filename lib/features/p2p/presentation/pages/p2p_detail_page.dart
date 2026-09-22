@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/providers/book_providers.dart';
-import '../../../../core/providers/profile_providers.dart';
+import '../../../../core/models/book.dart';
+import '../../../../core/models/profile.dart';
 import '../../../../core/theme/app_palette.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../../data/p2p_providers.dart';
+import '../../../../core/widgets/async_value_view.dart';
+import '../../domain/models/p2p_listing.dart';
+import '../controllers/p2p_controller.dart';
 import '../widgets/p2p_grid_card.dart' show P2pConditionLabel;
 
 /// Listing detail page for a single `/p2p/:id` entry, reusing the existing
@@ -18,9 +20,24 @@ class P2pDetailPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final palette = Theme.of(context).extension<AppPalette>()!;
-    final listings = ref.watch(p2pListingsProvider);
-    final listing = listings.where((l) => l.id == listingId).firstOrNull;
+    final detail = ref.watch(p2pListingDetailProvider(listingId));
 
+    return AsyncValueView(
+      value: detail,
+      data: (detail) => _P2pDetailBody(palette: palette, detail: detail),
+    );
+  }
+}
+
+class _P2pDetailBody extends StatelessWidget {
+  const _P2pDetailBody({required this.palette, required this.detail});
+
+  final AppPalette palette;
+  final ({P2pListing? listing, Book? book, Profile? seller}) detail;
+
+  @override
+  Widget build(BuildContext context) {
+    final listing = detail.listing;
     if (listing == null) {
       return Scaffold(
         backgroundColor: palette.bg,
@@ -35,14 +52,8 @@ class P2pDetailPage extends ConsumerWidget {
       );
     }
 
-    final book = ref
-        .watch(booksProvider)
-        .where((b) => b.id == listing.bookId)
-        .firstOrNull;
-    final seller = ref
-        .watch(profilesProvider)
-        .where((p) => p.id == listing.sellerId)
-        .firstOrNull;
+    final book = detail.book;
+    final seller = detail.seller;
     final title = book?.title ?? 'Untitled';
 
     return Scaffold(

@@ -1,5 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/models/book.dart';
+import '../../../../core/models/profile.dart';
+import '../../../../core/providers/book_providers.dart';
+import '../../../../core/providers/profile_providers.dart';
 import '../../data/p2p_providers.dart';
 import '../../domain/models/p2p_listing.dart';
 
@@ -32,3 +36,40 @@ final filteredP2pListingsProvider =
       return listings..sort((a, b) => b.price.compareTo(a.price));
   }
 });
+
+/// P2P feed page: filtered/sorted listings plus the book/seller lookups the
+/// grid renders with.
+final p2pFeedProvider = FutureProvider<
+    ({
+      List<P2pListing> listings,
+      Map<String, Book> books,
+      Map<String, Profile> profiles,
+    })>((ref) async {
+  final listings = await ref.watch(filteredP2pListingsProvider.future);
+  final books = {
+    for (final b in await ref.watch(booksProvider.future)) b.id: b,
+  };
+  final profiles = {
+    for (final p in await ref.watch(profilesProvider.future)) p.id: p,
+  };
+  return (listings: listings, books: books, profiles: profiles);
+});
+
+/// A single listing's detail plus its book/seller lookups; `listing` is null
+/// when [listingId] has no match.
+final p2pListingDetailProvider = FutureProvider.family<
+    ({P2pListing? listing, Book? book, Profile? seller}), String>(
+  (ref, listingId) async {
+    final listings = await ref.watch(p2pListingsProvider.future);
+    final listing = listings.where((l) => l.id == listingId).firstOrNull;
+    if (listing == null) return (listing: null, book: null, seller: null);
+
+    final books = await ref.watch(booksProvider.future);
+    final profiles = await ref.watch(profilesProvider.future);
+    return (
+      listing: listing,
+      book: books.where((b) => b.id == listing.bookId).firstOrNull,
+      seller: profiles.where((p) => p.id == listing.sellerId).firstOrNull,
+    );
+  },
+);
