@@ -60,12 +60,6 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                     icon: Icon(Icons.close_rounded, color: palette.textDim),
                     onPressed: () => _setQuery(''),
                   ),
-            filled: true,
-            fillColor: palette.surface,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: palette.border),
-            ),
           ),
         ),
       ),
@@ -75,7 +69,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
           child: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(_gutter, _gutter, _gutter, 140),
             child: query.isEmpty
-                ? _IdleState(palette: palette)
+                ? _IdleState(palette: palette, onSelectGenre: _setQuery)
                 : results.isEmpty
                 ? _NoMatchesState(palette: palette, query: query)
                 : _ResultsState(palette: palette, results: results),
@@ -87,9 +81,10 @@ class _SearchPageState extends ConsumerState<SearchPage> {
 }
 
 class _IdleState extends ConsumerWidget {
-  const _IdleState({required this.palette});
+  const _IdleState({required this.palette, required this.onSelectGenre});
 
   final AppPalette palette;
+  final ValueChanged<String> onSelectGenre;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -114,8 +109,7 @@ class _IdleState extends ConsumerWidget {
             for (var i = 0; i < genres.length; i++)
               InkWell(
                 borderRadius: BorderRadius.circular(999),
-                onTap: () =>
-                    ref.read(searchQueryProvider.notifier).state = genres[i],
+                onTap: () => onSelectGenre(genres[i]),
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 15,

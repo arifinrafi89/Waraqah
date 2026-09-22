@@ -75,5 +75,9 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Sapiens: A Brief History of Humankind'), findsOneWidget);
+    expect(
+      tester.widget<TextField>(find.byType(TextField)).controller!.text,
+      'History',
+    );
   });
 }
