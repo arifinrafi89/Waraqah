@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/models/book.dart';
 import '../../../../core/providers/book_providers.dart';
 import '../../domain/models/cart_item.dart';
 
@@ -55,7 +56,7 @@ final cartSubtotalProvider = FutureProvider<double>((ref) async {
   final books = {
     for (final book in await ref.watch(booksProvider.future)) book.id: book,
   };
-  return ref.watch(cartItemsProvider).fold(0.0, (total, item) {
+  return ref.watch(cartItemsProvider).fold<double>(0.0, (total, item) {
     final book = books[item.bookId];
     if (book == null) return total;
     return total + book.price * item.quantity;
@@ -65,3 +66,15 @@ final cartSubtotalProvider = FutureProvider<double>((ref) async {
 final cartTotalProvider = FutureProvider<double>(
   (ref) async => await ref.watch(cartSubtotalProvider.future) + deliveryFee,
 );
+
+/// Cart page: the book lookup plus the subtotal/total the summary renders
+/// with.
+final cartPageProvider = FutureProvider<
+    ({Map<String, Book> books, double subtotal, double total})>((ref) async {
+  final books = {
+    for (final b in await ref.watch(booksProvider.future)) b.id: b,
+  };
+  final subtotal = await ref.watch(cartSubtotalProvider.future);
+  final total = await ref.watch(cartTotalProvider.future);
+  return (books: books, subtotal: subtotal, total: total);
+});

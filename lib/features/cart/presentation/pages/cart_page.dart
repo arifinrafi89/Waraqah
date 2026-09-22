@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/models/book.dart';
-import '../../../../core/providers/book_providers.dart';
 import '../../../../core/theme/app_palette.dart';
 import '../../../../core/utils/money.dart';
+import '../../../../core/widgets/async_value_view.dart';
 import '../../../../core/widgets/centered_content.dart';
 import '../../domain/models/cart_item.dart';
 import '../controllers/cart_controller.dart';
@@ -21,7 +21,7 @@ class CartPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final palette = Theme.of(context).extension<AppPalette>()!;
     final items = ref.watch(cartItemsProvider);
-    final books = {for (final book in ref.watch(booksProvider)) book.id: book};
+    final page = ref.watch(cartPageProvider);
 
     return Scaffold(
       backgroundColor: palette.bg,
@@ -31,7 +31,16 @@ class CartPage extends ConsumerWidget {
         child: CenteredContent(
           child: items.isEmpty
               ? _EmptyCart(palette: palette)
-              : _CartBody(items: items, books: books, palette: palette),
+              : AsyncValueView(
+                  value: page,
+                  data: (page) => _CartBody(
+                    items: items,
+                    books: page.books,
+                    subtotal: page.subtotal,
+                    total: page.total,
+                    palette: palette,
+                  ),
+                ),
         ),
       ),
     );
@@ -39,17 +48,22 @@ class CartPage extends ConsumerWidget {
 }
 
 class _CartBody extends ConsumerWidget {
-  const _CartBody({required this.items, required this.books, required this.palette});
+  const _CartBody({
+    required this.items,
+    required this.books,
+    required this.subtotal,
+    required this.total,
+    required this.palette,
+  });
 
   final List<CartItem> items;
   final Map<String, Book> books;
+  final double subtotal;
+  final double total;
   final AppPalette palette;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final subtotal = ref.watch(cartSubtotalProvider);
-    final total = ref.watch(cartTotalProvider);
-
     return Column(
       children: [
         Expanded(
