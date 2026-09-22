@@ -38,7 +38,7 @@ class _CreatePostPageState extends ConsumerState<CreatePostPage> {
       createdAt: DateTime.now(),
       taggedBookIds: _taggedBookId == null ? const [] : [_taggedBookId!],
     );
-    ref.read(postsProvider.notifier).update((posts) => [post, ...posts]);
+    ref.read(postsProvider.notifier).add(post);
     context.pop();
   }
 

@@ -7,6 +7,17 @@ import 'repositories/dummy_p2p_listing_repository.dart';
 final p2pListingRepositoryProvider =
     Provider<P2pListingRepository>((ref) => DummyP2pListingRepository());
 
-final p2pListingsProvider = StateProvider<List<P2pListing>>(
-  (ref) => ref.watch(p2pListingRepositoryProvider).getListings(),
+class P2pListingsNotifier extends Notifier<List<P2pListing>> {
+  @override
+  List<P2pListing> build() =>
+      ref.watch(p2pListingRepositoryProvider).getListings();
+
+  void add(P2pListing listing) {
+    state = ref.read(p2pListingRepositoryProvider).addListing(listing);
+  }
+}
+
+final p2pListingsProvider =
+    NotifierProvider<P2pListingsNotifier, List<P2pListing>>(
+  P2pListingsNotifier.new,
 );

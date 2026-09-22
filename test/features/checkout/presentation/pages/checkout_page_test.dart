@@ -30,7 +30,7 @@ void main() {
     tester,
   ) async {
     final container = await _pumpCheckout(tester);
-    container.read(cartItemsProvider.notifier).state = const [];
+    container.read(cartItemsProvider.notifier).clear();
     await tester.pumpAndSettle();
 
     expect(find.text('Your cart is empty'), findsOneWidget);

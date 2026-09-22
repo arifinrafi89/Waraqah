@@ -2,7 +2,7 @@ import '../../domain/models/p2p_listing.dart';
 import '../../domain/repositories/p2p_listing_repository.dart';
 
 class DummyP2pListingRepository implements P2pListingRepository {
-  static const List<P2pListing> _listings = [
+  static const List<P2pListing> _seed = [
     P2pListing(
       id: 'p2p-1',
       sellerId: 'profile-1',
@@ -77,6 +77,14 @@ class DummyP2pListingRepository implements P2pListingRepository {
     ),
   ];
 
+  final List<P2pListing> _listings = [..._seed];
+
   @override
   List<P2pListing> getListings() => List.unmodifiable(_listings);
+
+  @override
+  List<P2pListing> addListing(P2pListing listing) {
+    _listings.insert(0, listing);
+    return List.unmodifiable(_listings);
+  }
 }

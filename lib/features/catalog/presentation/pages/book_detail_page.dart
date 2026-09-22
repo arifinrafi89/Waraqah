@@ -108,7 +108,7 @@ class BookDetailPage extends ConsumerWidget {
                 height: 46,
                 child: ElevatedButton(
                   onPressed: () {
-                    addToCart(ref, book.id);
+                    ref.read(cartItemsProvider.notifier).add(book.id);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Added to cart')),
                     );

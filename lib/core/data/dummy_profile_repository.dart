@@ -2,7 +2,7 @@ import '../models/profile.dart';
 import '../repositories/profile_repository.dart';
 
 class DummyProfileRepository implements ProfileRepository {
-  static const List<Profile> _profiles = [
+  static const List<Profile> _seed = [
     Profile(
       id: 'profile-1',
       fullName: 'Rahinur Bin Naushad',
@@ -39,6 +39,8 @@ class DummyProfileRepository implements ProfileRepository {
       avatarUrl: 'https://placehold.co/120x120?text=NJ',
     ),
   ];
+
+  final List<Profile> _profiles = [..._seed];
 
   @override
   List<Profile> getProfiles() => List.unmodifiable(_profiles);

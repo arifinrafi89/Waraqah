@@ -476,7 +476,7 @@ class _NewBooksGrid extends ConsumerWidget {
             book: book,
             chip: chip,
             onAddToCart: () {
-              addToCart(ref, book.id);
+              ref.read(cartItemsProvider.notifier).add(book.id);
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Added to cart')),
               );

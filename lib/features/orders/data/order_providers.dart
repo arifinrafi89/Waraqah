@@ -7,6 +7,14 @@ import 'repositories/dummy_order_repository.dart';
 final orderRepositoryProvider =
     Provider<OrderRepository>((ref) => DummyOrderRepository());
 
-final ordersProvider = StateProvider<List<Order>>(
-  (ref) => ref.watch(orderRepositoryProvider).getOrders(),
-);
+class OrdersNotifier extends Notifier<List<Order>> {
+  @override
+  List<Order> build() => ref.watch(orderRepositoryProvider).getOrders();
+
+  void place(Order order) {
+    state = ref.read(orderRepositoryProvider).addOrder(order);
+  }
+}
+
+final ordersProvider =
+    NotifierProvider<OrdersNotifier, List<Order>>(OrdersNotifier.new);

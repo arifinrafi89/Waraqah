@@ -41,9 +41,7 @@ class _CreateListingPageState extends ConsumerState<CreateListingPage> {
       price: double.parse(_priceController.text),
       status: P2pStatus.available,
     );
-    ref
-        .read(p2pListingsProvider.notifier)
-        .update((listings) => [listing, ...listings]);
+    ref.read(p2pListingsProvider.notifier).add(listing);
     context.pop();
   }
 

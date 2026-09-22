@@ -10,8 +10,8 @@ import '../../../../core/widgets/centered_content.dart';
 import '../../../cart/domain/models/cart_item.dart';
 import '../../../cart/presentation/controllers/cart_controller.dart';
 import '../../../cart/presentation/widgets/summary_line.dart';
+import '../../../orders/data/order_providers.dart';
 import '../../../orders/domain/models/order.dart';
-import '../../../orders/presentation/controllers/order_controller.dart';
 
 const _gutter = 18.0;
 
@@ -54,8 +54,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
         '${_nameController.text}, ${_addressController.text}, ${_cityController.text} '
         '— ${_phoneController.text}';
 
-    placeOrder(
-      ref,
+    ref.read(ordersProvider.notifier).place(
       Order(
         id: '#WQ-${DateTime.now().millisecondsSinceEpoch % 10000}',
         placedAt: DateTime.now(),
@@ -66,7 +65,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
         deliveryAddress: address,
       ),
     );
-    clearCart(ref);
+    ref.read(cartItemsProvider.notifier).clear();
 
     context.goNamed('orders');
     ScaffoldMessenger.of(context).showSnackBar(

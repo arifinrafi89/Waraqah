@@ -5,7 +5,7 @@ import '../../domain/repositories/order_repository.dart';
 class DummyOrderRepository implements OrderRepository {
   static final DateTime _now = DateTime(2026, 9, 21);
 
-  static final List<Order> _orders = [
+  static final List<Order> _seed = [
     Order(
       id: '#WQ-1042',
       placedAt: _now.subtract(const Duration(days: 2)),
@@ -38,6 +38,14 @@ class DummyOrderRepository implements OrderRepository {
     ),
   ];
 
+  final List<Order> _orders = [..._seed];
+
   @override
-  List<Order> getOrders() => _orders;
+  List<Order> getOrders() => List.unmodifiable(_orders);
+
+  @override
+  List<Order> addOrder(Order order) {
+    _orders.insert(0, order);
+    return List.unmodifiable(_orders);
+  }
 }

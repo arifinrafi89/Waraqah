@@ -54,7 +54,7 @@ class CatalogPage extends ConsumerWidget {
                       pathParameters: {'id': book.id},
                     ),
                     onAddToCart: () {
-                      addToCart(ref, book.id);
+                      ref.read(cartItemsProvider.notifier).add(book.id);
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Added to cart')),
                       );

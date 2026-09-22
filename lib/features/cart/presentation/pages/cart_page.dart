@@ -66,8 +66,10 @@ class _CartBody extends ConsumerWidget {
                 book: book,
                 chip: chip,
                 quantity: item.quantity,
-                onQuantityChanged: (qty) => setQuantity(ref, item.bookId, qty),
-                onRemove: () => removeFromCart(ref, item.bookId),
+                onQuantityChanged: (qty) =>
+                    ref.read(cartItemsProvider.notifier).setQuantity(item.bookId, qty),
+                onRemove: () =>
+                    ref.read(cartItemsProvider.notifier).remove(item.bookId),
               );
             },
           ),

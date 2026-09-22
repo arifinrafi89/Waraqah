@@ -4,7 +4,7 @@ import '../../domain/repositories/post_repository.dart';
 class DummyPostRepository implements PostRepository {
   static final DateTime _now = DateTime(2026, 9, 21);
 
-  static final List<Post> _posts = [
+  static final List<Post> _seed = [
     Post(
       id: 'post-1',
       authorId: 'profile-1',
@@ -77,6 +77,14 @@ class DummyPostRepository implements PostRepository {
     ),
   ];
 
+  final List<Post> _posts = [..._seed];
+
   @override
   List<Post> getPosts() => List.unmodifiable(_posts);
+
+  @override
+  List<Post> addPost(Post post) {
+    _posts.insert(0, post);
+    return List.unmodifiable(_posts);
+  }
 }
