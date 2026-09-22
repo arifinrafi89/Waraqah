@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/providers/book_providers.dart';
 import '../../../../core/theme/app_palette.dart';
@@ -33,6 +34,8 @@ class ProfilePage extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _ProfileHeader(profile: profile),
+              const SizedBox(height: 18),
+              const _MyOrdersRow(),
               const SizedBox(height: 22),
               Text(
                 'My Listings',
@@ -60,6 +63,44 @@ class ProfilePage extends ConsumerWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _MyOrdersRow extends StatelessWidget {
+  const _MyOrdersRow();
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = Theme.of(context).extension<AppPalette>()!;
+    return InkWell(
+      onTap: () => context.pushNamed('orders'),
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+        decoration: BoxDecoration(
+          color: palette.surface,
+          border: Border.all(color: palette.border),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            Icon(Icons.receipt_long_rounded, size: 20, color: palette.textDim),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                'My Orders',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: palette.text,
+                ),
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded, size: 20, color: palette.textFaint),
+          ],
         ),
       ),
     );
