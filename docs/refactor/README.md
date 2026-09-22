@@ -26,7 +26,7 @@ plan here adds a `ProviderContainer` unit test.
 | [001](001-move-shared-domain-out-of-home.md) | Move `Post`, `Profile`, `P2pListing` out of `features/home` into their owning modules | P1 | M | LOW | — | DONE |
 | [002](002-cart-checkout-boundary-and-dead-theme-knob.md) | Give cart totals one source of truth; remove the dead theme-mode knob | P2 | S | LOW | — | DONE |
 | [003](003-notifiers-and-repository-write-seam.md) | Give creates a path through the repository; replace `WidgetRef`-taking free functions with Notifiers | P1 | M | MED | 001 | DONE |
-| [004](004-async-repository-interfaces.md) | Make repository interfaces async so the Supabase swap is a data-layer change | P2 | L | MED | 001, 003 | TODO |
+| [004](004-async-repository-interfaces.md) | Make repository interfaces async so the Supabase swap is a data-layer change | P2 | L | MED | 001, 003 | DONE |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale)
