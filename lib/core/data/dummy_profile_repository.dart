@@ -43,5 +43,5 @@ class DummyProfileRepository implements ProfileRepository {
   final List<Profile> _profiles = [..._seed];
 
   @override
-  List<Profile> getProfiles() => List.unmodifiable(_profiles);
+  Future<List<Profile>> getProfiles() async => List.unmodifiable(_profiles);
 }

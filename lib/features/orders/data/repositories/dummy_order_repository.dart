@@ -41,10 +41,10 @@ class DummyOrderRepository implements OrderRepository {
   final List<Order> _orders = [..._seed];
 
   @override
-  List<Order> getOrders() => List.unmodifiable(_orders);
+  Future<List<Order>> getOrders() async => List.unmodifiable(_orders);
 
   @override
-  List<Order> addOrder(Order order) {
+  Future<List<Order>> addOrder(Order order) async {
     _orders.insert(0, order);
     return List.unmodifiable(_orders);
   }

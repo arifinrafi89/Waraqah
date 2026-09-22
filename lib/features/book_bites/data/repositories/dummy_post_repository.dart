@@ -80,10 +80,10 @@ class DummyPostRepository implements PostRepository {
   final List<Post> _posts = [..._seed];
 
   @override
-  List<Post> getPosts() => List.unmodifiable(_posts);
+  Future<List<Post>> getPosts() async => List.unmodifiable(_posts);
 
   @override
-  List<Post> addPost(Post post) {
+  Future<List<Post>> addPost(Post post) async {
     _posts.insert(0, post);
     return List.unmodifiable(_posts);
   }

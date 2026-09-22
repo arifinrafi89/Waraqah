@@ -1,5 +1,5 @@
 import '../models/book.dart';
 
 abstract class BookRepository {
-  List<Book> getBooks();
+  Future<List<Book>> getBooks();
 }

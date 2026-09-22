@@ -80,10 +80,10 @@ class DummyP2pListingRepository implements P2pListingRepository {
   final List<P2pListing> _listings = [..._seed];
 
   @override
-  List<P2pListing> getListings() => List.unmodifiable(_listings);
+  Future<List<P2pListing>> getListings() async => List.unmodifiable(_listings);
 
   @override
-  List<P2pListing> addListing(P2pListing listing) {
+  Future<List<P2pListing>> addListing(P2pListing listing) async {
     _listings.insert(0, listing);
     return List.unmodifiable(_listings);
   }

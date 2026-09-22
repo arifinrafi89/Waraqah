@@ -180,5 +180,5 @@ class DummyBookRepository implements BookRepository {
   ];
 
   @override
-  List<Book> getBooks() => List.unmodifiable(_books);
+  Future<List<Book>> getBooks() async => List.unmodifiable(_books);
 }
