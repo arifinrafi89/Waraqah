@@ -1,20 +1,42 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/widgets/coming_soon_view.dart';
-import '../../../../l10n/app_localizations.dart';
+import '../../../../core/theme/app_dimens.dart';
+import '../sections/ayah_section.dart';
+import '../sections/benefit_filter_row.dart';
+import '../sections/bites_section.dart';
+import '../sections/nearby_p2p_section.dart';
+import '../sections/new_books_section.dart';
+import '../widgets/home_app_bar.dart';
 
-/// Placeholder while this feature is developed on its own branch. The route
-/// exists now so the router and shell can be reviewed on their own.
+/// Screen 1 — Home. Nothing but composition: every section is an independent
+/// brick that loads its own data, so one slow request never blocks the others.
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ComingSoonView(
-      icon: Icons.home_rounded,
-      title: AppL10n.of(context)!.comingSoonTitle,
-      message: 'The home feed arrives with the Islamic curation feature.',
-      phaseLabel: 'Phase 3',
+    return SafeArea(
+      bottom: false,
+      child: Column(
+        children: [
+          const HomeAppBar(),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.only(bottom: Sizes.navClearance),
+              children: const [
+                AyahSection(),
+                Padding(
+                  padding: EdgeInsets.only(top: Insets.lg),
+                  child: BenefitFilterRow(),
+                ),
+                BitesSection(),
+                NewBooksSection(),
+                NearbyP2pSection(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
