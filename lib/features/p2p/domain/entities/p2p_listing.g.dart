@@ -15,6 +15,7 @@ _P2pListing _$P2pListingFromJson(Map<String, dynamic> json) => _P2pListing(
   condition:
       $enumDecodeNullable(_$BookConditionEnumMap, json['condition']) ??
       BookCondition.good,
+  isAvailable: json['isAvailable'] as bool? ?? true,
   coverSeed: (json['coverSeed'] as num?)?.toInt() ?? 0,
 );
 
@@ -26,6 +27,7 @@ Map<String, dynamic> _$P2pListingToJson(_P2pListing instance) =>
       'sellerBatch': instance.sellerBatch,
       'priceBdt': instance.priceBdt,
       'condition': _$BookConditionEnumMap[instance.condition]!,
+      'isAvailable': instance.isAvailable,
       'coverSeed': instance.coverSeed,
     };
 

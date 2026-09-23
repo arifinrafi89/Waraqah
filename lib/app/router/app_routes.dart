@@ -4,6 +4,7 @@ abstract final class AppRoutes {
   static const String home = '/home';
   static const String catalog = '/catalog';
   static const String p2p = '/p2p';
+  static const String p2pAddListing = '/p2p/add-listing';
   static const String bites = '/bites';
   static const String profile = '/profile';
   static const String aiChat = '/ai-chat';
@@ -14,6 +15,7 @@ abstract final class RouteNames {
   static const String home = 'home';
   static const String catalog = 'catalog';
   static const String p2p = 'p2p';
+  static const String p2pAddListing = 'p2pAddListing';
   static const String bites = 'bites';
   static const String profile = 'profile';
   static const String aiChat = 'aiChat';

@@ -18,9 +18,9 @@ class AppShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final showFab = shell.currentIndex != ShellTabs.paths.indexOf(
-      AppRoutes.profile,
-    );
+    final isProfile = shell.currentIndex == ShellTabs.paths.indexOf(AppRoutes.profile);
+    final isP2p = shell.currentIndex == ShellTabs.paths.indexOf(AppRoutes.p2p);
+    final showFab = !isProfile && !isP2p;
     return Scaffold(
       body: Stack(
         children: [
