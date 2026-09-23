@@ -1,37 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class AppTheme {
-  static const emeraldGreen = Color(0xFF064E3B);
-  static const lightEmerald = Color(0xFF10B981);
-  static const goldAccent = Color(0xFFF59E0B);
-  static const surfaceWhite = Color(0xFFF9FAFB);
+import 'app_colors.dart';
+import 'app_typography.dart';
 
+/// Application theme configurations for light and dark modes.
+abstract class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: emeraldGreen,
-        primary: emeraldGreen,
-        secondary: goldAccent,
-        surface: surfaceWhite,
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: AppColors.backgroundLight,
+      colorScheme: const ColorScheme.light(
+        primary: AppColors.primary,
+        onPrimary: Colors.white,
+        secondary: AppColors.secondary,
+        onSecondary: Colors.white,
+        surface: AppColors.surfaceLight,
+        onSurface: AppColors.textPrimaryLight,
+        error: AppColors.destructive,
+        onError: Colors.white,
       ),
-      textTheme: GoogleFonts.poppinsTextTheme(),
+      textTheme: AppTypography.textTheme(false),
+      appBarTheme: AppBarTheme(
+        backgroundColor: AppColors.surfaceLight,
+        foregroundColor: AppColors.textPrimaryLight,
+        elevation: 0,
+        scrolledUnderElevation: 1,
+        centerTitle: true,
+        titleTextStyle: AppTypography.brandTitle.copyWith(
+          color: AppColors.primary,
+        ),
+      ),
       cardTheme: CardThemeData(
         elevation: 0,
+        color: AppColors.surfaceLight,
+        margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(color: AppColors.borderLight, width: 1),
         ),
-        color: Colors.white.withOpacity(0.8),
       ),
-      appBarTheme: AppBarTheme(
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        titleTextStyle: GoogleFonts.philosopher(
-          color: emeraldGreen,
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: AppColors.surfaceSubtleLight,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 12,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.borderLight),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.borderLight),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.primary, width: 1.5),
         ),
       ),
     );
@@ -41,19 +67,59 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: emeraldGreen,
-        brightness: Brightness.dark,
-        primary: lightEmerald,
-        secondary: goldAccent,
+      scaffoldBackgroundColor: AppColors.backgroundDark,
+      colorScheme: const ColorScheme.dark(
+        primary: AppColors.primaryLight,
+        onPrimary: AppColors.backgroundDark,
+        secondary: AppColors.secondary,
+        onSecondary: Colors.black,
+        surface: AppColors.surfaceDark,
+        onSurface: AppColors.textPrimaryDark,
+        error: AppColors.destructive,
+        onError: Colors.white,
       ),
-      textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme),
+      textTheme: AppTypography.textTheme(true),
+      appBarTheme: AppBarTheme(
+        backgroundColor: AppColors.surfaceDark,
+        foregroundColor: AppColors.textPrimaryDark,
+        elevation: 0,
+        scrolledUnderElevation: 1,
+        centerTitle: true,
+        titleTextStyle: AppTypography.brandTitle.copyWith(
+          color: AppColors.primaryLight,
+        ),
+      ),
       cardTheme: CardThemeData(
         elevation: 0,
+        color: AppColors.surfaceDark,
+        margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(color: AppColors.borderDark, width: 1),
         ),
-        color: Colors.black.withOpacity(0.3),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: AppColors.surfaceSubtleDark,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 12,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.borderDark),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.borderDark),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(
+            color: AppColors.primaryLight,
+            width: 1.5,
+          ),
+        ),
       ),
     );
   }

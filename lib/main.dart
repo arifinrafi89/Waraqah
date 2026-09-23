@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'app/router/app_router.dart';
+import 'core/network/supabase_client.dart';
 import 'core/theme/app_theme.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-    const ProviderScope(
-      child: WaraqahApp(),
-    ),
-  );
+
+  // Load environment variables (.env)
+  try {
+    await dotenv.load(fileName: '.env');
+  } catch (_) {
+    // If .env is missing or fails to load, fallback to defaults
+  }
+
+  // Initialize Supabase client
+  try {
+    await SupabaseClientWrapper.initialize();
+  } catch (_) {
+    // Supabase can fail gracefully during initial local development
+  }
+
+  runApp(const ProviderScope(child: WaraqahApp()));
 }
 
 class WaraqahApp extends StatelessWidget {

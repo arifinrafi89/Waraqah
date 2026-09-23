@@ -1,0 +1,48 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/arifin/StudioProjects/waraqah"
+      ],
+      "description": "Read/write project files when built-in file tools aren't enough (bulk operations, scripted refactors)."
+    },
+    "git": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-git",
+        "--repository",
+        "/home/arifin/StudioProjects/waraqah"
+      ],
+      "description": "Repo operations: branches, commits, diffs, PRs, issues. Follow git conventions in AGENTS.md."
+    },
+    "dart_pub": {
+      "command": "dart",
+      "args": [
+        "run",
+        "custom_lint"
+      ],
+      "description": "pub.dev / Dart package tool - use BEFORE adding/upgrading dependencies to check versions, licenses, and APIs."
+    },
+    "android_adb": {
+      "command": "adb",
+      "args": [
+        "server"
+      ],
+      "description": "Android emulator/ADB - list/launch emulators, install/run app, read logcat, capture screenshots to verify UI."
+    },
+    "supabase_backend": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "${DATABASE_URL}"
+      ],
+      "description": "Backend (Supabase/PostgreSQL) - inspect schema, run queries, and check auth/RLS rules directly."
+    }
+  }
+}
+

@@ -1,130 +1,262 @@
-# 1. Project Overview
-Waraqah is a mobile application that helps users buy new books, resell used books, and stay engaged with reading through a social feed and an AI assistant. The application will combine a primary book marketplace, a peer-to-peer resale marketplace, a social reading feed, an AI recommendation assistant, and Islamic-oriented content curation. 
+# Waraqah Architecture Design Document
 
-The main features are:
-* Primary marketplace for new books, with cross-vendor price comparison.
-* Peer-to-peer marketplace for second-hand books (students reselling textbooks).
-* "Book-Bites" social feed with inline book tagging.
-* AI reading assistant powered by Gemini.
-* Beneficial/non-beneficial book categorization.
-* Daily Ayah of the Qur'an on the home screen.
-* Cart and checkout (mocked payment for this project).
+This document defines the architectural patterns, structural boundaries, data flows, and conventions for the Waraqah Flutter application. It serves as the single source of truth for file placement and technical decisions.
 
-# 2. Technology Stack
-* **Frontend:** Flutter / Dart
-* **Architecture:** Feature-Based LEGO Architecture
-* **Backend:** Go (REST API and business logic)
-* **Database:** PostgreSQL
-* **AI:** Google Gemini API
-* **Navigation:** GoRouter
-* **Animation:** Rive
-* **Image Storage:** Cloudinary
-* **Communication:** REST API for Flutter-Go communication
+---
 
-# 3. Architecture
-The Flutter application will follow a feature-based LEGO architecture. Each major feature will act as an independent building block containing its own UI, models, data handling, and business-related components. This makes the application easier to develop, test, maintain, debug, extend, and replace individual features. Shared functionality (the Book model, cross-feature interfaces, theming) will remain inside `core/`. Within each feature, internal code will follow Clean Architecture, separated into presentation, domain, and data layers.
+## 1. Folder/Module Structure
 
-# 4. Project Structure
-The basic Flutter structure will be:
+Waraqah follows a **"Lego on the outside, Clean Architecture on the inside"** feature-first modular architecture.
+
+- **Outer Layer (Lego / Feature-First):** Major feature modules are isolated building blocks. Feature modules **never directly depend on or import each other**.
+- **Shared Layer (`core/`):** Houses feature-agnostic utilities, the canonical shared `Book` domain entity, network client singletons (Supabase & Dio), theme tokens, and base UI primitives. Features may only depend on `core/`. Future features (e.g., `[FUTURE]` Book-Bites, `[FUTURE]` AI Assistant) plug into `core/` without modifying or coupling with Primary or P2P Marketplace modules.
+- **Inner Layer (Clean Architecture):** Each feature is internally organized into three strict horizontal layers: `domain/`, `data/`, and `presentation/`.
+
+### Directory Layout
+
 ```text
 lib/
-  main.dart
-  app/
-    +-- app.dart
-    +-- router/
-          +-- app_router.dart
-  core/
-    +-- network/
-    +-- storage/
-    +-- theme/
-    +-- widgets/
-    +-- services/
-    +-- utils/
-  features/
-    +-- auth/
-    +-- home/
-    +-- catalog/
-    +-- p2p/
-    +-- book_bites/
-    +-- ai_assistant/
-    +-- cart/
-    +-- checkout/
-    +-- profile/
+├── main.dart                               # Application entrypoint & initialization
+├── app/                                    # App shell, routing, global providers
+│   ├── app.dart                            # MaterialApp.router configuration
+│   └── router/                             # GoRouter declarative route tree & shells
+│       └── app_router.dart
+├── core/                                   # Shared across all features (no feature imports)
+│   ├── constants/                          # App-wide constants (keys, storage keys, assets)
+│   ├── errors/                             # Failure definitions & exception handlers
+│   │   ├── exceptions.dart
+│   │   └── failures.dart
+│   ├── network/                            # Network clients & interceptors
+│   │   ├── dio_client.dart                 # Configured Dio instance for Go API
+│   │   └── supabase_client.dart            # Supabase instance wrapper
+│   ├── domain/                             # Shared entities & value objects
+│   │   └── entities/
+│   │       ├── book.dart                   # Canonical shared Book entity
+│   │       └── user_profile.dart           # User profile & role representation
+│   ├── theme/                              # Design system tokens & Material 3 theme
+│   │   ├── app_colors.dart
+│   │   ├── app_typography.dart
+│   │   └── app_theme.dart                  # open_ui_kit / shadcn token integrations
+│   └── widgets/                            # Reusable base widgets (buttons, inputs, cards)
+│       ├── app_button.dart
+│       ├── app_text_field.dart
+│       └── empty_state_view.dart
+└── features/
+    ├── auth/                               # User authentication & session management
+    │   ├── domain/
+    │   │   ├── entities/user_session.dart
+    │   │   └── repositories/auth_repository.dart
+    │   ├── data/
+    │   │   ├── datasources/auth_remote_datasource.dart # Supabase Auth calls
+    │   │   ├── models/user_dto.dart
+    │   │   └── repositories/auth_repository_impl.dart
+    │   └── presentation/
+    │       ├── controllers/auth_controller.dart
+    │       ├── pages/
+    │       │   ├── login_page.dart
+    │       │   └── register_page.dart
+    │       └── widgets/auth_form.dart
+    │
+    ├── primary_marketplace/                # Primary Marketplace: New books & simulated bKash checkout
+    │   ├── domain/
+    │   │   ├── entities/
+    │   │   │   ├── primary_listing.dart    # Format/edition pricing variant
+    │   │   │   ├── order.dart
+    │   │   │   └── order_item.dart
+    │   │   └── repositories/
+    │   │       ├── catalog_repository.dart
+    │   │       └── checkout_repository.dart
+    │   ├── data/
+    │   │   ├── datasources/
+    │   │   │   ├── catalog_remote_datasource.dart # Supabase PostgREST + Go API
+    │   │   │   └── checkout_remote_datasource.dart # Go API simulated bKash endpoint
+    │   │   ├── models/
+    │   │   │   ├── primary_listing_dto.dart
+    │   │   │   └── order_dto.dart
+    │   │   └── repositories/
+    │   │       ├── catalog_repository_impl.dart
+    │   │       └── checkout_repository_impl.dart
+    │   └── presentation/
+    │       ├── controllers/
+    │       │   ├── catalog_controller.dart
+    │       │   ├── book_detail_controller.dart
+    │       │   └── checkout_controller.dart
+    │       ├── pages/
+    │       │   ├── catalog_page.dart
+    │       │   ├── book_detail_page.dart
+    │       │   ├── checkout_page.dart
+    │       │   └── order_success_page.dart
+    │       └── widgets/
+    │           ├── book_card.dart
+    │           ├── edition_selector.dart
+    │           ├── price_tag.dart
+    │           └── rive_add_to_cart_button.dart
+    │
+    ├── p2p_marketplace/                    # P2P Used books, photos & Realtime chat
+    │   ├── domain/
+    │   │   ├── entities/
+    │   │   │   ├── p2p_listing.dart        # Used book listing (independent of Book entity)
+    │   │   │   ├── conversation.dart
+    │   │   │   └── chat_message.dart
+    │   │   └── repositories/
+    │   │       ├── p2p_listing_repository.dart
+    │   │       └── p2p_chat_repository.dart
+    │   ├── data/
+    │   │   ├── datasources/
+    │   │   │   ├── p2p_remote_datasource.dart     # Supabase PostgREST & Storage
+    │   │   │   └── p2p_realtime_datasource.dart   # Supabase Realtime channels
+    │   │   ├── models/
+    │   │   │   ├── p2p_listing_dto.dart
+    │   │   │   └── chat_message_dto.dart
+    │   │   └── repositories/
+    │   │       ├── p2p_listing_repository_impl.dart
+    │   │       └── p2p_chat_repository_impl.dart
+    │   └── presentation/
+    │       ├── controllers/
+    │       │   ├── p2p_feed_controller.dart
+    │       │   ├── create_listing_controller.dart
+    │       │   └── chat_controller.dart
+    │       ├── pages/
+    │       │   ├── p2p_feed_page.dart
+    │       │   ├── p2p_detail_page.dart
+    │       │   ├── create_p2p_listing_page.dart
+    │       │   ├── conversations_list_page.dart
+    │       │   └── chat_page.dart
+    │       └── widgets/
+    │           ├── p2p_listing_card.dart
+    │           ├── condition_badge.dart
+    │           └── chat_bubble.dart
+    │
+    └── admin/                              # Admin oversight (REQ-5.3)
+        ├── domain/
+        │   └── repositories/admin_repository.dart
+        ├── data/
+        │   ├── datasources/admin_remote_datasource.dart # Go API admin endpoints
+        │   └── repositories/admin_repository_impl.dart
+        └── presentation/
+            ├── controllers/admin_controller.dart
+            ├── pages/
+            │   ├── admin_dashboard_page.dart
+            │   ├── admin_orders_page.dart
+            │   └── admin_moderation_page.dart
+            └── widgets/admin_order_card.dart
 ```
-Each feature may follow:
-```text
-feature/
-  +-- presentation/
-  +-- domain/
-  +-- data/
+
+Where files belong:
+- **`domain/`**: Pure Dart. Entities, value objects, domain logic, and abstract repository interfaces. Must not import Flutter UI libraries (`flutter/material.dart`), Riverpod, Dio, or Supabase.
+- **`data/`**: Repository implementations, DTOs (`freezed`/`json_serializable`), and remote data sources talking to Supabase or Dio (Go API).
+- **`presentation/`**: Flutter UI widgets, page screens, and Riverpod controllers/notifiers managing screen state.
+- **`core/`**: Reusable widgets, shared domain entities (e.g. `Book`), network infrastructure, design tokens, and error definitions.
+
+---
+
+## 2. State Management Pattern
+
+The application uses **`flutter_riverpod`** for declarative, predictable, and compile-safe state management.
+
+### Rules of State Flow
+1. **Unidirectional State Flow:**
+   `UI Action` $\rightarrow$ `Notifier/Controller` $\rightarrow$ `Repository` $\rightarrow$ `State Update (AsyncValue)` $\rightarrow$ `UI Render`
+2. **State Representation:**
+   All asynchronous operations are exposed to the presentation layer as `AsyncValue<T>` (`AsyncData`, `AsyncLoading`, `AsyncError`). UI widgets consume state using `state.when(...)` or `ref.watch(...)`.
+3. **Notifier Types:**
+   - Use `AsyncNotifier<T>` / `AutoDisposeAsyncNotifier<T>` for asynchronous lifecycle-managed state (e.g., fetching catalog, submitting an order, sending a message).
+   - Use `Notifier<T>` for synchronous state (e.g., active filters, form draft values).
+   - Use standard `Provider<T>` for read-only singletons (e.g., repository instances, API clients).
+4. **State Boundaries:**
+   - State lives strictly inside the `presentation/controllers/` folder of its respective feature.
+   - Cross-cutting state (such as the authenticated user session) lives in `features/auth/` or `core/` and is consumed by other features as a read-only provider dependency (e.g., `ref.watch(currentUserProvider)`).
+   - Ephemeral UI state (such as text field focus, local tab index, or modal sheet visibility) is managed locally using standard Flutter `StatefulWidget` or Flutter hooks.
+
+---
+
+## 3. Data Flow & Layering
+
+Strict separation of concerns is enforced via the **Adjacent Layer Rule**.
+
+### The Adjacent Layer Rule
+```
+[ Presentation Layer: UI Widgets ]
+              ↕ (reads state / dispatches intents)
+[ Presentation Layer: Controllers / Notifiers ]
+              ↕ (invokes domain use cases / contracts)
+[ Domain Layer: Repository Interfaces & Entities ]
+              ↕ (implements contracts)
+[ Data Layer: Repository Implementations ]
+              ↕ (fetches raw data / DTOs)
+[ Data Layer: Data Sources (Supabase SDK / Dio Go API) ]
 ```
 
-# 5. Backend Architecture
-The backend will be developed using Go. Flutter will communicate with the Go backend through REST APIs. 
+- **Rule 1:** A layer may **only** communicate with its directly adjacent layer.
+- **Rule 2:** UI Widgets must never interact directly with Repositories or Data Sources. They invoke methods on Notifiers.
+- **Rule 3:** Notifiers must depend on Domain Repository interfaces, never on concrete Data Sources or raw HTTP/database clients.
+- **Rule 4:** The Domain layer is completely independent and contains zero dependencies on outer layers (no Flutter, no Dio, no Supabase).
+- **Rule 5:** Repositories in the Data layer map raw DTOs (`BookDto`, `PrimaryListingDto`) into immutable Domain Entities (`Book`, `PrimaryListing`) before returning them to the domain/presentation layer.
 
-The Go backend will handle:
-* Authentication and User management.
-* Book catalog data, Vendor scraping, and price aggregation.
-* P2P listings and Social feed (Book-Bites).
-* AI requests and Ayah of the Day content.
-* Cart and checkout (mocked).
+---
 
-The backend will communicate with PostgreSQL for persistent data. The Flutter application will not directly access the PostgreSQL database.
-The general architecture is:
-* Flutter App -> REST API -> Go Backend
-* Go Backend -> PostgreSQL
-* Go Backend -> Go Scraper Workers (Rokomari, Wafilife)
-* Go Backend -> Gemini API
-* Go Backend -> Cloudinary
+## 4. Backend/API Integration Shape
 
-# 6. Database
-PostgreSQL will be used as the main database. PostgreSQL is suitable because the marketplace, P2P listings, and social feed data are relational, with clear foreign-key relationships. 
-Tables will include:
-* Users, Books, Book Listings (per-vendor price and edition data).
-* P2P Listings, Posts (Book-Bites), Post Likes, Book Tags.
-* Cart Items, Orders, Reviews.
+Per PRD §5, Waraqah employs a split-backend strategy dividing responsibilities between **Supabase** and a custom **Go API**.
 
-# 7. Main Features
-* **7.1 Primary Marketplace:** Users can browse and buy new physical books and ebooks. It features price comparison across vendors, default sorting by cheapest first (ties broken by average review score), and displays reviews, previews, and ratings.
-* **7.2 Second-Hand Marketplace (P2P):** Aimed at students reselling course textbooks. It features a separate listing flow (condition reporting, pricing, photos) and is independent from the primary catalog.
-* **7.3 Book-Bites (Social Feed):** A lightweight, Twitter-style feed for short posts, reading progress, and quick reviews. It includes inline book tagging where tapping a tagged book opens its purchase page. The paginated feed is backed by PostgreSQL.
-* **7.4 AI Reading Assistant:** An embedded chatbot powered by the free Google Gemini API. The Go backend proxies all requests so the app never holds the API key. Catalog data is injected into the prompt so recommendations stay within Waraqah's own listings.
-* **7.5 Islamic Curation:** Books are tagged Beneficial or Non-Beneficial and can be filtered accordingly. A daily Ayah of the Qur'an is shown at the top of the home screen.
+### Responsibilities Matrix
 
-# 8. Navigation
-GoRouter will be used for application navigation. Authentication-protected routes will be handled by route guards. 
-Main routes will include:
-* `/login`, `/register`, `/profile`
-* `/home`, `/catalog`, `/catalog/book/:id`
-* `/p2p`, `/p2p/:id`, `/p2p/create`
-* `/book-bites`, `/book-bites/create`
-* `/ai-chat`, `/cart`, `/checkout`, `/orders`
+| Backend Target | Communication Channel | Operations Handled |
+|---|---|---|
+| **Supabase** | `supabase_flutter` SDK | • User Auth (Sign up, Sign in, Session refresh)<br>• Storage (Listing photos, user avatars)<br>• Realtime (P2P instant messaging channels)<br>• Simple Reads (Public catalog browsing `books` & `primary_listings` via PostgREST + RLS) |
+| **Go API** | `Dio` HTTP Client | • Google Books API synchronization & cache refresh<br>• Custom price sorting (cheapest $\rightarrow$ expensive) & rating tie-breaks<br>• Mock price assignment fallback (`saleability = NOT_FOR_SALE`)<br>• Simulated bKash transactional checkout (`/api/v1/orders/checkout`)<br>• Admin operations (`/api/v1/admin/...` with `role = 'admin'` validation) |
 
-# 9. Data Flow
-The UI is kept separate from backend and database implementation. The flow is:
-`Flutter UI -> Feature Controller -> Repository -> REST API -> Go Backend -> (PostgreSQL / Gemini API / Cloudinary)`
+### API & Service Class Architecture
+- **Location:**
+  - Base clients live in `lib/core/network/` (`dio_client.dart`, `supabase_client.dart`).
+  - Feature data sources live in `lib/features/<feature>/data/datasources/`.
+- **Dio Interceptors:**
+  A custom `AuthInterceptor` attaches the active Supabase JWT access token to every outgoing Dio request to the Go backend (`Authorization: Bearer <token>`).
+- **Error Handling Pattern:**
+  - Data sources catch `DioException` and `PostgrestException` / `AuthException`, translating them into domain-level exceptions (`ServerException`, `AuthException`, `NetworkException`).
+  - Repositories catch domain exceptions and convert them into immutable `Failure` objects (`ServerFailure`, `AuthFailure`, `NetworkFailure`).
+  - Notifiers expose failures via `AsyncValue.error(failure, stackTrace)`, allowing presentation widgets to render accessible, user-friendly error banners and retry actions.
 
-# 10. Security
-* Flutter will not connect directly to PostgreSQL.
-* Sensitive API keys (Gemini) will not be exposed in the Flutter app.
-* Authentication will be handled by the backend.
-* Orders and prices will be validated by the backend.
-* Checkout is mocked for this project; no real payment credentials are handled.
+---
 
-# 11. Final Architecture
-The complete system is designed to keep Waraqah modular and simple. Flutter handles the mobile application, Go handles the backend, and PostgreSQL stores application data. Each major feature remains an independent LEGO-style module while communicating through clear interfaces and REST APIs.
+## 5. Naming Conventions
 
-```text
-                        Waraqah
-                           |
-            +--------------+--------------+
-            |                             |
-       Flutter App                    Go Backend
-            |                             |
-      LEGO Features               REST API / Logic
-            |                             |
-  +----+----+----+----+         +---------+---------+
-  |    |    |    |    |         |         |         |
-Catalog P2P Bites Cart      PostgreSQL  Gemini  Cloudinary
-  (AI Chat, Checkout, Islamic Curation)
-```
+Consistency across the codebase ensures clean navigation and automated tooling compatibility:
+
+- **Files & Directories:**
+  - Always `snake_case.dart` (e.g., `catalog_repository.dart`, `primary_listing_card.dart`, `book_detail_page.dart`).
+  - Directory names are always `snake_case` (e.g., `primary_marketplace`, `p2p_marketplace`).
+- **Classes & Types:**
+  - Always `PascalCase` (e.g., `Book`, `CatalogNotifier`, `PrimaryListingRepositoryImpl`).
+- **Interfaces vs. Implementations:**
+  - Interfaces in `domain/repositories/`: `AuthRepository`, `CatalogRepository`.
+  - Implementations in `data/repositories/`: `AuthRepositoryImpl`, `CatalogRepositoryImpl`.
+- **DTOs / Models:**
+  - Suffix with `Dto` in `data/models/` (e.g., `BookDto`, `P2pListingDto`).
+  - Pure domain entities in `domain/entities/` do not have suffixes (e.g., `Book`, `P2pListing`).
+- **Providers:**
+  - Suffix with `Provider` (e.g., `catalogNotifierProvider`, `authRepositoryProvider`, `currentUserProvider`).
+- **Page Widgets:**
+  - Suffix with `Page` (e.g., `LoginPage`, `CatalogPage`, `ChatPage`).
+- **Components / Widgets:**
+  - Specific descriptive nouns (e.g., `AyahCard`, `ConditionBadge`, `PriceTag`).
+
+---
+
+## 6. Decisions Made on the User's Behalf
+
+Per Section 2 fallback rules, the following architectural and technological decisions have been made where PRD.md left details unspecified:
+
+1. **Token-Driven UI / Design System (`open_ui_kit`):**
+   PRD §4.3 mandates `open_ui_kit` with adaptive visual budgets on Android to prevent GPU blur frame-drops. We implement a clean token layer (`lib/core/theme/`) modeling shadcn-inspired tokens (surfaces, borders, typography, muted colors, primary emerald palette) matching Material 3, without `BackdropFilter` on scrolling lists.
+2. **Configuration & Secrets Handling:**
+   Using `flutter_dotenv` combined with `--dart-define` support. Keys defined: `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `GO_API_BASE_URL`. A `.env.example` file is provided, while `.env` is `.gitignore`'d to guarantee no secrets are committed.
+3. **Admin Credential & Promotion Architecture:**
+   Per REQ-2.3, the admin uses standard Supabase Auth signup. Role elevation (`role = 'admin'`) is handled via database seed or Go backend setup scripts, never through hardcoded client logic.
+4. **Offline & Image Caching:**
+   Using `cached_network_image` with subtle placeholder shimmer/fallbacks for both Google Books covers and Supabase P2P listing photos, optimizing bandwidth and frame rendering.
+5. **Localization Scope:**
+   `intl` and `flutter_localizations` configured for `en` (English) and `bn` (Bangla) with `.arb` files located in `lib/l10n/`.
+6. **Simulated bKash Security:**
+   Checkout PIN input is completely ephemeral in memory. It is passed to the Go API simulation endpoint over HTTPS or processed purely in the simulation service; no PIN or unmasked payment data is ever stored in the database or client cache (REQ-3.1.8, §6.1).
+
