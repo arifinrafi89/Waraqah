@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Bite {
 
- String get id; String get authorName; String get authorHandle; String get text; String? get taggedBookTitle; String? get taggedBookId; int get avatarSeed;
+ String get id; String get authorName; String get authorHandle; String get text; String? get taggedBookTitle; String? get taggedBookId; String? get avatarUrl; String? get imageUrl; int get replies; int get reposts; int get likes; bool get liked; int get avatarSeed;
 /// Create a copy of Bite
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $BiteCopyWith<Bite> get copyWith => _$BiteCopyWithImpl<Bite>(this as Bite, _$ide
 @override
 bool operator ==(Object other) {
   final _this = this as Bite;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Bite&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.authorName, _this.authorName) || other.authorName == _this.authorName)&&(identical(other.authorHandle, _this.authorHandle) || other.authorHandle == _this.authorHandle)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.taggedBookTitle, _this.taggedBookTitle) || other.taggedBookTitle == _this.taggedBookTitle)&&(identical(other.taggedBookId, _this.taggedBookId) || other.taggedBookId == _this.taggedBookId)&&(identical(other.avatarSeed, _this.avatarSeed) || other.avatarSeed == _this.avatarSeed));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Bite&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.authorName, _this.authorName) || other.authorName == _this.authorName)&&(identical(other.authorHandle, _this.authorHandle) || other.authorHandle == _this.authorHandle)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.taggedBookTitle, _this.taggedBookTitle) || other.taggedBookTitle == _this.taggedBookTitle)&&(identical(other.taggedBookId, _this.taggedBookId) || other.taggedBookId == _this.taggedBookId)&&(identical(other.avatarUrl, _this.avatarUrl) || other.avatarUrl == _this.avatarUrl)&&(identical(other.imageUrl, _this.imageUrl) || other.imageUrl == _this.imageUrl)&&(identical(other.replies, _this.replies) || other.replies == _this.replies)&&(identical(other.reposts, _this.reposts) || other.reposts == _this.reposts)&&(identical(other.likes, _this.likes) || other.likes == _this.likes)&&(identical(other.liked, _this.liked) || other.liked == _this.liked)&&(identical(other.avatarSeed, _this.avatarSeed) || other.avatarSeed == _this.avatarSeed));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Bite;
-  return Object.hash(runtimeType,_this.id,_this.authorName,_this.authorHandle,_this.text,_this.taggedBookTitle,_this.taggedBookId,_this.avatarSeed);
+  return Object.hash(runtimeType,_this.id,_this.authorName,_this.authorHandle,_this.text,_this.taggedBookTitle,_this.taggedBookId,_this.avatarUrl,_this.imageUrl,_this.replies,_this.reposts,_this.likes,_this.liked,_this.avatarSeed);
 }
 
 @override
 String toString() {
   final _this = this as Bite;
-  return 'Bite(id: ${_this.id}, authorName: ${_this.authorName}, authorHandle: ${_this.authorHandle}, text: ${_this.text}, taggedBookTitle: ${_this.taggedBookTitle}, taggedBookId: ${_this.taggedBookId}, avatarSeed: ${_this.avatarSeed})';
+  return 'Bite(id: ${_this.id}, authorName: ${_this.authorName}, authorHandle: ${_this.authorHandle}, text: ${_this.text}, taggedBookTitle: ${_this.taggedBookTitle}, taggedBookId: ${_this.taggedBookId}, avatarUrl: ${_this.avatarUrl}, imageUrl: ${_this.imageUrl}, replies: ${_this.replies}, reposts: ${_this.reposts}, likes: ${_this.likes}, liked: ${_this.liked}, avatarSeed: ${_this.avatarSeed})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $BiteCopyWith<$Res>  {
   factory $BiteCopyWith(Bite value, $Res Function(Bite) _then) = _$BiteCopyWithImpl;
 @useResult
 $Res call({
- String id, String authorName, String authorHandle, String text, String? taggedBookTitle, String? taggedBookId, int avatarSeed
+ String id, String authorName, String authorHandle, String text, String? taggedBookTitle, String? taggedBookId, String? avatarUrl, String? imageUrl, int replies, int reposts, int likes, bool liked, int avatarSeed
 });
 
 
@@ -71,7 +71,7 @@ class _$BiteCopyWithImpl<$Res>
 
 /// Create a copy of Bite
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? authorName = null,Object? authorHandle = null,Object? text = null,Object? taggedBookTitle = freezed,Object? taggedBookId = freezed,Object? avatarSeed = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? authorName = null,Object? authorHandle = null,Object? text = null,Object? taggedBookTitle = freezed,Object? taggedBookId = freezed,Object? avatarUrl = freezed,Object? imageUrl = freezed,Object? replies = null,Object? reposts = null,Object? likes = null,Object? liked = null,Object? avatarSeed = null,}) {
   return _then(Bite(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,authorName: null == authorName ? _self.authorName : authorName // ignore: cast_nullable_to_non_nullable
@@ -79,7 +79,13 @@ as String,authorHandle: null == authorHandle ? _self.authorHandle : authorHandle
 as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,taggedBookTitle: freezed == taggedBookTitle ? _self.taggedBookTitle : taggedBookTitle // ignore: cast_nullable_to_non_nullable
 as String?,taggedBookId: freezed == taggedBookId ? _self.taggedBookId : taggedBookId // ignore: cast_nullable_to_non_nullable
-as String?,avatarSeed: null == avatarSeed ? _self.avatarSeed : avatarSeed // ignore: cast_nullable_to_non_nullable
+as String?,avatarUrl: freezed == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
+as String?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
+as String?,replies: null == replies ? _self.replies : replies // ignore: cast_nullable_to_non_nullable
+as int,reposts: null == reposts ? _self.reposts : reposts // ignore: cast_nullable_to_non_nullable
+as int,likes: null == likes ? _self.likes : likes // ignore: cast_nullable_to_non_nullable
+as int,liked: null == liked ? _self.liked : liked // ignore: cast_nullable_to_non_nullable
+as bool,avatarSeed: null == avatarSeed ? _self.avatarSeed : avatarSeed // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -165,10 +171,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String authorName,  String authorHandle,  String text,  String? taggedBookTitle,  String? taggedBookId,  int avatarSeed)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String authorName,  String authorHandle,  String text,  String? taggedBookTitle,  String? taggedBookId,  String? avatarUrl,  String? imageUrl,  int replies,  int reposts,  int likes,  bool liked,  int avatarSeed)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Bite() when $default != null:
-return $default(_that.id,_that.authorName,_that.authorHandle,_that.text,_that.taggedBookTitle,_that.taggedBookId,_that.avatarSeed);case _:
+return $default(_that.id,_that.authorName,_that.authorHandle,_that.text,_that.taggedBookTitle,_that.taggedBookId,_that.avatarUrl,_that.imageUrl,_that.replies,_that.reposts,_that.likes,_that.liked,_that.avatarSeed);case _:
   return orElse();
 
 }
@@ -186,10 +192,10 @@ return $default(_that.id,_that.authorName,_that.authorHandle,_that.text,_that.ta
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String authorName,  String authorHandle,  String text,  String? taggedBookTitle,  String? taggedBookId,  int avatarSeed)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String authorName,  String authorHandle,  String text,  String? taggedBookTitle,  String? taggedBookId,  String? avatarUrl,  String? imageUrl,  int replies,  int reposts,  int likes,  bool liked,  int avatarSeed)  $default,) {final _that = this;
 switch (_that) {
 case _Bite():
-return $default(_that.id,_that.authorName,_that.authorHandle,_that.text,_that.taggedBookTitle,_that.taggedBookId,_that.avatarSeed);case _:
+return $default(_that.id,_that.authorName,_that.authorHandle,_that.text,_that.taggedBookTitle,_that.taggedBookId,_that.avatarUrl,_that.imageUrl,_that.replies,_that.reposts,_that.likes,_that.liked,_that.avatarSeed);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -206,10 +212,10 @@ return $default(_that.id,_that.authorName,_that.authorHandle,_that.text,_that.ta
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String authorName,  String authorHandle,  String text,  String? taggedBookTitle,  String? taggedBookId,  int avatarSeed)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String authorName,  String authorHandle,  String text,  String? taggedBookTitle,  String? taggedBookId,  String? avatarUrl,  String? imageUrl,  int replies,  int reposts,  int likes,  bool liked,  int avatarSeed)?  $default,) {final _that = this;
 switch (_that) {
 case _Bite() when $default != null:
-return $default(_that.id,_that.authorName,_that.authorHandle,_that.text,_that.taggedBookTitle,_that.taggedBookId,_that.avatarSeed);case _:
+return $default(_that.id,_that.authorName,_that.authorHandle,_that.text,_that.taggedBookTitle,_that.taggedBookId,_that.avatarUrl,_that.imageUrl,_that.replies,_that.reposts,_that.likes,_that.liked,_that.avatarSeed);case _:
   return null;
 
 }
@@ -221,7 +227,7 @@ return $default(_that.id,_that.authorName,_that.authorHandle,_that.text,_that.ta
 @JsonSerializable()
 
 class _Bite implements Bite {
-  const _Bite({required this.id, required this.authorName, required this.authorHandle, required this.text, this.taggedBookTitle, this.taggedBookId, this.avatarSeed = 0});
+  const _Bite({required this.id, required this.authorName, required this.authorHandle, required this.text, this.taggedBookTitle, this.taggedBookId, this.avatarUrl, this.imageUrl, this.replies = 0, this.reposts = 0, this.likes = 0, this.liked = false, this.avatarSeed = 0});
   factory _Bite.fromJson(Map<String, dynamic> json) => _$BiteFromJson(json);
 
 @override final  String id;
@@ -230,6 +236,12 @@ class _Bite implements Bite {
 @override final  String text;
 @override final  String? taggedBookTitle;
 @override final  String? taggedBookId;
+@override final  String? avatarUrl;
+@override final  String? imageUrl;
+@override@JsonKey() final  int replies;
+@override@JsonKey() final  int reposts;
+@override@JsonKey() final  int likes;
+@override@JsonKey() final  bool liked;
 @override@JsonKey() final  int avatarSeed;
 
 /// Create a copy of Bite
@@ -245,18 +257,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Bite&&(identical(other.id, id) || other.id == id)&&(identical(other.authorName, authorName) || other.authorName == authorName)&&(identical(other.authorHandle, authorHandle) || other.authorHandle == authorHandle)&&(identical(other.text, text) || other.text == text)&&(identical(other.taggedBookTitle, taggedBookTitle) || other.taggedBookTitle == taggedBookTitle)&&(identical(other.taggedBookId, taggedBookId) || other.taggedBookId == taggedBookId)&&(identical(other.avatarSeed, avatarSeed) || other.avatarSeed == avatarSeed));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Bite&&(identical(other.id, id) || other.id == id)&&(identical(other.authorName, authorName) || other.authorName == authorName)&&(identical(other.authorHandle, authorHandle) || other.authorHandle == authorHandle)&&(identical(other.text, text) || other.text == text)&&(identical(other.taggedBookTitle, taggedBookTitle) || other.taggedBookTitle == taggedBookTitle)&&(identical(other.taggedBookId, taggedBookId) || other.taggedBookId == taggedBookId)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.replies, replies) || other.replies == replies)&&(identical(other.reposts, reposts) || other.reposts == reposts)&&(identical(other.likes, likes) || other.likes == likes)&&(identical(other.liked, liked) || other.liked == liked)&&(identical(other.avatarSeed, avatarSeed) || other.avatarSeed == avatarSeed));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,authorName,authorHandle,text,taggedBookTitle,taggedBookId,avatarSeed);
+    return Object.hash(runtimeType,id,authorName,authorHandle,text,taggedBookTitle,taggedBookId,avatarUrl,imageUrl,replies,reposts,likes,liked,avatarSeed);
 }
 
 @override
 String toString() {
-    return 'Bite(id: $id, authorName: $authorName, authorHandle: $authorHandle, text: $text, taggedBookTitle: $taggedBookTitle, taggedBookId: $taggedBookId, avatarSeed: $avatarSeed)';
+    return 'Bite(id: $id, authorName: $authorName, authorHandle: $authorHandle, text: $text, taggedBookTitle: $taggedBookTitle, taggedBookId: $taggedBookId, avatarUrl: $avatarUrl, imageUrl: $imageUrl, replies: $replies, reposts: $reposts, likes: $likes, liked: $liked, avatarSeed: $avatarSeed)';
 }
 
 
@@ -267,7 +279,7 @@ abstract mixin class _$BiteCopyWith<$Res> implements $BiteCopyWith<$Res> {
   factory _$BiteCopyWith(_Bite value, $Res Function(_Bite) _then) = __$BiteCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String authorName, String authorHandle, String text, String? taggedBookTitle, String? taggedBookId, int avatarSeed
+ String id, String authorName, String authorHandle, String text, String? taggedBookTitle, String? taggedBookId, String? avatarUrl, String? imageUrl, int replies, int reposts, int likes, bool liked, int avatarSeed
 });
 
 
@@ -284,7 +296,7 @@ class __$BiteCopyWithImpl<$Res>
 
 /// Create a copy of Bite
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? authorName = null,Object? authorHandle = null,Object? text = null,Object? taggedBookTitle = freezed,Object? taggedBookId = freezed,Object? avatarSeed = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? authorName = null,Object? authorHandle = null,Object? text = null,Object? taggedBookTitle = freezed,Object? taggedBookId = freezed,Object? avatarUrl = freezed,Object? imageUrl = freezed,Object? replies = null,Object? reposts = null,Object? likes = null,Object? liked = null,Object? avatarSeed = null,}) {
   return _then(_Bite(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,authorName: null == authorName ? _self.authorName : authorName // ignore: cast_nullable_to_non_nullable
@@ -292,7 +304,13 @@ as String,authorHandle: null == authorHandle ? _self.authorHandle : authorHandle
 as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,taggedBookTitle: freezed == taggedBookTitle ? _self.taggedBookTitle : taggedBookTitle // ignore: cast_nullable_to_non_nullable
 as String?,taggedBookId: freezed == taggedBookId ? _self.taggedBookId : taggedBookId // ignore: cast_nullable_to_non_nullable
-as String?,avatarSeed: null == avatarSeed ? _self.avatarSeed : avatarSeed // ignore: cast_nullable_to_non_nullable
+as String?,avatarUrl: freezed == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
+as String?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
+as String?,replies: null == replies ? _self.replies : replies // ignore: cast_nullable_to_non_nullable
+as int,reposts: null == reposts ? _self.reposts : reposts // ignore: cast_nullable_to_non_nullable
+as int,likes: null == likes ? _self.likes : likes // ignore: cast_nullable_to_non_nullable
+as int,liked: null == liked ? _self.liked : liked // ignore: cast_nullable_to_non_nullable
+as bool,avatarSeed: null == avatarSeed ? _self.avatarSeed : avatarSeed // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }

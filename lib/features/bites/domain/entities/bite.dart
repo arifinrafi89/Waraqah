@@ -13,6 +13,12 @@ abstract class Bite with _$Bite {
     required String text,
     String? taggedBookTitle,
     String? taggedBookId,
+    String? avatarUrl,
+    String? imageUrl,
+    @Default(0) int replies,
+    @Default(0) int reposts,
+    @Default(0) int likes,
+    @Default(false) bool liked,
     @Default(0) int avatarSeed,
   }) = _Bite;
 

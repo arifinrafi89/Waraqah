@@ -139,6 +139,60 @@ abstract class AppL10n {
   /// **'Profile'**
   String get navProfile;
 
+  /// No description provided for @bitesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Book-Bites'**
+  String get bitesTitle;
+
+  /// No description provided for @bitesComposerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Share a thought about what you are reading...'**
+  String get bitesComposerHint;
+
+  /// No description provided for @bitesPost.
+  ///
+  /// In en, this message translates to:
+  /// **'Post bite'**
+  String get bitesPost;
+
+  /// No description provided for @bitesReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply'**
+  String get bitesReply;
+
+  /// No description provided for @bitesRepost.
+  ///
+  /// In en, this message translates to:
+  /// **'Repost'**
+  String get bitesRepost;
+
+  /// No description provided for @bitesLike.
+  ///
+  /// In en, this message translates to:
+  /// **'Like'**
+  String get bitesLike;
+
+  /// No description provided for @bitesPosted.
+  ///
+  /// In en, this message translates to:
+  /// **'Your bite was added to the feed.'**
+  String get bitesPosted;
+
+  /// No description provided for @bitesYou.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get bitesYou;
+
+  /// No description provided for @bitesReaderHandle.
+  ///
+  /// In en, this message translates to:
+  /// **'reader'**
+  String get bitesReaderHandle;
+
   /// No description provided for @authLogIn.
   ///
   /// In en, this message translates to:
