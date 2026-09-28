@@ -15,7 +15,6 @@ abstract final class GeneralShelf {
       rating: 4.3,
       tags: ['Non-Fiction'],
       category: 'Academic',
-      isBeneficial: true,
       isBestValue: true,
       coverSeed: 0,
     ),
@@ -30,7 +29,6 @@ abstract final class GeneralShelf {
       rating: 4.7,
       tags: ['Self-Help'],
       category: 'Self-Help',
-      isBeneficial: true,
       isBestValue: true,
       coverSeed: 2,
     ),
@@ -59,6 +57,7 @@ abstract final class GeneralShelf {
       rating: 4.2,
       tags: ['Academic'],
       category: 'Academic',
+      isBeneficial: true,
       coverSeed: 2,
     ),
     Book(
