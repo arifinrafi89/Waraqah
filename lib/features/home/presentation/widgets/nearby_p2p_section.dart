@@ -8,8 +8,8 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../p2p/presentation/providers/p2p_providers.dart';
 import '../../../p2p/presentation/widgets/p2p_card.dart';
 import '../../../p2p/presentation/widgets/p2p_strip_skeleton.dart';
+import '../../../../core/widgets/horizontal_strip.dart';
 import 'home_section.dart';
-import 'horizontal_strip.dart';
 
 /// Second-hand listings from other students on campus, owned by the P2P block.
 class NearbyP2pSection extends ConsumerWidget {
@@ -30,9 +30,10 @@ class NearbyP2pSection extends ConsumerWidget {
         onRetry: () => ref.invalidate(nearbyListingsProvider),
         skeleton: const P2pStripSkeleton(),
         builder: (listings) => HorizontalStrip(
-          children: [
-            for (final listing in listings) P2pCard(listing: listing),
-          ],
+          cardWidthFraction: 0.34,
+          minCardWidth: 130,
+          maxCardWidth: 165,
+          children: [for (final listing in listings) P2pCard(listing: listing)],
         ),
       ),
     );

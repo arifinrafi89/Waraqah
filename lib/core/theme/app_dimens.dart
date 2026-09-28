@@ -7,6 +7,7 @@ abstract final class Insets {
   static const double sm = 8;
   static const double md = 12;
   static const double lg = 16;
+
   /// Horizontal gutter every screen body uses.
   static const double screen = 18;
   static const double xl = 22;
@@ -26,10 +27,9 @@ abstract final class Sizes {
   static const double fieldHeight = 46;
   static const double buttonHeight = 48;
   static const double avatar = 28;
-  static const double biteCardWidth = 196;
-  static const double p2pCardWidth = 150;
   static const double listThumbWidth = 58;
   static const double listThumbHeight = 80;
+
   /// Space reserved at the bottom of scroll views for the floating nav bar.
   static const double navClearance = 104;
 }

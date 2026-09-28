@@ -18,14 +18,21 @@ class P2pMarketplaceGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final visible = listings.where((listing) => listing.matchesFilter(filter, query)).toList();
+    final visible = listings
+        .where((listing) => listing.matchesFilter(filter, query))
+        .toList();
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(Insets.screen, Insets.sm, Insets.screen, 0),
+      padding: const EdgeInsets.fromLTRB(
+        Insets.screen,
+        Insets.sm,
+        Insets.screen,
+        0,
+      ),
       child: GridView.builder(
         itemCount: visible.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 180,
           mainAxisSpacing: 12,
           crossAxisSpacing: 12,
           childAspectRatio: 0.7,
