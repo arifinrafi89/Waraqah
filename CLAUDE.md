@@ -22,8 +22,8 @@ Every change must follow these. They override anything else in this file.
 flutter pub get                                      # also regenerates lib/l10n/app_localizations*.dart
 dart run build_runner build --delete-conflicting-outputs   # regenerate *.freezed.dart / *.g.dart
 flutter analyze
-flutter test                                         # all tests live in test/widget_test.dart
-flutter test test/widget_test.dart --plain-name "Bdt.format"   # single group/test by name
+flutter test                                         # tests live in test/*_test.dart (split past 120 lines)
+flutter test test/widget_test.dart --plain-name "Bdt.format"   # single group/test by name/file
 flutter run -d web-server --web-port 8123 --web-hostname 127.0.0.1   # config in .claude/launch.json
 ```
 
