@@ -226,6 +226,18 @@ class AppL10nBn extends AppL10n {
   String get aiViewBook => 'বই দেখুন';
 
   @override
+  String get homeAppBarLightMode => 'লাইট মোড';
+
+  @override
+  String get homeAppBarDarkMode => 'ডার্ক মোড';
+
+  @override
+  String get homeAppBarEnglish => 'English';
+
+  @override
+  String get homeAppBarBangla => 'বাংলা';
+
+  @override
   String get profileTitle => 'প্রোফাইল';
 
   @override

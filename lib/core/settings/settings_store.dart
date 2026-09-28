@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Persists the two user preferences that must survive a restart.
 ///
 /// Kept deliberately thin: it knows about `SharedPreferences` keys and nothing
-/// about widgets, so [SettingsController] stays testable with a fake store.
+/// about widgets, so `SettingsNotifier` stays testable with a fake store.
 class SettingsStore {
   SettingsStore(this._prefs);
 

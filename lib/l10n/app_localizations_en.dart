@@ -228,6 +228,18 @@ class AppL10nEn extends AppL10n {
   String get aiViewBook => 'View book';
 
   @override
+  String get homeAppBarLightMode => 'Light mode';
+
+  @override
+  String get homeAppBarDarkMode => 'Dark mode';
+
+  @override
+  String get homeAppBarEnglish => 'English';
+
+  @override
+  String get homeAppBarBangla => 'বাংলা';
+
+  @override
   String get profileTitle => 'Profile';
 
   @override

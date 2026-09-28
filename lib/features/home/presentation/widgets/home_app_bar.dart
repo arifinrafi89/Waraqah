@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/settings/settings_controller.dart';
+import '../../../../core/settings/settings_provider.dart';
 import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../core/widgets/waraqah_wordmark.dart';
+import '../../../../l10n/app_localizations.dart';
 
 /// Home's top bar: the wordmark, plus quick theme and language toggles and the
-/// cart. The two toggles read and write [SettingsController] through `provider`.
-class HomeAppBar extends StatelessWidget {
+/// cart. The two toggles read and write [settingsProvider].
+class HomeAppBar extends ConsumerWidget {
   const HomeAppBar({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final settings = context.watch<SettingsController>();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppL10n.of(context)!;
+    final settings = ref.watch(settingsProvider.notifier);
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final isBangla = Localizations.localeOf(context).languageCode == 'bn';
     return ScreenAppBar(
@@ -21,7 +23,7 @@ class HomeAppBar extends StatelessWidget {
       actions: [
         AppIconButton(
           icon: isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
-          tooltip: isDark ? 'Light mode' : 'Dark mode',
+          tooltip: isDark ? l10n.homeAppBarLightMode : l10n.homeAppBarDarkMode,
           onPressed: () => settings.setThemeMode(
             isDark ? ThemeMode.light : ThemeMode.dark,
           ),
@@ -29,7 +31,7 @@ class HomeAppBar extends StatelessWidget {
         const SizedBox(width: 8),
         AppIconButton(
           icon: Icons.translate_rounded,
-          tooltip: isBangla ? 'English' : 'বাংলা',
+          tooltip: isBangla ? l10n.homeAppBarEnglish : l10n.homeAppBarBangla,
           onPressed: () =>
               settings.setLocale(Locale(isBangla ? 'en' : 'bn')),
         ),

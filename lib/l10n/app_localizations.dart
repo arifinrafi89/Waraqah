@@ -517,6 +517,30 @@ abstract class AppL10n {
   /// **'View book'**
   String get aiViewBook;
 
+  /// No description provided for @homeAppBarLightMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light mode'**
+  String get homeAppBarLightMode;
+
+  /// No description provided for @homeAppBarDarkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark mode'**
+  String get homeAppBarDarkMode;
+
+  /// No description provided for @homeAppBarEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get homeAppBarEnglish;
+
+  /// No description provided for @homeAppBarBangla.
+  ///
+  /// In en, this message translates to:
+  /// **'বাংলা'**
+  String get homeAppBarBangla;
+
   /// No description provided for @profileTitle.
   ///
   /// In en, this message translates to:
