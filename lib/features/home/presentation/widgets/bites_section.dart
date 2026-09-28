@@ -8,8 +8,8 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../bites/presentation/providers/bite_providers.dart';
 import '../../../bites/presentation/widgets/bite_card.dart';
 import '../../../bites/presentation/widgets/bite_strip_skeleton.dart';
-import '../widgets/home_section.dart';
-import '../widgets/horizontal_strip.dart';
+import 'home_section.dart';
+import 'horizontal_strip.dart';
 
 /// Preview strip of the Book-Bites feed. The cards and the provider belong to
 /// the bites block; Home only composes them.

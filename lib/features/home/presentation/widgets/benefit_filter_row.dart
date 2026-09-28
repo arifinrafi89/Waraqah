@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/widgets/filter_chip_bar.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../domain/entities/benefit_filter.dart';
 import '../providers/home_providers.dart';
 
 /// The Beneficial / Non-Beneficial curation pills that filter the home feed.

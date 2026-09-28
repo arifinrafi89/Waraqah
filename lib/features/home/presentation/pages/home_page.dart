@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_dimens.dart';
-import '../sections/ayah_section.dart';
-import '../sections/benefit_filter_row.dart';
-import '../sections/bites_section.dart';
-import '../sections/nearby_p2p_section.dart';
-import '../sections/new_books_section.dart';
+import '../widgets/ayah_section.dart';
+import '../widgets/benefit_filter_row.dart';
+import '../widgets/bites_section.dart';
 import '../widgets/home_app_bar.dart';
+import '../widgets/nearby_p2p_section.dart';
+import '../widgets/new_books_section.dart';
 
 /// Screen 1 — Home. Nothing but composition: every section is an independent
 /// brick that loads its own data, so one slow request never blocks the others.

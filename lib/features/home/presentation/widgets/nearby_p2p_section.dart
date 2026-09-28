@@ -8,8 +8,8 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../p2p/presentation/providers/p2p_providers.dart';
 import '../../../p2p/presentation/widgets/p2p_card.dart';
 import '../../../p2p/presentation/widgets/p2p_strip_skeleton.dart';
-import '../widgets/home_section.dart';
-import '../widgets/horizontal_strip.dart';
+import 'home_section.dart';
+import 'horizontal_strip.dart';
 
 /// Second-hand listings from other students on campus, owned by the P2P block.
 class NearbyP2pSection extends ConsumerWidget {

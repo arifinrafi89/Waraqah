@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../providers/home_providers.dart';
-import '../widgets/book_grid.dart';
-import '../widgets/home_section.dart';
+import 'book_grid.dart';
+import 'home_section.dart';
 
 /// New arrivals, cheapest cross-vendor price first, narrowed by the Islamic
 /// curation pills above it.

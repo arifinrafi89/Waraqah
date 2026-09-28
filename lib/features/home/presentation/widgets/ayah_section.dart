@@ -5,8 +5,8 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../providers/home_providers.dart';
-import '../widgets/ayah_card.dart';
-import '../widgets/ayah_card_skeleton.dart';
+import 'ayah_card.dart';
+import 'ayah_card_skeleton.dart';
 
 /// Ayah of the Day, loaded through its own provider so a slow verse never
 /// blocks the rest of the home feed.

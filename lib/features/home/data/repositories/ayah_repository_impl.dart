@@ -1,6 +1,7 @@
 import '../../../../core/cache/ttl_cache.dart';
 import '../../domain/entities/ayah.dart';
 import '../../domain/repositories/ayah_repository.dart';
+import '../models/ayah_model.dart';
 import '../sources/ayah_fixtures.dart';
 
 /// Cached for a full day, because the verse only changes at midnight.
@@ -13,7 +14,7 @@ class AyahRepositoryImpl implements AyahRepository {
     final key = '${today.year}-${today.month}-${today.day}';
     return _cache.resolve(key, () async {
       await Future<void>.delayed(const Duration(milliseconds: 600));
-      return AyahFixtures.forDate(today);
+      return AyahFixtures.forDate(today).toEntity();
     });
   }
 }

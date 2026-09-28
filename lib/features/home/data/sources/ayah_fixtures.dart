@@ -1,10 +1,10 @@
-import '../../domain/entities/ayah.dart';
+import '../models/ayah_model.dart';
 
 /// A small rotation of verses, picked by day-of-year until the Go backend
 /// serves `/islamic/ayah-of-the-day`.
 abstract final class AyahFixtures {
-  static const List<Ayah> verses = [
-    Ayah(
+  static const List<AyahModel> verses = [
+    AyahModel(
       arabic: 'فَٱذْكُرُونِىٓ أَذْكُرْكُمْ وَٱشْكُرُوا۟ لِى وَلَا تَكْفُرُونِ',
       translation:
           'So remember Me; I will remember you. And be grateful to Me and '
@@ -14,7 +14,7 @@ abstract final class AyahFixtures {
       surahNumber: 2,
       verseNumber: 152,
     ),
-    Ayah(
+    AyahModel(
       arabic: 'وَقُل رَّبِّ زِدْنِى عِلْمًا',
       translation: 'And say: My Lord, increase me in knowledge.',
       surahEn: 'Surah Ta-Ha',
@@ -22,7 +22,7 @@ abstract final class AyahFixtures {
       surahNumber: 20,
       verseNumber: 114,
     ),
-    Ayah(
+    AyahModel(
       arabic: 'إِنَّ مَعَ ٱلْعُسْرِ يُسْرًا',
       translation: 'Indeed, with hardship comes ease.',
       surahEn: 'Surah Ash-Sharh',
@@ -32,7 +32,7 @@ abstract final class AyahFixtures {
     ),
   ];
 
-  static Ayah forDate(DateTime date) {
+  static AyahModel forDate(DateTime date) {
     final dayOfYear = date.difference(DateTime(date.year)).inDays;
     return verses[dayOfYear % verses.length];
   }
