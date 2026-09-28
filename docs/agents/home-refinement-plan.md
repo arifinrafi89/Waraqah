@@ -33,12 +33,34 @@ Waraqah is a Flutter course project. The goal is good UI. **There is no backend 
 ### Rules for every issue
 
 - Read `CLAUDE.md` and `CONTEXT.md` first. Follow the project conventions there (120-line file limit, `AppPalette` colours, `Insets`, `AppFonts`, `AsyncView` + shimmer skeleton, ARB strings in both `app_en.arb` and `app_bn.arb`).
-- **Never stage or commit** `CLAUDE.md`, `CONTEXT.md` or anything in `docs/agents/`. The owner keeps them out of git on purpose (see `.gitignore`). Stage files by explicit path, never `git add -A` or `git add .`.
+- `CLAUDE.md`, `CONTEXT.md` and `docs/agents/` are tracked in git (since commit `b3cb804`). Commit edits to them like any other file. Stage files by explicit path, never `git add -A` or `git add .`.
 - One commit per issue, on this branch. Do not open a PR; the owner does that.
 - Before each commit: `flutter analyze` is clean and `flutter test` passes.
 - After editing a `@freezed` class or an ARB file, run codegen (`dart run build_runner build --delete-conflicting-outputs` or `flutter pub get`) and commit the generated files.
 - No new packages unless an issue says so.
 - Tests use two seams only (spec: issue #34). **Seam 1:** a `ProviderContainer` with mock `SharedPreferences` and the real `dioProvider` + `FakeApiInterceptor` + fixture routes, with fake time; tests read providers. **Seam 2 (nav only):** a widget test of router + shell in `ProviderScope`, with `debugDefaultTargetPlatformOverride` and `GoogleFonts.config.allowRuntimeFetching = false`. No lower-level unit tests of use cases, repositories or route handlers. Tests live in `test/widget_test.dart` (76 lines today). If it would pass 120 lines, split it into `test/<area>_test.dart` files.
+
+### GitHub tickets
+
+Each plan issue is a sub-issue of #34, with native blocking edges. Plan issue 9 is split in two.
+
+**Implementation order:** #45 → #35 → #36 → #37 → #38 → #39 → #40 → #41 → #42 → #43 → #44.
+
+| Plan issue | GitHub | Blocked by |
+|---|---|---|
+| 1 Rules in CLAUDE.md | #45 | none |
+| 2 Riverpod settings | #35 | none |
+| 3 Seed data | #36 | none |
+| 4 Home structure | #37 | none |
+| 5 Dio fake API | #38 | #37 |
+| 6 Aspect-ratio cards | #39 | #37 |
+| 7 Nav rail | #40 | none |
+| 8 Info icon | #41 | #37 |
+| 9 items 1, 2, 6, 7: sliver layout | #42 | #37, #39, #40, #41 |
+| 9 items 3, 4, 5: motion polish | #43 | #42 |
+| 10 Final check | #44 | all |
+
+Issue 1 rewrites the data-flow and offline-fallback bullets of `CLAUDE.md` only after issue 5; issue 5 (#38) owns that rewrite.
 
 ### Dependency order
 
@@ -60,8 +82,6 @@ Issues 1, 2, 3, 4 and 7 can start in any order.
 
 ## Issue 1: Write the teacher's rules into CLAUDE.md
 
-**Local only. Do not commit.**
-
 Add a section `## Strict rules (teacher review)` near the top of `CLAUDE.md`. Every future agent must follow it. Content:
 
 1. Riverpod is the only state library. No `provider` package, no `ChangeNotifier`, no `*Controller` classes. Expose all state as Riverpod providers (`Provider`, `FutureProvider`, `NotifierProvider`).
@@ -78,7 +98,7 @@ Then fix the lines that now contradict these rules:
 - The data-flow and offline-fallback bullets → describe `FakeApiInterceptor` (after issue 5).
 - The `selectionProvider` bullet → keep, and point to rule 2.
 
-**Done when:** `CLAUDE.md` has the section, no line contradicts it, and `git status` shows nothing new staged.
+**Done when:** `CLAUDE.md` has the section, no line contradicts it, and the change is committed.
 
 ---
 
@@ -292,5 +312,5 @@ Handles T13. Needs issues 4, 6, 7 and 8. No new packages: use `BackdropFilter`, 
 2. `flutter test`: all pass.
 3. `find lib -name '*.dart' ! -name '*.g.dart' ! -name '*.freezed.dart' ! -path '*/l10n/*' | xargs wc -l | awk '$1 > 120'`: prints nothing except the `total` line.
 4. Run the web build (`flutter run -d web-server --web-port 8123 --web-hostname 127.0.0.1`). Check home at 390 px and 1440 px wide, in light and dark, in English and Bangla. Check the Catalog, P2P, Bites and Profile tabs still work.
-5. Confirm with `git status` that `CLAUDE.md`, `CONTEXT.md` and `docs/agents/` are not staged or committed.
+5. Confirm with `git status` that the working tree is clean (everything, including `CLAUDE.md`, `CONTEXT.md` and `docs/agents/`, is committed).
 6. Do not open a PR. Tell the owner the branch is ready.
