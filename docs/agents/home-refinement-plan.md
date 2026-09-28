@@ -312,5 +312,6 @@ Handles T13. Needs issues 4, 6, 7 and 8. No new packages: use `BackdropFilter`, 
 2. `flutter test`: all pass.
 3. `find lib -name '*.dart' ! -name '*.g.dart' ! -name '*.freezed.dart' ! -path '*/l10n/*' | xargs wc -l | awk '$1 > 120'`: prints nothing except the `total` line.
 4. Run the web build (`flutter run -d web-server --web-port 8123 --web-hostname 127.0.0.1`). Check home at 390 px and 1440 px wide, in light and dark, in English and Bangla. Check the Catalog, P2P, Bites and Profile tabs still work.
-5. Confirm with `git status` that the working tree is clean (everything, including `CLAUDE.md`, `CONTEXT.md` and `docs/agents/`, is committed).
-6. Do not open a PR. Tell the owner the branch is ready.
+5. Rewrite `README.md` to match the finished code and `CLAUDE.md`. It is deliberately left stale until every other issue is done. Known drift: it still describes the `provider` package + `ChangeNotifier` settings, freezed entities, home reading `bookRepositoryProvider`, and the fixture fallback on `DioException`.
+6. Confirm with `git status` that the working tree is clean (everything, including `CLAUDE.md`, `CONTEXT.md` and `docs/agents/`, is committed).
+7. Do not open a PR. Tell the owner the branch is ready.
