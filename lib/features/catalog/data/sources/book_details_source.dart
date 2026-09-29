@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 
-import '../../../../core/network/api_config.dart';
 import '../../domain/entities/book_details.dart';
 import 'book_details_fixtures.dart';
+import 'book_fake_api.dart';
 
 /// Talks to `GET /books/:id/details` on the Go backend.
 ///
@@ -22,7 +22,7 @@ class BookDetailsSource {
   Future<BookDetails?> fetch(String bookId) async {
     try {
       final response = await _dio
-          .get<Map<String, dynamic>>('${ApiRoutes.books}/$bookId/details')
+          .get<Map<String, dynamic>>('${BookFakeApi.books}/$bookId/details')
           .timeout(budget);
       final data = response.data;
       return data == null ? null : BookDetails.fromJson(data);
