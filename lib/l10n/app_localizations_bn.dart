@@ -131,6 +131,40 @@ class AppL10nBn extends AppL10n {
   String get authStudentIdHint => '২২০০৪১১১৮';
 
   @override
+  String get authContinueAsGuest => 'অতিথি হিসেবে চালিয়ে যান';
+
+  @override
+  String get authInvalidEmail => 'একটি সঠিক ইমেইল ঠিকানা লিখুন।';
+
+  @override
+  String get authMissingPassword => 'আপনার পাসওয়ার্ড লিখুন।';
+
+  @override
+  String get authLogOut => 'লগ আউট';
+
+  @override
+  String get authGuestName => 'অতিথি';
+
+  @override
+  String get authGuestNote =>
+      'বই কিনতে, পুরোনো বই বিক্রি করতে এবং বাইটস পোস্ট করতে লগ ইন করুন।';
+
+  @override
+  String get authRoleReader => 'পাঠক';
+
+  @override
+  String get authRoleModerator => 'মডারেটর';
+
+  @override
+  String get authRoleCatalogManager => 'ক্যাটালগ ম্যানেজার';
+
+  @override
+  String get authRoleSupport => 'সাপোর্ট';
+
+  @override
+  String get authRoleSuperAdmin => 'অ্যাডমিন';
+
+  @override
   String get homeAyahOfTheDay => 'আজকের আয়াত';
 
   @override

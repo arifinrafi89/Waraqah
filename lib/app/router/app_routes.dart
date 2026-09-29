@@ -10,6 +10,10 @@ abstract final class AppRoutes {
   static const String profile = '/profile';
   static const String aiChat = '/ai-chat';
 
+  /// The admin area. Everything under this path is staff only
+  /// (see `RouteAccess`).
+  static const String admin = '/admin';
+
   /// Concrete location for one title's detail page.
   static String bookDetailFor(String id) => '/catalog/book/$id';
 }

@@ -9,6 +9,7 @@ abstract final class ApiConfig {
 }
 
 abstract final class ApiRoutes {
+  static const String authLogin = '/auth/login';
   static const String ayahOfTheDay = '/islamic/ayah-of-the-day';
   static const String books = '/books';
   static const String bites = '/bites';

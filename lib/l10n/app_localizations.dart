@@ -337,6 +337,72 @@ abstract class AppL10n {
   /// **'220041118'**
   String get authStudentIdHint;
 
+  /// No description provided for @authContinueAsGuest.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue as guest'**
+  String get authContinueAsGuest;
+
+  /// No description provided for @authInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email address.'**
+  String get authInvalidEmail;
+
+  /// No description provided for @authMissingPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your password.'**
+  String get authMissingPassword;
+
+  /// No description provided for @authLogOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Log out'**
+  String get authLogOut;
+
+  /// No description provided for @authGuestName.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest'**
+  String get authGuestName;
+
+  /// No description provided for @authGuestNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to buy books, sell used ones and post Bites.'**
+  String get authGuestNote;
+
+  /// No description provided for @authRoleReader.
+  ///
+  /// In en, this message translates to:
+  /// **'Reader'**
+  String get authRoleReader;
+
+  /// No description provided for @authRoleModerator.
+  ///
+  /// In en, this message translates to:
+  /// **'Moderator'**
+  String get authRoleModerator;
+
+  /// No description provided for @authRoleCatalogManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalog manager'**
+  String get authRoleCatalogManager;
+
+  /// No description provided for @authRoleSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Support'**
+  String get authRoleSupport;
+
+  /// No description provided for @authRoleSuperAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin'**
+  String get authRoleSuperAdmin;
+
   /// No description provided for @homeAyahOfTheDay.
   ///
   /// In en, this message translates to:

@@ -6,6 +6,8 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../core/widgets/segmented_selector.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../auth/presentation/providers/auth_providers.dart';
+import '../../../auth/presentation/widgets/session_actions.dart';
 import '../widgets/profile_header.dart';
 import '../widgets/settings_group.dart';
 
@@ -19,6 +21,7 @@ class ProfilePage extends ConsumerWidget {
     final l10n = AppL10n.of(context)!;
     final settings = ref.watch(settingsProvider);
     final settingsNotifier = ref.watch(settingsProvider.notifier);
+    final user = ref.watch(sessionProvider);
     return SafeArea(
       bottom: false,
       child: Column(
@@ -34,14 +37,16 @@ class ProfilePage extends ConsumerWidget {
               ),
               children: [
                 ProfileHeader(
-                  name: 'Farhan Shahriyar',
-                  campus: "CSE '22 · Islamic University of Technology",
+                  name: user?.name ?? l10n.authGuestName,
+                  campus: user?.email ?? l10n.authGuestNote,
                   stats: {
                     l10n.profileBooksRead: '14',
                     l10n.profileBitesPosted: '23',
                     l10n.profileListings: '3',
                   },
                 ),
+                const SizedBox(height: Insets.md),
+                const SessionActions(),
                 const SizedBox(height: Insets.xl),
                 SettingsGroup(
                   label: l10n.profileAppearance,
