@@ -96,8 +96,8 @@ entities or public providers — never its `data/` layer.
 ## Navigation
 
 Android, iOS and phone browsers get a bottom bar. Desktop apps and desktop
-browsers get a floating glass rail on the left: hover shows a label and
-explanation, and the mouse wheel over the rail moves one tab per notch.
+browsers get a full-height glass rail docked on the right edge: hover shows a
+label and explanation.
 
 ## Backend
 
