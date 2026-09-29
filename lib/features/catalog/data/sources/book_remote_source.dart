@@ -37,10 +37,13 @@ class BookRemoteSource {
     final lower = query.trim().toLowerCase();
     return BookFixtures.all.where((book) {
       final matchesCategory = category == null || book.category == category;
-      final matchesQuery =
-          lower.isEmpty ||
-          book.title.toLowerCase().contains(lower) ||
-          book.author.toLowerCase().contains(lower);
+      final searchableText = [
+        book.title,
+        book.author,
+        book.category ?? '',
+        ...book.tags,
+      ].join(' ').toLowerCase();
+      final matchesQuery = lower.isEmpty || searchableText.contains(lower);
       return matchesCategory && matchesQuery;
     }).toList();
   }

@@ -24,6 +24,11 @@ _ChatMessage _$ChatMessageFromJson(Map<String, dynamic> json) => _ChatMessage(
   role: $enumDecode(_$ChatRoleEnumMap, json['role']),
   text: json['text'] as String,
   recommendedBookId: json['recommendedBookId'] as String?,
+  recommendedBookIds:
+      (json['recommendedBookIds'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList() ??
+      const <String>[],
   quotes:
       (json['quotes'] as List<dynamic>?)
           ?.map((e) => VendorQuote.fromJson(e as Map<String, dynamic>))
@@ -37,6 +42,7 @@ Map<String, dynamic> _$ChatMessageToJson(_ChatMessage instance) =>
       'role': _$ChatRoleEnumMap[instance.role]!,
       'text': instance.text,
       'recommendedBookId': instance.recommendedBookId,
+      'recommendedBookIds': instance.recommendedBookIds,
       'quotes': instance.quotes,
     };
 

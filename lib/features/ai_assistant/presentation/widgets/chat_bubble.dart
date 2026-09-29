@@ -44,7 +44,10 @@ class ChatBubble extends StatelessWidget {
               color: isUser ? palette.accentInk : palette.text,
             ),
           ),
-          if (message.hasRecommendation)
+          if (message.recommendedBookIds.isNotEmpty)
+            for (final bookId in message.recommendedBookIds)
+              RecommendationCard(bookId: bookId),
+          if (message.recommendedBookIds.isEmpty && message.hasRecommendation)
             RecommendationCard(bookId: message.recommendedBookId!),
           if (message.quotes.isNotEmpty)
             VendorQuoteTable(quotes: message.quotes),
@@ -63,7 +66,10 @@ class ChatBubble extends StatelessWidget {
             : Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: Insets.sm,
-                children: [_avatar(palette), Flexible(child: bubble)],
+                children: [
+                  _avatar(palette),
+                  Flexible(child: bubble),
+                ],
               ),
       ),
     );
@@ -78,10 +84,6 @@ class ChatBubble extends StatelessWidget {
       color: palette.accent,
       borderRadius: BorderRadius.circular(Radii.sm),
     ),
-    child: Icon(
-      Icons.auto_awesome_rounded,
-      size: 13,
-      color: palette.accentInk,
-    ),
+    child: Icon(Icons.auto_awesome_rounded, size: 13, color: palette.accentInk),
   );
 }

@@ -10,5 +10,5 @@ abstract interface class AssistantRepository {
   Future<List<ChatMessage>> openConversation();
 
   /// Sends one user turn and returns the assistant's reply.
-  Future<ChatMessage> ask(String prompt);
+  Future<ChatMessage> ask(String prompt, List<ChatMessage> history);
 }
