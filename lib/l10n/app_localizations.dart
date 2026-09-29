@@ -361,6 +361,12 @@ abstract class AppL10n {
   /// **'Non-Beneficial'**
   String get homeNonBeneficial;
 
+  /// No description provided for @homeNonBeneficialNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Books in this list are curated by our admins. Whether a book benefits a reader often depends on their intention and grounding. Many classical mufassirun, for example, consulted the Torah and the Bible for added context in their tafsir. For the general reader, however, such books are not beneficial, and without due care they may even cause harm.'**
+  String get homeNonBeneficialNote;
+
   /// No description provided for @homeBookBites.
   ///
   /// In en, this message translates to:

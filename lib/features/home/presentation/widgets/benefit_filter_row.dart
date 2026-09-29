@@ -5,6 +5,7 @@ import '../../../../core/widgets/filter_chip_bar.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/benefit_filter.dart';
 import '../providers/home_providers.dart';
+import 'benefit_info_icon.dart';
 
 /// The Beneficial / Non-Beneficial curation pills that filter the home feed.
 class BenefitFilterRow extends ConsumerWidget {
@@ -20,6 +21,10 @@ class BenefitFilterRow extends ConsumerWidget {
       onSelected: (index) => ref
           .read(benefitFilterProvider.notifier)
           .select(BenefitFilter.values[index]),
+      trailingBuilder: (index) =>
+          BenefitFilter.values[index] == BenefitFilter.nonBeneficial
+          ? const BenefitInfoIcon()
+          : null,
     );
   }
 }

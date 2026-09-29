@@ -44,6 +44,7 @@
   "homeAllBooks": "All Books",
   "homeBeneficial": "Beneficial",
   "homeNonBeneficial": "Non-Beneficial",
+  "homeNonBeneficialNote": "Books in this list are curated by our admins. Whether a book benefits a reader often depends on their intention and grounding. Many classical mufassirun, for example, consulted the Torah and the Bible for added context in their tafsir. For the general reader, however, such books are not beneficial, and without due care they may even cause harm.",
   "homeBookBites": "Book-Bites",
   "homeBookBitesSub": "What readers are sharing",
   "homeNewBooks": "New Books",

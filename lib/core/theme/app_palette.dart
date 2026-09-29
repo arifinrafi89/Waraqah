@@ -21,6 +21,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     required this.accentSoft,
     required this.chips,
     required this.scrim,
+    required this.danger,
   });
 
   final Color bg;
@@ -35,6 +36,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
   final Color accentSoft;
   final List<Color> chips;
   final Color scrim;
+  final Color danger;
 
   /// `forest` — the dark Waraqah identity.
   static const dark = AppPalette(
@@ -55,6 +57,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
       Color(0xFF6FA8DC),
     ],
     scrim: Color(0xB80A0E08),
+    danger: Color(0xFFE05B4E),
   );
 
   /// `forest-light` — same hue family, tuned for daylight.
@@ -76,6 +79,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
       Color(0xFF3E6EA0),
     ],
     scrim: Color(0x9E141E12),
+    danger: Color(0xFFC94A3B),
   );
 
   /// Stable per-item accent so a book keeps the same cover colour every build.
@@ -95,6 +99,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     accentSoft: accentSoft,
     chips: chips,
     scrim: scrim,
+    danger: danger,
   );
 
   @override
