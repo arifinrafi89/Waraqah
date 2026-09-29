@@ -35,7 +35,7 @@ class P2pMarketplaceGrid extends StatelessWidget {
           maxCrossAxisExtent: 180,
           mainAxisSpacing: 12,
           crossAxisSpacing: 12,
-          childAspectRatio: 0.7,
+          childAspectRatio: 0.52,
         ),
         itemBuilder: (_, index) => P2pMarketplaceCard(listing: visible[index]),
       ),

@@ -22,7 +22,9 @@ class P2pMarketplaceCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          P2pMarketplaceCover(listing: listing),
+          // Fills whatever height the details leave, so the tile never
+          // overflows at any width or text scale.
+          Expanded(child: P2pMarketplaceCover(listing: listing)),
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 12, 10, 12),
             child: Column(
@@ -42,22 +44,21 @@ class P2pMarketplaceCard extends StatelessWidget {
                       ?.copyWith(color: palette.textFaint),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Expanded(
-                      child: P2pMarketplacePriceBlock(
-                        price: Bdt.format(listing.priceBdt),
-                        available: listing.availabilityLabel,
-                        color: listing.isAvailable
-                            ? palette.accent
-                            : palette.textFaint,
-                      ),
-                    ),
-                    P2pMarketplaceMessageButton(
-                      color: palette.accentSoft,
-                      accent: palette.accent,
-                    ),
-                  ],
+                P2pMarketplacePriceBlock(
+                  price: Bdt.format(listing.priceBdt),
+                  available: listing.availabilityLabel,
+                  color: listing.isAvailable
+                      ? palette.accent
+                      : palette.textFaint,
+                ),
+                const SizedBox(height: 8),
+                // Own line: beside the price it overflowed narrow tiles.
+                SizedBox(
+                  width: double.infinity,
+                  child: P2pMarketplaceMessageButton(
+                    color: palette.accentSoft,
+                    accent: palette.accent,
+                  ),
                 ),
               ],
             ),

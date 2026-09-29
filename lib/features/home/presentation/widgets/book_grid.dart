@@ -10,7 +10,7 @@ import 'book_grid_card.dart';
 /// Max cross-axis extent of a [BookGridCard] tile: phone gets 2 columns,
 /// desktop 5-6. Tune by eye.
 const double _maxTileExtent = 180;
-const double _tileAspectRatio = 0.62;
+const double _tileAspectRatio = 0.55;
 
 const _gridDelegate = SliverGridDelegateWithMaxCrossAxisExtent(
   maxCrossAxisExtent: _maxTileExtent,
@@ -60,7 +60,9 @@ class BookGridSkeleton extends StatelessWidget {
         clip: true,
         child: Column(
           children: [
-            const ShimmerBox(aspectRatio: 3 / 4, radius: 0),
+            const Expanded(
+              child: ShimmerBox(height: double.infinity, radius: 0),
+            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(11, 10, 11, 12),
               child: Column(

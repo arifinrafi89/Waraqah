@@ -35,13 +35,17 @@ class HorizontalStrip extends StatelessWidget {
           physics: physics,
           padding: const EdgeInsets.symmetric(horizontal: Insets.screen),
           clipBehavior: Clip.none,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 10,
-            children: [
-              for (final child in children)
-                SizedBox(width: width, child: child),
-            ],
+          // Cards size to their content; the tallest sets the row height
+          // and the rest stretch to match.
+          child: IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              spacing: 10,
+              children: [
+                for (final child in children)
+                  SizedBox(width: width, child: child),
+              ],
+            ),
           ),
         );
       },

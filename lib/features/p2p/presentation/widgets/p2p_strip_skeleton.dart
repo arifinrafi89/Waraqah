@@ -31,7 +31,9 @@ class _Card extends StatelessWidget {
         clip: true,
         child: Column(
           children: [
-            const ShimmerBox(aspectRatio: 1, radius: 0),
+            const Expanded(
+              child: ShimmerBox(height: double.infinity, radius: 0),
+            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 9, 10, 11),
               child: Column(

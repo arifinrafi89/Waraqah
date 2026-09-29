@@ -17,11 +17,12 @@ class P2pMarketplaceCover extends StatelessWidget {
     };
 
     return Stack(
+      fit: StackFit.expand,
       children: [
         CoverArt(
           title: listing.title,
           seed: listing.coverSeed,
-          aspectRatio: 0.9,
+          aspectRatio: null,
           radius: 14,
           centerTitle: true,
         ),

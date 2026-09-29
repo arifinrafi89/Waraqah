@@ -23,30 +23,23 @@ class _Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 0.72,
-      child: SurfaceCard(
-        padding: const EdgeInsets.all(Insets.md),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: Insets.sm,
-          children: const [
-            Row(
-              spacing: Insets.sm,
-              children: [
-                ShimmerBox(
-                  width: Sizes.avatar,
-                  height: Sizes.avatar,
-                  radius: 99,
-                ),
-                Expanded(child: ShimmerBox(height: 11)),
-              ],
-            ),
-            ShimmerBox(height: 10),
-            ShimmerBox(height: 10, width: 130),
-            ShimmerBox(height: 20, width: 90, radius: Radii.sm),
-          ],
-        ),
+    return SurfaceCard(
+      padding: const EdgeInsets.all(Insets.md),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: Insets.sm,
+        children: const [
+          Row(
+            spacing: Insets.sm,
+            children: [
+              ShimmerBox(width: Sizes.avatar, height: Sizes.avatar, radius: 99),
+              Expanded(child: ShimmerBox(height: 11)),
+            ],
+          ),
+          ShimmerBox(height: 10),
+          ShimmerBox(height: 10, width: 130),
+          ShimmerBox(height: 20, width: 90, radius: Radii.sm),
+        ],
       ),
     );
   }

@@ -9,7 +9,7 @@ import '../../../../core/widgets/press_scale.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../core/widgets/tags.dart';
 
-/// A tile in the Home "New Books" grid: 3:4 cover, author, price and the
+/// A tile in the Home "New Books" grid: cover, author, price and the
 /// cheapest vendor.
 class BookGridCard extends StatelessWidget {
   const BookGridCard({
@@ -32,10 +32,15 @@ class BookGridCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CoverArt(
-              title: book.coverLabel,
-              seed: book.coverSeed,
-              badge: book.isBestValue ? BestBadge(label: bestLabel) : null,
+            // The cover takes whatever height the text leaves, so the tile
+            // never overflows at any width or text scale.
+            Expanded(
+              child: CoverArt(
+                title: book.coverLabel,
+                seed: book.coverSeed,
+                aspectRatio: null,
+                badge: book.isBestValue ? BestBadge(label: bestLabel) : null,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(11, 10, 11, 12),
@@ -49,8 +54,8 @@ class BookGridCard extends StatelessWidget {
                     style: AppFonts.ui(size: 11, color: palette.textFaint),
                   ),
                   const SizedBox(height: 6),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.end,
                     spacing: 6,
                     children: [
                       Text(

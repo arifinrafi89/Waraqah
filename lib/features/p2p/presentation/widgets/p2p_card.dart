@@ -25,12 +25,14 @@ class P2pCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CoverArt(
-                title: listing.title,
-                seed: listing.coverSeed,
-                aspectRatio: 1,
-                centerTitle: true,
-                cornerTag: _ConditionBadge(label: listing.conditionLabel),
+              Expanded(
+                child: CoverArt(
+                  title: listing.title,
+                  seed: listing.coverSeed,
+                  aspectRatio: null,
+                  centerTitle: true,
+                  cornerTag: _ConditionBadge(label: listing.conditionLabel),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 9, 10, 11),
