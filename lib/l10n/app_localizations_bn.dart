@@ -228,6 +228,73 @@ class AppL10nBn extends AppL10n {
   String get catalogCategoryBusiness => 'ব্যবসা';
 
   @override
+  String get bookDetailComparePrices => 'দাম তুলনা';
+
+  @override
+  String bookDetailComparePricesSub(int count) {
+    return '$countটি বিক্রেতা · সবচেয়ে কম দাম আগে';
+  }
+
+  @override
+  String get bookDetailLowest => 'সর্বনিম্ন';
+
+  @override
+  String bookDetailSave(String amount) {
+    return 'সর্বোচ্চ দামের চেয়ে $amount সাশ্রয়';
+  }
+
+  @override
+  String bookDetailDelivery(int days) {
+    return '$days দিনে ডেলিভারি';
+  }
+
+  @override
+  String get bookDetailInstant => 'সাথে সাথে ডাউনলোড';
+
+  @override
+  String get bookDetailOutOfStock => 'স্টকে নেই';
+
+  @override
+  String get bookFormatPaperback => 'পেপারব্যাক';
+
+  @override
+  String get bookFormatHardcover => 'হার্ডকভার';
+
+  @override
+  String get bookFormatEbook => 'ই-বুক';
+
+  @override
+  String get bookDetailAbout => 'বইটি সম্পর্কে';
+
+  @override
+  String bookDetailPages(int count) {
+    return '$count পৃষ্ঠা';
+  }
+
+  @override
+  String get bookDetailReviews => 'রিভিউ';
+
+  @override
+  String bookDetailReviewsSub(int count) {
+    return '$countটি পাঠক রিভিউ';
+  }
+
+  @override
+  String get bookDetailNoReviews => 'এই বইটির এখনো কোনো রিভিউ নেই।';
+
+  @override
+  String get bookDetailBestPrice => 'সেরা দাম';
+
+  @override
+  String get bookDetailAddToCart => 'কার্টে যোগ করুন';
+
+  @override
+  String get bookDetailCartSoon => 'কার্ট ও চেকআউট পরবর্তী ধাপে আসছে।';
+
+  @override
+  String get bookDetailNotFound => 'বইটি খুঁজে পাওয়া যায়নি।';
+
+  @override
   String get aiTitle => 'রিডিং অ্যাসিস্ট্যান্ট';
 
   @override

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/ai_assistant/presentation/pages/ai_chat_page.dart';
 import '../../features/auth/presentation/pages/auth_page.dart';
 import '../../features/bites/presentation/pages/bites_page.dart';
+import '../../features/catalog/presentation/pages/book_detail_page.dart';
 import '../../features/catalog/presentation/pages/catalog_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/p2p/presentation/pages/p2p_add_listing_page.dart';
@@ -16,7 +17,8 @@ import 'app_routes.dart';
 ///
 /// Auth sits outside the shell; the five tabs live inside a
 /// [StatefulShellRoute] so each keeps its own navigation stack and scroll
-/// position. The AI chat pushes over the shell as a full-screen route.
+/// position. The AI chat, add-listing and book detail pages push over the
+/// shell as full-screen routes.
 abstract final class AppRouter {
   static GoRouter create({required bool startSignedIn}) => GoRouter(
     initialLocation: startSignedIn ? AppRoutes.home : AppRoutes.login,
@@ -35,6 +37,12 @@ abstract final class AppRouter {
         path: AppRoutes.p2pAddListing,
         name: RouteNames.p2pAddListing,
         builder: (_, _) => const P2pAddListingPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.bookDetail,
+        name: RouteNames.bookDetail,
+        builder: (_, state) =>
+            BookDetailPage(bookId: state.pathParameters['id']!),
       ),
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),

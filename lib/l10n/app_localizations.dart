@@ -517,6 +517,120 @@ abstract class AppL10n {
   /// **'Business'**
   String get catalogCategoryBusiness;
 
+  /// No description provided for @bookDetailComparePrices.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare prices'**
+  String get bookDetailComparePrices;
+
+  /// No description provided for @bookDetailComparePricesSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 vendor} other{{count} vendors}} · cheapest first'**
+  String bookDetailComparePricesSub(int count);
+
+  /// No description provided for @bookDetailLowest.
+  ///
+  /// In en, this message translates to:
+  /// **'Lowest'**
+  String get bookDetailLowest;
+
+  /// No description provided for @bookDetailSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save {amount} vs the highest price'**
+  String bookDetailSave(String amount);
+
+  /// No description provided for @bookDetailDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{1-day delivery} other{{days}-day delivery}}'**
+  String bookDetailDelivery(int days);
+
+  /// No description provided for @bookDetailInstant.
+  ///
+  /// In en, this message translates to:
+  /// **'Instant download'**
+  String get bookDetailInstant;
+
+  /// No description provided for @bookDetailOutOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of stock'**
+  String get bookDetailOutOfStock;
+
+  /// No description provided for @bookFormatPaperback.
+  ///
+  /// In en, this message translates to:
+  /// **'Paperback'**
+  String get bookFormatPaperback;
+
+  /// No description provided for @bookFormatHardcover.
+  ///
+  /// In en, this message translates to:
+  /// **'Hardcover'**
+  String get bookFormatHardcover;
+
+  /// No description provided for @bookFormatEbook.
+  ///
+  /// In en, this message translates to:
+  /// **'eBook'**
+  String get bookFormatEbook;
+
+  /// No description provided for @bookDetailAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About this book'**
+  String get bookDetailAbout;
+
+  /// No description provided for @bookDetailPages.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} pages'**
+  String bookDetailPages(int count);
+
+  /// No description provided for @bookDetailReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get bookDetailReviews;
+
+  /// No description provided for @bookDetailReviewsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No reviews yet} =1{1 reader review} other{{count} reader reviews}}'**
+  String bookDetailReviewsSub(int count);
+
+  /// No description provided for @bookDetailNoReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Nobody has reviewed this book yet.'**
+  String get bookDetailNoReviews;
+
+  /// No description provided for @bookDetailBestPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Best price'**
+  String get bookDetailBestPrice;
+
+  /// No description provided for @bookDetailAddToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get bookDetailAddToCart;
+
+  /// No description provided for @bookDetailCartSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart and checkout arrive in the next phase.'**
+  String get bookDetailCartSoon;
+
+  /// No description provided for @bookDetailNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find this book.'**
+  String get bookDetailNotFound;
+
   /// No description provided for @aiTitle.
   ///
   /// In en, this message translates to:

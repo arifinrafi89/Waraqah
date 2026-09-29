@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../app/router/app_routes.dart';
 import '../../../../core/models/book.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_palette.dart';
@@ -12,6 +14,7 @@ import '../../../../core/widgets/tags.dart';
 import 'rating_stars.dart';
 
 /// One horizontal catalog row: thumbnail, title block, tags, rating, price.
+/// Tapping it opens the book's detail page.
 class BookListRow extends StatelessWidget {
   const BookListRow({super.key, required this.book, required this.vendorLine});
 
@@ -22,23 +25,32 @@ class BookListRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final palette = context.palette;
     return SurfaceCard(
-      padding: const EdgeInsets.all(10),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: Insets.md,
-        children: [
-          SizedBox(
-            width: Sizes.listThumbWidth,
-            child: CoverArt(
-              title: book.coverLabel,
-              seed: book.coverSeed,
-              aspectRatio: Sizes.listThumbWidth / Sizes.listThumbHeight,
-              fontSize: 8.5,
-              radius: 10,
+      clip: true,
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: () => context.push(AppRoutes.bookDetailFor(book.id)),
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: Insets.md,
+              children: [
+                SizedBox(
+                  width: Sizes.listThumbWidth,
+                  child: CoverArt(
+                    title: book.coverLabel,
+                    seed: book.coverSeed,
+                    aspectRatio: Sizes.listThumbWidth / Sizes.listThumbHeight,
+                    fontSize: 8.5,
+                    radius: 10,
+                  ),
+                ),
+                Expanded(child: _body(context, palette)),
+              ],
             ),
           ),
-          Expanded(child: _body(context, palette)),
-        ],
+        ),
       ),
     );
   }
