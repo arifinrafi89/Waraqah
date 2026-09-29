@@ -12,25 +12,24 @@ import 'book_grid_card.dart';
 const double _maxTileExtent = 180;
 const double _tileAspectRatio = 0.62;
 
-/// Responsive grid of [BookGridCard]s, sized by its children so it can nest
-/// inside the home scroll view.
-class BookGrid extends StatelessWidget {
-  const BookGrid({super.key, required this.books});
+const _gridDelegate = SliverGridDelegateWithMaxCrossAxisExtent(
+  maxCrossAxisExtent: _maxTileExtent,
+  mainAxisSpacing: Insets.md,
+  crossAxisSpacing: Insets.md,
+  childAspectRatio: _tileAspectRatio,
+);
+
+/// Responsive sliver grid of [BookGridCard]s.
+class BookSliverGrid extends StatelessWidget {
+  const BookSliverGrid({super.key, required this.books});
 
   final List<Book> books;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppL10n.of(context)!;
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: _maxTileExtent,
-        mainAxisSpacing: Insets.md,
-        crossAxisSpacing: Insets.md,
-        childAspectRatio: _tileAspectRatio,
-      ),
+    return SliverGrid.builder(
+      gridDelegate: _gridDelegate,
       itemCount: books.length,
       itemBuilder: (_, index) {
         final book = books[index];
@@ -55,12 +54,7 @@ class BookGridSkeleton extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: _maxTileExtent,
-        mainAxisSpacing: Insets.md,
-        crossAxisSpacing: Insets.md,
-        childAspectRatio: _tileAspectRatio,
-      ),
+      gridDelegate: _gridDelegate,
       itemCount: tiles,
       itemBuilder: (_, _) => SurfaceCard(
         clip: true,

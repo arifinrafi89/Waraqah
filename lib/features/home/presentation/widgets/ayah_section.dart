@@ -17,7 +17,12 @@ class AyahSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppL10n.of(context)!;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(Insets.screen, 4, Insets.screen, 0),
+      padding: const EdgeInsets.fromLTRB(
+        Insets.screen,
+        Insets.lg,
+        Insets.screen,
+        0,
+      ),
       child: AsyncView(
         value: ref.watch(ayahOfTheDayProvider),
         errorLabel: l10n.commonSomethingWentWrong,
