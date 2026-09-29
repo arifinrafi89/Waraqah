@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../app/router/app_routes.dart';
+import '../../../p2p/p2p_routes.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../p2p/presentation/providers/p2p_providers.dart';
@@ -22,7 +22,7 @@ class NearbyP2pSection extends ConsumerWidget {
       title: l10n.homeFromStudents,
       subtitle: l10n.homeFromStudentsSub,
       actionLabel: l10n.commonSeeAll,
-      onAction: () => context.go(AppRoutes.p2p),
+      onAction: () => context.go(P2pRoutes.p2p),
       child: AsyncView(
         value: ref.watch(nearbyListingsProvider),
         errorLabel: l10n.commonSomethingWentWrong,

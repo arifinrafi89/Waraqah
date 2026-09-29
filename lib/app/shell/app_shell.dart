@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/theme/app_dimens.dart';
-import '../router/app_routes.dart';
+import '../../features/ai_assistant/ai_assistant_routes.dart';
+import '../../features/p2p/p2p_routes.dart';
+import '../../features/profile/profile_routes.dart';
+import '../router/shell_tabs.dart';
 import 'ai_fab.dart';
 import 'glass_nav_bar.dart';
 import 'glass_nav_rail.dart';
@@ -27,15 +30,15 @@ class AppShell extends StatelessWidget {
             GlassNavRail(
               currentIndex: shell.currentIndex,
               onSelected: _goBranch,
-              onOpenAi: () => context.pushNamed(RouteNames.aiChat),
+              onOpenAi: () => context.push(AiAssistantRoutes.aiChat),
             ),
           ],
         ),
       );
     }
     final isProfile =
-        shell.currentIndex == ShellTabs.paths.indexOf(AppRoutes.profile);
-    final isP2p = shell.currentIndex == ShellTabs.paths.indexOf(AppRoutes.p2p);
+        shell.currentIndex == ShellTabs.paths.indexOf(ProfileRoutes.profile);
+    final isP2p = shell.currentIndex == ShellTabs.paths.indexOf(P2pRoutes.p2p);
     final showFab = !isProfile && !isP2p;
     return Scaffold(
       body: Stack(
