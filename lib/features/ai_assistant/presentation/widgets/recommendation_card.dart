@@ -66,7 +66,7 @@ class RecommendationCard extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 2),
                     child: Text(
-                      '${book.author} · ${Bdt.format(book.priceBdt)}',
+                      '${book.author} · ${Bdt.format(book.fromPriceBdt)}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppFonts.ui(size: 10, color: palette.textFaint),

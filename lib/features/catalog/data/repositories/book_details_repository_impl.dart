@@ -2,7 +2,6 @@ import 'dart:async';
 
 import '../../../../core/cache/ttl_cache.dart';
 import '../../domain/entities/book_details.dart';
-import '../../domain/entities/vendor_offer.dart';
 import '../../domain/repositories/book_details_repository.dart';
 import '../../domain/repositories/book_repository.dart';
 import '../sources/book_details_source.dart';
@@ -27,19 +26,9 @@ class BookDetailsRepositoryImpl implements BookDetailsRepository {
       _source.fetch(bookId),
     ).wait;
     if (book == null) return null;
-    // No seed or API data yet: show the one offer we actually know about
-    // rather than inventing competitor prices.
-    final details =
-        fetched ??
-        BookDetails(
-          bookId: bookId,
-          offers: [VendorOffer(vendor: book.vendor, priceBdt: book.priceBdt)],
-        );
-    final sorted = details.copyWith(
-      offers: [...details.offers]
-        ..sort((a, b) => a.priceBdt.compareTo(b.priceBdt)),
-    );
-    _cache.write(bookId, sorted);
-    return sorted;
+    // No seed or API data yet: an empty details record still shows the book.
+    final details = fetched ?? BookDetails(bookId: bookId);
+    _cache.write(bookId, details);
+    return details;
   }
 }

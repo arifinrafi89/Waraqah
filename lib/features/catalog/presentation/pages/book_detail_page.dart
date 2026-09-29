@@ -8,17 +8,15 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../domain/entities/book_details.dart';
 import '../providers/book_detail_providers.dart';
 import '../widgets/add_to_cart_bar.dart';
 import '../widgets/book_about_section.dart';
 import '../widgets/book_detail_header.dart';
 import '../widgets/book_detail_skeleton.dart';
 import '../widgets/book_reviews_section.dart';
-import '../widgets/vendor_offer_section.dart';
 
-/// `/catalog/book/:id` — one title with its cross-vendor prices, summary and
-/// reader reviews. Opened over the shell, like the AI chat, so the add-to-cart
+/// `/catalog/book/:id` — one title with its From-price, summary and reader
+/// reviews. Opened over the shell, like the AI chat, so the add-to-cart
 /// bar is not hidden behind the bottom nav.
 class BookDetailPage extends ConsumerWidget {
   const BookDetailPage({super.key, required this.bookId});
@@ -31,9 +29,7 @@ class BookDetailPage extends ConsumerWidget {
     final detail = ref.watch(bookDetailProvider(bookId));
     final data = detail.value;
     return Scaffold(
-      bottomNavigationBar: data == null
-          ? null
-          : AddToCartBar(offer: data.details.bestOffer),
+      bottomNavigationBar: data == null ? null : AddToCartBar(book: data.book),
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -89,9 +85,7 @@ class _Body extends StatelessWidget {
       children: [
         BookDetailHeader(book: data.book),
         const SizedBox(height: Insets.xl + 4),
-        VendorOfferSection(details: data.details),
-        const SizedBox(height: Insets.xl + 4),
-        BookAboutSection(details: data.details),
+        BookAboutSection(book: data.book, details: data.details),
         BookReviewsSection(reviews: data.details.reviews),
       ],
     );

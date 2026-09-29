@@ -10,7 +10,7 @@ import '../providers/home_providers.dart';
 import 'book_grid.dart';
 import 'home_section.dart';
 
-/// New arrivals, cheapest cross-vendor price first, narrowed by the Islamic
+/// New arrivals, cheapest From-price first, narrowed by the Islamic
 /// curation pills above it. A sliver: header, then the book grid.
 class NewBooksSection extends ConsumerWidget {
   const NewBooksSection({super.key});

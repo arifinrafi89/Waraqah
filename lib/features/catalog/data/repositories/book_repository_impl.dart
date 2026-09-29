@@ -33,11 +33,11 @@ class BookRepositoryImpl implements BookRepository {
     return books.where((book) => book.id == id).firstOrNull;
   }
 
-  /// Project rule: cheapest first, ties broken by the better review score.
+  /// Project rule: cheapest From-price first, ties broken by the better review score.
   List<Book> _sortByValue(List<Book> books) {
     final sorted = [...books];
     sorted.sort((a, b) {
-      final byPrice = a.priceBdt.compareTo(b.priceBdt);
+      final byPrice = a.fromPriceBdt.compareTo(b.fromPriceBdt);
       return byPrice != 0 ? byPrice : b.rating.compareTo(a.rating);
     });
     return sorted;

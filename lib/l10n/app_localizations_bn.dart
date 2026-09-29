@@ -34,7 +34,7 @@ class AppL10nBn extends AppL10n {
   String get navHomeHint => 'হোম: আজকের আয়াত, নতুন বই ও কাছের বইয়ের লেনদেন';
 
   @override
-  String get navCatalogHint => 'ক্যাটালগ: সব বিক্রেতার নতুন বই ঘুরে দেখুন';
+  String get navCatalogHint => 'ক্যাটালগ: নতুন বই ঘুরে দেখুন';
 
   @override
   String get navP2pHint => 'P2P: শিক্ষার্থীদের সাথে পুরোনো বই কেনাবেচা করুন';
@@ -156,7 +156,7 @@ class AppL10nBn extends AppL10n {
   String get homeNewBooks => 'নতুন বই';
 
   @override
-  String get homeNewBooksSub => 'সব বিক্রেতার মধ্যে সবচেয়ে কম দাম';
+  String get homeNewBooksSub => 'সবচেয়ে কম দাম আগে';
 
   @override
   String get homeFromStudents => 'আপনার কাছের শিক্ষার্থীদের থেকে';
@@ -174,12 +174,6 @@ class AppL10nBn extends AppL10n {
   String get commonFilter => 'ফিল্টার';
 
   @override
-  String get commonBest => 'সেরা';
-
-  @override
-  String get commonLowest => 'সর্বনিম্ন';
-
-  @override
   String get commonRetry => 'আবার চেষ্টা করুন';
 
   @override
@@ -190,7 +184,7 @@ class AppL10nBn extends AppL10n {
 
   @override
   String catalogSubtitle(String count) {
-    return '$count বই · সব বিক্রেতা';
+    return '$count বই';
   }
 
   @override
@@ -203,11 +197,6 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get catalogSortPriceAsc => 'দাম: কম–বেশি';
-
-  @override
-  String catalogVendorCompare(String vendor, int count) {
-    return '$vendor · $count বিক্রেতার তুলনায়';
-  }
 
   @override
   String get catalogCategoryAll => 'সব';
@@ -228,33 +217,6 @@ class AppL10nBn extends AppL10n {
   String get catalogCategoryBusiness => 'ব্যবসা';
 
   @override
-  String get bookDetailComparePrices => 'দাম তুলনা';
-
-  @override
-  String bookDetailComparePricesSub(int count) {
-    return '$countটি বিক্রেতা · সবচেয়ে কম দাম আগে';
-  }
-
-  @override
-  String get bookDetailLowest => 'সর্বনিম্ন';
-
-  @override
-  String bookDetailSave(String amount) {
-    return 'সর্বোচ্চ দামের চেয়ে $amount সাশ্রয়';
-  }
-
-  @override
-  String bookDetailDelivery(int days) {
-    return '$days দিনে ডেলিভারি';
-  }
-
-  @override
-  String get bookDetailInstant => 'সাথে সাথে ডাউনলোড';
-
-  @override
-  String get bookDetailOutOfStock => 'স্টকে নেই';
-
-  @override
   String get bookFormatPaperback => 'পেপারব্যাক';
 
   @override
@@ -262,6 +224,24 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get bookFormatEbook => 'ই-বুক';
+
+  @override
+  String get stockInStock => 'স্টকে আছে';
+
+  @override
+  String get stockPreorder => 'প্রি-অর্ডার';
+
+  @override
+  String get stockOutOfStock => 'স্টকে নেই';
+
+  @override
+  String get bookLanguageBangla => 'বাংলা';
+
+  @override
+  String get bookLanguageEnglish => 'ইংরেজি';
+
+  @override
+  String get bookLanguageArabic => 'আরবি';
 
   @override
   String get bookDetailAbout => 'বইটি সম্পর্কে';
@@ -283,7 +263,7 @@ class AppL10nBn extends AppL10n {
   String get bookDetailNoReviews => 'এই বইটির এখনো কোনো রিভিউ নেই।';
 
   @override
-  String get bookDetailBestPrice => 'সেরা দাম';
+  String get bookDetailBestPrice => 'শুরু দাম';
 
   @override
   String get bookDetailAddToCart => 'কার্টে যোগ করুন';
