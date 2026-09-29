@@ -25,23 +25,27 @@ Book _book(List<Edition> editions) => Book(
   id: 'b',
   title: 'T',
   author: 'A',
-  priceBdt: 1,
-  vendor: 'V',
+  category: 'C',
+  section: Section.academic,
   originalLanguage: BookLanguage.english,
   editions: editions,
 );
 
 void main() {
+  test('a Book with no Editions fails the assert', () {
+    expect(() => _book([]), throwsAssertionError);
+  });
+
   group('from-edition', () {
     test('skips out-of-stock Editions', () {
       final book = _book([_ed('a', 100, stock: 0), _ed('b', 300)]);
-      expect(book.fromEdition?.id, 'b');
+      expect(book.fromEdition.id, 'b');
       expect(book.fromPriceBdt, 300);
     });
 
     test('falls back to the cheapest when all are out of stock', () {
       final book = _book([_ed('a', 200, stock: 0), _ed('b', 150, stock: 0)]);
-      expect(book.fromEdition?.id, 'b');
+      expect(book.fromEdition.id, 'b');
     });
 
     test('counts a Pre-order as available', () {
@@ -50,7 +54,7 @@ void main() {
         _ed('b', 250, stock: 0, preorder: true),
         _ed('c', 400),
       ]);
-      expect(book.fromEdition?.id, 'b');
+      expect(book.fromEdition.id, 'b');
     });
 
     test('discount follows the from-edition List price', () {

@@ -3,15 +3,11 @@ import '../../../../../core/models/edition.dart';
 
 /// Seed data for classical scholarship added to the Islamic shelf.
 abstract final class IslamicScholarsShelf {
-  static const List<Book> books = [
+  static final List<Book> books = [
     Book(
       id: 'bk-tafsir-ibnkathir',
       title: 'Tafsir Ibn Kathir',
       author: 'Ibn Kathir',
-      priceBdt: 950,
-      originalPriceBdt: 1100,
-      vendor: 'Wafilife',
-      vendorCount: 4,
       rating: 4.8,
       tags: ['Islamic Studies', 'Tafsir'],
       category: 'Islamic Studies',
@@ -42,9 +38,6 @@ abstract final class IslamicScholarsShelf {
       title: 'Al-Bidayah wan-Nihayah',
       shortTitle: 'Al-Bidayah',
       author: 'Ibn Kathir',
-      priceBdt: 1400,
-      vendor: 'Wafilife',
-      vendorCount: 2,
       rating: 4.7,
       tags: ['Islamic Studies', 'History'],
       category: 'Islamic Studies',
@@ -67,10 +60,6 @@ abstract final class IslamicScholarsShelf {
       id: 'bk-bukhari',
       title: 'Sahih al-Bukhari',
       author: 'Imam al-Bukhari',
-      priceBdt: 1200,
-      originalPriceBdt: 1350,
-      vendor: 'Boi Bazar',
-      vendorCount: 5,
       rating: 4.9,
       tags: ['Islamic Studies', 'Hadith'],
       category: 'Islamic Studies',

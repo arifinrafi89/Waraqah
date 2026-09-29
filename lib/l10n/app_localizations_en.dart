@@ -34,7 +34,7 @@ class AppL10nEn extends AppL10n {
   String get navHomeHint => 'Home: today\'s ayah, new books and nearby swaps';
 
   @override
-  String get navCatalogHint => 'Catalog: browse new books from every vendor';
+  String get navCatalogHint => 'Catalog: browse new books';
 
   @override
   String get navP2pHint => 'P2P: buy and sell second-hand books with students';
@@ -158,7 +158,7 @@ class AppL10nEn extends AppL10n {
   String get homeNewBooks => 'New Books';
 
   @override
-  String get homeNewBooksSub => 'Cheapest price across vendors';
+  String get homeNewBooksSub => 'Cheapest prices first';
 
   @override
   String get homeFromStudents => 'From Students Near You';
@@ -186,7 +186,7 @@ class AppL10nEn extends AppL10n {
 
   @override
   String catalogSubtitle(String count) {
-    return '$count books · cross-vendor';
+    return '$count books';
   }
 
   @override

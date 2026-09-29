@@ -80,10 +80,7 @@ void main() {
         tester.getCenter(find.byIcon(Icons.menu_book_outlined)),
       );
       await tester.pump(const Duration(seconds: 2));
-      expect(
-        find.text('Catalog: browse new books from every vendor'),
-        findsOneWidget,
-      );
+      expect(find.text('Catalog: browse new books'), findsOneWidget);
     },
   );
 }

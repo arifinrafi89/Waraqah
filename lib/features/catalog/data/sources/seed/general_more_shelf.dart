@@ -3,15 +3,12 @@ import '../../../../../core/models/edition.dart';
 
 /// Seed data for more academic and business titles.
 abstract final class GeneralMoreShelf {
-  static const List<Book> books = [
+  static final List<Book> books = [
     Book(
       id: 'bk-calculus',
       title: 'Calculus: Early Transcendentals',
       shortTitle: 'Calculus',
       author: 'James Stewart',
-      priceBdt: 1750,
-      vendor: 'Rokomari',
-      vendorCount: 2,
       rating: 4.2,
       tags: ['Academic'],
       category: 'Mathematics',
@@ -40,9 +37,6 @@ abstract final class GeneralMoreShelf {
       id: 'bk-zero',
       title: 'Zero to One',
       author: 'Peter Thiel',
-      priceBdt: 520,
-      vendor: 'Rokomari',
-      vendorCount: 3,
       rating: 4.4,
       tags: ['Business'],
       category: 'Business',

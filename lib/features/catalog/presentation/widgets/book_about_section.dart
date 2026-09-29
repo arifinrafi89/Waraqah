@@ -26,12 +26,11 @@ class BookAboutSection extends StatelessWidget {
     final l10n = AppL10n.of(context)!;
     final facts = [
       if (details.pages != null) l10n.bookDetailPages(details.pages!),
-      if (book.originalLanguage != null)
-        switch (book.originalLanguage!) {
-          BookLanguage.bangla => l10n.bookLanguageBangla,
-          BookLanguage.english => l10n.bookLanguageEnglish,
-          BookLanguage.arabic => l10n.bookLanguageArabic,
-        },
+      switch (book.originalLanguage) {
+        BookLanguage.bangla => l10n.bookLanguageBangla,
+        BookLanguage.english => l10n.bookLanguageEnglish,
+        BookLanguage.arabic => l10n.bookLanguageArabic,
+      },
       ?details.publisher,
     ];
     if (details.description == null && facts.isEmpty) {

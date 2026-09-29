@@ -17,7 +17,10 @@ class _FakeBookRepository implements BookRepository {
   Future<List<Book>> fetchNewArrivals() async => books.take(4).toList();
 
   @override
-  Future<List<Book>> searchCatalog({String? category, String query = ''}) async {
+  Future<List<Book>> searchCatalog({
+    String? category,
+    String query = '',
+  }) async {
     final sorted = [...books];
     sorted.sort((a, b) {
       final byPrice = a.fromPriceBdt.compareTo(b.fromPriceBdt);
@@ -31,13 +34,19 @@ class _FakeBookRepository implements BookRepository {
       books.where((b) => b.id == id).firstOrNull;
 }
 
-Book _book(String id, {required bool beneficial, required int price, double rating = 4.5}) {
+Book _book(
+  String id, {
+  required bool beneficial,
+  required int price,
+  double rating = 4.5,
+}) {
   return Book(
     id: id,
     title: id,
     author: 'Author',
-    priceBdt: price,
-    vendor: 'Vendor',
+    category: 'C',
+    section: Section.academic,
+    originalLanguage: BookLanguage.english,
     editions: [
       Edition(
         id: '$id-pb',
@@ -79,12 +88,17 @@ void main() {
       final container = containerFor(books);
       final result = await container.read(homeNewArrivalsProvider.future);
       expect(result.length, 8);
-      expect(result.map((b) => b.fromPriceBdt).toList(), List.generate(8, (i) => 100 + i));
+      expect(
+        result.map((b) => b.fromPriceBdt).toList(),
+        List.generate(8, (i) => 100 + i),
+      );
     });
 
     test('beneficial only shows matching books, at most 8', () async {
       final container = containerFor(books);
-      container.read(benefitFilterProvider.notifier).select(BenefitFilter.beneficial);
+      container
+          .read(benefitFilterProvider.notifier)
+          .select(BenefitFilter.beneficial);
       final result = await container.read(homeNewArrivalsProvider.future);
       expect(result, everyElement(predicate((Book b) => b.isBeneficial)));
       expect(result.length, 8);
@@ -92,7 +106,9 @@ void main() {
 
     test('non-beneficial only shows matching books, at most 8', () async {
       final container = containerFor(books);
-      container.read(benefitFilterProvider.notifier).select(BenefitFilter.nonBeneficial);
+      container
+          .read(benefitFilterProvider.notifier)
+          .select(BenefitFilter.nonBeneficial);
       final result = await container.read(homeNewArrivalsProvider.future);
       expect(result, everyElement(predicate((Book b) => !b.isBeneficial)));
       expect(result.length, 8);
@@ -103,7 +119,9 @@ void main() {
         _book('only-1', beneficial: true, price: 100),
         _book('only-2', beneficial: false, price: 50),
       ]);
-      container.read(benefitFilterProvider.notifier).select(BenefitFilter.beneficial);
+      container
+          .read(benefitFilterProvider.notifier)
+          .select(BenefitFilter.beneficial);
       final result = await container.read(homeNewArrivalsProvider.future);
       expect(result.map((b) => b.id).toList(), ['only-1']);
     });

@@ -148,7 +148,7 @@ abstract class AppL10n {
   /// No description provided for @navCatalogHint.
   ///
   /// In en, this message translates to:
-  /// **'Catalog: browse new books from every vendor'**
+  /// **'Catalog: browse new books'**
   String get navCatalogHint;
 
   /// No description provided for @navP2pHint.
@@ -388,7 +388,7 @@ abstract class AppL10n {
   /// No description provided for @homeNewBooksSub.
   ///
   /// In en, this message translates to:
-  /// **'Cheapest price across vendors'**
+  /// **'Cheapest prices first'**
   String get homeNewBooksSub;
 
   /// No description provided for @homeFromStudents.
@@ -442,7 +442,7 @@ abstract class AppL10n {
   /// No description provided for @catalogSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'{count} books · cross-vendor'**
+  /// **'{count} books'**
   String catalogSubtitle(String count);
 
   /// No description provided for @catalogSearchHint.

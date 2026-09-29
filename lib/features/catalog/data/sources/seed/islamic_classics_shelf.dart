@@ -3,14 +3,11 @@ import '../../../../../core/models/edition.dart';
 
 /// Seed data for more classical Islamic works.
 abstract final class IslamicClassicsShelf {
-  static const List<Book> books = [
+  static final List<Book> books = [
     Book(
       id: 'bk-adabmufrad',
       title: 'Al-Adab al-Mufrad',
       author: 'Imam al-Bukhari',
-      priceBdt: 480,
-      vendor: 'Wafilife',
-      vendorCount: 3,
       rating: 4.6,
       tags: ['Islamic Studies', 'Hadith'],
       category: 'Islamic Studies',
@@ -32,9 +29,6 @@ abstract final class IslamicClassicsShelf {
       id: 'bk-ihya',
       title: 'Ihya Ulum al-Din',
       author: 'Imam al-Ghazali',
-      priceBdt: 890,
-      vendor: 'Rokomari',
-      vendorCount: 2,
       rating: 4.7,
       tags: ['Islamic Studies'],
       category: 'Islamic Studies',
@@ -56,10 +50,6 @@ abstract final class IslamicClassicsShelf {
       id: 'bk-madarij',
       title: 'Madarij as-Salikin',
       author: 'Ibn Qayyim al-Jawziyya',
-      priceBdt: 1050,
-      originalPriceBdt: 1200,
-      vendor: 'Wafilife',
-      vendorCount: 2,
       rating: 4.8,
       tags: ['Islamic Studies'],
       category: 'Islamic Studies',

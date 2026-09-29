@@ -26,24 +26,20 @@ abstract class Book with _$Book {
   // Deep toJson: the fake API serialises Editions inside each Book.
   // ignore: invalid_annotation_target
   @JsonSerializable(explicitToJson: true)
+  @Assert('editions.isNotEmpty', 'A Book needs at least one Edition')
   const factory Book({
     required String id,
     required String title,
     required String author,
-    required int priceBdt,
-    required String vendor,
-    @Default(1) int vendorCount,
+    required String category,
+    required Section section,
+    required BookLanguage originalLanguage,
+    required List<Edition> editions,
     @Default(0) double rating,
     @Default(<String>[]) List<String> tags,
     @Default(false) bool isBeneficial,
-    @Default(false) bool isBestValue,
     @Default(0) int coverSeed,
-    int? originalPriceBdt,
     String? shortTitle,
-    String? category,
-    Section? section,
-    BookLanguage? originalLanguage,
-    @Default(<Edition>[]) List<Edition> editions,
   }) = _Book;
 
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
@@ -53,22 +49,18 @@ extension BookX on Book {
   /// Title trimmed for the small cover art, falling back to the full title.
   String get coverLabel => shortTitle ?? title;
 
-  bool get isDiscounted =>
-      originalPriceBdt != null && originalPriceBdt! > priceBdt;
-
   /// The Edition the card leads with: the cheapest one that can be ordered
-  /// now, or the cheapest overall when none can. Null while there are none.
-  Edition? get fromEdition {
-    if (editions.isEmpty) return null;
+  /// now, or the cheapest overall when none can.
+  Edition get fromEdition {
     final orderable = editions.where((e) => e.isOrderable);
     return _cheapest(orderable.isEmpty ? editions : orderable);
   }
 
-  int get fromPriceBdt => fromEdition?.priceBdt ?? 0;
+  int get fromPriceBdt => fromEdition.priceBdt;
 
-  int? get fromListPriceBdt => fromEdition?.listPriceBdt;
+  int? get fromListPriceBdt => fromEdition.listPriceBdt;
 
-  bool get isFromEditionDiscounted => fromEdition?.isDiscounted ?? false;
+  bool get isFromEditionDiscounted => fromEdition.isDiscounted;
 
   CardStockStatus get cardStockStatus {
     if (editions.any((e) => e.stock > 0)) return CardStockStatus.inStock;
@@ -77,8 +69,7 @@ extension BookX on Book {
   }
 
   /// An Edition whose language differs from the Book's original language.
-  bool isTranslation(Edition edition) =>
-      originalLanguage != null && edition.language != originalLanguage;
+  bool isTranslation(Edition edition) => edition.language != originalLanguage;
 }
 
 Edition _cheapest(Iterable<Edition> editions) =>

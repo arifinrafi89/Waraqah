@@ -4,7 +4,7 @@ import '../theme/app_dimens.dart';
 import '../theme/app_theme.dart';
 import '../theme/app_typography.dart';
 
-/// Neutral micro-label on `surface2` — genres, vendor names, condition grades.
+/// Neutral micro-label on `surface2` — genres, condition grades.
 class MiniTag extends StatelessWidget {
   const MiniTag({super.key, required this.label, this.fontSize = 9});
 

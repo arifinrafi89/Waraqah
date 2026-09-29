@@ -3,20 +3,15 @@ import '../../../../../core/models/edition.dart';
 
 /// Seed data for the academic, self-help and business shelves.
 abstract final class GeneralShelf {
-  static const List<Book> books = [
+  static final List<Book> books = [
     Book(
       id: 'bk-sapiens',
       title: 'Sapiens: A Brief History of Humankind',
       shortTitle: 'Sapiens',
       author: 'Yuval Noah Harari',
-      priceBdt: 650,
-      originalPriceBdt: 780,
-      vendor: 'Rokomari',
-      vendorCount: 3,
       rating: 4.3,
       tags: ['Non-Fiction'],
       category: 'History',
-      isBestValue: true,
       coverSeed: 0,
       section: Section.academic,
       originalLanguage: BookLanguage.english,
@@ -49,14 +44,9 @@ abstract final class GeneralShelf {
       id: 'bk-atomic',
       title: 'Atomic Habits',
       author: 'James Clear',
-      priceBdt: 590,
-      originalPriceBdt: 650,
-      vendor: 'Rokomari',
-      vendorCount: 4,
       rating: 4.7,
       tags: ['Self-Help'],
       category: 'Self-Help',
-      isBestValue: true,
       coverSeed: 2,
       section: Section.nonFiction,
       originalLanguage: BookLanguage.english,
@@ -82,10 +72,6 @@ abstract final class GeneralShelf {
       id: 'bk-cleancode',
       title: 'Clean Code',
       author: 'Robert C. Martin',
-      priceBdt: 1150,
-      originalPriceBdt: 1320,
-      vendor: 'Rokomari',
-      vendorCount: 2,
       rating: 4.6,
       tags: ['Academic', 'Software'],
       category: 'Computer Science',

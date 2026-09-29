@@ -25,7 +25,7 @@ abstract final class FakeApiRoutes {
           category == null ||
           book.category == category ||
           // ponytail: the Academic chip is a Section now; ticket 2 replaces the chips.
-          book.section?.name == category.toLowerCase();
+          book.section.name == category.toLowerCase();
       final matchesQuery =
           query.isEmpty ||
           book.title.toLowerCase().contains(query) ||

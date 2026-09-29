@@ -34,7 +34,7 @@ class AppL10nBn extends AppL10n {
   String get navHomeHint => 'হোম: আজকের আয়াত, নতুন বই ও কাছের বইয়ের লেনদেন';
 
   @override
-  String get navCatalogHint => 'ক্যাটালগ: সব বিক্রেতার নতুন বই ঘুরে দেখুন';
+  String get navCatalogHint => 'ক্যাটালগ: নতুন বই ঘুরে দেখুন';
 
   @override
   String get navP2pHint => 'P2P: শিক্ষার্থীদের সাথে পুরোনো বই কেনাবেচা করুন';
@@ -156,7 +156,7 @@ class AppL10nBn extends AppL10n {
   String get homeNewBooks => 'নতুন বই';
 
   @override
-  String get homeNewBooksSub => 'সব বিক্রেতার মধ্যে সবচেয়ে কম দাম';
+  String get homeNewBooksSub => 'সবচেয়ে কম দাম আগে';
 
   @override
   String get homeFromStudents => 'আপনার কাছের শিক্ষার্থীদের থেকে';
@@ -184,7 +184,7 @@ class AppL10nBn extends AppL10n {
 
   @override
   String catalogSubtitle(String count) {
-    return '$count বই · সব বিক্রেতা';
+    return '$count বই';
   }
 
   @override

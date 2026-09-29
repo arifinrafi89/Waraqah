@@ -6,7 +6,7 @@ import '../../../../core/models/book.dart';
 /// implementation, so the Go backend can replace the fixtures without any of
 /// them changing.
 abstract interface class BookRepository {
-  /// Newest arrivals for the home screen, cheapest vendor first.
+  /// Newest arrivals for the home screen, cheapest From-price first.
   Future<List<Book>> fetchNewArrivals();
 
   /// Full catalog, optionally narrowed by category and free-text query.

@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:waraqah/app/router/app_router.dart';
 import 'package:waraqah/app/router/app_routes.dart';
 import 'package:waraqah/core/models/book.dart';
+import 'package:waraqah/core/models/edition.dart';
 import 'package:waraqah/features/catalog/data/repositories/book_details_repository_impl.dart';
 import 'package:waraqah/features/catalog/data/repositories/book_repository_impl.dart';
 import 'package:waraqah/features/catalog/data/sources/book_details_source.dart';
@@ -49,12 +50,22 @@ void main() {
     });
 
     test('without seed data, returns empty details for a known book', () async {
-      const book = Book(
+      final book = Book(
         id: 'bk-unseeded',
         title: 'Unseeded',
         author: 'Someone',
-        priceBdt: 300,
-        vendor: 'Wafilife',
+        category: 'C',
+        section: Section.academic,
+        originalLanguage: BookLanguage.english,
+        editions: [
+          Edition(
+            id: 'bk-unseeded-pb',
+            format: BookFormat.paperback,
+            language: BookLanguage.english,
+            priceBdt: 300,
+            stock: 5,
+          ),
+        ],
       );
       final details = await _repository([book]).fetchDetails(book.id);
       expect(details!.reviews, isEmpty);

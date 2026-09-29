@@ -13,7 +13,7 @@ import 'seed/islamic_shelf.dart';
 /// It sits behind the same repository interface as the real API, so swapping it
 /// out later is a one-line change in `book_repository_impl.dart`.
 abstract final class BookFixtures {
-  static const List<Book> all = [
+  static final List<Book> all = [
     ...GeneralShelf.books,
     ...GeneralMoreShelf.books,
     ...IslamicShelf.books,

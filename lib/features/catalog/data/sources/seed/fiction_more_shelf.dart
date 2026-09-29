@@ -3,15 +3,12 @@ import '../../../../../core/models/edition.dart';
 
 /// Seed data for more Fiction titles.
 abstract final class FictionMoreShelf {
-  static const List<Book> books = [
+  static final List<Book> books = [
     Book(
       id: 'bk-sherlock',
       title: 'Sherlock Holmes: A Study in Scarlet',
       shortTitle: 'Sherlock Holmes',
       author: 'Arthur Conan Doyle',
-      priceBdt: 380,
-      vendor: 'Wafilife',
-      vendorCount: 2,
       rating: 4.6,
       tags: ['Fiction'],
       category: 'Fiction',

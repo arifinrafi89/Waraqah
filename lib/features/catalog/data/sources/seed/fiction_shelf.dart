@@ -3,16 +3,12 @@ import '../../../../../core/models/edition.dart';
 
 /// Seed data for the Fiction shelf.
 abstract final class FictionShelf {
-  static const List<Book> books = [
+  static final List<Book> books = [
     Book(
       id: 'bk-hobbit',
       title: 'The Hobbit',
       shortTitle: 'Hobbit',
       author: 'J. R. R. Tolkien',
-      priceBdt: 550,
-      originalPriceBdt: 650,
-      vendor: 'Rokomari',
-      vendorCount: 4,
       rating: 4.8,
       tags: ['Fiction'],
       category: 'Fiction',
@@ -42,9 +38,6 @@ abstract final class FictionShelf {
       title: "Harry Potter and the Philosopher's Stone",
       shortTitle: 'Harry Potter',
       author: 'J. K. Rowling',
-      priceBdt: 620,
-      vendor: 'Rokomari',
-      vendorCount: 6,
       rating: 4.9,
       tags: ['Fiction'],
       category: 'Fiction',
@@ -73,10 +66,6 @@ abstract final class FictionShelf {
       title: 'The Da Vinci Code',
       shortTitle: 'Da Vinci Code',
       author: 'Dan Brown',
-      priceBdt: 450,
-      originalPriceBdt: 520,
-      vendor: 'Boi Bazar',
-      vendorCount: 3,
       rating: 4.3,
       tags: ['Fiction'],
       category: 'Fiction',
