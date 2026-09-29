@@ -41,6 +41,18 @@ abstract final class AppTheme {
           side: BorderSide(color: p.border),
         ),
       ),
+      tooltipTheme: TooltipThemeData(
+        padding: const EdgeInsets.symmetric(
+          horizontal: Insets.md,
+          vertical: Insets.sm,
+        ),
+        decoration: BoxDecoration(
+          color: p.surface2,
+          borderRadius: BorderRadius.circular(Radii.md),
+          border: Border.all(color: p.border),
+        ),
+        textStyle: AppFonts.ui(size: 12.5, height: 1.45, color: p.text),
+      ),
       splashFactory: InkSparkle.splashFactory,
       highlightColor: p.accent.withValues(alpha: 0.06),
     );

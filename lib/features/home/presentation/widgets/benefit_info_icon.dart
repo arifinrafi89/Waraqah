@@ -18,7 +18,6 @@ class BenefitInfoIcon extends StatelessWidget {
         message: l10n.homeNonBeneficialNote,
         triggerMode: TooltipTriggerMode.tap,
         showDuration: const Duration(seconds: 6),
-        textStyle: const TextStyle(color: Colors.white, fontSize: 13),
         constraints: const BoxConstraints(maxWidth: 260),
         child: CircleAvatar(
           radius: 9,
