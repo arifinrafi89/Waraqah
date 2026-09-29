@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../app/router/app_routes.dart';
+import '../../catalog_routes.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/app_icon_button.dart';
@@ -41,7 +41,7 @@ class BookDetailPage extends ConsumerWidget {
                 icon: Icons.arrow_back_rounded,
                 onPressed: () => context.canPop()
                     ? context.pop()
-                    : context.go(AppRoutes.catalog),
+                    : context.go(CatalogRoutes.catalog),
               ),
             ),
             Expanded(

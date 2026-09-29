@@ -6,7 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:waraqah/app/router/app_routes.dart';
+import 'package:waraqah/app/router/shell_tabs.dart';
+import 'package:waraqah/features/home/home_routes.dart';
 import 'package:waraqah/app/shell/app_shell.dart';
 import 'package:waraqah/app/shell/glass_nav_bar.dart';
 import 'package:waraqah/app/shell/glass_nav_rail.dart';
@@ -15,7 +16,7 @@ import 'package:waraqah/l10n/app_localizations.dart';
 
 /// The real shell around stub pages, so page content cannot affect the test.
 GoRouter _router() => GoRouter(
-  initialLocation: AppRoutes.home,
+  initialLocation: HomeRoutes.home,
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (_, _, shell) => AppShell(shell: shell),

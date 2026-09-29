@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../app/router/app_routes.dart';
+import '../../../home/home_routes.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../l10n/app_localizations.dart';
@@ -26,7 +26,7 @@ class _AuthPageState extends State<AuthPage> {
 
   /// Opens the app without an account. Sign-up also lands here until the
   /// real sign-up flow is built.
-  void _enterApp() => context.go(AppRoutes.home);
+  void _enterApp() => context.go(HomeRoutes.home);
 
   @override
   Widget build(BuildContext context) {

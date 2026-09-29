@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../app/router/app_routes.dart';
+import '../../auth_routes.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/app_buttons.dart';
 import '../../../../core/widgets/tags.dart';
@@ -22,7 +22,7 @@ class SessionActions extends ConsumerWidget {
     if (user == null) {
       return PrimaryButton(
         label: l10n.authLogIn,
-        onPressed: () => context.go(AppRoutes.login),
+        onPressed: () => context.go(AuthRoutes.login),
       );
     }
     return Row(
@@ -42,7 +42,7 @@ class SessionActions extends ConsumerWidget {
               icon: const Icon(Icons.logout_rounded, size: 18),
               onPressed: () async {
                 await ref.read(sessionProvider.notifier).signOut();
-                if (context.mounted) context.go(AppRoutes.login);
+                if (context.mounted) context.go(AuthRoutes.login);
               },
             ),
           ),
