@@ -6,6 +6,7 @@ import '../../features/auth/presentation/pages/auth_page.dart';
 import '../../features/bites/presentation/pages/bites_page.dart';
 import '../../features/catalog/presentation/pages/catalog_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/p2p/presentation/pages/p2p_add_listing_page.dart';
 import '../../features/p2p/presentation/pages/p2p_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 import '../shell/app_shell.dart';
@@ -29,6 +30,11 @@ abstract final class AppRouter {
         path: AppRoutes.aiChat,
         name: RouteNames.aiChat,
         builder: (_, _) => const AiChatPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.p2pAddListing,
+        name: RouteNames.p2pAddListing,
+        builder: (_, _) => const P2pAddListingPage(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),

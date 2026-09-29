@@ -31,6 +31,33 @@ class AppL10nBn extends AppL10n {
   String get navProfile => 'প্রোফাইল';
 
   @override
+  String get bitesTitle => 'বুক-বাইটস';
+
+  @override
+  String get bitesComposerHint => 'আপনি যা পড়ছেন সে বিষয়ে একটি ভাবনা লিখুন...';
+
+  @override
+  String get bitesPost => 'বাইট পোস্ট করুন';
+
+  @override
+  String get bitesReply => 'উত্তর দিন';
+
+  @override
+  String get bitesRepost => 'আবার পোস্ট করুন';
+
+  @override
+  String get bitesLike => 'ভালো লাগা';
+
+  @override
+  String get bitesPosted => 'আপনার বাইট ফিডে যোগ হয়েছে।';
+
+  @override
+  String get bitesYou => 'আপনি';
+
+  @override
+  String get bitesReaderHandle => 'পাঠক';
+
+  @override
   String get authLogIn => 'লগ ইন';
 
   @override

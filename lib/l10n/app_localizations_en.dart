@@ -31,6 +31,34 @@ class AppL10nEn extends AppL10n {
   String get navProfile => 'Profile';
 
   @override
+  String get bitesTitle => 'Book-Bites';
+
+  @override
+  String get bitesComposerHint =>
+      'Share a thought about what you are reading...';
+
+  @override
+  String get bitesPost => 'Post bite';
+
+  @override
+  String get bitesReply => 'Reply';
+
+  @override
+  String get bitesRepost => 'Repost';
+
+  @override
+  String get bitesLike => 'Like';
+
+  @override
+  String get bitesPosted => 'Your bite was added to the feed.';
+
+  @override
+  String get bitesYou => 'You';
+
+  @override
+  String get bitesReaderHandle => 'reader';
+
+  @override
   String get authLogIn => 'Log In';
 
   @override
