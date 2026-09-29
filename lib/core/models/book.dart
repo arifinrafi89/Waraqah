@@ -64,7 +64,9 @@ extension BookX on Book {
     return _cheapest(orderable.isEmpty ? editions : orderable);
   }
 
-  int? get fromPriceBdt => fromEdition?.priceBdt;
+  int get fromPriceBdt => fromEdition?.priceBdt ?? 0;
+
+  int? get fromListPriceBdt => fromEdition?.listPriceBdt;
 
   bool get isFromEditionDiscounted => fromEdition?.isDiscounted ?? false;
 

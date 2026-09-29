@@ -74,37 +74,3 @@ class AccentTag extends StatelessWidget {
     );
   }
 }
-
-/// "Best" flag pinned to the corner of a cover when a vendor wins on price.
-class BestBadge extends StatelessWidget {
-  const BestBadge({super.key, required this.label});
-
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    final palette = context.palette;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
-      decoration: BoxDecoration(
-        color: palette.bg,
-        borderRadius: BorderRadius.circular(7),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 3,
-        children: [
-          Icon(Icons.star_rounded, size: 10, color: palette.accent),
-          Text(
-            label,
-            style: AppFonts.ui(
-              size: 9,
-              weight: FontWeight.w800,
-              color: palette.accent,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}

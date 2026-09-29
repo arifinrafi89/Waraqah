@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:waraqah/core/models/book.dart';
+import 'package:waraqah/core/models/edition.dart';
 import 'package:waraqah/features/catalog/domain/repositories/book_repository.dart';
 import 'package:waraqah/features/catalog/presentation/providers/catalog_providers.dart';
 import 'package:waraqah/features/home/domain/entities/benefit_filter.dart';
@@ -19,7 +20,7 @@ class _FakeBookRepository implements BookRepository {
   Future<List<Book>> searchCatalog({String? category, String query = ''}) async {
     final sorted = [...books];
     sorted.sort((a, b) {
-      final byPrice = a.priceBdt.compareTo(b.priceBdt);
+      final byPrice = a.fromPriceBdt.compareTo(b.fromPriceBdt);
       return byPrice != 0 ? byPrice : b.rating.compareTo(a.rating);
     });
     return sorted;
@@ -37,6 +38,15 @@ Book _book(String id, {required bool beneficial, required int price, double rati
     author: 'Author',
     priceBdt: price,
     vendor: 'Vendor',
+    editions: [
+      Edition(
+        id: '$id-pb',
+        format: BookFormat.paperback,
+        language: BookLanguage.english,
+        priceBdt: price,
+        stock: 5,
+      ),
+    ],
     rating: rating,
     isBeneficial: beneficial,
   );
@@ -69,7 +79,7 @@ void main() {
       final container = containerFor(books);
       final result = await container.read(homeNewArrivalsProvider.future);
       expect(result.length, 8);
-      expect(result.map((b) => b.priceBdt).toList(), List.generate(8, (i) => 100 + i));
+      expect(result.map((b) => b.fromPriceBdt).toList(), List.generate(8, (i) => 100 + i));
     });
 
     test('beneficial only shows matching books, at most 8', () async {

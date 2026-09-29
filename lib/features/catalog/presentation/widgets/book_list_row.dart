@@ -16,10 +16,10 @@ import 'rating_stars.dart';
 /// One horizontal catalog row: thumbnail, title block, tags, rating, price.
 /// Tapping it opens the book's detail page.
 class BookListRow extends StatelessWidget {
-  const BookListRow({super.key, required this.book, required this.vendorLine});
+  const BookListRow({super.key, required this.book, required this.stockLabel});
 
   final Book book;
-  final String vendorLine;
+  final String stockLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -84,13 +84,13 @@ class BookListRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              Bdt.format(book.priceBdt),
+              Bdt.format(book.fromPriceBdt),
               style: AppFonts.numeric(size: 14, color: palette.text),
             ),
             const Spacer(),
             Flexible(
               child: Text(
-                vendorLine,
+                stockLabel,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.end,

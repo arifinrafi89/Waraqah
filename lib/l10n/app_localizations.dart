@@ -421,18 +421,6 @@ abstract class AppL10n {
   /// **'Filter'**
   String get commonFilter;
 
-  /// No description provided for @commonBest.
-  ///
-  /// In en, this message translates to:
-  /// **'Best'**
-  String get commonBest;
-
-  /// No description provided for @commonLowest.
-  ///
-  /// In en, this message translates to:
-  /// **'lowest'**
-  String get commonLowest;
-
   /// No description provided for @commonRetry.
   ///
   /// In en, this message translates to:
@@ -475,12 +463,6 @@ abstract class AppL10n {
   /// **'Price: Low–High'**
   String get catalogSortPriceAsc;
 
-  /// No description provided for @catalogVendorCompare.
-  ///
-  /// In en, this message translates to:
-  /// **'{vendor} · vs {count} vendors'**
-  String catalogVendorCompare(String vendor, int count);
-
   /// No description provided for @catalogCategoryAll.
   ///
   /// In en, this message translates to:
@@ -517,48 +499,6 @@ abstract class AppL10n {
   /// **'Business'**
   String get catalogCategoryBusiness;
 
-  /// No description provided for @bookDetailComparePrices.
-  ///
-  /// In en, this message translates to:
-  /// **'Compare prices'**
-  String get bookDetailComparePrices;
-
-  /// No description provided for @bookDetailComparePricesSub.
-  ///
-  /// In en, this message translates to:
-  /// **'{count, plural, =1{1 vendor} other{{count} vendors}} · cheapest first'**
-  String bookDetailComparePricesSub(int count);
-
-  /// No description provided for @bookDetailLowest.
-  ///
-  /// In en, this message translates to:
-  /// **'Lowest'**
-  String get bookDetailLowest;
-
-  /// No description provided for @bookDetailSave.
-  ///
-  /// In en, this message translates to:
-  /// **'Save {amount} vs the highest price'**
-  String bookDetailSave(String amount);
-
-  /// No description provided for @bookDetailDelivery.
-  ///
-  /// In en, this message translates to:
-  /// **'{days, plural, =1{1-day delivery} other{{days}-day delivery}}'**
-  String bookDetailDelivery(int days);
-
-  /// No description provided for @bookDetailInstant.
-  ///
-  /// In en, this message translates to:
-  /// **'Instant download'**
-  String get bookDetailInstant;
-
-  /// No description provided for @bookDetailOutOfStock.
-  ///
-  /// In en, this message translates to:
-  /// **'Out of stock'**
-  String get bookDetailOutOfStock;
-
   /// No description provided for @bookFormatPaperback.
   ///
   /// In en, this message translates to:
@@ -576,6 +516,42 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'eBook'**
   String get bookFormatEbook;
+
+  /// No description provided for @stockInStock.
+  ///
+  /// In en, this message translates to:
+  /// **'In stock'**
+  String get stockInStock;
+
+  /// No description provided for @stockPreorder.
+  ///
+  /// In en, this message translates to:
+  /// **'Pre-order'**
+  String get stockPreorder;
+
+  /// No description provided for @stockOutOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of stock'**
+  String get stockOutOfStock;
+
+  /// No description provided for @bookLanguageBangla.
+  ///
+  /// In en, this message translates to:
+  /// **'Bangla'**
+  String get bookLanguageBangla;
+
+  /// No description provided for @bookLanguageEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get bookLanguageEnglish;
+
+  /// No description provided for @bookLanguageArabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get bookLanguageArabic;
 
   /// No description provided for @bookDetailAbout.
   ///
@@ -610,7 +586,7 @@ abstract class AppL10n {
   /// No description provided for @bookDetailBestPrice.
   ///
   /// In en, this message translates to:
-  /// **'Best price'**
+  /// **'From price'**
   String get bookDetailBestPrice;
 
   /// No description provided for @bookDetailAddToCart.

@@ -29,7 +29,6 @@ class BookDetailHeader extends StatelessWidget {
             title: book.coverLabel,
             seed: book.coverSeed,
             radius: Radii.md,
-            badge: book.isBestValue ? BestBadge(label: l10n.commonBest) : null,
           ),
         ),
         Expanded(

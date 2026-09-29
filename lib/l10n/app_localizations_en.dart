@@ -176,12 +176,6 @@ class AppL10nEn extends AppL10n {
   String get commonFilter => 'Filter';
 
   @override
-  String get commonBest => 'Best';
-
-  @override
-  String get commonLowest => 'lowest';
-
-  @override
   String get commonRetry => 'Retry';
 
   @override
@@ -207,11 +201,6 @@ class AppL10nEn extends AppL10n {
   String get catalogSortPriceAsc => 'Price: Low–High';
 
   @override
-  String catalogVendorCompare(String vendor, int count) {
-    return '$vendor · vs $count vendors';
-  }
-
-  @override
   String get catalogCategoryAll => 'All';
 
   @override
@@ -230,45 +219,6 @@ class AppL10nEn extends AppL10n {
   String get catalogCategoryBusiness => 'Business';
 
   @override
-  String get bookDetailComparePrices => 'Compare prices';
-
-  @override
-  String bookDetailComparePricesSub(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count vendors',
-      one: '1 vendor',
-    );
-    return '$_temp0 · cheapest first';
-  }
-
-  @override
-  String get bookDetailLowest => 'Lowest';
-
-  @override
-  String bookDetailSave(String amount) {
-    return 'Save $amount vs the highest price';
-  }
-
-  @override
-  String bookDetailDelivery(int days) {
-    String _temp0 = intl.Intl.pluralLogic(
-      days,
-      locale: localeName,
-      other: '$days-day delivery',
-      one: '1-day delivery',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String get bookDetailInstant => 'Instant download';
-
-  @override
-  String get bookDetailOutOfStock => 'Out of stock';
-
-  @override
   String get bookFormatPaperback => 'Paperback';
 
   @override
@@ -276,6 +226,24 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get bookFormatEbook => 'eBook';
+
+  @override
+  String get stockInStock => 'In stock';
+
+  @override
+  String get stockPreorder => 'Pre-order';
+
+  @override
+  String get stockOutOfStock => 'Out of stock';
+
+  @override
+  String get bookLanguageBangla => 'Bangla';
+
+  @override
+  String get bookLanguageEnglish => 'English';
+
+  @override
+  String get bookLanguageArabic => 'Arabic';
 
   @override
   String get bookDetailAbout => 'About this book';
@@ -304,7 +272,7 @@ class AppL10nEn extends AppL10n {
   String get bookDetailNoReviews => 'Nobody has reviewed this book yet.';
 
   @override
-  String get bookDetailBestPrice => 'Best price';
+  String get bookDetailBestPrice => 'From price';
 
   @override
   String get bookDetailAddToCart => 'Add to cart';

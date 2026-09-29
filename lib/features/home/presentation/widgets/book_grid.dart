@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/models/book.dart';
 import '../../../../core/theme/app_dimens.dart';
+import '../../../../core/utils/stock_label.dart';
 import '../../../../core/widgets/shimmer_box.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../l10n/app_localizations.dart';
@@ -35,8 +36,7 @@ class BookSliverGrid extends StatelessWidget {
         final book = books[index];
         return BookGridCard(
           book: book,
-          bestLabel: l10n.commonBest,
-          vendorLine: '${book.vendor} · ${l10n.commonLowest}',
+          stockLabel: l10n.stockStatus(book.cardStockStatus),
         );
       },
     );

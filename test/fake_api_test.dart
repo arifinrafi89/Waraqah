@@ -44,6 +44,30 @@ void main() {
       });
     });
 
+    test('books keep Editions through the JSON round trip, cheapest first', () {
+      fakeAsync((async) {
+        final container = _fakeApiContainer();
+        addTearDown(container.dispose);
+
+        List<Book>? books;
+        container
+            .read(bookRepositoryProvider)
+            .searchCatalog()
+            .then((result) => books = result);
+        async.elapse(const Duration(seconds: 1));
+
+        expect(books, isNotEmpty);
+        expect(books!.every((b) => b.editions.isNotEmpty), isTrue);
+        for (var i = 1; i < books!.length; i++) {
+          final (a, b) = (books![i - 1], books![i]);
+          expect(a.fromPriceBdt, lessThanOrEqualTo(b.fromPriceBdt));
+          if (a.fromPriceBdt == b.fromPriceBdt) {
+            expect(a.rating, greaterThanOrEqualTo(b.rating));
+          }
+        }
+      });
+    });
+
     test('ayahOfTheDayProvider loads today\'s Ayah', () {
       fakeAsync((async) {
         final container = _fakeApiContainer();

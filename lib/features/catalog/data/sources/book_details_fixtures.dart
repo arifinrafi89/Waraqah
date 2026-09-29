@@ -1,23 +1,20 @@
 import '../../domain/entities/book_details.dart';
 import 'seed/about_seed.dart';
-import 'seed/offer_seed.dart';
 import 'seed/review_seed.dart';
 
-/// Assembles [BookDetails] from the three seed tables.
+/// Assembles [BookDetails] from the two seed tables.
 abstract final class BookDetailsFixtures {
-  /// `null` when the seed has no offers for [bookId].
+  /// `null` when the seed has no about or review seed for [bookId].
   static BookDetails? find(String bookId) {
-    final offers = OfferSeed.byBookId[bookId];
-    if (offers == null) return null;
     final about = AboutSeed.byBookId[bookId];
+    final reviews = ReviewSeed.byBookId[bookId];
+    if (about == null && reviews == null) return null;
     return BookDetails(
       bookId: bookId,
-      offers: offers,
-      reviews: ReviewSeed.byBookId[bookId] ?? const [],
+      reviews: reviews ?? const [],
       description: about?.$1,
       pages: about?.$2,
-      language: about?.$3,
-      publisher: about?.$4,
+      publisher: about?.$3,
     );
   }
 }

@@ -9,19 +9,13 @@ import '../../../../core/widgets/press_scale.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../core/widgets/tags.dart';
 
-/// A tile in the Home "New Books" grid: cover, author, price and the
-/// cheapest vendor.
+/// A tile in the Home "New Books" grid: cover, author, From-price and
+/// stock status.
 class BookGridCard extends StatelessWidget {
-  const BookGridCard({
-    super.key,
-    required this.book,
-    required this.bestLabel,
-    required this.vendorLine,
-  });
+  const BookGridCard({super.key, required this.book, required this.stockLabel});
 
   final Book book;
-  final String bestLabel;
-  final String vendorLine;
+  final String stockLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +33,6 @@ class BookGridCard extends StatelessWidget {
                 title: book.coverLabel,
                 seed: book.coverSeed,
                 aspectRatio: null,
-                badge: book.isBestValue ? BestBadge(label: bestLabel) : null,
               ),
             ),
             Padding(
@@ -59,15 +52,15 @@ class BookGridCard extends StatelessWidget {
                     spacing: 6,
                     children: [
                       Text(
-                        Bdt.format(book.priceBdt),
+                        Bdt.format(book.fromPriceBdt),
                         style: AppFonts.numeric(
                           size: 14.5,
                           color: palette.text,
                         ),
                       ),
-                      if (book.isDiscounted)
+                      if (book.isFromEditionDiscounted)
                         Text(
-                          Bdt.format(book.originalPriceBdt!),
+                          Bdt.format(book.fromListPriceBdt!),
                           style: AppFonts.numeric(
                             size: 11,
                             weight: FontWeight.w600,
@@ -78,7 +71,7 @@ class BookGridCard extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 5),
-                  MiniTag(label: vendorLine, fontSize: 9.5),
+                  MiniTag(label: stockLabel, fontSize: 9.5),
                 ],
               ),
             ),
