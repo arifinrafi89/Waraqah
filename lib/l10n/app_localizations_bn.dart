@@ -386,4 +386,34 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get comingSoonBites => 'সম্পূর্ণ বুক-বাইটস ফিড সোশ্যাল ফেজে আসছে।';
+
+  @override
+  String get adminAreaTitle => 'অ্যাডমিন এরিয়া';
+
+  @override
+  String get adminDashboard => 'ড্যাশবোর্ড';
+
+  @override
+  String get adminDashboardHint => 'বিক্রি, অর্ডার আর স্টক এক নজরে';
+
+  @override
+  String get adminCatalog => 'ক্যাটালগ';
+
+  @override
+  String get adminCatalogHint => 'বই, সংস্করণ আর স্টক যোগ ও সম্পাদনা';
+
+  @override
+  String get adminOrders => 'অর্ডার';
+
+  @override
+  String get adminOrdersHint => 'অর্ডার, রিটার্ন, রিফান্ড আর কুপন';
+
+  @override
+  String get adminModeration => 'মডারেশন';
+
+  @override
+  String get adminModerationHint => 'পুরোনো বইয়ের লিস্টিং আর রিপোর্ট যাচাই';
+
+  @override
+  String get adminComingSoon => 'এই অংশটি তৈরি হচ্ছে। শীঘ্রই আবার দেখুন।';
 }

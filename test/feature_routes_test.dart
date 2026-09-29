@@ -1,5 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:waraqah/app/router/app_router.dart';
+import 'package:waraqah/features/admin/admin_routes.dart';
+import 'package:waraqah/features/admin/domain/entities/admin_section.dart';
 import 'package:waraqah/features/ai_assistant/ai_assistant_routes.dart';
 import 'package:waraqah/features/auth/auth_routes.dart';
 import 'package:waraqah/features/bites/bites_routes.dart';
@@ -24,6 +26,11 @@ void main() {
         P2pRoutes.addListing: '/p2p/add-listing',
         BitesRoutes.bites: '/bites',
         ProfileRoutes.profile: '/profile',
+        AdminRoutes.admin: '/admin',
+        AdminRoutes.section(AdminSection.dashboard): '/admin/dashboard',
+        AdminRoutes.section(AdminSection.catalog): '/admin/catalog',
+        AdminRoutes.section(AdminSection.orders): '/admin/orders',
+        AdminRoutes.section(AdminSection.moderation): '/admin/moderation',
       };
       for (final MapEntry(key: path, value: expected) in paths.entries) {
         expect(path, expected);

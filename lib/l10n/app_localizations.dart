@@ -828,6 +828,66 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'The full Book-Bites feed arrives with the social phase.'**
   String get comingSoonBites;
+
+  /// No description provided for @adminAreaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin area'**
+  String get adminAreaTitle;
+
+  /// No description provided for @adminDashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get adminDashboard;
+
+  /// No description provided for @adminDashboardHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales, orders and stock at a glance'**
+  String get adminDashboardHint;
+
+  /// No description provided for @adminCatalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalog'**
+  String get adminCatalog;
+
+  /// No description provided for @adminCatalogHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add and edit books, editions and stock'**
+  String get adminCatalogHint;
+
+  /// No description provided for @adminOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get adminOrders;
+
+  /// No description provided for @adminOrdersHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders, returns, refunds and coupons'**
+  String get adminOrdersHint;
+
+  /// No description provided for @adminModeration.
+  ///
+  /// In en, this message translates to:
+  /// **'Moderation'**
+  String get adminModeration;
+
+  /// No description provided for @adminModerationHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Review used-book listings and reports'**
+  String get adminModerationHint;
+
+  /// No description provided for @adminComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'This section is being built. Check back soon.'**
+  String get adminComingSoon;
 }
 
 class _AppL10nDelegate extends LocalizationsDelegate<AppL10n> {

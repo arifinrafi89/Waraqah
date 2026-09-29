@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart' show ValueListenable;
 import 'package:go_router/go_router.dart';
 
+import '../../features/admin/admin_routes.dart';
 import '../../features/ai_assistant/ai_assistant_routes.dart';
 import '../../features/auth/auth_routes.dart';
 import '../../features/auth/domain/entities/app_user.dart';
@@ -17,7 +18,8 @@ import 'route_access.dart';
 /// Auth sits outside the shell; the five tabs live inside a
 /// [StatefulShellRoute] so each keeps its own navigation stack and scroll
 /// position. The AI chat, add-listing and book detail pages push over the
-/// shell as full-screen routes. Branch order must match `ShellTabs.paths`.
+/// shell as full-screen routes, and so does the
+/// staff-only Admin area. Branch order must match `ShellTabs.paths`.
 ///
 /// With a [session], every navigation goes through [RouteAccess], and the
 /// router re-checks whenever the session changes. The app always passes one
@@ -39,6 +41,7 @@ abstract final class AppRouter {
       ...AiAssistantRoutes.routes,
       ...P2pRoutes.routes,
       ...CatalogRoutes.routes,
+      ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),
         branches: [

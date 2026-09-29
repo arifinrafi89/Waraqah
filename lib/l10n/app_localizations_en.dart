@@ -397,4 +397,34 @@ class AppL10nEn extends AppL10n {
   @override
   String get comingSoonBites =>
       'The full Book-Bites feed arrives with the social phase.';
+
+  @override
+  String get adminAreaTitle => 'Admin area';
+
+  @override
+  String get adminDashboard => 'Dashboard';
+
+  @override
+  String get adminDashboardHint => 'Sales, orders and stock at a glance';
+
+  @override
+  String get adminCatalog => 'Catalog';
+
+  @override
+  String get adminCatalogHint => 'Add and edit books, editions and stock';
+
+  @override
+  String get adminOrders => 'Orders';
+
+  @override
+  String get adminOrdersHint => 'Orders, returns, refunds and coupons';
+
+  @override
+  String get adminModeration => 'Moderation';
+
+  @override
+  String get adminModerationHint => 'Review used-book listings and reports';
+
+  @override
+  String get adminComingSoon => 'This section is being built. Check back soon.';
 }

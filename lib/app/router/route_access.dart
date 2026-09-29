@@ -1,3 +1,5 @@
+import '../../features/admin/admin_routes.dart';
+import '../../features/admin/domain/entities/admin_section.dart';
 import '../../features/auth/auth_routes.dart';
 import '../../features/auth/domain/entities/app_user.dart';
 import '../../features/auth/domain/entities/user_role.dart';
@@ -8,11 +10,8 @@ import '../../features/home/home_routes.dart';
 ///
 /// Kept as a plain function of (location, user) so it is easy to test.
 abstract final class RouteAccess {
-  /// The admin area. Everything under this path is staff only.
-  static const String admin = '/admin';
-
-  /// Staff only. The whole admin area lives under [admin].
-  static const List<String> staffOnly = [admin];
+  /// Staff only. The whole Admin area lives under [AdminRoutes.admin].
+  static const List<String> staffOnly = [AdminRoutes.admin];
 
   /// Any signed-in user. Add pages here as they are built (checkout, orders…).
   static const List<String> signedInOnly = [];
@@ -22,6 +21,15 @@ abstract final class RouteAccess {
     if (location == AuthRoutes.login && user != null) return HomeRoutes.home;
     if (_matches(location, staffOnly) && !(user?.role.isStaff ?? false)) {
       return user == null ? AuthRoutes.login : HomeRoutes.home;
+    }
+    // Staff who can't open this Admin section go back to the hub.
+    final role = user?.role;
+    if (role != null &&
+        AdminSection.values.any(
+          (s) =>
+              _matches(location, [AdminRoutes.section(s)]) && !s.canOpen(role),
+        )) {
+      return AdminRoutes.admin;
     }
     if (_matches(location, signedInOnly) && user == null) {
       return AuthRoutes.login;

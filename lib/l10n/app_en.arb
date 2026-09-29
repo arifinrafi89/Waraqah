@@ -125,5 +125,15 @@
   "profileListings": "Listings",
   "comingSoonTitle": "Coming soon",
   "comingSoonP2p": "The second-hand marketplace is being built in the next phase.",
-  "comingSoonBites": "The full Book-Bites feed arrives with the social phase."
+  "comingSoonBites": "The full Book-Bites feed arrives with the social phase.",
+  "adminAreaTitle": "Admin area",
+  "adminDashboard": "Dashboard",
+  "adminDashboardHint": "Sales, orders and stock at a glance",
+  "adminCatalog": "Catalog",
+  "adminCatalogHint": "Add and edit books, editions and stock",
+  "adminOrders": "Orders",
+  "adminOrdersHint": "Orders, returns, refunds and coupons",
+  "adminModeration": "Moderation",
+  "adminModerationHint": "Review used-book listings and reports",
+  "adminComingSoon": "This section is being built. Check back soon."
 }
