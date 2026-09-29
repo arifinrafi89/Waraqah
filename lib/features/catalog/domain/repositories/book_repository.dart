@@ -1,5 +1,4 @@
 import '../../../../core/models/book.dart';
-import '../entities/book_details.dart';
 
 /// What the catalog LEGO block promises to the rest of the app.
 ///
@@ -15,8 +14,4 @@ abstract interface class BookRepository {
 
   /// A single title, used by the AI assistant's recommendation cards.
   Future<Book?> findById(String id);
-
-  /// Vendor offers (cheapest first), reviews and publication facts for one
-  /// title. `null` when [id] is not in the catalog.
-  Future<BookDetails?> fetchDetails(String id);
 }

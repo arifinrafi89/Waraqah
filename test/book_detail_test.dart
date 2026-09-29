@@ -4,11 +4,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:waraqah/app/router/app_router.dart';
 import 'package:waraqah/app/router/app_routes.dart';
 import 'package:waraqah/core/models/book.dart';
+import 'package:waraqah/features/catalog/data/repositories/book_details_repository_impl.dart';
 import 'package:waraqah/features/catalog/data/repositories/book_repository_impl.dart';
 import 'package:waraqah/features/catalog/data/sources/book_details_fixtures.dart';
 import 'package:waraqah/features/catalog/data/sources/book_details_source.dart';
 import 'package:waraqah/features/catalog/data/sources/book_fixtures.dart';
 import 'package:waraqah/features/catalog/data/sources/book_remote_source.dart';
+import 'package:waraqah/features/catalog/data/sources/seed/offer_seed.dart';
 import 'package:waraqah/features/catalog/domain/entities/book_details.dart';
 import 'package:waraqah/features/catalog/domain/entities/vendor_offer.dart';
 
@@ -21,38 +23,41 @@ Dio _offlineDio() => Dio()
     ),
   );
 
-class _SingleBookSource extends BookRemoteSource {
-  _SingleBookSource(this.book) : super(_offlineDio());
-  final Book book;
+/// Serves a fixed book list, so these tests don't depend on how the catalog
+/// source reaches its data (seed fallback today, a fake API later).
+class _StaticBookSource extends BookRemoteSource {
+  _StaticBookSource(this.books) : super(_offlineDio());
+  final List<Book> books;
 
   @override
   Future<List<Book>> fetchBooks({String? category, String query = ''}) async =>
-      [book];
+      books;
 }
 
-BookRepositoryImpl _repository([BookRemoteSource? books]) => BookRepositoryImpl(
-  books ?? BookRemoteSource(_offlineDio()),
-  BookDetailsSource(_offlineDio()),
-);
+BookDetailsRepositoryImpl _repository([List<Book>? books]) =>
+    BookDetailsRepositoryImpl(
+      BookRepositoryImpl(_StaticBookSource(books ?? BookFixtures.all)),
+      BookDetailsSource(_offlineDio()),
+    );
 
 void main() {
   group('Book detail seed', () {
-    test('every catalog book has offers that agree with its list entry', () {
-      for (final book in BookFixtures.all) {
-        final details = BookDetailsFixtures.find(book.id);
-        expect(details, isNotNull, reason: book.id);
-        final prices = details!.offers.map((offer) => offer.priceBdt);
-        final cheapest = details.offers.firstWhere(
-          (offer) => offer.priceBdt == prices.reduce((a, b) => a < b ? a : b),
+    test('every seeded book agrees with its catalog entry', () {
+      for (final id in OfferSeed.byBookId.keys) {
+        final book = BookFixtures.all.where((b) => b.id == id).firstOrNull;
+        expect(book, isNotNull, reason: '$id is seeded but not in the catalog');
+        final offers = BookDetailsFixtures.find(id)!.offers;
+        final cheapest = offers.reduce(
+          (a, b) => a.priceBdt <= b.priceBdt ? a : b,
         );
-        expect(details.offers.length, book.vendorCount, reason: book.id);
-        expect(cheapest.priceBdt, book.priceBdt, reason: book.id);
-        expect(cheapest.vendor, book.vendor, reason: book.id);
+        expect(offers.length, book!.vendorCount, reason: id);
+        expect(cheapest.priceBdt, book.priceBdt, reason: id);
+        expect(cheapest.vendor, book.vendor, reason: id);
       }
     });
   });
 
-  group('BookRepository.fetchDetails', () {
+  group('BookDetailsRepository.fetchDetails', () {
     test('returns offers cheapest first', () async {
       final details = await _repository().fetchDetails('bk-atomic');
       final prices = details!.offers.map((offer) => offer.priceBdt).toList();
@@ -73,8 +78,7 @@ void main() {
         vendor: 'Wafilife',
         vendorCount: 3,
       );
-      final details = await _repository(_SingleBookSource(book))
-          .fetchDetails(book.id);
+      final details = await _repository([book]).fetchDetails(book.id);
       expect(details!.offers, [
         const VendorOffer(vendor: 'Wafilife', priceBdt: 300),
       ]);
