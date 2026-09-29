@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/theme/app_theme.dart';
-import '../router/app_routes.dart';
+import '../../features/ai_assistant/ai_assistant_routes.dart';
 
 /// Squared floating button that opens the Gemini reading assistant from any tab.
 class AiFab extends StatelessWidget {
@@ -17,7 +17,7 @@ class AiFab extends StatelessWidget {
       elevation: 8,
       shadowColor: Colors.black.withValues(alpha: 0.4),
       child: InkWell(
-        onTap: () => context.pushNamed(RouteNames.aiChat),
+        onTap: () => context.push(AiAssistantRoutes.aiChat),
         borderRadius: BorderRadius.circular(18),
         child: SizedBox(
           width: 52,

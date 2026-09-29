@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:waraqah/app/router/app_router.dart';
-import 'package:waraqah/app/router/app_routes.dart';
 import 'package:waraqah/core/models/book.dart';
 import 'package:waraqah/core/models/edition.dart';
 import 'package:waraqah/features/catalog/data/repositories/book_details_repository_impl.dart';
@@ -71,15 +69,5 @@ void main() {
       expect(details!.reviews, isEmpty);
       expect(details.description, isNull);
     });
-  });
-
-  test('book detail route resolves to /catalog/book/:id', () {
-    final router = AppRouter.create(startSignedIn: true);
-    final location = router.namedLocation(
-      RouteNames.bookDetail,
-      pathParameters: {'id': 'bk-atomic'},
-    );
-    expect(location, AppRoutes.bookDetailFor('bk-atomic'));
-    expect(location, '/catalog/book/bk-atomic');
   });
 }

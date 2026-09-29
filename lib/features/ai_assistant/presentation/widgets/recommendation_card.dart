@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../app/router/app_routes.dart';
+import '../../../catalog/catalog_routes.dart';
 import '../../../../core/models/book.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
@@ -27,7 +27,7 @@ class RecommendationCard extends ConsumerWidget {
     final palette = context.palette;
     final l10n = AppL10n.of(context)!;
     return GestureDetector(
-      onTap: () => context.push(AppRoutes.bookDetailFor(book.id)),
+      onTap: () => context.push(CatalogRoutes.bookDetailFor(book.id)),
       child: Container(
         margin: const EdgeInsets.only(top: 10),
         padding: const EdgeInsets.all(Insets.sm),

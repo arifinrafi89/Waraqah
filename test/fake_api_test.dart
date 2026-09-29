@@ -32,7 +32,10 @@ void main() {
             .then((books) => byCategory = books);
         async.elapse(const Duration(seconds: 1));
         expect(byCategory, isNotEmpty);
-        expect(byCategory!.every((b) => b.category == 'Islamic Studies'), isTrue);
+        expect(
+          byCategory!.every((b) => b.category == 'Islamic Studies'),
+          isTrue,
+        );
 
         List<Book>? byQuery;
         container
@@ -74,7 +77,9 @@ void main() {
         addTearDown(container.dispose);
 
         Object? result;
-        container.read(getAyahOfTheDayProvider).call(const NoParams()).then((ayah) {
+        container.read(getAyahOfTheDayProvider).call(const NoParams()).then((
+          ayah,
+        ) {
           result = ayah;
         });
         async.elapse(const Duration(seconds: 1));
