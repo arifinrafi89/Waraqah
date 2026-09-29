@@ -23,12 +23,12 @@ class AppShell extends StatelessWidget {
       return Scaffold(
         body: Row(
           children: [
+            Expanded(child: shell),
             GlassNavRail(
               currentIndex: shell.currentIndex,
               onSelected: _goBranch,
               onOpenAi: () => context.pushNamed(RouteNames.aiChat),
             ),
-            Expanded(child: shell),
           ],
         ),
       );

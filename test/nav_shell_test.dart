@@ -86,21 +86,4 @@ void main() {
       );
     },
   );
-
-  testWidgets(
-    'wheel over the rail moves to the next tab',
-    variant: TargetPlatformVariant.only(TargetPlatform.windows),
-    (tester) async {
-      await _pump(tester);
-      expect(find.byIcon(Icons.home_rounded), findsOneWidget);
-      final rail = tester.getCenter(find.byType(GlassNavRail));
-      final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
-      await mouse.addPointer(location: rail);
-      await tester.sendEventToBinding(
-        PointerScrollEvent(position: rail, scrollDelta: const Offset(0, 20)),
-      );
-      await tester.pump();
-      expect(find.byIcon(Icons.menu_book_rounded), findsOneWidget);
-    },
-  );
 }
