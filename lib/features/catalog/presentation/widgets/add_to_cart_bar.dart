@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/models/book.dart';
+import '../../../../core/models/edition.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
@@ -56,11 +57,13 @@ class AddToCartBar extends StatelessWidget {
                 child: PrimaryButton(
                   label: l10n.bookDetailAddToCart,
                   icon: Icons.add_shopping_cart_rounded,
-                  onPressed: () => ScaffoldMessenger.of(context)
-                    ..hideCurrentSnackBar()
-                    ..showSnackBar(
-                      SnackBar(content: Text(l10n.bookDetailCartSoon)),
-                    ),
+                  onPressed: book.fromEdition.isOrderable
+                      ? () => ScaffoldMessenger.of(context)
+                          ..hideCurrentSnackBar()
+                          ..showSnackBar(
+                            SnackBar(content: Text(l10n.bookDetailCartSoon)),
+                          )
+                      : null,
                 ),
               ),
             ],
