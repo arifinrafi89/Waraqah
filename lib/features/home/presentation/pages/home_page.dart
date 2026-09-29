@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/content_width.dart';
 import '../../../../core/widgets/fade_slide_in.dart';
+import '../widgets/auto_hide_header.dart';
 import '../widgets/ayah_section.dart';
-import '../widgets/benefit_filter_header.dart';
 import '../widgets/bites_section.dart';
-import '../widgets/home_sliver_app_bar.dart';
+import '../widgets/home_header.dart';
 import '../widgets/nearby_p2p_section.dart';
 import '../widgets/new_books_section.dart';
 
@@ -17,16 +17,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        const HomeSliverAppBar(),
-        const BenefitFilterHeader(),
-        const _Box(AyahSection()),
-        const _Box(BitesSection(), step: 1),
-        const NewBooksSection(),
-        const _Box(NearbyP2pSection(), step: 2),
-        SliverToBoxAdapter(child: SizedBox(height: Sizes.navClearance)),
-      ],
+    final top = MediaQuery.paddingOf(context).top + kHomeHeaderHeight;
+    return AutoHideHeader(
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(child: SizedBox(height: top)),
+          const _Box(AyahSection()),
+          const _Box(BitesSection(), step: 1),
+          const NewBooksSection(),
+          const _Box(NearbyP2pSection(), step: 2),
+          SliverToBoxAdapter(child: SizedBox(height: Sizes.navClearance)),
+        ],
+      ),
     );
   }
 }

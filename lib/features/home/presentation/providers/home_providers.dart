@@ -29,6 +29,10 @@ final ayahOfTheDayProvider = FutureProvider<Ayah>(
   (ref) => ref.watch(getAyahOfTheDayProvider).call(const NoParams()),
 );
 
+/// Whether Home's glass header is on screen. `AutoHideHeader` hides it a
+/// moment after the user scrolls past it and shows it again on scroll up.
+final homeHeaderVisibleProvider = selectionProvider<bool>(true);
+
 final benefitFilterProvider = selectionProvider<BenefitFilter>(
   BenefitFilter.all,
 );
