@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../app/router/app_routes.dart';
+import '../../catalog_routes.dart';
 import '../../../../core/models/book.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_palette.dart';
@@ -29,7 +29,7 @@ class BookListRow extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          onTap: () => context.push(AppRoutes.bookDetailFor(book.id)),
+          onTap: () => context.push(CatalogRoutes.bookDetailFor(book.id)),
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Row(

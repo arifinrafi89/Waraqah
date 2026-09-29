@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../app/router/app_routes.dart';
+import '../../../bites/bites_routes.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../bites/presentation/providers/bite_providers.dart';
@@ -23,7 +23,7 @@ class BitesSection extends ConsumerWidget {
       title: l10n.homeBookBites,
       subtitle: l10n.homeBookBitesSub,
       actionLabel: l10n.commonSeeAll,
-      onAction: () => context.go(AppRoutes.bites),
+      onAction: () => context.go(BitesRoutes.bites),
       topPadding: 20,
       child: AsyncView(
         value: ref.watch(biteFeedProvider),

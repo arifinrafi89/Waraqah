@@ -1,12 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:waraqah/app/router/app_routes.dart';
 import 'package:waraqah/app/router/route_access.dart';
+import 'package:waraqah/features/auth/auth_routes.dart';
 import 'package:waraqah/features/auth/domain/entities/app_user.dart';
 import 'package:waraqah/features/auth/domain/entities/auth_failure.dart';
 import 'package:waraqah/features/auth/domain/entities/user_role.dart';
 import 'package:waraqah/features/auth/domain/repositories/auth_repository.dart';
 import 'package:waraqah/features/auth/domain/usecases/sign_in.dart';
+import 'package:waraqah/features/catalog/catalog_routes.dart';
+import 'package:waraqah/features/home/home_routes.dart';
 
 AppUser _user(UserRole role) =>
     AppUser(id: 'u1', name: 'Test', email: 't@waraqah.test', role: role);
@@ -44,17 +46,17 @@ void main() {
   });
 
   group('RouteAccess', () {
-    const admin = AppRoutes.admin;
+    const admin = RouteAccess.admin;
 
     test('guests are sent to login from the admin area', () {
-      expect(RouteAccess.redirect(admin, null), AppRoutes.login);
-      expect(RouteAccess.redirect('$admin/books', null), AppRoutes.login);
+      expect(RouteAccess.redirect(admin, null), AuthRoutes.login);
+      expect(RouteAccess.redirect('$admin/books', null), AuthRoutes.login);
     });
 
     test('readers are sent home from the admin area', () {
       expect(
         RouteAccess.redirect(admin, _user(UserRole.reader)),
-        AppRoutes.home,
+        HomeRoutes.home,
       );
     });
 
@@ -68,11 +70,11 @@ void main() {
 
     test('signed-in users skip the login page; guests can browse', () {
       expect(
-        RouteAccess.redirect(AppRoutes.login, _user(UserRole.reader)),
-        AppRoutes.home,
+        RouteAccess.redirect(AuthRoutes.login, _user(UserRole.reader)),
+        HomeRoutes.home,
       );
-      expect(RouteAccess.redirect(AppRoutes.login, null), isNull);
-      expect(RouteAccess.redirect(AppRoutes.catalog, null), isNull);
+      expect(RouteAccess.redirect(AuthRoutes.login, null), isNull);
+      expect(RouteAccess.redirect(CatalogRoutes.catalog, null), isNull);
     });
 
     test('a path that only starts with /admin is not the admin area', () {

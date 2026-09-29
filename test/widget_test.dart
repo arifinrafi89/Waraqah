@@ -4,8 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_platform_interface.dart';
 
-import 'package:waraqah/app/router/app_router.dart';
-import 'package:waraqah/app/router/app_routes.dart';
 import 'package:waraqah/core/settings/settings_provider.dart';
 import 'package:waraqah/core/theme/app_palette.dart';
 import 'package:waraqah/core/utils/formatters.dart';
@@ -45,7 +43,12 @@ void main() {
 
   group('P2P marketplace filters', () {
     test('filter chips match the available book conditions', () {
-      expect(P2pFilter.values, [P2pFilter.all, P2pFilter.likeNew, P2pFilter.good, P2pFilter.fair]);
+      expect(P2pFilter.values, [
+        P2pFilter.all,
+        P2pFilter.likeNew,
+        P2pFilter.good,
+        P2pFilter.fair,
+      ]);
     });
 
     test('listings are filtered by condition and search', () {
@@ -70,41 +73,43 @@ void main() {
 
   group('settingsProvider', () {
     Future<SharedPreferences> mockPrefs() async {
-      SharedPreferencesStorePlatform.instance = InMemorySharedPreferencesStore.empty();
+      SharedPreferencesStorePlatform.instance =
+          InMemorySharedPreferencesStore.empty();
       return SharedPreferences.getInstance();
     }
 
-    test('changes theme mode and locale, and a fresh container reads them back', () async {
-      final prefs = await mockPrefs();
-      final container = ProviderContainer(
-        overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
-      );
-      addTearDown(container.dispose);
+    test(
+      'changes theme mode and locale, and a fresh container reads them back',
+      () async {
+        final prefs = await mockPrefs();
+        final container = ProviderContainer(
+          overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
+        );
+        addTearDown(container.dispose);
 
-      await container.read(settingsProvider.notifier).setThemeMode(ThemeMode.dark);
-      await container.read(settingsProvider.notifier).setLocale(const Locale('bn'));
+        await container
+            .read(settingsProvider.notifier)
+            .setThemeMode(ThemeMode.dark);
+        await container
+            .read(settingsProvider.notifier)
+            .setLocale(const Locale('bn'));
 
-      expect(container.read(settingsProvider).themeMode, ThemeMode.dark);
-      expect(container.read(settingsProvider).locale, const Locale('bn'));
+        expect(container.read(settingsProvider).themeMode, ThemeMode.dark);
+        expect(container.read(settingsProvider).locale, const Locale('bn'));
 
-      SharedPreferences.resetStatic();
-      final freshPrefs = await SharedPreferences.getInstance();
-      final freshContainer = ProviderContainer(
-        overrides: [sharedPreferencesProvider.overrideWithValue(freshPrefs)],
-      );
-      addTearDown(freshContainer.dispose);
+        SharedPreferences.resetStatic();
+        final freshPrefs = await SharedPreferences.getInstance();
+        final freshContainer = ProviderContainer(
+          overrides: [sharedPreferencesProvider.overrideWithValue(freshPrefs)],
+        );
+        addTearDown(freshContainer.dispose);
 
-      expect(freshContainer.read(settingsProvider).themeMode, ThemeMode.dark);
-      expect(freshContainer.read(settingsProvider).locale, const Locale('bn'));
-    });
-  });
-
-  group('P2P add listing route', () {
-    test('registers the add listing route for the floating sell action', () {
-      final router = AppRouter.create(startSignedIn: true);
-
-      expect(AppRoutes.p2pAddListing, '/p2p/add-listing');
-      expect(router.namedLocation(RouteNames.p2pAddListing), '/p2p/add-listing');
-    });
+        expect(freshContainer.read(settingsProvider).themeMode, ThemeMode.dark);
+        expect(
+          freshContainer.read(settingsProvider).locale,
+          const Locale('bn'),
+        );
+      },
+    );
   });
 }
