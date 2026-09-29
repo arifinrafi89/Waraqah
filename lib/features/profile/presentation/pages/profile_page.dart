@@ -26,7 +26,7 @@ class ProfilePage extends ConsumerWidget {
           ScreenAppBar(title: l10n.profileTitle),
           Expanded(
             child: ListView(
-              padding: const EdgeInsets.fromLTRB(
+              padding: EdgeInsets.fromLTRB(
                 Insets.screen,
                 0,
                 Insets.screen,

@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
           const HomeAppBar(),
           Expanded(
             child: ListView(
-              padding: const EdgeInsets.only(bottom: Sizes.navClearance),
+              padding: EdgeInsets.only(bottom: Sizes.navClearance),
               children: const [
                 AyahSection(),
                 Padding(

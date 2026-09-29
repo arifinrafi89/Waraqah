@@ -31,6 +31,25 @@ class AppL10nBn extends AppL10n {
   String get navProfile => 'প্রোফাইল';
 
   @override
+  String get navHomeHint => 'হোম: আজকের আয়াত, নতুন বই ও কাছের বইয়ের লেনদেন';
+
+  @override
+  String get navCatalogHint => 'ক্যাটালগ: সব বিক্রেতার নতুন বই ঘুরে দেখুন';
+
+  @override
+  String get navP2pHint => 'P2P: শিক্ষার্থীদের সাথে পুরোনো বই কেনাবেচা করুন';
+
+  @override
+  String get navBitesHint => 'বাইটস: পাঠকদের ছোট বইয়ের রিভিউ ও উদ্ধৃতি';
+
+  @override
+  String get navProfileHint => 'প্রোফাইল: আপনার অ্যাকাউন্ট, থিম ও ভাষা';
+
+  @override
+  String get navAiHint =>
+      'রিডিং অ্যাসিস্ট্যান্ট: যেকোনো বই নিয়ে Gemini-কে জিজ্ঞাসা করুন';
+
+  @override
   String get bitesTitle => 'বুক-বাইটস';
 
   @override

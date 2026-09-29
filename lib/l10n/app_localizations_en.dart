@@ -31,6 +31,25 @@ class AppL10nEn extends AppL10n {
   String get navProfile => 'Profile';
 
   @override
+  String get navHomeHint => 'Home: today\'s ayah, new books and nearby swaps';
+
+  @override
+  String get navCatalogHint => 'Catalog: browse new books from every vendor';
+
+  @override
+  String get navP2pHint => 'P2P: buy and sell second-hand books with students';
+
+  @override
+  String get navBitesHint =>
+      'Bites: short book reviews and quotes from readers';
+
+  @override
+  String get navProfileHint => 'Profile: your account, theme and language';
+
+  @override
+  String get navAiHint => 'Reading Assistant: ask Gemini about any book';
+
+  @override
   String get bitesTitle => 'Book-Bites';
 
   @override

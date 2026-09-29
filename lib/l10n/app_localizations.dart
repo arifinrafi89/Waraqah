@@ -139,6 +139,42 @@ abstract class AppL10n {
   /// **'Profile'**
   String get navProfile;
 
+  /// No description provided for @navHomeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Home: today\'s ayah, new books and nearby swaps'**
+  String get navHomeHint;
+
+  /// No description provided for @navCatalogHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalog: browse new books from every vendor'**
+  String get navCatalogHint;
+
+  /// No description provided for @navP2pHint.
+  ///
+  /// In en, this message translates to:
+  /// **'P2P: buy and sell second-hand books with students'**
+  String get navP2pHint;
+
+  /// No description provided for @navBitesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Bites: short book reviews and quotes from readers'**
+  String get navBitesHint;
+
+  /// No description provided for @navProfileHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile: your account, theme and language'**
+  String get navProfileHint;
+
+  /// No description provided for @navAiHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading Assistant: ask Gemini about any book'**
+  String get navAiHint;
+
   /// No description provided for @bitesTitle.
   ///
   /// In en, this message translates to:

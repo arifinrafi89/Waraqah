@@ -15,7 +15,7 @@ class CatalogResultsList extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppL10n.of(context)!;
     return ListView.separated(
-      padding: const EdgeInsets.only(
+      padding: EdgeInsets.only(
         left: Insets.screen,
         right: Insets.screen,
         bottom: Sizes.navClearance,

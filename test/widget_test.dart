@@ -10,7 +10,6 @@ import 'package:waraqah/core/settings/settings_provider.dart';
 import 'package:waraqah/core/theme/app_palette.dart';
 import 'package:waraqah/core/utils/formatters.dart';
 import 'package:waraqah/features/p2p/domain/entities/p2p_listing.dart';
-import 'package:waraqah/features/p2p/presentation/providers/p2p_providers.dart';
 
 void main() {
   group('Bdt.format', () {

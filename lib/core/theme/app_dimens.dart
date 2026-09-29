@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 /// Spacing, radius and size constants lifted from the design board.
 ///
 /// Using named constants instead of magic numbers keeps every LEGO brick
@@ -30,6 +32,14 @@ abstract final class Sizes {
   static const double listThumbWidth = 58;
   static const double listThumbHeight = 80;
 
-  /// Space reserved at the bottom of scroll views for the floating nav bar.
-  static const double navClearance = 104;
+  static const double _navBarClearance = 104;
+
+  /// True when the shell shows the left rail (every platform but phones).
+  static bool get usesNavRail =>
+      defaultTargetPlatform != TargetPlatform.android &&
+      defaultTargetPlatform != TargetPlatform.iOS;
+
+  /// Space reserved at the bottom of scroll views for the floating nav bar;
+  /// 0 on the rail layout, where the rail sits beside the content.
+  static double get navClearance => usesNavRail ? 0 : _navBarClearance;
 }
