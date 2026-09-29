@@ -3,17 +3,22 @@ abstract final class AppRoutes {
   static const String login = '/login';
   static const String home = '/home';
   static const String catalog = '/catalog';
+  static const String bookDetail = '/catalog/book/:id';
   static const String p2p = '/p2p';
   static const String p2pAddListing = '/p2p/add-listing';
   static const String bites = '/bites';
   static const String profile = '/profile';
   static const String aiChat = '/ai-chat';
+
+  /// Concrete location for one title's detail page.
+  static String bookDetailFor(String id) => '/catalog/book/$id';
 }
 
 abstract final class RouteNames {
   static const String login = 'login';
   static const String home = 'home';
   static const String catalog = 'catalog';
+  static const String bookDetail = 'bookDetail';
   static const String p2p = 'p2p';
   static const String p2pAddListing = 'p2pAddListing';
   static const String bites = 'bites';

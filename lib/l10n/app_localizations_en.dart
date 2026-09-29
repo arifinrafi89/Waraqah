@@ -207,6 +207,93 @@ class AppL10nEn extends AppL10n {
   String get catalogCategoryBusiness => 'Business';
 
   @override
+  String get bookDetailComparePrices => 'Compare prices';
+
+  @override
+  String bookDetailComparePricesSub(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count vendors',
+      one: '1 vendor',
+    );
+    return '$_temp0 · cheapest first';
+  }
+
+  @override
+  String get bookDetailLowest => 'Lowest';
+
+  @override
+  String bookDetailSave(String amount) {
+    return 'Save $amount vs the highest price';
+  }
+
+  @override
+  String bookDetailDelivery(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days-day delivery',
+      one: '1-day delivery',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get bookDetailInstant => 'Instant download';
+
+  @override
+  String get bookDetailOutOfStock => 'Out of stock';
+
+  @override
+  String get bookFormatPaperback => 'Paperback';
+
+  @override
+  String get bookFormatHardcover => 'Hardcover';
+
+  @override
+  String get bookFormatEbook => 'eBook';
+
+  @override
+  String get bookDetailAbout => 'About this book';
+
+  @override
+  String bookDetailPages(int count) {
+    return '$count pages';
+  }
+
+  @override
+  String get bookDetailReviews => 'Reviews';
+
+  @override
+  String bookDetailReviewsSub(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count reader reviews',
+      one: '1 reader review',
+      zero: 'No reviews yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get bookDetailNoReviews => 'Nobody has reviewed this book yet.';
+
+  @override
+  String get bookDetailBestPrice => 'Best price';
+
+  @override
+  String get bookDetailAddToCart => 'Add to cart';
+
+  @override
+  String get bookDetailCartSoon =>
+      'Cart and checkout arrive in the next phase.';
+
+  @override
+  String get bookDetailNotFound => 'We couldn\'t find this book.';
+
+  @override
   String get aiTitle => 'Reading Assistant';
 
   @override
