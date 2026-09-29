@@ -31,6 +31,25 @@ class AppL10nEn extends AppL10n {
   String get navProfile => 'Profile';
 
   @override
+  String get navHomeHint => 'Home: today\'s ayah, new books and nearby swaps';
+
+  @override
+  String get navCatalogHint => 'Catalog: browse new books from every vendor';
+
+  @override
+  String get navP2pHint => 'P2P: buy and sell second-hand books with students';
+
+  @override
+  String get navBitesHint =>
+      'Bites: short book reviews and quotes from readers';
+
+  @override
+  String get navProfileHint => 'Profile: your account, theme and language';
+
+  @override
+  String get navAiHint => 'Reading Assistant: ask Gemini about any book';
+
+  @override
   String get bitesTitle => 'Book-Bites';
 
   @override
@@ -124,6 +143,10 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get homeNonBeneficial => 'Non-Beneficial';
+
+  @override
+  String get homeNonBeneficialNote =>
+      'Books in this list are curated by our admins. Whether a book benefits a reader often depends on their intention and grounding. Many classical mufassirun, for example, consulted the Torah and the Bible for added context in their tafsir. For the general reader, however, such books are not beneficial, and without due care they may even cause harm.';
 
   @override
   String get homeBookBites => 'Book-Bites';
@@ -226,6 +249,18 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get aiViewBook => 'View book';
+
+  @override
+  String get homeAppBarLightMode => 'Light mode';
+
+  @override
+  String get homeAppBarDarkMode => 'Dark mode';
+
+  @override
+  String get homeAppBarEnglish => 'English';
+
+  @override
+  String get homeAppBarBangla => 'বাংলা';
 
   @override
   String get profileTitle => 'Profile';

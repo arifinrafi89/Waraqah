@@ -25,7 +25,9 @@ class CoverArt extends StatelessWidget {
 
   final String title;
   final int seed;
-  final double aspectRatio;
+
+  /// `null` fills the parent instead, e.g. inside an [Expanded].
+  final double? aspectRatio;
   final double fontSize;
   final double? radius;
   final Widget? badge;
@@ -35,47 +37,45 @@ class CoverArt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
-    return AspectRatio(
-      aspectRatio: aspectRatio,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: CoverGradient.of(palette.chipFor(seed)),
-          borderRadius: radius == null ? null : BorderRadius.circular(radius!),
-        ),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            if (!centerTitle) _scrim(palette),
-            Padding(
-              padding: const EdgeInsets.all(Insets.sm + 2),
-              child: Align(
-                alignment: centerTitle
-                    ? Alignment.center
-                    : Alignment.bottomLeft,
-                child: Text(
-                  title,
-                  textAlign: centerTitle ? TextAlign.center : TextAlign.start,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: centerTitle
-                      ? AppFonts.display(size: fontSize, color: Colors.white)
-                      : AppFonts.ui(
-                          size: fontSize,
-                          weight: FontWeight.w800,
-                          color: Colors.white,
-                          height: 1.25,
-                        ),
-                ),
+    final art = DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: CoverGradient.of(palette.chipFor(seed)),
+        borderRadius: radius == null ? null : BorderRadius.circular(radius!),
+      ),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          if (!centerTitle) _scrim(palette),
+          Padding(
+            padding: const EdgeInsets.all(Insets.sm + 2),
+            child: Align(
+              alignment: centerTitle ? Alignment.center : Alignment.bottomLeft,
+              child: Text(
+                title,
+                textAlign: centerTitle ? TextAlign.center : TextAlign.start,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: centerTitle
+                    ? AppFonts.display(size: fontSize, color: Colors.white)
+                    : AppFonts.ui(
+                        size: fontSize,
+                        weight: FontWeight.w800,
+                        color: Colors.white,
+                        height: 1.25,
+                      ),
               ),
             ),
-            if (badge != null)
-              Positioned(top: Insets.sm, left: Insets.sm, child: badge!),
-            if (cornerTag != null)
-              Positioned(top: 7, right: 7, child: cornerTag!),
-          ],
-        ),
+          ),
+          if (badge != null)
+            Positioned(top: Insets.sm, left: Insets.sm, child: badge!),
+          if (cornerTag != null)
+            Positioned(top: 7, right: 7, child: cornerTag!),
+        ],
       ),
     );
+    return aspectRatio == null
+        ? art
+        : AspectRatio(aspectRatio: aspectRatio!, child: art);
   }
 
   Widget _scrim(AppPalette palette) => DecoratedBox(

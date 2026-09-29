@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/settings/settings_controller.dart';
+import '../../../../core/settings/settings_provider.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../core/widgets/segmented_selector.dart';
@@ -10,14 +10,15 @@ import '../widgets/profile_header.dart';
 import '../widgets/settings_group.dart';
 
 /// Screen 5 — Profile. Also the home of the theme and language switchers, both
-/// wired to [SettingsController] via the `provider` package.
-class ProfilePage extends StatelessWidget {
+/// wired to [settingsProvider].
+class ProfilePage extends ConsumerWidget {
   const ProfilePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppL10n.of(context)!;
-    final settings = context.watch<SettingsController>();
+    final settings = ref.watch(settingsProvider);
+    final settingsNotifier = ref.watch(settingsProvider.notifier);
     return SafeArea(
       bottom: false,
       child: Column(
@@ -25,7 +26,7 @@ class ProfilePage extends StatelessWidget {
           ScreenAppBar(title: l10n.profileTitle),
           Expanded(
             child: ListView(
-              padding: const EdgeInsets.fromLTRB(
+              padding: EdgeInsets.fromLTRB(
                 Insets.screen,
                 0,
                 Insets.screen,
@@ -57,7 +58,7 @@ class ProfilePage extends StatelessWidget {
                       l10n.profileThemeSystem,
                     ],
                     value: settings.themeMode,
-                    onChanged: settings.setThemeMode,
+                    onChanged: settingsNotifier.setThemeMode,
                   ),
                 ),
                 const SizedBox(height: Insets.xl),
@@ -68,7 +69,8 @@ class ProfilePage extends StatelessWidget {
                     options: const ['en', 'bn'],
                     labels: [l10n.profileEnglish, l10n.profileBangla],
                     value: Localizations.localeOf(context).languageCode,
-                    onChanged: (code) => settings.setLocale(Locale(code)),
+                    onChanged: (code) =>
+                        settingsNotifier.setLocale(Locale(code)),
                   ),
                 ),
               ],

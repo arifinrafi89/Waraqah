@@ -63,7 +63,10 @@ class ChatBubble extends StatelessWidget {
             : Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: Insets.sm,
-                children: [_avatar(palette), Flexible(child: bubble)],
+                children: [
+                  _avatar(palette),
+                  Flexible(child: bubble),
+                ],
               ),
       ),
     );
@@ -78,10 +81,6 @@ class ChatBubble extends StatelessWidget {
       color: palette.accent,
       borderRadius: BorderRadius.circular(Radii.sm),
     ),
-    child: Icon(
-      Icons.auto_awesome_rounded,
-      size: 13,
-      color: palette.accentInk,
-    ),
+    child: Icon(Icons.auto_awesome_rounded, size: 13, color: palette.accentInk),
   );
 }

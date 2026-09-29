@@ -26,7 +26,11 @@ abstract final class AppFonts {
   );
 
   static TextStyle display({required double size, Color? color}) =>
-      GoogleFonts.reemKufi(fontSize: size, fontWeight: FontWeight.w500, color: color);
+      GoogleFonts.reemKufi(
+        fontSize: size,
+        fontWeight: FontWeight.w500,
+        color: color,
+      );
 
   static TextStyle arabic({required double size, Color? color}) =>
       GoogleFonts.amiri(fontSize: size, height: 1.9, color: color);

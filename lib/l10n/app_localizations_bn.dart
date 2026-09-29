@@ -31,6 +31,25 @@ class AppL10nBn extends AppL10n {
   String get navProfile => 'প্রোফাইল';
 
   @override
+  String get navHomeHint => 'হোম: আজকের আয়াত, নতুন বই ও কাছের বইয়ের লেনদেন';
+
+  @override
+  String get navCatalogHint => 'ক্যাটালগ: সব বিক্রেতার নতুন বই ঘুরে দেখুন';
+
+  @override
+  String get navP2pHint => 'P2P: শিক্ষার্থীদের সাথে পুরোনো বই কেনাবেচা করুন';
+
+  @override
+  String get navBitesHint => 'বাইটস: পাঠকদের ছোট বইয়ের রিভিউ ও উদ্ধৃতি';
+
+  @override
+  String get navProfileHint => 'প্রোফাইল: আপনার অ্যাকাউন্ট, থিম ও ভাষা';
+
+  @override
+  String get navAiHint =>
+      'রিডিং অ্যাসিস্ট্যান্ট: যেকোনো বই নিয়ে Gemini-কে জিজ্ঞাসা করুন';
+
+  @override
   String get bitesTitle => 'বুক-বাইটস';
 
   @override
@@ -122,6 +141,10 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get homeNonBeneficial => 'অনুপকারী';
+
+  @override
+  String get homeNonBeneficialNote =>
+      'এই তালিকার বইগুলো আমাদের অ্যাডমিন বাছাই করেছেন। কোনো বই পাঠকের উপকারে আসবে কি না, তা অনেক সময় তার নিয়ত ও জ্ঞানের ভিত্তির ওপর নির্ভর করে। যেমন, অনেক প্রসিদ্ধ মুফাসসির তাফসিরে বাড়তি প্রেক্ষাপট ও ব্যাখ্যার জন্য তাওরাত ও বাইবেল পড়েছেন। তবে সাধারণ পাঠকের জন্য এ ধরনের বই উপকারী নয়, এবং সতর্ক না হলে ক্ষতিকরও হতে পারে।';
 
   @override
   String get homeBookBites => 'বুক-বাইটস';
@@ -224,6 +247,18 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get aiViewBook => 'বই দেখুন';
+
+  @override
+  String get homeAppBarLightMode => 'লাইট মোড';
+
+  @override
+  String get homeAppBarDarkMode => 'ডার্ক মোড';
+
+  @override
+  String get homeAppBarEnglish => 'English';
+
+  @override
+  String get homeAppBarBangla => 'বাংলা';
 
   @override
   String get profileTitle => 'প্রোফাইল';

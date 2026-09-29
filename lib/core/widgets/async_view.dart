@@ -32,7 +32,7 @@ class AsyncView<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return value.when(
       loading: () => ShimmerScope(child: skeleton),
-      error: (_, _) => _Error(
+      error: (_, _) => AsyncErrorView(
         label: errorLabel,
         retryLabel: retryLabel,
         onRetry: onRetry,
@@ -42,8 +42,14 @@ class AsyncView<T> extends StatelessWidget {
   }
 }
 
-class _Error extends StatelessWidget {
-  const _Error({required this.label, required this.retryLabel, this.onRetry});
+/// Shared error block: icon, message and retry button.
+class AsyncErrorView extends StatelessWidget {
+  const AsyncErrorView({
+    super.key,
+    required this.label,
+    required this.retryLabel,
+    this.onRetry,
+  });
 
   final String label;
   final String retryLabel;

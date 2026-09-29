@@ -12,15 +12,19 @@ class P2pMarketplaceResultRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(Insets.screen, Insets.md, Insets.screen, 0),
+      padding: const EdgeInsets.fromLTRB(
+        Insets.screen,
+        Insets.md,
+        Insets.screen,
+        0,
+      ),
       child: Row(
         children: [
           Expanded(
             child: Text(
               '${listings.length} listings',
-              style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                color: context.palette.textFaint,
-              ),
+              style: Theme.of(context).textTheme.labelMedium
+                  ?.copyWith(color: context.palette.textFaint),
             ),
           ),
           TextButton.icon(

@@ -139,6 +139,42 @@ abstract class AppL10n {
   /// **'Profile'**
   String get navProfile;
 
+  /// No description provided for @navHomeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Home: today\'s ayah, new books and nearby swaps'**
+  String get navHomeHint;
+
+  /// No description provided for @navCatalogHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalog: browse new books from every vendor'**
+  String get navCatalogHint;
+
+  /// No description provided for @navP2pHint.
+  ///
+  /// In en, this message translates to:
+  /// **'P2P: buy and sell second-hand books with students'**
+  String get navP2pHint;
+
+  /// No description provided for @navBitesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Bites: short book reviews and quotes from readers'**
+  String get navBitesHint;
+
+  /// No description provided for @navProfileHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile: your account, theme and language'**
+  String get navProfileHint;
+
+  /// No description provided for @navAiHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading Assistant: ask Gemini about any book'**
+  String get navAiHint;
+
   /// No description provided for @bitesTitle.
   ///
   /// In en, this message translates to:
@@ -324,6 +360,12 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Non-Beneficial'**
   String get homeNonBeneficial;
+
+  /// No description provided for @homeNonBeneficialNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Books in this list are curated by our admins. Whether a book benefits a reader often depends on their intention and grounding. Many classical mufassirun, for example, consulted the Torah and the Bible for added context in their tafsir. For the general reader, however, such books are not beneficial, and without due care they may even cause harm.'**
+  String get homeNonBeneficialNote;
 
   /// No description provided for @homeBookBites.
   ///
@@ -516,6 +558,30 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'View book'**
   String get aiViewBook;
+
+  /// No description provided for @homeAppBarLightMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light mode'**
+  String get homeAppBarLightMode;
+
+  /// No description provided for @homeAppBarDarkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark mode'**
+  String get homeAppBarDarkMode;
+
+  /// No description provided for @homeAppBarEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get homeAppBarEnglish;
+
+  /// No description provided for @homeAppBarBangla.
+  ///
+  /// In en, this message translates to:
+  /// **'বাংলা'**
+  String get homeAppBarBangla;
 
   /// No description provided for @profileTitle.
   ///

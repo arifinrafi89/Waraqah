@@ -1,5 +1,7 @@
 import '../../../../core/models/book.dart';
+import 'seed/fiction_shelf.dart';
 import 'seed/general_shelf.dart';
+import 'seed/islamic_scholars_shelf.dart';
 import 'seed/islamic_shelf.dart';
 
 /// Offline catalog used until the Go backend is deployed.
@@ -10,5 +12,7 @@ abstract final class BookFixtures {
   static const List<Book> all = [
     ...GeneralShelf.books,
     ...IslamicShelf.books,
+    ...IslamicScholarsShelf.books,
+    ...FictionShelf.books,
   ];
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../l10n/app_localizations.dart';
-import '../../domain/entities/p2p_listing.dart';
 import '../providers/p2p_providers.dart';
 import '../widgets/p2p_marketplace_add_button.dart';
 import '../widgets/p2p_marketplace_filter_bar.dart';

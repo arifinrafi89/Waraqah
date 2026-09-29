@@ -32,9 +32,7 @@ class CatalogPage extends ConsumerWidget {
         children: [
           ScreenAppBar(
             title: l10n.catalogTitle,
-            subtitle: l10n.catalogSubtitle(
-              Counts.grouped(total.value ?? 0),
-            ),
+            subtitle: l10n.catalogSubtitle(Counts.grouped(total.value ?? 0)),
             actions: [
               AppIconButton(
                 icon: Icons.shopping_bag_outlined,

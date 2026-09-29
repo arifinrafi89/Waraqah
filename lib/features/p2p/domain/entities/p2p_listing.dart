@@ -48,7 +48,8 @@ extension P2pListingX on P2pListing {
 
   bool matchesFilter(P2pFilter filter, String query) {
     final normalizedQuery = query.trim().toLowerCase();
-    final queryMatches = normalizedQuery.isEmpty ||
+    final queryMatches =
+        normalizedQuery.isEmpty ||
         title.toLowerCase().contains(normalizedQuery) ||
         sellerName.toLowerCase().contains(normalizedQuery) ||
         sellerBatch.toLowerCase().contains(normalizedQuery);

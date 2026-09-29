@@ -28,7 +28,7 @@ class _BitesPageState extends ConsumerState<BitesPage> {
       appBar: AppBar(title: Text(l10n.bitesTitle)),
       body: feed.when(
         loading: () => ListView(
-          padding: const EdgeInsets.fromLTRB(
+          padding: EdgeInsets.fromLTRB(
             Insets.screen,
             Insets.sm,
             Insets.screen,
@@ -42,7 +42,7 @@ class _BitesPageState extends ConsumerState<BitesPage> {
         ),
         error: (_, _) => Center(child: Text(l10n.commonSomethingWentWrong)),
         data: (bites) => ListView.builder(
-          padding: const EdgeInsets.fromLTRB(
+          padding: EdgeInsets.fromLTRB(
             Insets.screen,
             Insets.sm,
             Insets.screen,

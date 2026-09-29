@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/shimmer_box.dart';
 import '../../../../core/widgets/surface_card.dart';
+import '../../../../core/widgets/horizontal_strip.dart';
 
 /// Shimmer stand-in for the horizontal Book-Bites strip.
 class BiteStripSkeleton extends StatelessWidget {
@@ -10,14 +11,9 @@ class BiteStripSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
+    return HorizontalStrip(
       physics: const NeverScrollableScrollPhysics(),
-      padding: const EdgeInsets.symmetric(horizontal: Insets.screen),
-      child: Row(
-        spacing: 10,
-        children: [for (var i = 0; i < 3; i++) const _Card()],
-      ),
+      children: [for (var i = 0; i < 3; i++) const _Card()],
     );
   }
 }
@@ -28,7 +24,6 @@ class _Card extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SurfaceCard(
-      width: Sizes.biteCardWidth,
       padding: const EdgeInsets.all(Insets.md),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -12,7 +12,6 @@ part of 'ayah.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$Ayah {
 
@@ -23,8 +22,6 @@ mixin _$Ayah {
 @pragma('vm:prefer-inline')
 $AyahCopyWith<Ayah> get copyWith => _$AyahCopyWithImpl<Ayah>(this as Ayah, _$identity);
 
-  /// Serializes this Ayah to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -33,7 +30,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Ayah&&(identical(other.arabic, _this.arabic) || other.arabic == _this.arabic)&&(identical(other.translation, _this.translation) || other.translation == _this.translation)&&(identical(other.surahEn, _this.surahEn) || other.surahEn == _this.surahEn)&&(identical(other.surahBn, _this.surahBn) || other.surahBn == _this.surahBn)&&(identical(other.surahNumber, _this.surahNumber) || other.surahNumber == _this.surahNumber)&&(identical(other.verseNumber, _this.verseNumber) || other.verseNumber == _this.verseNumber));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode {
   final _this = this as Ayah;
@@ -217,11 +214,11 @@ return $default(_that.arabic,_that.translation,_that.surahEn,_that.surahBn,_that
 }
 
 /// @nodoc
-@JsonSerializable()
+
 
 class _Ayah implements Ayah {
   const _Ayah({required this.arabic, required this.translation, required this.surahEn, required this.surahBn, required this.surahNumber, required this.verseNumber});
-  factory _Ayah.fromJson(Map<String, dynamic> json) => _$AyahFromJson(json);
+  
 
 @override final  String arabic;
 @override final  String translation;
@@ -236,17 +233,14 @@ class _Ayah implements Ayah {
 @pragma('vm:prefer-inline')
 _$AyahCopyWith<_Ayah> get copyWith => __$AyahCopyWithImpl<_Ayah>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$AyahToJson(this, );
-}
+
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Ayah&&(identical(other.arabic, arabic) || other.arabic == arabic)&&(identical(other.translation, translation) || other.translation == translation)&&(identical(other.surahEn, surahEn) || other.surahEn == surahEn)&&(identical(other.surahBn, surahBn) || other.surahBn == surahBn)&&(identical(other.surahNumber, surahNumber) || other.surahNumber == surahNumber)&&(identical(other.verseNumber, verseNumber) || other.verseNumber == verseNumber));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode {
     return Object.hash(runtimeType,arabic,translation,surahEn,surahBn,surahNumber,verseNumber);

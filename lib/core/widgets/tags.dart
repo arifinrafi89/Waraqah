@@ -52,13 +52,21 @@ class AccentTag extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: 4,
         children: [
-          Icon(icon ?? Icons.menu_book_rounded, size: 11, color: palette.accent),
-          Text(
-            label,
-            style: AppFonts.ui(
-              size: 10.5,
-              weight: FontWeight.w800,
-              color: palette.accent,
+          Icon(
+            icon ?? Icons.menu_book_rounded,
+            size: 11,
+            color: palette.accent,
+          ),
+          Flexible(
+            child: Text(
+              label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppFonts.ui(
+                size: 10.5,
+                weight: FontWeight.w800,
+                color: palette.accent,
+              ),
             ),
           ),
         ],

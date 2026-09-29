@@ -13,12 +13,16 @@ class FilterChipBar extends StatelessWidget {
     required this.selectedIndex,
     required this.onSelected,
     this.padding = const EdgeInsets.symmetric(horizontal: Insets.screen),
+    this.trailingBuilder,
   });
 
   final List<String> labels;
   final int selectedIndex;
   final ValueChanged<int> onSelected;
   final EdgeInsetsGeometry padding;
+
+  /// Optional widget rendered right after the chip at [index], e.g. an info icon.
+  final Widget? Function(int index)? trailingBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +32,14 @@ class FilterChipBar extends StatelessWidget {
       child: Row(
         spacing: Insets.sm,
         children: [
-          for (var i = 0; i < labels.length; i++)
+          for (var i = 0; i < labels.length; i++) ...[
             _Chip(
               label: labels[i],
               isActive: i == selectedIndex,
               onTap: () => onSelected(i),
             ),
+            ?trailingBuilder?.call(i),
+          ],
         ],
       ),
     );
@@ -41,7 +47,11 @@ class FilterChipBar extends StatelessWidget {
 }
 
 class _Chip extends StatelessWidget {
-  const _Chip({required this.label, required this.isActive, required this.onTap});
+  const _Chip({
+    required this.label,
+    required this.isActive,
+    required this.onTap,
+  });
 
   final String label;
   final bool isActive;
@@ -73,7 +83,11 @@ class _Chip extends StatelessWidget {
               ),
             Text(
               label,
-              style: AppFonts.ui(size: 12.5, weight: FontWeight.w700, color: fg),
+              style: AppFonts.ui(
+                size: 12.5,
+                weight: FontWeight.w700,
+                color: fg,
+              ),
             ),
           ],
         ),

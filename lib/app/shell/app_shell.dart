@@ -5,6 +5,7 @@ import '../../core/theme/app_dimens.dart';
 import '../router/app_routes.dart';
 import 'ai_fab.dart';
 import 'glass_nav_bar.dart';
+import 'glass_nav_rail.dart';
 
 /// Chrome shared by the five tabs: the branch's page, the floating glass nav bar
 /// and the AI assistant button layered over it.
@@ -18,7 +19,22 @@ class AppShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isProfile = shell.currentIndex == ShellTabs.paths.indexOf(AppRoutes.profile);
+    if (Sizes.usesNavRail) {
+      return Scaffold(
+        body: Row(
+          children: [
+            Expanded(child: shell),
+            GlassNavRail(
+              currentIndex: shell.currentIndex,
+              onSelected: _goBranch,
+              onOpenAi: () => context.pushNamed(RouteNames.aiChat),
+            ),
+          ],
+        ),
+      );
+    }
+    final isProfile =
+        shell.currentIndex == ShellTabs.paths.indexOf(AppRoutes.profile);
     final isP2p = shell.currentIndex == ShellTabs.paths.indexOf(AppRoutes.p2p);
     final showFab = !isProfile && !isP2p;
     return Scaffold(
