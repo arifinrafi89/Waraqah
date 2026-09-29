@@ -1,4 +1,5 @@
 import '../../../../../core/models/book.dart';
+import '../../../../../core/models/edition.dart';
 
 /// Seed data for the academic, self-help and business shelves.
 abstract final class GeneralShelf {
@@ -14,9 +15,35 @@ abstract final class GeneralShelf {
       vendorCount: 3,
       rating: 4.3,
       tags: ['Non-Fiction'],
-      category: 'Academic',
+      category: 'History',
       isBestValue: true,
       coverSeed: 0,
+      section: Section.academic,
+      originalLanguage: BookLanguage.english,
+      editions: [
+        Edition(
+          id: 'bk-sapiens-pb-en',
+          format: BookFormat.paperback,
+          language: BookLanguage.english,
+          priceBdt: 650,
+          listPriceBdt: 780,
+          stock: 24,
+        ),
+        Edition(
+          id: 'bk-sapiens-pb-bn',
+          format: BookFormat.paperback,
+          language: BookLanguage.bangla,
+          priceBdt: 520,
+          stock: 15,
+        ),
+        Edition(
+          id: 'bk-sapiens-eb-en',
+          format: BookFormat.ebook,
+          language: BookLanguage.english,
+          priceBdt: 399,
+          stock: 999,
+        ),
+      ],
     ),
     Book(
       id: 'bk-atomic',
@@ -31,6 +58,25 @@ abstract final class GeneralShelf {
       category: 'Self-Help',
       isBestValue: true,
       coverSeed: 2,
+      section: Section.nonFiction,
+      originalLanguage: BookLanguage.english,
+      editions: [
+        Edition(
+          id: 'bk-atomic-pb-en',
+          format: BookFormat.paperback,
+          language: BookLanguage.english,
+          priceBdt: 590,
+          listPriceBdt: 650,
+          stock: 30,
+        ),
+        Edition(
+          id: 'bk-atomic-hc-en',
+          format: BookFormat.hardcover,
+          language: BookLanguage.english,
+          priceBdt: 890,
+          stock: 2,
+        ),
+      ],
     ),
     Book(
       id: 'bk-cleancode',
@@ -42,35 +88,28 @@ abstract final class GeneralShelf {
       vendorCount: 2,
       rating: 4.6,
       tags: ['Academic', 'Software'],
-      category: 'Academic',
+      category: 'Computer Science',
       isBeneficial: true,
       coverSeed: 0,
-    ),
-    Book(
-      id: 'bk-calculus',
-      title: 'Calculus: Early Transcendentals',
-      shortTitle: 'Calculus',
-      author: 'James Stewart',
-      priceBdt: 1750,
-      vendor: 'Rokomari',
-      vendorCount: 2,
-      rating: 4.2,
-      tags: ['Academic'],
-      category: 'Academic',
-      isBeneficial: true,
-      coverSeed: 2,
-    ),
-    Book(
-      id: 'bk-zero',
-      title: 'Zero to One',
-      author: 'Peter Thiel',
-      priceBdt: 520,
-      vendor: 'Rokomari',
-      vendorCount: 3,
-      rating: 4.4,
-      tags: ['Business'],
-      category: 'Business',
-      coverSeed: 1,
+      section: Section.academic,
+      originalLanguage: BookLanguage.english,
+      editions: [
+        Edition(
+          id: 'bk-cleancode-pb-en',
+          format: BookFormat.paperback,
+          language: BookLanguage.english,
+          priceBdt: 1150,
+          listPriceBdt: 1320,
+          stock: 8,
+        ),
+        Edition(
+          id: 'bk-cleancode-eb-en',
+          format: BookFormat.ebook,
+          language: BookLanguage.english,
+          priceBdt: 700,
+          stock: 999,
+        ),
+      ],
     ),
   ];
 }

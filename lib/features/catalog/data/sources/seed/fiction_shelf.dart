@@ -1,4 +1,5 @@
 import '../../../../../core/models/book.dart';
+import '../../../../../core/models/edition.dart';
 
 /// Seed data for the Fiction shelf.
 abstract final class FictionShelf {
@@ -16,6 +17,25 @@ abstract final class FictionShelf {
       tags: ['Fiction'],
       category: 'Fiction',
       coverSeed: 0,
+      section: Section.literature,
+      originalLanguage: BookLanguage.english,
+      editions: [
+        Edition(
+          id: 'bk-hobbit-pb-en',
+          format: BookFormat.paperback,
+          language: BookLanguage.english,
+          priceBdt: 550,
+          listPriceBdt: 650,
+          stock: 20,
+        ),
+        Edition(
+          id: 'bk-hobbit-pb-bn',
+          format: BookFormat.paperback,
+          language: BookLanguage.bangla,
+          priceBdt: 380,
+          stock: 9,
+        ),
+      ],
     ),
     Book(
       id: 'bk-hpstone',
@@ -29,6 +49,24 @@ abstract final class FictionShelf {
       tags: ['Fiction'],
       category: 'Fiction',
       coverSeed: 1,
+      section: Section.literature,
+      originalLanguage: BookLanguage.english,
+      editions: [
+        Edition(
+          id: 'bk-hpstone-pb-en',
+          format: BookFormat.paperback,
+          language: BookLanguage.english,
+          priceBdt: 620,
+          stock: 25,
+        ),
+        Edition(
+          id: 'bk-hpstone-hc-en',
+          format: BookFormat.hardcover,
+          language: BookLanguage.english,
+          priceBdt: 1100,
+          stock: 3,
+        ),
+      ],
     ),
     Book(
       id: 'bk-davinci',
@@ -43,19 +81,18 @@ abstract final class FictionShelf {
       tags: ['Fiction'],
       category: 'Fiction',
       coverSeed: 2,
-    ),
-    Book(
-      id: 'bk-sherlock',
-      title: 'Sherlock Holmes: A Study in Scarlet',
-      shortTitle: 'Sherlock Holmes',
-      author: 'Arthur Conan Doyle',
-      priceBdt: 380,
-      vendor: 'Wafilife',
-      vendorCount: 2,
-      rating: 4.6,
-      tags: ['Fiction'],
-      category: 'Fiction',
-      coverSeed: 3,
+      section: Section.literature,
+      originalLanguage: BookLanguage.english,
+      editions: [
+        Edition(
+          id: 'bk-davinci-pb-en',
+          format: BookFormat.paperback,
+          language: BookLanguage.english,
+          priceBdt: 450,
+          listPriceBdt: 520,
+          stock: 14,
+        ),
+      ],
     ),
   ];
 }

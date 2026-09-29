@@ -23,6 +23,16 @@ _Book _$BookFromJson(Map<String, dynamic> json) => _Book(
   originalPriceBdt: (json['originalPriceBdt'] as num?)?.toInt(),
   shortTitle: json['shortTitle'] as String?,
   category: json['category'] as String?,
+  section: $enumDecodeNullable(_$SectionEnumMap, json['section']),
+  originalLanguage: $enumDecodeNullable(
+    _$BookLanguageEnumMap,
+    json['originalLanguage'],
+  ),
+  editions:
+      (json['editions'] as List<dynamic>?)
+          ?.map((e) => Edition.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const <Edition>[],
 );
 
 Map<String, dynamic> _$BookToJson(_Book instance) => <String, dynamic>{
@@ -40,4 +50,24 @@ Map<String, dynamic> _$BookToJson(_Book instance) => <String, dynamic>{
   'originalPriceBdt': instance.originalPriceBdt,
   'shortTitle': instance.shortTitle,
   'category': instance.category,
+  'section': _$SectionEnumMap[instance.section],
+  'originalLanguage': _$BookLanguageEnumMap[instance.originalLanguage],
+  'editions': instance.editions.map((e) => e.toJson()).toList(),
+};
+
+const _$SectionEnumMap = {
+  Section.academic: 'academic',
+  Section.religious: 'religious',
+  Section.literature: 'literature',
+  Section.admissionJobPrep: 'admissionJobPrep',
+  Section.schoolCollege: 'schoolCollege',
+  Section.nonFiction: 'nonFiction',
+  Section.skillsTech: 'skillsTech',
+  Section.children: 'children',
+};
+
+const _$BookLanguageEnumMap = {
+  BookLanguage.bangla: 'bangla',
+  BookLanguage.english: 'english',
+  BookLanguage.arabic: 'arabic',
 };

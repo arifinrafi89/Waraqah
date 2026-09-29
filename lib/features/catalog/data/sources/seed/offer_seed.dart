@@ -1,3 +1,4 @@
+import '../../../../../core/models/edition.dart';
 import '../../../domain/entities/vendor_offer.dart';
 
 /// Per-vendor prices for the seed catalog, keyed by book id.

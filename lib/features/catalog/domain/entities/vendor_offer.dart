@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/models/edition.dart';
+
 part 'vendor_offer.freezed.dart';
 part 'vendor_offer.g.dart';
-
-enum BookFormat { paperback, hardcover, ebook }
 
 /// One vendor's price for a title. The proposal's "Book Listings" table:
 /// the same book can be listed by several vendors in different editions.
