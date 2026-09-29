@@ -27,7 +27,12 @@ class P2pAddListingPage extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.fromLTRB(Insets.screen, 0, Insets.screen, Insets.xl),
+                padding: const EdgeInsets.fromLTRB(
+                  Insets.screen,
+                  0,
+                  Insets.screen,
+                  Insets.xl,
+                ),
                 children: [
                   Container(
                     height: 172,
@@ -49,20 +54,32 @@ class P2pAddListingPage extends StatelessWidget {
                               color: palette.surface,
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: const Icon(Icons.add_photo_alternate_outlined, size: 34),
+                            child: const Icon(
+                              Icons.add_photo_alternate_outlined,
+                              size: 34,
+                            ),
                           ),
                           const SizedBox(height: Insets.sm),
-                          Text('Add front cover', style: Theme.of(context).textTheme.labelLarge),
+                          Text(
+                            'Add front cover',
+                            style: Theme.of(context).textTheme.labelLarge,
+                          ),
                         ],
                       ),
                     ),
                   ),
                   const SizedBox(height: Insets.xl),
-                  const _Field(label: 'Book title', hint: 'The Pragmatic Programmer'),
+                  const _Field(
+                    label: 'Book title',
+                    hint: 'The Pragmatic Programmer',
+                  ),
                   const _Field(label: 'Author', hint: 'David Thomas'),
                   const _Field(label: 'Price (৳)', hint: '450'),
                   const _ConditionSelector(),
-                  const _Field(label: 'Seller note', hint: 'Minimal markings, original copy'),
+                  const _Field(
+                    label: 'Seller note',
+                    hint: 'Minimal markings, original copy',
+                  ),
                   const SizedBox(height: Insets.lg),
                   FilledButton.icon(
                     onPressed: () => context.pop(),
@@ -70,7 +87,9 @@ class P2pAddListingPage extends StatelessWidget {
                     label: const Text('Publish listing'),
                     style: FilledButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
                     ),
                   ),
                 ],
@@ -138,7 +157,9 @@ class _ConditionSelector extends StatelessWidget {
                   label: Text(option),
                   selected: option == 'Like New',
                   onSelected: (_) {},
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
             ],
           ),

@@ -69,7 +69,8 @@ class ProfilePage extends ConsumerWidget {
                     options: const ['en', 'bn'],
                     labels: [l10n.profileEnglish, l10n.profileBangla],
                     value: Localizations.localeOf(context).languageCode,
-                    onChanged: (code) => settingsNotifier.setLocale(Locale(code)),
+                    onChanged: (code) =>
+                        settingsNotifier.setLocale(Locale(code)),
                   ),
                 ),
               ],

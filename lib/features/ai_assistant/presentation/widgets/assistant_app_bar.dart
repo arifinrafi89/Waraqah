@@ -8,7 +8,11 @@ import '../../../../core/widgets/app_icon_button.dart';
 
 /// Chat header: back button, Gemini badge, title and subtitle.
 class AssistantAppBar extends StatelessWidget {
-  const AssistantAppBar({super.key, required this.title, required this.subtitle});
+  const AssistantAppBar({
+    super.key,
+    required this.title,
+    required this.subtitle,
+  });
 
   final String title;
   final String subtitle;

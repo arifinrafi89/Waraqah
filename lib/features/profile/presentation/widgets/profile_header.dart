@@ -62,7 +62,9 @@ class ProfileHeader extends StatelessWidget {
           Row(
             children: [
               for (final entry in stats.entries)
-                Expanded(child: _Stat(label: entry.key, value: entry.value)),
+                Expanded(
+                  child: _Stat(label: entry.key, value: entry.value),
+                ),
             ],
           ),
         ],

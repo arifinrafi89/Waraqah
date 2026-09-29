@@ -58,7 +58,9 @@ class _GlassNavRailState extends State<GlassNavRail> {
               padding: const EdgeInsets.symmetric(vertical: Insets.md),
               decoration: BoxDecoration(
                 color: palette.surface.withValues(alpha: 0.72),
-                border: Border.all(color: palette.border.withValues(alpha: 0.7)),
+                border: Border.all(
+                  color: palette.border.withValues(alpha: 0.7),
+                ),
                 borderRadius: BorderRadius.circular(Radii.nav),
               ),
               child: Column(

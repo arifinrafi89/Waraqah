@@ -36,7 +36,10 @@ class SettingsNotifier extends Notifier<AppSettings> {
   @override
   AppSettings build() {
     final store = ref.watch(_settingsStoreProvider);
-    return AppSettings(themeMode: store.readThemeMode(), locale: store.readLocale());
+    return AppSettings(
+      themeMode: store.readThemeMode(),
+      locale: store.readLocale(),
+    );
   }
 
   Future<void> setThemeMode(ThemeMode mode) async {
@@ -57,4 +60,6 @@ class SettingsNotifier extends Notifier<AppSettings> {
   );
 }
 
-final settingsProvider = NotifierProvider<SettingsNotifier, AppSettings>(SettingsNotifier.new);
+final settingsProvider = NotifierProvider<SettingsNotifier, AppSettings>(
+  SettingsNotifier.new,
+);

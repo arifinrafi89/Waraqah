@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/async_sliver_view.dart';
 import '../../../../core/widgets/content_width.dart';
+import '../../../../core/widgets/fade_slide_in.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../providers/home_providers.dart';
 import 'book_grid.dart';
@@ -22,12 +23,15 @@ class NewBooksSection extends ConsumerWidget {
         slivers: [
           SliverToBoxAdapter(
             // Header only: the grid below is its own sliver.
-            child: HomeSection(
-              title: l10n.homeNewBooks,
-              subtitle: l10n.homeNewBooksSub,
-              actionLabel: l10n.commonSort,
-              actionIcon: Icons.sort_rounded,
-              child: const SizedBox.shrink(),
+            child: FadeSlideIn(
+              delay: const Duration(milliseconds: 120),
+              child: HomeSection(
+                title: l10n.homeNewBooks,
+                subtitle: l10n.homeNewBooksSub,
+                actionLabel: l10n.commonSort,
+                actionIcon: Icons.sort_rounded,
+                child: const SizedBox.shrink(),
+              ),
             ),
           ),
           SliverPadding(

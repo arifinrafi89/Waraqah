@@ -24,16 +24,14 @@ class HomeAppBar extends ConsumerWidget {
         AppIconButton(
           icon: isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
           tooltip: isDark ? l10n.homeAppBarLightMode : l10n.homeAppBarDarkMode,
-          onPressed: () => settings.setThemeMode(
-            isDark ? ThemeMode.light : ThemeMode.dark,
-          ),
+          onPressed: () =>
+              settings.setThemeMode(isDark ? ThemeMode.light : ThemeMode.dark),
         ),
         const SizedBox(width: 8),
         AppIconButton(
           icon: Icons.translate_rounded,
           tooltip: isBangla ? l10n.homeAppBarEnglish : l10n.homeAppBarBangla,
-          onPressed: () =>
-              settings.setLocale(Locale(isBangla ? 'en' : 'bn')),
+          onPressed: () => settings.setLocale(Locale(isBangla ? 'en' : 'bn')),
         ),
         const SizedBox(width: 8),
         AppIconButton(

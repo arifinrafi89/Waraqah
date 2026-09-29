@@ -29,11 +29,7 @@ class FakeApiInterceptor extends Interceptor {
     }
     await Future<void>.delayed(const Duration(milliseconds: 900));
     handler.resolve(
-      Response(
-        requestOptions: options,
-        data: route(options),
-        statusCode: 200,
-      ),
+      Response(requestOptions: options, data: route(options), statusCode: 200),
     );
   }
 }

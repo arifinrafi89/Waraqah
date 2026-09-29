@@ -5,6 +5,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/utils/formatters.dart';
 import '../../../../core/widgets/cover_art.dart';
+import '../../../../core/widgets/press_scale.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../core/widgets/tags.dart';
 
@@ -25,54 +26,59 @@ class BookGridCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
-    return SurfaceCard(
-      clip: true,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CoverArt(
-            title: book.coverLabel,
-            seed: book.coverSeed,
-            badge: book.isBestValue ? BestBadge(label: bestLabel) : null,
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(11, 10, 11, 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  book.author,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppFonts.ui(size: 11, color: palette.textFaint),
-                ),
-                const SizedBox(height: 6),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  spacing: 6,
-                  children: [
-                    Text(
-                      Bdt.format(book.priceBdt),
-                      style: AppFonts.numeric(size: 14.5, color: palette.text),
-                    ),
-                    if (book.isDiscounted)
+    return PressScale(
+      child: SurfaceCard(
+        clip: true,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CoverArt(
+              title: book.coverLabel,
+              seed: book.coverSeed,
+              badge: book.isBestValue ? BestBadge(label: bestLabel) : null,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(11, 10, 11, 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    book.author,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppFonts.ui(size: 11, color: palette.textFaint),
+                  ),
+                  const SizedBox(height: 6),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    spacing: 6,
+                    children: [
                       Text(
-                        Bdt.format(book.originalPriceBdt!),
+                        Bdt.format(book.priceBdt),
                         style: AppFonts.numeric(
-                          size: 11,
-                          weight: FontWeight.w600,
-                          color: palette.textFaint,
-                          decoration: TextDecoration.lineThrough,
+                          size: 14.5,
+                          color: palette.text,
                         ),
                       ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                MiniTag(label: vendorLine, fontSize: 9.5),
-              ],
+                      if (book.isDiscounted)
+                        Text(
+                          Bdt.format(book.originalPriceBdt!),
+                          style: AppFonts.numeric(
+                            size: 11,
+                            weight: FontWeight.w600,
+                            color: palette.textFaint,
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  MiniTag(label: vendorLine, fontSize: 9.5),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

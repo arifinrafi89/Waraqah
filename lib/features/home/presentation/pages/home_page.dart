@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/content_width.dart';
+import '../../../../core/widgets/fade_slide_in.dart';
 import '../widgets/ayah_section.dart';
 import '../widgets/benefit_filter_header.dart';
 import '../widgets/bites_section.dart';
@@ -21,9 +22,9 @@ class HomePage extends StatelessWidget {
         const HomeSliverAppBar(),
         const BenefitFilterHeader(),
         const _Box(AyahSection()),
-        const _Box(BitesSection()),
+        const _Box(BitesSection(), step: 1),
         const NewBooksSection(),
-        const _Box(NearbyP2pSection()),
+        const _Box(NearbyP2pSection(), step: 2),
         SliverToBoxAdapter(child: SizedBox(height: Sizes.navClearance)),
       ],
     );
@@ -31,11 +32,18 @@ class HomePage extends StatelessWidget {
 }
 
 class _Box extends StatelessWidget {
-  const _Box(this.child);
+  const _Box(this.child, {this.step = 0});
 
   final Widget child;
 
+  /// Position in the entrance stagger.
+  final int step;
+
   @override
-  Widget build(BuildContext context) =>
-      SliverToBoxAdapter(child: ContentWidth(child: child));
+  Widget build(BuildContext context) => SliverToBoxAdapter(
+    child: FadeSlideIn(
+      delay: Duration(milliseconds: 60 * step),
+      child: ContentWidth(child: child),
+    ),
+  );
 }

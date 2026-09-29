@@ -47,7 +47,11 @@ class FilterChipBar extends StatelessWidget {
 }
 
 class _Chip extends StatelessWidget {
-  const _Chip({required this.label, required this.isActive, required this.onTap});
+  const _Chip({
+    required this.label,
+    required this.isActive,
+    required this.onTap,
+  });
 
   final String label;
   final bool isActive;
@@ -79,7 +83,11 @@ class _Chip extends StatelessWidget {
               ),
             Text(
               label,
-              style: AppFonts.ui(size: 12.5, weight: FontWeight.w700, color: fg),
+              style: AppFonts.ui(
+                size: 12.5,
+                weight: FontWeight.w700,
+                color: fg,
+              ),
             ),
           ],
         ),

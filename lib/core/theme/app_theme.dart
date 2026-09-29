@@ -53,8 +53,16 @@ abstract final class AppTheme {
     bodyMedium: AppFonts.ui(size: 13, height: 1.5, color: p.textDim),
     bodySmall: AppFonts.ui(size: 12, height: 1.45, color: p.textDim),
     labelLarge: AppFonts.ui(size: 14, weight: FontWeight.w800, color: p.text),
-    labelMedium: AppFonts.ui(size: 11.5, weight: FontWeight.w700, color: p.textDim),
-    labelSmall: AppFonts.ui(size: 10.5, weight: FontWeight.w700, color: p.textFaint),
+    labelMedium: AppFonts.ui(
+      size: 11.5,
+      weight: FontWeight.w700,
+      color: p.textDim,
+    ),
+    labelSmall: AppFonts.ui(
+      size: 10.5,
+      weight: FontWeight.w700,
+      color: p.textFaint,
+    ),
   );
 }
 

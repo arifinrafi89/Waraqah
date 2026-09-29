@@ -32,16 +32,14 @@ class P2pMarketplaceCard extends StatelessWidget {
                   listing.title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: palette.text,
-                  ),
+                  style: Theme.of(context).textTheme.titleSmall
+                      ?.copyWith(color: palette.text),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   listing.sellerLine,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: palette.textFaint,
-                  ),
+                  style: Theme.of(context).textTheme.bodySmall
+                      ?.copyWith(color: palette.textFaint),
                 ),
                 const SizedBox(height: 10),
                 Row(
@@ -50,7 +48,9 @@ class P2pMarketplaceCard extends StatelessWidget {
                       child: P2pMarketplacePriceBlock(
                         price: Bdt.format(listing.priceBdt),
                         available: listing.availabilityLabel,
-                        color: listing.isAvailable ? palette.accent : palette.textFaint,
+                        color: listing.isAvailable
+                            ? palette.accent
+                            : palette.textFaint,
                       ),
                     ),
                     P2pMarketplaceMessageButton(

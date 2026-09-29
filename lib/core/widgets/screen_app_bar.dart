@@ -30,7 +30,8 @@ class ScreenAppBar extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: leading ??
+            child:
+                leading ??
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

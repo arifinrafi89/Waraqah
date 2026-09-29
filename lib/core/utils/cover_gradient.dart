@@ -11,7 +11,8 @@ abstract final class CoverGradient {
 
   static Color _darken(Color color, [double amount = 0.45]) {
     final hsl = HSLColor.fromColor(color);
-    return hsl.withLightness((hsl.lightness * (1 - amount)).clamp(0.0, 1.0))
+    return hsl
+        .withLightness((hsl.lightness * (1 - amount)).clamp(0.0, 1.0))
         .toColor();
   }
 }
