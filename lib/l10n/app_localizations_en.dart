@@ -133,6 +133,40 @@ class AppL10nEn extends AppL10n {
   String get authStudentIdHint => '220041118';
 
   @override
+  String get authContinueAsGuest => 'Continue as guest';
+
+  @override
+  String get authInvalidEmail => 'Enter a valid email address.';
+
+  @override
+  String get authMissingPassword => 'Enter your password.';
+
+  @override
+  String get authLogOut => 'Log out';
+
+  @override
+  String get authGuestName => 'Guest';
+
+  @override
+  String get authGuestNote =>
+      'Log in to buy books, sell used ones and post Bites.';
+
+  @override
+  String get authRoleReader => 'Reader';
+
+  @override
+  String get authRoleModerator => 'Moderator';
+
+  @override
+  String get authRoleCatalogManager => 'Catalog manager';
+
+  @override
+  String get authRoleSupport => 'Support';
+
+  @override
+  String get authRoleSuperAdmin => 'Admin';
+
+  @override
   String get homeAyahOfTheDay => 'Ayah of the Day';
 
   @override

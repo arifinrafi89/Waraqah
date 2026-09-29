@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 import '../core/network/api_config.dart';
 import '../core/network/fake_api_interceptor.dart';
+import '../features/auth/data/sources/auth_fixtures.dart';
 import '../features/catalog/data/sources/book_fixtures.dart';
 import '../features/home/data/sources/ayah_fixtures.dart';
 
@@ -11,6 +12,7 @@ import '../features/home/data/sources/ayah_fixtures.dart';
 /// fixtures — `core/` itself must never import a feature.
 abstract final class FakeApiRoutes {
   static FakeApiInterceptor interceptor() => FakeApiInterceptor({
+    ApiRoutes.authLogin: _login,
     ApiRoutes.books: _books,
     ApiRoutes.ayahOfTheDay: _ayahOfTheDay,
   });
@@ -33,6 +35,12 @@ abstract final class FakeApiRoutes {
       return matchesCategory && matchesQuery;
     });
     return books.map((book) => book.toJson()).toList();
+  }
+
+  static Object _login(RequestOptions options) {
+    final body = options.data as Map<String, dynamic>? ?? const {};
+    final email = (body['email'] as String? ?? '').trim().toLowerCase();
+    return AuthFixtures.accountFor(email);
   }
 
   static Object _ayahOfTheDay(RequestOptions options) =>

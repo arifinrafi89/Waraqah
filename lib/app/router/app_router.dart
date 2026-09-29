@@ -1,5 +1,8 @@
+import 'package:flutter/foundation.dart' show ValueListenable;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../features/auth/domain/entities/app_user.dart';
 
 import '../../features/ai_assistant/presentation/pages/ai_chat_page.dart';
 import '../../features/auth/presentation/pages/auth_page.dart';
@@ -12,6 +15,7 @@ import '../../features/p2p/presentation/pages/p2p_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 import '../shell/app_shell.dart';
 import 'app_routes.dart';
+import 'route_access.dart';
 
 /// The single GoRouter instance.
 ///
@@ -19,9 +23,22 @@ import 'app_routes.dart';
 /// [StatefulShellRoute] so each keeps its own navigation stack and scroll
 /// position. The AI chat, add-listing and book detail pages push over the
 /// shell as full-screen routes.
+///
+/// With a [session], every navigation goes through [RouteAccess], and the
+/// router re-checks whenever the session changes. The app always passes one
+/// (see `routerProvider`); tests can leave it out.
 abstract final class AppRouter {
-  static GoRouter create({required bool startSignedIn}) => GoRouter(
-    initialLocation: startSignedIn ? AppRoutes.home : AppRoutes.login,
+  static GoRouter create({
+    bool startSignedIn = false,
+    ValueListenable<AppUser?>? session,
+  }) => GoRouter(
+    initialLocation: (startSignedIn || session?.value != null)
+        ? AppRoutes.home
+        : AppRoutes.login,
+    refreshListenable: session,
+    redirect: session == null
+        ? null
+        : (_, state) => RouteAccess.redirect(state.uri.path, session.value),
     routes: [
       GoRoute(
         path: AppRoutes.login,
