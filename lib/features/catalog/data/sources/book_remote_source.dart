@@ -22,6 +22,7 @@ class BookRemoteSource {
         'author': ?filters.authorId,
         'publisher': ?filters.publisherId,
         if (filters.query.isNotEmpty) 'q': filters.query,
+        'sort': ?filters.sort?.name,
       },
     );
     return (response.data ?? [])

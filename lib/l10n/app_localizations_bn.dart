@@ -259,6 +259,24 @@ class AppL10nBn extends AppL10n {
   String get searchRequestBookSoon => 'পছন্দের বই আনার অনুরোধ শীঘ্রই আসছে।';
 
   @override
+  String get searchSort => 'সাজান';
+
+  @override
+  String get searchSortRelevance => 'প্রাসঙ্গিকতা';
+
+  @override
+  String get searchSortPriceLow => 'দাম: কম থেকে বেশি';
+
+  @override
+  String get searchSortPriceHigh => 'দাম: বেশি থেকে কম';
+
+  @override
+  String get searchSortNewest => 'নতুন';
+
+  @override
+  String get searchSortBestselling => 'সবচেয়ে বেশি বিক্রিত';
+
+  @override
   String get catalogBrowseSections => 'বিভাগ অনুযায়ী দেখুন';
 
   @override

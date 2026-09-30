@@ -27,14 +27,33 @@ final searchQueryProvider =
       () => SelectionNotifier<String>(''),
     );
 
-/// Books matching [searchQueryProvider], best match first.
+/// The order the Reader picked on the Search page; `null` = the default.
+/// Lives while the page is open and survives query changes.
+final searchSortChoiceProvider =
+    NotifierProvider.autoDispose<SelectionNotifier<SearchSort?>, SearchSort?>(
+      () => SelectionNotifier<SearchSort?>(null),
+    );
+
+/// The order in force: the choice, else Relevance with a query and Newest
+/// without. Relevance with no query falls back to Newest.
+final searchSortProvider = Provider.autoDispose<SearchSort>((ref) {
+  final hasQuery = ref.watch(searchQueryProvider).trim().isNotEmpty;
+  final choice = ref.watch(searchSortChoiceProvider);
+  if (choice == null || (choice == SearchSort.relevance && !hasQuery)) {
+    return hasQuery ? SearchSort.relevance : SearchSort.newest;
+  }
+  return choice;
+});
+
+/// Books matching [searchQueryProvider], in [searchSortProvider] order.
 final searchResultsProvider = FutureProvider.autoDispose<List<Book>>((ref) {
   final query = ref.watch(searchQueryProvider).trim();
+  final sort = ref.watch(searchSortProvider);
   return query.isEmpty
       ? Future.value(const <Book>[])
       : ref
             .watch(bookRepositoryProvider)
-            .searchCatalog(CatalogFilters(query: query));
+            .searchCatalog(CatalogFilters(query: query, sort: sort));
 });
 
 /// Total catalog size, shown in the app bar subtitle.

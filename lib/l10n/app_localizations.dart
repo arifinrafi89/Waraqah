@@ -577,6 +577,42 @@ abstract class AppL10n {
   /// **'Asking us to stock a book is coming soon.'**
   String get searchRequestBookSoon;
 
+  /// No description provided for @searchSort.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort'**
+  String get searchSort;
+
+  /// No description provided for @searchSortRelevance.
+  ///
+  /// In en, this message translates to:
+  /// **'Relevance'**
+  String get searchSortRelevance;
+
+  /// No description provided for @searchSortPriceLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Price: low to high'**
+  String get searchSortPriceLow;
+
+  /// No description provided for @searchSortPriceHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Price: high to low'**
+  String get searchSortPriceHigh;
+
+  /// No description provided for @searchSortNewest.
+  ///
+  /// In en, this message translates to:
+  /// **'Newest'**
+  String get searchSortNewest;
+
+  /// No description provided for @searchSortBestselling.
+  ///
+  /// In en, this message translates to:
+  /// **'Bestselling'**
+  String get searchSortBestselling;
+
   /// No description provided for @catalogBrowseSections.
   ///
   /// In en, this message translates to:

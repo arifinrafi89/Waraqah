@@ -262,6 +262,24 @@ class AppL10nEn extends AppL10n {
       'Asking us to stock a book is coming soon.';
 
   @override
+  String get searchSort => 'Sort';
+
+  @override
+  String get searchSortRelevance => 'Relevance';
+
+  @override
+  String get searchSortPriceLow => 'Price: low to high';
+
+  @override
+  String get searchSortPriceHigh => 'Price: high to low';
+
+  @override
+  String get searchSortNewest => 'Newest';
+
+  @override
+  String get searchSortBestselling => 'Bestselling';
+
+  @override
   String get catalogBrowseSections => 'Browse by Section';
 
   @override

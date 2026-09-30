@@ -4,6 +4,7 @@ import 'author_fixtures.dart';
 import 'book_details_fixtures.dart';
 import 'book_fixtures.dart';
 import 'book_search_match.dart';
+import 'book_sort.dart';
 import 'category_fixtures.dart';
 import 'look_inside_fixtures.dart';
 import 'publisher_fixtures.dart';
@@ -108,8 +109,9 @@ abstract final class BookFakeApi {
           matchesPublisher;
     });
     final found = query.isEmpty
-        ? matches
+        ? matches.toList()
         : BookSearchMatch.rank(matches, query);
-    return found.map((book) => book.toJson()).toList();
+    final sort = options.queryParameters['sort'] as String?;
+    return BookSort.apply(found, sort).map((book) => book.toJson()).toList();
   }
 }

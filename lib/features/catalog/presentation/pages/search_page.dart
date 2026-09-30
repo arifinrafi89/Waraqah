@@ -12,6 +12,7 @@ import '../providers/catalog_providers.dart';
 import '../widgets/back_app_bar.dart';
 import '../widgets/book_list_skeleton.dart';
 import '../widgets/search_no_results.dart';
+import '../widgets/search_sort_pill.dart';
 import 'catalog_results_list.dart';
 
 /// `/catalog/search`: live search by title, Author or Publisher.
@@ -60,7 +61,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
               onChanged: _onChanged,
             ),
           ),
-          const SizedBox(height: Insets.md),
+          const SearchSortPill(),
           Expanded(
             child: query.isEmpty
                 ? Center(
