@@ -216,8 +216,8 @@ return $default(_that.bookId,_that.reviews,_that.description,_that.pages,_that.p
 }
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(explicitToJson: true)
 class _BookDetails implements BookDetails {
   const _BookDetails({required this.bookId,  List<BookReview> reviews = const <BookReview>[], this.description, this.pages, this.publisher}): _reviews = reviews;
   factory _BookDetails.fromJson(Map<String, dynamic> json) => _$BookDetailsFromJson(json);

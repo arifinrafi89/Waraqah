@@ -1,32 +1,28 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:waraqah/app/fake_api_routes.dart';
 import 'package:waraqah/features/catalog/data/sources/book_details_source.dart';
 
+BookDetailsSource _source() =>
+    BookDetailsSource(Dio()..interceptors.add(FakeApiRoutes.interceptor()));
+
 void main() {
-  test(
-    'an unresponsive backend falls back to the seed within the budget',
-    () async {
-      final hangingDio = Dio()
-        ..interceptors.add(
-          // Never resolves or rejects, like a request to an unreachable host.
-          InterceptorsWrapper(onRequest: (options, handler) {}),
-        );
-      final source = BookDetailsSource(
-        hangingDio,
-        budget: const Duration(milliseconds: 50),
-      );
+  test('reads a seeded book through the fake API, reviews included', () async {
+    final details = await _source().fetch('bk-atomic');
 
-      final details = await source
-          .fetch('bk-atomic')
-          .timeout(const Duration(seconds: 1));
+    expect(details!.bookId, 'bk-atomic');
+    expect(details.reviews, isNotEmpty);
+    expect(details.reviews.first.reviewerName, isNotEmpty);
+    expect(details.publisher, isNotNull);
+  });
 
-      expect(details?.reviews, isNotEmpty);
-    },
-  );
+  test('a book with nothing extra comes back as null', () async {
+    expect(await _source().fetch('does-not-exist'), isNull);
+  });
 
-  test('a backend that fails fast also falls back to the seed', () async {
-    final failingDio = Dio()
+  test('errors are not swallowed', () async {
+    final failing = Dio()
       ..interceptors.add(
         InterceptorsWrapper(
           onRequest: (options, handler) =>
@@ -34,8 +30,9 @@ void main() {
         ),
       );
 
-    final details = await BookDetailsSource(failingDio).fetch('bk-fiqh');
-
-    expect(details?.pages, isNotNull);
+    expect(
+      BookDetailsSource(failing).fetch('bk-atomic'),
+      throwsA(isA<DioException>()),
+    );
   });
 }

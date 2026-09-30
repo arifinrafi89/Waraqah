@@ -11,6 +11,9 @@ part 'book_details.g.dart';
 /// core model does not change.
 @freezed
 abstract class BookDetails with _$BookDetails {
+  // Deep toJson: the fake API serialises the reviews inside the details.
+  // ignore: invalid_annotation_target
+  @JsonSerializable(explicitToJson: true)
   const factory BookDetails({
     required String bookId,
     @Default(<BookReview>[]) List<BookReview> reviews,

@@ -673,6 +673,108 @@ abstract class AppL10n {
   /// **'We couldn\'t find this book.'**
   String get bookDetailNotFound;
 
+  /// No description provided for @bookEditionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an edition'**
+  String get bookEditionTitle;
+
+  /// No description provided for @bookEditionCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 edition} other{{count} editions}}'**
+  String bookEditionCount(int count);
+
+  /// No description provided for @bookEditionTranslation.
+  ///
+  /// In en, this message translates to:
+  /// **'Translation'**
+  String get bookEditionTranslation;
+
+  /// No description provided for @bookStockOnlyLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Only {count} left'**
+  String bookStockOnlyLeft(int count);
+
+  /// No description provided for @bookInstantDownload.
+  ///
+  /// In en, this message translates to:
+  /// **'Instant download'**
+  String get bookInstantDownload;
+
+  /// No description provided for @bookDeliverTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Deliver to {area}'**
+  String bookDeliverTo(String area);
+
+  /// No description provided for @bookAreaInsideDhaka.
+  ///
+  /// In en, this message translates to:
+  /// **'Inside Dhaka'**
+  String get bookAreaInsideDhaka;
+
+  /// No description provided for @bookAreaOutsideDhaka.
+  ///
+  /// In en, this message translates to:
+  /// **'Outside Dhaka'**
+  String get bookAreaOutsideDhaka;
+
+  /// No description provided for @bookArrivesInDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrives in {min}–{max} days'**
+  String bookArrivesInDays(int min, int max);
+
+  /// No description provided for @bookShipsOnRelease.
+  ///
+  /// In en, this message translates to:
+  /// **'Ships when it\'s released'**
+  String get bookShipsOnRelease;
+
+  /// No description provided for @bookNotAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available right now'**
+  String get bookNotAvailable;
+
+  /// No description provided for @bookChangeArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get bookChangeArea;
+
+  /// No description provided for @bookChooseArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Where should we deliver?'**
+  String get bookChooseArea;
+
+  /// No description provided for @bookPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get bookPrice;
+
+  /// No description provided for @bookBuyNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy now'**
+  String get bookBuyNow;
+
+  /// No description provided for @bookShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get bookShare;
+
+  /// No description provided for @bookCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Book details copied. Paste them anywhere to share.'**
+  String get bookCopied;
+
   /// No description provided for @aiTitle.
   ///
   /// In en, this message translates to:

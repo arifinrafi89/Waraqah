@@ -309,6 +309,66 @@ class AppL10nBn extends AppL10n {
   String get bookDetailNotFound => 'বইটি খুঁজে পাওয়া যায়নি।';
 
   @override
+  String get bookEditionTitle => 'সংস্করণ বেছে নিন';
+
+  @override
+  String bookEditionCount(int count) {
+    return '$countটি সংস্করণ';
+  }
+
+  @override
+  String get bookEditionTranslation => 'অনুবাদ';
+
+  @override
+  String bookStockOnlyLeft(int count) {
+    return 'মাত্র $countটি বাকি';
+  }
+
+  @override
+  String get bookInstantDownload => 'সাথে সাথে ডাউনলোড';
+
+  @override
+  String bookDeliverTo(String area) {
+    return '$area-এ ডেলিভারি';
+  }
+
+  @override
+  String get bookAreaInsideDhaka => 'ঢাকার ভেতরে';
+
+  @override
+  String get bookAreaOutsideDhaka => 'ঢাকার বাইরে';
+
+  @override
+  String bookArrivesInDays(int min, int max) {
+    return '$min–$max দিনে পৌঁছাবে';
+  }
+
+  @override
+  String get bookShipsOnRelease => 'প্রকাশের পর পাঠানো হবে';
+
+  @override
+  String get bookNotAvailable => 'এখন পাওয়া যাচ্ছে না';
+
+  @override
+  String get bookChangeArea => 'পরিবর্তন';
+
+  @override
+  String get bookChooseArea => 'কোথায় ডেলিভারি দেব?';
+
+  @override
+  String get bookPrice => 'দাম';
+
+  @override
+  String get bookBuyNow => 'এখনই কিনুন';
+
+  @override
+  String get bookShare => 'শেয়ার';
+
+  @override
+  String get bookCopied =>
+      'বইয়ের তথ্য কপি হয়েছে। শেয়ার করতে যেকোনো জায়গায় পেস্ট করুন।';
+
+  @override
   String get aiTitle => 'রিডিং অ্যাসিস্ট্যান্ট';
 
   @override
