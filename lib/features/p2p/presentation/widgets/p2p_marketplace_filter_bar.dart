@@ -22,7 +22,7 @@ class P2pMarketplaceFilterBar extends StatelessWidget {
       P2pFilter.all,
       P2pFilter.likeNew,
       P2pFilter.good,
-      P2pFilter.fair,
+      P2pFilter.acceptable,
     ];
 
     return Padding(

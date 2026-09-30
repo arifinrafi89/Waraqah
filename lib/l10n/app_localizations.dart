@@ -930,6 +930,210 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'No active disputes.'**
   String get moderationEmptyDisputes;
+
+  /// No description provided for @listingSellBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Sell a Book'**
+  String get listingSellBook;
+
+  /// No description provided for @listingMyListings.
+  ///
+  /// In en, this message translates to:
+  /// **'My Listings'**
+  String get listingMyListings;
+
+  /// No description provided for @listingStepPickBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick book'**
+  String get listingStepPickBook;
+
+  /// No description provided for @listingStepCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'Condition'**
+  String get listingStepCondition;
+
+  /// No description provided for @listingStepPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos'**
+  String get listingStepPhotos;
+
+  /// No description provided for @listingStepPriceHandover.
+  ///
+  /// In en, this message translates to:
+  /// **'Price & Handover'**
+  String get listingStepPriceHandover;
+
+  /// No description provided for @listingBookTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Book title'**
+  String get listingBookTitle;
+
+  /// No description provided for @listingBookTitleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The Pragmatic Programmer'**
+  String get listingBookTitleHint;
+
+  /// No description provided for @listingConditionLikeNew.
+  ///
+  /// In en, this message translates to:
+  /// **'Like New'**
+  String get listingConditionLikeNew;
+
+  /// No description provided for @listingConditionVeryGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Very Good'**
+  String get listingConditionVeryGood;
+
+  /// No description provided for @listingConditionGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Good'**
+  String get listingConditionGood;
+
+  /// No description provided for @listingConditionAcceptable.
+  ///
+  /// In en, this message translates to:
+  /// **'Acceptable'**
+  String get listingConditionAcceptable;
+
+  /// No description provided for @listingFlags.
+  ///
+  /// In en, this message translates to:
+  /// **'Flags (optional)'**
+  String get listingFlags;
+
+  /// No description provided for @listingFlagHighlighting.
+  ///
+  /// In en, this message translates to:
+  /// **'Highlighting'**
+  String get listingFlagHighlighting;
+
+  /// No description provided for @listingFlagNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get listingFlagNotes;
+
+  /// No description provided for @listingFlagDamage.
+  ///
+  /// In en, this message translates to:
+  /// **'Damage'**
+  String get listingFlagDamage;
+
+  /// No description provided for @listingPhotosDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload front cover, back cover, spine, inside page, any damage.'**
+  String get listingPhotosDesc;
+
+  /// No description provided for @listingPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price (৳)'**
+  String get listingPrice;
+
+  /// No description provided for @listingPriceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'450'**
+  String get listingPriceHint;
+
+  /// No description provided for @listingNegotiable.
+  ///
+  /// In en, this message translates to:
+  /// **'Negotiable'**
+  String get listingNegotiable;
+
+  /// No description provided for @listingHandoverMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Handover Method'**
+  String get listingHandoverMethod;
+
+  /// No description provided for @listingHandoverMeet.
+  ///
+  /// In en, this message translates to:
+  /// **'Meet in person'**
+  String get listingHandoverMeet;
+
+  /// No description provided for @listingHandoverDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery'**
+  String get listingHandoverDelivery;
+
+  /// No description provided for @listingSaveDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Draft'**
+  String get listingSaveDraft;
+
+  /// No description provided for @listingNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get listingNext;
+
+  /// No description provided for @listingBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get listingBack;
+
+  /// No description provided for @listingStatusDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft'**
+  String get listingStatusDraft;
+
+  /// No description provided for @listingStatusInReview.
+  ///
+  /// In en, this message translates to:
+  /// **'In review'**
+  String get listingStatusInReview;
+
+  /// No description provided for @listingStatusChangesRequested.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes requested'**
+  String get listingStatusChangesRequested;
+
+  /// No description provided for @listingStatusRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get listingStatusRejected;
+
+  /// No description provided for @listingStatusLive.
+  ///
+  /// In en, this message translates to:
+  /// **'Live'**
+  String get listingStatusLive;
+
+  /// No description provided for @listingStatusSold.
+  ///
+  /// In en, this message translates to:
+  /// **'Sold'**
+  String get listingStatusSold;
+
+  /// No description provided for @listingConditionPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Condition: '**
+  String get listingConditionPrefix;
+
+  /// No description provided for @listingReasonPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason: '**
+  String get listingReasonPrefix;
 }
 
 class _AppL10nDelegate extends LocalizationsDelegate<AppL10n> {

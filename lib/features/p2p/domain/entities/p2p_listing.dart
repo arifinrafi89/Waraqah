@@ -3,21 +3,31 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'p2p_listing.freezed.dart';
 part 'p2p_listing.g.dart';
 
-/// Condition grades a seller can pick when listing a second-hand book.
-enum BookCondition { likeNew, good, fair }
+enum BookCondition { likeNew, veryGood, good, acceptable }
 
-enum P2pFilter { all, likeNew, good, fair }
+enum P2pListingStatus {
+  draft,
+  inReview,
+  changesRequested,
+  rejected,
+  live,
+  sold,
+}
+
+enum HandoverMethod { meetInPerson, delivery }
+
+enum P2pFilter { all, likeNew, veryGood, good, acceptable }
 
 extension P2pFilterX on P2pFilter {
   String get label => switch (this) {
     P2pFilter.all => 'All',
     P2pFilter.likeNew => 'Like New',
+    P2pFilter.veryGood => 'Very Good',
     P2pFilter.good => 'Good',
-    P2pFilter.fair => 'Fair',
+    P2pFilter.acceptable => 'Acceptable',
   };
 }
 
-/// A student-to-student resale listing.
 @freezed
 abstract class P2pListing with _$P2pListing {
   const factory P2pListing({
@@ -27,7 +37,13 @@ abstract class P2pListing with _$P2pListing {
     required String sellerBatch,
     required int priceBdt,
     @Default(BookCondition.good) BookCondition condition,
-    @Default(true) bool isAvailable,
+    @Default([]) List<String> flags,
+    @Default([]) List<String> photos,
+    @Default(false) bool isNegotiable,
+    @Default(HandoverMethod.meetInPerson) HandoverMethod handover,
+    @Default(P2pListingStatus.live) P2pListingStatus status,
+    String? rejectionReason,
+    String? bookId,
     @Default(0) int coverSeed,
   }) = _P2pListing;
 
@@ -40,9 +56,21 @@ extension P2pListingX on P2pListing {
 
   String get conditionLabel => switch (condition) {
     BookCondition.likeNew => 'Like New',
+    BookCondition.veryGood => 'Very Good',
     BookCondition.good => 'Good',
-    BookCondition.fair => 'Fair',
+    BookCondition.acceptable => 'Acceptable',
   };
+
+  String get statusLabel => switch (status) {
+    P2pListingStatus.draft => 'Draft',
+    P2pListingStatus.inReview => 'In review',
+    P2pListingStatus.changesRequested => 'Changes requested',
+    P2pListingStatus.rejected => 'Rejected',
+    P2pListingStatus.live => 'Live',
+    P2pListingStatus.sold => 'Sold',
+  };
+
+  bool get isAvailable => status == P2pListingStatus.live;
 
   String get availabilityLabel => isAvailable ? 'Available' : 'Sold';
 
@@ -59,8 +87,9 @@ extension P2pListingX on P2pListing {
     return switch (filter) {
       P2pFilter.all => true,
       P2pFilter.likeNew => condition == BookCondition.likeNew,
+      P2pFilter.veryGood => condition == BookCondition.veryGood,
       P2pFilter.good => condition == BookCondition.good,
-      P2pFilter.fair => condition == BookCondition.fair,
+      P2pFilter.acceptable => condition == BookCondition.acceptable,
     };
   }
 }

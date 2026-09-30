@@ -448,4 +448,107 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get moderationEmptyDisputes => 'No active disputes.';
+
+  @override
+  String get listingSellBook => 'Sell a Book';
+
+  @override
+  String get listingMyListings => 'My Listings';
+
+  @override
+  String get listingStepPickBook => 'Pick book';
+
+  @override
+  String get listingStepCondition => 'Condition';
+
+  @override
+  String get listingStepPhotos => 'Photos';
+
+  @override
+  String get listingStepPriceHandover => 'Price & Handover';
+
+  @override
+  String get listingBookTitle => 'Book title';
+
+  @override
+  String get listingBookTitleHint => 'The Pragmatic Programmer';
+
+  @override
+  String get listingConditionLikeNew => 'Like New';
+
+  @override
+  String get listingConditionVeryGood => 'Very Good';
+
+  @override
+  String get listingConditionGood => 'Good';
+
+  @override
+  String get listingConditionAcceptable => 'Acceptable';
+
+  @override
+  String get listingFlags => 'Flags (optional)';
+
+  @override
+  String get listingFlagHighlighting => 'Highlighting';
+
+  @override
+  String get listingFlagNotes => 'Notes';
+
+  @override
+  String get listingFlagDamage => 'Damage';
+
+  @override
+  String get listingPhotosDesc =>
+      'Upload front cover, back cover, spine, inside page, any damage.';
+
+  @override
+  String get listingPrice => 'Price (৳)';
+
+  @override
+  String get listingPriceHint => '450';
+
+  @override
+  String get listingNegotiable => 'Negotiable';
+
+  @override
+  String get listingHandoverMethod => 'Handover Method';
+
+  @override
+  String get listingHandoverMeet => 'Meet in person';
+
+  @override
+  String get listingHandoverDelivery => 'Delivery';
+
+  @override
+  String get listingSaveDraft => 'Save Draft';
+
+  @override
+  String get listingNext => 'Next';
+
+  @override
+  String get listingBack => 'Back';
+
+  @override
+  String get listingStatusDraft => 'Draft';
+
+  @override
+  String get listingStatusInReview => 'In review';
+
+  @override
+  String get listingStatusChangesRequested => 'Changes requested';
+
+  @override
+  String get listingStatusRejected => 'Rejected';
+
+  @override
+  String get listingStatusLive => 'Live';
+
+  @override
+  String get listingStatusSold => 'Sold';
+
+  @override
+  String get listingConditionPrefix => 'Condition: ';
+
+  @override
+  String get listingReasonPrefix => 'Reason: ';
 }

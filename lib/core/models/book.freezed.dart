@@ -226,7 +226,7 @@ return $default(_that.id,_that.title,_that.author,_that.category,_that.section,_
 
 @JsonSerializable(explicitToJson: true)
 class _Book implements Book {
-  const _Book({required this.id, required this.title, required this.author, required this.category, required this.section, required this.originalLanguage, required  List<Edition> editions, this.rating = 0,  List<String> tags = const <String>[], this.isBeneficial = false, this.coverSeed = 0, this.shortTitle}): assert(editions.length > 0, 'A Book needs at least one Edition'),_editions = editions,_tags = tags;
+   _Book({required this.id, required this.title, required this.author, required this.category, required this.section, required this.originalLanguage, required  List<Edition> editions, this.rating = 0,  List<String> tags = const <String>[], this.isBeneficial = false, this.coverSeed = 0, this.shortTitle}): assert(editions.isNotEmpty, 'A Book needs at least one Edition'),_editions = editions,_tags = tags;
   factory _Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
 
 @override final  String id;

@@ -12,8 +12,9 @@ class P2pMarketplaceCover extends StatelessWidget {
   Widget build(BuildContext context) {
     final conditionColor = switch (listing.condition) {
       BookCondition.likeNew => const Color(0xFF7DD3A8),
+      BookCondition.veryGood => const Color(0xFFB5E3C5),
       BookCondition.good => const Color(0xFFE8C96B),
-      BookCondition.fair => const Color(0xFFE1A7A1),
+      BookCondition.acceptable => const Color(0xFFE1A7A1),
     };
 
     return Stack(

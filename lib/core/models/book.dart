@@ -27,7 +27,7 @@ abstract class Book with _$Book {
   // ignore: invalid_annotation_target
   @JsonSerializable(explicitToJson: true)
   @Assert('editions.isNotEmpty', 'A Book needs at least one Edition')
-  const factory Book({
+  factory Book({
     required String id,
     required String title,
     required String author,

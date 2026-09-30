@@ -46,8 +46,9 @@ void main() {
       expect(P2pFilter.values, [
         P2pFilter.all,
         P2pFilter.likeNew,
+        P2pFilter.veryGood,
         P2pFilter.good,
-        P2pFilter.fair,
+        P2pFilter.acceptable,
       ]);
     });
 
@@ -60,7 +61,7 @@ void main() {
         priceBdt: 320,
         condition: BookCondition.likeNew,
         coverSeed: 0,
-        isAvailable: true,
+        
       );
 
       expect(listing.matchesFilter(P2pFilter.all, ''), isTrue);
