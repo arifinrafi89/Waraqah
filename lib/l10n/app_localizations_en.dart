@@ -312,10 +312,6 @@ class AppL10nEn extends AppL10n {
   String get bookDetailAddToCart => 'Add to cart';
 
   @override
-  String get bookDetailCartSoon =>
-      'Cart and checkout arrive in the next phase.';
-
-  @override
   String get bookDetailNotFound => 'We couldn\'t find this book.';
 
   @override
@@ -382,6 +378,70 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get bookCopied => 'Book details copied. Paste them anywhere to share.';
+
+  @override
+  String get cartTitle => 'Cart';
+
+  @override
+  String cartItemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '1 item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cartEmptyTitle => 'Your cart is empty';
+
+  @override
+  String get cartEmptyBody => 'Books you add will show up here.';
+
+  @override
+  String get cartBrowse => 'Browse books';
+
+  @override
+  String get cartSubtotal => 'Subtotal';
+
+  @override
+  String cartYouSave(String amount) {
+    return 'You save $amount';
+  }
+
+  @override
+  String cartEach(String price) {
+    return '$price each';
+  }
+
+  @override
+  String get cartDeliveryNote =>
+      'Delivery fee and coupons are added at checkout.';
+
+  @override
+  String get cartCheckout => 'Checkout';
+
+  @override
+  String get cartCheckoutSoon => 'Checkout is coming next.';
+
+  @override
+  String get cartAdded => 'Added to cart';
+
+  @override
+  String get cartView => 'View cart';
+
+  @override
+  String get cartLimitReached => 'You can\'t add more of this one.';
+
+  @override
+  String get cartIncrease => 'Add one';
+
+  @override
+  String get cartDecrease => 'Remove one';
+
+  @override
+  String get cartRemove => 'Remove';
 
   @override
   String get aiTitle => 'Reading Assistant';

@@ -303,9 +303,6 @@ class AppL10nBn extends AppL10n {
   String get bookDetailAddToCart => 'কার্টে যোগ করুন';
 
   @override
-  String get bookDetailCartSoon => 'কার্ট ও চেকআউট পরবর্তী ধাপে আসছে।';
-
-  @override
   String get bookDetailNotFound => 'বইটি খুঁজে পাওয়া যায়নি।';
 
   @override
@@ -367,6 +364,63 @@ class AppL10nBn extends AppL10n {
   @override
   String get bookCopied =>
       'বইয়ের তথ্য কপি হয়েছে। শেয়ার করতে যেকোনো জায়গায় পেস্ট করুন।';
+
+  @override
+  String get cartTitle => 'কার্ট';
+
+  @override
+  String cartItemCount(int count) {
+    return '$countটি বই';
+  }
+
+  @override
+  String get cartEmptyTitle => 'আপনার কার্ট খালি';
+
+  @override
+  String get cartEmptyBody => 'যে বই যোগ করবেন, সেগুলো এখানে দেখাবে।';
+
+  @override
+  String get cartBrowse => 'বই দেখুন';
+
+  @override
+  String get cartSubtotal => 'সাবটোটাল';
+
+  @override
+  String cartYouSave(String amount) {
+    return 'আপনার সাশ্রয় $amount';
+  }
+
+  @override
+  String cartEach(String price) {
+    return 'প্রতিটি $price';
+  }
+
+  @override
+  String get cartDeliveryNote => 'ডেলিভারি চার্জ ও কুপন চেকআউটে যোগ হবে।';
+
+  @override
+  String get cartCheckout => 'চেকআউট';
+
+  @override
+  String get cartCheckoutSoon => 'চেকআউট শীঘ্রই আসছে।';
+
+  @override
+  String get cartAdded => 'কার্টে যোগ হয়েছে';
+
+  @override
+  String get cartView => 'কার্ট দেখুন';
+
+  @override
+  String get cartLimitReached => 'এটি আর বেশি যোগ করা যাবে না।';
+
+  @override
+  String get cartIncrease => 'একটি বাড়ান';
+
+  @override
+  String get cartDecrease => 'একটি কমান';
+
+  @override
+  String get cartRemove => 'সরিয়ে দিন';
 
   @override
   String get aiTitle => 'রিডিং অ্যাসিস্ট্যান্ট';

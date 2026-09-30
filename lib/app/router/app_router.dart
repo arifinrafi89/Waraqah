@@ -6,6 +6,7 @@ import '../../features/ai_assistant/ai_assistant_routes.dart';
 import '../../features/auth/auth_routes.dart';
 import '../../features/auth/domain/entities/app_user.dart';
 import '../../features/bites/bites_routes.dart';
+import '../../features/cart/cart_routes.dart';
 import '../../features/catalog/catalog_routes.dart';
 import '../../features/home/home_routes.dart';
 import '../../features/p2p/p2p_routes.dart';
@@ -41,6 +42,7 @@ abstract final class AppRouter {
       ...AiAssistantRoutes.routes,
       ...P2pRoutes.routes,
       ...CatalogRoutes.routes,
+      ...CartRoutes.routes,
       ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),

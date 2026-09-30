@@ -8,6 +8,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../cart/presentation/widgets/cart_button.dart';
 import '../providers/book_detail_providers.dart';
 import '../widgets/add_to_cart_bar.dart';
 import '../widgets/book_about_section.dart';
@@ -18,8 +19,8 @@ import '../widgets/edition_picker.dart';
 import '../widgets/share_book_button.dart';
 
 /// `/catalog/book/:id` — one title: pick an Edition, see when it arrives,
-/// read the summary and reviews, then add it to the cart. Opened over the shell, like the AI chat, so the add-to-cart
-/// bar is not hidden behind the bottom nav.
+/// read the summary and reviews, then add it to the cart. Opened over the
+/// shell, like the AI chat, so the add-to-cart bar isn't hidden by the nav.
 class BookDetailPage extends ConsumerWidget {
   const BookDetailPage({super.key, required this.bookId});
 
@@ -48,7 +49,13 @@ class BookDetailPage extends ConsumerWidget {
                         ? context.pop()
                         : context.go(CatalogRoutes.catalog),
                   ),
-                  if (data != null) ShareBookButton(book: data.book),
+                  Row(
+                    spacing: Insets.sm,
+                    children: [
+                      if (data != null) ShareBookButton(book: data.book),
+                      const CartButton(),
+                    ],
+                  ),
                 ],
               ),
             ),

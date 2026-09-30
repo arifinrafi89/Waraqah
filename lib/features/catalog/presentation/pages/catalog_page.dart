@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/theme/app_dimens.dart';
-import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/app_text_field.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../core/widgets/filter_chip_bar.dart';
 import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../core/utils/formatters.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../cart/presentation/widgets/cart_button.dart';
 import '../providers/catalog_providers.dart';
 import '../widgets/book_list_skeleton.dart';
 import '../widgets/catalog_categories.dart';
@@ -33,13 +33,7 @@ class CatalogPage extends ConsumerWidget {
           ScreenAppBar(
             title: l10n.catalogTitle,
             subtitle: l10n.catalogSubtitle(Counts.grouped(total.value ?? 0)),
-            actions: [
-              AppIconButton(
-                icon: Icons.shopping_bag_outlined,
-                badgeCount: 2,
-                onPressed: () {},
-              ),
-            ],
+            actions: const [CartButton()],
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: Insets.screen),
