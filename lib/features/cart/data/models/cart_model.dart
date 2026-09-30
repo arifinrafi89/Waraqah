@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/models/edition.dart';
+import '../../../p2p/domain/entities/p2p_listing.dart';
 import '../../domain/entities/cart.dart';
 import '../../domain/entities/cart_line.dart';
 
@@ -24,6 +25,7 @@ abstract class CartLineModel with _$CartLineModel {
     BookFormat? format,
     BookLanguage? language,
     @Default(false) bool isPreorder,
+    BookCondition? condition,
     @Default(0) int coverSeed,
   }) = _CartLineModel;
 
@@ -63,6 +65,7 @@ extension CartLineModelX on CartLineModel {
     format: format,
     language: language,
     isPreorder: isPreorder,
+    condition: condition,
     coverSeed: coverSeed,
   );
 }

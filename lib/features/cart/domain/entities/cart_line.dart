@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/models/edition.dart';
+import '../../../p2p/domain/entities/p2p_listing.dart';
 
 part 'cart_line.freezed.dart';
 
@@ -27,6 +28,9 @@ abstract class CartLine with _$CartLine {
     BookFormat? format,
     BookLanguage? language,
     @Default(false) bool isPreorder,
+
+    /// Set for used copies.
+    BookCondition? condition,
     @Default(0) int coverSeed,
   }) = _CartLine;
 }

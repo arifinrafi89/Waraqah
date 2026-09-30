@@ -6,6 +6,7 @@ import '../../../../core/models/edition.dart';
 import '../../../catalog/data/sources/book_fixtures.dart';
 import '../../domain/entities/cart_line.dart';
 import '../models/cart_model.dart';
+import 'used_cart_line.dart';
 
 /// The cart the fake backend keeps in memory, with the server's rules: one
 /// line per item, quantities capped per order, nothing unorderable.
@@ -28,10 +29,12 @@ class CartFakeStore {
       );
       return;
     }
-    // Certified Used copies and Listings join here once their fake APIs exist.
-    final line = kind == CartItemKind.edition.name
-        ? _editionLine(itemId)
-        : null;
+    final itemKind = CartItemKind.values.asNameMap()[kind];
+    final line = switch (itemKind) {
+      null => null,
+      CartItemKind.edition => _editionLine(itemId),
+      _ => usedCartLine(itemKind, itemId),
+    };
     if (line != null) _lines.add(line);
   }
 

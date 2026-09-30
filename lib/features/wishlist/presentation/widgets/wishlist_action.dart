@@ -54,6 +54,8 @@ extension WishlistAction on WidgetRef {
                   onPressed: () => router.push(WishlistRoutes.wishlist),
                 )
               : null,
+          // Goes by itself, like any other message (see add_to_cart_action).
+          persist: false,
         ),
       );
     return ok;

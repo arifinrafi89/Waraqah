@@ -12,7 +12,7 @@ import '../../../home/home_routes.dart';
 import '../../domain/entities/cart.dart';
 import '../providers/cart_providers.dart';
 import '../widgets/cart_empty_view.dart';
-import '../widgets/cart_line_tile.dart';
+import '../widgets/cart_lines_list.dart';
 import '../widgets/cart_skeleton.dart';
 import '../widgets/cart_summary_bar.dart';
 
@@ -73,44 +73,14 @@ class CartPage extends ConsumerWidget {
                 retryLabel: l10n.commonRetry,
                 onRetry: () => ref.invalidate(cartProvider),
                 skeleton: const CartSkeleton(),
-                builder: (cart) =>
-                    cart.isEmpty ? const CartEmptyView() : _Lines(cart: cart),
+                builder: (cart) => cart.isEmpty
+                    ? const CartEmptyView()
+                    : CartLinesList(cart: cart),
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class _Lines extends StatelessWidget {
-  const _Lines({required this.cart});
-
-  final Cart cart;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(
-        Insets.screen,
-        0,
-        Insets.screen,
-        Insets.xl,
-      ),
-      children: [
-        for (final line in cart.lines)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: CartLineTile(key: ValueKey(line.id), line: line),
-          ),
-        const SizedBox(height: Insets.sm),
-        Text(
-          AppL10n.of(context)!.cartDeliveryNote,
-          textAlign: TextAlign.center,
-          style: AppFonts.ui(size: 11, color: context.palette.textFaint),
-        ),
-      ],
     );
   }
 }
