@@ -444,6 +444,57 @@ class AppL10nEn extends AppL10n {
   String get cartRemove => 'Remove';
 
   @override
+  String get cartSaveForLater => 'Save for later';
+
+  @override
+  String get cartMovedToWishlist => 'Moved to your wishlist';
+
+  @override
+  String get wishlistTitle => 'Wishlist';
+
+  @override
+  String get wishlistMine => 'My wishlist';
+
+  @override
+  String wishlistCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count books',
+      one: '1 book',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get wishlistSave => 'Save to wishlist';
+
+  @override
+  String get wishlistRemove => 'Remove from wishlist';
+
+  @override
+  String get wishlistSaved => 'Saved to your wishlist';
+
+  @override
+  String get wishlistRemoved => 'Removed from your wishlist';
+
+  @override
+  String get wishlistView => 'View';
+
+  @override
+  String get wishlistMoveToCart => 'Move to cart';
+
+  @override
+  String get wishlistEmptyTitle => 'Your wishlist is empty';
+
+  @override
+  String get wishlistEmptyBody =>
+      'Tap the heart on any book to save it for later.';
+
+  @override
+  String get wishlistBrowse => 'Browse books';
+
+  @override
   String get aiTitle => 'Reading Assistant';
 
   @override

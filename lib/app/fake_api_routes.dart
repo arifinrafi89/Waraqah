@@ -3,6 +3,7 @@ import '../features/auth/data/sources/auth_fake_api.dart';
 import '../features/cart/data/sources/cart_fake_api.dart';
 import '../features/catalog/data/sources/book_fake_api.dart';
 import '../features/home/data/sources/ayah_fake_api.dart';
+import '../features/wishlist/data/sources/wishlist_fake_api.dart';
 
 /// The composition root's route table for [FakeApiInterceptor]: one line per
 /// feature. This is the only place allowed to import both `core/network` and
@@ -13,5 +14,6 @@ abstract final class FakeApiRoutes {
     ...BookFakeApi.routes,
     ...AyahFakeApi.routes,
     ...CartFakeApi.routes(),
+    ...WishlistFakeApi.routes(),
   });
 }

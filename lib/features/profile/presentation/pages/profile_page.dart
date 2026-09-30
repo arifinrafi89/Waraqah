@@ -9,6 +9,7 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../admin/presentation/widgets/admin_area_button.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
 import '../../../auth/presentation/widgets/session_actions.dart';
+import '../../../wishlist/presentation/widgets/wishlist_link.dart';
 import '../widgets/profile_header.dart';
 import '../widgets/settings_group.dart';
 
@@ -48,6 +49,7 @@ class ProfilePage extends ConsumerWidget {
                 ),
                 const SizedBox(height: Insets.md),
                 const SessionActions(),
+                const WishlistLink(),
                 const AdminAreaButton(),
                 const SizedBox(height: Insets.xl),
                 SettingsGroup(

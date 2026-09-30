@@ -423,6 +423,51 @@ class AppL10nBn extends AppL10n {
   String get cartRemove => 'সরিয়ে দিন';
 
   @override
+  String get cartSaveForLater => 'পরে কিনব';
+
+  @override
+  String get cartMovedToWishlist => 'উইশলিস্টে সরানো হয়েছে';
+
+  @override
+  String get wishlistTitle => 'উইশলিস্ট';
+
+  @override
+  String get wishlistMine => 'আমার উইশলিস্ট';
+
+  @override
+  String wishlistCount(int count) {
+    return '$countটি বই';
+  }
+
+  @override
+  String get wishlistSave => 'উইশলিস্টে রাখুন';
+
+  @override
+  String get wishlistRemove => 'উইশলিস্ট থেকে সরান';
+
+  @override
+  String get wishlistSaved => 'উইশলিস্টে রাখা হয়েছে';
+
+  @override
+  String get wishlistRemoved => 'উইশলিস্ট থেকে সরানো হয়েছে';
+
+  @override
+  String get wishlistView => 'দেখুন';
+
+  @override
+  String get wishlistMoveToCart => 'কার্টে নিন';
+
+  @override
+  String get wishlistEmptyTitle => 'আপনার উইশলিস্ট খালি';
+
+  @override
+  String get wishlistEmptyBody =>
+      'যেকোনো বইয়ের হার্টে চাপ দিয়ে পরে কেনার জন্য রেখে দিন।';
+
+  @override
+  String get wishlistBrowse => 'বই দেখুন';
+
+  @override
   String get aiTitle => 'রিডিং অ্যাসিস্ট্যান্ট';
 
   @override

@@ -15,8 +15,9 @@ import '../providers/cart_providers.dart';
 ///
 /// It tells the reader what happened ("Added to cart · View cart", or why it
 /// couldn't). With [openCart] (Buy now) it goes straight to the cart instead.
+/// Answers whether the item is in the cart now (false only on an error).
 extension AddToCartAction on WidgetRef {
-  Future<void> addToCart(
+  Future<bool> addToCart(
     BuildContext context,
     CartItemRef item, {
     bool openCart = false,
@@ -40,7 +41,7 @@ extension AddToCartAction on WidgetRef {
     messenger.hideCurrentSnackBar();
     if (added != null && openCart) {
       router.push(CartRoutes.cart);
-      if (added) return;
+      if (added) return true;
     }
     messenger.showSnackBar(
       SnackBar(
@@ -57,5 +58,6 @@ extension AddToCartAction on WidgetRef {
             : null,
       ),
     );
+    return added != null;
   }
 }
