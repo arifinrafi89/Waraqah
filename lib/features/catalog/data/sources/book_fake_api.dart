@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'author_fixtures.dart';
 import 'book_details_fixtures.dart';
 import 'book_fixtures.dart';
+import 'book_search_match.dart';
 import 'category_fixtures.dart';
 import 'look_inside_fixtures.dart';
 import 'publisher_fixtures.dart';
@@ -101,16 +102,14 @@ abstract final class BookFakeApi {
       final matchesAuthor = author == null || book.authorId == author;
       final matchesPublisher =
           publisher == null || book.publisherId == publisher;
-      final matchesQuery =
-          query.isEmpty ||
-          book.title.toLowerCase().contains(query) ||
-          book.author.toLowerCase().contains(query);
       return matchesCategory &&
           matchesSection &&
           matchesAuthor &&
-          matchesPublisher &&
-          matchesQuery;
+          matchesPublisher;
     });
-    return matches.map((book) => book.toJson()).toList();
+    final found = query.isEmpty
+        ? matches
+        : BookSearchMatch.rank(matches, query);
+    return found.map((book) => book.toJson()).toList();
   }
 }

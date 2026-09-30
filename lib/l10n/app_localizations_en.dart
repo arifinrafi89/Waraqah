@@ -244,7 +244,22 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
-  String get catalogSortPriceAsc => 'Price: Low–High';
+  String get searchFieldHint => 'Search books';
+
+  @override
+  String get searchHint => 'Search by title, author, publisher or ISBN';
+
+  @override
+  String searchNoResults(String query) {
+    return 'No books found for \'$query\'';
+  }
+
+  @override
+  String get searchRequestBook => 'Request this book';
+
+  @override
+  String get searchRequestBookSoon =>
+      'Asking us to stock a book is coming soon.';
 
   @override
   String get catalogBrowseSections => 'Browse by Section';

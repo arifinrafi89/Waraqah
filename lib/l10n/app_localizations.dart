@@ -547,11 +547,35 @@ abstract class AppL10n {
   /// **'{count} results'**
   String catalogResults(int count);
 
-  /// No description provided for @catalogSortPriceAsc.
+  /// No description provided for @searchFieldHint.
   ///
   /// In en, this message translates to:
-  /// **'Price: Low–High'**
-  String get catalogSortPriceAsc;
+  /// **'Search books'**
+  String get searchFieldHint;
+
+  /// No description provided for @searchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by title, author, publisher or ISBN'**
+  String get searchHint;
+
+  /// No description provided for @searchNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No books found for \'{query}\''**
+  String searchNoResults(String query);
+
+  /// No description provided for @searchRequestBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Request this book'**
+  String get searchRequestBook;
+
+  /// No description provided for @searchRequestBookSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Asking us to stock a book is coming soon.'**
+  String get searchRequestBookSoon;
 
   /// No description provided for @catalogBrowseSections.
   ///

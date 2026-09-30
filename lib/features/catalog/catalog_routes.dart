@@ -1,15 +1,11 @@
 import 'package:go_router/go_router.dart';
 
 import '../../core/models/book.dart';
-import 'presentation/pages/author_page.dart';
 import 'presentation/pages/book_detail_page.dart';
+import 'catalog_tab_routes.dart';
 import 'presentation/pages/catalog_page.dart';
-import 'presentation/pages/category_page.dart';
 import 'presentation/pages/look_inside_page.dart';
-import 'presentation/pages/publisher_page.dart';
 import 'presentation/pages/questions_page.dart';
-import 'presentation/pages/section_page.dart';
-import 'presentation/pages/series_page.dart';
 
 abstract final class CatalogRoutes {
   static const String catalog = '/catalog';
@@ -39,6 +35,12 @@ abstract final class CatalogRoutes {
 
   /// A Series' page, inside the Catalog tab so the bottom nav stays.
   static String seriesFor(String id) => '/catalog/series/$id';
+
+  /// The Search page, inside the Catalog tab so the bottom nav stays.
+  static const String search = '/catalog/search';
+
+  /// Stand-in for Request this book, until that flow lands.
+  static const String requestBook = '/catalog/request-book';
 
   static const String bookDetail = '/catalog/book/:id';
 
@@ -77,45 +79,7 @@ abstract final class CatalogRoutes {
       GoRoute(
         path: catalog,
         builder: (_, _) => const CatalogPage(),
-        routes: [
-          GoRoute(
-            path: 'section/:section',
-            redirect: (_, state) =>
-                Section.values.asNameMap()[state.pathParameters['section']] ==
-                    null
-                ? catalog
-                : null,
-            routes: [
-              GoRoute(
-                path: ':category',
-                builder: (_, state) => CategoryPage(
-                  section: Section.values.byName(
-                    state.pathParameters['section']!,
-                  ),
-                  categoryId: state.pathParameters['category']!,
-                ),
-              ),
-            ],
-            builder: (_, state) => SectionPage(
-              section: Section.values.byName(state.pathParameters['section']!),
-            ),
-          ),
-          GoRoute(
-            path: 'author/:id',
-            builder: (_, state) =>
-                AuthorPage(authorId: state.pathParameters['id']!),
-          ),
-          GoRoute(
-            path: 'publisher/:id',
-            builder: (_, state) =>
-                PublisherPage(publisherId: state.pathParameters['id']!),
-          ),
-          GoRoute(
-            path: 'series/:id',
-            builder: (_, state) =>
-                SeriesPage(seriesId: state.pathParameters['id']!),
-          ),
-        ],
+        routes: [...catalogTabRoutes],
       ),
     ],
   );

@@ -21,15 +21,20 @@ final bookRepositoryProvider = Provider<BookRepository>(
   (ref) => BookRepositoryImpl(BookRemoteSource(ref.watch(dioProvider))),
 );
 
-/// Current search text.
-final catalogQueryProvider = selectionProvider<String>('');
+/// What the Search page is searching for (already debounced).
+final searchQueryProvider =
+    NotifierProvider.autoDispose<SelectionNotifier<String>, String>(
+      () => SelectionNotifier<String>(''),
+    );
 
-/// The filtered, sorted result list the catalog screen renders.
-final catalogResultsProvider = FutureProvider<List<Book>>((ref) async {
-  final repository = ref.watch(bookRepositoryProvider);
-  return repository.searchCatalog(
-    CatalogFilters(query: ref.watch(catalogQueryProvider)),
-  );
+/// Books matching [searchQueryProvider], best match first.
+final searchResultsProvider = FutureProvider.autoDispose<List<Book>>((ref) {
+  final query = ref.watch(searchQueryProvider).trim();
+  return query.isEmpty
+      ? Future.value(const <Book>[])
+      : ref
+            .watch(bookRepositoryProvider)
+            .searchCatalog(CatalogFilters(query: query));
 });
 
 /// Total catalog size, shown in the app bar subtitle.

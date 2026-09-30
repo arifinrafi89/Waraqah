@@ -242,7 +242,21 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
-  String get catalogSortPriceAsc => 'দাম: কম–বেশি';
+  String get searchFieldHint => 'বই খুঁজুন';
+
+  @override
+  String get searchHint => 'নাম, লেখক, প্রকাশনী বা আইএসবিএন দিয়ে খুঁজুন';
+
+  @override
+  String searchNoResults(String query) {
+    return '\'$query\' নামে কোনো বই পাওয়া যায়নি';
+  }
+
+  @override
+  String get searchRequestBook => 'এই বইটি অনুরোধ করুন';
+
+  @override
+  String get searchRequestBookSoon => 'পছন্দের বই আনার অনুরোধ শীঘ্রই আসছে।';
 
   @override
   String get catalogBrowseSections => 'বিভাগ অনুযায়ী দেখুন';
