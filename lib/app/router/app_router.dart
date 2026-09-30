@@ -11,6 +11,7 @@ import '../../features/catalog/catalog_routes.dart';
 import '../../features/home/home_routes.dart';
 import '../../features/p2p/p2p_routes.dart';
 import '../../features/profile/profile_routes.dart';
+import '../../features/wishlist/wishlist_routes.dart';
 import '../shell/app_shell.dart';
 import 'route_access.dart';
 
@@ -43,6 +44,7 @@ abstract final class AppRouter {
       ...P2pRoutes.routes,
       ...CatalogRoutes.routes,
       ...CartRoutes.routes,
+      ...WishlistRoutes.routes,
       ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),

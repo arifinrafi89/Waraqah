@@ -9,6 +9,7 @@ import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../cart/presentation/widgets/cart_button.dart';
+import '../../../wishlist/presentation/widgets/wishlist_heart_button.dart';
 import '../providers/book_detail_providers.dart';
 import '../widgets/add_to_cart_bar.dart';
 import '../widgets/book_about_section.dart';
@@ -52,7 +53,10 @@ class BookDetailPage extends ConsumerWidget {
                   Row(
                     spacing: Insets.sm,
                     children: [
-                      if (data != null) ShareBookButton(book: data.book),
+                      if (data != null) ...[
+                        WishlistHeartButton(book: data.book),
+                        ShareBookButton(book: data.book),
+                      ],
                       const CartButton(),
                     ],
                   ),

@@ -11,14 +11,15 @@ import '../../../../core/widgets/tags.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../catalog/catalog_routes.dart';
 import '../../domain/entities/cart_line.dart';
-import '../providers/cart_providers.dart';
 import 'cart_labels.dart';
+import 'cart_line_actions.dart';
 import 'cart_line_price.dart';
 import 'quantity_stepper.dart';
 
 /// One cart line: cover, title, edition, line price and the quantity stepper.
 /// The cover and title open the book's page; the price row never does, so a
-/// tap on a disabled + can't fall through to it.
+/// tap on a disabled + can't fall through to it. "Save for later" moves the
+/// book to the wishlist.
 class CartLineTile extends ConsumerWidget {
   const CartLineTile({super.key, required this.line});
 
@@ -86,9 +87,23 @@ class CartLineTile extends ConsumerWidget {
                     QuantityStepper(
                       quantity: line.quantity,
                       max: line.maxQuantity,
-                      onChanged: (quantity) => _change(context, ref, quantity),
+                      onChanged: (quantity) =>
+                          ref.changeQuantity(context, line, quantity),
                     ),
                   ],
+                ),
+                TextButton(
+                  onPressed: () => ref.saveForLater(context, line),
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    minimumSize: const Size(0, 32),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    foregroundColor: palette.accent,
+                  ),
+                  child: Text(
+                    l10n.cartSaveForLater,
+                    style: AppFonts.ui(size: 11.5, weight: FontWeight.w700),
+                  ),
                 ),
               ],
             ),
@@ -96,15 +111,5 @@ class CartLineTile extends ConsumerWidget {
         ],
       ),
     );
-  }
-
-  Future<void> _change(BuildContext context, WidgetRef ref, int quantity) async {
-    final messenger = ScaffoldMessenger.of(context);
-    final error = AppL10n.of(context)!.commonSomethingWentWrong;
-    try {
-      await ref.read(cartProvider.notifier).setQuantity(line.id, quantity);
-    } catch (_) {
-      messenger.showSnackBar(SnackBar(content: Text(error)));
-    }
   }
 }

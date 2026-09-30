@@ -871,6 +871,90 @@ abstract class AppL10n {
   /// **'Remove'**
   String get cartRemove;
 
+  /// No description provided for @cartSaveForLater.
+  ///
+  /// In en, this message translates to:
+  /// **'Save for later'**
+  String get cartSaveForLater;
+
+  /// No description provided for @cartMovedToWishlist.
+  ///
+  /// In en, this message translates to:
+  /// **'Moved to your wishlist'**
+  String get cartMovedToWishlist;
+
+  /// No description provided for @wishlistTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Wishlist'**
+  String get wishlistTitle;
+
+  /// No description provided for @wishlistMine.
+  ///
+  /// In en, this message translates to:
+  /// **'My wishlist'**
+  String get wishlistMine;
+
+  /// No description provided for @wishlistCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 book} other{{count} books}}'**
+  String wishlistCount(int count);
+
+  /// No description provided for @wishlistSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save to wishlist'**
+  String get wishlistSave;
+
+  /// No description provided for @wishlistRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from wishlist'**
+  String get wishlistRemove;
+
+  /// No description provided for @wishlistSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved to your wishlist'**
+  String get wishlistSaved;
+
+  /// No description provided for @wishlistRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Removed from your wishlist'**
+  String get wishlistRemoved;
+
+  /// No description provided for @wishlistView.
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get wishlistView;
+
+  /// No description provided for @wishlistMoveToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Move to cart'**
+  String get wishlistMoveToCart;
+
+  /// No description provided for @wishlistEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your wishlist is empty'**
+  String get wishlistEmptyTitle;
+
+  /// No description provided for @wishlistEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the heart on any book to save it for later.'**
+  String get wishlistEmptyBody;
+
+  /// No description provided for @wishlistBrowse.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse books'**
+  String get wishlistBrowse;
+
   /// No description provided for @aiTitle.
   ///
   /// In en, this message translates to:

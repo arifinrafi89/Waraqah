@@ -8,9 +8,9 @@ import '../../../../core/widgets/app_buttons.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../catalog/catalog_routes.dart';
 
-/// Shown when nothing is in the cart, with a way back to the books.
-class CartEmptyView extends StatelessWidget {
-  const CartEmptyView({super.key});
+/// Shown when nothing is saved, with a way back to the books.
+class WishlistEmptyView extends StatelessWidget {
+  const WishlistEmptyView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,16 +31,16 @@ class CartEmptyView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(Radii.card),
               ),
               child: Icon(
-                Icons.shopping_bag_outlined,
+                Icons.favorite_border_rounded,
                 color: palette.accent,
                 size: 28,
               ),
             ),
             const SizedBox(height: Insets.lg),
-            Text(l10n.cartEmptyTitle, style: context.texts.titleLarge),
+            Text(l10n.wishlistEmptyTitle, style: context.texts.titleLarge),
             const SizedBox(height: 6),
             Text(
-              l10n.cartEmptyBody,
+              l10n.wishlistEmptyBody,
               textAlign: TextAlign.center,
               style: AppFonts.ui(
                 size: 12.5,
@@ -50,7 +50,7 @@ class CartEmptyView extends StatelessWidget {
             ),
             const SizedBox(height: Insets.xl),
             PrimaryButton(
-              label: l10n.cartBrowse,
+              label: l10n.wishlistBrowse,
               onPressed: () => context.go(CatalogRoutes.catalog),
             ),
           ],
