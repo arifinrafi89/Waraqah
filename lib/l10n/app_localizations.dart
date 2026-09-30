@@ -1351,6 +1351,78 @@ abstract class AppL10n {
   /// **'Bundle'**
   String get cartBundle;
 
+  /// No description provided for @cartSmartBasket.
+  ///
+  /// In en, this message translates to:
+  /// **'Smart Basket'**
+  String get cartSmartBasket;
+
+  /// No description provided for @cartUsedAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 book is available used, save {amount}} other{{count} books are available used, save {amount}}}'**
+  String cartUsedAvailable(int count, String amount);
+
+  /// No description provided for @cartSwitch.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch'**
+  String get cartSwitch;
+
+  /// No description provided for @cartSwitchAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch all to used'**
+  String get cartSwitchAll;
+
+  /// No description provided for @cartSwapped.
+  ///
+  /// In en, this message translates to:
+  /// **'Switched to used · saved {amount}'**
+  String cartSwapped(String amount);
+
+  /// No description provided for @cartToFreeDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Add {amount} more for free delivery'**
+  String cartToFreeDelivery(String amount);
+
+  /// No description provided for @cartSetBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'Set a budget'**
+  String get cartSetBudget;
+
+  /// No description provided for @cartBudgetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fit your budget'**
+  String get cartBudgetTitle;
+
+  /// No description provided for @cartBudgetLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your budget in taka'**
+  String get cartBudgetLabel;
+
+  /// No description provided for @cartBudgetFits.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Already fits: {total}} =1{Fits with 1 used copy: {total}} other{Fits with {count} used copies: {total}}}'**
+  String cartBudgetFits(String total, int count);
+
+  /// No description provided for @cartBudgetShort.
+  ///
+  /// In en, this message translates to:
+  /// **'The cheapest mix is {total}, still over your budget.'**
+  String cartBudgetShort(String total);
+
+  /// No description provided for @cartBudgetApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get cartBudgetApply;
+
   /// No description provided for @wishlistTitle.
   ///
   /// In en, this message translates to:

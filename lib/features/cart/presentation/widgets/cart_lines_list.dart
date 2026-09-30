@@ -7,9 +7,11 @@ import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/cart.dart';
 import '../../domain/entities/cart_line.dart';
 import 'cart_line_tile.dart';
+import 'smart_basket_card.dart';
 
-/// The cart's lines. When it holds both new and used books they come in two
-/// groups, "New" then "Used", since they ship and return differently.
+/// The cart's lines, under the Smart Basket's suggestions. When it holds
+/// both new and used books they come in two groups, "New" then "Used",
+/// since they ship and return differently.
 class CartLinesList extends StatelessWidget {
   const CartLinesList({super.key, required this.cart});
 
@@ -44,6 +46,7 @@ class CartLinesList extends StatelessWidget {
         Insets.xl,
       ),
       children: [
+        const SmartBasketCard(),
         if (grouped) heading(l10n.cartNewBooks),
         ...fresh.map(tile),
         if (grouped) heading(l10n.cartUsedBooks),

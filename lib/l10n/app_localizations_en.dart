@@ -740,6 +740,65 @@ class AppL10nEn extends AppL10n {
   String get cartBundle => 'Bundle';
 
   @override
+  String get cartSmartBasket => 'Smart Basket';
+
+  @override
+  String cartUsedAvailable(int count, String amount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count books are available used, save $amount',
+      one: '1 book is available used, save $amount',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cartSwitch => 'Switch';
+
+  @override
+  String get cartSwitchAll => 'Switch all to used';
+
+  @override
+  String cartSwapped(String amount) {
+    return 'Switched to used · saved $amount';
+  }
+
+  @override
+  String cartToFreeDelivery(String amount) {
+    return 'Add $amount more for free delivery';
+  }
+
+  @override
+  String get cartSetBudget => 'Set a budget';
+
+  @override
+  String get cartBudgetTitle => 'Fit your budget';
+
+  @override
+  String get cartBudgetLabel => 'Your budget in taka';
+
+  @override
+  String cartBudgetFits(String total, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Fits with $count used copies: $total',
+      one: 'Fits with 1 used copy: $total',
+      zero: 'Already fits: $total',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String cartBudgetShort(String total) {
+    return 'The cheapest mix is $total, still over your budget.';
+  }
+
+  @override
+  String get cartBudgetApply => 'Apply';
+
+  @override
   String get wishlistTitle => 'Wishlist';
 
   @override
