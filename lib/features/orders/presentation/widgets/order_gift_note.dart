@@ -5,13 +5,19 @@ import '../../../../core/theme/app_typography.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../checkout/domain/entities/gift.dart';
 
-/// "Gift for Nabila", the card's message and whether it's wrapped. For
-/// staff it also says how to pack it.
+/// "Gift for Nabila" (or "Donation to …"), the card's message and
+/// whether it's wrapped. For staff it also says how to pack it.
 class OrderGiftNote extends StatelessWidget {
-  const OrderGiftNote({super.key, required this.gift, this.forStaff = false});
+  const OrderGiftNote({
+    super.key,
+    required this.gift,
+    this.forStaff = false,
+    this.isDonation = false,
+  });
 
   final Gift gift;
   final bool forStaff;
+  final bool isDonation;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +35,9 @@ class OrderGiftNote extends StatelessWidget {
             spacing: 2,
             children: [
               Text(
-                l10n.orderGiftFor(gift.recipientName),
+                isDonation
+                    ? l10n.orderDonationTo(gift.recipientName)
+                    : l10n.orderGiftFor(gift.recipientName),
                 style: context.texts.titleSmall,
               ),
               if (gift.message.isNotEmpty)

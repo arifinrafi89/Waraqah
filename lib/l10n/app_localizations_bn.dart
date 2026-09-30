@@ -1013,6 +1013,87 @@ class AppL10nBn extends AppL10n {
   String get adminOrderGiftWrap => 'র‍্যাপ করুন, কার্ড দিন, দাম লিখবেন না।';
 
   @override
+  String get giftDonateTitle => 'বই দান করুন';
+
+  @override
+  String get giftDonateIntro =>
+      'এখানের প্রতিটি প্রতিষ্ঠান ওয়ারাকাহ যাচাই করেছে। তাদের দরকারি একটি বই বেছে নিন, আমরা আপনার নোটসহ বিনা খরচে পৌঁছে দেব।';
+
+  @override
+  String get giftDonateVerified => 'যাচাইকৃত';
+
+  @override
+  String giftDonateKind(String kind) {
+    String _temp0 = intl.Intl.selectLogic(kind, {
+      'library': 'পাঠাগার',
+      'school': 'স্কুল',
+      'madrasa': 'মাদ্রাসা',
+      'orphanage': 'এতিমখানা',
+      'other': 'প্রতিষ্ঠান',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String giftDonateProgress(int received, int wanted) {
+    return '$wantedটির মধ্যে $receivedটি বই পেয়েছে';
+  }
+
+  @override
+  String get giftDonateNeeds => 'তাদের যে বই দরকার';
+
+  @override
+  String giftDonateNeedProgress(int received, int wanted) {
+    return '$wantedটির মধ্যে $receivedটি পেয়েছে';
+  }
+
+  @override
+  String giftDonatePerCopy(String amount) {
+    return 'প্রতি কপি $amount';
+  }
+
+  @override
+  String get giftDonateAction => 'দান করুন';
+
+  @override
+  String get giftDonateMet => 'সব পেয়ে গেছে';
+
+  @override
+  String giftDonateFreeDelivery(String name) {
+    return '$name-এ বিনা খরচে পৌঁছে দেওয়া হবে';
+  }
+
+  @override
+  String get giftDonateHowMany => 'কয় কপি?';
+
+  @override
+  String get giftDonateFewer => 'এক কপি কম';
+
+  @override
+  String get giftDonateMore => 'এক কপি বেশি';
+
+  @override
+  String get giftDonateNote => 'তাদের জন্য একটি নোট (ঐচ্ছিক)';
+
+  @override
+  String giftDonateConfirm(String amount) {
+    return '$amount দান করুন';
+  }
+
+  @override
+  String giftDonateThanks(String name) {
+    return 'ধন্যবাদ! আপনার বই $name-এর পথে।';
+  }
+
+  @override
+  String get giftDonateMissing => 'প্রতিষ্ঠানটি খুঁজে পাওয়া যায়নি।';
+
+  @override
+  String orderDonationTo(String name) {
+    return '$name-কে দান';
+  }
+
+  @override
   String get orderPlacedTitle => 'অর্ডার সম্পন্ন হয়েছে!';
 
   @override

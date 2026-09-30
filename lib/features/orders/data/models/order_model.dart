@@ -32,6 +32,7 @@ abstract class OrderModel with _$OrderModel {
     ReturnRequestModel? returnRequest,
     OrderGiftModel? gift,
     @Default(0) int giftWrapBdt,
+    @Default(false) bool isDonation,
   }) = _OrderModel;
 
   factory OrderModel.fromJson(Map<String, dynamic> json) =>
@@ -58,6 +59,7 @@ extension OrderModelX on OrderModel {
     returnRequest: returnRequest?.toEntity(),
     gift: gift?.toEntity(),
     giftWrapBdt: giftWrapBdt,
+    isDonation: isDonation,
   );
 
   /// Moves the order to [next] and notes when.

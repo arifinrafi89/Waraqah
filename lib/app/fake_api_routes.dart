@@ -12,6 +12,7 @@ import '../features/home/data/sources/ayah_fake_api.dart';
 import '../features/loyalty/data/sources/points_fake_api.dart';
 import '../features/loyalty/data/sources/points_fake_store.dart';
 import '../features/deals/data/sources/deals_fake_api.dart';
+import '../features/donate/data/sources/donate_fake_api.dart';
 import '../features/deals/data/sources/deals_fake_store.dart';
 import '../features/orders/data/sources/order_admin_fake_api.dart';
 import '../features/orders/data/sources/order_fake_api.dart';
@@ -45,6 +46,7 @@ abstract final class FakeApiRoutes {
       ...OrderAdminFakeApi.routes(orders),
       ...CouponAdminFakeApi.routes(coupons),
       ...DealsFakeApi.routes(deals),
+      ...DonateFakeApi.routes(orders),
     });
   }
 }
