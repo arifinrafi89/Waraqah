@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:waraqah/app/router/route_access.dart';
+import 'package:waraqah/features/admin/admin_routes.dart';
 import 'package:waraqah/features/auth/auth_routes.dart';
 import 'package:waraqah/features/auth/domain/entities/app_user.dart';
 import 'package:waraqah/features/auth/domain/entities/auth_failure.dart';
@@ -46,7 +47,7 @@ void main() {
   });
 
   group('RouteAccess', () {
-    const admin = RouteAccess.admin;
+    const admin = AdminRoutes.admin;
 
     test('guests are sent to login from the admin area', () {
       expect(RouteAccess.redirect(admin, null), AuthRoutes.login);

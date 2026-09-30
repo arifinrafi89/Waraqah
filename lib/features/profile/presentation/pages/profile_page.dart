@@ -6,6 +6,7 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../core/widgets/segmented_selector.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../admin/presentation/widgets/admin_area_button.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
 import '../../../auth/presentation/widgets/session_actions.dart';
 import '../widgets/profile_header.dart';
@@ -47,6 +48,7 @@ class ProfilePage extends ConsumerWidget {
                 ),
                 const SizedBox(height: Insets.md),
                 const SessionActions(),
+                const AdminAreaButton(),
                 const SizedBox(height: Insets.xl),
                 SettingsGroup(
                   label: l10n.profileAppearance,

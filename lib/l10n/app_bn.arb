@@ -125,5 +125,15 @@
   "profileListings": "লিস্টিং",
   "comingSoonTitle": "শীঘ্রই আসছে",
   "comingSoonP2p": "সেকেন্ড-হ্যান্ড মার্কেটপ্লেস পরবর্তী ধাপে তৈরি হচ্ছে।",
-  "comingSoonBites": "সম্পূর্ণ বুক-বাইটস ফিড সোশ্যাল ফেজে আসছে।"
+  "comingSoonBites": "সম্পূর্ণ বুক-বাইটস ফিড সোশ্যাল ফেজে আসছে।",
+  "adminAreaTitle": "অ্যাডমিন এরিয়া",
+  "adminDashboard": "ড্যাশবোর্ড",
+  "adminDashboardHint": "বিক্রি, অর্ডার আর স্টক এক নজরে",
+  "adminCatalog": "ক্যাটালগ",
+  "adminCatalogHint": "বই, সংস্করণ আর স্টক যোগ ও সম্পাদনা",
+  "adminOrders": "অর্ডার",
+  "adminOrdersHint": "অর্ডার, রিটার্ন, রিফান্ড আর কুপন",
+  "adminModeration": "মডারেশন",
+  "adminModerationHint": "পুরোনো বইয়ের লিস্টিং আর রিপোর্ট যাচাই",
+  "adminComingSoon": "এই অংশটি তৈরি হচ্ছে। শীঘ্রই আবার দেখুন।"
 }
