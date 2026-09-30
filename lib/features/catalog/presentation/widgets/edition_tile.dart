@@ -17,12 +17,16 @@ class EditionTile extends StatelessWidget {
     required this.isSelected,
     required this.isTranslation,
     required this.onTap,
+    this.isLowestIn30Days = false,
   });
 
   final Edition edition;
   final bool isSelected;
   final bool isTranslation;
   final VoidCallback onTap;
+
+  /// On sale and at its lowest price in 30 days.
+  final bool isLowestIn30Days;
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +74,8 @@ class EditionTile extends StatelessWidget {
                         ),
                         if (isTranslation)
                           MiniTag(label: l10n.bookEditionTranslation),
+                        if (isLowestIn30Days)
+                          AccentTag(label: l10n.bookLowest30Days),
                       ],
                     ),
                     Text(

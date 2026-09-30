@@ -20,6 +20,11 @@ class BookExtrasRepositoryImpl implements BookExtrasRepository {
     () async => (await _source.lookInside(bookId))?.toEntity(),
   );
 
+  /// Not cached: prices change.
+  @override
+  Future<Map<String, int>> priceLows(String bookId) =>
+      _source.priceLows(bookId);
+
   @override
   Future<BookSeries?> series(String bookId) => _series.resolve(
     bookId,

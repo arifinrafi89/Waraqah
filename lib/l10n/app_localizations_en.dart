@@ -515,6 +515,66 @@ class AppL10nEn extends AppL10n {
   String get bookAnswerPosted => 'Answer posted';
 
   @override
+  String get bookLowest30Days => 'Lowest in 30 days';
+
+  @override
+  String get alertMine => 'My alerts';
+
+  @override
+  String get alertNotifyMe => 'Notify me';
+
+  @override
+  String get alertStockOn => 'We\'ll let you know · tap to stop';
+
+  @override
+  String get alertStockSet => 'We\'ll let you know when it\'s back.';
+
+  @override
+  String get alertTurnedOff => 'Alert turned off';
+
+  @override
+  String get alertTurnOff => 'Turn off alert';
+
+  @override
+  String get alertPriceTitle => 'Price drop alert';
+
+  @override
+  String alertPriceToday(String price) {
+    return 'Today it\'s $price.';
+  }
+
+  @override
+  String alertPriceWhen(String price) {
+    return 'Alert me at $price or less';
+  }
+
+  @override
+  String get alertSet => 'Set alert';
+
+  @override
+  String get alertPriceSet => 'We\'ll let you know when the price drops.';
+
+  @override
+  String get alertBackNow => 'Back in stock now';
+
+  @override
+  String get alertWaitingStock => 'Waiting for it to be back in stock';
+
+  @override
+  String alertPriceDropped(String price) {
+    return 'Price dropped to $price';
+  }
+
+  @override
+  String alertWaitingPrice(String target, String price) {
+    return 'Alert at $target · now $price';
+  }
+
+  @override
+  String get alertEmpty =>
+      'No alerts yet. Tap Notify me on a sold-out book, or the bell on a wishlist book.';
+
+  @override
   String get cartTitle => 'Cart';
 
   @override

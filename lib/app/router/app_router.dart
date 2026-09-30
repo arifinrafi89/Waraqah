@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/admin/admin_routes.dart';
 import '../../features/ai_assistant/ai_assistant_routes.dart';
+import '../../features/alerts/alerts_routes.dart';
 import '../../features/auth/auth_routes.dart';
 import '../../features/auth/domain/entities/app_user.dart';
 import '../../features/bites/bites_routes.dart';
@@ -49,6 +50,7 @@ abstract final class AppRouter {
       ...WishlistRoutes.routes,
       ...CheckoutRoutes.routes,
       ...OrdersRoutes.routes,
+      ...AlertsRoutes.routes,
       ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),

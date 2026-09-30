@@ -5,6 +5,7 @@ import '../../../../core/models/book.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/section_header.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../providers/book_extras_providers.dart';
 import '../providers/edition_providers.dart';
 import 'delivery_row.dart';
 import 'edition_tile.dart';
@@ -22,6 +23,7 @@ class EditionPicker extends ConsumerWidget {
     final chosen = book.chosenEdition(
       ref.watch(selectedEditionIdProvider(book.id)),
     );
+    final lowest = ref.watch(lowestPriceEditionsProvider(book)).value ?? {};
     final editions = [...book.editions]
       ..sort((a, b) => a.priceBdt.compareTo(b.priceBdt));
     return Column(
@@ -38,6 +40,7 @@ class EditionPicker extends ConsumerWidget {
             edition: edition,
             isSelected: edition.id == chosen.id,
             isTranslation: book.isTranslation(edition),
+            isLowestIn30Days: lowest.contains(edition.id),
             onTap: () => ref
                 .read(selectedEditionIdProvider(book.id).notifier)
                 .select(edition.id),
