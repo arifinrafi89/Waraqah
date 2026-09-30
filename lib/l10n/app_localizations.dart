@@ -505,6 +505,12 @@ abstract class AppL10n {
   /// **'No books by this Author yet.'**
   String get authorEmpty;
 
+  /// No description provided for @publisherEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books from this Publisher yet.'**
+  String get publisherEmpty;
+
   /// No description provided for @commonRetry.
   ///
   /// In en, this message translates to:

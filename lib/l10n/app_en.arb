@@ -68,6 +68,7 @@
   "commonNotFound": "Not found",
   "commonBack": "Back",
   "authorEmpty": "No books by this Author yet.",
+  "publisherEmpty": "No books from this Publisher yet.",
   "commonRetry": "Retry",
   "commonSomethingWentWrong": "Something went wrong",
   "catalogTitle": "Catalog",

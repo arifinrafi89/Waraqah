@@ -68,6 +68,7 @@
   "commonNotFound": "পাওয়া যায়নি",
   "commonBack": "ফিরে যান",
   "authorEmpty": "এই লেখকের কোনো বই এখনো নেই।",
+  "publisherEmpty": "এই প্রকাশনীর কোনো বই এখনো নেই।",
   "commonRetry": "আবার চেষ্টা করুন",
   "commonSomethingWentWrong": "কিছু ভুল হয়েছে",
   "catalogTitle": "ক্যাটালগ",

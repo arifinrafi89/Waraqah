@@ -31,6 +31,7 @@ class _StaticBookSource extends BookRemoteSource {
     String? category,
     Section? section,
     String? author,
+    String? publisher,
     String query = '',
   }) async => books;
 }

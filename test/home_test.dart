@@ -21,6 +21,7 @@ class _FakeBookRepository implements BookRepository {
     String? category,
     Section? section,
     String? author,
+    String? publisher,
     String query = '',
   }) async {
     final sorted = [...books];

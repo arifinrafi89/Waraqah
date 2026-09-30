@@ -68,6 +68,11 @@ final publisherProvider = FutureProvider.family<Publisher?, String>(
   (ref, id) => ref.watch(catalogRecordsRepositoryProvider).publisher(id),
 );
 
+/// Every Book from one Publisher, newest first.
+final publisherBooksProvider = FutureProvider.family<List<Book>, String>(
+  (ref, id) => ref.watch(bookRepositoryProvider).searchCatalog(publisher: id),
+);
+
 /// Every Book in one Section, newest first.
 final sectionBooksProvider = FutureProvider.family<List<Book>, Section>(
   (ref, section) => GetSectionBooks(ref.watch(bookRepositoryProvider))(section),

@@ -6,6 +6,7 @@ import 'presentation/pages/book_detail_page.dart';
 import 'presentation/pages/catalog_page.dart';
 import 'presentation/pages/category_page.dart';
 import 'presentation/pages/look_inside_page.dart';
+import 'presentation/pages/publisher_page.dart';
 import 'presentation/pages/questions_page.dart';
 import 'presentation/pages/section_page.dart';
 
@@ -27,6 +28,11 @@ abstract final class CatalogRoutes {
 
   /// An Author's page, inside the Catalog tab so the bottom nav stays.
   static String authorFor(String id) => '/catalog/author/$id';
+
+  static const String publisher = '/catalog/publisher/:id';
+
+  /// A Publisher's page, inside the Catalog tab so the bottom nav stays.
+  static String publisherFor(String id) => '/catalog/publisher/$id';
 
   static const String bookDetail = '/catalog/book/:id';
 
@@ -92,6 +98,11 @@ abstract final class CatalogRoutes {
             path: 'author/:id',
             builder: (_, state) =>
                 AuthorPage(authorId: state.pathParameters['id']!),
+          ),
+          GoRoute(
+            path: 'publisher/:id',
+            builder: (_, state) =>
+                PublisherPage(publisherId: state.pathParameters['id']!),
           ),
         ],
       ),

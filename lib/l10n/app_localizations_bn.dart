@@ -217,6 +217,9 @@ class AppL10nBn extends AppL10n {
   String get authorEmpty => 'এই লেখকের কোনো বই এখনো নেই।';
 
   @override
+  String get publisherEmpty => 'এই প্রকাশনীর কোনো বই এখনো নেই।';
+
+  @override
   String get commonRetry => 'আবার চেষ্টা করুন';
 
   @override

@@ -14,6 +14,7 @@ class BookRemoteSource {
     String? category,
     Section? section,
     String? author,
+    String? publisher,
     String query = '',
   }) async {
     final response = await _dio.get<List<dynamic>>(
@@ -22,6 +23,7 @@ class BookRemoteSource {
         'category': ?category,
         'section': ?section?.name,
         'author': ?author,
+        'publisher': ?publisher,
         if (query.isNotEmpty) 'q': query,
       },
     );

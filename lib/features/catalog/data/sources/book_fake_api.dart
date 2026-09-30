@@ -87,6 +87,7 @@ abstract final class BookFakeApi {
     final category = options.queryParameters['category'] as String?;
     final section = options.queryParameters['section'] as String?;
     final author = options.queryParameters['author'] as String?;
+    final publisher = options.queryParameters['publisher'] as String?;
     final query = (options.queryParameters['q'] as String? ?? '')
         .trim()
         .toLowerCase();
@@ -94,11 +95,17 @@ abstract final class BookFakeApi {
       final matchesCategory = category == null || book.categoryId == category;
       final matchesSection = section == null || book.section.name == section;
       final matchesAuthor = author == null || book.authorId == author;
+      final matchesPublisher =
+          publisher == null || book.publisherId == publisher;
       final matchesQuery =
           query.isEmpty ||
           book.title.toLowerCase().contains(query) ||
           book.author.toLowerCase().contains(query);
-      return matchesCategory && matchesSection && matchesAuthor && matchesQuery;
+      return matchesCategory &&
+          matchesSection &&
+          matchesAuthor &&
+          matchesPublisher &&
+          matchesQuery;
     });
     return matches.map((book) => book.toJson()).toList();
   }

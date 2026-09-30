@@ -219,6 +219,9 @@ class AppL10nEn extends AppL10n {
   String get authorEmpty => 'No books by this Author yet.';
 
   @override
+  String get publisherEmpty => 'No books from this Publisher yet.';
+
+  @override
   String get commonRetry => 'Retry';
 
   @override

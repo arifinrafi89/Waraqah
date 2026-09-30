@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/models/book.dart';
 import '../../../../core/theme/app_dimens.dart';
@@ -7,6 +8,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/section_header.dart';
 import '../../../../core/widgets/tags.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../catalog_routes.dart';
 import '../../domain/entities/book_details.dart';
 import '../providers/catalog_providers.dart';
 import 'edition_labels.dart';
@@ -29,9 +31,9 @@ class BookAboutSection extends ConsumerWidget {
     final facts = [
       if (details.pages != null) l10n.bookDetailPages(details.pages!),
       l10n.languageLabel(book.originalLanguage),
-      ?ref.watch(publisherProvider(book.publisherId)).value?.name,
     ];
-    if (details.description == null && facts.isEmpty) {
+    final publisher = ref.watch(publisherProvider(book.publisherId)).value;
+    if (details.description == null && facts.isEmpty && publisher == null) {
       return const SizedBox.shrink();
     }
     return Padding(
@@ -42,7 +44,7 @@ class BookAboutSection extends ConsumerWidget {
           SectionHeader(title: l10n.bookDetailAbout),
           if (details.description != null)
             Text(details.description!, style: context.texts.bodyMedium),
-          if (facts.isNotEmpty)
+          if (facts.isNotEmpty || publisher != null)
             Padding(
               padding: const EdgeInsets.only(top: Insets.md),
               child: Wrap(
@@ -50,6 +52,14 @@ class BookAboutSection extends ConsumerWidget {
                 runSpacing: 6,
                 children: [
                   for (final fact in facts) MiniTag(label: fact, fontSize: 10),
+                  if (publisher != null)
+                    MiniTag(
+                      label: publisher.name,
+                      fontSize: 10,
+                      onTap: () => context.push(
+                        CatalogRoutes.publisherFor(publisher.id),
+                      ),
+                    ),
                 ],
               ),
             ),
