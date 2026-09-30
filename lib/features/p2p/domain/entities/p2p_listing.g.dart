@@ -31,6 +31,10 @@ _P2pListing _$P2pListingFromJson(Map<String, dynamic> json) => _P2pListing(
   rejectionReason: json['rejectionReason'] as String?,
   bookId: json['bookId'] as String?,
   coverSeed: (json['coverSeed'] as num?)?.toInt() ?? 0,
+  district: json['district'] as String?,
+  area: json['area'] as String?,
+  category: json['category'] as String?,
+  newPriceBdt: (json['newPriceBdt'] as num?)?.toInt(),
 );
 
 Map<String, dynamic> _$P2pListingToJson(_P2pListing instance) =>
@@ -49,6 +53,10 @@ Map<String, dynamic> _$P2pListingToJson(_P2pListing instance) =>
       'rejectionReason': instance.rejectionReason,
       'bookId': instance.bookId,
       'coverSeed': instance.coverSeed,
+      'district': instance.district,
+      'area': instance.area,
+      'category': instance.category,
+      'newPriceBdt': instance.newPriceBdt,
     };
 
 const _$BookConditionEnumMap = {

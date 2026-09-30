@@ -16,18 +16,6 @@ enum P2pListingStatus {
 
 enum HandoverMethod { meetInPerson, delivery }
 
-enum P2pFilter { all, likeNew, veryGood, good, acceptable }
-
-extension P2pFilterX on P2pFilter {
-  String get label => switch (this) {
-    P2pFilter.all => 'All',
-    P2pFilter.likeNew => 'Like New',
-    P2pFilter.veryGood => 'Very Good',
-    P2pFilter.good => 'Good',
-    P2pFilter.acceptable => 'Acceptable',
-  };
-}
-
 @freezed
 abstract class P2pListing with _$P2pListing {
   const factory P2pListing({
@@ -45,6 +33,10 @@ abstract class P2pListing with _$P2pListing {
     String? rejectionReason,
     String? bookId,
     @Default(0) int coverSeed,
+    String? district,
+    String? area,
+    String? category,
+    int? newPriceBdt,
   }) = _P2pListing;
 
   factory P2pListing.fromJson(Map<String, dynamic> json) =>
@@ -74,22 +66,7 @@ extension P2pListingX on P2pListing {
 
   String get availabilityLabel => isAvailable ? 'Available' : 'Sold';
 
-  bool matchesFilter(P2pFilter filter, String query) {
-    final normalizedQuery = query.trim().toLowerCase();
-    final queryMatches =
-        normalizedQuery.isEmpty ||
-        title.toLowerCase().contains(normalizedQuery) ||
-        sellerName.toLowerCase().contains(normalizedQuery) ||
-        sellerBatch.toLowerCase().contains(normalizedQuery);
-
-    if (!queryMatches) return false;
-
-    return switch (filter) {
-      P2pFilter.all => true,
-      P2pFilter.likeNew => condition == BookCondition.likeNew,
-      P2pFilter.veryGood => condition == BookCondition.veryGood,
-      P2pFilter.good => condition == BookCondition.good,
-      P2pFilter.acceptable => condition == BookCondition.acceptable,
-    };
-  }
+  int? get saveAmount => (newPriceBdt != null && newPriceBdt! > priceBdt) 
+      ? newPriceBdt! - priceBdt 
+      : null;
 }
