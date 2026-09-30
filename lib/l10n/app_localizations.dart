@@ -613,6 +613,108 @@ abstract class AppL10n {
   /// **'Bestselling'**
   String get searchSortBestselling;
 
+  /// No description provided for @searchFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get searchFilter;
+
+  /// No description provided for @searchFilterReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get searchFilterReset;
+
+  /// No description provided for @searchFilterSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Section'**
+  String get searchFilterSection;
+
+  /// No description provided for @searchFilterPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get searchFilterPrice;
+
+  /// No description provided for @searchFilterFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Format'**
+  String get searchFilterFormat;
+
+  /// No description provided for @searchFilterLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get searchFilterLanguage;
+
+  /// No description provided for @searchFilterRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum rating'**
+  String get searchFilterRating;
+
+  /// No description provided for @searchFilterAny.
+  ///
+  /// In en, this message translates to:
+  /// **'Any'**
+  String get searchFilterAny;
+
+  /// No description provided for @searchFilterInStock.
+  ///
+  /// In en, this message translates to:
+  /// **'In stock only'**
+  String get searchFilterInStock;
+
+  /// No description provided for @searchFilterShow.
+  ///
+  /// In en, this message translates to:
+  /// **'Show {count} books'**
+  String searchFilterShow(int count);
+
+  /// No description provided for @searchPriceUnder300.
+  ///
+  /// In en, this message translates to:
+  /// **'Under ৳300'**
+  String get searchPriceUnder300;
+
+  /// No description provided for @searchPrice300to600.
+  ///
+  /// In en, this message translates to:
+  /// **'৳300–600'**
+  String get searchPrice300to600;
+
+  /// No description provided for @searchPrice600to1000.
+  ///
+  /// In en, this message translates to:
+  /// **'৳600–1,000'**
+  String get searchPrice600to1000;
+
+  /// No description provided for @searchPriceOver1000.
+  ///
+  /// In en, this message translates to:
+  /// **'Over ৳1,000'**
+  String get searchPriceOver1000;
+
+  /// No description provided for @searchRating3.
+  ///
+  /// In en, this message translates to:
+  /// **'3★+'**
+  String get searchRating3;
+
+  /// No description provided for @searchRating4.
+  ///
+  /// In en, this message translates to:
+  /// **'4★+'**
+  String get searchRating4;
+
+  /// No description provided for @searchRating45.
+  ///
+  /// In en, this message translates to:
+  /// **'4.5★+'**
+  String get searchRating45;
+
   /// No description provided for @catalogBrowseSections.
   ///
   /// In en, this message translates to:

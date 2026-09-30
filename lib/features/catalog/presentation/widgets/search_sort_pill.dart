@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/theme/app_dimens.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/catalog_filters.dart';
-import '../providers/catalog_providers.dart';
+import '../providers/search_providers.dart';
 
 String _label(AppL10n l10n, SearchSort sort) => switch (sort) {
   SearchSort.relevance => l10n.searchSortRelevance,
@@ -22,19 +21,10 @@ class SearchSortPill extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppL10n.of(context)!;
     final current = ref.watch(searchSortProvider);
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: Insets.screen,
-          vertical: Insets.sm,
-        ),
-        child: ActionChip(
-          avatar: const Icon(Icons.swap_vert_rounded, size: 18),
-          label: Text('${l10n.searchSort}: ${_label(l10n, current)}'),
-          onPressed: () => _open(context, ref),
-        ),
-      ),
+    return ActionChip(
+      avatar: const Icon(Icons.swap_vert_rounded, size: 18),
+      label: Text('${l10n.searchSort}: ${_label(l10n, current)}'),
+      onPressed: () => _open(context, ref),
     );
   }
 

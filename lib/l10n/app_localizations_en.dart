@@ -280,6 +280,59 @@ class AppL10nEn extends AppL10n {
   String get searchSortBestselling => 'Bestselling';
 
   @override
+  String get searchFilter => 'Filter';
+
+  @override
+  String get searchFilterReset => 'Reset';
+
+  @override
+  String get searchFilterSection => 'Section';
+
+  @override
+  String get searchFilterPrice => 'Price';
+
+  @override
+  String get searchFilterFormat => 'Format';
+
+  @override
+  String get searchFilterLanguage => 'Language';
+
+  @override
+  String get searchFilterRating => 'Minimum rating';
+
+  @override
+  String get searchFilterAny => 'Any';
+
+  @override
+  String get searchFilterInStock => 'In stock only';
+
+  @override
+  String searchFilterShow(int count) {
+    return 'Show $count books';
+  }
+
+  @override
+  String get searchPriceUnder300 => 'Under ৳300';
+
+  @override
+  String get searchPrice300to600 => '৳300–600';
+
+  @override
+  String get searchPrice600to1000 => '৳600–1,000';
+
+  @override
+  String get searchPriceOver1000 => 'Over ৳1,000';
+
+  @override
+  String get searchRating3 => '3★+';
+
+  @override
+  String get searchRating4 => '4★+';
+
+  @override
+  String get searchRating45 => '4.5★+';
+
+  @override
   String get catalogBrowseSections => 'Browse by Section';
 
   @override

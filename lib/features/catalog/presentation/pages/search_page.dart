@@ -8,11 +8,11 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/app_text_field.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../providers/catalog_providers.dart';
+import '../providers/search_providers.dart';
 import '../widgets/back_app_bar.dart';
 import '../widgets/book_list_skeleton.dart';
+import '../widgets/search_filter_pill.dart';
 import '../widgets/search_no_results.dart';
-import '../widgets/search_sort_pill.dart';
 import 'catalog_results_list.dart';
 
 /// `/catalog/search`: live search by title, Author or Publisher.
@@ -45,6 +45,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
   Widget build(BuildContext context) {
     final l10n = AppL10n.of(context)!;
     final query = ref.watch(searchQueryProvider).trim();
+    final hasFilters = ref.watch(searchFiltersProvider).activeCount > 0;
     final results = ref.watch(searchResultsProvider);
     return SafeArea(
       bottom: false,
@@ -61,9 +62,9 @@ class _SearchPageState extends ConsumerState<SearchPage> {
               onChanged: _onChanged,
             ),
           ),
-          const SearchSortPill(),
+          const SearchPillRow(),
           Expanded(
-            child: query.isEmpty
+            child: query.isEmpty && !hasFilters
                 ? Center(
                     child: Text(
                       l10n.searchHint,

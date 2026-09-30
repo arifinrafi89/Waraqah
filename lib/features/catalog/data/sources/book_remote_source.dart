@@ -23,6 +23,14 @@ class BookRemoteSource {
         'publisher': ?filters.publisherId,
         if (filters.query.isNotEmpty) 'q': filters.query,
         'sort': ?filters.sort?.name,
+        'minPrice': ?filters.minPrice,
+        'maxPrice': ?filters.maxPrice,
+        if (filters.formats.isNotEmpty)
+          'format': filters.formats.map((f) => f.name).join(','),
+        if (filters.languages.isNotEmpty)
+          'language': filters.languages.map((l) => l.name).join(','),
+        'minRating': ?filters.minRating,
+        if (filters.inStockOnly) 'inStock': true,
       },
     );
     return (response.data ?? [])

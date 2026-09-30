@@ -21,16 +21,13 @@ class BookRepositoryImpl implements BookRepository {
   @override
   Future<List<Book>> searchCatalog([
     CatalogFilters filters = const CatalogFilters(),
-  ]) => _cache.resolve(
-    'catalog:${filters.categoryId ?? 'all'}:${filters.section?.name ?? 'all'}:${filters.authorId ?? 'all'}:${filters.publisherId ?? 'all'}:${filters.query}:${filters.sort?.name}',
-    () async {
-      final books = await _source.fetchBooks(filters);
-      // A chosen sort or a query keeps the API's relevance order; Section, Category, Author and
-      // Publisher pages list newest first.
-      if (filters.sort != null || filters.query.isNotEmpty) return books;
-      return filters.isScoped ? _sortNewest(books) : _sortByValue(books);
-    },
-  );
+  ]) => _cache.resolve('catalog:${filters.cacheKey}', () async {
+    final books = await _source.fetchBooks(filters);
+    // A chosen sort or a query keeps the API's relevance order; Section, Category, Author and
+    // Publisher pages list newest first.
+    if (filters.sort != null || filters.query.isNotEmpty) return books;
+    return filters.isScoped ? _sortNewest(books) : _sortByValue(books);
+  });
 
   @override
   Future<Book?> findById(String id) async {

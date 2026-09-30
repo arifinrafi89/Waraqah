@@ -277,6 +277,59 @@ class AppL10nBn extends AppL10n {
   String get searchSortBestselling => 'সবচেয়ে বেশি বিক্রিত';
 
   @override
+  String get searchFilter => 'ফিল্টার';
+
+  @override
+  String get searchFilterReset => 'রিসেট';
+
+  @override
+  String get searchFilterSection => 'বিভাগ';
+
+  @override
+  String get searchFilterPrice => 'দাম';
+
+  @override
+  String get searchFilterFormat => 'ধরন';
+
+  @override
+  String get searchFilterLanguage => 'ভাষা';
+
+  @override
+  String get searchFilterRating => 'ন্যূনতম রেটিং';
+
+  @override
+  String get searchFilterAny => 'যেকোনো';
+
+  @override
+  String get searchFilterInStock => 'শুধু স্টকে আছে';
+
+  @override
+  String searchFilterShow(int count) {
+    return '$count টি বই দেখুন';
+  }
+
+  @override
+  String get searchPriceUnder300 => '৳৩০০-এর কম';
+
+  @override
+  String get searchPrice300to600 => '৳৩০০–৬০০';
+
+  @override
+  String get searchPrice600to1000 => '৳৬০০–১,০০০';
+
+  @override
+  String get searchPriceOver1000 => '৳১,০০০-এর বেশি';
+
+  @override
+  String get searchRating3 => '৩★+';
+
+  @override
+  String get searchRating4 => '৪★+';
+
+  @override
+  String get searchRating45 => '৪.৫★+';
+
+  @override
   String get catalogBrowseSections => 'বিভাগ অনুযায়ী দেখুন';
 
   @override
