@@ -88,14 +88,19 @@ final class WaraqahChatbot {
     if (_containsAny(normalized, [
       'study',
       'exam',
+      'exams',
+      'prep',
+      'preparation',
       'focus',
       'habit',
       'productivity',
     ])) {
       return const _ChatbotReply(
-        'For study routines, Atomic Habits is a practical starting point. '
-        'Try pairing it with short focused sessions and regular revision. '
-        'I can also help you find a more specific subject or price range.',
+        'Absolutely. I can help you prepare with a focused study plan, '
+        'revision resources, and book recommendations. Tell me the subject, '
+        'exam date, and topics you find difficult, and we will break them '
+        'into manageable study sessions. Atomic Habits is a practical read '
+        'for building a consistent routine.',
         recommendedBookId: 'bk-atomic',
       );
     }
