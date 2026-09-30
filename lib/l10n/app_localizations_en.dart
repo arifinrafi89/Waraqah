@@ -380,6 +380,55 @@ class AppL10nEn extends AppL10n {
   String get bookCopied => 'Book details copied. Paste them anywhere to share.';
 
   @override
+  String get bookConditionLikeNew => 'Like new';
+
+  @override
+  String get bookConditionVeryGood => 'Very good';
+
+  @override
+  String get bookConditionGood => 'Good';
+
+  @override
+  String get bookConditionAcceptable => 'Acceptable';
+
+  @override
+  String get bookOtherWays => 'Other ways to buy';
+
+  @override
+  String get bookCertifiedNote => 'checked and cleaned by Waraqah';
+
+  @override
+  String get bookAddUsedToCart => 'Add used copy to cart';
+
+  @override
+  String get bookFromReaders => 'From readers';
+
+  @override
+  String bookListingCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count listings',
+      one: '1 listing',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String bookFromPrice(String price) {
+    return 'from $price';
+  }
+
+  @override
+  String bookResellsFor(String amount) {
+    return 'Finished it? Copies like this usually resell for about $amount on Waraqah.';
+  }
+
+  @override
+  String get bookReaderSaleNote =>
+      'Waraqah picks the book up from the reader, checks it and delivers it to you.';
+
+  @override
   String get cartTitle => 'Cart';
 
   @override
@@ -445,6 +494,18 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get cartMovedToWishlist => 'Moved to your wishlist';
+
+  @override
+  String get cartCertifiedUsed => 'Certified Used';
+
+  @override
+  String get cartFromReader => 'From a reader';
+
+  @override
+  String get cartNewBooks => 'New';
+
+  @override
+  String get cartUsedBooks => 'Used';
 
   @override
   String get wishlistTitle => 'Wishlist';

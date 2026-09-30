@@ -21,6 +21,7 @@ _CartLineModel _$CartLineModelFromJson(Map<String, dynamic> json) =>
       format: $enumDecodeNullable(_$BookFormatEnumMap, json['format']),
       language: $enumDecodeNullable(_$BookLanguageEnumMap, json['language']),
       isPreorder: json['isPreorder'] as bool? ?? false,
+      condition: $enumDecodeNullable(_$BookConditionEnumMap, json['condition']),
       coverSeed: (json['coverSeed'] as num?)?.toInt() ?? 0,
     );
 
@@ -39,6 +40,7 @@ Map<String, dynamic> _$CartLineModelToJson(_CartLineModel instance) =>
       'format': _$BookFormatEnumMap[instance.format],
       'language': _$BookLanguageEnumMap[instance.language],
       'isPreorder': instance.isPreorder,
+      'condition': _$BookConditionEnumMap[instance.condition],
       'coverSeed': instance.coverSeed,
     };
 
@@ -58,6 +60,13 @@ const _$BookLanguageEnumMap = {
   BookLanguage.bangla: 'bangla',
   BookLanguage.english: 'english',
   BookLanguage.arabic: 'arabic',
+};
+
+const _$BookConditionEnumMap = {
+  BookCondition.likeNew: 'likeNew',
+  BookCondition.veryGood: 'veryGood',
+  BookCondition.good: 'good',
+  BookCondition.acceptable: 'acceptable',
 };
 
 _CartModel _$CartModelFromJson(Map<String, dynamic> json) => _CartModel(

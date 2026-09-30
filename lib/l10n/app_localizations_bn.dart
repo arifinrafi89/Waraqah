@@ -366,6 +366,49 @@ class AppL10nBn extends AppL10n {
       'বইয়ের তথ্য কপি হয়েছে। শেয়ার করতে যেকোনো জায়গায় পেস্ট করুন।';
 
   @override
+  String get bookConditionLikeNew => 'প্রায় নতুন';
+
+  @override
+  String get bookConditionVeryGood => 'খুব ভালো';
+
+  @override
+  String get bookConditionGood => 'ভালো';
+
+  @override
+  String get bookConditionAcceptable => 'চলনসই';
+
+  @override
+  String get bookOtherWays => 'আরও যেভাবে কেনা যায়';
+
+  @override
+  String get bookCertifiedNote => 'ওয়ারাকাহ যাচাই ও পরিষ্কার করেছে';
+
+  @override
+  String get bookAddUsedToCart => 'ব্যবহৃত কপি কার্টে যোগ করুন';
+
+  @override
+  String get bookFromReaders => 'পাঠকদের কাছ থেকে';
+
+  @override
+  String bookListingCount(int count) {
+    return '$countটি লিস্টিং';
+  }
+
+  @override
+  String bookFromPrice(String price) {
+    return '$price থেকে';
+  }
+
+  @override
+  String bookResellsFor(String amount) {
+    return 'পড়া শেষ? এমন কপি ওয়ারাকাহতে সাধারণত প্রায় $amount-এ আবার বিক্রি হয়।';
+  }
+
+  @override
+  String get bookReaderSaleNote =>
+      'ওয়ারাকাহ পাঠকের কাছ থেকে বইটি সংগ্রহ করে, যাচাই করে আপনার কাছে পৌঁছে দেয়।';
+
+  @override
   String get cartTitle => 'কার্ট';
 
   @override
@@ -424,6 +467,18 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get cartMovedToWishlist => 'উইশলিস্টে সরানো হয়েছে';
+
+  @override
+  String get cartCertifiedUsed => 'সার্টিফায়েড ব্যবহৃত';
+
+  @override
+  String get cartFromReader => 'পাঠকের কাছ থেকে';
+
+  @override
+  String get cartNewBooks => 'নতুন বই';
+
+  @override
+  String get cartUsedBooks => 'পুরোনো বই';
 
   @override
   String get wishlistTitle => 'উইশলিস্ট';

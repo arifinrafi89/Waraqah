@@ -33,6 +33,20 @@ void main() {
     expect(find.text('1'), findsOneWidget);
   });
 
+  testWidgets('the added-to-cart message goes away by itself', (tester) async {
+    await openApp(tester, _atomic);
+    await tester.tap(find.byTooltip('Add to cart'));
+    await settle(tester);
+    expect(find.text('Added to cart'), findsOneWidget);
+
+    // Slide in, then the 4 second timer.
+    await tester.pump(const Duration(seconds: 1));
+    await tester.pump();
+    await tester.pump(const Duration(seconds: 5));
+    await settle(tester);
+    expect(find.text('Added to cart'), findsNothing);
+  });
+
   testWidgets('buy now opens the cart; quantities change the subtotal', (
     tester,
   ) async {

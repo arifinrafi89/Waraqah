@@ -769,6 +769,78 @@ abstract class AppL10n {
   /// **'Book details copied. Paste them anywhere to share.'**
   String get bookCopied;
 
+  /// No description provided for @bookConditionLikeNew.
+  ///
+  /// In en, this message translates to:
+  /// **'Like new'**
+  String get bookConditionLikeNew;
+
+  /// No description provided for @bookConditionVeryGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Very good'**
+  String get bookConditionVeryGood;
+
+  /// No description provided for @bookConditionGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Good'**
+  String get bookConditionGood;
+
+  /// No description provided for @bookConditionAcceptable.
+  ///
+  /// In en, this message translates to:
+  /// **'Acceptable'**
+  String get bookConditionAcceptable;
+
+  /// No description provided for @bookOtherWays.
+  ///
+  /// In en, this message translates to:
+  /// **'Other ways to buy'**
+  String get bookOtherWays;
+
+  /// No description provided for @bookCertifiedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'checked and cleaned by Waraqah'**
+  String get bookCertifiedNote;
+
+  /// No description provided for @bookAddUsedToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add used copy to cart'**
+  String get bookAddUsedToCart;
+
+  /// No description provided for @bookFromReaders.
+  ///
+  /// In en, this message translates to:
+  /// **'From readers'**
+  String get bookFromReaders;
+
+  /// No description provided for @bookListingCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 listing} other{{count} listings}}'**
+  String bookListingCount(int count);
+
+  /// No description provided for @bookFromPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'from {price}'**
+  String bookFromPrice(String price);
+
+  /// No description provided for @bookResellsFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished it? Copies like this usually resell for about {amount} on Waraqah.'**
+  String bookResellsFor(String amount);
+
+  /// No description provided for @bookReaderSaleNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah picks the book up from the reader, checks it and delivers it to you.'**
+  String get bookReaderSaleNote;
+
   /// No description provided for @cartTitle.
   ///
   /// In en, this message translates to:
@@ -876,6 +948,30 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Moved to your wishlist'**
   String get cartMovedToWishlist;
+
+  /// No description provided for @cartCertifiedUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Certified Used'**
+  String get cartCertifiedUsed;
+
+  /// No description provided for @cartFromReader.
+  ///
+  /// In en, this message translates to:
+  /// **'From a reader'**
+  String get cartFromReader;
+
+  /// No description provided for @cartNewBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get cartNewBooks;
+
+  /// No description provided for @cartUsedBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Used'**
+  String get cartUsedBooks;
 
   /// No description provided for @wishlistTitle.
   ///

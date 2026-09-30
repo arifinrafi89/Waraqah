@@ -56,6 +56,9 @@ extension AddToCartAction on WidgetRef {
                 onPressed: () => router.push(CartRoutes.cart),
               )
             : null,
+        // Flutter keeps snackbars with a button up until dismissed; this one
+        // should go by itself so it doesn't sit over the page.
+        persist: false,
       ),
     );
     return added != null;

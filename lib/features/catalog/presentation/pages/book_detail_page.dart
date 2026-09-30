@@ -17,6 +17,7 @@ import '../widgets/book_detail_header.dart';
 import '../widgets/book_detail_skeleton.dart';
 import '../widgets/book_reviews_section.dart';
 import '../widgets/edition_picker.dart';
+import '../widgets/other_ways_to_buy.dart';
 import '../widgets/share_book_button.dart';
 
 /// `/catalog/book/:id` — one title: pick an Edition, see when it arrives,
@@ -105,6 +106,8 @@ class _Body extends StatelessWidget {
         BookDetailHeader(book: data.book),
         const SizedBox(height: Insets.xl + 4),
         EditionPicker(book: data.book),
+        const SizedBox(height: Insets.lg),
+        OtherWaysToBuy(bookId: data.book.id),
         const SizedBox(height: Insets.xl + 4),
         BookAboutSection(book: data.book, details: data.details),
         BookReviewsSection(reviews: data.details.reviews),
