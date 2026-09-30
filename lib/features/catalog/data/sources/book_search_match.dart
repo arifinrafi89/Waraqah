@@ -5,7 +5,8 @@ import 'publisher_fixtures.dart';
 /// Fake-API search: which Books match a query, best match first.
 abstract final class BookSearchMatch {
   /// Books in [books] matching [query] (trimmed, lower-case), ranked: title
-  /// starts with it, title contains it, Author, Publisher. Ties go to the
+  /// starts with it, title contains it, Author, Publisher, ISBN (a full
+  /// ISBN-13, hyphens and spaces ignored; partial ISBNs never match). Ties go to the
   /// higher rating, then the newer `addedAt`.
   static List<Book> rank(Iterable<Book> books, String query) {
     final ranked = <(int, Book)>[];
@@ -34,6 +35,11 @@ abstract final class BookSearchMatch {
         .where((p) => p.id == book.publisherId)
         .firstOrNull;
     if (_any([publisher?.name, publisher?.nameBn], query)) return 3;
+    final isbn = query.replaceAll(RegExp(r'[\s-]'), '');
+    if (RegExp(r'^\d{13}$').hasMatch(isbn) &&
+        book.editions.any((e) => e.isbn == isbn)) {
+      return 4;
+    }
     return null;
   }
 

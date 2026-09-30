@@ -23,6 +23,7 @@ abstract final class FictionMoreShelf {
           id: 'bk-sherlock-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840001071',
           priceBdt: 380,
           stock: 30,
         ),

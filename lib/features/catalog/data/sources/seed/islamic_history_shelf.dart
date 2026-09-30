@@ -23,6 +23,7 @@ abstract final class IslamicHistoryShelf {
           id: 'bk-muqaddimah-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840002337',
           priceBdt: 780,
           stock: 12,
         ),
