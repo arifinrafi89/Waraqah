@@ -14,9 +14,11 @@ import '../widgets/book_about_section.dart';
 import '../widgets/book_detail_header.dart';
 import '../widgets/book_detail_skeleton.dart';
 import '../widgets/book_reviews_section.dart';
+import '../widgets/edition_picker.dart';
+import '../widgets/share_book_button.dart';
 
-/// `/catalog/book/:id` — one title with its From-price, summary and reader
-/// reviews. Opened over the shell, like the AI chat, so the add-to-cart
+/// `/catalog/book/:id` — one title: pick an Edition, see when it arrives,
+/// read the summary and reviews, then add it to the cart. Opened over the shell, like the AI chat, so the add-to-cart
 /// bar is not hidden behind the bottom nav.
 class BookDetailPage extends ConsumerWidget {
   const BookDetailPage({super.key, required this.bookId});
@@ -36,12 +38,18 @@ class BookDetailPage extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(Insets.md, 6, 0, 10),
-              child: AppIconButton(
-                icon: Icons.arrow_back_rounded,
-                onPressed: () => context.canPop()
-                    ? context.pop()
-                    : context.go(CatalogRoutes.catalog),
+              padding: const EdgeInsets.fromLTRB(Insets.md, 6, Insets.md, 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AppIconButton(
+                    icon: Icons.arrow_back_rounded,
+                    onPressed: () => context.canPop()
+                        ? context.pop()
+                        : context.go(CatalogRoutes.catalog),
+                  ),
+                  if (data != null) ShareBookButton(book: data.book),
+                ],
               ),
             ),
             Expanded(
@@ -84,6 +92,8 @@ class _Body extends StatelessWidget {
       ),
       children: [
         BookDetailHeader(book: data.book),
+        const SizedBox(height: Insets.xl + 4),
+        EditionPicker(book: data.book),
         const SizedBox(height: Insets.xl + 4),
         BookAboutSection(book: data.book, details: data.details),
         BookReviewsSection(reviews: data.details.reviews),

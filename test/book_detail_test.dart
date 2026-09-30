@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:waraqah/app/fake_api_routes.dart';
 import 'package:waraqah/core/models/book.dart';
 import 'package:waraqah/core/models/edition.dart';
 import 'package:waraqah/features/catalog/data/repositories/book_details_repository_impl.dart';
@@ -9,7 +10,8 @@ import 'package:waraqah/features/catalog/data/sources/book_details_source.dart';
 import 'package:waraqah/features/catalog/data/sources/book_fixtures.dart';
 import 'package:waraqah/features/catalog/data/sources/book_remote_source.dart';
 
-/// A Dio that fails every request at once, so sources take their seed path.
+/// A Dio that fails every request at once. The static book source below
+/// never uses it; it only satisfies the constructor.
 Dio _offlineDio() => Dio()
   ..interceptors.add(
     InterceptorsWrapper(
@@ -32,7 +34,7 @@ class _StaticBookSource extends BookRemoteSource {
 BookDetailsRepositoryImpl _repository([List<Book>? books]) =>
     BookDetailsRepositoryImpl(
       BookRepositoryImpl(_StaticBookSource(books ?? BookFixtures.all)),
-      BookDetailsSource(_offlineDio()),
+      BookDetailsSource(Dio()..interceptors.add(FakeApiRoutes.interceptor())),
     );
 
 void main() {

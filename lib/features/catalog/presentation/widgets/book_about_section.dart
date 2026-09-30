@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/models/book.dart';
-import '../../../../core/models/edition.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/section_header.dart';
 import '../../../../core/widgets/tags.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/book_details.dart';
+import 'edition_labels.dart';
 
 /// Summary plus publication facts. Renders nothing when there is no data,
 /// so books without a seed entry do not show an empty heading.
@@ -26,11 +26,7 @@ class BookAboutSection extends StatelessWidget {
     final l10n = AppL10n.of(context)!;
     final facts = [
       if (details.pages != null) l10n.bookDetailPages(details.pages!),
-      switch (book.originalLanguage) {
-        BookLanguage.bangla => l10n.bookLanguageBangla,
-        BookLanguage.english => l10n.bookLanguageEnglish,
-        BookLanguage.arabic => l10n.bookLanguageArabic,
-      },
+      l10n.languageLabel(book.originalLanguage),
       ?details.publisher,
     ];
     if (details.description == null && facts.isEmpty) {

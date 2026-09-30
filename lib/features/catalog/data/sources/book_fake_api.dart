@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import 'book_details_fixtures.dart';
 import 'book_fixtures.dart';
 
 /// Catalog's fake endpoints: paths and fixture handlers, merged into
@@ -7,9 +8,19 @@ import 'book_fixtures.dart';
 abstract final class BookFakeApi {
   static const String books = '/books';
 
+  /// One book's summary, page count, publisher and reviews: `?id=<bookId>`.
+  /// Answers `null` when there's nothing extra for that book.
+  static const String bookDetails = '/books/details';
+
   static final Map<String, Object? Function(RequestOptions)> routes = {
     books: _books,
+    bookDetails: _bookDetails,
   };
+
+  static Object? _bookDetails(RequestOptions options) {
+    final id = options.queryParameters['id'] as String? ?? '';
+    return BookDetailsFixtures.find(id)?.toJson();
+  }
 
   static Object _books(RequestOptions options) {
     final category = options.queryParameters['category'] as String?;

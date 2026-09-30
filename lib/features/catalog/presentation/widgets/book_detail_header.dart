@@ -6,7 +6,6 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/cover_art.dart';
 import '../../../../core/widgets/tags.dart';
-import '../../../../l10n/app_localizations.dart';
 import 'rating_stars.dart';
 
 /// Cover on the left; title, author, rating and tags on the right.
@@ -18,7 +17,6 @@ class BookDetailHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
-    final l10n = AppL10n.of(context)!;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: Insets.lg,
@@ -48,11 +46,6 @@ class BookDetailHeader extends StatelessWidget {
                 spacing: 6,
                 runSpacing: 6,
                 children: [
-                  if (book.isBeneficial)
-                    AccentTag(
-                      label: l10n.homeBeneficial,
-                      icon: Icons.verified_rounded,
-                    ),
                   for (final tag in book.tags)
                     MiniTag(label: tag, fontSize: 10),
                 ],

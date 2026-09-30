@@ -319,6 +319,71 @@ class AppL10nEn extends AppL10n {
   String get bookDetailNotFound => 'We couldn\'t find this book.';
 
   @override
+  String get bookEditionTitle => 'Choose an edition';
+
+  @override
+  String bookEditionCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count editions',
+      one: '1 edition',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get bookEditionTranslation => 'Translation';
+
+  @override
+  String bookStockOnlyLeft(int count) {
+    return 'Only $count left';
+  }
+
+  @override
+  String get bookInstantDownload => 'Instant download';
+
+  @override
+  String bookDeliverTo(String area) {
+    return 'Deliver to $area';
+  }
+
+  @override
+  String get bookAreaInsideDhaka => 'Inside Dhaka';
+
+  @override
+  String get bookAreaOutsideDhaka => 'Outside Dhaka';
+
+  @override
+  String bookArrivesInDays(int min, int max) {
+    return 'Arrives in $min–$max days';
+  }
+
+  @override
+  String get bookShipsOnRelease => 'Ships when it\'s released';
+
+  @override
+  String get bookNotAvailable => 'Not available right now';
+
+  @override
+  String get bookChangeArea => 'Change';
+
+  @override
+  String get bookChooseArea => 'Where should we deliver?';
+
+  @override
+  String get bookPrice => 'Price';
+
+  @override
+  String get bookBuyNow => 'Buy now';
+
+  @override
+  String get bookShare => 'Share';
+
+  @override
+  String get bookCopied => 'Book details copied. Paste them anywhere to share.';
+
+  @override
   String get aiTitle => 'Reading Assistant';
 
   @override
