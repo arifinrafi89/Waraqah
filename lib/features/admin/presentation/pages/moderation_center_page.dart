@@ -29,7 +29,8 @@ class ModerationCenterPage extends StatelessWidget {
                   children: [
                     AppIconButton(
                       icon: Icons.arrow_back_rounded,
-                      tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+                      tooltip: MaterialLocalizations.of(context)
+                          .backButtonTooltip,
                       onPressed: () => context.canPop()
                           ? context.pop()
                           : context.go(AdminRoutes.admin),

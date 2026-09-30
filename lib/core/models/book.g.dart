@@ -26,7 +26,6 @@ _Book _$BookFromJson(Map<String, dynamic> json) => _Book(
   tags:
       (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ??
       const <String>[],
-  isBeneficial: json['isBeneficial'] as bool? ?? false,
   coverSeed: (json['coverSeed'] as num?)?.toInt() ?? 0,
   shortTitle: json['shortTitle'] as String?,
 );
@@ -44,7 +43,6 @@ Map<String, dynamic> _$BookToJson(_Book instance) => <String, dynamic>{
   'addedAt': instance.addedAt.toIso8601String(),
   'rating': instance.rating,
   'tags': instance.tags,
-  'isBeneficial': instance.isBeneficial,
   'coverSeed': instance.coverSeed,
   'shortTitle': instance.shortTitle,
 };

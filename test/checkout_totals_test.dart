@@ -82,11 +82,7 @@ void main() {
     });
 
     test('free delivery takes the fee off', () {
-      final totals = CheckoutTotals.of(
-        _cart(500),
-        _outside,
-        coupon: freeShip,
-      );
+      final totals = CheckoutTotals.of(_cart(500), _outside, coupon: freeShip);
       expect(totals.couponDiscountBdt, 120);
       expect(totals.totalBdt, 500);
     });

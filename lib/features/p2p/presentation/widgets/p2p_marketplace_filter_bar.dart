@@ -20,7 +20,9 @@ class P2pMarketplaceFilterBar extends ConsumerWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.symmetric(
-          horizontal: Insets.screen, vertical: Insets.md),
+        horizontal: Insets.screen,
+        vertical: Insets.md,
+      ),
       child: Row(
         spacing: Insets.sm,
         children: [
@@ -31,10 +33,19 @@ class P2pMarketplaceFilterBar extends ConsumerWidget {
                 : condition.name.replaceAll(RegExp(r'(?<!^)(?=[A-Z])'), ' '),
             items: const [
               PopupMenuItem(value: null, child: Text('Any Condition')),
-              PopupMenuItem(value: BookCondition.likeNew, child: Text('Like New')),
-              PopupMenuItem(value: BookCondition.veryGood, child: Text('Very Good')),
+              PopupMenuItem(
+                value: BookCondition.likeNew,
+                child: Text('Like New'),
+              ),
+              PopupMenuItem(
+                value: BookCondition.veryGood,
+                child: Text('Very Good'),
+              ),
               PopupMenuItem(value: BookCondition.good, child: Text('Good')),
-              PopupMenuItem(value: BookCondition.acceptable, child: Text('Acceptable')),
+              PopupMenuItem(
+                value: BookCondition.acceptable,
+                child: Text('Acceptable'),
+              ),
             ],
             onChanged: (val) =>
                 ref.read(p2pFilterConditionProvider.notifier).select(val),
@@ -57,10 +68,13 @@ class P2pMarketplaceFilterBar extends ConsumerWidget {
             items: const [
               PopupMenuItem(value: null, child: Text('All Categories')),
               PopupMenuItem(
-                  value: 'Software Engineering',
-                  child: Text('Software Engineering')),
+                value: 'Software Engineering',
+                child: Text('Software Engineering'),
+              ),
               PopupMenuItem(
-                  value: 'Computer Science', child: Text('Computer Science')),
+                value: 'Computer Science',
+                child: Text('Computer Science'),
+              ),
               PopupMenuItem(value: 'Algorithms', child: Text('Algorithms')),
               PopupMenuItem(value: 'Engineering', child: Text('Engineering')),
             ],
@@ -105,10 +119,13 @@ class _FilterMenu<T> extends StatelessWidget {
     final fg = isActive ? palette.accentInk : palette.textDim;
 
     // Use string manipulation to capitalize the first letter of each word in label
-    final formattedLabel = label.split(' ').map((w) {
-      if (w.isEmpty) return w;
-      return '${w[0].toUpperCase()}${w.substring(1)}';
-    }).join(' ');
+    final formattedLabel = label
+        .split(' ')
+        .map((w) {
+          if (w.isEmpty) return w;
+          return '${w[0].toUpperCase()}${w.substring(1)}';
+        })
+        .join(' ');
 
     return Theme(
       data: Theme.of(context).copyWith(
@@ -132,7 +149,8 @@ class _FilterMenu<T> extends StatelessWidget {
           decoration: BoxDecoration(
             color: isActive ? palette.accent : palette.surface,
             border: Border.all(
-                color: isActive ? palette.accent : palette.border),
+              color: isActive ? palette.accent : palette.border,
+            ),
             borderRadius: BorderRadius.circular(Radii.pill),
           ),
           child: Row(
@@ -153,11 +171,7 @@ class _FilterMenu<T> extends StatelessWidget {
                   color: fg,
                 ),
               ),
-              Icon(
-                Icons.keyboard_arrow_down_rounded,
-                size: 16,
-                color: fg,
-              ),
+              Icon(Icons.keyboard_arrow_down_rounded, size: 16, color: fg),
             ],
           ),
         ),

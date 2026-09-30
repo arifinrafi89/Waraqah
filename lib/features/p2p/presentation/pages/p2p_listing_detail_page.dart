@@ -56,22 +56,23 @@ class P2pListingDetailPage extends ConsumerWidget {
           const SizedBox(height: Insets.xl),
           Text(
             listing.title,
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(context).textTheme.headlineSmall
+                ?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: Insets.sm),
           Text(
             listing.sellerLine,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.grey.shade600,
-                ),
+            style: Theme.of(context).textTheme.bodyLarge
+                ?.copyWith(color: Colors.grey.shade600),
           ),
           const SizedBox(height: Insets.lg),
           _buildInfoRow(context, 'Condition', listing.conditionLabel),
           if (listing.district != null && listing.area != null)
             _buildInfoRow(
-                context, 'Location', '${listing.area}, ${listing.district}'),
+              context,
+              'Location',
+              '${listing.area}, ${listing.district}',
+            ),
           if (listing.category != null)
             _buildInfoRow(context, 'Category', listing.category!),
           const SizedBox(height: Insets.lg),
@@ -82,9 +83,9 @@ class P2pListingDetailPage extends ConsumerWidget {
               Text(
                 Bdt.format(listing.priceBdt),
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: context.palette.accent,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  color: context.palette.accent,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               if (listing.saveAmount != null) ...[
                 const SizedBox(width: Insets.md),
@@ -100,9 +101,9 @@ class P2pListingDetailPage extends ConsumerWidget {
                   child: Text(
                     'Save ${Bdt.format(listing.saveAmount!)} vs new',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: Colors.green.shade700,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      color: Colors.green.shade700,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ],
@@ -130,10 +131,7 @@ class P2pListingDetailPage extends ConsumerWidget {
         children: [
           SizedBox(
             width: 100,
-            child: Text(
-              label,
-              style: TextStyle(color: Colors.grey.shade600),
-            ),
+            child: Text(label, style: TextStyle(color: Colors.grey.shade600)),
           ),
           Expanded(
             child: Text(

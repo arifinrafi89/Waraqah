@@ -66,7 +66,7 @@ extension P2pListingX on P2pListing {
 
   String get availabilityLabel => isAvailable ? 'Available' : 'Sold';
 
-  int? get saveAmount => (newPriceBdt != null && newPriceBdt! > priceBdt) 
-      ? newPriceBdt! - priceBdt 
+  int? get saveAmount => (newPriceBdt != null && newPriceBdt! > priceBdt)
+      ? newPriceBdt! - priceBdt
       : null;
 }

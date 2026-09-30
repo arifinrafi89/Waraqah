@@ -10,9 +10,10 @@ final p2pRepositoryProvider = Provider<P2pRepository>(
   (ref) => P2pRepositoryImpl(),
 );
 
-final fetchListingsForBookUseCaseProvider = Provider<FetchListingsForBookUseCase>(
-  (ref) => FetchListingsForBookUseCase(ref.watch(p2pRepositoryProvider)),
-);
+final fetchListingsForBookUseCaseProvider =
+    Provider<FetchListingsForBookUseCase>(
+      (ref) => FetchListingsForBookUseCase(ref.watch(p2pRepositoryProvider)),
+    );
 
 final listingsForBookProvider = FutureProvider.family<List<P2pListing>, String>(
   (ref, bookId) => ref.watch(fetchListingsForBookUseCaseProvider).call(bookId),
@@ -41,28 +42,28 @@ final filteredP2pListingsProvider = Provider<List<P2pListing>>((ref) {
   final area = ref.watch(p2pFilterAreaProvider);
   final category = ref.watch(p2pFilterCategoryProvider);
   final maxPrice = ref.watch(p2pFilterMaxPriceProvider);
-  
+
   final asyncListings = ref.watch(p2pListingsProvider);
 
   return switch (asyncListings) {
     AsyncData(:final value) => value.where((listing) {
-        final normalizedQuery = query.trim().toLowerCase();
-        final queryMatches =
-            normalizedQuery.isEmpty ||
-            listing.title.toLowerCase().contains(normalizedQuery) ||
-            listing.sellerName.toLowerCase().contains(normalizedQuery) ||
-            listing.sellerBatch.toLowerCase().contains(normalizedQuery);
+      final normalizedQuery = query.trim().toLowerCase();
+      final queryMatches =
+          normalizedQuery.isEmpty ||
+          listing.title.toLowerCase().contains(normalizedQuery) ||
+          listing.sellerName.toLowerCase().contains(normalizedQuery) ||
+          listing.sellerBatch.toLowerCase().contains(normalizedQuery);
 
-        if (!queryMatches) return false;
-        
-        if (condition != null && listing.condition != condition) return false;
-        if (district != null && listing.district != district) return false;
-        if (area != null && listing.area != area) return false;
-        if (category != null && listing.category != category) return false;
-        if (maxPrice != null && listing.priceBdt > maxPrice) return false;
+      if (!queryMatches) return false;
 
-        return true;
-      }).toList(),
+      if (condition != null && listing.condition != condition) return false;
+      if (district != null && listing.district != district) return false;
+      if (area != null && listing.area != area) return false;
+      if (category != null && listing.category != category) return false;
+      if (maxPrice != null && listing.priceBdt > maxPrice) return false;
+
+      return true;
+    }).toList(),
     _ => const [],
   };
 });

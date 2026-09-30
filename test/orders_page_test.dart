@@ -16,9 +16,7 @@ void main() {
     expect(pathOf(router), AuthRoutes.login);
   });
 
-  testWidgets('lists orders newest first with where they are', (
-    tester,
-  ) async {
+  testWidgets('lists orders newest first with where they are', (tester) async {
     await openApp(tester, OrdersRoutes.orders, role: 'reader');
 
     expect(tester.takeException(), isNull);
@@ -30,11 +28,7 @@ void main() {
   });
 
   testWidgets('a delivered order can be sent back', (tester) async {
-    await openApp(
-      tester,
-      OrdersRoutes.detailsFor('WQ-100201'),
-      role: 'reader',
-    );
+    await openApp(tester, OrdersRoutes.detailsFor('WQ-100201'), role: 'reader');
     expect(find.text('Cancel order'), findsNothing);
 
     await tester.scrollUntilVisible(

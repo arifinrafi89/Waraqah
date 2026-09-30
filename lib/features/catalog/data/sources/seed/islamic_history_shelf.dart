@@ -14,7 +14,6 @@ abstract final class IslamicHistoryShelf {
       rating: 4.5,
       tags: ['Islamic Studies', 'History'],
       categoryId: 'cat-islamic-studies',
-      isBeneficial: true,
       coverSeed: 2,
       section: Section.religious,
       originalLanguage: BookLanguage.arabic,

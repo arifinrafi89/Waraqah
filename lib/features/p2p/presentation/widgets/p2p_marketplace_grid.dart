@@ -5,10 +5,7 @@ import '../../domain/entities/p2p_listing.dart';
 import 'p2p_marketplace_card.dart';
 
 class P2pMarketplaceGrid extends StatelessWidget {
-  const P2pMarketplaceGrid({
-    super.key,
-    required this.listings,
-  });
+  const P2pMarketplaceGrid({super.key, required this.listings});
 
   final List<P2pListing> listings;
 

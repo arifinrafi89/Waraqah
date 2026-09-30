@@ -170,19 +170,6 @@ class AppL10nEn extends AppL10n {
   String get homeAyahOfTheDay => 'Ayah of the Day';
 
   @override
-  String get homeAllBooks => 'All Books';
-
-  @override
-  String get homeBeneficial => 'Beneficial';
-
-  @override
-  String get homeNonBeneficial => 'Non-Beneficial';
-
-  @override
-  String get homeNonBeneficialNote =>
-      'Books in this list are curated by our admins. Whether a book benefits a reader often depends on their intention and grounding. Many classical mufassirun, for example, consulted the Torah and the Bible for added context in their tafsir. For the general reader, however, such books are not beneficial, and without due care they may even cause harm.';
-
-  @override
   String get homeBookBites => 'Book-Bites';
 
   @override

@@ -6,12 +6,8 @@ import 'package:waraqah/features/catalog/catalog_routes.dart';
 
 import 'helpers/app_harness.dart';
 
-Future<void> _scrollTo(WidgetTester tester, Finder finder) =>
-    tester.scrollUntilVisible(
-      finder,
-      250,
-      scrollable: find.byType(Scrollable).first,
-    );
+Future<void> _scrollTo(WidgetTester tester, Finder finder) => tester
+    .scrollUntilVisible(finder, 250, scrollable: find.byType(Scrollable).first);
 
 void main() {
   setUpAll(() => GoogleFonts.config.allowRuntimeFetching = false);

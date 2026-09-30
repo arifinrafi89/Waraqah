@@ -26,9 +26,7 @@ class P2pMarketplacePage extends ConsumerWidget {
               P2pMarketplaceSearchField(ref: ref),
               const P2pMarketplaceFilterBar(),
               P2pMarketplaceResultRow(listings: listings),
-              Expanded(
-                child: P2pMarketplaceGrid(listings: listings),
-              ),
+              Expanded(child: P2pMarketplaceGrid(listings: listings)),
             ],
           ),
         ),

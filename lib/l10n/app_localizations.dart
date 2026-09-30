@@ -409,30 +409,6 @@ abstract class AppL10n {
   /// **'Ayah of the Day'**
   String get homeAyahOfTheDay;
 
-  /// No description provided for @homeAllBooks.
-  ///
-  /// In en, this message translates to:
-  /// **'All Books'**
-  String get homeAllBooks;
-
-  /// No description provided for @homeBeneficial.
-  ///
-  /// In en, this message translates to:
-  /// **'Beneficial'**
-  String get homeBeneficial;
-
-  /// No description provided for @homeNonBeneficial.
-  ///
-  /// In en, this message translates to:
-  /// **'Non-Beneficial'**
-  String get homeNonBeneficial;
-
-  /// No description provided for @homeNonBeneficialNote.
-  ///
-  /// In en, this message translates to:
-  /// **'Books in this list are curated by our admins. Whether a book benefits a reader often depends on their intention and grounding. Many classical mufassirun, for example, consulted the Torah and the Bible for added context in their tafsir. For the general reader, however, such books are not beneficial, and without due care they may even cause harm.'**
-  String get homeNonBeneficialNote;
-
   /// No description provided for @homeBookBites.
   ///
   /// In en, this message translates to:

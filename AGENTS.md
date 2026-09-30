@@ -27,7 +27,7 @@ The app also has:
 | Decision | Meaning for code |
 |---|---|
 | **Self-run store** | No vendor comparison anywhere (no "Rokomari vs Wafilife"). A Book's price comes from its own **Editions**. |
-| **No Beneficial / Non-Beneficial label** | Religious books get curated **collections** and **Expert Picks** with a "why read this" note instead. Ayah of the Day is an optional home module. *(The old `isBeneficial` field and home filter still exist; see §10.)* |
+| **No Beneficial / Non-Beneficial label** | Religious books get curated **collections** and **Expert Picks** with a "why read this" note instead. Ayah of the Day is an optional home module. |
 | **For every reader** | No university, department or course fields in the profile. Course lists are just one kind of **Booklist**. |
 | **Bites use likes only** | No downvotes. Bad content is handled by reporting. |
 | **One Moderation Center** | Listing approvals, all reports (Bites, comments, reviews, listings, users, messages) and disputes live in one admin section, with one strike system and one audit log. |
@@ -305,7 +305,6 @@ Set `GoogleFonts.config.allowRuntimeFetching = false` in `setUpAll`.
 
 ## 10. Known gaps (don't be surprised by these)
 
-- `Book.isBeneficial` and Home's Beneficial / Non-Beneficial filter still exist. They're scheduled for removal (Rahinur, Religious section). Don't build on them.
 - The AI assistant still shows an old vendor price table. It's scheduled to use Waraqah's own catalog (Niloy). Don't copy it.
 - `BookDetailsSource` (catalog) still catches `DioException` and falls back to fixtures, which breaks rule 8. Scheduled to move to a fake API route (Farhan).
 - Sign-up doesn't create an account yet; it just opens the app. "Continue with Google" signs in as a demo reader. Real sign-up is Niloy's task.
