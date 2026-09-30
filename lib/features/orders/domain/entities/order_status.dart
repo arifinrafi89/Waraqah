@@ -16,6 +16,12 @@ extension OrderStatusX on OrderStatus {
     OrderStatus.delivered,
   ];
 
+  /// The step after this one, or `null` once delivered or cancelled.
+  OrderStatus? get next {
+    final i = steps.indexOf(this);
+    return i < 0 || i == steps.length - 1 ? null : steps[i + 1];
+  }
+
   /// Readers can cancel until the order leaves the warehouse.
   bool get canCancel =>
       this == OrderStatus.placed ||

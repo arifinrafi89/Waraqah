@@ -561,6 +561,9 @@ class AppL10nEn extends AppL10n {
   String get checkoutCouponNotFound => 'That code doesn\'t exist.';
 
   @override
+  String get checkoutCouponExpired => 'This code has expired.';
+
+  @override
   String checkoutCouponMinimum(String amount) {
     return 'This code needs an order of $amount or more.';
   }
@@ -719,6 +722,126 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get orderReturnWindow => 'Returns are open for 7 days after delivery.';
+
+  @override
+  String get adminOrderTitle => 'Orders';
+
+  @override
+  String get adminOrderTabOrders => 'Orders';
+
+  @override
+  String get adminOrderTabReturns => 'Returns';
+
+  @override
+  String get adminOrderTabCoupons => 'Coupons';
+
+  @override
+  String get adminOrderAll => 'All';
+
+  @override
+  String adminOrderMoveTo(String status) {
+    return 'Mark as $status';
+  }
+
+  @override
+  String get adminOrderNoOrders => 'No orders here.';
+
+  @override
+  String get adminOrderNoReturns => 'No returns waiting.';
+
+  @override
+  String get adminOrderApprove => 'Approve';
+
+  @override
+  String get adminOrderReject => 'Reject';
+
+  @override
+  String get adminOrderReturnApproved => 'Return approved';
+
+  @override
+  String get adminOrderReturnRejected => 'Return rejected';
+
+  @override
+  String get adminOrderNewCoupon => 'New coupon';
+
+  @override
+  String get adminOrderCouponCode => 'Code';
+
+  @override
+  String get adminOrderCouponCodeHint => 'e.g. BOISHAKH20';
+
+  @override
+  String get adminOrderCouponKindPercent => '% off';
+
+  @override
+  String get adminOrderCouponKindAmount => '৳ off';
+
+  @override
+  String get adminOrderCouponPercent => 'Percent off';
+
+  @override
+  String get adminOrderCouponCap => 'Most it can take off in taka (optional)';
+
+  @override
+  String get adminOrderCouponTaka => 'Taka off';
+
+  @override
+  String get adminOrderCouponMinOrder => 'Minimum order in taka (optional)';
+
+  @override
+  String get adminOrderCouponPickDate => 'Set end date';
+
+  @override
+  String get adminOrderCouponCreate => 'Create coupon';
+
+  @override
+  String get adminOrderCouponCreated => 'Coupon created';
+
+  @override
+  String get adminOrderCouponBadCode =>
+      'Use 3–20 letters or digits for the code.';
+
+  @override
+  String get adminOrderCouponBadValue =>
+      'Check the amounts: 1–90% off, or at least ৳1 off.';
+
+  @override
+  String get adminOrderCouponBadExpiry =>
+      'The end date has to be in the future.';
+
+  @override
+  String get adminOrderCouponTaken => 'A coupon with this code already exists.';
+
+  @override
+  String adminOrderCouponPercentOff(int percent) {
+    return '$percent% off';
+  }
+
+  @override
+  String adminOrderCouponUpTo(String amount) {
+    return 'up to $amount';
+  }
+
+  @override
+  String adminOrderCouponAmountOff(String amount) {
+    return '$amount off';
+  }
+
+  @override
+  String adminOrderCouponFrom(String amount) {
+    return 'orders from $amount';
+  }
+
+  @override
+  String get adminOrderCouponExpired => 'Expired';
+
+  @override
+  String get adminOrderCouponNoEnd => 'No end date';
+
+  @override
+  String adminOrderCouponUntil(String date) {
+    return 'Until $date';
+  }
 
   @override
   String get aiTitle => 'Reading Assistant';

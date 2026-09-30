@@ -59,6 +59,7 @@ class _CouponFieldState extends ConsumerState<CouponField> {
         if (problem is CouponRejected)
           Text(switch (problem.problem) {
             CouponProblem.notFound => l10n.checkoutCouponNotFound,
+            CouponProblem.expired => l10n.checkoutCouponExpired,
             CouponProblem.belowMinimum => l10n.checkoutCouponMinimum(
               Bdt.format(problem.minOrderBdt),
             ),

@@ -4,6 +4,7 @@ import 'domain/entities/admin_section.dart';
 import 'presentation/pages/admin_hub_page.dart';
 import 'presentation/pages/admin_section_page.dart';
 import 'presentation/pages/moderation_center_page.dart';
+import '../orders/presentation/pages/orders_admin_page.dart';
 
 abstract final class AdminRoutes {
   /// The Admin area hub. Everything under it is staff only.
@@ -28,7 +29,7 @@ abstract final class AdminRoutes {
         ),
         GoRoute(
           path: AdminSection.orders.name,
-          builder: (_, _) => const AdminSectionPage(AdminSection.orders),
+          builder: (_, _) => const OrdersAdminPage(),
         ),
         GoRoute(
           path: AdminSection.moderation.name,

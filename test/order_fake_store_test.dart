@@ -62,6 +62,24 @@ void main() {
     );
   });
 
+  test('staff move an order one step at a time', () {
+    store.add(_placed(store));
+    expect(store.advance('WQ-100231', OrderStatus.packed), isNull);
+    expect(
+      store.advance('WQ-100231', OrderStatus.confirmed)!.status,
+      OrderStatus.confirmed,
+    );
+    expect(store.advance('WQ-100201', OrderStatus.delivered), isNull);
+  });
+
+  test('staff decide a waiting return once', () {
+    expect(store.decideReturn('WQ-100201', approve: true), isNull);
+    store.requestReturn('WQ-100201', ReturnReason.wrongBook, '');
+    final decided = store.decideReturn('WQ-100201', approve: false)!;
+    expect(decided.returnRequest!.status, ReturnStatus.rejected);
+    expect(store.decideReturn('WQ-100201', approve: true), isNull);
+  });
+
   test('returns close 7 days after delivery', () {
     var now = _now;
     final ticking = OrderFakeStore(clock: () => now);

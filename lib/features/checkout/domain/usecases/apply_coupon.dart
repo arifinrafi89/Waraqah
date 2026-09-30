@@ -9,12 +9,15 @@ class ApplyCouponParams {
   final int subtotalBdt;
 }
 
-/// Looks a code up (spaces and case don't matter) and checks the order is
-/// big enough for it. Throws [CouponRejected] when it can't be used.
+/// Looks a code up (spaces and case don't matter), checks it hasn't expired
+/// and the order is big enough for it. Throws [CouponRejected] when it
+/// can't be used.
 class ApplyCoupon extends UseCase<Coupon, ApplyCouponParams> {
-  ApplyCoupon(this._repository);
+  ApplyCoupon(this._repository, {DateTime Function()? clock})
+    : _now = clock ?? DateTime.now;
 
   final CheckoutRepository _repository;
+  final DateTime Function() _now;
 
   @override
   Future<Coupon> call(ApplyCouponParams params) async {
@@ -22,6 +25,9 @@ class ApplyCoupon extends UseCase<Coupon, ApplyCouponParams> {
     if (code.isEmpty) throw const CouponRejected(CouponProblem.notFound);
     final coupon = await _repository.findCoupon(code);
     if (coupon == null) throw const CouponRejected(CouponProblem.notFound);
+    if (coupon.isExpiredAt(_now())) {
+      throw const CouponRejected(CouponProblem.expired);
+    }
     if (params.subtotalBdt < coupon.minOrderBdt) {
       throw CouponRejected(
         CouponProblem.belowMinimum,

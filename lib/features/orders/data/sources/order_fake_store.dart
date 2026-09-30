@@ -6,7 +6,7 @@ import '../models/order_parts_model.dart';
 import 'order_fixtures.dart';
 
 /// The orders the fake backend keeps in memory, with the server's rules.
-/// Checkout adds to it; the admin side (next PR) moves orders along.
+/// Checkout adds to it; staff move orders along in the Admin area.
 class OrderFakeStore {
   OrderFakeStore({DateTime Function()? clock}) : _now = clock ?? DateTime.now {
     _orders.addAll(OrderFixtures.seed(_now()));
@@ -51,6 +51,31 @@ class OrderFakeStore {
           status: ReturnStatus.requested,
           requestedAt: _now(),
           note: note,
+        ),
+      ),
+    );
+  }
+
+  /// Staff move an order to its next step. `null` once it's delivered or
+  /// cancelled, or if [expected] isn't the next step any more (someone else
+  /// moved it first).
+  OrderModel? advance(String number, OrderStatus expected) {
+    final order = find(number);
+    if (order == null || order.status.next != expected) return null;
+    return _replace(order.advanceTo(expected, _now()));
+  }
+
+  /// Staff approve or reject a waiting return. `null` if there isn't one.
+  OrderModel? decideReturn(String number, {required bool approve}) {
+    final order = find(number);
+    final request = order?.returnRequest;
+    if (order == null || request?.status != ReturnStatus.requested) {
+      return null;
+    }
+    return _replace(
+      order.copyWith(
+        returnRequest: request!.copyWith(
+          status: approve ? ReturnStatus.approved : ReturnStatus.rejected,
         ),
       ),
     );

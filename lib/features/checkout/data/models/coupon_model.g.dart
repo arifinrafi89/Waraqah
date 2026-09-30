@@ -12,6 +12,9 @@ _CouponModel _$CouponModelFromJson(Map<String, dynamic> json) => _CouponModel(
   value: (json['value'] as num?)?.toInt() ?? 0,
   minOrderBdt: (json['minOrderBdt'] as num?)?.toInt() ?? 0,
   maxDiscountBdt: (json['maxDiscountBdt'] as num?)?.toInt(),
+  expiresAt: json['expiresAt'] == null
+      ? null
+      : DateTime.parse(json['expiresAt'] as String),
 );
 
 Map<String, dynamic> _$CouponModelToJson(_CouponModel instance) =>
@@ -21,6 +24,7 @@ Map<String, dynamic> _$CouponModelToJson(_CouponModel instance) =>
       'value': instance.value,
       'minOrderBdt': instance.minOrderBdt,
       'maxDiscountBdt': instance.maxDiscountBdt,
+      'expiresAt': instance.expiresAt?.toIso8601String(),
     };
 
 const _$CouponKindEnumMap = {
