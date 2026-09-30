@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import '../../../cart/data/models/cart_model.dart';
 import '../../../cart/data/sources/cart_fake_store.dart';
 import '../../../cart/domain/entities/cart.dart';
+import '../../../orders/data/sources/order_fake_store.dart';
 import '../../domain/entities/checkout_totals.dart';
 import '../../domain/entities/payment_method.dart';
 import '../../domain/entities/saved_address.dart';
@@ -11,9 +12,10 @@ import '../models/coupon_model.dart';
 import '../models/order_receipt_model.dart';
 import '../models/saved_address_model.dart';
 import 'checkout_fixtures.dart';
+import 'placed_order.dart';
 
 /// Checkout's fake endpoints, merged into `FakeApiInterceptor` by
-/// `app/fake_api_routes.dart`, sharing the fake cart.
+/// `app/fake_api_routes.dart`, sharing the fake cart and orders.
 abstract final class CheckoutFakeApi {
   static const String addresses = '/addresses';
 
@@ -21,14 +23,14 @@ abstract final class CheckoutFakeApi {
   static const String coupon = '/coupons/check';
 
   /// Body: `{addressId, payment, couponCode?}`. Works out the totals the
-  /// same way the app does, empties the cart and answers a receipt; `null`
-  /// when the cart is empty or the address unknown.
+  /// same way the app does, saves the order, empties the cart and answers a
+  /// receipt; `null` when the cart is empty or the address unknown.
   static const String placeOrder = '/orders/place';
 
   static Map<String, Object? Function(RequestOptions)> routes(
     CartFakeStore cart,
+    OrderFakeStore orders,
   ) {
-    var nextNumber = 100231;
     return {
       addresses: (_) => [
         for (final address in CheckoutFixtures.addresses) address.toJson(),
@@ -49,12 +51,21 @@ abstract final class CheckoutFakeApi {
           coupon: CheckoutFixtures.coupon(body['couponCode'] as String? ?? '')
               ?.toEntity(),
         );
+        final order = placedOrder(
+          number: orders.nextNumber(),
+          at: orders.now(),
+          cart: lines,
+          address: address,
+          totals: totals,
+          payment: PaymentMethod.values.byName(body['payment'] as String),
+        );
+        orders.add(order);
         cart.clear();
         return OrderReceiptModel(
-          number: 'WQ-${nextNumber++}',
+          number: order.number,
           totalBdt: totals.totalBdt,
           itemCount: lines.itemCount,
-          payment: PaymentMethod.values.byName(body['payment'] as String),
+          payment: order.payment,
           needsDelivery: totals.needsDelivery,
           insideDhaka: address.district == 'Dhaka',
           hasPreorders: lines.lines.any((line) => line.isPreorder),

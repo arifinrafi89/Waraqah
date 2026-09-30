@@ -11,13 +11,14 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../catalog/domain/entities/delivery_area.dart';
 import '../../../catalog/domain/entities/delivery_estimate.dart';
 import '../../../home/home_routes.dart';
+import '../../../orders/orders_routes.dart';
 import '../../domain/entities/order_receipt.dart';
 import '../../domain/entities/payment_method.dart';
 import '../providers/checkout_providers.dart';
 import '../widgets/checkout_labels.dart';
 
 /// `/checkout/placed`: the order number, what was paid (or is due at the
-/// door) and when it arrives. Tracking comes with the Orders PR.
+/// door) and when it arrives, with a way to track it.
 class OrderPlacedPage extends ConsumerWidget {
   const OrderPlacedPage({super.key});
 
@@ -54,7 +55,13 @@ class OrderPlacedPage extends ConsumerWidget {
                     ),
                 ],
                 const SizedBox(height: Insets.lg),
-                PrimaryButton(
+                if (receipt != null)
+                  PrimaryButton(
+                    label: l10n.orderTrack,
+                    onPressed: () =>
+                        context.go(OrdersRoutes.detailsFor(receipt.number)),
+                  ),
+                SecondaryButton(
                   label: l10n.orderPlacedContinue,
                   onPressed: () => context.go(HomeRoutes.home),
                 ),

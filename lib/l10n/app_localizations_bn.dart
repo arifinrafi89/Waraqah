@@ -587,6 +587,106 @@ class AppL10nBn extends AppL10n {
   String get orderPlacedContinue => 'কেনাকাটা চালিয়ে যান';
 
   @override
+  String get orderTrack => 'অর্ডার ট্র্যাক করুন';
+
+  @override
+  String get orderMyOrders => 'আমার অর্ডার';
+
+  @override
+  String get orderEmptyTitle => 'এখনো কোনো অর্ডার নেই';
+
+  @override
+  String get orderEmptyBody => 'আপনার অর্ডার করা বই ট্র্যাকিংসহ এখানে দেখাবে।';
+
+  @override
+  String orderPlacedOn(String date) {
+    return 'অর্ডারের তারিখ $date';
+  }
+
+  @override
+  String get orderNotFound => 'অর্ডারটি পাওয়া যায়নি।';
+
+  @override
+  String get orderStatusPlaced => 'অর্ডার হয়েছে';
+
+  @override
+  String get orderStatusConfirmed => 'নিশ্চিত হয়েছে';
+
+  @override
+  String get orderStatusPacked => 'প্যাক হয়েছে';
+
+  @override
+  String get orderStatusShipped => 'পাঠানো হয়েছে';
+
+  @override
+  String get orderStatusDelivered => 'পৌঁছে গেছে';
+
+  @override
+  String get orderStatusCancelled => 'বাতিল';
+
+  @override
+  String get orderDeliverTo => 'যেখানে পৌঁছাবে';
+
+  @override
+  String get orderPaid => 'পরিশোধিত';
+
+  @override
+  String get orderPayOnDelivery => 'হাতে পেয়ে পরিশোধ';
+
+  @override
+  String get orderCancel => 'অর্ডার বাতিল করুন';
+
+  @override
+  String get orderCancelTitle => 'অর্ডারটি বাতিল করবেন?';
+
+  @override
+  String get orderCancelBody =>
+      'এটি আর ফেরানো যাবে না। অনলাইনে পরিশোধ করে থাকলে টাকা একই পথে ফেরত যাবে।';
+
+  @override
+  String get orderKeep => 'অর্ডার রাখুন';
+
+  @override
+  String get orderCancelled => 'অর্ডার বাতিল হয়েছে';
+
+  @override
+  String get orderReturn => 'ফেরতের অনুরোধ করুন';
+
+  @override
+  String get orderReturnWhy => 'কেন ফেরত দিচ্ছেন?';
+
+  @override
+  String get orderReturnDamaged => 'বই নষ্ট অবস্থায় এসেছে';
+
+  @override
+  String get orderReturnWrongBook => 'ভুল বই এসেছে';
+
+  @override
+  String get orderReturnOther => 'অন্য কারণ';
+
+  @override
+  String get orderReturnNoteHint => 'কী হয়েছে জানান (ঐচ্ছিক)';
+
+  @override
+  String get orderReturnSend => 'অনুরোধ পাঠান';
+
+  @override
+  String get orderReturnSent =>
+      'ফেরতের অনুরোধ পাঠানো হয়েছে। ২ দিনের মধ্যে জানানো হবে।';
+
+  @override
+  String get orderReturnRequested => 'ফেরতের অনুরোধ পর্যালোচনার অপেক্ষায়';
+
+  @override
+  String get orderReturnApproved => 'ফেরত অনুমোদিত, আমরা বইটি নিয়ে আসব';
+
+  @override
+  String get orderReturnRejected => 'ফেরত অনুমোদিত হয়নি';
+
+  @override
+  String get orderReturnWindow => 'পৌঁছানোর ৭ দিনের মধ্যে ফেরত দেওয়া যায়।';
+
+  @override
   String get aiTitle => 'রিডিং অ্যাসিস্ট্যান্ট';
 
   @override

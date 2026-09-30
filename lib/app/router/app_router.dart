@@ -10,6 +10,7 @@ import '../../features/cart/cart_routes.dart';
 import '../../features/catalog/catalog_routes.dart';
 import '../../features/checkout/checkout_routes.dart';
 import '../../features/home/home_routes.dart';
+import '../../features/orders/orders_routes.dart';
 import '../../features/p2p/p2p_routes.dart';
 import '../../features/profile/profile_routes.dart';
 import '../../features/wishlist/wishlist_routes.dart';
@@ -47,6 +48,7 @@ abstract final class AppRouter {
       ...CartRoutes.routes,
       ...WishlistRoutes.routes,
       ...CheckoutRoutes.routes,
+      ...OrdersRoutes.routes,
       ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),

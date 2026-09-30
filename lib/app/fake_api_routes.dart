@@ -5,6 +5,8 @@ import '../features/cart/data/sources/cart_fake_store.dart';
 import '../features/catalog/data/sources/book_fake_api.dart';
 import '../features/checkout/data/sources/checkout_fake_api.dart';
 import '../features/home/data/sources/ayah_fake_api.dart';
+import '../features/orders/data/sources/order_fake_api.dart';
+import '../features/orders/data/sources/order_fake_store.dart';
 import '../features/wishlist/data/sources/wishlist_fake_api.dart';
 
 /// The composition root's route table for [FakeApiInterceptor]: one line per
@@ -12,15 +14,17 @@ import '../features/wishlist/data/sources/wishlist_fake_api.dart';
 /// feature fake APIs — `core/` itself must never import a feature.
 abstract final class FakeApiRoutes {
   static FakeApiInterceptor interceptor() {
-    // Checkout turns this cart into an order, so both share it.
+    // Checkout turns the cart into an order, so these are shared.
     final cart = CartFakeStore();
+    final orders = OrderFakeStore();
     return FakeApiInterceptor({
       ...AuthFakeApi.routes,
       ...BookFakeApi.routes,
       ...AyahFakeApi.routes,
       ...CartFakeApi.routes(cart),
       ...WishlistFakeApi.routes(),
-      ...CheckoutFakeApi.routes(cart),
+      ...CheckoutFakeApi.routes(cart, orders),
+      ...OrderFakeApi.routes(orders),
     });
   }
 }

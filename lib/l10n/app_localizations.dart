@@ -1159,6 +1159,198 @@ abstract class AppL10n {
   /// **'Continue shopping'**
   String get orderPlacedContinue;
 
+  /// No description provided for @orderTrack.
+  ///
+  /// In en, this message translates to:
+  /// **'Track order'**
+  String get orderTrack;
+
+  /// No description provided for @orderMyOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'My orders'**
+  String get orderMyOrders;
+
+  /// No description provided for @orderEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No orders yet'**
+  String get orderEmptyTitle;
+
+  /// No description provided for @orderEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Books you order will show up here, with tracking.'**
+  String get orderEmptyBody;
+
+  /// No description provided for @orderPlacedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Placed on {date}'**
+  String orderPlacedOn(String date);
+
+  /// No description provided for @orderNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find this order.'**
+  String get orderNotFound;
+
+  /// No description provided for @orderStatusPlaced.
+  ///
+  /// In en, this message translates to:
+  /// **'Placed'**
+  String get orderStatusPlaced;
+
+  /// No description provided for @orderStatusConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed'**
+  String get orderStatusConfirmed;
+
+  /// No description provided for @orderStatusPacked.
+  ///
+  /// In en, this message translates to:
+  /// **'Packed'**
+  String get orderStatusPacked;
+
+  /// No description provided for @orderStatusShipped.
+  ///
+  /// In en, this message translates to:
+  /// **'Shipped'**
+  String get orderStatusShipped;
+
+  /// No description provided for @orderStatusDelivered.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered'**
+  String get orderStatusDelivered;
+
+  /// No description provided for @orderStatusCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get orderStatusCancelled;
+
+  /// No description provided for @orderDeliverTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivering to'**
+  String get orderDeliverTo;
+
+  /// No description provided for @orderPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get orderPaid;
+
+  /// No description provided for @orderPayOnDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay on delivery'**
+  String get orderPayOnDelivery;
+
+  /// No description provided for @orderCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel order'**
+  String get orderCancel;
+
+  /// No description provided for @orderCancelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this order?'**
+  String get orderCancelTitle;
+
+  /// No description provided for @orderCancelBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This can\'t be undone. If you paid online, the money goes back the same way.'**
+  String get orderCancelBody;
+
+  /// No description provided for @orderKeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep order'**
+  String get orderKeep;
+
+  /// No description provided for @orderCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Order cancelled'**
+  String get orderCancelled;
+
+  /// No description provided for @orderReturn.
+  ///
+  /// In en, this message translates to:
+  /// **'Request a return'**
+  String get orderReturn;
+
+  /// No description provided for @orderReturnWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Why are you sending it back?'**
+  String get orderReturnWhy;
+
+  /// No description provided for @orderReturnDamaged.
+  ///
+  /// In en, this message translates to:
+  /// **'It arrived damaged'**
+  String get orderReturnDamaged;
+
+  /// No description provided for @orderReturnWrongBook.
+  ///
+  /// In en, this message translates to:
+  /// **'I got the wrong book'**
+  String get orderReturnWrongBook;
+
+  /// No description provided for @orderReturnOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Something else'**
+  String get orderReturnOther;
+
+  /// No description provided for @orderReturnNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us what happened (optional)'**
+  String get orderReturnNoteHint;
+
+  /// No description provided for @orderReturnSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send request'**
+  String get orderReturnSend;
+
+  /// No description provided for @orderReturnSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Return requested. We\'ll reply within 2 days.'**
+  String get orderReturnSent;
+
+  /// No description provided for @orderReturnRequested.
+  ///
+  /// In en, this message translates to:
+  /// **'Return requested, waiting for review'**
+  String get orderReturnRequested;
+
+  /// No description provided for @orderReturnApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Return approved, we\'ll pick it up'**
+  String get orderReturnApproved;
+
+  /// No description provided for @orderReturnRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Return not approved'**
+  String get orderReturnRejected;
+
+  /// No description provided for @orderReturnWindow.
+  ///
+  /// In en, this message translates to:
+  /// **'Returns are open for 7 days after delivery.'**
+  String get orderReturnWindow;
+
   /// No description provided for @aiTitle.
   ///
   /// In en, this message translates to:
