@@ -3,6 +3,7 @@ import '../../features/admin/domain/entities/admin_section.dart';
 import '../../features/auth/auth_routes.dart';
 import '../../features/auth/domain/entities/app_user.dart';
 import '../../features/auth/domain/entities/user_role.dart';
+import '../../features/checkout/checkout_routes.dart';
 import '../../features/home/home_routes.dart';
 
 /// Which pages need a signed-in user or a staff account, and where to send
@@ -14,7 +15,7 @@ abstract final class RouteAccess {
   static const List<String> staffOnly = [AdminRoutes.admin];
 
   /// Any signed-in user. Add pages here as they are built (checkout, orders…).
-  static const List<String> signedInOnly = [];
+  static const List<String> signedInOnly = [CheckoutRoutes.checkout];
 
   /// Where to redirect [location] for [user], or `null` to let it open.
   static String? redirect(String location, AppUser? user) {

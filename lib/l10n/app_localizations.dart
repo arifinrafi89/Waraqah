@@ -829,12 +829,6 @@ abstract class AppL10n {
   /// **'Checkout'**
   String get cartCheckout;
 
-  /// No description provided for @cartCheckoutSoon.
-  ///
-  /// In en, this message translates to:
-  /// **'Checkout is coming next.'**
-  String get cartCheckoutSoon;
-
   /// No description provided for @cartAdded.
   ///
   /// In en, this message translates to:
@@ -954,6 +948,216 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Browse books'**
   String get wishlistBrowse;
+
+  /// No description provided for @checkoutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get checkoutTitle;
+
+  /// No description provided for @checkoutStepAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery address'**
+  String get checkoutStepAddress;
+
+  /// No description provided for @checkoutStepDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery'**
+  String get checkoutStepDelivery;
+
+  /// No description provided for @checkoutStepPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment'**
+  String get checkoutStepPayment;
+
+  /// No description provided for @checkoutPayBkash.
+  ///
+  /// In en, this message translates to:
+  /// **'bKash'**
+  String get checkoutPayBkash;
+
+  /// No description provided for @checkoutPayNagad.
+  ///
+  /// In en, this message translates to:
+  /// **'Nagad'**
+  String get checkoutPayNagad;
+
+  /// No description provided for @checkoutPayCod.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash on delivery'**
+  String get checkoutPayCod;
+
+  /// No description provided for @checkoutPayCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Card'**
+  String get checkoutPayCard;
+
+  /// No description provided for @checkoutPayBkashNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay from your bKash account'**
+  String get checkoutPayBkashNote;
+
+  /// No description provided for @checkoutPayNagadNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay from your Nagad account'**
+  String get checkoutPayNagadNote;
+
+  /// No description provided for @checkoutPayCodNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay in cash when the books arrive'**
+  String get checkoutPayCodNote;
+
+  /// No description provided for @checkoutPayCardNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Visa, Mastercard or Amex'**
+  String get checkoutPayCardNote;
+
+  /// No description provided for @checkoutCodUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available for eBook-only orders'**
+  String get checkoutCodUnavailable;
+
+  /// No description provided for @checkoutDemoNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Payments are simulated for now; no money moves.'**
+  String get checkoutDemoNote;
+
+  /// No description provided for @checkoutEbooksOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'eBooks are ready to read as soon as you pay'**
+  String get checkoutEbooksOnly;
+
+  /// No description provided for @checkoutFreeDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Free delivery'**
+  String get checkoutFreeDelivery;
+
+  /// No description provided for @checkoutDeliveryFeeIs.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery fee {amount}'**
+  String checkoutDeliveryFeeIs(String amount);
+
+  /// No description provided for @checkoutFreeDeliveryFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Free delivery on orders of {amount} or more'**
+  String checkoutFreeDeliveryFrom(String amount);
+
+  /// No description provided for @checkoutCouponHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon code'**
+  String get checkoutCouponHint;
+
+  /// No description provided for @checkoutApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get checkoutApply;
+
+  /// No description provided for @checkoutCouponNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'That code doesn\'t exist.'**
+  String get checkoutCouponNotFound;
+
+  /// No description provided for @checkoutCouponMinimum.
+  ///
+  /// In en, this message translates to:
+  /// **'This code needs an order of {amount} or more.'**
+  String checkoutCouponMinimum(String amount);
+
+  /// No description provided for @checkoutCouponApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'{code} applied'**
+  String checkoutCouponApplied(String code);
+
+  /// No description provided for @checkoutRemoveCoupon.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove coupon'**
+  String get checkoutRemoveCoupon;
+
+  /// No description provided for @checkoutItems.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 item} other{{count} items}}'**
+  String checkoutItems(int count);
+
+  /// No description provided for @checkoutDeliveryFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery fee'**
+  String get checkoutDeliveryFee;
+
+  /// No description provided for @checkoutFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get checkoutFree;
+
+  /// No description provided for @checkoutCouponDiscount.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon discount'**
+  String get checkoutCouponDiscount;
+
+  /// No description provided for @checkoutTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get checkoutTotal;
+
+  /// No description provided for @checkoutPlaceOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Place order'**
+  String get checkoutPlaceOrder;
+
+  /// No description provided for @orderPlacedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Order placed!'**
+  String get orderPlacedTitle;
+
+  /// No description provided for @orderPlacedNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Order {number}'**
+  String orderPlacedNumber(String number);
+
+  /// No description provided for @orderPlacedPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid {amount} with {method}'**
+  String orderPlacedPaid(String amount, String method);
+
+  /// No description provided for @orderPlacedPayOnDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {amount} in cash when it arrives'**
+  String orderPlacedPayOnDelivery(String amount);
+
+  /// No description provided for @orderPlacedContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue shopping'**
+  String get orderPlacedContinue;
 
   /// No description provided for @aiTitle.
   ///

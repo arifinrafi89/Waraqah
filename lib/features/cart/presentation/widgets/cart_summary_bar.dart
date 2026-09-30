@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
@@ -6,11 +7,11 @@ import '../../../../core/theme/app_typography.dart';
 import '../../../../core/utils/formatters.dart';
 import '../../../../core/widgets/app_buttons.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../checkout/checkout_routes.dart';
 import '../../domain/entities/cart.dart';
 
-/// Pinned under the cart: subtotal, what the reader saves, and Checkout.
-///
-/// Checkout is the next piece of work, so for now it says so.
+/// Pinned under the cart: subtotal, what the reader saves, and Checkout,
+/// which asks guests to log in first.
 class CartSummaryBar extends StatelessWidget {
   const CartSummaryBar({super.key, required this.cart});
 
@@ -65,11 +66,7 @@ class CartSummaryBar extends StatelessWidget {
               Expanded(
                 child: PrimaryButton(
                   label: l10n.cartCheckout,
-                  onPressed: () => ScaffoldMessenger.of(context)
-                    ..hideCurrentSnackBar()
-                    ..showSnackBar(
-                      SnackBar(content: Text(l10n.cartCheckoutSoon)),
-                    ),
+                  onPressed: () => context.push(CheckoutRoutes.checkout),
                 ),
               ),
             ],
