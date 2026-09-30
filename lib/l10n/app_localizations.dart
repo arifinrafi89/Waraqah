@@ -1075,6 +1075,12 @@ abstract class AppL10n {
   /// **'That code doesn\'t exist.'**
   String get checkoutCouponNotFound;
 
+  /// No description provided for @checkoutCouponExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'This code has expired.'**
+  String get checkoutCouponExpired;
+
   /// No description provided for @checkoutCouponMinimum.
   ///
   /// In en, this message translates to:
@@ -1350,6 +1356,216 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Returns are open for 7 days after delivery.'**
   String get orderReturnWindow;
+
+  /// No description provided for @adminOrderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get adminOrderTitle;
+
+  /// No description provided for @adminOrderTabOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get adminOrderTabOrders;
+
+  /// No description provided for @adminOrderTabReturns.
+  ///
+  /// In en, this message translates to:
+  /// **'Returns'**
+  String get adminOrderTabReturns;
+
+  /// No description provided for @adminOrderTabCoupons.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupons'**
+  String get adminOrderTabCoupons;
+
+  /// No description provided for @adminOrderAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get adminOrderAll;
+
+  /// No description provided for @adminOrderMoveTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as {status}'**
+  String adminOrderMoveTo(String status);
+
+  /// No description provided for @adminOrderNoOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'No orders here.'**
+  String get adminOrderNoOrders;
+
+  /// No description provided for @adminOrderNoReturns.
+  ///
+  /// In en, this message translates to:
+  /// **'No returns waiting.'**
+  String get adminOrderNoReturns;
+
+  /// No description provided for @adminOrderApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve'**
+  String get adminOrderApprove;
+
+  /// No description provided for @adminOrderReject.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get adminOrderReject;
+
+  /// No description provided for @adminOrderReturnApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Return approved'**
+  String get adminOrderReturnApproved;
+
+  /// No description provided for @adminOrderReturnRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Return rejected'**
+  String get adminOrderReturnRejected;
+
+  /// No description provided for @adminOrderNewCoupon.
+  ///
+  /// In en, this message translates to:
+  /// **'New coupon'**
+  String get adminOrderNewCoupon;
+
+  /// No description provided for @adminOrderCouponCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get adminOrderCouponCode;
+
+  /// No description provided for @adminOrderCouponCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. BOISHAKH20'**
+  String get adminOrderCouponCodeHint;
+
+  /// No description provided for @adminOrderCouponKindPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'% off'**
+  String get adminOrderCouponKindPercent;
+
+  /// No description provided for @adminOrderCouponKindAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'৳ off'**
+  String get adminOrderCouponKindAmount;
+
+  /// No description provided for @adminOrderCouponPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'Percent off'**
+  String get adminOrderCouponPercent;
+
+  /// No description provided for @adminOrderCouponCap.
+  ///
+  /// In en, this message translates to:
+  /// **'Most it can take off in taka (optional)'**
+  String get adminOrderCouponCap;
+
+  /// No description provided for @adminOrderCouponTaka.
+  ///
+  /// In en, this message translates to:
+  /// **'Taka off'**
+  String get adminOrderCouponTaka;
+
+  /// No description provided for @adminOrderCouponMinOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum order in taka (optional)'**
+  String get adminOrderCouponMinOrder;
+
+  /// No description provided for @adminOrderCouponPickDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Set end date'**
+  String get adminOrderCouponPickDate;
+
+  /// No description provided for @adminOrderCouponCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create coupon'**
+  String get adminOrderCouponCreate;
+
+  /// No description provided for @adminOrderCouponCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon created'**
+  String get adminOrderCouponCreated;
+
+  /// No description provided for @adminOrderCouponBadCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Use 3–20 letters or digits for the code.'**
+  String get adminOrderCouponBadCode;
+
+  /// No description provided for @adminOrderCouponBadValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the amounts: 1–90% off, or at least ৳1 off.'**
+  String get adminOrderCouponBadValue;
+
+  /// No description provided for @adminOrderCouponBadExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'The end date has to be in the future.'**
+  String get adminOrderCouponBadExpiry;
+
+  /// No description provided for @adminOrderCouponTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'A coupon with this code already exists.'**
+  String get adminOrderCouponTaken;
+
+  /// No description provided for @adminOrderCouponPercentOff.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% off'**
+  String adminOrderCouponPercentOff(int percent);
+
+  /// No description provided for @adminOrderCouponUpTo.
+  ///
+  /// In en, this message translates to:
+  /// **'up to {amount}'**
+  String adminOrderCouponUpTo(String amount);
+
+  /// No description provided for @adminOrderCouponAmountOff.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} off'**
+  String adminOrderCouponAmountOff(String amount);
+
+  /// No description provided for @adminOrderCouponFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'orders from {amount}'**
+  String adminOrderCouponFrom(String amount);
+
+  /// No description provided for @adminOrderCouponExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get adminOrderCouponExpired;
+
+  /// No description provided for @adminOrderCouponNoEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'No end date'**
+  String get adminOrderCouponNoEnd;
+
+  /// No description provided for @adminOrderCouponUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'Until {date}'**
+  String adminOrderCouponUntil(String date);
 
   /// No description provided for @aiTitle.
   ///

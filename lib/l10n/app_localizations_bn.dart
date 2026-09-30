@@ -533,6 +533,9 @@ class AppL10nBn extends AppL10n {
   String get checkoutCouponNotFound => 'এই কোডটি পাওয়া যায়নি।';
 
   @override
+  String get checkoutCouponExpired => 'এই কোডের মেয়াদ শেষ হয়ে গেছে।';
+
+  @override
   String checkoutCouponMinimum(String amount) {
     return 'এই কোডের জন্য কমপক্ষে $amount অর্ডার লাগবে।';
   }
@@ -685,6 +688,124 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get orderReturnWindow => 'পৌঁছানোর ৭ দিনের মধ্যে ফেরত দেওয়া যায়।';
+
+  @override
+  String get adminOrderTitle => 'অর্ডার';
+
+  @override
+  String get adminOrderTabOrders => 'অর্ডার';
+
+  @override
+  String get adminOrderTabReturns => 'ফেরত';
+
+  @override
+  String get adminOrderTabCoupons => 'কুপন';
+
+  @override
+  String get adminOrderAll => 'সব';
+
+  @override
+  String adminOrderMoveTo(String status) {
+    return '$status হিসেবে চিহ্নিত করুন';
+  }
+
+  @override
+  String get adminOrderNoOrders => 'এখানে কোনো অর্ডার নেই।';
+
+  @override
+  String get adminOrderNoReturns => 'অপেক্ষমাণ কোনো ফেরত নেই।';
+
+  @override
+  String get adminOrderApprove => 'অনুমোদন';
+
+  @override
+  String get adminOrderReject => 'বাতিল';
+
+  @override
+  String get adminOrderReturnApproved => 'ফেরত অনুমোদিত হয়েছে';
+
+  @override
+  String get adminOrderReturnRejected => 'ফেরত বাতিল হয়েছে';
+
+  @override
+  String get adminOrderNewCoupon => 'নতুন কুপন';
+
+  @override
+  String get adminOrderCouponCode => 'কোড';
+
+  @override
+  String get adminOrderCouponCodeHint => 'যেমন BOISHAKH20';
+
+  @override
+  String get adminOrderCouponKindPercent => '% ছাড়';
+
+  @override
+  String get adminOrderCouponKindAmount => '৳ ছাড়';
+
+  @override
+  String get adminOrderCouponPercent => 'কত শতাংশ ছাড়';
+
+  @override
+  String get adminOrderCouponCap => 'সর্বোচ্চ কত টাকা ছাড় (ঐচ্ছিক)';
+
+  @override
+  String get adminOrderCouponTaka => 'কত টাকা ছাড়';
+
+  @override
+  String get adminOrderCouponMinOrder => 'ন্যূনতম অর্ডার, টাকায় (ঐচ্ছিক)';
+
+  @override
+  String get adminOrderCouponPickDate => 'শেষ তারিখ দিন';
+
+  @override
+  String get adminOrderCouponCreate => 'কুপন তৈরি করুন';
+
+  @override
+  String get adminOrderCouponCreated => 'কুপন তৈরি হয়েছে';
+
+  @override
+  String get adminOrderCouponBadCode => 'কোডে ৩–২০টি অক্ষর বা সংখ্যা দিন।';
+
+  @override
+  String get adminOrderCouponBadValue =>
+      'পরিমাণ দেখুন: ১–৯০% ছাড়, বা কমপক্ষে ৳১ ছাড়।';
+
+  @override
+  String get adminOrderCouponBadExpiry => 'শেষ তারিখ ভবিষ্যতের হতে হবে।';
+
+  @override
+  String get adminOrderCouponTaken => 'এই কোডের কুপন আগে থেকেই আছে।';
+
+  @override
+  String adminOrderCouponPercentOff(int percent) {
+    return '$percent% ছাড়';
+  }
+
+  @override
+  String adminOrderCouponUpTo(String amount) {
+    return 'সর্বোচ্চ $amount';
+  }
+
+  @override
+  String adminOrderCouponAmountOff(String amount) {
+    return '$amount ছাড়';
+  }
+
+  @override
+  String adminOrderCouponFrom(String amount) {
+    return '$amount বা বেশি অর্ডারে';
+  }
+
+  @override
+  String get adminOrderCouponExpired => 'মেয়াদ শেষ';
+
+  @override
+  String get adminOrderCouponNoEnd => 'কোনো শেষ তারিখ নেই';
+
+  @override
+  String adminOrderCouponUntil(String date) {
+    return '$date পর্যন্ত';
+  }
 
   @override
   String get aiTitle => 'রিডিং অ্যাসিস্ট্যান্ট';

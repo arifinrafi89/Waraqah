@@ -4,8 +4,8 @@ part 'coupon.freezed.dart';
 
 enum CouponKind { percentOff, amountOff, freeDelivery }
 
-/// A code the reader types at checkout. Admins create these (the orders and
-/// coupons admin comes in a later PR).
+/// A code the reader types at checkout. Staff create these in the Admin
+/// area's Orders section.
 @freezed
 abstract class Coupon with _$Coupon {
   const factory Coupon({
@@ -21,11 +21,19 @@ abstract class Coupon with _$Coupon {
 
     /// Most a percent-off code can take off.
     int? maxDiscountBdt,
+
+    /// The code stops working after this; `null` never expires.
+    DateTime? expiresAt,
   }) = _Coupon;
 }
 
+extension CouponX on Coupon {
+  bool isExpiredAt(DateTime now) =>
+      expiresAt != null && now.isAfter(expiresAt!);
+}
+
 /// Why a code was turned down.
-enum CouponProblem { notFound, belowMinimum }
+enum CouponProblem { notFound, expired, belowMinimum }
 
 class CouponRejected implements Exception {
   const CouponRejected(this.problem, {this.minOrderBdt = 0});

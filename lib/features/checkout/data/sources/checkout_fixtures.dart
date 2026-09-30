@@ -3,8 +3,8 @@ import '../models/coupon_model.dart';
 import '../models/saved_address_model.dart';
 
 /// Demo addresses and coupons for the fake API. Addresses move to the
-/// profile's saved addresses once Niloy's work lands; coupons move to the
-/// coupons admin in the Orders PR.
+/// profile's saved addresses once Niloy's work lands. Coupons are only the
+/// starting set: staff add more in the Admin area (see `CouponFakeStore`).
 abstract final class CheckoutFixtures {
   static const List<SavedAddressModel> addresses = [
     SavedAddressModel(
@@ -53,7 +53,4 @@ abstract final class CheckoutFixtures {
 
   static SavedAddressModel? address(String id) =>
       addresses.where((a) => a.id == id).firstOrNull;
-
-  static CouponModel? coupon(String code) =>
-      coupons.where((c) => c.code == code.trim().toUpperCase()).firstOrNull;
 }

@@ -12,10 +12,11 @@ import '../models/coupon_model.dart';
 import '../models/order_receipt_model.dart';
 import '../models/saved_address_model.dart';
 import 'checkout_fixtures.dart';
+import 'coupon_fake_store.dart';
 import 'placed_order.dart';
 
 /// Checkout's fake endpoints, merged into `FakeApiInterceptor` by
-/// `app/fake_api_routes.dart`, sharing the fake cart and orders.
+/// `app/fake_api_routes.dart`, sharing the fake cart, orders and coupons.
 abstract final class CheckoutFakeApi {
   static const String addresses = '/addresses';
 
@@ -30,14 +31,15 @@ abstract final class CheckoutFakeApi {
   static Map<String, Object? Function(RequestOptions)> routes(
     CartFakeStore cart,
     OrderFakeStore orders,
+    CouponFakeStore coupons,
   ) {
     return {
       addresses: (_) => [
         for (final address in CheckoutFixtures.addresses) address.toJson(),
       ],
-      coupon: (options) => CheckoutFixtures.coupon(
-        options.queryParameters['code'] as String? ?? '',
-      )?.toJson(),
+      coupon: (options) => coupons
+          .find(options.queryParameters['code'] as String? ?? '')
+          ?.toJson(),
       placeOrder: (options) {
         final body = options.data as Map<String, dynamic>? ?? const {};
         final address = CheckoutFixtures.address(
@@ -48,7 +50,9 @@ abstract final class CheckoutFakeApi {
         final totals = CheckoutTotals.of(
           lines,
           address.area,
-          coupon: CheckoutFixtures.coupon(body['couponCode'] as String? ?? '')
+          // An expired code simply gives no discount.
+          coupon: coupons
+              .usable(body['couponCode'] as String? ?? '')
               ?.toEntity(),
         );
         final order = placedOrder(

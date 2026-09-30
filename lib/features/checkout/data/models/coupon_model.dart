@@ -13,6 +13,7 @@ abstract class CouponModel with _$CouponModel {
     @Default(0) int value,
     @Default(0) int minOrderBdt,
     int? maxDiscountBdt,
+    DateTime? expiresAt,
   }) = _CouponModel;
 
   factory CouponModel.fromJson(Map<String, dynamic> json) =>
@@ -26,5 +27,6 @@ extension CouponModelX on CouponModel {
     value: value,
     minOrderBdt: minOrderBdt,
     maxDiscountBdt: maxDiscountBdt,
+    expiresAt: expiresAt,
   );
 }
