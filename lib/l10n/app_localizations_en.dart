@@ -621,6 +621,106 @@ class AppL10nEn extends AppL10n {
   String get orderPlacedContinue => 'Continue shopping';
 
   @override
+  String get orderTrack => 'Track order';
+
+  @override
+  String get orderMyOrders => 'My orders';
+
+  @override
+  String get orderEmptyTitle => 'No orders yet';
+
+  @override
+  String get orderEmptyBody =>
+      'Books you order will show up here, with tracking.';
+
+  @override
+  String orderPlacedOn(String date) {
+    return 'Placed on $date';
+  }
+
+  @override
+  String get orderNotFound => 'We couldn\'t find this order.';
+
+  @override
+  String get orderStatusPlaced => 'Placed';
+
+  @override
+  String get orderStatusConfirmed => 'Confirmed';
+
+  @override
+  String get orderStatusPacked => 'Packed';
+
+  @override
+  String get orderStatusShipped => 'Shipped';
+
+  @override
+  String get orderStatusDelivered => 'Delivered';
+
+  @override
+  String get orderStatusCancelled => 'Cancelled';
+
+  @override
+  String get orderDeliverTo => 'Delivering to';
+
+  @override
+  String get orderPaid => 'Paid';
+
+  @override
+  String get orderPayOnDelivery => 'Pay on delivery';
+
+  @override
+  String get orderCancel => 'Cancel order';
+
+  @override
+  String get orderCancelTitle => 'Cancel this order?';
+
+  @override
+  String get orderCancelBody =>
+      'This can\'t be undone. If you paid online, the money goes back the same way.';
+
+  @override
+  String get orderKeep => 'Keep order';
+
+  @override
+  String get orderCancelled => 'Order cancelled';
+
+  @override
+  String get orderReturn => 'Request a return';
+
+  @override
+  String get orderReturnWhy => 'Why are you sending it back?';
+
+  @override
+  String get orderReturnDamaged => 'It arrived damaged';
+
+  @override
+  String get orderReturnWrongBook => 'I got the wrong book';
+
+  @override
+  String get orderReturnOther => 'Something else';
+
+  @override
+  String get orderReturnNoteHint => 'Tell us what happened (optional)';
+
+  @override
+  String get orderReturnSend => 'Send request';
+
+  @override
+  String get orderReturnSent => 'Return requested. We\'ll reply within 2 days.';
+
+  @override
+  String get orderReturnRequested => 'Return requested, waiting for review';
+
+  @override
+  String get orderReturnApproved => 'Return approved, we\'ll pick it up';
+
+  @override
+  String get orderReturnRejected => 'Return not approved';
+
+  @override
+  String get orderReturnWindow => 'Returns are open for 7 days after delivery.';
+
+  @override
   String get aiTitle => 'Reading Assistant';
 
   @override
