@@ -31,3 +31,7 @@ final filteredP2pListingsProvider = Provider<List<P2pListing>>((ref) {
     _ => const [],
   };
 });
+
+final myListingsProvider = FutureProvider<List<P2pListing>>(
+  (ref) => ref.watch(p2pRepositoryProvider).fetchMyListings(),
+);

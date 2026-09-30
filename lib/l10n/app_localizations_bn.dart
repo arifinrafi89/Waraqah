@@ -595,5 +595,108 @@ class AppL10nBn extends AppL10n {
   String get moderationEmptyReports => 'কোনো পেন্ডিং রিপোর্ট নেই।';
 
   @override
-  String get moderationEmptyDisputes => 'কোনো অ্যাক্টিভ ডিসপিউট নেই।';
+  String get moderationEmptyDisputes => 'কোনো সক্রিয় বিরোধ নেই।';
+
+  @override
+  String get listingSellBook => 'বই বিক্রি করুন';
+
+  @override
+  String get listingMyListings => 'আমার লিস্টিং';
+
+  @override
+  String get listingStepPickBook => 'বই নির্বাচন করুন';
+
+  @override
+  String get listingStepCondition => 'অবস্থা';
+
+  @override
+  String get listingStepPhotos => 'ছবি';
+
+  @override
+  String get listingStepPriceHandover => 'দাম ও হস্তান্তর';
+
+  @override
+  String get listingBookTitle => 'বইয়ের নাম';
+
+  @override
+  String get listingBookTitleHint => 'The Pragmatic Programmer';
+
+  @override
+  String get listingConditionLikeNew => 'নতুনের মত';
+
+  @override
+  String get listingConditionVeryGood => 'খুব ভালো';
+
+  @override
+  String get listingConditionGood => 'ভালো';
+
+  @override
+  String get listingConditionAcceptable => 'চলনসই';
+
+  @override
+  String get listingFlags => 'ফ্ল্যাগ (ঐচ্ছিক)';
+
+  @override
+  String get listingFlagHighlighting => 'হাইলাইটিং';
+
+  @override
+  String get listingFlagNotes => 'নোট';
+
+  @override
+  String get listingFlagDamage => 'ক্ষতি';
+
+  @override
+  String get listingPhotosDesc =>
+      'সামনের কভার, পেছনের কভার, স্পাইন, ভেতরের পাতা এবং কোনো ক্ষতির ছবি আপলোড করুন।';
+
+  @override
+  String get listingPrice => 'দাম (৳)';
+
+  @override
+  String get listingPriceHint => '৪৫০';
+
+  @override
+  String get listingNegotiable => 'আলোচনা সাপেক্ষে';
+
+  @override
+  String get listingHandoverMethod => 'হস্তান্তর পদ্ধতি';
+
+  @override
+  String get listingHandoverMeet => 'সরাসরি দেখা করে';
+
+  @override
+  String get listingHandoverDelivery => 'ডেলিভারি';
+
+  @override
+  String get listingSaveDraft => 'খসড়া সংরক্ষণ করুন';
+
+  @override
+  String get listingNext => 'পরবর্তী';
+
+  @override
+  String get listingBack => 'পেছনে';
+
+  @override
+  String get listingStatusDraft => 'খসড়া';
+
+  @override
+  String get listingStatusInReview => 'রিভিউতে আছে';
+
+  @override
+  String get listingStatusChangesRequested => 'পরিবর্তন চাওয়া হয়েছে';
+
+  @override
+  String get listingStatusRejected => 'বাতিল';
+
+  @override
+  String get listingStatusLive => 'লাইভ';
+
+  @override
+  String get listingStatusSold => 'বিক্রি হয়েছে';
+
+  @override
+  String get listingConditionPrefix => 'অবস্থা: ';
+
+  @override
+  String get listingReasonPrefix => 'কারণ: ';
 }

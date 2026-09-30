@@ -11,6 +11,7 @@ import '../../../auth/presentation/providers/auth_providers.dart';
 import '../../../auth/presentation/widgets/session_actions.dart';
 import '../../../wishlist/presentation/widgets/wishlist_link.dart';
 import '../widgets/profile_header.dart';
+import '../../../p2p/presentation/widgets/my_listings_button.dart';
 import '../widgets/settings_group.dart';
 
 /// Screen 5 — Profile. Also the home of the theme and language switchers, both
@@ -51,6 +52,7 @@ class ProfilePage extends ConsumerWidget {
                 const SessionActions(),
                 const WishlistLink(),
                 const AdminAreaButton(),
+                const MyListingsButton(),
                 const SizedBox(height: Insets.xl),
                 SettingsGroup(
                   label: l10n.profileAppearance,

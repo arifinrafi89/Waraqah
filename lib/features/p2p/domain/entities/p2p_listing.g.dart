@@ -15,7 +15,21 @@ _P2pListing _$P2pListingFromJson(Map<String, dynamic> json) => _P2pListing(
   condition:
       $enumDecodeNullable(_$BookConditionEnumMap, json['condition']) ??
       BookCondition.good,
-  isAvailable: json['isAvailable'] as bool? ?? true,
+  flags:
+      (json['flags'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+      const [],
+  photos:
+      (json['photos'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+      const [],
+  isNegotiable: json['isNegotiable'] as bool? ?? false,
+  handover:
+      $enumDecodeNullable(_$HandoverMethodEnumMap, json['handover']) ??
+      HandoverMethod.meetInPerson,
+  status:
+      $enumDecodeNullable(_$P2pListingStatusEnumMap, json['status']) ??
+      P2pListingStatus.live,
+  rejectionReason: json['rejectionReason'] as String?,
+  bookId: json['bookId'] as String?,
   coverSeed: (json['coverSeed'] as num?)?.toInt() ?? 0,
 );
 
@@ -27,12 +41,33 @@ Map<String, dynamic> _$P2pListingToJson(_P2pListing instance) =>
       'sellerBatch': instance.sellerBatch,
       'priceBdt': instance.priceBdt,
       'condition': _$BookConditionEnumMap[instance.condition]!,
-      'isAvailable': instance.isAvailable,
+      'flags': instance.flags,
+      'photos': instance.photos,
+      'isNegotiable': instance.isNegotiable,
+      'handover': _$HandoverMethodEnumMap[instance.handover]!,
+      'status': _$P2pListingStatusEnumMap[instance.status]!,
+      'rejectionReason': instance.rejectionReason,
+      'bookId': instance.bookId,
       'coverSeed': instance.coverSeed,
     };
 
 const _$BookConditionEnumMap = {
   BookCondition.likeNew: 'likeNew',
+  BookCondition.veryGood: 'veryGood',
   BookCondition.good: 'good',
-  BookCondition.fair: 'fair',
+  BookCondition.acceptable: 'acceptable',
+};
+
+const _$HandoverMethodEnumMap = {
+  HandoverMethod.meetInPerson: 'meetInPerson',
+  HandoverMethod.delivery: 'delivery',
+};
+
+const _$P2pListingStatusEnumMap = {
+  P2pListingStatus.draft: 'draft',
+  P2pListingStatus.inReview: 'inReview',
+  P2pListingStatus.changesRequested: 'changesRequested',
+  P2pListingStatus.rejected: 'rejected',
+  P2pListingStatus.live: 'live',
+  P2pListingStatus.sold: 'sold',
 };
