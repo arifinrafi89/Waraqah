@@ -701,6 +701,52 @@ class AppL10nBn extends AppL10n {
   String get cartBundle => 'বান্ডেল';
 
   @override
+  String get cartSmartBasket => 'স্মার্ট বাস্কেট';
+
+  @override
+  String cartUsedAvailable(int count, String amount) {
+    return '$countটি বই পুরোনো পাওয়া যাচ্ছে, সাশ্রয় $amount';
+  }
+
+  @override
+  String get cartSwitch => 'বদলান';
+
+  @override
+  String get cartSwitchAll => 'সবগুলো পুরোনোতে বদলান';
+
+  @override
+  String cartSwapped(String amount) {
+    return 'পুরোনো কপিতে বদলানো হয়েছে · সাশ্রয় $amount';
+  }
+
+  @override
+  String cartToFreeDelivery(String amount) {
+    return 'আরও $amount যোগ করলে ফ্রি ডেলিভারি';
+  }
+
+  @override
+  String get cartSetBudget => 'বাজেট দিন';
+
+  @override
+  String get cartBudgetTitle => 'বাজেটের মধ্যে রাখুন';
+
+  @override
+  String get cartBudgetLabel => 'আপনার বাজেট (টাকায়)';
+
+  @override
+  String cartBudgetFits(String total, int count) {
+    return '$countটি পুরোনো কপিতে বাজেটে আসে: $total';
+  }
+
+  @override
+  String cartBudgetShort(String total) {
+    return 'সবচেয়ে কম খরচ $total, তবুও বাজেটের বেশি।';
+  }
+
+  @override
+  String get cartBudgetApply => 'প্রয়োগ করুন';
+
+  @override
   String get wishlistTitle => 'উইশলিস্ট';
 
   @override
