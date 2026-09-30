@@ -1,4 +1,5 @@
 import '../core/network/fake_api_interceptor.dart';
+import '../features/alerts/data/sources/alert_fake_api.dart';
 import '../features/auth/data/sources/auth_fake_api.dart';
 import '../features/cart/data/sources/cart_fake_api.dart';
 import '../features/cart/data/sources/cart_fake_store.dart';
@@ -30,6 +31,7 @@ abstract final class FakeApiRoutes {
       ...AyahFakeApi.routes,
       ...CartFakeApi.routes(cart),
       ...WishlistFakeApi.routes(),
+      ...AlertFakeApi.routes(),
       ...CheckoutFakeApi.routes(cart, orders, coupons),
       ...OrderFakeApi.routes(orders),
       ...OrderAdminFakeApi.routes(orders),

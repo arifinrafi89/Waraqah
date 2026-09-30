@@ -11,6 +11,7 @@ import '../../../../core/utils/stock_label.dart';
 import '../../../../core/widgets/cover_art.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../alerts/presentation/widgets/alert_buttons.dart';
 import '../../../catalog/catalog_routes.dart';
 import 'wishlist_action.dart';
 import 'wishlist_price.dart';
@@ -91,6 +92,7 @@ class WishlistTile extends ConsumerWidget {
                       onPressed: () =>
                           ref.setWishlisted(context, book.id, saved: false),
                     ),
+                    PriceAlertButton(bookId: book.id, edition: edition),
                     IconButton.outlined(
                       tooltip: l10n.wishlistMoveToCart,
                       color: palette.accent,

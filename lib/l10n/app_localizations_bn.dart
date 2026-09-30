@@ -489,6 +489,66 @@ class AppL10nBn extends AppL10n {
   String get bookAnswerPosted => 'উত্তর পোস্ট হয়েছে';
 
   @override
+  String get bookLowest30Days => '৩০ দিনে সর্বনিম্ন';
+
+  @override
+  String get alertMine => 'আমার অ্যালার্ট';
+
+  @override
+  String get alertNotifyMe => 'জানাবেন';
+
+  @override
+  String get alertStockOn => 'ফিরে এলে জানাব · বন্ধ করতে চাপুন';
+
+  @override
+  String get alertStockSet => 'বইটি ফিরে এলে আপনাকে জানাব।';
+
+  @override
+  String get alertTurnedOff => 'অ্যালার্ট বন্ধ হয়েছে';
+
+  @override
+  String get alertTurnOff => 'অ্যালার্ট বন্ধ করুন';
+
+  @override
+  String get alertPriceTitle => 'দাম কমার অ্যালার্ট';
+
+  @override
+  String alertPriceToday(String price) {
+    return 'আজকের দাম $price।';
+  }
+
+  @override
+  String alertPriceWhen(String price) {
+    return '$price বা কম হলে জানাবেন';
+  }
+
+  @override
+  String get alertSet => 'অ্যালার্ট দিন';
+
+  @override
+  String get alertPriceSet => 'দাম কমলে আপনাকে জানাব।';
+
+  @override
+  String get alertBackNow => 'এখন স্টকে আছে';
+
+  @override
+  String get alertWaitingStock => 'স্টকে ফেরার অপেক্ষায়';
+
+  @override
+  String alertPriceDropped(String price) {
+    return 'দাম কমে $price হয়েছে';
+  }
+
+  @override
+  String alertWaitingPrice(String target, String price) {
+    return '$target-এ অ্যালার্ট · এখন $price';
+  }
+
+  @override
+  String get alertEmpty =>
+      'এখনো কোনো অ্যালার্ট নেই। স্টকে না থাকা বইয়ে \'জানাবেন\' বা উইশলিস্টের বইয়ে ঘণ্টায় চাপ দিন।';
+
+  @override
   String get cartTitle => 'কার্ট';
 
   @override

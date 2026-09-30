@@ -25,12 +25,25 @@ abstract final class BookFakeApi {
   /// The series a book is in, in reading order: `?id=<bookId>`, or `null`.
   static const String series = '/books/series';
 
+  /// Each Edition's lowest price in the last 30 days: `?id=<bookId>`.
+  static const String priceLows = '/books/price-lows';
+
+  /// Editions that were cheaper earlier this month than they are today.
+  static const Map<String, int> _earlierLows = {'bk-sapiens-pb-en': 620};
+
   static final Map<String, Object? Function(RequestOptions)> routes = {
     books: _books,
     bookDetails: _bookDetails,
     usedOptions: _usedOptions,
     lookInside: (options) => LookInsideFixtures.byBook[_id(options)]?.toJson(),
     series: _series,
+    priceLows: (options) => {
+      for (final book in BookFixtures.all.where((b) => b.id == _id(options)))
+        for (final e in book.editions)
+          e.id: (_earlierLows[e.id] ?? e.priceBdt) < e.priceBdt
+              ? _earlierLows[e.id]!
+              : e.priceBdt,
+    },
   };
 
   static String _id(RequestOptions options) =>

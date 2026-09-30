@@ -985,6 +985,108 @@ abstract class AppL10n {
   /// **'Answer posted'**
   String get bookAnswerPosted;
 
+  /// No description provided for @bookLowest30Days.
+  ///
+  /// In en, this message translates to:
+  /// **'Lowest in 30 days'**
+  String get bookLowest30Days;
+
+  /// No description provided for @alertMine.
+  ///
+  /// In en, this message translates to:
+  /// **'My alerts'**
+  String get alertMine;
+
+  /// No description provided for @alertNotifyMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Notify me'**
+  String get alertNotifyMe;
+
+  /// No description provided for @alertStockOn.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll let you know · tap to stop'**
+  String get alertStockOn;
+
+  /// No description provided for @alertStockSet.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll let you know when it\'s back.'**
+  String get alertStockSet;
+
+  /// No description provided for @alertTurnedOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Alert turned off'**
+  String get alertTurnedOff;
+
+  /// No description provided for @alertTurnOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off alert'**
+  String get alertTurnOff;
+
+  /// No description provided for @alertPriceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Price drop alert'**
+  String get alertPriceTitle;
+
+  /// No description provided for @alertPriceToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today it\'s {price}.'**
+  String alertPriceToday(String price);
+
+  /// No description provided for @alertPriceWhen.
+  ///
+  /// In en, this message translates to:
+  /// **'Alert me at {price} or less'**
+  String alertPriceWhen(String price);
+
+  /// No description provided for @alertSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Set alert'**
+  String get alertSet;
+
+  /// No description provided for @alertPriceSet.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll let you know when the price drops.'**
+  String get alertPriceSet;
+
+  /// No description provided for @alertBackNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Back in stock now'**
+  String get alertBackNow;
+
+  /// No description provided for @alertWaitingStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for it to be back in stock'**
+  String get alertWaitingStock;
+
+  /// No description provided for @alertPriceDropped.
+  ///
+  /// In en, this message translates to:
+  /// **'Price dropped to {price}'**
+  String alertPriceDropped(String price);
+
+  /// No description provided for @alertWaitingPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Alert at {target} · now {price}'**
+  String alertWaitingPrice(String target, String price);
+
+  /// No description provided for @alertEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No alerts yet. Tap Notify me on a sold-out book, or the bell on a wishlist book.'**
+  String get alertEmpty;
+
   /// No description provided for @cartTitle.
   ///
   /// In en, this message translates to:

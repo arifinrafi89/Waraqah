@@ -5,8 +5,8 @@ import '../models/used_options_model.dart';
 import 'book_fixtures.dart';
 
 /// Demo used copies until Arifin's used-books data is shared: Atomic Habits
-/// and Sapiens have both kinds, and Calculus (sold out new) has a reader
-/// listing. Every printed book gets a resale estimate.
+/// and Sapiens have both kinds, and Calculus (its paperback is sold out)
+/// has a reader listing. Every printed book gets a resale estimate.
 abstract final class UsedOptionsFixtures {
   static const Map<String, UsedOptionsModel> _byBook = {
     'bk-atomic': UsedOptionsModel(
