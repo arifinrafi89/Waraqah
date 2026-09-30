@@ -5,7 +5,7 @@ import '../../../../core/models/edition.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/utils/formatters.dart';
-import '../../../offers/presentation/providers/offers_providers.dart';
+import '../../../deals/presentation/providers/deals_providers.dart';
 
 /// An Edition's price, with its list price struck through when discounted.
 /// During a flash sale it shows the sale price against the usual one.

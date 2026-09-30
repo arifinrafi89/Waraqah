@@ -12,7 +12,7 @@ import '../../features/catalog/catalog_routes.dart';
 import '../../features/checkout/checkout_routes.dart';
 import '../../features/home/home_routes.dart';
 import '../../features/loyalty/loyalty_routes.dart';
-import '../../features/offers/offers_routes.dart';
+import '../../features/deals/deals_routes.dart';
 import '../../features/orders/orders_routes.dart';
 import '../../features/p2p/p2p_routes.dart';
 import '../../features/profile/profile_routes.dart';
@@ -53,7 +53,7 @@ abstract final class AppRouter {
       ...CheckoutRoutes.routes,
       ...OrdersRoutes.routes,
       ...AlertsRoutes.routes,
-      ...OffersRoutes.routes,
+      ...DealsRoutes.routes,
       ...LoyaltyRoutes.routes,
       ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(

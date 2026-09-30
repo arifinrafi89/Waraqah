@@ -549,36 +549,36 @@ class AppL10nBn extends AppL10n {
       'এখনো কোনো অ্যালার্ট নেই। স্টকে না থাকা বইয়ে \'জানাবেন\' বা উইশলিস্টের বইয়ে ঘণ্টায় চাপ দিন।';
 
   @override
-  String get offerTitle => 'অফার';
+  String get dealTitle => 'ডিল';
 
   @override
-  String get offerFlashSale => 'ফ্ল্যাশ সেল';
+  String get dealFlashSale => 'ফ্ল্যাশ সেল';
 
   @override
-  String get offerFlashEndsIn => 'ফ্ল্যাশ সেল শেষ হবে';
+  String get dealFlashEndsIn => 'ফ্ল্যাশ সেল শেষ হবে';
 
   @override
-  String get offerSeeAll => 'অফার দেখুন';
+  String get dealSeeAll => 'ডিল দেখুন';
 
   @override
-  String get offerBundles => 'বান্ডেল';
+  String get dealBundles => 'বান্ডেল';
 
   @override
-  String get offerInBundle => 'বান্ডেলে কিনুন';
+  String get dealInBundle => 'বান্ডেলে কিনুন';
 
   @override
-  String get offerAddBundle => 'বান্ডেল কার্টে যোগ করুন';
+  String get dealAddBundle => 'বান্ডেল কার্টে যোগ করুন';
 
   @override
-  String get offerPreorders => 'শীঘ্রই আসছে · প্রি-অর্ডার';
+  String get dealPreorders => 'শীঘ্রই আসছে · প্রি-অর্ডার';
 
   @override
-  String offerReleases(String date) {
+  String dealReleases(String date) {
     return 'প্রকাশ $date · প্রকাশের দিন পাঠানো হবে';
   }
 
   @override
-  String get offerPreorderNow => 'প্রি-অর্ডার করুন';
+  String get dealPreorderNow => 'প্রি-অর্ডার করুন';
 
   @override
   String get pointsTitle => 'ওয়ারাকাহ পয়েন্ট';

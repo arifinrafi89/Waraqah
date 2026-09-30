@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_dimens.dart';
-import '../../../offers/presentation/widgets/book_bundles.dart';
+import '../../../deals/presentation/widgets/book_bundles.dart';
 import '../providers/book_detail_providers.dart';
 import 'book_about_section.dart';
 import 'book_detail_header.dart';

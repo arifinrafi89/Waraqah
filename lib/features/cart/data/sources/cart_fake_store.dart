@@ -6,18 +6,18 @@ import '../../../../core/models/edition.dart';
 import '../../../catalog/data/sources/book_fixtures.dart';
 import '../../domain/entities/cart_line.dart';
 import '../models/cart_model.dart';
-import '../../../offers/data/sources/offers_fake_store.dart';
+import '../../../deals/data/sources/deals_fake_store.dart';
 import 'bundle_cart_line.dart';
 import 'used_cart_line.dart';
 
 /// The cart the fake backend keeps in memory, with the server's rules: one
 /// line per item, quantities capped per order, nothing unorderable.
 class CartFakeStore {
-  /// With [offers], flash-sale prices apply and bundles can be added.
+  /// With [deals], flash-sale prices apply and bundles can be added.
   // ignore: prefer_initializing_formals
-  CartFakeStore({OffersFakeStore? offers}) : _offers = offers;
+  CartFakeStore({DealsFakeStore? deals}) : _deals = deals;
 
-  final OffersFakeStore? _offers;
+  final DealsFakeStore? _deals;
 
   /// Most copies of one printed Edition per order, however much is in stock.
   static const int perOrderCap = 10;
@@ -41,7 +41,7 @@ class CartFakeStore {
     final line = switch (itemKind) {
       null => null,
       CartItemKind.edition => _editionLine(itemId),
-      CartItemKind.bundle => bundleCartLine(_offers, itemId),
+      CartItemKind.bundle => bundleCartLine(_deals, itemId),
       _ => usedCartLine(itemKind, itemId),
     };
     if (line != null) _lines.add(line);
@@ -73,7 +73,7 @@ class CartFakeStore {
 
   /// A flash-sale price counts against the usual price.
   CartLineModel _line(Book book, Edition edition) {
-    final flash = _offers?.flashPrice(edition.id);
+    final flash = _deals?.flashPrice(edition.id);
     return _plainLine(book, edition).copyWith(
       unitPriceBdt: flash ?? edition.priceBdt,
       listPriceBdt: flash == null ? edition.listPriceBdt : edition.priceBdt,
