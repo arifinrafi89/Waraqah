@@ -786,6 +786,38 @@ class AppL10nBn extends AppL10n {
   String get wishlistBrowse => 'বই দেখুন';
 
   @override
+  String get wishlistShare => 'উইশলিস্ট শেয়ার করুন';
+
+  @override
+  String get wishlistShareTitle => 'আপনার উইশলিস্ট শেয়ার করুন';
+
+  @override
+  String get wishlistShareBody =>
+      'লিংকটি যার কাছে থাকবে, সে আপনার উইশলিস্টের বই দেখতে পারবে আর উপহার হিসেবে একটি কিনে দিতে পারবে। তালিকা বদলাতে পারবে না।';
+
+  @override
+  String get wishlistCopyLink => 'লিংক কপি করুন';
+
+  @override
+  String get wishlistLinkCopied => 'লিংক কপি হয়েছে';
+
+  @override
+  String get wishlistPreview => 'বন্ধুরা যেভাবে দেখবে';
+
+  @override
+  String wishlistSharedTitle(String name) {
+    return '$name-এর উইশলিস্ট';
+  }
+
+  @override
+  String wishlistSharedGiftHint(String name) {
+    return '$name-কে কিনে দেবেন? কার্টে যোগ করুন, আর চেকআউটে \"উপহার হিসেবে পাঠান\" চালু করুন।';
+  }
+
+  @override
+  String get wishlistSharedMissing => 'এই উইশলিস্ট আর শেয়ার করা নেই।';
+
+  @override
   String get checkoutTitle => 'চেকআউট';
 
   @override

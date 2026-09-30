@@ -8,28 +8,25 @@ import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../../auth/presentation/providers/auth_providers.dart';
 import '../../../cart/presentation/widgets/cart_button.dart';
 import '../../../home/home_routes.dart';
-import '../providers/wishlist_providers.dart';
-import '../widgets/share_wishlist_sheet.dart';
-import '../widgets/wishlist_empty_view.dart';
+import '../providers/shared_wishlist_providers.dart';
+import '../widgets/shared_wishlist_list.dart';
 import '../widgets/wishlist_skeleton.dart';
-import '../widgets/wishlist_tile.dart';
 
-/// `/wishlist`: books the reader saved for later, newest first. Each one can
-/// go to the cart from here, and a signed-in reader can share the list.
-/// Opened over the shell, like the cart.
-class WishlistPage extends ConsumerWidget {
-  const WishlistPage({super.key});
+/// `/wishlist/shared/:id`: someone's wishlist from the link they sent.
+/// Anyone can open it, signed in or not, and buy a book from it.
+class SharedWishlistPage extends ConsumerWidget {
+  const SharedWishlistPage({super.key, required this.id});
+
+  final String id;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final palette = context.palette;
     final l10n = AppL10n.of(context)!;
-    final wishlist = ref.watch(wishlistProvider);
-    final count = wishlist.value?.length ?? 0;
-    final canShare = count > 0 && ref.watch(sessionProvider) != null;
+    final shared = ref.watch(sharedWishlistProvider(id));
+    final list = shared.value;
     return Scaffold(
       body: SafeArea(
         bottom: false,
@@ -51,12 +48,14 @@ class WishlistPage extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          l10n.wishlistTitle,
+                          list == null
+                              ? l10n.wishlistTitle
+                              : l10n.wishlistSharedTitle(list.ownerName),
                           style: context.texts.titleLarge,
                         ),
-                        if (count > 0)
+                        if (list != null)
                           Text(
-                            l10n.wishlistCount(count),
+                            l10n.wishlistCount(list.books.length),
                             style: AppFonts.ui(
                               size: 11,
                               weight: FontWeight.w700,
@@ -66,39 +65,32 @@ class WishlistPage extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  if (canShare)
-                    AppIconButton(
-                      icon: Icons.ios_share_rounded,
-                      tooltip: l10n.wishlistShare,
-                      onPressed: () => showShareWishlistSheet(context),
-                    ),
                   const CartButton(),
                 ],
               ),
             ),
             Expanded(
               child: AsyncView(
-                value: wishlist,
+                value: shared,
                 errorLabel: l10n.commonSomethingWentWrong,
                 retryLabel: l10n.commonRetry,
-                onRetry: () => ref.invalidate(wishlistProvider),
+                onRetry: () => ref.invalidate(sharedWishlistProvider(id)),
                 skeleton: const WishlistSkeleton(),
-                builder: (books) => books.isEmpty
-                    ? const WishlistEmptyView()
-                    : ListView.separated(
-                        padding: const EdgeInsets.fromLTRB(
-                          Insets.screen,
-                          0,
-                          Insets.screen,
-                          Insets.xl,
+                builder: (list) => list == null
+                    ? Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(Insets.xl),
+                          child: Text(
+                            l10n.wishlistSharedMissing,
+                            textAlign: TextAlign.center,
+                            style: AppFonts.ui(
+                              size: 13,
+                              color: palette.textDim,
+                            ),
+                          ),
                         ),
-                        itemCount: books.length,
-                        separatorBuilder: (_, _) => const SizedBox(height: 10),
-                        itemBuilder: (_, i) => WishlistTile(
-                          key: ValueKey(books[i].id),
-                          book: books[i],
-                        ),
-                      ),
+                      )
+                    : SharedWishlistList(list: list),
               ),
             ),
           ],

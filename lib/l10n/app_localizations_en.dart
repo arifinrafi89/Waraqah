@@ -844,6 +844,38 @@ class AppL10nEn extends AppL10n {
   String get wishlistBrowse => 'Browse books';
 
   @override
+  String get wishlistShare => 'Share wishlist';
+
+  @override
+  String get wishlistShareTitle => 'Share your wishlist';
+
+  @override
+  String get wishlistShareBody =>
+      'Anyone with the link can see the books on your wishlist and buy you one as a gift. They can\'t change your list.';
+
+  @override
+  String get wishlistCopyLink => 'Copy link';
+
+  @override
+  String get wishlistLinkCopied => 'Link copied';
+
+  @override
+  String get wishlistPreview => 'See it as friends do';
+
+  @override
+  String wishlistSharedTitle(String name) {
+    return '$name\'s wishlist';
+  }
+
+  @override
+  String wishlistSharedGiftHint(String name) {
+    return 'Buying one for $name? Add it to your cart and turn on \"Send as a gift\" at checkout.';
+  }
+
+  @override
+  String get wishlistSharedMissing => 'This wishlist isn\'t shared any more.';
+
+  @override
   String get checkoutTitle => 'Checkout';
 
   @override
