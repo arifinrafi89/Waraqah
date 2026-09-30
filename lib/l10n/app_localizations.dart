@@ -1087,6 +1087,66 @@ abstract class AppL10n {
   /// **'No alerts yet. Tap Notify me on a sold-out book, or the bell on a wishlist book.'**
   String get alertEmpty;
 
+  /// No description provided for @offerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Offers'**
+  String get offerTitle;
+
+  /// No description provided for @offerFlashSale.
+  ///
+  /// In en, this message translates to:
+  /// **'Flash sale'**
+  String get offerFlashSale;
+
+  /// No description provided for @offerFlashEndsIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Flash sale ends in'**
+  String get offerFlashEndsIn;
+
+  /// No description provided for @offerSeeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See offers'**
+  String get offerSeeAll;
+
+  /// No description provided for @offerBundles.
+  ///
+  /// In en, this message translates to:
+  /// **'Bundles'**
+  String get offerBundles;
+
+  /// No description provided for @offerInBundle.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy it in a bundle'**
+  String get offerInBundle;
+
+  /// No description provided for @offerAddBundle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add bundle to cart'**
+  String get offerAddBundle;
+
+  /// No description provided for @offerPreorders.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming soon · pre-order'**
+  String get offerPreorders;
+
+  /// No description provided for @offerReleases.
+  ///
+  /// In en, this message translates to:
+  /// **'Releases {date} · ships on release day'**
+  String offerReleases(String date);
+
+  /// No description provided for @offerPreorderNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Pre-order'**
+  String get offerPreorderNow;
+
   /// No description provided for @cartTitle.
   ///
   /// In en, this message translates to:
@@ -1218,6 +1278,12 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Used'**
   String get cartUsedBooks;
+
+  /// No description provided for @cartBundle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bundle'**
+  String get cartBundle;
 
   /// No description provided for @wishlistTitle.
   ///

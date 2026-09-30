@@ -21,11 +21,11 @@ class CartLinesList extends StatelessWidget {
     final palette = context.palette;
     final fresh = [
       for (final line in cart.lines)
-        if (line.kind == CartItemKind.edition) line,
+        if (!line.kind.isUsed) line,
     ];
     final used = [
       for (final line in cart.lines)
-        if (line.kind != CartItemKind.edition) line,
+        if (line.kind.isUsed) line,
     ];
     final grouped = fresh.isNotEmpty && used.isNotEmpty;
     Widget heading(String text) => Padding(

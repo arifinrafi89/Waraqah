@@ -74,7 +74,9 @@ class AddToCartBar extends ConsumerWidget {
                 ),
                 Expanded(
                   child: PrimaryButton(
-                    label: l10n.bookBuyNow,
+                    label: edition.stock == 0 && edition.isPreorder
+                        ? l10n.offerPreorderNow
+                        : l10n.bookBuyNow,
                     isBusy: isAdding,
                     onPressed: () =>
                         ref.addToCart(context, item, openCart: true),

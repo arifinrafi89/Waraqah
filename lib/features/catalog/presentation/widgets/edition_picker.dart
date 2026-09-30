@@ -7,6 +7,7 @@ import '../../../../core/widgets/section_header.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../providers/book_extras_providers.dart';
 import '../providers/edition_providers.dart';
+import '../../../offers/presentation/widgets/edition_offer_notes.dart';
 import 'delivery_row.dart';
 import 'edition_tile.dart';
 
@@ -47,6 +48,7 @@ class EditionPicker extends ConsumerWidget {
           ),
         const SizedBox(height: 2),
         DeliveryRow(edition: chosen),
+        EditionOfferNotes(editionId: chosen.id),
       ],
     );
   }

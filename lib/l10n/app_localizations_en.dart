@@ -575,6 +575,38 @@ class AppL10nEn extends AppL10n {
       'No alerts yet. Tap Notify me on a sold-out book, or the bell on a wishlist book.';
 
   @override
+  String get offerTitle => 'Offers';
+
+  @override
+  String get offerFlashSale => 'Flash sale';
+
+  @override
+  String get offerFlashEndsIn => 'Flash sale ends in';
+
+  @override
+  String get offerSeeAll => 'See offers';
+
+  @override
+  String get offerBundles => 'Bundles';
+
+  @override
+  String get offerInBundle => 'Buy it in a bundle';
+
+  @override
+  String get offerAddBundle => 'Add bundle to cart';
+
+  @override
+  String get offerPreorders => 'Coming soon · pre-order';
+
+  @override
+  String offerReleases(String date) {
+    return 'Releases $date · ships on release day';
+  }
+
+  @override
+  String get offerPreorderNow => 'Pre-order';
+
+  @override
   String get cartTitle => 'Cart';
 
   @override
@@ -652,6 +684,9 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get cartUsedBooks => 'Used';
+
+  @override
+  String get cartBundle => 'Bundle';
 
   @override
   String get wishlistTitle => 'Wishlist';
