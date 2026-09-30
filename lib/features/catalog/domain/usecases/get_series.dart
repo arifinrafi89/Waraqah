@@ -9,11 +9,17 @@ class GetSeries extends UseCase<BookSeries?, String> {
   final BookExtrasRepository _repository;
 
   @override
-  Future<BookSeries?> call(String params) async {
-    final series = await _repository.series(params);
-    if (series == null) return null;
-    final ordered = [...series.entries]
-      ..sort((a, b) => a.position.compareTo(b.position));
-    return series.copyWith(entries: ordered);
-  }
+  Future<BookSeries?> call(String params) async =>
+      (await _repository.series(params))?.inOrder;
+}
+
+/// A series by its own id, in reading order, or `null`.
+class GetSeriesById extends UseCase<BookSeries?, String> {
+  GetSeriesById(this._repository);
+
+  final BookExtrasRepository _repository;
+
+  @override
+  Future<BookSeries?> call(String params) async =>
+      (await _repository.seriesById(params))?.inOrder;
 }

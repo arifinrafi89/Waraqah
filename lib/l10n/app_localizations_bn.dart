@@ -469,7 +469,10 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
-  String get bookSeriesNotYet => 'এখনো ওয়ারাকাহতে নেই';
+  String get seriesOpen => 'সিরিজ দেখুন';
+
+  @override
+  String get bookSeriesNotYet => 'এখনো স্টোরে নেই';
 
   @override
   String get bookSeriesNotYetLong => 'এই বইটি এখনো ওয়ারাকাহতে বিক্রি হয় না।';

@@ -67,11 +67,19 @@ abstract final class SeriesFixtures {
   static BookSeriesModel? forBook(String bookId) =>
       all.where((s) => s.entries.any((e) => e.bookId == bookId)).firstOrNull;
 
+  static BookSeriesModel? byId(String id) =>
+      all.where((s) => s.id == id).firstOrNull;
+
   /// [forBook] as JSON with each entry's cover from the catalog, or `null`.
-  static Object? jsonForBook(String bookId) => forBook(bookId)
+  static Object? jsonForBook(String bookId) => json(forBook(bookId));
+
+  /// [byId] as JSON with each entry's cover from the catalog, or `null`.
+  static Object? jsonForId(String id) => json(byId(id));
+
+  static Object? json(BookSeriesModel? series) => series
       ?.copyWith(
         entries: [
-          for (final entry in forBook(bookId)!.entries)
+          for (final entry in series.entries)
             entry.copyWith(
               coverSeed:
                   BookFixtures.all

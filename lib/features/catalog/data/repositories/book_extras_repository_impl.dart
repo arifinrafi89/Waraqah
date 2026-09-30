@@ -13,6 +13,7 @@ class BookExtrasRepositoryImpl implements BookExtrasRepository {
   final BookExtrasSource _source;
   final _looks = TtlCache<LookInside?>(ttl: const Duration(minutes: 30));
   final _series = TtlCache<BookSeries?>(ttl: const Duration(minutes: 30));
+  final _seriesById = TtlCache<BookSeries?>(ttl: const Duration(minutes: 30));
 
   @override
   Future<LookInside?> lookInside(String bookId) => _looks.resolve(
@@ -29,5 +30,11 @@ class BookExtrasRepositoryImpl implements BookExtrasRepository {
   Future<BookSeries?> series(String bookId) => _series.resolve(
     bookId,
     () async => (await _source.series(bookId))?.toEntity(),
+  );
+
+  @override
+  Future<BookSeries?> seriesById(String id) => _seriesById.resolve(
+    id,
+    () async => (await _source.seriesById(id))?.toEntity(),
   );
 }

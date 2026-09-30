@@ -9,6 +9,7 @@ import 'presentation/pages/look_inside_page.dart';
 import 'presentation/pages/publisher_page.dart';
 import 'presentation/pages/questions_page.dart';
 import 'presentation/pages/section_page.dart';
+import 'presentation/pages/series_page.dart';
 
 abstract final class CatalogRoutes {
   static const String catalog = '/catalog';
@@ -33,6 +34,11 @@ abstract final class CatalogRoutes {
 
   /// A Publisher's page, inside the Catalog tab so the bottom nav stays.
   static String publisherFor(String id) => '/catalog/publisher/$id';
+
+  static const String series = '/catalog/series/:id';
+
+  /// A Series' page, inside the Catalog tab so the bottom nav stays.
+  static String seriesFor(String id) => '/catalog/series/$id';
 
   static const String bookDetail = '/catalog/book/:id';
 
@@ -103,6 +109,11 @@ abstract final class CatalogRoutes {
             path: 'publisher/:id',
             builder: (_, state) =>
                 PublisherPage(publisherId: state.pathParameters['id']!),
+          ),
+          GoRoute(
+            path: 'series/:id',
+            builder: (_, state) =>
+                SeriesPage(seriesId: state.pathParameters['id']!),
           ),
         ],
       ),

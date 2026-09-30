@@ -57,7 +57,7 @@ void main() {
     await _scrollTo(tester, find.text('Robert Langdon'));
 
     expect(find.text('Book 2 of 5'), findsOneWidget);
-    expect(find.text('Not in Waraqah yet'), findsNWidgets(4));
+    expect(find.text('Not in store yet'), findsNWidgets(4));
 
     await tester.ensureVisible(find.text('Angels & Demons').last);
     await settle(tester);

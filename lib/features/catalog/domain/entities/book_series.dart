@@ -28,5 +28,9 @@ extension BookSeriesX on BookSeries {
   int? positionOf(String bookId) =>
       entries.where((e) => e.bookId == bookId).firstOrNull?.position;
 
+  BookSeries get inOrder => copyWith(
+    entries: [...entries]..sort((a, b) => a.position.compareTo(b.position)),
+  );
+
   int get inStore => entries.where((e) => e.bookId != null).length;
 }

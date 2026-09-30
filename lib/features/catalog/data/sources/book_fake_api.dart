@@ -28,6 +28,9 @@ abstract final class BookFakeApi {
   /// The series a book is in, in reading order: `?id=<bookId>`, or `null`.
   static const String series = '/books/series';
 
+  /// One Series: `?id=<seriesId>`, or `null` when unknown.
+  static const String seriesDetail = '/series/detail';
+
   /// A Section's Categories: `?section=<section>`.
   static const String categories = '/categories';
 
@@ -49,6 +52,7 @@ abstract final class BookFakeApi {
     usedOptions: _usedOptions,
     lookInside: (options) => LookInsideFixtures.byBook[_id(options)]?.toJson(),
     series: (options) => SeriesFixtures.jsonForBook(_id(options)),
+    seriesDetail: (options) => SeriesFixtures.jsonForId(_id(options)),
     categories: (options) => CategoryFixtures.forSection(
       options.queryParameters['section'] as String?,
     ),

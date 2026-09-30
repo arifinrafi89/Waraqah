@@ -489,7 +489,10 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
-  String get bookSeriesNotYet => 'Not in Waraqah yet';
+  String get seriesOpen => 'View series';
+
+  @override
+  String get bookSeriesNotYet => 'Not in store yet';
 
   @override
   String get bookSeriesNotYetLong => 'Waraqah doesn\'t sell this one yet.';

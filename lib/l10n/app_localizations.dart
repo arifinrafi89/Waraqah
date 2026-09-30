@@ -949,10 +949,16 @@ abstract class AppL10n {
   /// **'Book {position} of {total}'**
   String bookSeriesPosition(int position, int total);
 
+  /// No description provided for @seriesOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'View series'**
+  String get seriesOpen;
+
   /// No description provided for @bookSeriesNotYet.
   ///
   /// In en, this message translates to:
-  /// **'Not in Waraqah yet'**
+  /// **'Not in store yet'**
   String get bookSeriesNotYet;
 
   /// No description provided for @bookSeriesNotYetLong.

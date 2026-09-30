@@ -9,6 +9,9 @@ abstract interface class BookExtrasRepository {
   /// `null` when the book isn't part of a series.
   Future<BookSeries?> series(String bookId);
 
+  /// `null` when [id] is not a known series.
+  Future<BookSeries?> seriesById(String id);
+
   /// Each Edition's lowest price in the last 30 days, by Edition id.
   Future<Map<String, int>> priceLows(String bookId);
 }
