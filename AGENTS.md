@@ -207,7 +207,10 @@ Use these words in code, tests and PRs. Don't drift to the "avoid" words.
 | **Format** | paperback, hardcover or eBook | binding |
 | **Translation** | An Edition in a language other than the Book's original. Not a separate Book. | |
 | **Section** | One of the 8 fixed top-level shelves | department, genre |
-| **Category** | A group of Books inside one Section | subcategory |
+| **Category** | A group of Books inside one Section, with an English and a Bangla name. Staff manage the list. | subcategory |
+| **Author** | The person who wrote a Book. A Book has exactly one Author for now. | writer |
+| **Publisher** | The company that published a Book. A Book has exactly one Publisher. | brand, prokashoni |
+| **Series** | Books meant to be read in order. May list titles Waraqah doesn't sell yet. | collection (that's an editor's pick) |
 | **From-price** | Price shown before an Edition is chosen: the cheapest orderable Edition (`book.fromPriceBdt`) | lowest vendor price |
 | **List price** | An Edition's price before discount (`listPriceBdt`) | MRP, original price |
 | **Stock / Pre-order** | Copies Waraqah can ship now / not released yet but orderable | |
