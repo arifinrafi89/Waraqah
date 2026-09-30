@@ -86,6 +86,7 @@ abstract final class OrderFixtures {
       deliveryFeeBdt: 60,
       discountBdt: 0,
       totalBdt: subtotal + 60,
+      pointsEarned: subtotal ~/ 100,
     );
   }
 }

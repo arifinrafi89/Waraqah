@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import '../../../cart/data/models/cart_model.dart';
 import '../../../cart/data/sources/cart_fake_store.dart';
 import '../../../cart/domain/entities/cart.dart';
+import '../../../loyalty/data/sources/points_fake_store.dart';
 import '../../../orders/data/sources/order_fake_store.dart';
 import '../../domain/entities/checkout_totals.dart';
 import '../../domain/entities/payment_method.dart';
@@ -16,7 +17,8 @@ import 'coupon_fake_store.dart';
 import 'placed_order.dart';
 
 /// Checkout's fake endpoints, merged into `FakeApiInterceptor` by
-/// `app/fake_api_routes.dart`, sharing the fake cart, orders and coupons.
+/// `app/fake_api_routes.dart`, sharing the fake cart, orders, coupons and
+/// points.
 abstract final class CheckoutFakeApi {
   static const String addresses = '/addresses';
 
@@ -32,6 +34,7 @@ abstract final class CheckoutFakeApi {
     CartFakeStore cart,
     OrderFakeStore orders,
     CouponFakeStore coupons,
+    PointsFakeStore points,
   ) {
     return {
       addresses: (_) => [
@@ -54,14 +57,23 @@ abstract final class CheckoutFakeApi {
           coupon: coupons
               .usable(body['couponCode'] as String? ?? '')
               ?.toEntity(),
+          pointsBalance: points.balance,
+          usePoints: body['usePoints'] == true,
         );
+        final number = orders.nextNumber();
         final order = placedOrder(
-          number: orders.nextNumber(),
+          number: number,
           at: orders.now(),
           cart: lines,
           address: address,
           totals: totals,
           payment: PaymentMethod.values.byName(body['payment'] as String),
+          pointsUsed: points.spend(
+            number,
+            totals.pointsDiscountBdt,
+            booksBdt: totals.subtotalBdt - totals.couponOnBooksBdt,
+          ),
+          pointsEarned: points.earn(number, totals.booksPaidBdt),
         );
         orders.add(order);
         cart.clear();
@@ -73,6 +85,7 @@ abstract final class CheckoutFakeApi {
           needsDelivery: totals.needsDelivery,
           insideDhaka: address.district == 'Dhaka',
           hasPreorders: lines.lines.any((line) => line.isPreorder),
+          pointsEarned: order.pointsEarned,
         ).toJson();
       },
     };

@@ -55,7 +55,15 @@ class OrderInfoCard extends StatelessWidget {
               l10n.checkoutCouponDiscount,
               '-${Bdt.format(order.discountBdt)}',
             ),
+          if (order.pointsUsed > 0)
+            _row(
+              context,
+              l10n.checkoutPointsDiscount,
+              '-${Bdt.format(order.pointsUsed)}',
+            ),
           _row(context, l10n.checkoutTotal, Bdt.format(order.totalBdt)),
+          if (order.pointsEarned > 0)
+            _row(context, l10n.orderPointsEarnedRow, '+${order.pointsEarned}'),
         ],
       ),
     );

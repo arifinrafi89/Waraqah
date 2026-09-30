@@ -1147,6 +1147,72 @@ abstract class AppL10n {
   /// **'Pre-order'**
   String get offerPreorderNow;
 
+  /// No description provided for @pointsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah points'**
+  String get pointsTitle;
+
+  /// No description provided for @pointsBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 point} other{{count} points}}'**
+  String pointsBalance(int count);
+
+  /// No description provided for @pointsRuleEarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn 1 point for every ৳100 you pay for books.'**
+  String get pointsRuleEarn;
+
+  /// No description provided for @pointsRuleSpend.
+  ///
+  /// In en, this message translates to:
+  /// **'Use them at checkout: 1 point = ৳1 off, once you have 50, for up to 20% of the books.'**
+  String get pointsRuleSpend;
+
+  /// No description provided for @pointsRuleCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelling an order gives back the points it used.'**
+  String get pointsRuleCancel;
+
+  /// No description provided for @pointsHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get pointsHistory;
+
+  /// No description provided for @pointsWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome bonus'**
+  String get pointsWelcome;
+
+  /// No description provided for @pointsEarnedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Earned on {order}'**
+  String pointsEarnedOn(String order);
+
+  /// No description provided for @pointsSpentOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Used on {order}'**
+  String pointsSpentOn(String order);
+
+  /// No description provided for @pointsRefunded.
+  ///
+  /// In en, this message translates to:
+  /// **'Given back · {order} cancelled'**
+  String pointsRefunded(String order);
+
+  /// No description provided for @pointsReversed.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken back · {order} cancelled'**
+  String pointsReversed(String order);
+
   /// No description provided for @cartTitle.
   ///
   /// In en, this message translates to:
@@ -1543,6 +1609,30 @@ abstract class AppL10n {
   /// **'Place order'**
   String get checkoutPlaceOrder;
 
+  /// No description provided for @checkoutUsePoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Use {count} points'**
+  String checkoutUsePoints(int count);
+
+  /// No description provided for @checkoutPointsSave.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} off · you have {balance}'**
+  String checkoutPointsSave(String amount, int balance);
+
+  /// No description provided for @checkoutPointsNotYet.
+  ///
+  /// In en, this message translates to:
+  /// **'You have {balance} points. You can use them once you have 50.'**
+  String checkoutPointsNotYet(int balance);
+
+  /// No description provided for @checkoutPointsDiscount.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get checkoutPointsDiscount;
+
   /// No description provided for @orderPlacedTitle.
   ///
   /// In en, this message translates to:
@@ -1572,6 +1662,18 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Continue shopping'**
   String get orderPlacedContinue;
+
+  /// No description provided for @orderPointsEarned.
+  ///
+  /// In en, this message translates to:
+  /// **'You earned {count} Waraqah points'**
+  String orderPointsEarned(int count);
+
+  /// No description provided for @orderPointsEarnedRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Points earned'**
+  String get orderPointsEarnedRow;
 
   /// No description provided for @orderTrack.
   ///

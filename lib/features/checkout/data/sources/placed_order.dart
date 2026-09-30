@@ -17,6 +17,8 @@ OrderModel placedOrder({
   required SavedAddress address,
   required CheckoutTotals totals,
   required PaymentMethod payment,
+  int pointsUsed = 0,
+  int pointsEarned = 0,
 }) => OrderModel(
   number: number,
   placedAt: at,
@@ -31,6 +33,8 @@ OrderModel placedOrder({
   discountBdt: totals.couponDiscountBdt,
   totalBdt: totals.totalBdt,
   needsDelivery: totals.needsDelivery,
+  pointsUsed: pointsUsed,
+  pointsEarned: pointsEarned,
 );
 
 OrderLineModel _line(CartLine line) => OrderLineModel(

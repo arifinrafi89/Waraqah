@@ -16,6 +16,7 @@ abstract class OrderReceiptModel with _$OrderReceiptModel {
     required bool needsDelivery,
     required bool insideDhaka,
     @Default(false) bool hasPreorders,
+    @Default(0) int pointsEarned,
   }) = _OrderReceiptModel;
 
   factory OrderReceiptModel.fromJson(Map<String, dynamic> json) =>
@@ -31,5 +32,6 @@ extension OrderReceiptModelX on OrderReceiptModel {
     needsDelivery: needsDelivery,
     insideDhaka: insideDhaka,
     hasPreorders: hasPreorders,
+    pointsEarned: pointsEarned,
   );
 }

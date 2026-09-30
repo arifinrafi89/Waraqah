@@ -36,6 +36,7 @@ class CheckoutRemoteSource {
         'addressId': request.addressId,
         'payment': request.payment.name,
         'couponCode': ?request.couponCode,
+        'usePoints': request.usePoints,
       },
     );
     final data = response.data;

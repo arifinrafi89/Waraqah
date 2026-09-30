@@ -24,6 +24,8 @@ _OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => _OrderModel(
   discountBdt: (json['discountBdt'] as num).toInt(),
   totalBdt: (json['totalBdt'] as num).toInt(),
   needsDelivery: json['needsDelivery'] as bool? ?? true,
+  pointsUsed: (json['pointsUsed'] as num?)?.toInt() ?? 0,
+  pointsEarned: (json['pointsEarned'] as num?)?.toInt() ?? 0,
   returnRequest: json['returnRequest'] == null
       ? null
       : ReturnRequestModel.fromJson(
@@ -46,6 +48,8 @@ Map<String, dynamic> _$OrderModelToJson(_OrderModel instance) =>
       'discountBdt': instance.discountBdt,
       'totalBdt': instance.totalBdt,
       'needsDelivery': instance.needsDelivery,
+      'pointsUsed': instance.pointsUsed,
+      'pointsEarned': instance.pointsEarned,
       'returnRequest': instance.returnRequest?.toJson(),
     };
 

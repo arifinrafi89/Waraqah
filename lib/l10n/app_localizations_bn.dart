@@ -581,6 +581,51 @@ class AppL10nBn extends AppL10n {
   String get offerPreorderNow => 'প্রি-অর্ডার করুন';
 
   @override
+  String get pointsTitle => 'ওয়ারাকাহ পয়েন্ট';
+
+  @override
+  String pointsBalance(int count) {
+    return '$count পয়েন্ট';
+  }
+
+  @override
+  String get pointsRuleEarn =>
+      'বইয়ের জন্য প্রতি ৳১০০ পরিশোধে ১ পয়েন্ট পাবেন।';
+
+  @override
+  String get pointsRuleSpend =>
+      'চেকআউটে ব্যবহার করুন: ১ পয়েন্ট = ৳১ ছাড়, ৫০ পয়েন্ট হলে, বইয়ের দামের সর্বোচ্চ ২০% পর্যন্ত।';
+
+  @override
+  String get pointsRuleCancel => 'অর্ডার বাতিল করলে ব্যবহৃত পয়েন্ট ফেরত আসে।';
+
+  @override
+  String get pointsHistory => 'ইতিহাস';
+
+  @override
+  String get pointsWelcome => 'স্বাগত বোনাস';
+
+  @override
+  String pointsEarnedOn(String order) {
+    return '$order অর্ডারে পাওয়া';
+  }
+
+  @override
+  String pointsSpentOn(String order) {
+    return '$order অর্ডারে ব্যবহার';
+  }
+
+  @override
+  String pointsRefunded(String order) {
+    return 'ফেরত · $order বাতিল';
+  }
+
+  @override
+  String pointsReversed(String order) {
+    return 'কেটে নেওয়া · $order বাতিল';
+  }
+
+  @override
   String get cartTitle => 'কার্ট';
 
   @override
@@ -799,6 +844,24 @@ class AppL10nBn extends AppL10n {
   String get checkoutPlaceOrder => 'অর্ডার করুন';
 
   @override
+  String checkoutUsePoints(int count) {
+    return '$count পয়েন্ট ব্যবহার করুন';
+  }
+
+  @override
+  String checkoutPointsSave(String amount, int balance) {
+    return '$amount ছাড় · আপনার আছে $balance';
+  }
+
+  @override
+  String checkoutPointsNotYet(int balance) {
+    return 'আপনার $balance পয়েন্ট আছে। ৫০ পয়েন্ট হলে ব্যবহার করতে পারবেন।';
+  }
+
+  @override
+  String get checkoutPointsDiscount => 'পয়েন্ট';
+
+  @override
   String get orderPlacedTitle => 'অর্ডার সম্পন্ন হয়েছে!';
 
   @override
@@ -818,6 +881,14 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get orderPlacedContinue => 'কেনাকাটা চালিয়ে যান';
+
+  @override
+  String orderPointsEarned(int count) {
+    return 'আপনি $countটি ওয়ারাকাহ পয়েন্ট পেয়েছেন';
+  }
+
+  @override
+  String get orderPointsEarnedRow => 'পাওয়া পয়েন্ট';
 
   @override
   String get orderTrack => 'অর্ডার ট্র্যাক করুন';

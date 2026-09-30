@@ -42,6 +42,12 @@ class OrderSummaryCard extends StatelessWidget {
               '-${Bdt.format(totals.couponDiscountBdt)}',
               color: palette.accent,
             ),
+          if (totals.pointsDiscountBdt > 0)
+            _Line(
+              l10n.checkoutPointsDiscount,
+              '-${Bdt.format(totals.pointsDiscountBdt)}',
+              color: palette.accent,
+            ),
           Divider(height: Insets.sm, color: palette.border),
           _Line(l10n.checkoutTotal, Bdt.format(totals.totalBdt), isTotal: true),
         ],

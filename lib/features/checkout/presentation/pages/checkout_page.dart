@@ -20,6 +20,7 @@ import '../widgets/delivery_card.dart';
 import '../widgets/order_summary_card.dart';
 import '../widgets/payment_picker.dart';
 import '../widgets/place_order_bar.dart';
+import '../widgets/points_card.dart';
 
 /// `/checkout`: address, delivery, payment, then Place order. One page with
 /// numbered steps, so the reader sees the whole order before paying.
@@ -103,6 +104,8 @@ class _Steps extends ConsumerWidget {
         const PaymentPicker(),
         gap,
         const CouponField(),
+        const SizedBox(height: Insets.md),
+        const PointsCard(),
         const SizedBox(height: Insets.md),
         if (totals != null)
           OrderSummaryCard(totals: totals, itemCount: cart.itemCount),
