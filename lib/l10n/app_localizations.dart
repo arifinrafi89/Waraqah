@@ -888,6 +888,48 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'This section is being built. Check back soon.'**
   String get adminComingSoon;
+
+  /// No description provided for @moderationCenterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Moderation Center'**
+  String get moderationCenterTitle;
+
+  /// No description provided for @moderationTabListings.
+  ///
+  /// In en, this message translates to:
+  /// **'Listings to approve'**
+  String get moderationTabListings;
+
+  /// No description provided for @moderationTabReports.
+  ///
+  /// In en, this message translates to:
+  /// **'Reports'**
+  String get moderationTabReports;
+
+  /// No description provided for @moderationTabDisputes.
+  ///
+  /// In en, this message translates to:
+  /// **'Disputes'**
+  String get moderationTabDisputes;
+
+  /// No description provided for @moderationEmptyListings.
+  ///
+  /// In en, this message translates to:
+  /// **'No listings need approval.'**
+  String get moderationEmptyListings;
+
+  /// No description provided for @moderationEmptyReports.
+  ///
+  /// In en, this message translates to:
+  /// **'No pending reports.'**
+  String get moderationEmptyReports;
+
+  /// No description provided for @moderationEmptyDisputes.
+  ///
+  /// In en, this message translates to:
+  /// **'No active disputes.'**
+  String get moderationEmptyDisputes;
 }
 
 class _AppL10nDelegate extends LocalizationsDelegate<AppL10n> {

@@ -135,5 +135,12 @@
   "adminOrdersHint": "অর্ডার, রিটার্ন, রিফান্ড আর কুপন",
   "adminModeration": "মডারেশন",
   "adminModerationHint": "পুরোনো বইয়ের লিস্টিং আর রিপোর্ট যাচাই",
-  "adminComingSoon": "এই অংশটি তৈরি হচ্ছে। শীঘ্রই আবার দেখুন।"
+  "adminComingSoon": "এই অংশটি তৈরি হচ্ছে। শীঘ্রই আবার দেখুন।",
+  "moderationCenterTitle": "মডারেশন সেন্টার",
+  "moderationTabListings": "অ্যাপ্রুভালের জন্য লিস্টিং",
+  "moderationTabReports": "রিপোর্ট",
+  "moderationTabDisputes": "ডিসপিউট",
+  "moderationEmptyListings": "অ্যাপ্রুভালের জন্য কোনো লিস্টিং নেই।",
+  "moderationEmptyReports": "কোনো পেন্ডিং রিপোর্ট নেই।",
+  "moderationEmptyDisputes": "কোনো অ্যাক্টিভ ডিসপিউট নেই।"
 }
