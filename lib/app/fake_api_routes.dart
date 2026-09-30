@@ -11,8 +11,8 @@ import '../features/checkout/data/sources/coupon_fake_store.dart';
 import '../features/home/data/sources/ayah_fake_api.dart';
 import '../features/loyalty/data/sources/points_fake_api.dart';
 import '../features/loyalty/data/sources/points_fake_store.dart';
-import '../features/offers/data/sources/offers_fake_api.dart';
-import '../features/offers/data/sources/offers_fake_store.dart';
+import '../features/deals/data/sources/deals_fake_api.dart';
+import '../features/deals/data/sources/deals_fake_store.dart';
 import '../features/orders/data/sources/order_admin_fake_api.dart';
 import '../features/orders/data/sources/order_fake_api.dart';
 import '../features/orders/data/sources/order_fake_store.dart';
@@ -26,8 +26,8 @@ abstract final class FakeApiRoutes {
     // Checkout turns the cart into an order and spends and earns points, the
     // cart prices flash sales and bundles, and staff change orders and
     // coupons, so these are shared.
-    final offers = OffersFakeStore();
-    final cart = CartFakeStore(offers: offers);
+    final deals = DealsFakeStore();
+    final cart = CartFakeStore(deals: deals);
     final orders = OrderFakeStore();
     final coupons = CouponFakeStore();
     final points = PointsFakeStore();
@@ -44,7 +44,7 @@ abstract final class FakeApiRoutes {
       ...PointsFakeApi.routes(points),
       ...OrderAdminFakeApi.routes(orders),
       ...CouponAdminFakeApi.routes(coupons),
-      ...OffersFakeApi.routes(offers),
+      ...DealsFakeApi.routes(deals),
     });
   }
 }

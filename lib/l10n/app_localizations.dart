@@ -1087,65 +1087,65 @@ abstract class AppL10n {
   /// **'No alerts yet. Tap Notify me on a sold-out book, or the bell on a wishlist book.'**
   String get alertEmpty;
 
-  /// No description provided for @offerTitle.
+  /// No description provided for @dealTitle.
   ///
   /// In en, this message translates to:
-  /// **'Offers'**
-  String get offerTitle;
+  /// **'Deals'**
+  String get dealTitle;
 
-  /// No description provided for @offerFlashSale.
+  /// No description provided for @dealFlashSale.
   ///
   /// In en, this message translates to:
   /// **'Flash sale'**
-  String get offerFlashSale;
+  String get dealFlashSale;
 
-  /// No description provided for @offerFlashEndsIn.
+  /// No description provided for @dealFlashEndsIn.
   ///
   /// In en, this message translates to:
   /// **'Flash sale ends in'**
-  String get offerFlashEndsIn;
+  String get dealFlashEndsIn;
 
-  /// No description provided for @offerSeeAll.
+  /// No description provided for @dealSeeAll.
   ///
   /// In en, this message translates to:
-  /// **'See offers'**
-  String get offerSeeAll;
+  /// **'See deals'**
+  String get dealSeeAll;
 
-  /// No description provided for @offerBundles.
+  /// No description provided for @dealBundles.
   ///
   /// In en, this message translates to:
   /// **'Bundles'**
-  String get offerBundles;
+  String get dealBundles;
 
-  /// No description provided for @offerInBundle.
+  /// No description provided for @dealInBundle.
   ///
   /// In en, this message translates to:
   /// **'Buy it in a bundle'**
-  String get offerInBundle;
+  String get dealInBundle;
 
-  /// No description provided for @offerAddBundle.
+  /// No description provided for @dealAddBundle.
   ///
   /// In en, this message translates to:
   /// **'Add bundle to cart'**
-  String get offerAddBundle;
+  String get dealAddBundle;
 
-  /// No description provided for @offerPreorders.
+  /// No description provided for @dealPreorders.
   ///
   /// In en, this message translates to:
   /// **'Coming soon · pre-order'**
-  String get offerPreorders;
+  String get dealPreorders;
 
-  /// No description provided for @offerReleases.
+  /// No description provided for @dealReleases.
   ///
   /// In en, this message translates to:
   /// **'Releases {date} · ships on release day'**
-  String offerReleases(String date);
+  String dealReleases(String date);
 
-  /// No description provided for @offerPreorderNow.
+  /// No description provided for @dealPreorderNow.
   ///
   /// In en, this message translates to:
   /// **'Pre-order'**
-  String get offerPreorderNow;
+  String get dealPreorderNow;
 
   /// No description provided for @pointsTitle.
   ///

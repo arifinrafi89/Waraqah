@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/content_width.dart';
 import '../../../../core/widgets/fade_slide_in.dart';
-import '../../../offers/presentation/widgets/offers_banner.dart';
+import '../../../deals/presentation/widgets/deals_banner.dart';
 import '../widgets/auto_hide_header.dart';
 import '../widgets/ayah_section.dart';
 import '../widgets/bites_section.dart';
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(child: SizedBox(height: top)),
-          const _Box(OffersBanner()),
+          const _Box(DealsBanner()),
           const _Box(AyahSection()),
           const _Box(BitesSection(), step: 1),
           const NewBooksSection(),

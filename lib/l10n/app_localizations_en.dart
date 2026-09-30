@@ -575,36 +575,36 @@ class AppL10nEn extends AppL10n {
       'No alerts yet. Tap Notify me on a sold-out book, or the bell on a wishlist book.';
 
   @override
-  String get offerTitle => 'Offers';
+  String get dealTitle => 'Deals';
 
   @override
-  String get offerFlashSale => 'Flash sale';
+  String get dealFlashSale => 'Flash sale';
 
   @override
-  String get offerFlashEndsIn => 'Flash sale ends in';
+  String get dealFlashEndsIn => 'Flash sale ends in';
 
   @override
-  String get offerSeeAll => 'See offers';
+  String get dealSeeAll => 'See deals';
 
   @override
-  String get offerBundles => 'Bundles';
+  String get dealBundles => 'Bundles';
 
   @override
-  String get offerInBundle => 'Buy it in a bundle';
+  String get dealInBundle => 'Buy it in a bundle';
 
   @override
-  String get offerAddBundle => 'Add bundle to cart';
+  String get dealAddBundle => 'Add bundle to cart';
 
   @override
-  String get offerPreorders => 'Coming soon · pre-order';
+  String get dealPreorders => 'Coming soon · pre-order';
 
   @override
-  String offerReleases(String date) {
+  String dealReleases(String date) {
     return 'Releases $date · ships on release day';
   }
 
   @override
-  String get offerPreorderNow => 'Pre-order';
+  String get dealPreorderNow => 'Pre-order';
 
   @override
   String get pointsTitle => 'Waraqah points';
