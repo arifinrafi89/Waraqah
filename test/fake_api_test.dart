@@ -28,12 +28,12 @@ void main() {
         List<Book>? byCategory;
         container
             .read(bookRepositoryProvider)
-            .searchCatalog(category: 'Islamic Studies')
+            .searchCatalog(category: 'cat-islamic-studies')
             .then((books) => byCategory = books);
         async.elapse(const Duration(seconds: 1));
         expect(byCategory, isNotEmpty);
         expect(
-          byCategory!.every((b) => b.category == 'Islamic Studies'),
+          byCategory!.every((b) => b.categoryId == 'cat-islamic-studies'),
           isTrue,
         );
 

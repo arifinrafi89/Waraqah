@@ -2,7 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:waraqah/core/models/book.dart';
 import 'package:waraqah/core/models/edition.dart';
+import 'package:waraqah/features/catalog/data/sources/author_fixtures.dart';
 import 'package:waraqah/features/catalog/data/sources/book_fixtures.dart';
+import 'package:waraqah/features/catalog/data/sources/category_fixtures.dart';
+import 'package:waraqah/features/catalog/data/sources/publisher_fixtures.dart';
 
 Edition _ed(
   String id,
@@ -25,7 +28,9 @@ Book _book(List<Edition> editions) => Book(
   id: 'b',
   title: 'T',
   author: 'A',
-  category: 'C',
+  categoryId: 'cat-academic',
+  authorId: 'au-x',
+  publisherId: 'pub-x',
   section: Section.academic,
   originalLanguage: BookLanguage.english,
   editions: editions,
@@ -107,11 +112,24 @@ void main() {
     test('every Book has Editions, a Section, a Category and a language', () {
       for (final b in books) {
         expect(b.editions, isNotEmpty, reason: b.id);
-        expect(b.category, isNotEmpty, reason: b.id);
         expect(b.section, isNotNull, reason: b.id);
         expect(b.originalLanguage, isNotNull, reason: b.id);
       }
     });
+
+    test(
+      'every Book\'s Category, Author and Publisher exist, in its Section',
+      () {
+        final categories = {for (final c in CategoryFixtures.all) c.id: c};
+        final authors = AuthorFixtures.all.map((a) => a.id).toSet();
+        final publishers = PublisherFixtures.all.map((p) => p.id).toSet();
+        for (final b in books) {
+          expect(categories[b.categoryId]?.section, b.section, reason: b.id);
+          expect(authors, contains(b.authorId), reason: b.id);
+          expect(publishers, contains(b.publisherId), reason: b.id);
+        }
+      },
+    );
 
     test('Edition ids are unique across the catalog', () {
       final ids = editions.map((e) => e.id);

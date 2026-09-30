@@ -55,6 +55,7 @@ Map<String, dynamic> _$SeriesEntryModelToJson(_SeriesEntryModel instance) =>
 
 _BookSeriesModel _$BookSeriesModelFromJson(Map<String, dynamic> json) =>
     _BookSeriesModel(
+      id: json['id'] as String,
       name: json['name'] as String,
       entries: (json['entries'] as List<dynamic>)
           .map((e) => SeriesEntryModel.fromJson(e as Map<String, dynamic>))
@@ -63,6 +64,7 @@ _BookSeriesModel _$BookSeriesModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$BookSeriesModelToJson(_BookSeriesModel instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'entries': instance.entries.map((e) => e.toJson()).toList(),
     };

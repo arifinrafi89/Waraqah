@@ -19,7 +19,6 @@ abstract class BookDetails with _$BookDetails {
     @Default(<BookReview>[]) List<BookReview> reviews,
     String? description,
     int? pages,
-    String? publisher,
   }) = _BookDetails;
 
   factory BookDetails.fromJson(Map<String, dynamic> json) =>

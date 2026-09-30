@@ -6,6 +6,7 @@ import '../models/book_extras_model.dart';
 abstract final class SeriesFixtures {
   static const List<BookSeriesModel> all = [
     BookSeriesModel(
+      id: 'ser-harry-potter',
       name: 'Harry Potter',
       entries: [
         SeriesEntryModel(
@@ -22,6 +23,7 @@ abstract final class SeriesFixtures {
       ],
     ),
     BookSeriesModel(
+      id: 'ser-robert-langdon',
       name: 'Robert Langdon',
       entries: [
         SeriesEntryModel(position: 1, title: 'Angels & Demons'),
@@ -36,6 +38,7 @@ abstract final class SeriesFixtures {
       ],
     ),
     BookSeriesModel(
+      id: 'ser-sherlock-holmes',
       name: 'Sherlock Holmes novels',
       entries: [
         SeriesEntryModel(
@@ -49,6 +52,7 @@ abstract final class SeriesFixtures {
       ],
     ),
     BookSeriesModel(
+      id: 'ser-middle-earth',
       name: 'Middle-earth',
       entries: [
         SeriesEntryModel(position: 1, title: 'The Hobbit', bookId: 'bk-hobbit'),

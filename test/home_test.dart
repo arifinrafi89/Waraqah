@@ -44,7 +44,9 @@ Book _book(
     id: id,
     title: id,
     author: 'Author',
-    category: 'C',
+    categoryId: 'cat-academic',
+    authorId: 'au-x',
+    publisherId: 'pub-x',
     section: Section.academic,
     originalLanguage: BookLanguage.english,
     editions: [

@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'book_details_fixtures.dart';
 import 'book_fixtures.dart';
 import 'look_inside_fixtures.dart';
+import 'publisher_fixtures.dart';
 import 'series_fixtures.dart';
 import 'used_options_fixtures.dart';
 
@@ -11,7 +12,7 @@ import 'used_options_fixtures.dart';
 abstract final class BookFakeApi {
   static const String books = '/books';
 
-  /// One book's summary, page count, publisher and reviews: `?id=<bookId>`.
+  /// One book's summary, page count and reviews: `?id=<bookId>`.
   /// Answers `null` when there's nothing extra for that book.
   static const String bookDetails = '/books/details';
 
@@ -25,6 +26,9 @@ abstract final class BookFakeApi {
   /// The series a book is in, in reading order: `?id=<bookId>`, or `null`.
   static const String series = '/books/series';
 
+  /// One Publisher: `?id=<publisherId>`, or `null` when unknown.
+  static const String publisher = '/publishers/detail';
+
   /// Each Edition's lowest price in the last 30 days: `?id=<bookId>`.
   static const String priceLows = '/books/price-lows';
 
@@ -37,6 +41,10 @@ abstract final class BookFakeApi {
     usedOptions: _usedOptions,
     lookInside: (options) => LookInsideFixtures.byBook[_id(options)]?.toJson(),
     series: _series,
+    publisher: (options) => PublisherFixtures.all
+        .where((p) => p.id == _id(options))
+        .firstOrNull
+        ?.toJson(),
     priceLows: (options) => {
       for (final book in BookFixtures.all.where((b) => b.id == _id(options)))
         for (final e in book.editions)
@@ -86,11 +94,7 @@ abstract final class BookFakeApi {
         .trim()
         .toLowerCase();
     final matches = BookFixtures.all.where((book) {
-      final matchesCategory =
-          category == null ||
-          book.category == category ||
-          // ponytail: the Academic chip is a Section now; ticket 2 replaces the chips.
-          book.section.name == category.toLowerCase();
+      final matchesCategory = category == null || book.categoryId == category;
       final matchesQuery =
           query.isEmpty ||
           book.title.toLowerCase().contains(query) ||

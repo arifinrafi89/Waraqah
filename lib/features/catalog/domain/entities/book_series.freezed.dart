@@ -288,7 +288,7 @@ as int,
 /// @nodoc
 mixin _$BookSeries {
 
- String get name; List<SeriesEntry> get entries;
+ String get id; String get name; List<SeriesEntry> get entries;
 /// Create a copy of BookSeries
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -300,20 +300,20 @@ $BookSeriesCopyWith<BookSeries> get copyWith => _$BookSeriesCopyWithImpl<BookSer
 @override
 bool operator ==(Object other) {
   final _this = this as BookSeries;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BookSeries&&(identical(other.name, _this.name) || other.name == _this.name)&&const DeepCollectionEquality().equals(other.entries, _this.entries));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BookSeries&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&const DeepCollectionEquality().equals(other.entries, _this.entries));
 }
 
 
 @override
 int get hashCode {
   final _this = this as BookSeries;
-  return Object.hash(runtimeType,_this.name,const DeepCollectionEquality().hash(_this.entries));
+  return Object.hash(runtimeType,_this.id,_this.name,const DeepCollectionEquality().hash(_this.entries));
 }
 
 @override
 String toString() {
   final _this = this as BookSeries;
-  return 'BookSeries(name: ${_this.name}, entries: ${_this.entries})';
+  return 'BookSeries(id: ${_this.id}, name: ${_this.name}, entries: ${_this.entries})';
 }
 
 
@@ -324,7 +324,7 @@ abstract mixin class $BookSeriesCopyWith<$Res>  {
   factory $BookSeriesCopyWith(BookSeries value, $Res Function(BookSeries) _then) = _$BookSeriesCopyWithImpl;
 @useResult
 $Res call({
- String name, List<SeriesEntry> entries
+ String id, String name, List<SeriesEntry> entries
 });
 
 
@@ -341,9 +341,10 @@ class _$BookSeriesCopyWithImpl<$Res>
 
 /// Create a copy of BookSeries
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? entries = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? entries = null,}) {
   return _then(BookSeries(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,entries: null == entries ? _self.entries : entries // ignore: cast_nullable_to_non_nullable
 as List<SeriesEntry>,
   ));
@@ -430,10 +431,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  List<SeriesEntry> entries)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  List<SeriesEntry> entries)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BookSeries() when $default != null:
-return $default(_that.name,_that.entries);case _:
+return $default(_that.id,_that.name,_that.entries);case _:
   return orElse();
 
 }
@@ -451,10 +452,10 @@ return $default(_that.name,_that.entries);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  List<SeriesEntry> entries)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  List<SeriesEntry> entries)  $default,) {final _that = this;
 switch (_that) {
 case _BookSeries():
-return $default(_that.name,_that.entries);case _:
+return $default(_that.id,_that.name,_that.entries);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -471,10 +472,10 @@ return $default(_that.name,_that.entries);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  List<SeriesEntry> entries)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  List<SeriesEntry> entries)?  $default,) {final _that = this;
 switch (_that) {
 case _BookSeries() when $default != null:
-return $default(_that.name,_that.entries);case _:
+return $default(_that.id,_that.name,_that.entries);case _:
   return null;
 
 }
@@ -486,9 +487,10 @@ return $default(_that.name,_that.entries);case _:
 
 
 class _BookSeries implements BookSeries {
-  const _BookSeries({required this.name, required  List<SeriesEntry> entries}): _entries = entries;
+  const _BookSeries({required this.id, required this.name, required  List<SeriesEntry> entries}): _entries = entries;
   
 
+@override final  String id;
 @override final  String name;
  final  List<SeriesEntry> _entries;
 @override List<SeriesEntry> get entries {
@@ -508,18 +510,18 @@ _$BookSeriesCopyWith<_BookSeries> get copyWith => __$BookSeriesCopyWithImpl<_Boo
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BookSeries&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.entries, _entries));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BookSeries&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.entries, _entries));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,name,const DeepCollectionEquality().hash(_entries));
+    return Object.hash(runtimeType,id,name,const DeepCollectionEquality().hash(_entries));
 }
 
 @override
 String toString() {
-    return 'BookSeries(name: $name, entries: $entries)';
+    return 'BookSeries(id: $id, name: $name, entries: $entries)';
 }
 
 
@@ -530,7 +532,7 @@ abstract mixin class _$BookSeriesCopyWith<$Res> implements $BookSeriesCopyWith<$
   factory _$BookSeriesCopyWith(_BookSeries value, $Res Function(_BookSeries) _then) = __$BookSeriesCopyWithImpl;
 @override @useResult
 $Res call({
- String name, List<SeriesEntry> entries
+ String id, String name, List<SeriesEntry> entries
 });
 
 
@@ -547,9 +549,10 @@ class __$BookSeriesCopyWithImpl<$Res>
 
 /// Create a copy of BookSeries
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? entries = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? entries = null,}) {
   return _then(_BookSeries(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,entries: null == entries ? _self._entries : entries // ignore: cast_nullable_to_non_nullable
 as List<SeriesEntry>,
   ));

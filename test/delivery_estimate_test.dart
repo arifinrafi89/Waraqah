@@ -56,7 +56,9 @@ void main() {
       id: 'b1',
       title: 'T',
       author: 'A',
-      category: 'C',
+      categoryId: 'cat-academic',
+      authorId: 'au-x',
+      publisherId: 'pub-x',
       section: Section.literature,
       originalLanguage: BookLanguage.english,
       editions: [

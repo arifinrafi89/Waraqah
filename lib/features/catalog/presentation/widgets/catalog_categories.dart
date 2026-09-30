@@ -1,6 +1,6 @@
 import '../../../../l10n/app_localizations.dart';
 
-/// Maps the category pills to the `category` values stored on a [Book].
+/// Maps the category pills to the Category ids stored on a [Book].
 ///
 /// `null` is the "All" pill, which clears the filter.
 class CatalogCategories {
@@ -10,11 +10,11 @@ class CatalogCategories {
 
   static const List<String?> values = [
     null,
-    'Islamic Studies',
-    'Academic',
-    'Fiction',
-    'Self-Help',
-    'Business',
+    'cat-islamic-studies',
+    'cat-academic',
+    'cat-fiction',
+    'cat-self-help',
+    'cat-business',
   ];
 
   List<String> get labels => [

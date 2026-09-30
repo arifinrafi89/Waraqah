@@ -17,6 +17,7 @@ abstract class SeriesEntry with _$SeriesEntry {
 @freezed
 abstract class BookSeries with _$BookSeries {
   const factory BookSeries({
+    required String id,
     required String name,
     required List<SeriesEntry> entries,
   }) = _BookSeries;

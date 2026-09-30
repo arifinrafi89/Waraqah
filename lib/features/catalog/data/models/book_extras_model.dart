@@ -48,6 +48,7 @@ abstract class BookSeriesModel with _$BookSeriesModel {
   // ignore: invalid_annotation_target
   @JsonSerializable(explicitToJson: true)
   const factory BookSeriesModel({
+    required String id,
     required String name,
     required List<SeriesEntryModel> entries,
   }) = _BookSeriesModel;
@@ -67,6 +68,7 @@ extension LookInsideModelX on LookInsideModel {
 
 extension BookSeriesModelX on BookSeriesModel {
   BookSeries toEntity() => BookSeries(
+    id: id,
     name: name,
     entries: [
       for (final e in entries)
