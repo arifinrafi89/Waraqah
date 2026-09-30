@@ -46,6 +46,9 @@ class CartFakeStore {
 
   void remove(String lineId) => _lines.removeWhere((line) => line.id == lineId);
 
+  /// Placing an order empties the cart.
+  void clear() => _lines.clear();
+
   static CartLineModel? _editionLine(String editionId) {
     for (final book in BookFixtures.all) {
       for (final edition in book.editions) {

@@ -16,9 +16,11 @@ abstract final class CartFakeApi {
   /// Body: `{lineId}`.
   static const String remove = '/cart/remove';
 
-  /// A fresh, empty cart for each interceptor, so every test starts clean.
-  static Map<String, Object? Function(RequestOptions)> routes() {
-    final store = CartFakeStore();
+  /// Answers from [store], which checkout shares to turn the cart into an
+  /// order. A fresh store per interceptor, so every test starts clean.
+  static Map<String, Object? Function(RequestOptions)> routes(
+    CartFakeStore store,
+  ) {
     return {
       cart: (_) => store.toJson(),
       add: (options) {

@@ -12,15 +12,17 @@ sealed class DeliveryEstimate {
   /// - printed books take 1–2 days inside Dhaka, 3–5 days outside
   factory DeliveryEstimate.of(Edition edition, DeliveryArea area) {
     if (edition.format == BookFormat.ebook) return const InstantDownload();
-    if (edition.stock > 0) {
-      return switch (area) {
-        DeliveryArea.insideDhaka => const ShipsInDays(1, 2),
-        DeliveryArea.outsideDhaka => const ShipsInDays(3, 5),
-      };
-    }
+    if (edition.stock > 0) return printed(area);
     if (edition.isPreorder) return const ShipsOnRelease();
     return const Unavailable();
   }
+
+  /// How long a printed book in stock takes to reach [area]. Checkout uses
+  /// this for the whole order.
+  static ShipsInDays printed(DeliveryArea area) => switch (area) {
+    DeliveryArea.insideDhaka => const ShipsInDays(1, 2),
+    DeliveryArea.outsideDhaka => const ShipsInDays(3, 5),
+  };
 }
 
 final class InstantDownload extends DeliveryEstimate {

@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:waraqah/features/cart/cart_routes.dart';
 import 'package:waraqah/features/catalog/catalog_routes.dart';
+import 'package:waraqah/features/checkout/checkout_routes.dart';
 
 import 'helpers/app_harness.dart';
 
@@ -78,13 +78,13 @@ void main() {
     expect(pathOf(router), CartRoutes.cart);
   });
 
-  testWidgets('checkout says it is coming next', (tester) async {
-    await openApp(tester, _atomic);
+  testWidgets('checkout opens checkout for a signed-in reader', (tester) async {
+    final router = await openApp(tester, _atomic, role: 'reader');
     await tester.tap(find.text('Buy now'));
     await settle(tester);
 
     await tester.tap(find.text('Checkout'));
-    await tester.pump();
-    expect(find.byType(SnackBar), findsOneWidget);
+    await settle(tester);
+    expect(pathOf(router), CheckoutRoutes.checkout);
   });
 }

@@ -423,9 +423,6 @@ class AppL10nEn extends AppL10n {
   String get cartCheckout => 'Checkout';
 
   @override
-  String get cartCheckoutSoon => 'Checkout is coming next.';
-
-  @override
   String get cartAdded => 'Added to cart';
 
   @override
@@ -493,6 +490,135 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get wishlistBrowse => 'Browse books';
+
+  @override
+  String get checkoutTitle => 'Checkout';
+
+  @override
+  String get checkoutStepAddress => 'Delivery address';
+
+  @override
+  String get checkoutStepDelivery => 'Delivery';
+
+  @override
+  String get checkoutStepPayment => 'Payment';
+
+  @override
+  String get checkoutPayBkash => 'bKash';
+
+  @override
+  String get checkoutPayNagad => 'Nagad';
+
+  @override
+  String get checkoutPayCod => 'Cash on delivery';
+
+  @override
+  String get checkoutPayCard => 'Card';
+
+  @override
+  String get checkoutPayBkashNote => 'Pay from your bKash account';
+
+  @override
+  String get checkoutPayNagadNote => 'Pay from your Nagad account';
+
+  @override
+  String get checkoutPayCodNote => 'Pay in cash when the books arrive';
+
+  @override
+  String get checkoutPayCardNote => 'Visa, Mastercard or Amex';
+
+  @override
+  String get checkoutCodUnavailable => 'Not available for eBook-only orders';
+
+  @override
+  String get checkoutDemoNote =>
+      'Payments are simulated for now; no money moves.';
+
+  @override
+  String get checkoutEbooksOnly =>
+      'eBooks are ready to read as soon as you pay';
+
+  @override
+  String get checkoutFreeDelivery => 'Free delivery';
+
+  @override
+  String checkoutDeliveryFeeIs(String amount) {
+    return 'Delivery fee $amount';
+  }
+
+  @override
+  String checkoutFreeDeliveryFrom(String amount) {
+    return 'Free delivery on orders of $amount or more';
+  }
+
+  @override
+  String get checkoutCouponHint => 'Coupon code';
+
+  @override
+  String get checkoutApply => 'Apply';
+
+  @override
+  String get checkoutCouponNotFound => 'That code doesn\'t exist.';
+
+  @override
+  String checkoutCouponMinimum(String amount) {
+    return 'This code needs an order of $amount or more.';
+  }
+
+  @override
+  String checkoutCouponApplied(String code) {
+    return '$code applied';
+  }
+
+  @override
+  String get checkoutRemoveCoupon => 'Remove coupon';
+
+  @override
+  String checkoutItems(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '1 item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get checkoutDeliveryFee => 'Delivery fee';
+
+  @override
+  String get checkoutFree => 'Free';
+
+  @override
+  String get checkoutCouponDiscount => 'Coupon discount';
+
+  @override
+  String get checkoutTotal => 'Total';
+
+  @override
+  String get checkoutPlaceOrder => 'Place order';
+
+  @override
+  String get orderPlacedTitle => 'Order placed!';
+
+  @override
+  String orderPlacedNumber(String number) {
+    return 'Order $number';
+  }
+
+  @override
+  String orderPlacedPaid(String amount, String method) {
+    return 'Paid $amount with $method';
+  }
+
+  @override
+  String orderPlacedPayOnDelivery(String amount) {
+    return 'Pay $amount in cash when it arrives';
+  }
+
+  @override
+  String get orderPlacedContinue => 'Continue shopping';
 
   @override
   String get aiTitle => 'Reading Assistant';

@@ -402,9 +402,6 @@ class AppL10nBn extends AppL10n {
   String get cartCheckout => 'চেকআউট';
 
   @override
-  String get cartCheckoutSoon => 'চেকআউট শীঘ্রই আসছে।';
-
-  @override
   String get cartAdded => 'কার্টে যোগ হয়েছে';
 
   @override
@@ -466,6 +463,128 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get wishlistBrowse => 'বই দেখুন';
+
+  @override
+  String get checkoutTitle => 'চেকআউট';
+
+  @override
+  String get checkoutStepAddress => 'ডেলিভারির ঠিকানা';
+
+  @override
+  String get checkoutStepDelivery => 'ডেলিভারি';
+
+  @override
+  String get checkoutStepPayment => 'পেমেন্ট';
+
+  @override
+  String get checkoutPayBkash => 'বিকাশ';
+
+  @override
+  String get checkoutPayNagad => 'নগদ';
+
+  @override
+  String get checkoutPayCod => 'ক্যাশ অন ডেলিভারি';
+
+  @override
+  String get checkoutPayCard => 'কার্ড';
+
+  @override
+  String get checkoutPayBkashNote => 'আপনার বিকাশ অ্যাকাউন্ট থেকে পরিশোধ করুন';
+
+  @override
+  String get checkoutPayNagadNote => 'আপনার নগদ অ্যাকাউন্ট থেকে পরিশোধ করুন';
+
+  @override
+  String get checkoutPayCodNote => 'বই হাতে পেয়ে নগদে পরিশোধ করুন';
+
+  @override
+  String get checkoutPayCardNote => 'ভিসা, মাস্টারকার্ড বা অ্যামেক্স';
+
+  @override
+  String get checkoutCodUnavailable => 'শুধু ই-বুকের অর্ডারে প্রযোজ্য নয়';
+
+  @override
+  String get checkoutDemoNote =>
+      'আপাতত পেমেন্ট শুধু ডেমো; কোনো টাকা কাটা হবে না।';
+
+  @override
+  String get checkoutEbooksOnly => 'পরিশোধের সাথে সাথেই ই-বুক পড়া যাবে';
+
+  @override
+  String get checkoutFreeDelivery => 'ফ্রি ডেলিভারি';
+
+  @override
+  String checkoutDeliveryFeeIs(String amount) {
+    return 'ডেলিভারি চার্জ $amount';
+  }
+
+  @override
+  String checkoutFreeDeliveryFrom(String amount) {
+    return '$amount বা তার বেশি অর্ডারে ফ্রি ডেলিভারি';
+  }
+
+  @override
+  String get checkoutCouponHint => 'কুপন কোড';
+
+  @override
+  String get checkoutApply => 'প্রয়োগ';
+
+  @override
+  String get checkoutCouponNotFound => 'এই কোডটি পাওয়া যায়নি।';
+
+  @override
+  String checkoutCouponMinimum(String amount) {
+    return 'এই কোডের জন্য কমপক্ষে $amount অর্ডার লাগবে।';
+  }
+
+  @override
+  String checkoutCouponApplied(String code) {
+    return '$code প্রয়োগ হয়েছে';
+  }
+
+  @override
+  String get checkoutRemoveCoupon => 'কুপন সরান';
+
+  @override
+  String checkoutItems(int count) {
+    return '$countটি বই';
+  }
+
+  @override
+  String get checkoutDeliveryFee => 'ডেলিভারি চার্জ';
+
+  @override
+  String get checkoutFree => 'ফ্রি';
+
+  @override
+  String get checkoutCouponDiscount => 'কুপন ছাড়';
+
+  @override
+  String get checkoutTotal => 'মোট';
+
+  @override
+  String get checkoutPlaceOrder => 'অর্ডার করুন';
+
+  @override
+  String get orderPlacedTitle => 'অর্ডার সম্পন্ন হয়েছে!';
+
+  @override
+  String orderPlacedNumber(String number) {
+    return 'অর্ডার $number';
+  }
+
+  @override
+  String orderPlacedPaid(String amount, String method) {
+    return '$method দিয়ে $amount পরিশোধ হয়েছে';
+  }
+
+  @override
+  String orderPlacedPayOnDelivery(String amount) {
+    return 'বই হাতে পেয়ে নগদে $amount পরিশোধ করুন';
+  }
+
+  @override
+  String get orderPlacedContinue => 'কেনাকাটা চালিয়ে যান';
 
   @override
   String get aiTitle => 'রিডিং অ্যাসিস্ট্যান্ট';
