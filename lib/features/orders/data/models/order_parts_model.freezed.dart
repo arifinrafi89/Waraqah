@@ -870,4 +870,280 @@ as List<String>,
 
 }
 
+
+/// @nodoc
+mixin _$OrderGiftModel {
+
+ String get recipientName; String get message; bool get wrapped;
+/// Create a copy of OrderGiftModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OrderGiftModelCopyWith<OrderGiftModel> get copyWith => _$OrderGiftModelCopyWithImpl<OrderGiftModel>(this as OrderGiftModel, _$identity);
+
+  /// Serializes this OrderGiftModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  final _this = this as OrderGiftModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderGiftModel&&(identical(other.recipientName, _this.recipientName) || other.recipientName == _this.recipientName)&&(identical(other.message, _this.message) || other.message == _this.message)&&(identical(other.wrapped, _this.wrapped) || other.wrapped == _this.wrapped));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+  final _this = this as OrderGiftModel;
+  return Object.hash(runtimeType,_this.recipientName,_this.message,_this.wrapped);
+}
+
+@override
+String toString() {
+  final _this = this as OrderGiftModel;
+  return 'OrderGiftModel(recipientName: ${_this.recipientName}, message: ${_this.message}, wrapped: ${_this.wrapped})';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $OrderGiftModelCopyWith<$Res>  {
+  factory $OrderGiftModelCopyWith(OrderGiftModel value, $Res Function(OrderGiftModel) _then) = _$OrderGiftModelCopyWithImpl;
+@useResult
+$Res call({
+ String recipientName, String message, bool wrapped
+});
+
+
+
+
+}
+/// @nodoc
+class _$OrderGiftModelCopyWithImpl<$Res>
+    implements $OrderGiftModelCopyWith<$Res> {
+  _$OrderGiftModelCopyWithImpl(this._self, this._then);
+
+  final OrderGiftModel _self;
+  final $Res Function(OrderGiftModel) _then;
+
+/// Create a copy of OrderGiftModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? recipientName = null,Object? message = null,Object? wrapped = null,}) {
+  return _then(OrderGiftModel(
+recipientName: null == recipientName ? _self.recipientName : recipientName // ignore: cast_nullable_to_non_nullable
+as String,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,wrapped: null == wrapped ? _self.wrapped : wrapped // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [OrderGiftModel].
+extension OrderGiftModelPatterns on OrderGiftModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OrderGiftModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OrderGiftModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OrderGiftModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _OrderGiftModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OrderGiftModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OrderGiftModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String recipientName,  String message,  bool wrapped)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OrderGiftModel() when $default != null:
+return $default(_that.recipientName,_that.message,_that.wrapped);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String recipientName,  String message,  bool wrapped)  $default,) {final _that = this;
+switch (_that) {
+case _OrderGiftModel():
+return $default(_that.recipientName,_that.message,_that.wrapped);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String recipientName,  String message,  bool wrapped)?  $default,) {final _that = this;
+switch (_that) {
+case _OrderGiftModel() when $default != null:
+return $default(_that.recipientName,_that.message,_that.wrapped);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _OrderGiftModel implements OrderGiftModel {
+  const _OrderGiftModel({required this.recipientName, this.message = '', this.wrapped = false});
+  factory _OrderGiftModel.fromJson(Map<String, dynamic> json) => _$OrderGiftModelFromJson(json);
+
+@override final  String recipientName;
+@override@JsonKey() final  String message;
+@override@JsonKey() final  bool wrapped;
+
+/// Create a copy of OrderGiftModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OrderGiftModelCopyWith<_OrderGiftModel> get copyWith => __$OrderGiftModelCopyWithImpl<_OrderGiftModel>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$OrderGiftModelToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderGiftModel&&(identical(other.recipientName, recipientName) || other.recipientName == recipientName)&&(identical(other.message, message) || other.message == message)&&(identical(other.wrapped, wrapped) || other.wrapped == wrapped));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+    return Object.hash(runtimeType,recipientName,message,wrapped);
+}
+
+@override
+String toString() {
+    return 'OrderGiftModel(recipientName: $recipientName, message: $message, wrapped: $wrapped)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$OrderGiftModelCopyWith<$Res> implements $OrderGiftModelCopyWith<$Res> {
+  factory _$OrderGiftModelCopyWith(_OrderGiftModel value, $Res Function(_OrderGiftModel) _then) = __$OrderGiftModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String recipientName, String message, bool wrapped
+});
+
+
+
+
+}
+/// @nodoc
+class __$OrderGiftModelCopyWithImpl<$Res>
+    implements _$OrderGiftModelCopyWith<$Res> {
+  __$OrderGiftModelCopyWithImpl(this._self, this._then);
+
+  final _OrderGiftModel _self;
+  final $Res Function(_OrderGiftModel) _then;
+
+/// Create a copy of OrderGiftModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? recipientName = null,Object? message = null,Object? wrapped = null,}) {
+  return _then(_OrderGiftModel(
+recipientName: null == recipientName ? _self.recipientName : recipientName // ignore: cast_nullable_to_non_nullable
+as String,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,wrapped: null == wrapped ? _self.wrapped : wrapped // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
 // dart format on

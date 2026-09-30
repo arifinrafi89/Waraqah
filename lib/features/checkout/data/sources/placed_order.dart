@@ -9,7 +9,8 @@ import '../../domain/entities/payment_method.dart';
 import '../../domain/entities/saved_address.dart';
 
 /// The order the fake server saves when checkout places one: the cart's
-/// lines as they are now, the address, the payment and the totals.
+/// lines as they are now, the address, the payment, the totals and, for a
+/// gift, who it's for.
 OrderModel placedOrder({
   required String number,
   required DateTime at,
@@ -19,6 +20,7 @@ OrderModel placedOrder({
   required PaymentMethod payment,
   int pointsUsed = 0,
   int pointsEarned = 0,
+  OrderGiftModel? gift,
 }) => OrderModel(
   number: number,
   placedAt: at,
@@ -35,6 +37,8 @@ OrderModel placedOrder({
   needsDelivery: totals.needsDelivery,
   pointsUsed: pointsUsed,
   pointsEarned: pointsEarned,
+  gift: gift,
+  giftWrapBdt: totals.giftWrapBdt,
 );
 
 OrderLineModel _line(CartLine line) => OrderLineModel(

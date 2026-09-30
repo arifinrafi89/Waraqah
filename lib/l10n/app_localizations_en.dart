@@ -1008,6 +1008,45 @@ class AppL10nEn extends AppL10n {
   String get checkoutPointsDiscount => 'Points';
 
   @override
+  String get checkoutGiftTitle => 'Send as a gift';
+
+  @override
+  String get checkoutGiftNote =>
+      'It goes to the address above with your card, and no prices.';
+
+  @override
+  String get checkoutGiftRecipient => 'Who is it for?';
+
+  @override
+  String get checkoutGiftRecipientHint => 'Their name, for the card';
+
+  @override
+  String get checkoutGiftMessage => 'Message on the card (optional)';
+
+  @override
+  String get checkoutGiftWrap => 'Gift wrap';
+
+  @override
+  String orderGiftFor(String name) {
+    return 'Gift for $name';
+  }
+
+  @override
+  String get orderGiftWrapped => 'Gift-wrapped';
+
+  @override
+  String orderPlacedGiftFor(String name) {
+    return 'It\'s a gift for $name: we\'ll add your card and leave the prices out.';
+  }
+
+  @override
+  String get adminOrderGiftPack => 'Add the card and leave the prices out.';
+
+  @override
+  String get adminOrderGiftWrap =>
+      'Wrap it, add the card and leave the prices out.';
+
+  @override
   String get orderPlacedTitle => 'Order placed!';
 
   @override

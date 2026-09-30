@@ -17,6 +17,7 @@ import '../widgets/checkout_skeleton.dart';
 import '../widgets/checkout_step_header.dart';
 import '../widgets/coupon_field.dart';
 import '../widgets/delivery_card.dart';
+import '../widgets/gift_card.dart';
 import '../widgets/order_summary_card.dart';
 import '../widgets/payment_picker.dart';
 import '../widgets/place_order_bar.dart';
@@ -99,6 +100,7 @@ class _Steps extends ConsumerWidget {
         gap,
         CheckoutStepHeader(step: 2, title: l10n.checkoutStepDelivery),
         const DeliveryCard(),
+        const GiftCard(),
         gap,
         CheckoutStepHeader(step: 3, title: l10n.checkoutStepPayment),
         const PaymentPicker(),

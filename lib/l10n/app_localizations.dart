@@ -1771,6 +1771,72 @@ abstract class AppL10n {
   /// **'Points'**
   String get checkoutPointsDiscount;
 
+  /// No description provided for @checkoutGiftTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send as a gift'**
+  String get checkoutGiftTitle;
+
+  /// No description provided for @checkoutGiftNote.
+  ///
+  /// In en, this message translates to:
+  /// **'It goes to the address above with your card, and no prices.'**
+  String get checkoutGiftNote;
+
+  /// No description provided for @checkoutGiftRecipient.
+  ///
+  /// In en, this message translates to:
+  /// **'Who is it for?'**
+  String get checkoutGiftRecipient;
+
+  /// No description provided for @checkoutGiftRecipientHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Their name, for the card'**
+  String get checkoutGiftRecipientHint;
+
+  /// No description provided for @checkoutGiftMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Message on the card (optional)'**
+  String get checkoutGiftMessage;
+
+  /// No description provided for @checkoutGiftWrap.
+  ///
+  /// In en, this message translates to:
+  /// **'Gift wrap'**
+  String get checkoutGiftWrap;
+
+  /// No description provided for @orderGiftFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Gift for {name}'**
+  String orderGiftFor(String name);
+
+  /// No description provided for @orderGiftWrapped.
+  ///
+  /// In en, this message translates to:
+  /// **'Gift-wrapped'**
+  String get orderGiftWrapped;
+
+  /// No description provided for @orderPlacedGiftFor.
+  ///
+  /// In en, this message translates to:
+  /// **'It\'s a gift for {name}: we\'ll add your card and leave the prices out.'**
+  String orderPlacedGiftFor(String name);
+
+  /// No description provided for @adminOrderGiftPack.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the card and leave the prices out.'**
+  String get adminOrderGiftPack;
+
+  /// No description provided for @adminOrderGiftWrap.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrap it, add the card and leave the prices out.'**
+  String get adminOrderGiftWrap;
+
   /// No description provided for @orderPlacedTitle.
   ///
   /// In en, this message translates to:

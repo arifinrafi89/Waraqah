@@ -96,3 +96,17 @@ const _$ReturnStatusEnumMap = {
   ReturnStatus.approved: 'approved',
   ReturnStatus.rejected: 'rejected',
 };
+
+_OrderGiftModel _$OrderGiftModelFromJson(Map<String, dynamic> json) =>
+    _OrderGiftModel(
+      recipientName: json['recipientName'] as String,
+      message: json['message'] as String? ?? '',
+      wrapped: json['wrapped'] as bool? ?? false,
+    );
+
+Map<String, dynamic> _$OrderGiftModelToJson(_OrderGiftModel instance) =>
+    <String, dynamic>{
+      'recipientName': instance.recipientName,
+      'message': instance.message,
+      'wrapped': instance.wrapped,
+    };

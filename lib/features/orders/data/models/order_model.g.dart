@@ -31,6 +31,10 @@ _OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => _OrderModel(
       : ReturnRequestModel.fromJson(
           json['returnRequest'] as Map<String, dynamic>,
         ),
+  gift: json['gift'] == null
+      ? null
+      : OrderGiftModel.fromJson(json['gift'] as Map<String, dynamic>),
+  giftWrapBdt: (json['giftWrapBdt'] as num?)?.toInt() ?? 0,
 );
 
 Map<String, dynamic> _$OrderModelToJson(_OrderModel instance) =>
@@ -51,6 +55,8 @@ Map<String, dynamic> _$OrderModelToJson(_OrderModel instance) =>
       'pointsUsed': instance.pointsUsed,
       'pointsEarned': instance.pointsEarned,
       'returnRequest': instance.returnRequest?.toJson(),
+      'gift': instance.gift?.toJson(),
+      'giftWrapBdt': instance.giftWrapBdt,
     };
 
 const _$OrderStatusEnumMap = {

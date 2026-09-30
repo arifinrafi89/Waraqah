@@ -5,6 +5,7 @@ import '../../../cart/domain/entities/cart.dart';
 import '../../../catalog/domain/entities/delivery_area.dart';
 import '../../../loyalty/domain/entities/loyalty_rules.dart';
 import 'coupon.dart';
+import 'gift.dart';
 
 /// What an order costs, worked out the same way on the phone and on the
 /// server:
@@ -12,6 +13,7 @@ import 'coupon.dart';
 ///   charged at all when the order is only eBooks
 /// - a coupon only works once the subtotal reaches its minimum
 /// - points pay for part of the books (see `LoyaltyRules`), never delivery
+/// - gift wrap is ৳40, for orders that get delivered
 class CheckoutTotals {
   const CheckoutTotals({
     required this.subtotalBdt,
@@ -20,6 +22,7 @@ class CheckoutTotals {
     required this.needsDelivery,
     this.pointsDiscountBdt = 0,
     this.couponOnBooksBdt = 0,
+    this.giftWrapBdt = 0,
   });
 
   /// With [usePoints], as many of the [pointsBalance] points as the rules
@@ -30,6 +33,7 @@ class CheckoutTotals {
     Coupon? coupon,
     int pointsBalance = 0,
     bool usePoints = false,
+    bool giftWrap = false,
   }) {
     final subtotal = cart.subtotalBdt;
     final needsDelivery = cart.lines.any(
@@ -49,6 +53,7 @@ class CheckoutTotals {
       couponDiscountBdt: couponOff,
       needsDelivery: needsDelivery,
       couponOnBooksBdt: booksOff,
+      giftWrapBdt: giftWrap && needsDelivery ? Gift.wrapFeeBdt : 0,
       pointsDiscountBdt: usePoints
           ? LoyaltyRules.usable(
               balance: pointsBalance,
@@ -70,11 +75,17 @@ class CheckoutTotals {
   /// The part of the coupon that came off the books (not free delivery).
   final int couponOnBooksBdt;
 
+  final int giftWrapBdt;
+
   /// False when every item is an eBook.
   final bool needsDelivery;
 
   int get totalBdt =>
-      subtotalBdt + deliveryFeeBdt - couponDiscountBdt - pointsDiscountBdt;
+      subtotalBdt +
+      deliveryFeeBdt +
+      giftWrapBdt -
+      couponDiscountBdt -
+      pointsDiscountBdt;
 
   /// What's paid for the books themselves; points are earned on this.
   int get booksPaidBdt =>
