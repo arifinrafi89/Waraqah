@@ -1771,6 +1771,120 @@ abstract class AppL10n {
   /// **'Wrap it, add the card and leave the prices out.'**
   String get adminOrderGiftWrap;
 
+  /// No description provided for @giftDonateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Donate books'**
+  String get giftDonateTitle;
+
+  /// No description provided for @giftDonateIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Every place here is checked by Waraqah. Pick a book they need and we\'ll deliver it free, with your note.'**
+  String get giftDonateIntro;
+
+  /// No description provided for @giftDonateVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get giftDonateVerified;
+
+  /// No description provided for @giftDonateKind.
+  ///
+  /// In en, this message translates to:
+  /// **'{kind, select, library{Community library} school{School} madrasa{Madrasa} orphanage{Orphanage} other{Place}}'**
+  String giftDonateKind(String kind);
+
+  /// No description provided for @giftDonateProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{received} of {wanted} books received'**
+  String giftDonateProgress(int received, int wanted);
+
+  /// No description provided for @giftDonateNeeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Books they need'**
+  String get giftDonateNeeds;
+
+  /// No description provided for @giftDonateNeedProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{received} of {wanted} received'**
+  String giftDonateNeedProgress(int received, int wanted);
+
+  /// No description provided for @giftDonatePerCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} a copy'**
+  String giftDonatePerCopy(String amount);
+
+  /// No description provided for @giftDonateAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Donate'**
+  String get giftDonateAction;
+
+  /// No description provided for @giftDonateMet.
+  ///
+  /// In en, this message translates to:
+  /// **'All donated'**
+  String get giftDonateMet;
+
+  /// No description provided for @giftDonateFreeDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered free to {name}'**
+  String giftDonateFreeDelivery(String name);
+
+  /// No description provided for @giftDonateHowMany.
+  ///
+  /// In en, this message translates to:
+  /// **'How many copies?'**
+  String get giftDonateHowMany;
+
+  /// No description provided for @giftDonateFewer.
+  ///
+  /// In en, this message translates to:
+  /// **'One fewer'**
+  String get giftDonateFewer;
+
+  /// No description provided for @giftDonateMore.
+  ///
+  /// In en, this message translates to:
+  /// **'One more'**
+  String get giftDonateMore;
+
+  /// No description provided for @giftDonateNote.
+  ///
+  /// In en, this message translates to:
+  /// **'A note for them (optional)'**
+  String get giftDonateNote;
+
+  /// No description provided for @giftDonateConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Donate {amount}'**
+  String giftDonateConfirm(String amount);
+
+  /// No description provided for @giftDonateThanks.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you! Your books are on their way to {name}.'**
+  String giftDonateThanks(String name);
+
+  /// No description provided for @giftDonateMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find this place.'**
+  String get giftDonateMissing;
+
+  /// No description provided for @orderDonationTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Donation to {name}'**
+  String orderDonationTo(String name);
+
   /// No description provided for @orderPlacedTitle.
   ///
   /// In en, this message translates to:

@@ -59,7 +59,11 @@ class AdminOrderTile extends ConsumerWidget {
           if (order.gift case final gift?)
             Padding(
               padding: const EdgeInsets.only(top: Insets.sm),
-              child: OrderGiftNote(gift: gift, forStaff: true),
+              child: OrderGiftNote(
+                gift: gift,
+                forStaff: true,
+                isDonation: order.isDonation,
+              ),
             ),
           if (next != null)
             Padding(

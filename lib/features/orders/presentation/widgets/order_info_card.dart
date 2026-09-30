@@ -35,7 +35,7 @@ class OrderInfoCard extends StatelessWidget {
             Divider(height: Insets.md, color: palette.border),
           ],
           if (order.gift case final gift?) ...[
-            OrderGiftNote(gift: gift),
+            OrderGiftNote(gift: gift, isDonation: order.isDonation),
             Divider(height: Insets.md, color: palette.border),
           ],
           Text(l10n.checkoutStepPayment, style: faint),

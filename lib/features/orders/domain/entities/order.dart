@@ -34,6 +34,9 @@ abstract class Order with _$Order {
     /// Set when the order is a gift: pack it with the card, no prices.
     Gift? gift,
     @Default(0) int giftWrapBdt,
+
+    /// A donation to a verified place; [gift] says which.
+    @Default(false) bool isDonation,
   }) = _Order;
 }
 

@@ -1012,6 +1012,87 @@ class AppL10nEn extends AppL10n {
       'Wrap it, add the card and leave the prices out.';
 
   @override
+  String get giftDonateTitle => 'Donate books';
+
+  @override
+  String get giftDonateIntro =>
+      'Every place here is checked by Waraqah. Pick a book they need and we\'ll deliver it free, with your note.';
+
+  @override
+  String get giftDonateVerified => 'Verified';
+
+  @override
+  String giftDonateKind(String kind) {
+    String _temp0 = intl.Intl.selectLogic(kind, {
+      'library': 'Community library',
+      'school': 'School',
+      'madrasa': 'Madrasa',
+      'orphanage': 'Orphanage',
+      'other': 'Place',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String giftDonateProgress(int received, int wanted) {
+    return '$received of $wanted books received';
+  }
+
+  @override
+  String get giftDonateNeeds => 'Books they need';
+
+  @override
+  String giftDonateNeedProgress(int received, int wanted) {
+    return '$received of $wanted received';
+  }
+
+  @override
+  String giftDonatePerCopy(String amount) {
+    return '$amount a copy';
+  }
+
+  @override
+  String get giftDonateAction => 'Donate';
+
+  @override
+  String get giftDonateMet => 'All donated';
+
+  @override
+  String giftDonateFreeDelivery(String name) {
+    return 'Delivered free to $name';
+  }
+
+  @override
+  String get giftDonateHowMany => 'How many copies?';
+
+  @override
+  String get giftDonateFewer => 'One fewer';
+
+  @override
+  String get giftDonateMore => 'One more';
+
+  @override
+  String get giftDonateNote => 'A note for them (optional)';
+
+  @override
+  String giftDonateConfirm(String amount) {
+    return 'Donate $amount';
+  }
+
+  @override
+  String giftDonateThanks(String name) {
+    return 'Thank you! Your books are on their way to $name.';
+  }
+
+  @override
+  String get giftDonateMissing => 'We couldn\'t find this place.';
+
+  @override
+  String orderDonationTo(String name) {
+    return 'Donation to $name';
+  }
+
+  @override
   String get orderPlacedTitle => 'Order placed!';
 
   @override
