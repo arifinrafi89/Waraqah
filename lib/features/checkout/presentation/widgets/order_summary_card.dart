@@ -36,6 +36,8 @@ class OrderSummaryCard extends StatelessWidget {
                   ? l10n.checkoutFree
                   : Bdt.format(totals.deliveryFeeBdt),
             ),
+          if (totals.giftWrapBdt > 0)
+            _Line(l10n.checkoutGiftWrap, Bdt.format(totals.giftWrapBdt)),
           if (totals.couponDiscountBdt > 0)
             _Line(
               l10n.checkoutCouponDiscount,

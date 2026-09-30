@@ -37,6 +37,12 @@ class CheckoutRemoteSource {
         'payment': request.payment.name,
         'couponCode': ?request.couponCode,
         'usePoints': request.usePoints,
+        if (request.gift case final gift?)
+          'gift': {
+            'recipientName': gift.recipientName.trim(),
+            'message': gift.message.trim(),
+            'wrapped': gift.wrapped,
+          },
       },
     );
     final data = response.data;

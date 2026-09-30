@@ -9,6 +9,7 @@ import 'package:waraqah/features/catalog/catalog_routes.dart';
 import 'package:waraqah/features/catalog/domain/entities/delivery_area.dart';
 import 'package:waraqah/features/checkout/domain/entities/checkout_totals.dart';
 import 'package:waraqah/features/checkout/domain/entities/coupon.dart';
+import 'package:waraqah/features/checkout/presentation/widgets/points_card.dart';
 import 'package:waraqah/features/loyalty/domain/entities/loyalty_rules.dart';
 import 'package:waraqah/features/loyalty/loyalty_routes.dart';
 
@@ -29,6 +30,11 @@ Cart _cart(int price) => Cart(
       format: BookFormat.paperback,
     ),
   ],
+);
+
+final _pointsSwitch = find.descendant(
+  of: find.byType(PointsCard),
+  matching: find.byType(Switch),
 );
 
 void main() {
@@ -76,14 +82,14 @@ void main() {
     await settle(tester);
 
     await tester.dragUntilVisible(
-      find.byType(Switch),
+      _pointsSwitch,
       find.byType(ListView),
       const Offset(0, -200),
     );
-    await tester.ensureVisible(find.byType(Switch));
+    await tester.ensureVisible(_pointsSwitch);
     await tester.pump();
     expect(find.text('Use 118 points'), findsOneWidget);
-    await tester.tap(find.byType(Switch));
+    await tester.tap(_pointsSwitch);
     await tester.pump();
     // ৳590 + ৳60 delivery - ৳118 in points.
     expect(find.text('৳532'), findsWidgets);

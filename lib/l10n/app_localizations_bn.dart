@@ -908,6 +908,44 @@ class AppL10nBn extends AppL10n {
   String get checkoutPointsDiscount => 'পয়েন্ট';
 
   @override
+  String get checkoutGiftTitle => 'উপহার হিসেবে পাঠান';
+
+  @override
+  String get checkoutGiftNote =>
+      'উপরের ঠিকানায় যাবে, আপনার কার্ডসহ, দাম ছাড়া।';
+
+  @override
+  String get checkoutGiftRecipient => 'কার জন্য?';
+
+  @override
+  String get checkoutGiftRecipientHint => 'কার্ডে লেখার জন্য তার নাম';
+
+  @override
+  String get checkoutGiftMessage => 'কার্ডের বার্তা (ঐচ্ছিক)';
+
+  @override
+  String get checkoutGiftWrap => 'গিফট র‍্যাপ';
+
+  @override
+  String orderGiftFor(String name) {
+    return '$name-এর জন্য উপহার';
+  }
+
+  @override
+  String get orderGiftWrapped => 'গিফট র‍্যাপ করা';
+
+  @override
+  String orderPlacedGiftFor(String name) {
+    return 'এটি $name-এর জন্য উপহার: আমরা আপনার কার্ড দেব, দাম লিখব না।';
+  }
+
+  @override
+  String get adminOrderGiftPack => 'কার্ড দিন, দাম লিখবেন না।';
+
+  @override
+  String get adminOrderGiftWrap => 'র‍্যাপ করুন, কার্ড দিন, দাম লিখবেন না।';
+
+  @override
   String get orderPlacedTitle => 'অর্ডার সম্পন্ন হয়েছে!';
 
   @override

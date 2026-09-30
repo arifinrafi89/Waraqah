@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/models/edition.dart';
+import '../../../checkout/domain/entities/gift.dart';
 import '../../domain/entities/order_line.dart';
 import '../../domain/entities/order_return.dart';
 import '../../domain/entities/order_status.dart';
@@ -53,6 +54,23 @@ abstract class ReturnRequestModel with _$ReturnRequestModel {
 
   factory ReturnRequestModel.fromJson(Map<String, dynamic> json) =>
       _$ReturnRequestModelFromJson(json);
+}
+
+@freezed
+abstract class OrderGiftModel with _$OrderGiftModel {
+  const factory OrderGiftModel({
+    required String recipientName,
+    @Default('') String message,
+    @Default(false) bool wrapped,
+  }) = _OrderGiftModel;
+
+  factory OrderGiftModel.fromJson(Map<String, dynamic> json) =>
+      _$OrderGiftModelFromJson(json);
+}
+
+extension OrderGiftModelX on OrderGiftModel {
+  Gift toEntity() =>
+      Gift(recipientName: recipientName, message: message, wrapped: wrapped);
 }
 
 extension OrderLineModelX on OrderLineModel {

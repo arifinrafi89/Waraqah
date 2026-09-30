@@ -18,5 +18,8 @@ abstract class OrderReceipt with _$OrderReceipt {
     required bool insideDhaka,
     @Default(false) bool hasPreorders,
     @Default(0) int pointsEarned,
+
+    /// Who the order is a gift for, if it is one.
+    String? giftFor,
   }) = _OrderReceipt;
 }

@@ -17,6 +17,7 @@ import '../../domain/repositories/checkout_repository.dart';
 import '../../domain/usecases/apply_coupon.dart';
 import '../../domain/usecases/get_addresses.dart';
 import '../../domain/usecases/place_order.dart';
+import 'gift_providers.dart';
 
 final checkoutRepositoryProvider = Provider<CheckoutRepository>(
   (ref) => CheckoutRepositoryImpl(CheckoutRemoteSource(ref.watch(dioProvider))),
@@ -95,6 +96,7 @@ final checkoutTotalsProvider = Provider<CheckoutTotals?>((ref) {
     coupon: ref.watch(couponProvider).value,
     pointsBalance: ref.watch(pointsProvider).value?.balance ?? 0,
     usePoints: ref.watch(usePointsProvider),
+    giftWrap: ref.watch(giftProvider)?.wrapped ?? false,
   );
 });
 

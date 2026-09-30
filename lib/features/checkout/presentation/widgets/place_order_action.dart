@@ -9,14 +9,17 @@ import '../../checkout_routes.dart';
 import '../../domain/entities/payment_method.dart';
 import '../../domain/repositories/checkout_repository.dart';
 import '../providers/checkout_providers.dart';
+import '../providers/gift_providers.dart';
 
 extension PlaceOrderAction on WidgetRef {
-  /// Cash on delivery needs something to deliver.
+  /// Cash on delivery needs something to deliver; a gift needs a name.
   bool get canPlaceOrder {
     final totals = watch(checkoutTotalsProvider);
     final payment = watch(paymentMethodProvider);
-    return totals != null &&
-        (totals.needsDelivery || payment != PaymentMethod.cashOnDelivery);
+    final gift = watch(giftProvider);
+    if (totals == null) return false;
+    if (!totals.needsDelivery) return payment != PaymentMethod.cashOnDelivery;
+    return gift == null || gift.isReady;
   }
 
   /// Places the order, then shows the confirmation page. The server has
@@ -33,6 +36,9 @@ extension PlaceOrderAction on WidgetRef {
       payment: read(paymentMethodProvider),
       couponCode: read(couponProvider).value?.code,
       usePoints: read(usePointsProvider),
+      gift: read(checkoutTotalsProvider)?.needsDelivery == true
+          ? read(giftProvider)
+          : null,
     );
 
     busy.select(true);
@@ -41,6 +47,7 @@ extension PlaceOrderAction on WidgetRef {
       read(lastReceiptProvider.notifier).select(receipt);
       read(couponProvider.notifier).remove();
       read(usePointsProvider.notifier).select(false);
+      read(giftProvider.notifier).clear();
       invalidate(cartProvider);
       invalidate(pointsProvider);
       router.go(CheckoutRoutes.placed);
