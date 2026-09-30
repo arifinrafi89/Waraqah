@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/theme/app_dimens.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/theme/app_typography.dart';
 import '../../domain/entities/p2p_listing.dart';
 import '../providers/p2p_providers.dart';
 
@@ -17,78 +19,147 @@ class P2pMarketplaceFilterBar extends ConsumerWidget {
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.symmetric(horizontal: Insets.lg, vertical: Insets.md),
+      padding: const EdgeInsets.symmetric(
+          horizontal: Insets.screen, vertical: Insets.md),
       child: Row(
+        spacing: Insets.sm,
         children: [
-          _buildDropdown<BookCondition?>(
+          _FilterMenu<BookCondition?>(
             value: condition,
+            label: condition == null
+                ? 'Condition'
+                : condition.name.replaceAll(RegExp(r'(?<!^)(?=[A-Z])'), ' '),
             items: const [
-              DropdownMenuItem(value: null, child: Text('Any Condition')),
-              DropdownMenuItem(value: BookCondition.likeNew, child: Text('Like New')),
-              DropdownMenuItem(value: BookCondition.veryGood, child: Text('Very Good')),
-              DropdownMenuItem(value: BookCondition.good, child: Text('Good')),
-              DropdownMenuItem(value: BookCondition.acceptable, child: Text('Acceptable')),
+              PopupMenuItem(value: null, child: Text('Any Condition')),
+              PopupMenuItem(value: BookCondition.likeNew, child: Text('Like New')),
+              PopupMenuItem(value: BookCondition.veryGood, child: Text('Very Good')),
+              PopupMenuItem(value: BookCondition.good, child: Text('Good')),
+              PopupMenuItem(value: BookCondition.acceptable, child: Text('Acceptable')),
             ],
-            onChanged: (val) => ref.read(p2pFilterConditionProvider.notifier).select(val),
+            onChanged: (val) =>
+                ref.read(p2pFilterConditionProvider.notifier).select(val),
           ),
-          const SizedBox(width: Insets.sm),
-          _buildDropdown<String?>(
+          _FilterMenu<String?>(
             value: district,
+            label: district ?? 'Location',
             items: const [
-              DropdownMenuItem(value: null, child: Text('All Locations')),
-              DropdownMenuItem(value: 'Dhaka', child: Text('Dhaka')),
-              DropdownMenuItem(value: 'Chattogram', child: Text('Chattogram')),
-              DropdownMenuItem(value: 'Rajshahi', child: Text('Rajshahi')),
+              PopupMenuItem(value: null, child: Text('All Locations')),
+              PopupMenuItem(value: 'Dhaka', child: Text('Dhaka')),
+              PopupMenuItem(value: 'Chattogram', child: Text('Chattogram')),
+              PopupMenuItem(value: 'Rajshahi', child: Text('Rajshahi')),
             ],
-            onChanged: (val) => ref.read(p2pFilterDistrictProvider.notifier).select(val),
+            onChanged: (val) =>
+                ref.read(p2pFilterDistrictProvider.notifier).select(val),
           ),
-          const SizedBox(width: Insets.sm),
-          _buildDropdown<String?>(
+          _FilterMenu<String?>(
             value: category,
+            label: category ?? 'Category',
             items: const [
-              DropdownMenuItem(value: null, child: Text('All Categories')),
-              DropdownMenuItem(value: 'Software Engineering', child: Text('Software Engineering')),
-              DropdownMenuItem(value: 'Computer Science', child: Text('Computer Science')),
-              DropdownMenuItem(value: 'Algorithms', child: Text('Algorithms')),
-              DropdownMenuItem(value: 'Engineering', child: Text('Engineering')),
+              PopupMenuItem(value: null, child: Text('All Categories')),
+              PopupMenuItem(
+                  value: 'Software Engineering',
+                  child: Text('Software Engineering')),
+              PopupMenuItem(
+                  value: 'Computer Science', child: Text('Computer Science')),
+              PopupMenuItem(value: 'Algorithms', child: Text('Algorithms')),
+              PopupMenuItem(value: 'Engineering', child: Text('Engineering')),
             ],
-            onChanged: (val) => ref.read(p2pFilterCategoryProvider.notifier).select(val),
+            onChanged: (val) =>
+                ref.read(p2pFilterCategoryProvider.notifier).select(val),
           ),
-          const SizedBox(width: Insets.sm),
-          _buildDropdown<int?>(
+          _FilterMenu<int?>(
             value: maxPrice,
+            label: maxPrice == null ? 'Price' : 'Under ৳$maxPrice',
             items: const [
-              DropdownMenuItem(value: null, child: Text('Any Price')),
-              DropdownMenuItem(value: 300, child: Text('Under ৳300')),
-              DropdownMenuItem(value: 500, child: Text('Under ৳500')),
-              DropdownMenuItem(value: 1000, child: Text('Under ৳1000')),
+              PopupMenuItem(value: null, child: Text('Any Price')),
+              PopupMenuItem(value: 300, child: Text('Under ৳300')),
+              PopupMenuItem(value: 500, child: Text('Under ৳500')),
+              PopupMenuItem(value: 1000, child: Text('Under ৳1000')),
             ],
-            onChanged: (val) => ref.read(p2pFilterMaxPriceProvider.notifier).select(val),
+            onChanged: (val) =>
+                ref.read(p2pFilterMaxPriceProvider.notifier).select(val),
           ),
         ],
       ),
     );
   }
+}
 
-  Widget _buildDropdown<T>({
-    required T value,
-    required List<DropdownMenuItem<T>> items,
-    required ValueChanged<T?> onChanged,
-  }) {
-    return Container(
-      height: 40,
-      padding: const EdgeInsets.symmetric(horizontal: Insets.md),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(Radii.md),
+class _FilterMenu<T> extends StatelessWidget {
+  const _FilterMenu({
+    required this.value,
+    required this.label,
+    required this.items,
+    required this.onChanged,
+  });
+
+  final T? value;
+  final String label;
+  final List<PopupMenuEntry<T>> items;
+  final ValueChanged<T?> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    final isActive = value != null;
+    final fg = isActive ? palette.accentInk : palette.textDim;
+
+    // Use string manipulation to capitalize the first letter of each word in label
+    final formattedLabel = label.split(' ').map((w) {
+      if (w.isEmpty) return w;
+      return '${w[0].toUpperCase()}${w.substring(1)}';
+    }).join(' ');
+
+    return Theme(
+      data: Theme.of(context).copyWith(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
       ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<T>(
-          value: value,
-          items: items,
-          onChanged: onChanged,
-          style: const TextStyle(fontSize: 14, color: Colors.black87),
-          icon: const Icon(Icons.arrow_drop_down, size: 20),
+      child: PopupMenuButton<T>(
+        initialValue: value,
+        onSelected: onChanged,
+        itemBuilder: (context) => items,
+        offset: const Offset(0, 40),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Radii.card),
+        ),
+        color: palette.surface,
+        elevation: 8,
+        tooltip: '',
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 180),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+          decoration: BoxDecoration(
+            color: isActive ? palette.accent : palette.surface,
+            border: Border.all(
+                color: isActive ? palette.accent : palette.border),
+            borderRadius: BorderRadius.circular(Radii.pill),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 6,
+            children: [
+              if (isActive)
+                Container(
+                  width: 6,
+                  height: 6,
+                  decoration: BoxDecoration(color: fg, shape: BoxShape.circle),
+                ),
+              Text(
+                formattedLabel,
+                style: AppFonts.ui(
+                  size: 12.5,
+                  weight: FontWeight.w700,
+                  color: fg,
+                ),
+              ),
+              Icon(
+                Icons.keyboard_arrow_down_rounded,
+                size: 16,
+                color: fg,
+              ),
+            ],
+          ),
         ),
       ),
     );
