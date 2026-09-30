@@ -6,6 +6,7 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/waraqah_wordmark.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../cart/presentation/widgets/cart_button.dart';
 
 /// Home's top bar: the wordmark, plus quick theme and language toggles and the
 /// cart. The two toggles read and write [settingsProvider].
@@ -39,11 +40,7 @@ class HomeAppBar extends ConsumerWidget {
             onPressed: () => settings.setLocale(Locale(isBangla ? 'en' : 'bn')),
           ),
           const SizedBox(width: 8),
-          AppIconButton(
-            icon: Icons.shopping_bag_outlined,
-            badgeCount: 2,
-            onPressed: () {},
-          ),
+          const CartButton(),
         ],
       ),
     );

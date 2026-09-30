@@ -661,12 +661,6 @@ abstract class AppL10n {
   /// **'Add to cart'**
   String get bookDetailAddToCart;
 
-  /// No description provided for @bookDetailCartSoon.
-  ///
-  /// In en, this message translates to:
-  /// **'Cart and checkout arrive in the next phase.'**
-  String get bookDetailCartSoon;
-
   /// No description provided for @bookDetailNotFound.
   ///
   /// In en, this message translates to:
@@ -774,6 +768,108 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Book details copied. Paste them anywhere to share.'**
   String get bookCopied;
+
+  /// No description provided for @cartTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cartTitle;
+
+  /// No description provided for @cartItemCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 item} other{{count} items}}'**
+  String cartItemCount(int count);
+
+  /// No description provided for @cartEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your cart is empty'**
+  String get cartEmptyTitle;
+
+  /// No description provided for @cartEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Books you add will show up here.'**
+  String get cartEmptyBody;
+
+  /// No description provided for @cartBrowse.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse books'**
+  String get cartBrowse;
+
+  /// No description provided for @cartSubtotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtotal'**
+  String get cartSubtotal;
+
+  /// No description provided for @cartYouSave.
+  ///
+  /// In en, this message translates to:
+  /// **'You save {amount}'**
+  String cartYouSave(String amount);
+
+  /// No description provided for @cartEach.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} each'**
+  String cartEach(String price);
+
+  /// No description provided for @cartDeliveryNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery fee and coupons are added at checkout.'**
+  String get cartDeliveryNote;
+
+  /// No description provided for @cartCheckout.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get cartCheckout;
+
+  /// No description provided for @cartCheckoutSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout is coming next.'**
+  String get cartCheckoutSoon;
+
+  /// No description provided for @cartAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Added to cart'**
+  String get cartAdded;
+
+  /// No description provided for @cartView.
+  ///
+  /// In en, this message translates to:
+  /// **'View cart'**
+  String get cartView;
+
+  /// No description provided for @cartLimitReached.
+  ///
+  /// In en, this message translates to:
+  /// **'You can\'t add more of this one.'**
+  String get cartLimitReached;
+
+  /// No description provided for @cartIncrease.
+  ///
+  /// In en, this message translates to:
+  /// **'Add one'**
+  String get cartIncrease;
+
+  /// No description provided for @cartDecrease.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove one'**
+  String get cartDecrease;
+
+  /// No description provided for @cartRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get cartRemove;
 
   /// No description provided for @aiTitle.
   ///
