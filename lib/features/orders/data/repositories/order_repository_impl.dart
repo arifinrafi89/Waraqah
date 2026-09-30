@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import '../../domain/entities/order.dart';
 import '../../domain/entities/order_return.dart';
 import '../../domain/repositories/order_repository.dart';
@@ -28,5 +30,7 @@ class OrderRepositoryImpl implements OrderRepository {
     String number, {
     required ReturnReason reason,
     required String note,
-  }) async => (await _source.requestReturn(number, reason, note)).toEntity();
+    List<Uint8List> photos = const [],
+  }) async =>
+      (await _source.requestReturn(number, reason, note, photos)).toEntity();
 }

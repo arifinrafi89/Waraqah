@@ -1321,6 +1321,24 @@ abstract class AppL10n {
   /// **'Tell us what happened (optional)'**
   String get orderReturnNoteHint;
 
+  /// No description provided for @orderReturnAddPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Add photos'**
+  String get orderReturnAddPhotos;
+
+  /// No description provided for @orderReturnRemovePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove photo'**
+  String get orderReturnRemovePhoto;
+
+  /// No description provided for @orderReturnPhotosHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to 3 photos. Pictures of the damage help us decide faster.'**
+  String get orderReturnPhotosHelp;
+
   /// No description provided for @orderReturnSend.
   ///
   /// In en, this message translates to:

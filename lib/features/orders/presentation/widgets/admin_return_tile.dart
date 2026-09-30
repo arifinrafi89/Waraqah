@@ -10,9 +10,10 @@ import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/order.dart';
 import '../providers/order_admin_providers.dart';
 import 'order_labels.dart';
+import 'return_photos.dart';
 
-/// A waiting return for staff: the order, the reason and the reader's note,
-/// with Reject and Approve.
+/// A waiting return for staff: the order, the reason, the reader's note and
+/// photos (tap to enlarge), with Reject and Approve.
 class AdminReturnTile extends ConsumerWidget {
   const AdminReturnTile({super.key, required this.order});
 
@@ -42,6 +43,7 @@ class AdminReturnTile extends ConsumerWidget {
               '"${request.note}"',
               style: AppFonts.ui(size: 12, color: palette.textDim),
             ),
+          if (request.photos.isNotEmpty) ReturnPhotos(photos: request.photos),
           const SizedBox(height: Insets.sm),
           Row(
             spacing: Insets.sm,

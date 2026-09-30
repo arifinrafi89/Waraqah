@@ -66,5 +66,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Waraqah uses your photos when you attach pictures to a return.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Waraqah uses the camera when you photograph a book for a return.</string>
 </dict>
 </plist>

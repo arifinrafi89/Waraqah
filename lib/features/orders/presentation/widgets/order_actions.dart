@@ -82,10 +82,13 @@ class OrderActions extends ConsumerWidget {
     final notifier = ref.read(orderProvider(order.number).notifier);
     final choice = await showReturnSheet(context);
     if (choice == null) return;
-    final (reason, note) = choice;
     await _run(
       messenger,
-      () => notifier.requestReturn(reason, note),
+      () => notifier.requestReturn(
+        choice.reason,
+        choice.note,
+        photos: choice.photos,
+      ),
       l10n.orderReturnSent,
       l10n,
     );

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:waraqah/features/checkout/domain/entities/payment_method.dart';
@@ -78,6 +80,19 @@ void main() {
     final decided = store.decideReturn('WQ-100201', approve: false)!;
     expect(decided.returnRequest!.status, ReturnStatus.rejected);
     expect(store.decideReturn('WQ-100201', approve: true), isNull);
+  });
+
+  test('a return keeps at most 3 photos, sent as base64', () {
+    final photo = base64Encode([1, 2, 3]);
+    final order = store.requestReturn(
+      'WQ-100201',
+      ReturnReason.damaged,
+      '',
+      photos: [photo, photo, photo, photo],
+    )!;
+    final photos = order.toEntity().returnRequest!.photos;
+    expect(photos, hasLength(3));
+    expect(photos.first, [1, 2, 3]);
   });
 
   test('returns close 7 days after delivery', () {

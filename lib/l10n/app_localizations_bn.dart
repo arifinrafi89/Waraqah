@@ -671,6 +671,16 @@ class AppL10nBn extends AppL10n {
   String get orderReturnNoteHint => 'কী হয়েছে জানান (ঐচ্ছিক)';
 
   @override
+  String get orderReturnAddPhotos => 'ছবি যোগ করুন';
+
+  @override
+  String get orderReturnRemovePhoto => 'ছবি সরান';
+
+  @override
+  String get orderReturnPhotosHelp =>
+      'সর্বোচ্চ ৩টি ছবি। ক্ষতির ছবি থাকলে দ্রুত সিদ্ধান্ত নেওয়া যায়।';
+
+  @override
   String get orderReturnSend => 'অনুরোধ পাঠান';
 
   @override

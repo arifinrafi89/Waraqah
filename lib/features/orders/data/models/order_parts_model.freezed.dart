@@ -580,7 +580,9 @@ as DateTime,
 /// @nodoc
 mixin _$ReturnRequestModel {
 
- ReturnReason get reason; ReturnStatus get status; DateTime get requestedAt; String get note;
+ ReturnReason get reason; ReturnStatus get status; DateTime get requestedAt; String get note;/// Base64 images for now; the Go backend will store uploads and answer
+/// links instead.
+ List<String> get photos;
 /// Create a copy of ReturnRequestModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -594,20 +596,20 @@ $ReturnRequestModelCopyWith<ReturnRequestModel> get copyWith => _$ReturnRequestM
 @override
 bool operator ==(Object other) {
   final _this = this as ReturnRequestModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReturnRequestModel&&(identical(other.reason, _this.reason) || other.reason == _this.reason)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.requestedAt, _this.requestedAt) || other.requestedAt == _this.requestedAt)&&(identical(other.note, _this.note) || other.note == _this.note));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReturnRequestModel&&(identical(other.reason, _this.reason) || other.reason == _this.reason)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.requestedAt, _this.requestedAt) || other.requestedAt == _this.requestedAt)&&(identical(other.note, _this.note) || other.note == _this.note)&&const DeepCollectionEquality().equals(other.photos, _this.photos));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ReturnRequestModel;
-  return Object.hash(runtimeType,_this.reason,_this.status,_this.requestedAt,_this.note);
+  return Object.hash(runtimeType,_this.reason,_this.status,_this.requestedAt,_this.note,const DeepCollectionEquality().hash(_this.photos));
 }
 
 @override
 String toString() {
   final _this = this as ReturnRequestModel;
-  return 'ReturnRequestModel(reason: ${_this.reason}, status: ${_this.status}, requestedAt: ${_this.requestedAt}, note: ${_this.note})';
+  return 'ReturnRequestModel(reason: ${_this.reason}, status: ${_this.status}, requestedAt: ${_this.requestedAt}, note: ${_this.note}, photos: ${_this.photos})';
 }
 
 
@@ -618,7 +620,7 @@ abstract mixin class $ReturnRequestModelCopyWith<$Res>  {
   factory $ReturnRequestModelCopyWith(ReturnRequestModel value, $Res Function(ReturnRequestModel) _then) = _$ReturnRequestModelCopyWithImpl;
 @useResult
 $Res call({
- ReturnReason reason, ReturnStatus status, DateTime requestedAt, String note
+ ReturnReason reason, ReturnStatus status, DateTime requestedAt, String note, List<String> photos
 });
 
 
@@ -635,13 +637,14 @@ class _$ReturnRequestModelCopyWithImpl<$Res>
 
 /// Create a copy of ReturnRequestModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? reason = null,Object? status = null,Object? requestedAt = null,Object? note = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? reason = null,Object? status = null,Object? requestedAt = null,Object? note = null,Object? photos = null,}) {
   return _then(ReturnRequestModel(
 reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
 as ReturnReason,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as ReturnStatus,requestedAt: null == requestedAt ? _self.requestedAt : requestedAt // ignore: cast_nullable_to_non_nullable
 as DateTime,note: null == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
-as String,
+as String,photos: null == photos ? _self.photos : photos // ignore: cast_nullable_to_non_nullable
+as List<String>,
   ));
 }
 
@@ -726,10 +729,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ReturnReason reason,  ReturnStatus status,  DateTime requestedAt,  String note)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ReturnReason reason,  ReturnStatus status,  DateTime requestedAt,  String note,  List<String> photos)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ReturnRequestModel() when $default != null:
-return $default(_that.reason,_that.status,_that.requestedAt,_that.note);case _:
+return $default(_that.reason,_that.status,_that.requestedAt,_that.note,_that.photos);case _:
   return orElse();
 
 }
@@ -747,10 +750,10 @@ return $default(_that.reason,_that.status,_that.requestedAt,_that.note);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ReturnReason reason,  ReturnStatus status,  DateTime requestedAt,  String note)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ReturnReason reason,  ReturnStatus status,  DateTime requestedAt,  String note,  List<String> photos)  $default,) {final _that = this;
 switch (_that) {
 case _ReturnRequestModel():
-return $default(_that.reason,_that.status,_that.requestedAt,_that.note);case _:
+return $default(_that.reason,_that.status,_that.requestedAt,_that.note,_that.photos);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -767,10 +770,10 @@ return $default(_that.reason,_that.status,_that.requestedAt,_that.note);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ReturnReason reason,  ReturnStatus status,  DateTime requestedAt,  String note)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ReturnReason reason,  ReturnStatus status,  DateTime requestedAt,  String note,  List<String> photos)?  $default,) {final _that = this;
 switch (_that) {
 case _ReturnRequestModel() when $default != null:
-return $default(_that.reason,_that.status,_that.requestedAt,_that.note);case _:
+return $default(_that.reason,_that.status,_that.requestedAt,_that.note,_that.photos);case _:
   return null;
 
 }
@@ -782,13 +785,24 @@ return $default(_that.reason,_that.status,_that.requestedAt,_that.note);case _:
 @JsonSerializable()
 
 class _ReturnRequestModel implements ReturnRequestModel {
-  const _ReturnRequestModel({required this.reason, required this.status, required this.requestedAt, this.note = ''});
+  const _ReturnRequestModel({required this.reason, required this.status, required this.requestedAt, this.note = '',  List<String> photos = const <String>[]}): _photos = photos;
   factory _ReturnRequestModel.fromJson(Map<String, dynamic> json) => _$ReturnRequestModelFromJson(json);
 
 @override final  ReturnReason reason;
 @override final  ReturnStatus status;
 @override final  DateTime requestedAt;
 @override@JsonKey() final  String note;
+/// Base64 images for now; the Go backend will store uploads and answer
+/// links instead.
+ final  List<String> _photos;
+/// Base64 images for now; the Go backend will store uploads and answer
+/// links instead.
+@override@JsonKey() List<String> get photos {
+  if (_photos is EqualUnmodifiableListView) return _photos;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_photos);
+}
+
 
 /// Create a copy of ReturnRequestModel
 /// with the given fields replaced by the non-null parameter values.
@@ -803,18 +817,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReturnRequestModel&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.status, status) || other.status == status)&&(identical(other.requestedAt, requestedAt) || other.requestedAt == requestedAt)&&(identical(other.note, note) || other.note == note));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReturnRequestModel&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.status, status) || other.status == status)&&(identical(other.requestedAt, requestedAt) || other.requestedAt == requestedAt)&&(identical(other.note, note) || other.note == note)&&const DeepCollectionEquality().equals(other.photos, _photos));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,reason,status,requestedAt,note);
+    return Object.hash(runtimeType,reason,status,requestedAt,note,const DeepCollectionEquality().hash(_photos));
 }
 
 @override
 String toString() {
-    return 'ReturnRequestModel(reason: $reason, status: $status, requestedAt: $requestedAt, note: $note)';
+    return 'ReturnRequestModel(reason: $reason, status: $status, requestedAt: $requestedAt, note: $note, photos: $photos)';
 }
 
 
@@ -825,7 +839,7 @@ abstract mixin class _$ReturnRequestModelCopyWith<$Res> implements $ReturnReques
   factory _$ReturnRequestModelCopyWith(_ReturnRequestModel value, $Res Function(_ReturnRequestModel) _then) = __$ReturnRequestModelCopyWithImpl;
 @override @useResult
 $Res call({
- ReturnReason reason, ReturnStatus status, DateTime requestedAt, String note
+ ReturnReason reason, ReturnStatus status, DateTime requestedAt, String note, List<String> photos
 });
 
 
@@ -842,13 +856,14 @@ class __$ReturnRequestModelCopyWithImpl<$Res>
 
 /// Create a copy of ReturnRequestModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? reason = null,Object? status = null,Object? requestedAt = null,Object? note = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? reason = null,Object? status = null,Object? requestedAt = null,Object? note = null,Object? photos = null,}) {
   return _then(_ReturnRequestModel(
 reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
 as ReturnReason,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as ReturnStatus,requestedAt: null == requestedAt ? _self.requestedAt : requestedAt // ignore: cast_nullable_to_non_nullable
 as DateTime,note: null == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
-as String,
+as String,photos: null == photos ? _self._photos : photos // ignore: cast_nullable_to_non_nullable
+as List<String>,
   ));
 }
 

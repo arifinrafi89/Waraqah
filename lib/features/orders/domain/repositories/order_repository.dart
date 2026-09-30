@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import '../entities/order.dart';
 import '../entities/order_return.dart';
 
@@ -15,5 +17,6 @@ abstract interface class OrderRepository {
     String number, {
     required ReturnReason reason,
     required String note,
+    List<Uint8List> photos,
   });
 }

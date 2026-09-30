@@ -69,6 +69,11 @@ _ReturnRequestModel _$ReturnRequestModelFromJson(Map<String, dynamic> json) =>
       status: $enumDecode(_$ReturnStatusEnumMap, json['status']),
       requestedAt: DateTime.parse(json['requestedAt'] as String),
       note: json['note'] as String? ?? '',
+      photos:
+          (json['photos'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const <String>[],
     );
 
 Map<String, dynamic> _$ReturnRequestModelToJson(_ReturnRequestModel instance) =>
@@ -77,6 +82,7 @@ Map<String, dynamic> _$ReturnRequestModelToJson(_ReturnRequestModel instance) =>
       'status': _$ReturnStatusEnumMap[instance.status]!,
       'requestedAt': instance.requestedAt.toIso8601String(),
       'note': instance.note,
+      'photos': instance.photos,
     };
 
 const _$ReturnReasonEnumMap = {

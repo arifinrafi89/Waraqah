@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/network/dio_provider.dart';
@@ -53,12 +55,21 @@ class OrderNotifier extends AsyncNotifier<Order?> {
     ref.invalidate(myOrdersProvider);
   }
 
-  Future<void> requestReturn(ReturnReason reason, String note) async {
+  Future<void> requestReturn(
+    ReturnReason reason,
+    String note, {
+    List<Uint8List> photos = const [],
+  }) async {
     state = AsyncData(
       await ref
           .read(requestReturnProvider)
           .call(
-            RequestReturnParams(number: number, reason: reason, note: note),
+            RequestReturnParams(
+              number: number,
+              reason: reason,
+              note: note,
+              photos: photos,
+            ),
           ),
     );
     ref.invalidate(myOrdersProvider);
