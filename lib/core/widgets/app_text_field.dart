@@ -39,7 +39,14 @@ class AppTextField extends StatelessWidget {
       spacing: 6,
       children: [
         if (label != null)
-          Text(label!, style: AppFonts.ui(size: 11.5, weight: FontWeight.w700, color: palette.textDim)),
+          Text(
+            label!,
+            style: AppFonts.ui(
+              size: 11.5,
+              weight: FontWeight.w700,
+              color: palette.textDim,
+            ),
+          ),
         Container(
           height: Sizes.fieldHeight,
           padding: EdgeInsets.only(left: 13, right: trailing == null ? 13 : 6),

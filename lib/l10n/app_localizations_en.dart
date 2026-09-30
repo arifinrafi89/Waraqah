@@ -31,6 +31,25 @@ class AppL10nEn extends AppL10n {
   String get navProfile => 'Profile';
 
   @override
+  String get navHomeHint => 'Home: today\'s ayah, new books and nearby swaps';
+
+  @override
+  String get navCatalogHint => 'Catalog: browse new books';
+
+  @override
+  String get navP2pHint => 'P2P: buy and sell second-hand books with students';
+
+  @override
+  String get navBitesHint =>
+      'Bites: short book reviews and quotes from readers';
+
+  @override
+  String get navProfileHint => 'Profile: your account, theme and language';
+
+  @override
+  String get navAiHint => 'Reading Assistant: ask Gemini about any book';
+
+  @override
   String get bitesTitle => 'Book-Bites';
 
   @override
@@ -114,6 +133,40 @@ class AppL10nEn extends AppL10n {
   String get authStudentIdHint => '220041118';
 
   @override
+  String get authContinueAsGuest => 'Continue as guest';
+
+  @override
+  String get authInvalidEmail => 'Enter a valid email address.';
+
+  @override
+  String get authMissingPassword => 'Enter your password.';
+
+  @override
+  String get authLogOut => 'Log out';
+
+  @override
+  String get authGuestName => 'Guest';
+
+  @override
+  String get authGuestNote =>
+      'Log in to buy books, sell used ones and post Bites.';
+
+  @override
+  String get authRoleReader => 'Reader';
+
+  @override
+  String get authRoleModerator => 'Moderator';
+
+  @override
+  String get authRoleCatalogManager => 'Catalog manager';
+
+  @override
+  String get authRoleSupport => 'Support';
+
+  @override
+  String get authRoleSuperAdmin => 'Admin';
+
+  @override
   String get homeAyahOfTheDay => 'Ayah of the Day';
 
   @override
@@ -126,6 +179,10 @@ class AppL10nEn extends AppL10n {
   String get homeNonBeneficial => 'Non-Beneficial';
 
   @override
+  String get homeNonBeneficialNote =>
+      'Books in this list are curated by our admins. Whether a book benefits a reader often depends on their intention and grounding. Many classical mufassirun, for example, consulted the Torah and the Bible for added context in their tafsir. For the general reader, however, such books are not beneficial, and without due care they may even cause harm.';
+
+  @override
   String get homeBookBites => 'Book-Bites';
 
   @override
@@ -135,7 +192,7 @@ class AppL10nEn extends AppL10n {
   String get homeNewBooks => 'New Books';
 
   @override
-  String get homeNewBooksSub => 'Cheapest price across vendors';
+  String get homeNewBooksSub => 'Cheapest prices first';
 
   @override
   String get homeFromStudents => 'From Students Near You';
@@ -153,12 +210,6 @@ class AppL10nEn extends AppL10n {
   String get commonFilter => 'Filter';
 
   @override
-  String get commonBest => 'Best';
-
-  @override
-  String get commonLowest => 'lowest';
-
-  @override
   String get commonRetry => 'Retry';
 
   @override
@@ -169,7 +220,7 @@ class AppL10nEn extends AppL10n {
 
   @override
   String catalogSubtitle(String count) {
-    return '$count books · cross-vendor';
+    return '$count books';
   }
 
   @override
@@ -182,11 +233,6 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get catalogSortPriceAsc => 'Price: Low–High';
-
-  @override
-  String catalogVendorCompare(String vendor, int count) {
-    return '$vendor · vs $count vendors';
-  }
 
   @override
   String get catalogCategoryAll => 'All';
@@ -205,6 +251,137 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get catalogCategoryBusiness => 'Business';
+
+  @override
+  String get bookFormatPaperback => 'Paperback';
+
+  @override
+  String get bookFormatHardcover => 'Hardcover';
+
+  @override
+  String get bookFormatEbook => 'eBook';
+
+  @override
+  String get stockInStock => 'In stock';
+
+  @override
+  String get stockPreorder => 'Pre-order';
+
+  @override
+  String get stockOutOfStock => 'Out of stock';
+
+  @override
+  String get bookLanguageBangla => 'Bangla';
+
+  @override
+  String get bookLanguageEnglish => 'English';
+
+  @override
+  String get bookLanguageArabic => 'Arabic';
+
+  @override
+  String get bookDetailAbout => 'About this book';
+
+  @override
+  String bookDetailPages(int count) {
+    return '$count pages';
+  }
+
+  @override
+  String get bookDetailReviews => 'Reviews';
+
+  @override
+  String bookDetailReviewsSub(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count reader reviews',
+      one: '1 reader review',
+      zero: 'No reviews yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get bookDetailNoReviews => 'Nobody has reviewed this book yet.';
+
+  @override
+  String get bookDetailBestPrice => 'From price';
+
+  @override
+  String get bookDetailAddToCart => 'Add to cart';
+
+  @override
+  String get bookDetailCartSoon =>
+      'Cart and checkout arrive in the next phase.';
+
+  @override
+  String get bookDetailNotFound => 'We couldn\'t find this book.';
+
+  @override
+  String get bookEditionTitle => 'Choose an edition';
+
+  @override
+  String bookEditionCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count editions',
+      one: '1 edition',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get bookEditionTranslation => 'Translation';
+
+  @override
+  String bookStockOnlyLeft(int count) {
+    return 'Only $count left';
+  }
+
+  @override
+  String get bookInstantDownload => 'Instant download';
+
+  @override
+  String bookDeliverTo(String area) {
+    return 'Deliver to $area';
+  }
+
+  @override
+  String get bookAreaInsideDhaka => 'Inside Dhaka';
+
+  @override
+  String get bookAreaOutsideDhaka => 'Outside Dhaka';
+
+  @override
+  String bookArrivesInDays(int min, int max) {
+    return 'Arrives in $min–$max days';
+  }
+
+  @override
+  String get bookShipsOnRelease => 'Ships when it\'s released';
+
+  @override
+  String get bookNotAvailable => 'Not available right now';
+
+  @override
+  String get bookChangeArea => 'Change';
+
+  @override
+  String get bookChooseArea => 'Where should we deliver?';
+
+  @override
+  String get bookPrice => 'Price';
+
+  @override
+  String get bookBuyNow => 'Buy now';
+
+  @override
+  String get bookShare => 'Share';
+
+  @override
+  String get bookCopied => 'Book details copied. Paste them anywhere to share.';
 
   @override
   String get aiTitle => 'Reading Assistant';
@@ -226,6 +403,18 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get aiViewBook => 'View book';
+
+  @override
+  String get homeAppBarLightMode => 'Light mode';
+
+  @override
+  String get homeAppBarDarkMode => 'Dark mode';
+
+  @override
+  String get homeAppBarEnglish => 'English';
+
+  @override
+  String get homeAppBarBangla => 'বাংলা';
 
   @override
   String get profileTitle => 'Profile';
@@ -273,4 +462,55 @@ class AppL10nEn extends AppL10n {
   @override
   String get comingSoonBites =>
       'The full Book-Bites feed arrives with the social phase.';
+
+  @override
+  String get adminAreaTitle => 'Admin area';
+
+  @override
+  String get adminDashboard => 'Dashboard';
+
+  @override
+  String get adminDashboardHint => 'Sales, orders and stock at a glance';
+
+  @override
+  String get adminCatalog => 'Catalog';
+
+  @override
+  String get adminCatalogHint => 'Add and edit books, editions and stock';
+
+  @override
+  String get adminOrders => 'Orders';
+
+  @override
+  String get adminOrdersHint => 'Orders, returns, refunds and coupons';
+
+  @override
+  String get adminModeration => 'Moderation';
+
+  @override
+  String get adminModerationHint => 'Review used-book listings and reports';
+
+  @override
+  String get adminComingSoon => 'This section is being built. Check back soon.';
+
+  @override
+  String get moderationCenterTitle => 'Moderation Center';
+
+  @override
+  String get moderationTabListings => 'Listings to approve';
+
+  @override
+  String get moderationTabReports => 'Reports';
+
+  @override
+  String get moderationTabDisputes => 'Disputes';
+
+  @override
+  String get moderationEmptyListings => 'No listings need approval.';
+
+  @override
+  String get moderationEmptyReports => 'No pending reports.';
+
+  @override
+  String get moderationEmptyDisputes => 'No active disputes.';
 }

@@ -1,16 +1,9 @@
-/// Where the Go backend lives, and every route the app talks to.
+/// Where the Go backend will live.
 ///
-/// The Go service ships from its own repository, so until it is deployed the
-/// data sources fall back to bundled fixtures (see `*_local_source.dart`).
+/// This is a neutral placeholder: while `FakeApiInterceptor` is installed on
+/// `dioProvider`, no request ever leaves the app. Going live later means
+/// pointing this at the real Go service and removing the interceptor.
 abstract final class ApiConfig {
-  static const String baseUrl = 'http://10.0.2.2:8080/api/v1';
+  static const String baseUrl = 'https://api.waraqah.local/v1';
   static const Duration timeout = Duration(seconds: 12);
-}
-
-abstract final class ApiRoutes {
-  static const String ayahOfTheDay = '/islamic/ayah-of-the-day';
-  static const String books = '/books';
-  static const String bites = '/bites';
-  static const String p2pListings = '/p2p/listings';
-  static const String aiChat = '/ai/chat';
 }

@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../../../../app/router/app_routes.dart';
+import '../../p2p_routes.dart';
 
 class P2pMarketplaceAddButton extends StatelessWidget {
   const P2pMarketplaceAddButton({super.key});
@@ -17,7 +17,7 @@ class P2pMarketplaceAddButton extends StatelessWidget {
         width: 64,
         height: 64,
         child: FloatingActionButton(
-          onPressed: () => context.pushNamed(RouteNames.p2pAddListing),
+          onPressed: () => context.push(P2pRoutes.addListing),
           backgroundColor: context.palette.accent,
           foregroundColor: Colors.black,
           elevation: 12,

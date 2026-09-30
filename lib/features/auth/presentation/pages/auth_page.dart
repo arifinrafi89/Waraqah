@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../app/router/app_routes.dart';
+import '../../../home/home_routes.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../widgets/auth_hero.dart';
 import '../widgets/auth_tab_switcher.dart';
-import '../widgets/login_form.dart';
+import '../widgets/login_panel.dart';
 import '../widgets/signup_form.dart';
 
 /// Screen 2 — Log In / Sign Up. Sits outside the shell route, so it has no
@@ -24,9 +24,9 @@ class _AuthPageState extends State<AuthPage> {
 
   bool get _isLogin => _tab == 0;
 
-  /// Auth itself lands in the auth phase; for now entering the app is enough
-  /// to demo the flow.
-  void _enterApp() => context.go(AppRoutes.home);
+  /// Opens the app without an account. Sign-up also lands here until the
+  /// real sign-up flow is built.
+  void _enterApp() => context.go(HomeRoutes.home);
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +46,14 @@ class _AuthPageState extends State<AuthPage> {
                 child: Column(
                   children: [
                     if (_isLogin)
-                      LoginForm(onSubmit: _enterApp)
+                      const LoginPanel()
                     else
                       SignupForm(onSubmit: _enterApp),
                     _footSwitch(l10n),
+                    TextButton(
+                      onPressed: _enterApp,
+                      child: Text(l10n.authContinueAsGuest),
+                    ),
                   ],
                 ),
               ),

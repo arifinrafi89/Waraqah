@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 /// Spacing, radius and size constants lifted from the design board.
 ///
 /// Using named constants instead of magic numbers keeps every LEGO brick
@@ -7,6 +9,7 @@ abstract final class Insets {
   static const double sm = 8;
   static const double md = 12;
   static const double lg = 16;
+
   /// Horizontal gutter every screen body uses.
   static const double screen = 18;
   static const double xl = 22;
@@ -26,10 +29,17 @@ abstract final class Sizes {
   static const double fieldHeight = 46;
   static const double buttonHeight = 48;
   static const double avatar = 28;
-  static const double biteCardWidth = 196;
-  static const double p2pCardWidth = 150;
   static const double listThumbWidth = 58;
   static const double listThumbHeight = 80;
-  /// Space reserved at the bottom of scroll views for the floating nav bar.
-  static const double navClearance = 104;
+
+  static const double _navBarClearance = 104;
+
+  /// True when the shell shows the left rail (every platform but phones).
+  static bool get usesNavRail =>
+      defaultTargetPlatform != TargetPlatform.android &&
+      defaultTargetPlatform != TargetPlatform.iOS;
+
+  /// Space reserved at the bottom of scroll views for the floating nav bar;
+  /// 0 on the rail layout, where the rail sits beside the content.
+  static double get navClearance => usesNavRail ? 0 : _navBarClearance;
 }

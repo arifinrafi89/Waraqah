@@ -26,9 +26,8 @@ final filteredP2pListingsProvider = Provider<List<P2pListing>>((ref) {
   final asyncListings = ref.watch(p2pListingsProvider);
 
   return switch (asyncListings) {
-    AsyncData(:final value) => value
-        .where((listing) => listing.matchesFilter(filter, query))
-        .toList(),
+    AsyncData(:final value) =>
+      value.where((listing) => listing.matchesFilter(filter, query)).toList(),
     _ => const [],
   };
 });

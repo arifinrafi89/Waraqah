@@ -31,6 +31,25 @@ class AppL10nBn extends AppL10n {
   String get navProfile => 'প্রোফাইল';
 
   @override
+  String get navHomeHint => 'হোম: আজকের আয়াত, নতুন বই ও কাছের বইয়ের লেনদেন';
+
+  @override
+  String get navCatalogHint => 'ক্যাটালগ: নতুন বই ঘুরে দেখুন';
+
+  @override
+  String get navP2pHint => 'P2P: শিক্ষার্থীদের সাথে পুরোনো বই কেনাবেচা করুন';
+
+  @override
+  String get navBitesHint => 'বাইটস: পাঠকদের ছোট বইয়ের রিভিউ ও উদ্ধৃতি';
+
+  @override
+  String get navProfileHint => 'প্রোফাইল: আপনার অ্যাকাউন্ট, থিম ও ভাষা';
+
+  @override
+  String get navAiHint =>
+      'রিডিং অ্যাসিস্ট্যান্ট: যেকোনো বই নিয়ে Gemini-কে জিজ্ঞাসা করুন';
+
+  @override
   String get bitesTitle => 'বুক-বাইটস';
 
   @override
@@ -112,6 +131,40 @@ class AppL10nBn extends AppL10n {
   String get authStudentIdHint => '২২০০৪১১১৮';
 
   @override
+  String get authContinueAsGuest => 'অতিথি হিসেবে চালিয়ে যান';
+
+  @override
+  String get authInvalidEmail => 'একটি সঠিক ইমেইল ঠিকানা লিখুন।';
+
+  @override
+  String get authMissingPassword => 'আপনার পাসওয়ার্ড লিখুন।';
+
+  @override
+  String get authLogOut => 'লগ আউট';
+
+  @override
+  String get authGuestName => 'অতিথি';
+
+  @override
+  String get authGuestNote =>
+      'বই কিনতে, পুরোনো বই বিক্রি করতে এবং বাইটস পোস্ট করতে লগ ইন করুন।';
+
+  @override
+  String get authRoleReader => 'পাঠক';
+
+  @override
+  String get authRoleModerator => 'মডারেটর';
+
+  @override
+  String get authRoleCatalogManager => 'ক্যাটালগ ম্যানেজার';
+
+  @override
+  String get authRoleSupport => 'সাপোর্ট';
+
+  @override
+  String get authRoleSuperAdmin => 'অ্যাডমিন';
+
+  @override
   String get homeAyahOfTheDay => 'আজকের আয়াত';
 
   @override
@@ -124,6 +177,10 @@ class AppL10nBn extends AppL10n {
   String get homeNonBeneficial => 'অনুপকারী';
 
   @override
+  String get homeNonBeneficialNote =>
+      'এই তালিকার বইগুলো আমাদের অ্যাডমিন বাছাই করেছেন। কোনো বই পাঠকের উপকারে আসবে কি না, তা অনেক সময় তার নিয়ত ও জ্ঞানের ভিত্তির ওপর নির্ভর করে। যেমন, অনেক প্রসিদ্ধ মুফাসসির তাফসিরে বাড়তি প্রেক্ষাপট ও ব্যাখ্যার জন্য তাওরাত ও বাইবেল পড়েছেন। তবে সাধারণ পাঠকের জন্য এ ধরনের বই উপকারী নয়, এবং সতর্ক না হলে ক্ষতিকরও হতে পারে।';
+
+  @override
   String get homeBookBites => 'বুক-বাইটস';
 
   @override
@@ -133,7 +190,7 @@ class AppL10nBn extends AppL10n {
   String get homeNewBooks => 'নতুন বই';
 
   @override
-  String get homeNewBooksSub => 'সব বিক্রেতার মধ্যে সবচেয়ে কম দাম';
+  String get homeNewBooksSub => 'সবচেয়ে কম দাম আগে';
 
   @override
   String get homeFromStudents => 'আপনার কাছের শিক্ষার্থীদের থেকে';
@@ -151,12 +208,6 @@ class AppL10nBn extends AppL10n {
   String get commonFilter => 'ফিল্টার';
 
   @override
-  String get commonBest => 'সেরা';
-
-  @override
-  String get commonLowest => 'সর্বনিম্ন';
-
-  @override
   String get commonRetry => 'আবার চেষ্টা করুন';
 
   @override
@@ -167,7 +218,7 @@ class AppL10nBn extends AppL10n {
 
   @override
   String catalogSubtitle(String count) {
-    return '$count বই · সব বিক্রেতা';
+    return '$count বই';
   }
 
   @override
@@ -180,11 +231,6 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get catalogSortPriceAsc => 'দাম: কম–বেশি';
-
-  @override
-  String catalogVendorCompare(String vendor, int count) {
-    return '$vendor · $count বিক্রেতার তুলনায়';
-  }
 
   @override
   String get catalogCategoryAll => 'সব';
@@ -203,6 +249,124 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get catalogCategoryBusiness => 'ব্যবসা';
+
+  @override
+  String get bookFormatPaperback => 'পেপারব্যাক';
+
+  @override
+  String get bookFormatHardcover => 'হার্ডকভার';
+
+  @override
+  String get bookFormatEbook => 'ই-বুক';
+
+  @override
+  String get stockInStock => 'স্টকে আছে';
+
+  @override
+  String get stockPreorder => 'প্রি-অর্ডার';
+
+  @override
+  String get stockOutOfStock => 'স্টকে নেই';
+
+  @override
+  String get bookLanguageBangla => 'বাংলা';
+
+  @override
+  String get bookLanguageEnglish => 'ইংরেজি';
+
+  @override
+  String get bookLanguageArabic => 'আরবি';
+
+  @override
+  String get bookDetailAbout => 'বইটি সম্পর্কে';
+
+  @override
+  String bookDetailPages(int count) {
+    return '$count পৃষ্ঠা';
+  }
+
+  @override
+  String get bookDetailReviews => 'রিভিউ';
+
+  @override
+  String bookDetailReviewsSub(int count) {
+    return '$countটি পাঠক রিভিউ';
+  }
+
+  @override
+  String get bookDetailNoReviews => 'এই বইটির এখনো কোনো রিভিউ নেই।';
+
+  @override
+  String get bookDetailBestPrice => 'শুরু দাম';
+
+  @override
+  String get bookDetailAddToCart => 'কার্টে যোগ করুন';
+
+  @override
+  String get bookDetailCartSoon => 'কার্ট ও চেকআউট পরবর্তী ধাপে আসছে।';
+
+  @override
+  String get bookDetailNotFound => 'বইটি খুঁজে পাওয়া যায়নি।';
+
+  @override
+  String get bookEditionTitle => 'সংস্করণ বেছে নিন';
+
+  @override
+  String bookEditionCount(int count) {
+    return '$countটি সংস্করণ';
+  }
+
+  @override
+  String get bookEditionTranslation => 'অনুবাদ';
+
+  @override
+  String bookStockOnlyLeft(int count) {
+    return 'মাত্র $countটি বাকি';
+  }
+
+  @override
+  String get bookInstantDownload => 'সাথে সাথে ডাউনলোড';
+
+  @override
+  String bookDeliverTo(String area) {
+    return '$area-এ ডেলিভারি';
+  }
+
+  @override
+  String get bookAreaInsideDhaka => 'ঢাকার ভেতরে';
+
+  @override
+  String get bookAreaOutsideDhaka => 'ঢাকার বাইরে';
+
+  @override
+  String bookArrivesInDays(int min, int max) {
+    return '$min–$max দিনে পৌঁছাবে';
+  }
+
+  @override
+  String get bookShipsOnRelease => 'প্রকাশের পর পাঠানো হবে';
+
+  @override
+  String get bookNotAvailable => 'এখন পাওয়া যাচ্ছে না';
+
+  @override
+  String get bookChangeArea => 'পরিবর্তন';
+
+  @override
+  String get bookChooseArea => 'কোথায় ডেলিভারি দেব?';
+
+  @override
+  String get bookPrice => 'দাম';
+
+  @override
+  String get bookBuyNow => 'এখনই কিনুন';
+
+  @override
+  String get bookShare => 'শেয়ার';
+
+  @override
+  String get bookCopied =>
+      'বইয়ের তথ্য কপি হয়েছে। শেয়ার করতে যেকোনো জায়গায় পেস্ট করুন।';
 
   @override
   String get aiTitle => 'রিডিং অ্যাসিস্ট্যান্ট';
@@ -224,6 +388,18 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get aiViewBook => 'বই দেখুন';
+
+  @override
+  String get homeAppBarLightMode => 'লাইট মোড';
+
+  @override
+  String get homeAppBarDarkMode => 'ডার্ক মোড';
+
+  @override
+  String get homeAppBarEnglish => 'English';
+
+  @override
+  String get homeAppBarBangla => 'বাংলা';
 
   @override
   String get profileTitle => 'প্রোফাইল';
@@ -270,4 +446,55 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get comingSoonBites => 'সম্পূর্ণ বুক-বাইটস ফিড সোশ্যাল ফেজে আসছে।';
+
+  @override
+  String get adminAreaTitle => 'অ্যাডমিন এরিয়া';
+
+  @override
+  String get adminDashboard => 'ড্যাশবোর্ড';
+
+  @override
+  String get adminDashboardHint => 'বিক্রি, অর্ডার আর স্টক এক নজরে';
+
+  @override
+  String get adminCatalog => 'ক্যাটালগ';
+
+  @override
+  String get adminCatalogHint => 'বই, সংস্করণ আর স্টক যোগ ও সম্পাদনা';
+
+  @override
+  String get adminOrders => 'অর্ডার';
+
+  @override
+  String get adminOrdersHint => 'অর্ডার, রিটার্ন, রিফান্ড আর কুপন';
+
+  @override
+  String get adminModeration => 'মডারেশন';
+
+  @override
+  String get adminModerationHint => 'পুরোনো বইয়ের লিস্টিং আর রিপোর্ট যাচাই';
+
+  @override
+  String get adminComingSoon => 'এই অংশটি তৈরি হচ্ছে। শীঘ্রই আবার দেখুন।';
+
+  @override
+  String get moderationCenterTitle => 'মডারেশন সেন্টার';
+
+  @override
+  String get moderationTabListings => 'অ্যাপ্রুভালের জন্য লিস্টিং';
+
+  @override
+  String get moderationTabReports => 'রিপোর্ট';
+
+  @override
+  String get moderationTabDisputes => 'ডিসপিউট';
+
+  @override
+  String get moderationEmptyListings => 'অ্যাপ্রুভালের জন্য কোনো লিস্টিং নেই।';
+
+  @override
+  String get moderationEmptyReports => 'কোনো পেন্ডিং রিপোর্ট নেই।';
+
+  @override
+  String get moderationEmptyDisputes => 'কোনো অ্যাক্টিভ ডিসপিউট নেই।';
 }

@@ -16,7 +16,10 @@ class WaraqahWordmark extends StatelessWidget {
     return Text.rich(
       TextSpan(
         children: [
-          TextSpan(text: 'Waraqa', style: AppFonts.display(size: size, color: palette.text)),
+          TextSpan(
+            text: 'Waraqa',
+            style: AppFonts.display(size: size, color: palette.text),
+          ),
           TextSpan(
             text: 'ﮪ',
             style: AppFonts.display(size: size, color: palette.accent),

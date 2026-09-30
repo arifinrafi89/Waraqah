@@ -17,17 +17,20 @@ class P2pMarketplacePriceBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isAvailable = available == 'Available';
-    final statusColor = isAvailable ? context.palette.accent : context.palette.textFaint;
+    final statusColor = isAvailable
+        ? context.palette.accent
+        : context.palette.textFaint;
 
-    return Row(
+    // Wraps the pill under the price when the tile is too narrow for both.
+    return Wrap(
+      alignment: WrapAlignment.spaceBetween,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      runSpacing: 4,
       children: [
-        Expanded(
-          child: Text(
-            price,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: context.palette.accent,
-            ),
-          ),
+        Text(
+          price,
+          style: Theme.of(context).textTheme.titleMedium
+              ?.copyWith(color: context.palette.accent),
         ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -37,10 +40,8 @@ class P2pMarketplacePriceBlock extends StatelessWidget {
           ),
           child: Text(
             available,
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(
-              color: statusColor,
-              fontWeight: FontWeight.w700,
-            ),
+            style: Theme.of(context).textTheme.labelSmall
+                ?.copyWith(color: statusColor, fontWeight: FontWeight.w700),
           ),
         ),
       ],

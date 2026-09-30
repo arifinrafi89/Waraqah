@@ -15,7 +15,7 @@ import '../widgets/catalog_categories.dart';
 import '../widgets/catalog_result_bar.dart';
 import 'catalog_results_list.dart';
 
-/// Screen 3 — the cross-vendor book catalog with search, category pills and
+/// Screen 3 — the Waraqah book catalog with search, category pills and
 /// price-sorted results.
 class CatalogPage extends ConsumerWidget {
   const CatalogPage({super.key});
@@ -32,9 +32,7 @@ class CatalogPage extends ConsumerWidget {
         children: [
           ScreenAppBar(
             title: l10n.catalogTitle,
-            subtitle: l10n.catalogSubtitle(
-              Counts.grouped(total.value ?? 0),
-            ),
+            subtitle: l10n.catalogSubtitle(Counts.grouped(total.value ?? 0)),
             actions: [
               AppIconButton(
                 icon: Icons.shopping_bag_outlined,

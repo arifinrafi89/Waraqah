@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/models/book.dart';
 import '../../../../core/theme/app_dimens.dart';
+import '../../../../core/utils/stock_label.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../widgets/book_list_row.dart';
 
@@ -15,7 +16,7 @@ class CatalogResultsList extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppL10n.of(context)!;
     return ListView.separated(
-      padding: const EdgeInsets.only(
+      padding: EdgeInsets.only(
         left: Insets.screen,
         right: Insets.screen,
         bottom: Sizes.navClearance,
@@ -27,7 +28,7 @@ class CatalogResultsList extends StatelessWidget {
         final book = books[index];
         return BookListRow(
           book: book,
-          vendorLine: l10n.catalogVendorCompare(book.vendor, book.vendorCount),
+          stockLabel: l10n.stockStatus(book.cardStockStatus),
         );
       },
     );

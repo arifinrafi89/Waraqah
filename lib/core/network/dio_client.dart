@@ -1,13 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 import 'api_config.dart';
+import 'api_exception.dart';
 
 /// Single configured [Dio] instance for the whole app.
 ///
-/// Auth tokens and logging are attached here as interceptors so no feature ever
-/// constructs its own client or repeats the base URL.
+/// Logging and error mapping are attached here as interceptors so no feature
+/// ever constructs its own client or repeats the base URL.
 abstract final class DioClient {
-  static Dio create({String? authToken}) {
+  static Dio create() {
     final dio = Dio(
       BaseOptions(
         baseUrl: ApiConfig.baseUrl,
@@ -16,13 +18,22 @@ abstract final class DioClient {
         headers: const {'Accept': 'application/json'},
       ),
     );
+    if (kDebugMode) {
+      dio.interceptors.add(LogInterceptor());
+    }
     dio.interceptors.add(
       InterceptorsWrapper(
-        onRequest: (options, handler) {
-          if (authToken != null) {
-            options.headers['Authorization'] = 'Bearer $authToken';
-          }
-          handler.next(options);
+        onError: (error, handler) {
+          handler.next(
+            DioException(
+              requestOptions: error.requestOptions,
+              error: ApiException(
+                error.message ?? 'Request failed',
+                statusCode: error.response?.statusCode,
+              ),
+              type: error.type,
+            ),
+          );
         },
       ),
     );

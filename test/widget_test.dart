@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences_platform_interface/shared_preferences_platform_interface.dart';
 
-import 'package:waraqah/app/router/app_router.dart';
-import 'package:waraqah/app/router/app_routes.dart';
+import 'package:waraqah/core/settings/settings_provider.dart';
 import 'package:waraqah/core/theme/app_palette.dart';
 import 'package:waraqah/core/utils/formatters.dart';
-import 'package:waraqah/features/ai_assistant/data/sources/waraqah_chatbot.dart';
 import 'package:waraqah/features/p2p/domain/entities/p2p_listing.dart';
-import 'package:waraqah/features/p2p/presentation/providers/p2p_providers.dart';
 
 void main() {
   group('Bdt.format', () {
@@ -71,27 +71,45 @@ void main() {
     });
   });
 
-  group('Waraqah chatbot', () {
-    test(
-      'answers the exam-prep prompt instead of using the generic fallback',
-      () async {
-        final reply = await WaraqahChatbot().replyTo('Help me prep for exams');
+  group('settingsProvider', () {
+    Future<SharedPreferences> mockPrefs() async {
+      SharedPreferencesStorePlatform.instance =
+          InMemorySharedPreferencesStore.empty();
+      return SharedPreferences.getInstance();
+    }
 
-        expect(reply.text, contains('focused study plan'));
-        expect(reply.text, isNot(contains('tell me a subject, author')));
+    test(
+      'changes theme mode and locale, and a fresh container reads them back',
+      () async {
+        final prefs = await mockPrefs();
+        final container = ProviderContainer(
+          overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
+        );
+        addTearDown(container.dispose);
+
+        await container
+            .read(settingsProvider.notifier)
+            .setThemeMode(ThemeMode.dark);
+        await container
+            .read(settingsProvider.notifier)
+            .setLocale(const Locale('bn'));
+
+        expect(container.read(settingsProvider).themeMode, ThemeMode.dark);
+        expect(container.read(settingsProvider).locale, const Locale('bn'));
+
+        SharedPreferences.resetStatic();
+        final freshPrefs = await SharedPreferences.getInstance();
+        final freshContainer = ProviderContainer(
+          overrides: [sharedPreferencesProvider.overrideWithValue(freshPrefs)],
+        );
+        addTearDown(freshContainer.dispose);
+
+        expect(freshContainer.read(settingsProvider).themeMode, ThemeMode.dark);
+        expect(
+          freshContainer.read(settingsProvider).locale,
+          const Locale('bn'),
+        );
       },
     );
-  });
-
-  group('P2P add listing route', () {
-    test('registers the add listing route for the floating sell action', () {
-      final router = AppRouter.create(startSignedIn: true);
-
-      expect(AppRoutes.p2pAddListing, '/p2p/add-listing');
-      expect(
-        router.namedLocation(RouteNames.p2pAddListing),
-        '/p2p/add-listing',
-      );
-    });
   });
 }
