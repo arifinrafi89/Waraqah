@@ -17,10 +17,12 @@ import '../widgets/checkout_skeleton.dart';
 import '../widgets/checkout_step_header.dart';
 import '../widgets/coupon_field.dart';
 import '../widgets/delivery_card.dart';
+import '../widgets/gift_card.dart';
 import '../widgets/order_summary_card.dart';
 import '../widgets/payment_picker.dart';
 import '../widgets/place_order_bar.dart';
 import '../widgets/points_card.dart';
+import '../widgets/wallet_card.dart';
 
 /// `/checkout`: address, delivery, payment, then Place order. One page with
 /// numbered steps, so the reader sees the whole order before paying.
@@ -99,6 +101,7 @@ class _Steps extends ConsumerWidget {
         gap,
         CheckoutStepHeader(step: 2, title: l10n.checkoutStepDelivery),
         const DeliveryCard(),
+        const GiftCard(),
         gap,
         CheckoutStepHeader(step: 3, title: l10n.checkoutStepPayment),
         const PaymentPicker(),
@@ -106,6 +109,7 @@ class _Steps extends ConsumerWidget {
         const CouponField(),
         const SizedBox(height: Insets.md),
         const PointsCard(),
+        const WalletCard(),
         const SizedBox(height: Insets.md),
         if (totals != null)
           OrderSummaryCard(totals: totals, itemCount: cart.itemCount),

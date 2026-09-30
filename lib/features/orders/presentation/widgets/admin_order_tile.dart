@@ -12,6 +12,7 @@ import '../../../checkout/presentation/widgets/checkout_labels.dart';
 import '../../domain/entities/order.dart';
 import '../../domain/entities/order_status.dart';
 import '../providers/order_admin_providers.dart';
+import 'order_gift_note.dart';
 import 'order_labels.dart';
 import 'order_status_chip.dart';
 
@@ -55,6 +56,15 @@ class AdminOrderTile extends ConsumerWidget {
             '${order.addressLabel} · ${l10n.paymentName(order.payment)}',
             style: faint,
           ),
+          if (order.gift case final gift?)
+            Padding(
+              padding: const EdgeInsets.only(top: Insets.sm),
+              child: OrderGiftNote(
+                gift: gift,
+                forStaff: true,
+                isDonation: order.isDonation,
+              ),
+            ),
           if (next != null)
             Padding(
               padding: const EdgeInsets.only(top: Insets.sm),

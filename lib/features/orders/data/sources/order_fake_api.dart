@@ -2,6 +2,10 @@ import 'package:dio/dio.dart';
 
 import '../../domain/entities/order_return.dart';
 import '../../../loyalty/data/sources/points_fake_store.dart';
+import '../../../wallet/data/sources/wallet_fake_store.dart';
+import '../../../wallet/domain/entities/wallet.dart';
+import '../../domain/entities/order_refunds.dart';
+import '../models/order_model.dart';
 import 'order_fake_store.dart';
 
 /// Orders' fake endpoints, merged into `FakeApiInterceptor` by
@@ -22,10 +26,11 @@ abstract final class OrderFakeApi {
   static const String requestReturn = '/orders/return';
 
   /// Cancelling gives back the order's [points] spent and takes back those
-  /// it earned.
+  /// it earned, and puts what was paid back in the [wallet].
   static Map<String, Object? Function(RequestOptions)> routes(
     OrderFakeStore store,
     PointsFakeStore points,
+    WalletFakeStore wallet,
   ) => {
     orders: (_) => [for (final order in store.all) order.toJson()],
     details: (options) => store
@@ -33,14 +38,19 @@ abstract final class OrderFakeApi {
         ?.toJson(),
     cancel: (options) {
       final order = store.cancel(_body(options)['number'] as String? ?? '');
-      if (order != null) {
-        points.undo(
-          order.number,
-          spent: order.pointsUsed,
-          earned: order.pointsEarned,
-        );
-      }
-      return order?.toJson();
+      if (order == null) return null;
+      points.undo(
+        order.number,
+        spent: order.pointsUsed,
+        earned: order.pointsEarned,
+      );
+      final refund = order.toEntity().cancelRefundBdt;
+      wallet.credit(
+        refund,
+        WalletReason.cancelRefund,
+        orderNumber: order.number,
+      );
+      return store.refund(order.number, refund)?.toJson();
     },
     requestReturn: (options) {
       final body = _body(options);

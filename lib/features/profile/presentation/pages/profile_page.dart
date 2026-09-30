@@ -10,8 +10,10 @@ import '../../../admin/presentation/widgets/admin_area_button.dart';
 import '../../../alerts/presentation/widgets/my_alerts_link.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
 import '../../../auth/presentation/widgets/session_actions.dart';
+import '../../../donate/presentation/widgets/donate_link.dart';
 import '../../../loyalty/presentation/widgets/points_link.dart';
 import '../../../orders/presentation/widgets/my_orders_link.dart';
+import '../../../wallet/presentation/widgets/wallet_link.dart';
 import '../../../wishlist/presentation/widgets/wishlist_link.dart';
 import '../widgets/profile_header.dart';
 import '../../../p2p/presentation/widgets/my_listings_button.dart';
@@ -57,6 +59,8 @@ class ProfilePage extends ConsumerWidget {
                 const WishlistLink(),
                 const MyAlertsLink(),
                 const PointsLink(),
+                const DonateLink(),
+                const WalletLink(),
                 const AdminAreaButton(),
                 const MyListingsButton(),
                 const SizedBox(height: Insets.xl),

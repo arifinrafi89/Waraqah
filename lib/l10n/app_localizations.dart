@@ -1741,6 +1741,60 @@ abstract class AppL10n {
   /// **'Browse books'**
   String get wishlistBrowse;
 
+  /// No description provided for @wishlistShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share wishlist'**
+  String get wishlistShare;
+
+  /// No description provided for @wishlistShareTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your wishlist'**
+  String get wishlistShareTitle;
+
+  /// No description provided for @wishlistShareBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Anyone with the link can see the books on your wishlist and buy you one as a gift. They can\'t change your list.'**
+  String get wishlistShareBody;
+
+  /// No description provided for @wishlistCopyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get wishlistCopyLink;
+
+  /// No description provided for @wishlistLinkCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied'**
+  String get wishlistLinkCopied;
+
+  /// No description provided for @wishlistPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'See it as friends do'**
+  String get wishlistPreview;
+
+  /// No description provided for @wishlistSharedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}\'s wishlist'**
+  String wishlistSharedTitle(String name);
+
+  /// No description provided for @wishlistSharedGiftHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Buying one for {name}? Add it to your cart and turn on \"Send as a gift\" at checkout.'**
+  String wishlistSharedGiftHint(String name);
+
+  /// No description provided for @wishlistSharedMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'This wishlist isn\'t shared any more.'**
+  String get wishlistSharedMissing;
+
   /// No description provided for @checkoutTitle.
   ///
   /// In en, this message translates to:
@@ -1951,6 +2005,258 @@ abstract class AppL10n {
   /// **'Points'**
   String get checkoutPointsDiscount;
 
+  /// No description provided for @checkoutGiftTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send as a gift'**
+  String get checkoutGiftTitle;
+
+  /// No description provided for @checkoutGiftNote.
+  ///
+  /// In en, this message translates to:
+  /// **'It goes to the address above with your card, and no prices.'**
+  String get checkoutGiftNote;
+
+  /// No description provided for @checkoutGiftRecipient.
+  ///
+  /// In en, this message translates to:
+  /// **'Who is it for?'**
+  String get checkoutGiftRecipient;
+
+  /// No description provided for @checkoutGiftRecipientHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Their name, for the card'**
+  String get checkoutGiftRecipientHint;
+
+  /// No description provided for @checkoutGiftMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Message on the card (optional)'**
+  String get checkoutGiftMessage;
+
+  /// No description provided for @checkoutGiftWrap.
+  ///
+  /// In en, this message translates to:
+  /// **'Gift wrap'**
+  String get checkoutGiftWrap;
+
+  /// No description provided for @orderGiftFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Gift for {name}'**
+  String orderGiftFor(String name);
+
+  /// No description provided for @orderGiftWrapped.
+  ///
+  /// In en, this message translates to:
+  /// **'Gift-wrapped'**
+  String get orderGiftWrapped;
+
+  /// No description provided for @orderPlacedGiftFor.
+  ///
+  /// In en, this message translates to:
+  /// **'It\'s a gift for {name}: we\'ll add your card and leave the prices out.'**
+  String orderPlacedGiftFor(String name);
+
+  /// No description provided for @adminOrderGiftPack.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the card and leave the prices out.'**
+  String get adminOrderGiftPack;
+
+  /// No description provided for @adminOrderGiftWrap.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrap it, add the card and leave the prices out.'**
+  String get adminOrderGiftWrap;
+
+  /// No description provided for @giftDonateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Donate books'**
+  String get giftDonateTitle;
+
+  /// No description provided for @giftDonateIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Every place here is checked by Waraqah. Pick a book they need and we\'ll deliver it free, with your note.'**
+  String get giftDonateIntro;
+
+  /// No description provided for @giftDonateVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get giftDonateVerified;
+
+  /// No description provided for @giftDonateKind.
+  ///
+  /// In en, this message translates to:
+  /// **'{kind, select, library{Community library} school{School} madrasa{Madrasa} orphanage{Orphanage} other{Place}}'**
+  String giftDonateKind(String kind);
+
+  /// No description provided for @giftDonateProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{received} of {wanted} books received'**
+  String giftDonateProgress(int received, int wanted);
+
+  /// No description provided for @giftDonateNeeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Books they need'**
+  String get giftDonateNeeds;
+
+  /// No description provided for @giftDonateNeedProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{received} of {wanted} received'**
+  String giftDonateNeedProgress(int received, int wanted);
+
+  /// No description provided for @giftDonatePerCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} a copy'**
+  String giftDonatePerCopy(String amount);
+
+  /// No description provided for @giftDonateAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Donate'**
+  String get giftDonateAction;
+
+  /// No description provided for @giftDonateMet.
+  ///
+  /// In en, this message translates to:
+  /// **'All donated'**
+  String get giftDonateMet;
+
+  /// No description provided for @giftDonateFreeDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered free to {name}'**
+  String giftDonateFreeDelivery(String name);
+
+  /// No description provided for @giftDonateHowMany.
+  ///
+  /// In en, this message translates to:
+  /// **'How many copies?'**
+  String get giftDonateHowMany;
+
+  /// No description provided for @giftDonateFewer.
+  ///
+  /// In en, this message translates to:
+  /// **'One fewer'**
+  String get giftDonateFewer;
+
+  /// No description provided for @giftDonateMore.
+  ///
+  /// In en, this message translates to:
+  /// **'One more'**
+  String get giftDonateMore;
+
+  /// No description provided for @giftDonateNote.
+  ///
+  /// In en, this message translates to:
+  /// **'A note for them (optional)'**
+  String get giftDonateNote;
+
+  /// No description provided for @giftDonateConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Donate {amount}'**
+  String giftDonateConfirm(String amount);
+
+  /// No description provided for @giftDonateThanks.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you! Your books are on their way to {name}.'**
+  String giftDonateThanks(String name);
+
+  /// No description provided for @giftDonateMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find this place.'**
+  String get giftDonateMissing;
+
+  /// No description provided for @orderDonationTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Donation to {name}'**
+  String orderDonationTo(String name);
+
+  /// No description provided for @walletTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet'**
+  String get walletTitle;
+
+  /// No description provided for @walletRuleIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Money back from cancelled or returned orders, and from books you sell back to Waraqah, lands here.'**
+  String get walletRuleIn;
+
+  /// No description provided for @walletRuleSpend.
+  ///
+  /// In en, this message translates to:
+  /// **'Use it at checkout like cash, for books and delivery.'**
+  String get walletRuleSpend;
+
+  /// No description provided for @walletHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get walletHistory;
+
+  /// No description provided for @walletCancelRefund.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund for cancelled {order}'**
+  String walletCancelRefund(String order);
+
+  /// No description provided for @walletReturnRefund.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund for returned {order}'**
+  String walletReturnRefund(String order);
+
+  /// No description provided for @walletSellBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Sell Back: {book}'**
+  String walletSellBack(String book);
+
+  /// No description provided for @walletSpentOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Used on {order}'**
+  String walletSpentOn(String order);
+
+  /// No description provided for @walletUseAtCheckout.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {amount} from your wallet'**
+  String walletUseAtCheckout(String amount);
+
+  /// No description provided for @walletYouHave.
+  ///
+  /// In en, this message translates to:
+  /// **'You have {amount}'**
+  String walletYouHave(String amount);
+
+  /// No description provided for @orderRefundedToWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Refunded to your wallet'**
+  String get orderRefundedToWallet;
+
+  /// No description provided for @orderPlacedFromWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} came from your wallet.'**
+  String orderPlacedFromWallet(String amount);
+
   /// No description provided for @orderPlacedTitle.
   ///
   /// In en, this message translates to:
@@ -2098,7 +2404,7 @@ abstract class AppL10n {
   /// No description provided for @orderCancelBody.
   ///
   /// In en, this message translates to:
-  /// **'This can\'t be undone. If you paid online, the money goes back the same way.'**
+  /// **'This can\'t be undone. Anything you paid goes back to your Waraqah wallet.'**
   String get orderCancelBody;
 
   /// No description provided for @orderKeep.

@@ -87,6 +87,13 @@ class OrderFakeStore {
     );
   }
 
+  /// Notes [amountBdt] put back in the wallet for this order.
+  OrderModel? refund(String number, int amountBdt) {
+    final order = find(number);
+    if (order == null || amountBdt <= 0) return order;
+    return _replace(order.copyWith(refundedBdt: order.refundedBdt + amountBdt));
+  }
+
   OrderModel _replace(OrderModel order) {
     final index = _orders.indexWhere((o) => o.number == order.number);
     _orders[index] = order;

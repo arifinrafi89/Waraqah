@@ -917,6 +917,38 @@ class AppL10nBn extends AppL10n {
   String get wishlistBrowse => 'বই দেখুন';
 
   @override
+  String get wishlistShare => 'উইশলিস্ট শেয়ার করুন';
+
+  @override
+  String get wishlistShareTitle => 'আপনার উইশলিস্ট শেয়ার করুন';
+
+  @override
+  String get wishlistShareBody =>
+      'লিংকটি যার কাছে থাকবে, সে আপনার উইশলিস্টের বই দেখতে পারবে আর উপহার হিসেবে একটি কিনে দিতে পারবে। তালিকা বদলাতে পারবে না।';
+
+  @override
+  String get wishlistCopyLink => 'লিংক কপি করুন';
+
+  @override
+  String get wishlistLinkCopied => 'লিংক কপি হয়েছে';
+
+  @override
+  String get wishlistPreview => 'বন্ধুরা যেভাবে দেখবে';
+
+  @override
+  String wishlistSharedTitle(String name) {
+    return '$name-এর উইশলিস্ট';
+  }
+
+  @override
+  String wishlistSharedGiftHint(String name) {
+    return '$name-কে কিনে দেবেন? কার্টে যোগ করুন, আর চেকআউটে \"উপহার হিসেবে পাঠান\" চালু করুন।';
+  }
+
+  @override
+  String get wishlistSharedMissing => 'এই উইশলিস্ট আর শেয়ার করা নেই।';
+
+  @override
   String get checkoutTitle => 'চেকআউট';
 
   @override
@@ -1039,6 +1071,177 @@ class AppL10nBn extends AppL10n {
   String get checkoutPointsDiscount => 'পয়েন্ট';
 
   @override
+  String get checkoutGiftTitle => 'উপহার হিসেবে পাঠান';
+
+  @override
+  String get checkoutGiftNote =>
+      'উপরের ঠিকানায় যাবে, আপনার কার্ডসহ, দাম ছাড়া।';
+
+  @override
+  String get checkoutGiftRecipient => 'কার জন্য?';
+
+  @override
+  String get checkoutGiftRecipientHint => 'কার্ডে লেখার জন্য তার নাম';
+
+  @override
+  String get checkoutGiftMessage => 'কার্ডের বার্তা (ঐচ্ছিক)';
+
+  @override
+  String get checkoutGiftWrap => 'গিফট র‍্যাপ';
+
+  @override
+  String orderGiftFor(String name) {
+    return '$name-এর জন্য উপহার';
+  }
+
+  @override
+  String get orderGiftWrapped => 'গিফট র‍্যাপ করা';
+
+  @override
+  String orderPlacedGiftFor(String name) {
+    return 'এটি $name-এর জন্য উপহার: আমরা আপনার কার্ড দেব, দাম লিখব না।';
+  }
+
+  @override
+  String get adminOrderGiftPack => 'কার্ড দিন, দাম লিখবেন না।';
+
+  @override
+  String get adminOrderGiftWrap => 'র‍্যাপ করুন, কার্ড দিন, দাম লিখবেন না।';
+
+  @override
+  String get giftDonateTitle => 'বই দান করুন';
+
+  @override
+  String get giftDonateIntro =>
+      'এখানের প্রতিটি প্রতিষ্ঠান ওয়ারাকাহ যাচাই করেছে। তাদের দরকারি একটি বই বেছে নিন, আমরা আপনার নোটসহ বিনা খরচে পৌঁছে দেব।';
+
+  @override
+  String get giftDonateVerified => 'যাচাইকৃত';
+
+  @override
+  String giftDonateKind(String kind) {
+    String _temp0 = intl.Intl.selectLogic(kind, {
+      'library': 'পাঠাগার',
+      'school': 'স্কুল',
+      'madrasa': 'মাদ্রাসা',
+      'orphanage': 'এতিমখানা',
+      'other': 'প্রতিষ্ঠান',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String giftDonateProgress(int received, int wanted) {
+    return '$wantedটির মধ্যে $receivedটি বই পেয়েছে';
+  }
+
+  @override
+  String get giftDonateNeeds => 'তাদের যে বই দরকার';
+
+  @override
+  String giftDonateNeedProgress(int received, int wanted) {
+    return '$wantedটির মধ্যে $receivedটি পেয়েছে';
+  }
+
+  @override
+  String giftDonatePerCopy(String amount) {
+    return 'প্রতি কপি $amount';
+  }
+
+  @override
+  String get giftDonateAction => 'দান করুন';
+
+  @override
+  String get giftDonateMet => 'সব পেয়ে গেছে';
+
+  @override
+  String giftDonateFreeDelivery(String name) {
+    return '$name-এ বিনা খরচে পৌঁছে দেওয়া হবে';
+  }
+
+  @override
+  String get giftDonateHowMany => 'কয় কপি?';
+
+  @override
+  String get giftDonateFewer => 'এক কপি কম';
+
+  @override
+  String get giftDonateMore => 'এক কপি বেশি';
+
+  @override
+  String get giftDonateNote => 'তাদের জন্য একটি নোট (ঐচ্ছিক)';
+
+  @override
+  String giftDonateConfirm(String amount) {
+    return '$amount দান করুন';
+  }
+
+  @override
+  String giftDonateThanks(String name) {
+    return 'ধন্যবাদ! আপনার বই $name-এর পথে।';
+  }
+
+  @override
+  String get giftDonateMissing => 'প্রতিষ্ঠানটি খুঁজে পাওয়া যায়নি।';
+
+  @override
+  String orderDonationTo(String name) {
+    return '$name-কে দান';
+  }
+
+  @override
+  String get walletTitle => 'ওয়ালেট';
+
+  @override
+  String get walletRuleIn =>
+      'বাতিল বা ফেরত দেওয়া অর্ডারের টাকা, আর ওয়ারাকাহকে বিক্রি করা বইয়ের টাকা এখানে জমা হয়।';
+
+  @override
+  String get walletRuleSpend =>
+      'চেকআউটে নগদ টাকার মতো ব্যবহার করুন, বই আর ডেলিভারি দুটোতেই।';
+
+  @override
+  String get walletHistory => 'ইতিহাস';
+
+  @override
+  String walletCancelRefund(String order) {
+    return 'বাতিল $order-এর রিফান্ড';
+  }
+
+  @override
+  String walletReturnRefund(String order) {
+    return 'ফেরত $order-এর রিফান্ড';
+  }
+
+  @override
+  String walletSellBack(String book) {
+    return 'সেল ব্যাক: $book';
+  }
+
+  @override
+  String walletSpentOn(String order) {
+    return '$order-এ ব্যবহার';
+  }
+
+  @override
+  String walletUseAtCheckout(String amount) {
+    return 'ওয়ালেট থেকে $amount দিন';
+  }
+
+  @override
+  String walletYouHave(String amount) {
+    return 'আপনার আছে $amount';
+  }
+
+  @override
+  String get orderRefundedToWallet => 'আপনার ওয়ালেটে ফেরত';
+
+  @override
+  String orderPlacedFromWallet(String amount) {
+    return '$amount আপনার ওয়ালেট থেকে দেওয়া হয়েছে।';
+  }
+
+  @override
   String get orderPlacedTitle => 'অর্ডার সম্পন্ন হয়েছে!';
 
   @override
@@ -1122,7 +1325,7 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get orderCancelBody =>
-      'এটি আর ফেরানো যাবে না। অনলাইনে পরিশোধ করে থাকলে টাকা একই পথে ফেরত যাবে।';
+      'এটি আর ফেরানো যাবে না। যা পরিশোধ করেছেন, তা আপনার ওয়ারাকাহ ওয়ালেটে ফেরত যাবে।';
 
   @override
   String get orderKeep => 'অর্ডার রাখুন';

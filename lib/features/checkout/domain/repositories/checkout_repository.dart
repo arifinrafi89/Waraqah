@@ -1,4 +1,5 @@
 import '../entities/coupon.dart';
+import '../entities/gift.dart';
 import '../entities/order_receipt.dart';
 import '../entities/payment_method.dart';
 import '../entities/saved_address.dart';
@@ -9,6 +10,8 @@ class PlaceOrderRequest {
     required this.payment,
     this.couponCode,
     this.usePoints = false,
+    this.gift,
+    this.useWallet = false,
   });
 
   final String addressId;
@@ -17,6 +20,12 @@ class PlaceOrderRequest {
 
   /// Pay part of the books with Waraqah points, as far as the rules allow.
   final bool usePoints;
+
+  /// Set when the order is a gift.
+  final Gift? gift;
+
+  /// Pay what the wallet can cover from it.
+  final bool useWallet;
 }
 
 /// Everything checkout asks the server. Placing an order turns the cart into

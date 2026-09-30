@@ -976,6 +976,38 @@ class AppL10nEn extends AppL10n {
   String get wishlistBrowse => 'Browse books';
 
   @override
+  String get wishlistShare => 'Share wishlist';
+
+  @override
+  String get wishlistShareTitle => 'Share your wishlist';
+
+  @override
+  String get wishlistShareBody =>
+      'Anyone with the link can see the books on your wishlist and buy you one as a gift. They can\'t change your list.';
+
+  @override
+  String get wishlistCopyLink => 'Copy link';
+
+  @override
+  String get wishlistLinkCopied => 'Link copied';
+
+  @override
+  String get wishlistPreview => 'See it as friends do';
+
+  @override
+  String wishlistSharedTitle(String name) {
+    return '$name\'s wishlist';
+  }
+
+  @override
+  String wishlistSharedGiftHint(String name) {
+    return 'Buying one for $name? Add it to your cart and turn on \"Send as a gift\" at checkout.';
+  }
+
+  @override
+  String get wishlistSharedMissing => 'This wishlist isn\'t shared any more.';
+
+  @override
   String get checkoutTitle => 'Checkout';
 
   @override
@@ -1105,6 +1137,178 @@ class AppL10nEn extends AppL10n {
   String get checkoutPointsDiscount => 'Points';
 
   @override
+  String get checkoutGiftTitle => 'Send as a gift';
+
+  @override
+  String get checkoutGiftNote =>
+      'It goes to the address above with your card, and no prices.';
+
+  @override
+  String get checkoutGiftRecipient => 'Who is it for?';
+
+  @override
+  String get checkoutGiftRecipientHint => 'Their name, for the card';
+
+  @override
+  String get checkoutGiftMessage => 'Message on the card (optional)';
+
+  @override
+  String get checkoutGiftWrap => 'Gift wrap';
+
+  @override
+  String orderGiftFor(String name) {
+    return 'Gift for $name';
+  }
+
+  @override
+  String get orderGiftWrapped => 'Gift-wrapped';
+
+  @override
+  String orderPlacedGiftFor(String name) {
+    return 'It\'s a gift for $name: we\'ll add your card and leave the prices out.';
+  }
+
+  @override
+  String get adminOrderGiftPack => 'Add the card and leave the prices out.';
+
+  @override
+  String get adminOrderGiftWrap =>
+      'Wrap it, add the card and leave the prices out.';
+
+  @override
+  String get giftDonateTitle => 'Donate books';
+
+  @override
+  String get giftDonateIntro =>
+      'Every place here is checked by Waraqah. Pick a book they need and we\'ll deliver it free, with your note.';
+
+  @override
+  String get giftDonateVerified => 'Verified';
+
+  @override
+  String giftDonateKind(String kind) {
+    String _temp0 = intl.Intl.selectLogic(kind, {
+      'library': 'Community library',
+      'school': 'School',
+      'madrasa': 'Madrasa',
+      'orphanage': 'Orphanage',
+      'other': 'Place',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String giftDonateProgress(int received, int wanted) {
+    return '$received of $wanted books received';
+  }
+
+  @override
+  String get giftDonateNeeds => 'Books they need';
+
+  @override
+  String giftDonateNeedProgress(int received, int wanted) {
+    return '$received of $wanted received';
+  }
+
+  @override
+  String giftDonatePerCopy(String amount) {
+    return '$amount a copy';
+  }
+
+  @override
+  String get giftDonateAction => 'Donate';
+
+  @override
+  String get giftDonateMet => 'All donated';
+
+  @override
+  String giftDonateFreeDelivery(String name) {
+    return 'Delivered free to $name';
+  }
+
+  @override
+  String get giftDonateHowMany => 'How many copies?';
+
+  @override
+  String get giftDonateFewer => 'One fewer';
+
+  @override
+  String get giftDonateMore => 'One more';
+
+  @override
+  String get giftDonateNote => 'A note for them (optional)';
+
+  @override
+  String giftDonateConfirm(String amount) {
+    return 'Donate $amount';
+  }
+
+  @override
+  String giftDonateThanks(String name) {
+    return 'Thank you! Your books are on their way to $name.';
+  }
+
+  @override
+  String get giftDonateMissing => 'We couldn\'t find this place.';
+
+  @override
+  String orderDonationTo(String name) {
+    return 'Donation to $name';
+  }
+
+  @override
+  String get walletTitle => 'Wallet';
+
+  @override
+  String get walletRuleIn =>
+      'Money back from cancelled or returned orders, and from books you sell back to Waraqah, lands here.';
+
+  @override
+  String get walletRuleSpend =>
+      'Use it at checkout like cash, for books and delivery.';
+
+  @override
+  String get walletHistory => 'History';
+
+  @override
+  String walletCancelRefund(String order) {
+    return 'Refund for cancelled $order';
+  }
+
+  @override
+  String walletReturnRefund(String order) {
+    return 'Refund for returned $order';
+  }
+
+  @override
+  String walletSellBack(String book) {
+    return 'Sell Back: $book';
+  }
+
+  @override
+  String walletSpentOn(String order) {
+    return 'Used on $order';
+  }
+
+  @override
+  String walletUseAtCheckout(String amount) {
+    return 'Pay $amount from your wallet';
+  }
+
+  @override
+  String walletYouHave(String amount) {
+    return 'You have $amount';
+  }
+
+  @override
+  String get orderRefundedToWallet => 'Refunded to your wallet';
+
+  @override
+  String orderPlacedFromWallet(String amount) {
+    return '$amount came from your wallet.';
+  }
+
+  @override
   String get orderPlacedTitle => 'Order placed!';
 
   @override
@@ -1189,7 +1393,7 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get orderCancelBody =>
-      'This can\'t be undone. If you paid online, the money goes back the same way.';
+      'This can\'t be undone. Anything you paid goes back to your Waraqah wallet.';
 
   @override
   String get orderKeep => 'Keep order';

@@ -5,7 +5,8 @@ import '../models/order_model.dart';
 import '../models/order_parts_model.dart';
 
 /// Two past orders so the orders page isn't empty on a fresh start: one
-/// delivered two days ago (a return can be asked for), one on its way.
+/// delivered two days ago (a return can be asked for), one on its way as a
+/// gift.
 abstract final class OrderFixtures {
   static List<OrderModel> seed(DateTime now) => [
     _order(
@@ -40,6 +41,10 @@ abstract final class OrderFixtures {
       placedAt: now.subtract(const Duration(hours: 30)),
       steps: [0, 2, 20, 26],
       payment: PaymentMethod.cashOnDelivery,
+      gift: const OrderGiftModel(
+        recipientName: 'Nabila',
+        message: 'Happy birthday! This one is for your shelf.',
+      ),
       lines: const [
         OrderLineModel(
           bookId: 'bk-sapiens',
@@ -62,6 +67,7 @@ abstract final class OrderFixtures {
     required List<int> steps,
     required PaymentMethod payment,
     required List<OrderLineModel> lines,
+    OrderGiftModel? gift,
   }) {
     final subtotal = lines.fold(
       0,
@@ -87,6 +93,7 @@ abstract final class OrderFixtures {
       discountBdt: 0,
       totalBdt: subtotal + 60,
       pointsEarned: subtotal ~/ 100,
+      gift: gift,
     );
   }
 }

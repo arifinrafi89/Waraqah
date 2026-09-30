@@ -9,6 +9,7 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../checkout/domain/entities/payment_method.dart';
 import '../../../checkout/presentation/widgets/checkout_labels.dart';
 import '../../domain/entities/order.dart';
+import 'order_gift_note.dart';
 
 /// Where the order goes, how it's paid, and what it cost.
 class OrderInfoCard extends StatelessWidget {
@@ -33,6 +34,10 @@ class OrderInfoCard extends StatelessWidget {
             Text(order.addressLine, style: faint),
             Divider(height: Insets.md, color: palette.border),
           ],
+          if (order.gift case final gift?) ...[
+            OrderGiftNote(gift: gift, isDonation: order.isDonation),
+            Divider(height: Insets.md, color: palette.border),
+          ],
           Text(l10n.checkoutStepPayment, style: faint),
           Text(
             '${l10n.paymentName(order.payment)} · '
@@ -49,6 +54,8 @@ class OrderInfoCard extends StatelessWidget {
                   ? l10n.checkoutFree
                   : Bdt.format(order.deliveryFeeBdt),
             ),
+          if (order.giftWrapBdt > 0)
+            _row(context, l10n.checkoutGiftWrap, Bdt.format(order.giftWrapBdt)),
           if (order.discountBdt > 0)
             _row(
               context,
@@ -61,7 +68,19 @@ class OrderInfoCard extends StatelessWidget {
               l10n.checkoutPointsDiscount,
               '-${Bdt.format(order.pointsUsed)}',
             ),
+          if (order.walletUsedBdt > 0)
+            _row(
+              context,
+              l10n.walletTitle,
+              '-${Bdt.format(order.walletUsedBdt)}',
+            ),
           _row(context, l10n.checkoutTotal, Bdt.format(order.totalBdt)),
+          if (order.refundedBdt > 0)
+            _row(
+              context,
+              l10n.orderRefundedToWallet,
+              Bdt.format(order.refundedBdt),
+            ),
           if (order.pointsEarned > 0)
             _row(context, l10n.orderPointsEarnedRow, '+${order.pointsEarned}'),
         ],

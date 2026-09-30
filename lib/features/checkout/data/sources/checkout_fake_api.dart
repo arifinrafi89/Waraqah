@@ -5,7 +5,9 @@ import '../../../cart/data/models/cart_model.dart';
 import '../../../cart/data/sources/cart_fake_store.dart';
 import '../../../cart/domain/entities/cart.dart';
 import '../../../loyalty/data/sources/points_fake_store.dart';
+import '../../../orders/data/models/order_parts_model.dart';
 import '../../../orders/data/sources/order_fake_store.dart';
+import '../../../wallet/data/sources/wallet_fake_store.dart';
 import '../../domain/entities/checkout_totals.dart';
 import '../../domain/entities/payment_method.dart';
 import '../../domain/entities/saved_address.dart';
@@ -25,9 +27,10 @@ abstract final class CheckoutFakeApi {
   /// `?code=EID100`; answers the coupon or `null`.
   static const String coupon = '/coupons/check';
 
-  /// Body: `{addressId, payment, couponCode?}`. Works out the totals the
-  /// same way the app does, saves the order, empties the cart and answers a
-  /// receipt; `null` when the cart is empty or the address unknown.
+  /// Body: `{addressId, payment, couponCode?, usePoints, useWallet, gift?}`.
+  /// Works out the totals the same way the app does, spends the wallet,
+  /// saves the order, empties the cart and answers a receipt; `null` when
+  /// the cart is empty, the address unknown or a gift has no name.
   static const String placeOrder = '/orders/place';
 
   static Map<String, Object? Function(RequestOptions)> routes(
@@ -35,6 +38,7 @@ abstract final class CheckoutFakeApi {
     OrderFakeStore orders,
     CouponFakeStore coupons,
     PointsFakeStore points,
+    WalletFakeStore wallet,
   ) {
     return {
       addresses: (_) => [
@@ -49,7 +53,12 @@ abstract final class CheckoutFakeApi {
           body['addressId'] as String? ?? '',
         )?.toEntity();
         final lines = CartModel.fromJson(cart.toJson()).toEntity();
+        final giftJson = body['gift'] as Map<String, dynamic>?;
+        final gift = giftJson == null
+            ? null
+            : OrderGiftModel.fromJson(giftJson);
         if (address == null || lines.isEmpty) return null;
+        if (gift != null && gift.recipientName.isEmpty) return null;
         final totals = CheckoutTotals.of(
           lines,
           address.area,
@@ -59,6 +68,9 @@ abstract final class CheckoutFakeApi {
               ?.toEntity(),
           pointsBalance: points.balance,
           usePoints: body['usePoints'] == true,
+          giftWrap: gift?.wrapped ?? false,
+          walletBalance: wallet.balance,
+          useWallet: body['useWallet'] == true,
         );
         final number = orders.nextNumber();
         final order = placedOrder(
@@ -68,12 +80,14 @@ abstract final class CheckoutFakeApi {
           address: address,
           totals: totals,
           payment: PaymentMethod.values.byName(body['payment'] as String),
+          gift: totals.needsDelivery ? gift : null,
           pointsUsed: points.spend(
             number,
             totals.pointsDiscountBdt,
             booksBdt: totals.subtotalBdt - totals.couponOnBooksBdt,
           ),
           pointsEarned: points.earn(number, totals.booksPaidBdt),
+          walletUsed: wallet.spend(number, totals.walletBdt),
         );
         orders.add(order);
         cart.clear();
@@ -86,6 +100,8 @@ abstract final class CheckoutFakeApi {
           insideDhaka: address.district == 'Dhaka',
           hasPreorders: lines.lines.any((line) => line.isPreorder),
           pointsEarned: order.pointsEarned,
+          giftFor: order.gift?.recipientName,
+          walletUsedBdt: order.walletUsedBdt,
         ).toJson();
       },
     };

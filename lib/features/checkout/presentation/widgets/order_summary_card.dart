@@ -36,6 +36,8 @@ class OrderSummaryCard extends StatelessWidget {
                   ? l10n.checkoutFree
                   : Bdt.format(totals.deliveryFeeBdt),
             ),
+          if (totals.giftWrapBdt > 0)
+            _Line(l10n.checkoutGiftWrap, Bdt.format(totals.giftWrapBdt)),
           if (totals.couponDiscountBdt > 0)
             _Line(
               l10n.checkoutCouponDiscount,
@@ -46,6 +48,12 @@ class OrderSummaryCard extends StatelessWidget {
             _Line(
               l10n.checkoutPointsDiscount,
               '-${Bdt.format(totals.pointsDiscountBdt)}',
+              color: palette.accent,
+            ),
+          if (totals.walletBdt > 0)
+            _Line(
+              l10n.walletTitle,
+              '-${Bdt.format(totals.walletBdt)}',
               color: palette.accent,
             ),
           Divider(height: Insets.sm, color: palette.border),

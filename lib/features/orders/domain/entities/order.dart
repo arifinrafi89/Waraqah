@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../checkout/domain/entities/gift.dart';
 import '../../../checkout/domain/entities/payment_method.dart';
 import 'order_line.dart';
 import 'order_return.dart';
@@ -29,6 +30,19 @@ abstract class Order with _$Order {
     @Default(0) int pointsUsed,
     @Default(0) int pointsEarned,
     ReturnRequest? returnRequest,
+
+    /// Set when the order is a gift: pack it with the card, no prices.
+    Gift? gift,
+    @Default(0) int giftWrapBdt,
+
+    /// A donation to a verified place; [gift] says which.
+    @Default(false) bool isDonation,
+
+    /// Paid from the wallet, on top of [totalBdt].
+    @Default(0) int walletUsedBdt,
+
+    /// Put back in the wallet after a cancel or an approved return.
+    @Default(0) int refundedBdt,
   }) = _Order;
 }
 
