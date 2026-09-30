@@ -409,6 +409,40 @@ class AppL10nBn extends AppL10n {
       'ওয়ারাকাহ পাঠকের কাছ থেকে বইটি সংগ্রহ করে, যাচাই করে আপনার কাছে পৌঁছে দেয়।';
 
   @override
+  String get bookLookInside => 'ভেতরে দেখুন';
+
+  @override
+  String get bookLookInsideNone => 'এই বইয়ের জন্য এখনো দেখানোর কিছু নেই।';
+
+  @override
+  String get bookContents => 'সূচিপত্র';
+
+  @override
+  String get bookSamplePages => 'নমুনা পাতা';
+
+  @override
+  String bookPageOf(int page, int total) {
+    return '$totalটির মধ্যে $page নম্বর পাতা';
+  }
+
+  @override
+  String get bookSwipeForMore => 'আরও দেখতে সোয়াইপ করুন';
+
+  @override
+  String get bookSampleEnds => 'নমুনা এখানেই শেষ';
+
+  @override
+  String bookSeriesPosition(int position, int total) {
+    return '$totalটির মধ্যে $position নম্বর বই';
+  }
+
+  @override
+  String get bookSeriesNotYet => 'এখনো ওয়ারাকাহতে নেই';
+
+  @override
+  String get bookSeriesNotYetLong => 'এই বইটি এখনো ওয়ারাকাহতে বিক্রি হয় না।';
+
+  @override
   String get cartTitle => 'কার্ট';
 
   @override

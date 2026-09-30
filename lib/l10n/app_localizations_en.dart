@@ -429,6 +429,40 @@ class AppL10nEn extends AppL10n {
       'Waraqah picks the book up from the reader, checks it and delivers it to you.';
 
   @override
+  String get bookLookInside => 'Look inside';
+
+  @override
+  String get bookLookInsideNone => 'Nothing to show for this book yet.';
+
+  @override
+  String get bookContents => 'Contents';
+
+  @override
+  String get bookSamplePages => 'Sample pages';
+
+  @override
+  String bookPageOf(int page, int total) {
+    return 'Page $page of $total';
+  }
+
+  @override
+  String get bookSwipeForMore => 'swipe for more';
+
+  @override
+  String get bookSampleEnds => 'end of the sample';
+
+  @override
+  String bookSeriesPosition(int position, int total) {
+    return 'Book $position of $total';
+  }
+
+  @override
+  String get bookSeriesNotYet => 'Not in Waraqah yet';
+
+  @override
+  String get bookSeriesNotYetLong => 'Waraqah doesn\'t sell this one yet.';
+
+  @override
   String get cartTitle => 'Cart';
 
   @override
