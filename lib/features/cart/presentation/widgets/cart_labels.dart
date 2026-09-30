@@ -10,6 +10,7 @@ extension CartLabels on AppL10n {
   String cartLineEdition(CartLine line) => [
     if (line.kind == CartItemKind.certifiedUsed) cartCertifiedUsed,
     if (line.kind == CartItemKind.listing) cartFromReader,
+    if (line.kind == CartItemKind.bundle) cartBundle,
     if (line.condition case final condition?) conditionLabel(condition),
     if (line.format case final format?)
       switch (format) {

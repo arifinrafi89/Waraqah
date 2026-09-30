@@ -9,6 +9,8 @@ import '../features/checkout/data/sources/checkout_fake_api.dart';
 import '../features/checkout/data/sources/coupon_admin_fake_api.dart';
 import '../features/checkout/data/sources/coupon_fake_store.dart';
 import '../features/home/data/sources/ayah_fake_api.dart';
+import '../features/offers/data/sources/offers_fake_api.dart';
+import '../features/offers/data/sources/offers_fake_store.dart';
 import '../features/orders/data/sources/order_admin_fake_api.dart';
 import '../features/orders/data/sources/order_fake_api.dart';
 import '../features/orders/data/sources/order_fake_store.dart';
@@ -19,9 +21,10 @@ import '../features/wishlist/data/sources/wishlist_fake_api.dart';
 /// feature fake APIs — `core/` itself must never import a feature.
 abstract final class FakeApiRoutes {
   static FakeApiInterceptor interceptor() {
-    // Checkout turns the cart into an order and staff change orders and
-    // coupons, so these are shared.
-    final cart = CartFakeStore();
+    // Checkout turns the cart into an order, the cart prices flash sales and
+    // bundles, and staff change orders and coupons, so these are shared.
+    final offers = OffersFakeStore();
+    final cart = CartFakeStore(offers: offers);
     final orders = OrderFakeStore();
     final coupons = CouponFakeStore();
     return FakeApiInterceptor({
@@ -36,6 +39,7 @@ abstract final class FakeApiRoutes {
       ...OrderFakeApi.routes(orders),
       ...OrderAdminFakeApi.routes(orders),
       ...CouponAdminFakeApi.routes(coupons),
+      ...OffersFakeApi.routes(offers),
     });
   }
 }

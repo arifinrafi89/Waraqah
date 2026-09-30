@@ -6,11 +6,19 @@ import '../../../../core/models/edition.dart';
 import '../../../catalog/data/sources/book_fixtures.dart';
 import '../../domain/entities/cart_line.dart';
 import '../models/cart_model.dart';
+import '../../../offers/data/sources/offers_fake_store.dart';
+import 'bundle_cart_line.dart';
 import 'used_cart_line.dart';
 
 /// The cart the fake backend keeps in memory, with the server's rules: one
 /// line per item, quantities capped per order, nothing unorderable.
 class CartFakeStore {
+  /// With [offers], flash-sale prices apply and bundles can be added.
+  // ignore: prefer_initializing_formals
+  CartFakeStore({OffersFakeStore? offers}) : _offers = offers;
+
+  final OffersFakeStore? _offers;
+
   /// Most copies of one printed Edition per order, however much is in stock.
   static const int perOrderCap = 10;
 
@@ -33,6 +41,7 @@ class CartFakeStore {
     final line = switch (itemKind) {
       null => null,
       CartItemKind.edition => _editionLine(itemId),
+      CartItemKind.bundle => bundleCartLine(_offers, itemId),
       _ => usedCartLine(itemKind, itemId),
     };
     if (line != null) _lines.add(line);
@@ -52,7 +61,7 @@ class CartFakeStore {
   /// Placing an order empties the cart.
   void clear() => _lines.clear();
 
-  static CartLineModel? _editionLine(String editionId) {
+  CartLineModel? _editionLine(String editionId) {
     for (final book in BookFixtures.all) {
       for (final edition in book.editions) {
         if (edition.id != editionId) continue;
@@ -62,7 +71,16 @@ class CartFakeStore {
     return null;
   }
 
-  static CartLineModel _line(Book book, Edition edition) => CartLineModel(
+  /// A flash-sale price counts against the usual price.
+  CartLineModel _line(Book book, Edition edition) {
+    final flash = _offers?.flashPrice(edition.id);
+    return _plainLine(book, edition).copyWith(
+      unitPriceBdt: flash ?? edition.priceBdt,
+      listPriceBdt: flash == null ? edition.listPriceBdt : edition.priceBdt,
+    );
+  }
+
+  static CartLineModel _plainLine(Book book, Edition edition) => CartLineModel(
     id: '${CartItemKind.edition.name}-${edition.id}',
     kind: CartItemKind.edition,
     itemId: edition.id,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_dimens.dart';
+import '../../../offers/presentation/widgets/book_bundles.dart';
 import '../providers/book_detail_providers.dart';
 import 'book_about_section.dart';
 import 'book_detail_header.dart';
@@ -39,6 +40,7 @@ class BookDetailBody extends StatelessWidget {
         OtherWaysToBuy(bookId: book.id),
         const SizedBox(height: Insets.lg),
         SeriesPanel(bookId: book.id),
+        BookBundles(bookId: book.id),
         gap,
         BookAboutSection(book: book, details: data.details),
         QuestionsSection(bookId: book.id),

@@ -9,6 +9,8 @@ class CartItemRef {
 
   const CartItemRef.listing(this.id) : kind = CartItemKind.listing;
 
+  const CartItemRef.bundle(this.id) : kind = CartItemKind.bundle;
+
   final CartItemKind kind;
   final String id;
 }

@@ -5,9 +5,14 @@ import '../../../p2p/domain/entities/p2p_listing.dart';
 
 part 'cart_line.freezed.dart';
 
-/// What a cart line points at: a new Edition today; Certified Used copies and
-/// readers' Listings plug in when the second-hand side is built.
-enum CartItemKind { edition, certifiedUsed, listing }
+/// What a cart line points at: a new Edition, a used copy (Certified Used or
+/// a reader's Listing), or a bundle of new books.
+enum CartItemKind { edition, certifiedUsed, listing, bundle }
+
+extension CartItemKindX on CartItemKind {
+  bool get isUsed =>
+      this == CartItemKind.certifiedUsed || this == CartItemKind.listing;
+}
 
 /// One row in the cart: what it is, how many, and what it costs right now.
 @freezed

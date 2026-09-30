@@ -48,6 +48,7 @@ const _$CartItemKindEnumMap = {
   CartItemKind.edition: 'edition',
   CartItemKind.certifiedUsed: 'certifiedUsed',
   CartItemKind.listing: 'listing',
+  CartItemKind.bundle: 'bundle',
 };
 
 const _$BookFormatEnumMap = {
