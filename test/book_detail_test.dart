@@ -27,8 +27,13 @@ class _StaticBookSource extends BookRemoteSource {
   final List<Book> books;
 
   @override
-  Future<List<Book>> fetchBooks({String? category, String query = ''}) async =>
-      books;
+  Future<List<Book>> fetchBooks({
+    String? category,
+    Section? section,
+    String? author,
+    String? publisher,
+    String query = '',
+  }) async => books;
 }
 
 BookDetailsRepositoryImpl _repository([List<Book>? books]) =>
@@ -42,7 +47,6 @@ void main() {
     test('returns the seeded reviews and publication facts', () async {
       final details = await _repository().fetchDetails('bk-atomic');
       expect(details!.reviews, isNotEmpty);
-      expect(details.publisher, isNotNull);
     });
 
     test('returns null for an id that is not in the catalog', () async {
@@ -54,7 +58,9 @@ void main() {
         id: 'bk-unseeded',
         title: 'Unseeded',
         author: 'Someone',
-        category: 'C',
+        categoryId: 'cat-academic',
+        authorId: 'au-x',
+        publisherId: 'pub-x',
         section: Section.academic,
         originalLanguage: BookLanguage.english,
         editions: [

@@ -208,6 +208,18 @@ class AppL10nBn extends AppL10n {
   String get commonFilter => 'ফিল্টার';
 
   @override
+  String get commonNotFound => 'পাওয়া যায়নি';
+
+  @override
+  String get commonBack => 'ফিরে যান';
+
+  @override
+  String get authorEmpty => 'এই লেখকের কোনো বই এখনো নেই।';
+
+  @override
+  String get publisherEmpty => 'এই প্রকাশনীর কোনো বই এখনো নেই।';
+
+  @override
   String get commonRetry => 'আবার চেষ্টা করুন';
 
   @override
@@ -233,22 +245,42 @@ class AppL10nBn extends AppL10n {
   String get catalogSortPriceAsc => 'দাম: কম–বেশি';
 
   @override
-  String get catalogCategoryAll => 'সব';
+  String get catalogBrowseSections => 'বিভাগ অনুযায়ী দেখুন';
 
   @override
-  String get catalogCategoryIslamic => 'ইসলামিক স্টাডিজ';
+  String get sectionAcademic => 'একাডেমিক';
 
   @override
-  String get catalogCategoryAcademic => 'একাডেমিক';
+  String get sectionReligious => 'ধর্মীয়';
 
   @override
-  String get catalogCategoryFiction => 'ফিকশন';
+  String get sectionLiterature => 'সাহিত্য';
 
   @override
-  String get catalogCategorySelfHelp => 'সেলফ-হেল্প';
+  String get sectionAdmissionJobPrep => 'ভর্তি ও চাকরির প্রস্তুতি';
 
   @override
-  String get catalogCategoryBusiness => 'ব্যবসা';
+  String get sectionSchoolCollege => 'স্কুল ও কলেজ';
+
+  @override
+  String get sectionNonFiction => 'নন-ফিকশন';
+
+  @override
+  String get sectionSkillsTech => 'দক্ষতা ও প্রযুক্তি';
+
+  @override
+  String get sectionChildren => 'শিশু-কিশোর';
+
+  @override
+  String sectionBookCount(int count) {
+    return '$countটি বই';
+  }
+
+  @override
+  String get categoryEmpty => 'এই ক্যাটাগরিতে এখনো কোনো বই নেই।';
+
+  @override
+  String get sectionEmpty => 'এই বিভাগে এখনো কোনো বই নেই।';
 
   @override
   String get bookFormatPaperback => 'পেপারব্যাক';
@@ -437,7 +469,10 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
-  String get bookSeriesNotYet => 'এখনো ওয়ারাকাহতে নেই';
+  String get seriesOpen => 'সিরিজ দেখুন';
+
+  @override
+  String get bookSeriesNotYet => 'এখনো স্টোরে নেই';
 
   @override
   String get bookSeriesNotYetLong => 'এই বইটি এখনো ওয়ারাকাহতে বিক্রি হয় না।';

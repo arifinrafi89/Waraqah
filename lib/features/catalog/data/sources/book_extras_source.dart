@@ -20,6 +20,11 @@ class BookExtrasSource {
     return data == null ? null : BookSeriesModel.fromJson(data);
   }
 
+  Future<BookSeriesModel?> seriesById(String id) async {
+    final data = await _get(BookFakeApi.seriesDetail, id);
+    return data == null ? null : BookSeriesModel.fromJson(data);
+  }
+
   Future<Map<String, int>> priceLows(String bookId) async => {
     for (final MapEntry(:key, :value)
         in (await _get(BookFakeApi.priceLows, bookId) ?? const {}).entries)

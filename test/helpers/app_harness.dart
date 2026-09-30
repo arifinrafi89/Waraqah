@@ -19,12 +19,14 @@ Future<GoRouter> openApp(
   WidgetTester tester,
   String location, {
   String? role,
+  String? locale,
 }) async {
   tester.view.physicalSize = const Size(375, 812);
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.reset);
 
   SharedPreferences.setMockInitialValues({
+    'waraqah.localeCode': ?locale,
     if (role != null)
       'waraqah.session': jsonEncode({
         'id': 'u1',

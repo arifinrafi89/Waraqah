@@ -14,7 +14,6 @@ void main() {
     expect(details!.bookId, 'bk-atomic');
     expect(details.reviews, isNotEmpty);
     expect(details.reviews.first.reviewerName, isNotEmpty);
-    expect(details.publisher, isNotNull);
   });
 
   test('a book with nothing extra comes back as null', () async {

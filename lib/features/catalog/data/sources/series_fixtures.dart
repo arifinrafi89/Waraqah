@@ -1,4 +1,5 @@
 import '../models/book_extras_model.dart';
+import 'book_fixtures.dart';
 
 /// Series for the fake API, in reading order. Books Waraqah sells carry
 /// their `bookId` (the fake API adds their covers); the rest are listed so
@@ -6,6 +7,7 @@ import '../models/book_extras_model.dart';
 abstract final class SeriesFixtures {
   static const List<BookSeriesModel> all = [
     BookSeriesModel(
+      id: 'ser-harry-potter',
       name: 'Harry Potter',
       entries: [
         SeriesEntryModel(
@@ -22,6 +24,7 @@ abstract final class SeriesFixtures {
       ],
     ),
     BookSeriesModel(
+      id: 'ser-robert-langdon',
       name: 'Robert Langdon',
       entries: [
         SeriesEntryModel(position: 1, title: 'Angels & Demons'),
@@ -36,6 +39,7 @@ abstract final class SeriesFixtures {
       ],
     ),
     BookSeriesModel(
+      id: 'ser-sherlock-holmes',
       name: 'Sherlock Holmes novels',
       entries: [
         SeriesEntryModel(
@@ -49,6 +53,7 @@ abstract final class SeriesFixtures {
       ],
     ),
     BookSeriesModel(
+      id: 'ser-middle-earth',
       name: 'Middle-earth',
       entries: [
         SeriesEntryModel(position: 1, title: 'The Hobbit', bookId: 'bk-hobbit'),
@@ -61,4 +66,29 @@ abstract final class SeriesFixtures {
 
   static BookSeriesModel? forBook(String bookId) =>
       all.where((s) => s.entries.any((e) => e.bookId == bookId)).firstOrNull;
+
+  static BookSeriesModel? byId(String id) =>
+      all.where((s) => s.id == id).firstOrNull;
+
+  /// [forBook] as JSON with each entry's cover from the catalog, or `null`.
+  static Object? jsonForBook(String bookId) => json(forBook(bookId));
+
+  /// [byId] as JSON with each entry's cover from the catalog, or `null`.
+  static Object? jsonForId(String id) => json(byId(id));
+
+  static Object? json(BookSeriesModel? series) => series
+      ?.copyWith(
+        entries: [
+          for (final entry in series.entries)
+            entry.copyWith(
+              coverSeed:
+                  BookFixtures.all
+                      .where((b) => b.id == entry.bookId)
+                      .firstOrNull
+                      ?.coverSeed ??
+                  entry.position,
+            ),
+        ],
+      )
+      .toJson();
 }

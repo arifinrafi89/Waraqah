@@ -23,6 +23,10 @@ final getSeriesProvider = Provider<GetSeries>(
   (ref) => GetSeries(ref.watch(bookExtrasRepositoryProvider)),
 );
 
+final getSeriesByIdProvider = Provider<GetSeriesById>(
+  (ref) => GetSeriesById(ref.watch(bookExtrasRepositoryProvider)),
+);
+
 final getLowestPriceEditionsProvider = Provider<GetLowestPriceEditions>(
   (ref) => GetLowestPriceEditions(ref.watch(bookExtrasRepositoryProvider)),
 );
@@ -41,4 +45,9 @@ final lookInsideProvider = FutureProvider.family<LookInside?, String>(
 /// The series a book is in, by book id; `null` when it isn't in one.
 final seriesProvider = FutureProvider.family<BookSeries?, String>(
   (ref, bookId) => ref.watch(getSeriesProvider).call(bookId),
+);
+
+/// A series by its own id; `null` when unknown.
+final seriesByIdProvider = FutureProvider.family<BookSeries?, String>(
+  (ref, id) => ref.watch(getSeriesByIdProvider).call(id),
 );

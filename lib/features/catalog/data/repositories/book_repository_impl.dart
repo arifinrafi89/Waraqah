@@ -18,14 +18,32 @@ class BookRepositoryImpl implements BookRepository {
       });
 
   @override
-  Future<List<Book>> searchCatalog({String? category, String query = ''}) =>
-      _cache.resolve('catalog:${category ?? 'all'}:$query', () async {
-        final books = await _source.fetchBooks(
-          category: category,
-          query: query,
-        );
-        return _sortByValue(books);
-      });
+  Future<List<Book>> searchCatalog({
+    String? category,
+    Section? section,
+    String? author,
+    String? publisher,
+    String query = '',
+  }) => _cache.resolve(
+    'catalog:${category ?? 'all'}:${section?.name ?? 'all'}:${author ?? 'all'}:${publisher ?? 'all'}:$query',
+    () async {
+      final books = await _source.fetchBooks(
+        category: category,
+        section: section,
+        author: author,
+        publisher: publisher,
+        query: query,
+      );
+      // ponytail: Book has no publish date yet, so a Section, Author or Publisher lists
+      // newest (last seeded) first; sort by date once Book has one.
+      return section == null &&
+              author == null &&
+              publisher == null &&
+              category == null
+          ? _sortByValue(books)
+          : books.reversed.toList();
+    },
+  );
 
   @override
   Future<Book?> findById(String id) async {

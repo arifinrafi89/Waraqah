@@ -853,7 +853,7 @@ as int,
 /// @nodoc
 mixin _$BookSeriesModel {
 
- String get name; List<SeriesEntryModel> get entries;
+ String get id; String get name; List<SeriesEntryModel> get entries;
 /// Create a copy of BookSeriesModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -867,20 +867,20 @@ $BookSeriesModelCopyWith<BookSeriesModel> get copyWith => _$BookSeriesModelCopyW
 @override
 bool operator ==(Object other) {
   final _this = this as BookSeriesModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BookSeriesModel&&(identical(other.name, _this.name) || other.name == _this.name)&&const DeepCollectionEquality().equals(other.entries, _this.entries));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BookSeriesModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&const DeepCollectionEquality().equals(other.entries, _this.entries));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as BookSeriesModel;
-  return Object.hash(runtimeType,_this.name,const DeepCollectionEquality().hash(_this.entries));
+  return Object.hash(runtimeType,_this.id,_this.name,const DeepCollectionEquality().hash(_this.entries));
 }
 
 @override
 String toString() {
   final _this = this as BookSeriesModel;
-  return 'BookSeriesModel(name: ${_this.name}, entries: ${_this.entries})';
+  return 'BookSeriesModel(id: ${_this.id}, name: ${_this.name}, entries: ${_this.entries})';
 }
 
 
@@ -891,7 +891,7 @@ abstract mixin class $BookSeriesModelCopyWith<$Res>  {
   factory $BookSeriesModelCopyWith(BookSeriesModel value, $Res Function(BookSeriesModel) _then) = _$BookSeriesModelCopyWithImpl;
 @useResult
 $Res call({
- String name, List<SeriesEntryModel> entries
+ String id, String name, List<SeriesEntryModel> entries
 });
 
 
@@ -908,9 +908,10 @@ class _$BookSeriesModelCopyWithImpl<$Res>
 
 /// Create a copy of BookSeriesModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? entries = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? entries = null,}) {
   return _then(BookSeriesModel(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,entries: null == entries ? _self.entries : entries // ignore: cast_nullable_to_non_nullable
 as List<SeriesEntryModel>,
   ));
@@ -997,10 +998,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  List<SeriesEntryModel> entries)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  List<SeriesEntryModel> entries)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BookSeriesModel() when $default != null:
-return $default(_that.name,_that.entries);case _:
+return $default(_that.id,_that.name,_that.entries);case _:
   return orElse();
 
 }
@@ -1018,10 +1019,10 @@ return $default(_that.name,_that.entries);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  List<SeriesEntryModel> entries)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  List<SeriesEntryModel> entries)  $default,) {final _that = this;
 switch (_that) {
 case _BookSeriesModel():
-return $default(_that.name,_that.entries);case _:
+return $default(_that.id,_that.name,_that.entries);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1038,10 +1039,10 @@ return $default(_that.name,_that.entries);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  List<SeriesEntryModel> entries)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  List<SeriesEntryModel> entries)?  $default,) {final _that = this;
 switch (_that) {
 case _BookSeriesModel() when $default != null:
-return $default(_that.name,_that.entries);case _:
+return $default(_that.id,_that.name,_that.entries);case _:
   return null;
 
 }
@@ -1053,9 +1054,10 @@ return $default(_that.name,_that.entries);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _BookSeriesModel implements BookSeriesModel {
-  const _BookSeriesModel({required this.name, required  List<SeriesEntryModel> entries}): _entries = entries;
+  const _BookSeriesModel({required this.id, required this.name, required  List<SeriesEntryModel> entries}): _entries = entries;
   factory _BookSeriesModel.fromJson(Map<String, dynamic> json) => _$BookSeriesModelFromJson(json);
 
+@override final  String id;
 @override final  String name;
  final  List<SeriesEntryModel> _entries;
 @override List<SeriesEntryModel> get entries {
@@ -1078,18 +1080,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BookSeriesModel&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.entries, _entries));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BookSeriesModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.entries, _entries));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,name,const DeepCollectionEquality().hash(_entries));
+    return Object.hash(runtimeType,id,name,const DeepCollectionEquality().hash(_entries));
 }
 
 @override
 String toString() {
-    return 'BookSeriesModel(name: $name, entries: $entries)';
+    return 'BookSeriesModel(id: $id, name: $name, entries: $entries)';
 }
 
 
@@ -1100,7 +1102,7 @@ abstract mixin class _$BookSeriesModelCopyWith<$Res> implements $BookSeriesModel
   factory _$BookSeriesModelCopyWith(_BookSeriesModel value, $Res Function(_BookSeriesModel) _then) = __$BookSeriesModelCopyWithImpl;
 @override @useResult
 $Res call({
- String name, List<SeriesEntryModel> entries
+ String id, String name, List<SeriesEntryModel> entries
 });
 
 
@@ -1117,9 +1119,10 @@ class __$BookSeriesModelCopyWithImpl<$Res>
 
 /// Create a copy of BookSeriesModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? entries = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? entries = null,}) {
   return _then(_BookSeriesModel(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,entries: null == entries ? _self._entries : entries // ignore: cast_nullable_to_non_nullable
 as List<SeriesEntryModel>,
   ));

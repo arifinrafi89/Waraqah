@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../core/widgets/section_header.dart';
 import '../../../../core/widgets/shimmer_box.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../catalog_routes.dart';
 import '../../domain/entities/book_series.dart';
 import '../providers/book_extras_providers.dart';
 import 'series_tile.dart';
@@ -42,12 +44,18 @@ class _Series extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppL10n.of(context)!;
     final position = series.positionOf(bookId) ?? 1;
+    void open() => context.push(CatalogRoutes.seriesFor(series.id));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SectionHeader(
-          title: series.name,
-          subtitle: l10n.bookSeriesPosition(position, series.entries.length),
+        InkWell(
+          onTap: open,
+          child: SectionHeader(
+            title: series.name,
+            subtitle: l10n.bookSeriesPosition(position, series.entries.length),
+            actionLabel: l10n.seriesOpen,
+            onAction: open,
+          ),
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,

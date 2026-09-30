@@ -487,6 +487,30 @@ abstract class AppL10n {
   /// **'Filter'**
   String get commonFilter;
 
+  /// No description provided for @commonNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Not found'**
+  String get commonNotFound;
+
+  /// No description provided for @commonBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get commonBack;
+
+  /// No description provided for @authorEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books by this Author yet.'**
+  String get authorEmpty;
+
+  /// No description provided for @publisherEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books from this Publisher yet.'**
+  String get publisherEmpty;
+
   /// No description provided for @commonRetry.
   ///
   /// In en, this message translates to:
@@ -529,41 +553,77 @@ abstract class AppL10n {
   /// **'Price: Low–High'**
   String get catalogSortPriceAsc;
 
-  /// No description provided for @catalogCategoryAll.
+  /// No description provided for @catalogBrowseSections.
   ///
   /// In en, this message translates to:
-  /// **'All'**
-  String get catalogCategoryAll;
+  /// **'Browse by Section'**
+  String get catalogBrowseSections;
 
-  /// No description provided for @catalogCategoryIslamic.
-  ///
-  /// In en, this message translates to:
-  /// **'Islamic Studies'**
-  String get catalogCategoryIslamic;
-
-  /// No description provided for @catalogCategoryAcademic.
+  /// No description provided for @sectionAcademic.
   ///
   /// In en, this message translates to:
   /// **'Academic'**
-  String get catalogCategoryAcademic;
+  String get sectionAcademic;
 
-  /// No description provided for @catalogCategoryFiction.
+  /// No description provided for @sectionReligious.
   ///
   /// In en, this message translates to:
-  /// **'Fiction'**
-  String get catalogCategoryFiction;
+  /// **'Religious'**
+  String get sectionReligious;
 
-  /// No description provided for @catalogCategorySelfHelp.
+  /// No description provided for @sectionLiterature.
   ///
   /// In en, this message translates to:
-  /// **'Self-Help'**
-  String get catalogCategorySelfHelp;
+  /// **'Literature'**
+  String get sectionLiterature;
 
-  /// No description provided for @catalogCategoryBusiness.
+  /// No description provided for @sectionAdmissionJobPrep.
   ///
   /// In en, this message translates to:
-  /// **'Business'**
-  String get catalogCategoryBusiness;
+  /// **'Admission & Job Prep'**
+  String get sectionAdmissionJobPrep;
+
+  /// No description provided for @sectionSchoolCollege.
+  ///
+  /// In en, this message translates to:
+  /// **'School & College'**
+  String get sectionSchoolCollege;
+
+  /// No description provided for @sectionNonFiction.
+  ///
+  /// In en, this message translates to:
+  /// **'Non-fiction'**
+  String get sectionNonFiction;
+
+  /// No description provided for @sectionSkillsTech.
+  ///
+  /// In en, this message translates to:
+  /// **'Skills & Tech'**
+  String get sectionSkillsTech;
+
+  /// No description provided for @sectionChildren.
+  ///
+  /// In en, this message translates to:
+  /// **'Children'**
+  String get sectionChildren;
+
+  /// No description provided for @sectionBookCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} books'**
+  String sectionBookCount(int count);
+
+  /// No description provided for @categoryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books in this Category yet.'**
+  String get categoryEmpty;
+
+  /// No description provided for @sectionEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books in this Section yet.'**
+  String get sectionEmpty;
 
   /// No description provided for @bookFormatPaperback.
   ///
@@ -889,10 +949,16 @@ abstract class AppL10n {
   /// **'Book {position} of {total}'**
   String bookSeriesPosition(int position, int total);
 
+  /// No description provided for @seriesOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'View series'**
+  String get seriesOpen;
+
   /// No description provided for @bookSeriesNotYet.
   ///
   /// In en, this message translates to:
-  /// **'Not in Waraqah yet'**
+  /// **'Not in store yet'**
   String get bookSeriesNotYet;
 
   /// No description provided for @bookSeriesNotYetLong.

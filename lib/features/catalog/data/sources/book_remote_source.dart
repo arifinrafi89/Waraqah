@@ -10,11 +10,20 @@ class BookRemoteSource {
 
   final Dio _dio;
 
-  Future<List<Book>> fetchBooks({String? category, String query = ''}) async {
+  Future<List<Book>> fetchBooks({
+    String? category,
+    Section? section,
+    String? author,
+    String? publisher,
+    String query = '',
+  }) async {
     final response = await _dio.get<List<dynamic>>(
       BookFakeApi.books,
       queryParameters: {
         'category': ?category,
+        'section': ?section?.name,
+        'author': ?author,
+        'publisher': ?publisher,
         if (query.isNotEmpty) 'q': query,
       },
     );

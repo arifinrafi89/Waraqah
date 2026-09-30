@@ -210,6 +210,18 @@ class AppL10nEn extends AppL10n {
   String get commonFilter => 'Filter';
 
   @override
+  String get commonNotFound => 'Not found';
+
+  @override
+  String get commonBack => 'Back';
+
+  @override
+  String get authorEmpty => 'No books by this Author yet.';
+
+  @override
+  String get publisherEmpty => 'No books from this Publisher yet.';
+
+  @override
   String get commonRetry => 'Retry';
 
   @override
@@ -235,22 +247,42 @@ class AppL10nEn extends AppL10n {
   String get catalogSortPriceAsc => 'Price: Low–High';
 
   @override
-  String get catalogCategoryAll => 'All';
+  String get catalogBrowseSections => 'Browse by Section';
 
   @override
-  String get catalogCategoryIslamic => 'Islamic Studies';
+  String get sectionAcademic => 'Academic';
 
   @override
-  String get catalogCategoryAcademic => 'Academic';
+  String get sectionReligious => 'Religious';
 
   @override
-  String get catalogCategoryFiction => 'Fiction';
+  String get sectionLiterature => 'Literature';
 
   @override
-  String get catalogCategorySelfHelp => 'Self-Help';
+  String get sectionAdmissionJobPrep => 'Admission & Job Prep';
 
   @override
-  String get catalogCategoryBusiness => 'Business';
+  String get sectionSchoolCollege => 'School & College';
+
+  @override
+  String get sectionNonFiction => 'Non-fiction';
+
+  @override
+  String get sectionSkillsTech => 'Skills & Tech';
+
+  @override
+  String get sectionChildren => 'Children';
+
+  @override
+  String sectionBookCount(int count) {
+    return '$count books';
+  }
+
+  @override
+  String get categoryEmpty => 'No books in this Category yet.';
+
+  @override
+  String get sectionEmpty => 'No books in this Section yet.';
 
   @override
   String get bookFormatPaperback => 'Paperback';
@@ -457,7 +489,10 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
-  String get bookSeriesNotYet => 'Not in Waraqah yet';
+  String get seriesOpen => 'View series';
+
+  @override
+  String get bookSeriesNotYet => 'Not in store yet';
 
   @override
   String get bookSeriesNotYetLong => 'Waraqah doesn\'t sell this one yet.';

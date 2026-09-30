@@ -6,26 +6,36 @@ import '../theme/app_typography.dart';
 
 /// Neutral micro-label on `surface2` — genres, condition grades.
 class MiniTag extends StatelessWidget {
-  const MiniTag({super.key, required this.label, this.fontSize = 9});
+  const MiniTag({
+    super.key,
+    required this.label,
+    this.fontSize = 9,
+    this.onTap,
+  });
 
   final String label;
   final double fontSize;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-      decoration: BoxDecoration(
-        color: palette.surface2,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Text(
-        label,
-        style: AppFonts.ui(
-          size: fontSize,
-          weight: FontWeight.w800,
-          color: palette.textDim,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(6),
+      child: Ink(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+        decoration: BoxDecoration(
+          color: palette.surface2,
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Text(
+          label,
+          style: AppFonts.ui(
+            size: fontSize,
+            weight: FontWeight.w800,
+            color: onTap == null ? palette.textDim : palette.accent,
+          ),
         ),
       ),
     );

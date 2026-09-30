@@ -28,12 +28,12 @@ void main() {
         List<Book>? byCategory;
         container
             .read(bookRepositoryProvider)
-            .searchCatalog(category: 'Islamic Studies')
+            .searchCatalog(category: 'cat-islamic-studies')
             .then((books) => byCategory = books);
         async.elapse(const Duration(seconds: 1));
         expect(byCategory, isNotEmpty);
         expect(
-          byCategory!.every((b) => b.category == 'Islamic Studies'),
+          byCategory!.every((b) => b.categoryId == 'cat-islamic-studies'),
           isTrue,
         );
 
@@ -44,6 +44,33 @@ void main() {
             .then((books) => byQuery = books);
         async.elapse(const Duration(seconds: 1));
         expect(byQuery, isEmpty);
+      });
+    });
+
+    test('catalog search by Section, alone and combined with q', () {
+      fakeAsync((async) {
+        final container = _fakeApiContainer();
+        addTearDown(container.dispose);
+        final repo = container.read(bookRepositoryProvider);
+
+        List<Book>? kids;
+        repo
+            .searchCatalog(section: Section.children)
+            .then((books) => kids = books);
+        List<Book>? both;
+        repo
+            .searchCatalog(section: Section.children, query: 'matilda')
+            .then((books) => both = books);
+        List<Book>? none;
+        repo
+            .searchCatalog(section: Section.academic, query: 'matilda')
+            .then((books) => none = books);
+        async.elapse(const Duration(seconds: 1));
+
+        expect(kids, isNotEmpty);
+        expect(kids!.every((b) => b.section == Section.children), isTrue);
+        expect(both!.map((b) => b.id), ['bk-matilda']);
+        expect(none, isEmpty);
       });
     });
 
