@@ -90,16 +90,18 @@ abstract final class BookFakeApi {
 
   static Object _books(RequestOptions options) {
     final category = options.queryParameters['category'] as String?;
+    final section = options.queryParameters['section'] as String?;
     final query = (options.queryParameters['q'] as String? ?? '')
         .trim()
         .toLowerCase();
     final matches = BookFixtures.all.where((book) {
       final matchesCategory = category == null || book.categoryId == category;
+      final matchesSection = section == null || book.section.name == section;
       final matchesQuery =
           query.isEmpty ||
           book.title.toLowerCase().contains(query) ||
           book.author.toLowerCase().contains(query);
-      return matchesCategory && matchesQuery;
+      return matchesCategory && matchesSection && matchesQuery;
     });
     return matches.map((book) => book.toJson()).toList();
   }

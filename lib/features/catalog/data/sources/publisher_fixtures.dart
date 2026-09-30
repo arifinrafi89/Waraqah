@@ -20,5 +20,12 @@ abstract final class PublisherFixtures {
     PublisherModel(id: 'pub-princeton', name: 'Princeton University Press'),
     PublisherModel(id: 'pub-ibt', name: 'Islamic Book Trust'),
     PublisherModel(id: 'pub-dar-al-taqwa', name: 'Dar al-Taqwa'),
+    PublisherModel(id: 'pub-waraqah-press', name: 'Waraqah Press'),
+    PublisherModel(id: 'pub-nctb', name: 'NCTB'),
+    PublisherModel(id: 'pub-s-chand', name: 'S. Chand'),
+    PublisherModel(id: 'pub-addison-wesley', name: 'Addison-Wesley'),
+    PublisherModel(id: 'pub-oreilly', name: "O'Reilly Media"),
+    PublisherModel(id: 'pub-philomel', name: 'Philomel Books'),
+    PublisherModel(id: 'pub-puffin', name: 'Puffin Books'),
   ];
 }

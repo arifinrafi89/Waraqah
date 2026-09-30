@@ -19,6 +19,7 @@ class _FakeBookRepository implements BookRepository {
   @override
   Future<List<Book>> searchCatalog({
     String? category,
+    Section? section,
     String query = '',
   }) async {
     final sorted = [...books];

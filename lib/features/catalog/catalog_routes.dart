@@ -1,12 +1,20 @@
 import 'package:go_router/go_router.dart';
 
+import '../../core/models/book.dart';
 import 'presentation/pages/book_detail_page.dart';
 import 'presentation/pages/catalog_page.dart';
 import 'presentation/pages/look_inside_page.dart';
 import 'presentation/pages/questions_page.dart';
+import 'presentation/pages/section_page.dart';
 
 abstract final class CatalogRoutes {
   static const String catalog = '/catalog';
+  static const String section = '/catalog/section/:section';
+
+  /// A Section's page, inside the Catalog tab so the bottom nav stays.
+  static String sectionFor(Section section) =>
+      '/catalog/section/${section.name}';
+
   static const String bookDetail = '/catalog/book/:id';
 
   /// Concrete location for one title's detail page.
@@ -40,6 +48,24 @@ abstract final class CatalogRoutes {
   ];
 
   static final StatefulShellBranch branch = StatefulShellBranch(
-    routes: [GoRoute(path: catalog, builder: (_, _) => const CatalogPage())],
+    routes: [
+      GoRoute(
+        path: catalog,
+        builder: (_, _) => const CatalogPage(),
+        routes: [
+          GoRoute(
+            path: 'section/:section',
+            redirect: (_, state) =>
+                Section.values.asNameMap()[state.pathParameters['section']] ==
+                    null
+                ? catalog
+                : null,
+            builder: (_, state) => SectionPage(
+              section: Section.values.byName(state.pathParameters['section']!),
+            ),
+          ),
+        ],
+      ),
+    ],
   );
 }

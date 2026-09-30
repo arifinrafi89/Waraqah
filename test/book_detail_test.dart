@@ -27,8 +27,11 @@ class _StaticBookSource extends BookRemoteSource {
   final List<Book> books;
 
   @override
-  Future<List<Book>> fetchBooks({String? category, String query = ''}) async =>
-      books;
+  Future<List<Book>> fetchBooks({
+    String? category,
+    Section? section,
+    String query = '',
+  }) async => books;
 }
 
 BookDetailsRepositoryImpl _repository([List<Book>? books]) =>

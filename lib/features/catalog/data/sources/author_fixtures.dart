@@ -20,5 +20,12 @@ abstract final class AuthorFixtures {
     AuthorModel(id: 'au-mubarakpuri', name: 'Safi-ur-Rahman al-Mubarakpuri'),
     AuthorModel(id: 'au-nawawi', name: 'Imam an-Nawawi'),
     AuthorModel(id: 'au-ibn-kathir', name: 'Ibn Kathir'),
+    AuthorModel(id: 'au-editorial', name: 'Waraqah Editorial Board'),
+    AuthorModel(id: 'au-nctb', name: 'NCTB'),
+    AuthorModel(id: 'au-wren-martin', name: 'P. C. Wren & H. Martin'),
+    AuthorModel(id: 'au-hunt-thomas', name: 'Andrew Hunt & David Thomas'),
+    AuthorModel(id: 'au-kleppmann', name: 'Martin Kleppmann'),
+    AuthorModel(id: 'au-carle', name: 'Eric Carle'),
+    AuthorModel(id: 'au-dahl', name: 'Roald Dahl'),
   ];
 }

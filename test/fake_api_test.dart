@@ -47,6 +47,33 @@ void main() {
       });
     });
 
+    test('catalog search by Section, alone and combined with q', () {
+      fakeAsync((async) {
+        final container = _fakeApiContainer();
+        addTearDown(container.dispose);
+        final repo = container.read(bookRepositoryProvider);
+
+        List<Book>? kids;
+        repo
+            .searchCatalog(section: Section.children)
+            .then((books) => kids = books);
+        List<Book>? both;
+        repo
+            .searchCatalog(section: Section.children, query: 'matilda')
+            .then((books) => both = books);
+        List<Book>? none;
+        repo
+            .searchCatalog(section: Section.academic, query: 'matilda')
+            .then((books) => none = books);
+        async.elapse(const Duration(seconds: 1));
+
+        expect(kids, isNotEmpty);
+        expect(kids!.every((b) => b.section == Section.children), isTrue);
+        expect(both!.map((b) => b.id), ['bk-matilda']);
+        expect(none, isEmpty);
+      });
+    });
+
     test('books keep Editions through the JSON round trip, cheapest first', () {
       fakeAsync((async) {
         final container = _fakeApiContainer();

@@ -9,6 +9,7 @@ import '../../data/sources/book_remote_source.dart';
 import '../../data/sources/catalog_records_source.dart';
 import '../../domain/entities/publisher.dart';
 import '../../domain/repositories/book_repository.dart';
+import '../../domain/usecases/get_section_books.dart';
 import '../../domain/repositories/catalog_records_repository.dart';
 
 /// The catalog block's public Riverpod surface. Other features (home, the AI
@@ -17,19 +18,13 @@ final bookRepositoryProvider = Provider<BookRepository>(
   (ref) => BookRepositoryImpl(BookRemoteSource(ref.watch(dioProvider))),
 );
 
-/// Which category pill is selected, by Category id; `null` is the "All" pill.
-final catalogCategoryProvider = selectionProvider<String?>(null);
-
 /// Current search text.
 final catalogQueryProvider = selectionProvider<String>('');
 
 /// The filtered, sorted result list the catalog screen renders.
 final catalogResultsProvider = FutureProvider<List<Book>>((ref) async {
   final repository = ref.watch(bookRepositoryProvider);
-  return repository.searchCatalog(
-    category: ref.watch(catalogCategoryProvider),
-    query: ref.watch(catalogQueryProvider),
-  );
+  return repository.searchCatalog(query: ref.watch(catalogQueryProvider));
 });
 
 /// Total catalog size, shown in the app bar subtitle.
@@ -47,4 +42,9 @@ final catalogRecordsRepositoryProvider = Provider<CatalogRecordsRepository>(
 /// One Publisher by id; `null` when unknown.
 final publisherProvider = FutureProvider.family<Publisher?, String>(
   (ref, id) => ref.watch(catalogRecordsRepositoryProvider).publisher(id),
+);
+
+/// Every Book in one Section, newest first.
+final sectionBooksProvider = FutureProvider.family<List<Book>, Section>(
+  (ref, section) => GetSectionBooks(ref.watch(bookRepositoryProvider))(section),
 );
