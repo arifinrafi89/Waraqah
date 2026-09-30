@@ -43,10 +43,11 @@ CatalogFilters _searchOf(Ref ref, CatalogFilters filters) => filters.withSearch(
 );
 
 /// Books matching the query and filters, in [searchSortProvider] order. Empty
-/// until there is a query or a filter.
+/// until there is a query, a filter or a chosen sort.
 final searchResultsProvider = FutureProvider.autoDispose<List<Book>>((ref) {
   final filters = _searchOf(ref, ref.watch(searchFiltersProvider));
-  return filters.query.isEmpty && filters.activeCount == 0
+  final hasSort = ref.watch(searchSortChoiceProvider) != null;
+  return filters.query.isEmpty && filters.activeCount == 0 && !hasSort
       ? Future.value(const <Book>[])
       : ref.watch(bookRepositoryProvider).searchCatalog(filters);
 });

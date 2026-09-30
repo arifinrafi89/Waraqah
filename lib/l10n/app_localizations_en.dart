@@ -176,22 +176,25 @@ class AppL10nEn extends AppL10n {
   String get homeBookBitesSub => 'What readers are sharing';
 
   @override
-  String get homeNewBooks => 'New Books';
+  String get homeNewArrivals => 'New arrivals';
 
   @override
-  String get homeNewBooksSub => 'Cheapest prices first';
+  String get homeNewArrivalsSub => 'Just added to Waraqah';
 
   @override
-  String get homeFromStudents => 'From Students Near You';
+  String get homeBestsellers => 'Bestsellers';
+
+  @override
+  String get homeBestsellersSub => 'Most bought in the last 30 days';
+
+  @override
+  String get homeFromStudents => 'Used books from readers';
 
   @override
   String get homeFromStudentsSub => 'Second-hand · IUT campus';
 
   @override
   String get commonSeeAll => 'See all';
-
-  @override
-  String get commonSort => 'Sort';
 
   @override
   String get commonFilter => 'Filter';

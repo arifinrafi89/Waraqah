@@ -1,88 +1,110 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:waraqah/core/models/book.dart';
-import 'package:waraqah/core/models/edition.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:waraqah/features/catalog/catalog_routes.dart';
+import 'package:waraqah/features/catalog/data/sources/book_fixtures.dart';
 import 'package:waraqah/features/catalog/domain/entities/catalog_filters.dart';
-import 'package:waraqah/features/catalog/domain/repositories/book_repository.dart';
-import 'package:waraqah/features/catalog/presentation/providers/catalog_providers.dart';
-import 'package:waraqah/features/home/presentation/providers/home_providers.dart';
+import 'package:waraqah/features/home/home_routes.dart';
+import 'package:waraqah/features/home/presentation/widgets/book_grid_card.dart';
+import 'package:waraqah/features/home/presentation/widgets/home_section.dart';
 
-class _FakeBookRepository implements BookRepository {
-  _FakeBookRepository(this.books);
+import 'helpers/app_harness.dart';
 
-  final List<Book> books;
+/// The book cards in the Home strip titled [title].
+Finder _cardsIn(String title) => find.descendant(
+  of: find.ancestor(of: find.text(title), matching: find.byType(HomeSection)),
+  matching: find.byType(BookGridCard),
+);
 
-  @override
-  Future<List<Book>> fetchNewArrivals() async => books.take(4).toList();
+List<String> _idsIn(WidgetTester tester, String title) => [
+  for (final card in tester.widgetList<BookGridCard>(_cardsIn(title)))
+    card.book.id,
+];
 
-  @override
-  Future<List<Book>> searchCatalog([
-    CatalogFilters filters = const CatalogFilters(),
-  ]) async {
-    final sorted = [...books];
-    sorted.sort((a, b) {
-      final byPrice = a.fromPriceBdt.compareTo(b.fromPriceBdt);
-      return byPrice != 0 ? byPrice : b.rating.compareTo(a.rating);
-    });
-    return sorted;
-  }
-
-  @override
-  Future<Book?> findById(String id) async =>
-      books.where((b) => b.id == id).firstOrNull;
-}
-
-Book _book(String id, {required int price, double rating = 4.5}) {
-  return Book(
-    addedAt: DateTime(2026, 1, 1),
-    id: id,
-    title: id,
-    author: 'Author',
-    categoryId: 'cat-academic',
-    authorId: 'au-x',
-    publisherId: 'pub-x',
-    section: Section.academic,
-    originalLanguage: BookLanguage.english,
-    editions: [
-      Edition(
-        id: '$id-pb',
-        format: BookFormat.paperback,
-        language: BookLanguage.english,
-        priceBdt: price,
-        stock: 5,
-      ),
-    ],
-    rating: rating,
-  );
+/// Scrolls Home until the strip titled [title] sits just below the header.
+Future<void> _scrollTo(WidgetTester tester, String title) async {
+  final home = find
+      .descendant(
+        of: find.byType(CustomScrollView),
+        matching: find.byType(Scrollable),
+      )
+      .first;
+  await tester.scrollUntilVisible(find.text(title), 200, scrollable: home);
+  await tester.drag(home, const Offset(0, 150));
+  await settle(tester);
 }
 
 void main() {
-  group('homeNewArrivalsProvider', () {
-    late List<Book> books;
+  setUpAll(() => GoogleFonts.config.allowRuntimeFetching = false);
 
-    setUp(() {
-      books = [for (var i = 0; i < 20; i++) _book('book-$i', price: 100 + i)];
-    });
+  testWidgets('Home shows New arrivals, newest first, and Bestsellers', (
+    tester,
+  ) async {
+    await openApp(tester, HomeRoutes.home);
+    await _scrollTo(tester, 'New arrivals');
 
-    ProviderContainer containerFor(List<Book> books) {
-      final container = ProviderContainer(
-        overrides: [
-          bookRepositoryProvider.overrideWithValue(_FakeBookRepository(books)),
-        ],
-      );
-      addTearDown(container.dispose);
-      return container;
-    }
+    final newest = [...BookFixtures.all]
+      ..sort((a, b) => b.addedAt.compareTo(a.addedAt));
+    final arrivals = _idsIn(tester, 'New arrivals');
+    expect(arrivals.length, 10);
+    expect(arrivals.first, newest.first.id);
 
-    test('shows up to 8, cheapest first', () async {
-      final container = containerFor(books);
-      final result = await container.read(homeNewArrivalsProvider.future);
-      expect(result.length, 8);
-      expect(
-        result.map((b) => b.fromPriceBdt).toList(),
-        List.generate(8, (i) => 100 + i),
-      );
-    });
+    await _scrollTo(tester, 'Bestsellers');
+    expect(_idsIn(tester, 'Bestsellers').first, 'bk-atomic');
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('tapping a book card opens its book page', (tester) async {
+    final router = await openApp(tester, HomeRoutes.home);
+    await _scrollTo(tester, 'Bestsellers');
+
+    final id = _idsIn(tester, 'Bestsellers').first;
+    await tester.tap(_cardsIn('Bestsellers').first);
+    await settle(tester);
+    await settle(tester); // the book page's own fake API calls
+
+    expect(pathOf(router), CatalogRoutes.bookDetailFor(id));
+  });
+
+  testWidgets('See all on Bestsellers opens Search with results', (
+    tester,
+  ) async {
+    final router = await openApp(tester, HomeRoutes.home);
+    await _scrollTo(tester, 'Bestsellers');
+
+    await tester.tap(
+      find.descendant(
+        of: find.ancestor(
+          of: find.text('Bestsellers'),
+          matching: find.byType(HomeSection),
+        ),
+        matching: find.text('See all'),
+      ),
+    );
+    await settle(tester);
+
+    expect(pathOf(router), CatalogRoutes.search);
+    expect(router.state.uri.queryParameters['sort'], 'bestselling');
+    expect(find.text('Sort: Bestselling'), findsOneWidget);
+    expect(find.textContaining(' results'), findsOneWidget);
+  });
+
+  testWidgets('Search opened with a sort shows results with no query', (
+    tester,
+  ) async {
+    await openApp(tester, CatalogRoutes.searchFor(sort: SearchSort.newest));
+
+    expect(find.textContaining(' results'), findsOneWidget);
+    expect(
+      find.text('Search by title, author, publisher or ISBN'),
+      findsNothing,
+    );
+  });
+
+  testWidgets('Search opened with q fills the query', (tester) async {
+    await openApp(tester, CatalogRoutes.searchFor(query: 'matilda'));
+
+    expect(find.widgetWithText(TextField, 'matilda'), findsOneWidget);
+    expect(find.text('1 results'), findsOneWidget);
   });
 }

@@ -174,22 +174,25 @@ class AppL10nBn extends AppL10n {
   String get homeBookBitesSub => 'পাঠকরা যা শেয়ার করছেন';
 
   @override
-  String get homeNewBooks => 'নতুন বই';
+  String get homeNewArrivals => 'নতুন এসেছে';
 
   @override
-  String get homeNewBooksSub => 'সবচেয়ে কম দাম আগে';
+  String get homeNewArrivalsSub => 'ওয়ারাকাহ-তে সদ্য যোগ হয়েছে';
 
   @override
-  String get homeFromStudents => 'আপনার কাছের শিক্ষার্থীদের থেকে';
+  String get homeBestsellers => 'বেস্টসেলার';
+
+  @override
+  String get homeBestsellersSub => 'গত ৩০ দিনে সবচেয়ে বেশি কেনা';
+
+  @override
+  String get homeFromStudents => 'পাঠকদের পুরোনো বই';
 
   @override
   String get homeFromStudentsSub => 'সেকেন্ড-হ্যান্ড · আইইউটি ক্যাম্পাস';
 
   @override
   String get commonSeeAll => 'সব দেখুন';
-
-  @override
-  String get commonSort => 'সাজান';
 
   @override
   String get commonFilter => 'ফিল্টার';

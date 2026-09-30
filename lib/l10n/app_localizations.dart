@@ -421,22 +421,34 @@ abstract class AppL10n {
   /// **'What readers are sharing'**
   String get homeBookBitesSub;
 
-  /// No description provided for @homeNewBooks.
+  /// No description provided for @homeNewArrivals.
   ///
   /// In en, this message translates to:
-  /// **'New Books'**
-  String get homeNewBooks;
+  /// **'New arrivals'**
+  String get homeNewArrivals;
 
-  /// No description provided for @homeNewBooksSub.
+  /// No description provided for @homeNewArrivalsSub.
   ///
   /// In en, this message translates to:
-  /// **'Cheapest prices first'**
-  String get homeNewBooksSub;
+  /// **'Just added to Waraqah'**
+  String get homeNewArrivalsSub;
+
+  /// No description provided for @homeBestsellers.
+  ///
+  /// In en, this message translates to:
+  /// **'Bestsellers'**
+  String get homeBestsellers;
+
+  /// No description provided for @homeBestsellersSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Most bought in the last 30 days'**
+  String get homeBestsellersSub;
 
   /// No description provided for @homeFromStudents.
   ///
   /// In en, this message translates to:
-  /// **'From Students Near You'**
+  /// **'Used books from readers'**
   String get homeFromStudents;
 
   /// No description provided for @homeFromStudentsSub.
@@ -450,12 +462,6 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'See all'**
   String get commonSeeAll;
-
-  /// No description provided for @commonSort.
-  ///
-  /// In en, this message translates to:
-  /// **'Sort'**
-  String get commonSort;
 
   /// No description provided for @commonFilter.
   ///
