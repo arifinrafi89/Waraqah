@@ -9,7 +9,12 @@ abstract final class AuthorFixtures {
     AuthorModel(id: 'au-stewart', name: 'James Stewart'),
     AuthorModel(id: 'au-thiel', name: 'Peter Thiel'),
     AuthorModel(id: 'au-doyle', name: 'Arthur Conan Doyle'),
-    AuthorModel(id: 'au-harari', name: 'Yuval Noah Harari'),
+    AuthorModel(
+      id: 'au-harari',
+      name: 'Yuval Noah Harari',
+      nameBn: 'ইউভাল নোয়া হারারি',
+      bio: 'Israeli historian whose books trace the big arcs of human history.',
+    ),
     AuthorModel(id: 'au-clear', name: 'James Clear'),
     AuthorModel(id: 'au-martin', name: 'Robert C. Martin'),
     AuthorModel(id: 'au-bukhari', name: 'Imam al-Bukhari'),

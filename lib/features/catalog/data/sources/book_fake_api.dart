@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import 'author_fixtures.dart';
 import 'book_details_fixtures.dart';
 import 'book_fixtures.dart';
 import 'look_inside_fixtures.dart';
@@ -26,6 +27,9 @@ abstract final class BookFakeApi {
   /// The series a book is in, in reading order: `?id=<bookId>`, or `null`.
   static const String series = '/books/series';
 
+  /// One Author: `?id=<authorId>`, or `null` when unknown.
+  static const String author = '/authors/detail';
+
   /// One Publisher: `?id=<publisherId>`, or `null` when unknown.
   static const String publisher = '/publishers/detail';
 
@@ -41,6 +45,10 @@ abstract final class BookFakeApi {
     usedOptions: _usedOptions,
     lookInside: (options) => LookInsideFixtures.byBook[_id(options)]?.toJson(),
     series: _series,
+    author: (options) => AuthorFixtures.all
+        .where((a) => a.id == _id(options))
+        .firstOrNull
+        ?.toJson(),
     publisher: (options) => PublisherFixtures.all
         .where((p) => p.id == _id(options))
         .firstOrNull
@@ -91,17 +99,19 @@ abstract final class BookFakeApi {
   static Object _books(RequestOptions options) {
     final category = options.queryParameters['category'] as String?;
     final section = options.queryParameters['section'] as String?;
+    final author = options.queryParameters['author'] as String?;
     final query = (options.queryParameters['q'] as String? ?? '')
         .trim()
         .toLowerCase();
     final matches = BookFixtures.all.where((book) {
       final matchesCategory = category == null || book.categoryId == category;
       final matchesSection = section == null || book.section.name == section;
+      final matchesAuthor = author == null || book.authorId == author;
       final matchesQuery =
           query.isEmpty ||
           book.title.toLowerCase().contains(query) ||
           book.author.toLowerCase().contains(query);
-      return matchesCategory && matchesSection && matchesQuery;
+      return matchesCategory && matchesSection && matchesAuthor && matchesQuery;
     });
     return matches.map((book) => book.toJson()).toList();
   }

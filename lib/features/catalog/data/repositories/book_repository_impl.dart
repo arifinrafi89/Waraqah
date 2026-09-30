@@ -21,18 +21,22 @@ class BookRepositoryImpl implements BookRepository {
   Future<List<Book>> searchCatalog({
     String? category,
     Section? section,
+    String? author,
     String query = '',
   }) => _cache.resolve(
-    'catalog:${category ?? 'all'}:${section?.name ?? 'all'}:$query',
+    'catalog:${category ?? 'all'}:${section?.name ?? 'all'}:${author ?? 'all'}:$query',
     () async {
       final books = await _source.fetchBooks(
         category: category,
         section: section,
+        author: author,
         query: query,
       );
-      // ponytail: Book has no publish date yet, so a Section lists newest
-      // (last seeded) first; sort by date once Book has one.
-      return section == null ? _sortByValue(books) : books.reversed.toList();
+      // ponytail: Book has no publish date yet, so a Section or Author lists
+      // newest (last seeded) first; sort by date once Book has one.
+      return section == null && author == null
+          ? _sortByValue(books)
+          : books.reversed.toList();
     },
   );
 

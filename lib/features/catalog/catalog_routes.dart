@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import '../../core/models/book.dart';
+import 'presentation/pages/author_page.dart';
 import 'presentation/pages/book_detail_page.dart';
 import 'presentation/pages/catalog_page.dart';
 import 'presentation/pages/look_inside_page.dart';
@@ -14,6 +15,11 @@ abstract final class CatalogRoutes {
   /// A Section's page, inside the Catalog tab so the bottom nav stays.
   static String sectionFor(Section section) =>
       '/catalog/section/${section.name}';
+
+  static const String author = '/catalog/author/:id';
+
+  /// An Author's page, inside the Catalog tab so the bottom nav stays.
+  static String authorFor(String id) => '/catalog/author/$id';
 
   static const String bookDetail = '/catalog/book/:id';
 
@@ -63,6 +69,11 @@ abstract final class CatalogRoutes {
             builder: (_, state) => SectionPage(
               section: Section.values.byName(state.pathParameters['section']!),
             ),
+          ),
+          GoRoute(
+            path: 'author/:id',
+            builder: (_, state) =>
+                AuthorPage(authorId: state.pathParameters['id']!),
           ),
         ],
       ),

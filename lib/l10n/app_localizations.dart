@@ -487,6 +487,24 @@ abstract class AppL10n {
   /// **'Filter'**
   String get commonFilter;
 
+  /// No description provided for @commonNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Not found'**
+  String get commonNotFound;
+
+  /// No description provided for @commonBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get commonBack;
+
+  /// No description provided for @authorEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books by this Author yet.'**
+  String get authorEmpty;
+
   /// No description provided for @commonRetry.
   ///
   /// In en, this message translates to:

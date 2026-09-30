@@ -7,6 +7,7 @@ import '../../data/repositories/book_repository_impl.dart';
 import '../../data/repositories/catalog_records_repository_impl.dart';
 import '../../data/sources/book_remote_source.dart';
 import '../../data/sources/catalog_records_source.dart';
+import '../../domain/entities/author.dart';
 import '../../domain/entities/publisher.dart';
 import '../../domain/repositories/book_repository.dart';
 import '../../domain/usecases/get_section_books.dart';
@@ -37,6 +38,16 @@ final catalogRecordsRepositoryProvider = Provider<CatalogRecordsRepository>(
   (ref) => CatalogRecordsRepositoryImpl(
     CatalogRecordsSource(ref.watch(dioProvider)),
   ),
+);
+
+/// One Author by id; `null` when unknown.
+final authorProvider = FutureProvider.family<Author?, String>(
+  (ref, id) => ref.watch(catalogRecordsRepositoryProvider).author(id),
+);
+
+/// Every Book by one Author, newest first.
+final authorBooksProvider = FutureProvider.family<List<Book>, String>(
+  (ref, id) => ref.watch(bookRepositoryProvider).searchCatalog(author: id),
 );
 
 /// One Publisher by id; `null` when unknown.

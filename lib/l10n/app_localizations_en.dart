@@ -210,6 +210,15 @@ class AppL10nEn extends AppL10n {
   String get commonFilter => 'Filter';
 
   @override
+  String get commonNotFound => 'Not found';
+
+  @override
+  String get commonBack => 'Back';
+
+  @override
+  String get authorEmpty => 'No books by this Author yet.';
+
+  @override
   String get commonRetry => 'Retry';
 
   @override

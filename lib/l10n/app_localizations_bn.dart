@@ -208,6 +208,15 @@ class AppL10nBn extends AppL10n {
   String get commonFilter => 'ফিল্টার';
 
   @override
+  String get commonNotFound => 'পাওয়া যায়নি';
+
+  @override
+  String get commonBack => 'ফিরে যান';
+
+  @override
+  String get authorEmpty => 'এই লেখকের কোনো বই এখনো নেই।';
+
+  @override
   String get commonRetry => 'আবার চেষ্টা করুন';
 
   @override

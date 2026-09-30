@@ -9,10 +9,11 @@ abstract interface class BookRepository {
   /// Newest arrivals for the home screen, cheapest From-price first.
   Future<List<Book>> fetchNewArrivals();
 
-  /// Full catalog, optionally narrowed by category, Section and free-text query.
+  /// Full catalog, optionally narrowed by category, Section, Author id and free-text query.
   Future<List<Book>> searchCatalog({
     String? category,
     Section? section,
+    String? author,
     String query = '',
   });
 

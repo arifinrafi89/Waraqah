@@ -30,6 +30,7 @@ class _StaticBookSource extends BookRemoteSource {
   Future<List<Book>> fetchBooks({
     String? category,
     Section? section,
+    String? author,
     String query = '',
   }) async => books;
 }
