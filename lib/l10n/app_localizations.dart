@@ -565,6 +565,24 @@ abstract class AppL10n {
   /// **'No books found for \'{query}\''**
   String searchNoResults(String query);
 
+  /// No description provided for @searchRecent.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent searches'**
+  String get searchRecent;
+
+  /// No description provided for @searchRecentClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all'**
+  String get searchRecentClear;
+
+  /// No description provided for @searchRecentRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove \'{query}\''**
+  String searchRecentRemove(String query);
+
   /// No description provided for @searchRequestBook.
   ///
   /// In en, this message translates to:

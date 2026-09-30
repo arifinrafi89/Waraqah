@@ -92,4 +92,38 @@ void main() {
     expect(pathOf(router), CatalogRoutes.requestBook);
     expect(find.text('Coming soon'), findsOneWidget);
   });
+
+  testWidgets('recent searches: saved on submit, tap runs, clear empties', (
+    tester,
+  ) async {
+    await openApp(tester, CatalogRoutes.search);
+
+    await tester.enterText(find.byType(TextField), 'matilda');
+    await settle(tester);
+    await tester.enterText(find.byType(TextField), '');
+    await settle(tester);
+    // Typed but not submitted: not saved.
+    expect(find.text('Recent searches'), findsNothing);
+
+    await tester.enterText(find.byType(TextField), 'matilda');
+    await tester.testTextInput.receiveAction(TextInputAction.search);
+    await settle(tester);
+    await tester.enterText(find.byType(TextField), '');
+    await settle(tester);
+    expect(find.text('Recent searches'), findsOneWidget);
+
+    await tester.tap(find.text('matilda'));
+    await settle(tester);
+    expect(find.text('1 results'), findsOneWidget);
+
+    await tester.enterText(find.byType(TextField), '');
+    await settle(tester);
+    await tester.tap(find.text('Clear all'));
+    await settle(tester);
+    expect(find.text('Recent searches'), findsNothing);
+    expect(
+      find.text('Search by title, author, publisher or ISBN'),
+      findsOneWidget,
+    );
+  });
 }

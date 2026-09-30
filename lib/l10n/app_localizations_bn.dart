@@ -253,6 +253,17 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
+  String get searchRecent => 'সাম্প্রতিক অনুসন্ধান';
+
+  @override
+  String get searchRecentClear => 'সব মুছুন';
+
+  @override
+  String searchRecentRemove(String query) {
+    return '\'$query\' মুছুন';
+  }
+
+  @override
   String get searchRequestBook => 'এই বইটি অনুরোধ করুন';
 
   @override

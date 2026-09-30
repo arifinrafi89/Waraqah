@@ -255,6 +255,17 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
+  String get searchRecent => 'Recent searches';
+
+  @override
+  String get searchRecentClear => 'Clear all';
+
+  @override
+  String searchRecentRemove(String query) {
+    return 'Remove \'$query\'';
+  }
+
+  @override
   String get searchRequestBook => 'Request this book';
 
   @override

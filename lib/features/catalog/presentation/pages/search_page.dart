@@ -4,16 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/theme/app_dimens.dart';
-import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/app_text_field.dart';
-import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../providers/recent_searches_provider.dart';
 import '../providers/search_providers.dart';
 import '../widgets/back_app_bar.dart';
-import '../widgets/book_list_skeleton.dart';
 import '../widgets/search_filter_pill.dart';
-import '../widgets/search_no_results.dart';
-import 'catalog_results_list.dart';
+import '../widgets/search_recents.dart';
+import '../widgets/search_results_view.dart';
 
 /// `/catalog/search`: live search by title, Author or Publisher.
 class SearchPage extends ConsumerStatefulWidget {
@@ -25,11 +23,23 @@ class SearchPage extends ConsumerStatefulWidget {
 
 class _SearchPageState extends ConsumerState<SearchPage> {
   Timer? _debounce;
+  final _controller = TextEditingController();
 
   @override
   void dispose() {
     _debounce?.cancel();
+    _controller.dispose();
     super.dispose();
+  }
+
+  void _save() =>
+      ref.read(recentSearchesProvider.notifier).add(_controller.text);
+
+  /// Runs [value] now: a recent search was tapped, or search was pressed.
+  void _run(String value) {
+    _debounce?.cancel();
+    _controller.text = value;
+    ref.read(searchQueryProvider.notifier).select(value);
   }
 
   /// Runs the search 300 ms after the last keystroke.
@@ -46,7 +56,6 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     final l10n = AppL10n.of(context)!;
     final query = ref.watch(searchQueryProvider).trim();
     final hasFilters = ref.watch(searchFiltersProvider).activeCount > 0;
-    final results = ref.watch(searchResultsProvider);
     return SafeArea(
       bottom: false,
       child: Column(
@@ -59,50 +68,19 @@ class _SearchPageState extends ConsumerState<SearchPage> {
               icon: Icons.search_rounded,
               radius: 14,
               autofocus: true,
+              controller: _controller,
               onChanged: _onChanged,
+              onSubmitted: (value) {
+                _run(value);
+                _save();
+              },
             ),
           ),
           const SearchPillRow(),
           Expanded(
             child: query.isEmpty && !hasFilters
-                ? Center(
-                    child: Text(
-                      l10n.searchHint,
-                      style: context.texts.bodyMedium,
-                    ),
-                  )
-                : AsyncView(
-                    value: results,
-                    errorLabel: l10n.commonSomethingWentWrong,
-                    retryLabel: l10n.commonRetry,
-                    onRetry: () => ref.invalidate(searchResultsProvider),
-                    skeleton: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: Insets.screen),
-                      child: BookListSkeleton(),
-                    ),
-                    builder: (books) => books.isEmpty
-                        ? SearchNoResults(query: query)
-                        : Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                  Insets.screen,
-                                  0,
-                                  Insets.screen,
-                                  10,
-                                ),
-                                child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    l10n.catalogResults(books.length),
-                                    style: context.texts.labelMedium,
-                                  ),
-                                ),
-                              ),
-                              Expanded(child: CatalogResultsList(books: books)),
-                            ],
-                          ),
-                  ),
+                ? SearchRecents(onPick: _run)
+                : SearchResultsView(query: query, onOpen: _save),
           ),
         ],
       ),
