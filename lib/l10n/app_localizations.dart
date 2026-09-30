@@ -1561,6 +1561,60 @@ abstract class AppL10n {
   /// **'Browse books'**
   String get wishlistBrowse;
 
+  /// No description provided for @wishlistShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share wishlist'**
+  String get wishlistShare;
+
+  /// No description provided for @wishlistShareTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your wishlist'**
+  String get wishlistShareTitle;
+
+  /// No description provided for @wishlistShareBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Anyone with the link can see the books on your wishlist and buy you one as a gift. They can\'t change your list.'**
+  String get wishlistShareBody;
+
+  /// No description provided for @wishlistCopyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get wishlistCopyLink;
+
+  /// No description provided for @wishlistLinkCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied'**
+  String get wishlistLinkCopied;
+
+  /// No description provided for @wishlistPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'See it as friends do'**
+  String get wishlistPreview;
+
+  /// No description provided for @wishlistSharedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}\'s wishlist'**
+  String wishlistSharedTitle(String name);
+
+  /// No description provided for @wishlistSharedGiftHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Buying one for {name}? Add it to your cart and turn on \"Send as a gift\" at checkout.'**
+  String wishlistSharedGiftHint(String name);
+
+  /// No description provided for @wishlistSharedMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'This wishlist isn\'t shared any more.'**
+  String get wishlistSharedMissing;
+
   /// No description provided for @checkoutTitle.
   ///
   /// In en, this message translates to:
