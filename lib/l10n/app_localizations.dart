@@ -838,7 +838,7 @@ abstract class AppL10n {
   /// No description provided for @bookReaderSaleNote.
   ///
   /// In en, this message translates to:
-  /// **'Waraqah picks the book up from the reader, checks it and delivers it to you.'**
+  /// **'Make the seller an offer and agree on a meetup or courier. You pay the seller directly.'**
   String get bookReaderSaleNote;
 
   /// No description provided for @bookLookInside.

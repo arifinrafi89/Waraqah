@@ -12,8 +12,6 @@ abstract class UsedCopyModel with _$UsedCopyModel {
     required String id,
     required int priceBdt,
     required BookCondition condition,
-    String? sellerName,
-    String? area,
   }) = _UsedCopyModel;
 
   factory UsedCopyModel.fromJson(Map<String, dynamic> json) =>
@@ -26,7 +24,6 @@ abstract class UsedOptionsModel with _$UsedOptionsModel {
   @JsonSerializable(explicitToJson: true)
   const factory UsedOptionsModel({
     UsedCopyModel? certifiedUsed,
-    @Default(<UsedCopyModel>[]) List<UsedCopyModel> listings,
     int? resaleValueBdt,
   }) = _UsedOptionsModel;
 
@@ -34,20 +31,15 @@ abstract class UsedOptionsModel with _$UsedOptionsModel {
       _$UsedOptionsModelFromJson(json);
 }
 
-extension UsedCopyModelX on UsedCopyModel {
-  UsedCopy toEntity() => UsedCopy(
-    id: id,
-    priceBdt: priceBdt,
-    condition: condition,
-    sellerName: sellerName,
-    area: area,
-  );
-}
-
 extension UsedOptionsModelX on UsedOptionsModel {
   UsedOptions toEntity() => UsedOptions(
-    certifiedUsed: certifiedUsed?.toEntity(),
-    listings: [for (final copy in listings) copy.toEntity()],
+    certifiedUsed: certifiedUsed == null
+        ? null
+        : UsedCopy(
+            id: certifiedUsed!.id,
+            priceBdt: certifiedUsed!.priceBdt,
+            condition: certifiedUsed!.condition,
+          ),
     resaleValueBdt: resaleValueBdt,
   );
 }

@@ -3,15 +3,14 @@ import '../../../catalog/domain/entities/used_options.dart';
 import 'cart.dart';
 import 'cart_line.dart';
 
-/// Swapping one new book in the cart for a cheaper used copy of it.
+/// Swapping one new book in the cart for a cheaper Certified Used copy of
+/// it. Readers' copies aren't suggested: they're bought by making the
+/// seller an offer, not through the cart.
 class UsedSwap {
   const UsedSwap({required this.line, required this.copy});
 
   final CartLine line;
   final UsedCopy copy;
-
-  /// A Certified Used copy has no seller; a reader's listing does.
-  bool get isCertified => copy.sellerName == null;
 
   int get savingBdt => line.totalBdt - copy.priceBdt;
 }
@@ -30,7 +29,7 @@ class BudgetPlan {
 }
 
 /// Ways to pay less for what's in the cart:
-/// - a printed new book (one copy) that's available used for less
+/// - a printed new book (one copy) that's available Certified Used for less
 /// - how much more to add for free delivery
 class SmartBasket {
   const SmartBasket({
@@ -51,7 +50,7 @@ class SmartBasket {
         if (line.kind == CartItemKind.edition &&
             line.format != BookFormat.ebook &&
             line.quantity == 1)
-          if (_cheapest(used[line.bookId]) case final copy?)
+          if (used[line.bookId]?.certifiedUsed case final copy?)
             if (copy.priceBdt < line.totalBdt) UsedSwap(line: line, copy: copy),
     ]..sort((a, b) => b.savingBdt.compareTo(a.savingBdt));
     final printed = cart.lines.any((l) => l.format != BookFormat.ebook);
@@ -86,12 +85,5 @@ class SmartBasket {
       total -= swap.savingBdt;
     }
     return BudgetPlan(swaps: chosen, totalBdt: total, fits: total <= budgetBdt);
-  }
-
-  static UsedCopy? _cheapest(UsedOptions? options) {
-    if (options == null) return null;
-    final copies = [?options.certifiedUsed, ...options.listings];
-    if (copies.isEmpty) return null;
-    return copies.reduce((a, b) => b.priceBdt < a.priceBdt ? b : a);
   }
 }

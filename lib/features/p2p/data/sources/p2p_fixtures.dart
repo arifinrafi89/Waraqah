@@ -16,7 +16,7 @@ abstract final class P2pFixtures {
       area: 'Dhanmondi',
       category: 'Software Engineering',
       newPriceBdt: 500,
-      bookId: 'book-1',
+      bookId: 'bk-cleancode',
     ),
     P2pListing(
       id: 'p2p-2',

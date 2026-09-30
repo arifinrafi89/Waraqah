@@ -9,7 +9,7 @@ import '../../../catalog/presentation/widgets/used_labels.dart';
 import '../../domain/entities/smart_basket.dart';
 import 'smart_basket_actions.dart';
 
-/// "Sapiens · From a reader, Very good · ৳390 · save ৳260" with Switch.
+/// "Sapiens · Certified Used, Good · ৳420 · save ৳230" with Switch.
 class UsedSwapRow extends ConsumerWidget {
   const UsedSwapRow({super.key, required this.swap});
 
@@ -19,9 +19,7 @@ class UsedSwapRow extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final palette = context.palette;
     final l10n = AppL10n.of(context)!;
-    final kind = swap.isCertified
-        ? l10n.cartCertifiedUsed
-        : l10n.cartFromReader;
+    final kind = l10n.cartCertifiedUsed;
     return Row(
       children: [
         Expanded(

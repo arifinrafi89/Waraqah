@@ -426,7 +426,7 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get bookReaderSaleNote =>
-      'Waraqah picks the book up from the reader, checks it and delivers it to you.';
+      'Make the seller an offer and agree on a meetup or courier. You pay the seller directly.';
 
   @override
   String get bookLookInside => 'Look inside';

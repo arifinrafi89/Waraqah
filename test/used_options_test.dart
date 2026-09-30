@@ -35,18 +35,11 @@ void main() {
       expect(line.savingsBdt, 210);
     });
 
-    test('a reader listing comes with its condition', () {
-      store.add('listing', 'ls-atomic-2');
-      final line = cart().lines.single;
-      expect(line.kind, CartItemKind.listing);
-      expect((line.unitPriceBdt, line.condition), (300, BookCondition.good));
-    });
-
-    test('ids only work for their own kind', () {
+    test("readers' listings don't go in the cart", () {
       store
         ..add('listing', 'cu-atomic-1')
-        ..add('certifiedUsed', 'ls-atomic-1')
-        ..add('listing', 'nope');
+        ..add('listing', 'p2p-1')
+        ..add('certifiedUsed', 'nope');
       expect(cart().isEmpty, isTrue);
     });
   });
