@@ -135,5 +135,12 @@
   "adminOrdersHint": "Orders, returns, refunds and coupons",
   "adminModeration": "Moderation",
   "adminModerationHint": "Review used-book listings and reports",
-  "adminComingSoon": "This section is being built. Check back soon."
+  "adminComingSoon": "This section is being built. Check back soon.",
+  "moderationCenterTitle": "Moderation Center",
+  "moderationTabListings": "Listings to approve",
+  "moderationTabReports": "Reports",
+  "moderationTabDisputes": "Disputes",
+  "moderationEmptyListings": "No listings need approval.",
+  "moderationEmptyReports": "No pending reports.",
+  "moderationEmptyDisputes": "No active disputes."
 }

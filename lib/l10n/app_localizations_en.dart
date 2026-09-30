@@ -427,4 +427,25 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get adminComingSoon => 'This section is being built. Check back soon.';
+
+  @override
+  String get moderationCenterTitle => 'Moderation Center';
+
+  @override
+  String get moderationTabListings => 'Listings to approve';
+
+  @override
+  String get moderationTabReports => 'Reports';
+
+  @override
+  String get moderationTabDisputes => 'Disputes';
+
+  @override
+  String get moderationEmptyListings => 'No listings need approval.';
+
+  @override
+  String get moderationEmptyReports => 'No pending reports.';
+
+  @override
+  String get moderationEmptyDisputes => 'No active disputes.';
 }

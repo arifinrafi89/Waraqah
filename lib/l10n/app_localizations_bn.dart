@@ -416,4 +416,25 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get adminComingSoon => 'এই অংশটি তৈরি হচ্ছে। শীঘ্রই আবার দেখুন।';
+
+  @override
+  String get moderationCenterTitle => 'মডারেশন সেন্টার';
+
+  @override
+  String get moderationTabListings => 'অ্যাপ্রুভালের জন্য লিস্টিং';
+
+  @override
+  String get moderationTabReports => 'রিপোর্ট';
+
+  @override
+  String get moderationTabDisputes => 'ডিসপিউট';
+
+  @override
+  String get moderationEmptyListings => 'অ্যাপ্রুভালের জন্য কোনো লিস্টিং নেই।';
+
+  @override
+  String get moderationEmptyReports => 'কোনো পেন্ডিং রিপোর্ট নেই।';
+
+  @override
+  String get moderationEmptyDisputes => 'কোনো অ্যাক্টিভ ডিসপিউট নেই।';
 }

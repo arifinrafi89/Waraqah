@@ -28,8 +28,8 @@ void main() {
     await tester.tap(find.text('Moderation'));
     await settle(tester);
     expect(pathOf(router), '/admin/moderation');
-    expect(find.text('Moderation'), findsOneWidget);
-    expect(find.text('Coming soon'), findsOneWidget);
+    expect(find.text('Moderation Center'), findsOneWidget);
+    expect(find.text('Listings to approve'), findsOneWidget);
 
     await tester.tap(find.byTooltip('Back'));
     await settle(tester);
