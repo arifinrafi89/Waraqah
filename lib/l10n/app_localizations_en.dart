@@ -706,6 +706,16 @@ class AppL10nEn extends AppL10n {
   String get orderReturnNoteHint => 'Tell us what happened (optional)';
 
   @override
+  String get orderReturnAddPhotos => 'Add photos';
+
+  @override
+  String get orderReturnRemovePhoto => 'Remove photo';
+
+  @override
+  String get orderReturnPhotosHelp =>
+      'Up to 3 photos. Pictures of the damage help us decide faster.';
+
+  @override
   String get orderReturnSend => 'Send request';
 
   @override

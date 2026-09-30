@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'order_return.freezed.dart';
@@ -15,5 +17,11 @@ abstract class ReturnRequest with _$ReturnRequest {
     required ReturnStatus status,
     required DateTime requestedAt,
     @Default('') String note,
+
+    /// Up to [maxReturnPhotos] pictures of the problem, as image bytes.
+    @Default(<Uint8List>[]) List<Uint8List> photos,
   }) = _ReturnRequest;
 }
+
+/// Most photos a return can carry.
+const int maxReturnPhotos = 3;

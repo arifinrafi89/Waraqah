@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/models/edition.dart';
@@ -43,6 +45,10 @@ abstract class ReturnRequestModel with _$ReturnRequestModel {
     required ReturnStatus status,
     required DateTime requestedAt,
     @Default('') String note,
+
+    /// Base64 images for now; the Go backend will store uploads and answer
+    /// links instead.
+    @Default(<String>[]) List<String> photos,
   }) = _ReturnRequestModel;
 
   factory ReturnRequestModel.fromJson(Map<String, dynamic> json) =>
@@ -72,5 +78,6 @@ extension ReturnRequestModelX on ReturnRequestModel {
     status: status,
     requestedAt: requestedAt,
     note: note,
+    photos: [for (final photo in photos) base64Decode(photo)],
   );
 }

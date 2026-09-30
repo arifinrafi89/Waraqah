@@ -7,8 +7,9 @@ import '../../../../core/widgets/surface_card.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/order_return.dart';
 import 'order_labels.dart';
+import 'return_photos.dart';
 
-/// How a return request is going, and why it was asked for.
+/// How a return request is going, why it was asked for, and its photos.
 class ReturnStatusCard extends StatelessWidget {
   const ReturnStatusCard({super.key, required this.request});
 
@@ -41,6 +42,11 @@ class ReturnStatusCard extends StatelessWidget {
                   l10n.returnReason(request.reason),
                   style: AppFonts.ui(size: 11.5, color: palette.textFaint),
                 ),
+                if (request.photos.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(top: Insets.sm),
+                    child: ReturnPhotos(photos: request.photos),
+                  ),
               ],
             ),
           ),

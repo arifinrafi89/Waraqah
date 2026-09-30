@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:dio/dio.dart';
 
 import '../../domain/entities/order_return.dart';
@@ -34,10 +37,12 @@ class OrderRemoteSource {
     String number,
     ReturnReason reason,
     String note,
+    List<Uint8List> photos,
   ) => _change(OrderFakeApi.requestReturn, {
     'number': number,
     'reason': reason.name,
     'note': note,
+    'photos': [for (final photo in photos) base64Encode(photo)],
   });
 
   /// The server answers `null` when the change isn't allowed any more (say,

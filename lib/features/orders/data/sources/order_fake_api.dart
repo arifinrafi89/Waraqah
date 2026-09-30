@@ -16,7 +16,7 @@ abstract final class OrderFakeApi {
   /// Body: `{number}`. Answers the cancelled order, or `null` if it can't be.
   static const String cancel = '/orders/cancel';
 
-  /// Body: `{number, reason, note}`. Answers the order, or `null` if a
+  /// Body: `{number, reason, note, photos}`, photos as base64 images. Answers the order, or `null` if a
   /// return can't be asked for.
   static const String requestReturn = '/orders/return';
 
@@ -36,6 +36,7 @@ abstract final class OrderFakeApi {
             body['number'] as String? ?? '',
             ReturnReason.values.byName(body['reason'] as String),
             body['note'] as String? ?? '',
+            photos: [...?(body['photos'] as List?)?.cast<String>()],
           )
           ?.toJson();
     },

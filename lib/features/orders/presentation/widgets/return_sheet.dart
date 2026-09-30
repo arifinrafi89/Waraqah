@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_dimens.dart';
@@ -7,11 +9,19 @@ import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/order_return.dart';
 import '../../domain/usecases/request_return.dart';
 import 'order_labels.dart';
+import 'return_photos_picker.dart';
 
-/// Asks why the order is going back and for an optional note. Answers the
-/// choice, or `null` if the reader closes the sheet.
-Future<(ReturnReason, String)?> showReturnSheet(BuildContext context) =>
-    showModalBottomSheet<(ReturnReason, String)>(
+/// What the reader filled in on the return sheet.
+typedef ReturnChoice = ({
+  ReturnReason reason,
+  String note,
+  List<Uint8List> photos,
+});
+
+/// Asks why the order is going back, for an optional note and up to three
+/// photos. Answers the choice, or `null` if the reader closes the sheet.
+Future<ReturnChoice?> showReturnSheet(BuildContext context) =>
+    showModalBottomSheet<ReturnChoice>(
       context: context,
       isScrollControlled: true,
       showDragHandle: true,
@@ -28,6 +38,7 @@ class _ReturnForm extends StatefulWidget {
 class _ReturnFormState extends State<_ReturnForm> {
   var _reason = ReturnReason.damaged;
   final _note = TextEditingController();
+  var _photos = <Uint8List>[];
 
   @override
   void dispose() {
@@ -72,12 +83,20 @@ class _ReturnFormState extends State<_ReturnForm> {
               border: const OutlineInputBorder(),
             ),
           ),
+          ReturnPhotosPicker(
+            photos: _photos,
+            onChanged: (photos) => setState(() => _photos = photos),
+          ),
           const SizedBox(height: Insets.md),
           SizedBox(
             width: double.infinity,
             child: PrimaryButton(
               label: l10n.orderReturnSend,
-              onPressed: () => Navigator.pop(context, (_reason, _note.text)),
+              onPressed: () => Navigator.pop(context, (
+                reason: _reason,
+                note: _note.text,
+                photos: _photos,
+              )),
             ),
           ),
         ],

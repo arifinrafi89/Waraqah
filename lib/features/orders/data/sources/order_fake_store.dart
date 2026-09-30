@@ -39,7 +39,12 @@ class OrderFakeStore {
 
   /// `null` unless the order was delivered in the last 7 days and has no
   /// return request yet.
-  OrderModel? requestReturn(String number, ReturnReason reason, String note) {
+  OrderModel? requestReturn(
+    String number,
+    ReturnReason reason,
+    String note, {
+    List<String> photos = const [],
+  }) {
     final order = find(number);
     if (order == null || !order.toEntity().canRequestReturn(_now())) {
       return null;
@@ -51,6 +56,7 @@ class OrderFakeStore {
           status: ReturnStatus.requested,
           requestedAt: _now(),
           note: note,
+          photos: photos.take(maxReturnPhotos).toList(),
         ),
       ),
     );

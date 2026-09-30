@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import '../../../../core/usecase/usecase.dart';
 import '../entities/order.dart';
 import '../entities/order_return.dart';
@@ -8,14 +10,17 @@ class RequestReturnParams {
     required this.number,
     required this.reason,
     this.note = '',
+    this.photos = const [],
   });
 
   final String number;
   final ReturnReason reason;
   final String note;
+  final List<Uint8List> photos;
 }
 
-/// Sends a return request; the note is trimmed and kept short.
+/// Sends a return request: the note is trimmed and kept short, and only the
+/// first [maxReturnPhotos] photos go along.
 class RequestReturn extends UseCase<Order, RequestReturnParams> {
   RequestReturn(this._repository);
 
@@ -32,6 +37,7 @@ class RequestReturn extends UseCase<Order, RequestReturnParams> {
       note: note.length > maxNoteLength
           ? note.substring(0, maxNoteLength)
           : note,
+      photos: params.photos.take(maxReturnPhotos).toList(),
     );
   }
 }
