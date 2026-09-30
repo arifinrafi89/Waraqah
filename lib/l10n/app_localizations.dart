@@ -901,6 +901,90 @@ abstract class AppL10n {
   /// **'Waraqah doesn\'t sell this one yet.'**
   String get bookSeriesNotYetLong;
 
+  /// No description provided for @bookQuestionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions & answers'**
+  String get bookQuestionsTitle;
+
+  /// No description provided for @bookQuestionsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No questions yet} =1{1 question} other{{count} questions}}'**
+  String bookQuestionsCount(int count);
+
+  /// No description provided for @bookQuestionsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No questions yet. Be the first to ask.'**
+  String get bookQuestionsEmpty;
+
+  /// No description provided for @bookAskQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask a question'**
+  String get bookAskQuestion;
+
+  /// No description provided for @bookQuestionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What would you like to know about this book?'**
+  String get bookQuestionHint;
+
+  /// No description provided for @bookAnswerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Share what you know'**
+  String get bookAnswerHint;
+
+  /// No description provided for @bookAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer'**
+  String get bookAnswer;
+
+  /// No description provided for @bookNoAnswerYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No answer yet'**
+  String get bookNoAnswerYet;
+
+  /// No description provided for @bookFromWaraqah.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah'**
+  String get bookFromWaraqah;
+
+  /// No description provided for @bookPost.
+  ///
+  /// In en, this message translates to:
+  /// **'Post'**
+  String get bookPost;
+
+  /// No description provided for @bookPostTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'That\'s a bit short. Add a few more words.'**
+  String get bookPostTooShort;
+
+  /// No description provided for @bookPostTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'That\'s too long. Please shorten it.'**
+  String get bookPostTooLong;
+
+  /// No description provided for @bookQuestionPosted.
+  ///
+  /// In en, this message translates to:
+  /// **'Question posted. Readers and Waraqah can answer it.'**
+  String get bookQuestionPosted;
+
+  /// No description provided for @bookAnswerPosted.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer posted'**
+  String get bookAnswerPosted;
+
   /// No description provided for @cartTitle.
   ///
   /// In en, this message translates to:

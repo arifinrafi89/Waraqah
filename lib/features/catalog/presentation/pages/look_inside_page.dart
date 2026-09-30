@@ -41,7 +41,14 @@ class LookInsidePage extends ConsumerWidget {
                           ? context.pop()
                           : context.go(CatalogRoutes.bookDetailFor(bookId)),
                     ),
-                    Text(l10n.bookLookInside, style: context.texts.titleLarge),
+                    Flexible(
+                      child: Text(
+                        l10n.bookLookInside,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: context.texts.titleLarge,
+                      ),
+                    ),
                   ],
                 ),
               ),

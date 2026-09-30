@@ -463,6 +463,58 @@ class AppL10nEn extends AppL10n {
   String get bookSeriesNotYetLong => 'Waraqah doesn\'t sell this one yet.';
 
   @override
+  String get bookQuestionsTitle => 'Questions & answers';
+
+  @override
+  String bookQuestionsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count questions',
+      one: '1 question',
+      zero: 'No questions yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get bookQuestionsEmpty => 'No questions yet. Be the first to ask.';
+
+  @override
+  String get bookAskQuestion => 'Ask a question';
+
+  @override
+  String get bookQuestionHint => 'What would you like to know about this book?';
+
+  @override
+  String get bookAnswerHint => 'Share what you know';
+
+  @override
+  String get bookAnswer => 'Answer';
+
+  @override
+  String get bookNoAnswerYet => 'No answer yet';
+
+  @override
+  String get bookFromWaraqah => 'Waraqah';
+
+  @override
+  String get bookPost => 'Post';
+
+  @override
+  String get bookPostTooShort => 'That\'s a bit short. Add a few more words.';
+
+  @override
+  String get bookPostTooLong => 'That\'s too long. Please shorten it.';
+
+  @override
+  String get bookQuestionPosted =>
+      'Question posted. Readers and Waraqah can answer it.';
+
+  @override
+  String get bookAnswerPosted => 'Answer posted';
+
+  @override
   String get cartTitle => 'Cart';
 
   @override

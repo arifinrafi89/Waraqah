@@ -8,10 +8,12 @@ import 'book_reviews_section.dart';
 import 'edition_picker.dart';
 import 'look_inside_button.dart';
 import 'other_ways_to_buy.dart';
+import 'questions_section.dart';
 import 'series_panel.dart';
 
 /// Everything on a book's page, top to bottom: the header and Look Inside,
-/// editions, used copies, the series, then the summary and reviews.
+/// editions, used copies, the series, then the summary, questions and
+/// reviews.
 class BookDetailBody extends StatelessWidget {
   const BookDetailBody({super.key, required this.data});
 
@@ -39,6 +41,8 @@ class BookDetailBody extends StatelessWidget {
         SeriesPanel(bookId: book.id),
         gap,
         BookAboutSection(book: book, details: data.details),
+        QuestionsSection(bookId: book.id),
+        gap,
         BookReviewsSection(reviews: data.details.reviews),
       ],
     );

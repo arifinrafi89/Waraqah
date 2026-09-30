@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'presentation/pages/book_detail_page.dart';
 import 'presentation/pages/catalog_page.dart';
 import 'presentation/pages/look_inside_page.dart';
+import 'presentation/pages/questions_page.dart';
 
 abstract final class CatalogRoutes {
   static const String catalog = '/catalog';
@@ -16,6 +17,11 @@ abstract final class CatalogRoutes {
   /// A book's table of contents and sample pages.
   static String lookInsideFor(String id) => '/catalog/book/$id/look-inside';
 
+  static const String questions = '/catalog/book/:id/questions';
+
+  /// Every question and answer about a book.
+  static String questionsFor(String id) => '/catalog/book/$id/questions';
+
   static final List<RouteBase> routes = [
     GoRoute(
       path: bookDetail,
@@ -26,6 +32,10 @@ abstract final class CatalogRoutes {
       path: lookInside,
       builder: (_, state) =>
           LookInsidePage(bookId: state.pathParameters['id']!),
+    ),
+    GoRoute(
+      path: questions,
+      builder: (_, state) => QuestionsPage(bookId: state.pathParameters['id']!),
     ),
   ];
 

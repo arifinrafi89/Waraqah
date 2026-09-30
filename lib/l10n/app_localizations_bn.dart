@@ -443,6 +443,52 @@ class AppL10nBn extends AppL10n {
   String get bookSeriesNotYetLong => 'এই বইটি এখনো ওয়ারাকাহতে বিক্রি হয় না।';
 
   @override
+  String get bookQuestionsTitle => 'প্রশ্ন ও উত্তর';
+
+  @override
+  String bookQuestionsCount(int count) {
+    return '$countটি প্রশ্ন';
+  }
+
+  @override
+  String get bookQuestionsEmpty =>
+      'এখনো কোনো প্রশ্ন নেই। প্রথম প্রশ্নটি আপনিই করুন।';
+
+  @override
+  String get bookAskQuestion => 'প্রশ্ন করুন';
+
+  @override
+  String get bookQuestionHint => 'এই বই সম্পর্কে কী জানতে চান?';
+
+  @override
+  String get bookAnswerHint => 'আপনি যা জানেন লিখুন';
+
+  @override
+  String get bookAnswer => 'উত্তর দিন';
+
+  @override
+  String get bookNoAnswerYet => 'এখনো কোনো উত্তর নেই';
+
+  @override
+  String get bookFromWaraqah => 'ওয়ারাকাহ';
+
+  @override
+  String get bookPost => 'পোস্ট করুন';
+
+  @override
+  String get bookPostTooShort => 'লেখাটি খুব ছোট। আরও কয়েকটি শব্দ লিখুন।';
+
+  @override
+  String get bookPostTooLong => 'লেখাটি অনেক বড়। একটু ছোট করুন।';
+
+  @override
+  String get bookQuestionPosted =>
+      'প্রশ্ন পোস্ট হয়েছে। পাঠক ও ওয়ারাকাহ উত্তর দিতে পারবে।';
+
+  @override
+  String get bookAnswerPosted => 'উত্তর পোস্ট হয়েছে';
+
+  @override
   String get cartTitle => 'কার্ট';
 
   @override
