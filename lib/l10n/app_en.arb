@@ -134,7 +134,7 @@
   "@bookFromPrice": { "placeholders": { "price": { "type": "String" } } },
   "bookResellsFor": "Finished it? Copies like this usually resell for about {amount} on Waraqah.",
   "@bookResellsFor": { "placeholders": { "amount": { "type": "String" } } },
-  "bookReaderSaleNote": "Waraqah picks the book up from the reader, checks it and delivers it to you.",
+  "bookReaderSaleNote": "Make the seller an offer and agree on a meetup or courier. You pay the seller directly.",
   "bookLookInside": "Look inside",
   "bookLookInsideNone": "Nothing to show for this book yet.",
   "bookContents": "Contents",

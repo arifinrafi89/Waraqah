@@ -406,7 +406,7 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get bookReaderSaleNote =>
-      'ওয়ারাকাহ পাঠকের কাছ থেকে বইটি সংগ্রহ করে, যাচাই করে আপনার কাছে পৌঁছে দেয়।';
+      'বিক্রেতাকে দামের প্রস্তাব দিন এবং দেখা করা বা কুরিয়ারে পাঠানো ঠিক করুন। টাকা সরাসরি বিক্রেতাকে দেবেন।';
 
   @override
   String get bookLookInside => 'ভেতরে দেখুন';

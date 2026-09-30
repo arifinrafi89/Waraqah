@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UsedCopyModel {
 
- String get id; int get priceBdt; BookCondition get condition; String? get sellerName; String? get area;
+ String get id; int get priceBdt; BookCondition get condition;
 /// Create a copy of UsedCopyModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $UsedCopyModelCopyWith<UsedCopyModel> get copyWith => _$UsedCopyModelCopyWithImp
 @override
 bool operator ==(Object other) {
   final _this = this as UsedCopyModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsedCopyModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.priceBdt, _this.priceBdt) || other.priceBdt == _this.priceBdt)&&(identical(other.condition, _this.condition) || other.condition == _this.condition)&&(identical(other.sellerName, _this.sellerName) || other.sellerName == _this.sellerName)&&(identical(other.area, _this.area) || other.area == _this.area));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsedCopyModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.priceBdt, _this.priceBdt) || other.priceBdt == _this.priceBdt)&&(identical(other.condition, _this.condition) || other.condition == _this.condition));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as UsedCopyModel;
-  return Object.hash(runtimeType,_this.id,_this.priceBdt,_this.condition,_this.sellerName,_this.area);
+  return Object.hash(runtimeType,_this.id,_this.priceBdt,_this.condition);
 }
 
 @override
 String toString() {
   final _this = this as UsedCopyModel;
-  return 'UsedCopyModel(id: ${_this.id}, priceBdt: ${_this.priceBdt}, condition: ${_this.condition}, sellerName: ${_this.sellerName}, area: ${_this.area})';
+  return 'UsedCopyModel(id: ${_this.id}, priceBdt: ${_this.priceBdt}, condition: ${_this.condition})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $UsedCopyModelCopyWith<$Res>  {
   factory $UsedCopyModelCopyWith(UsedCopyModel value, $Res Function(UsedCopyModel) _then) = _$UsedCopyModelCopyWithImpl;
 @useResult
 $Res call({
- String id, int priceBdt, BookCondition condition, String? sellerName, String? area
+ String id, int priceBdt, BookCondition condition
 });
 
 
@@ -71,14 +71,12 @@ class _$UsedCopyModelCopyWithImpl<$Res>
 
 /// Create a copy of UsedCopyModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? priceBdt = null,Object? condition = null,Object? sellerName = freezed,Object? area = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? priceBdt = null,Object? condition = null,}) {
   return _then(UsedCopyModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,priceBdt: null == priceBdt ? _self.priceBdt : priceBdt // ignore: cast_nullable_to_non_nullable
 as int,condition: null == condition ? _self.condition : condition // ignore: cast_nullable_to_non_nullable
-as BookCondition,sellerName: freezed == sellerName ? _self.sellerName : sellerName // ignore: cast_nullable_to_non_nullable
-as String?,area: freezed == area ? _self.area : area // ignore: cast_nullable_to_non_nullable
-as String?,
+as BookCondition,
   ));
 }
 
@@ -163,10 +161,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  int priceBdt,  BookCondition condition,  String? sellerName,  String? area)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  int priceBdt,  BookCondition condition)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UsedCopyModel() when $default != null:
-return $default(_that.id,_that.priceBdt,_that.condition,_that.sellerName,_that.area);case _:
+return $default(_that.id,_that.priceBdt,_that.condition);case _:
   return orElse();
 
 }
@@ -184,10 +182,10 @@ return $default(_that.id,_that.priceBdt,_that.condition,_that.sellerName,_that.a
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  int priceBdt,  BookCondition condition,  String? sellerName,  String? area)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  int priceBdt,  BookCondition condition)  $default,) {final _that = this;
 switch (_that) {
 case _UsedCopyModel():
-return $default(_that.id,_that.priceBdt,_that.condition,_that.sellerName,_that.area);case _:
+return $default(_that.id,_that.priceBdt,_that.condition);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -204,10 +202,10 @@ return $default(_that.id,_that.priceBdt,_that.condition,_that.sellerName,_that.a
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  int priceBdt,  BookCondition condition,  String? sellerName,  String? area)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  int priceBdt,  BookCondition condition)?  $default,) {final _that = this;
 switch (_that) {
 case _UsedCopyModel() when $default != null:
-return $default(_that.id,_that.priceBdt,_that.condition,_that.sellerName,_that.area);case _:
+return $default(_that.id,_that.priceBdt,_that.condition);case _:
   return null;
 
 }
@@ -219,14 +217,12 @@ return $default(_that.id,_that.priceBdt,_that.condition,_that.sellerName,_that.a
 @JsonSerializable()
 
 class _UsedCopyModel implements UsedCopyModel {
-  const _UsedCopyModel({required this.id, required this.priceBdt, required this.condition, this.sellerName, this.area});
+  const _UsedCopyModel({required this.id, required this.priceBdt, required this.condition});
   factory _UsedCopyModel.fromJson(Map<String, dynamic> json) => _$UsedCopyModelFromJson(json);
 
 @override final  String id;
 @override final  int priceBdt;
 @override final  BookCondition condition;
-@override final  String? sellerName;
-@override final  String? area;
 
 /// Create a copy of UsedCopyModel
 /// with the given fields replaced by the non-null parameter values.
@@ -241,18 +237,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsedCopyModel&&(identical(other.id, id) || other.id == id)&&(identical(other.priceBdt, priceBdt) || other.priceBdt == priceBdt)&&(identical(other.condition, condition) || other.condition == condition)&&(identical(other.sellerName, sellerName) || other.sellerName == sellerName)&&(identical(other.area, area) || other.area == area));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsedCopyModel&&(identical(other.id, id) || other.id == id)&&(identical(other.priceBdt, priceBdt) || other.priceBdt == priceBdt)&&(identical(other.condition, condition) || other.condition == condition));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,priceBdt,condition,sellerName,area);
+    return Object.hash(runtimeType,id,priceBdt,condition);
 }
 
 @override
 String toString() {
-    return 'UsedCopyModel(id: $id, priceBdt: $priceBdt, condition: $condition, sellerName: $sellerName, area: $area)';
+    return 'UsedCopyModel(id: $id, priceBdt: $priceBdt, condition: $condition)';
 }
 
 
@@ -263,7 +259,7 @@ abstract mixin class _$UsedCopyModelCopyWith<$Res> implements $UsedCopyModelCopy
   factory _$UsedCopyModelCopyWith(_UsedCopyModel value, $Res Function(_UsedCopyModel) _then) = __$UsedCopyModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, int priceBdt, BookCondition condition, String? sellerName, String? area
+ String id, int priceBdt, BookCondition condition
 });
 
 
@@ -280,14 +276,12 @@ class __$UsedCopyModelCopyWithImpl<$Res>
 
 /// Create a copy of UsedCopyModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? priceBdt = null,Object? condition = null,Object? sellerName = freezed,Object? area = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? priceBdt = null,Object? condition = null,}) {
   return _then(_UsedCopyModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,priceBdt: null == priceBdt ? _self.priceBdt : priceBdt // ignore: cast_nullable_to_non_nullable
 as int,condition: null == condition ? _self.condition : condition // ignore: cast_nullable_to_non_nullable
-as BookCondition,sellerName: freezed == sellerName ? _self.sellerName : sellerName // ignore: cast_nullable_to_non_nullable
-as String?,area: freezed == area ? _self.area : area // ignore: cast_nullable_to_non_nullable
-as String?,
+as BookCondition,
   ));
 }
 
@@ -298,7 +292,7 @@ as String?,
 /// @nodoc
 mixin _$UsedOptionsModel {
 
- UsedCopyModel? get certifiedUsed; List<UsedCopyModel> get listings; int? get resaleValueBdt;
+ UsedCopyModel? get certifiedUsed; int? get resaleValueBdt;
 /// Create a copy of UsedOptionsModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -312,20 +306,20 @@ $UsedOptionsModelCopyWith<UsedOptionsModel> get copyWith => _$UsedOptionsModelCo
 @override
 bool operator ==(Object other) {
   final _this = this as UsedOptionsModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsedOptionsModel&&(identical(other.certifiedUsed, _this.certifiedUsed) || other.certifiedUsed == _this.certifiedUsed)&&const DeepCollectionEquality().equals(other.listings, _this.listings)&&(identical(other.resaleValueBdt, _this.resaleValueBdt) || other.resaleValueBdt == _this.resaleValueBdt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsedOptionsModel&&(identical(other.certifiedUsed, _this.certifiedUsed) || other.certifiedUsed == _this.certifiedUsed)&&(identical(other.resaleValueBdt, _this.resaleValueBdt) || other.resaleValueBdt == _this.resaleValueBdt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as UsedOptionsModel;
-  return Object.hash(runtimeType,_this.certifiedUsed,const DeepCollectionEquality().hash(_this.listings),_this.resaleValueBdt);
+  return Object.hash(runtimeType,_this.certifiedUsed,_this.resaleValueBdt);
 }
 
 @override
 String toString() {
   final _this = this as UsedOptionsModel;
-  return 'UsedOptionsModel(certifiedUsed: ${_this.certifiedUsed}, listings: ${_this.listings}, resaleValueBdt: ${_this.resaleValueBdt})';
+  return 'UsedOptionsModel(certifiedUsed: ${_this.certifiedUsed}, resaleValueBdt: ${_this.resaleValueBdt})';
 }
 
 
@@ -336,7 +330,7 @@ abstract mixin class $UsedOptionsModelCopyWith<$Res>  {
   factory $UsedOptionsModelCopyWith(UsedOptionsModel value, $Res Function(UsedOptionsModel) _then) = _$UsedOptionsModelCopyWithImpl;
 @useResult
 $Res call({
- UsedCopyModel? certifiedUsed, List<UsedCopyModel> listings, int? resaleValueBdt
+ UsedCopyModel? certifiedUsed, int? resaleValueBdt
 });
 
 
@@ -353,11 +347,10 @@ class _$UsedOptionsModelCopyWithImpl<$Res>
 
 /// Create a copy of UsedOptionsModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? certifiedUsed = freezed,Object? listings = null,Object? resaleValueBdt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? certifiedUsed = freezed,Object? resaleValueBdt = freezed,}) {
   return _then(UsedOptionsModel(
 certifiedUsed: freezed == certifiedUsed ? _self.certifiedUsed : certifiedUsed // ignore: cast_nullable_to_non_nullable
-as UsedCopyModel?,listings: null == listings ? _self.listings : listings // ignore: cast_nullable_to_non_nullable
-as List<UsedCopyModel>,resaleValueBdt: freezed == resaleValueBdt ? _self.resaleValueBdt : resaleValueBdt // ignore: cast_nullable_to_non_nullable
+as UsedCopyModel?,resaleValueBdt: freezed == resaleValueBdt ? _self.resaleValueBdt : resaleValueBdt // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
 }
@@ -455,10 +448,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UsedCopyModel? certifiedUsed,  List<UsedCopyModel> listings,  int? resaleValueBdt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UsedCopyModel? certifiedUsed,  int? resaleValueBdt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UsedOptionsModel() when $default != null:
-return $default(_that.certifiedUsed,_that.listings,_that.resaleValueBdt);case _:
+return $default(_that.certifiedUsed,_that.resaleValueBdt);case _:
   return orElse();
 
 }
@@ -476,10 +469,10 @@ return $default(_that.certifiedUsed,_that.listings,_that.resaleValueBdt);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UsedCopyModel? certifiedUsed,  List<UsedCopyModel> listings,  int? resaleValueBdt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UsedCopyModel? certifiedUsed,  int? resaleValueBdt)  $default,) {final _that = this;
 switch (_that) {
 case _UsedOptionsModel():
-return $default(_that.certifiedUsed,_that.listings,_that.resaleValueBdt);case _:
+return $default(_that.certifiedUsed,_that.resaleValueBdt);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -496,10 +489,10 @@ return $default(_that.certifiedUsed,_that.listings,_that.resaleValueBdt);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UsedCopyModel? certifiedUsed,  List<UsedCopyModel> listings,  int? resaleValueBdt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UsedCopyModel? certifiedUsed,  int? resaleValueBdt)?  $default,) {final _that = this;
 switch (_that) {
 case _UsedOptionsModel() when $default != null:
-return $default(_that.certifiedUsed,_that.listings,_that.resaleValueBdt);case _:
+return $default(_that.certifiedUsed,_that.resaleValueBdt);case _:
   return null;
 
 }
@@ -511,17 +504,10 @@ return $default(_that.certifiedUsed,_that.listings,_that.resaleValueBdt);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _UsedOptionsModel implements UsedOptionsModel {
-  const _UsedOptionsModel({this.certifiedUsed,  List<UsedCopyModel> listings = const <UsedCopyModel>[], this.resaleValueBdt}): _listings = listings;
+  const _UsedOptionsModel({this.certifiedUsed, this.resaleValueBdt});
   factory _UsedOptionsModel.fromJson(Map<String, dynamic> json) => _$UsedOptionsModelFromJson(json);
 
 @override final  UsedCopyModel? certifiedUsed;
- final  List<UsedCopyModel> _listings;
-@override@JsonKey() List<UsedCopyModel> get listings {
-  if (_listings is EqualUnmodifiableListView) return _listings;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_listings);
-}
-
 @override final  int? resaleValueBdt;
 
 /// Create a copy of UsedOptionsModel
@@ -537,18 +523,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsedOptionsModel&&(identical(other.certifiedUsed, certifiedUsed) || other.certifiedUsed == certifiedUsed)&&const DeepCollectionEquality().equals(other.listings, _listings)&&(identical(other.resaleValueBdt, resaleValueBdt) || other.resaleValueBdt == resaleValueBdt));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsedOptionsModel&&(identical(other.certifiedUsed, certifiedUsed) || other.certifiedUsed == certifiedUsed)&&(identical(other.resaleValueBdt, resaleValueBdt) || other.resaleValueBdt == resaleValueBdt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,certifiedUsed,const DeepCollectionEquality().hash(_listings),resaleValueBdt);
+    return Object.hash(runtimeType,certifiedUsed,resaleValueBdt);
 }
 
 @override
 String toString() {
-    return 'UsedOptionsModel(certifiedUsed: $certifiedUsed, listings: $listings, resaleValueBdt: $resaleValueBdt)';
+    return 'UsedOptionsModel(certifiedUsed: $certifiedUsed, resaleValueBdt: $resaleValueBdt)';
 }
 
 
@@ -559,7 +545,7 @@ abstract mixin class _$UsedOptionsModelCopyWith<$Res> implements $UsedOptionsMod
   factory _$UsedOptionsModelCopyWith(_UsedOptionsModel value, $Res Function(_UsedOptionsModel) _then) = __$UsedOptionsModelCopyWithImpl;
 @override @useResult
 $Res call({
- UsedCopyModel? certifiedUsed, List<UsedCopyModel> listings, int? resaleValueBdt
+ UsedCopyModel? certifiedUsed, int? resaleValueBdt
 });
 
 
@@ -576,11 +562,10 @@ class __$UsedOptionsModelCopyWithImpl<$Res>
 
 /// Create a copy of UsedOptionsModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? certifiedUsed = freezed,Object? listings = null,Object? resaleValueBdt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? certifiedUsed = freezed,Object? resaleValueBdt = freezed,}) {
   return _then(_UsedOptionsModel(
 certifiedUsed: freezed == certifiedUsed ? _self.certifiedUsed : certifiedUsed // ignore: cast_nullable_to_non_nullable
-as UsedCopyModel?,listings: null == listings ? _self._listings : listings // ignore: cast_nullable_to_non_nullable
-as List<UsedCopyModel>,resaleValueBdt: freezed == resaleValueBdt ? _self.resaleValueBdt : resaleValueBdt // ignore: cast_nullable_to_non_nullable
+as UsedCopyModel?,resaleValueBdt: freezed == resaleValueBdt ? _self.resaleValueBdt : resaleValueBdt // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
 }

@@ -8,8 +8,8 @@ import '../../domain/entities/smart_basket.dart';
 import '../providers/cart_providers.dart';
 
 extension SmartBasketActions on WidgetRef {
-  /// Replaces each new book in [swaps] with its used copy, then says how
-  /// much was saved.
+  /// Replaces each new book in [swaps] with its Certified Used copy, then
+  /// says how much was saved.
   Future<void> applySwaps(BuildContext context, List<UsedSwap> swaps) async {
     final l10n = AppL10n.of(context)!;
     final messenger = ScaffoldMessenger.of(context);
@@ -17,10 +17,7 @@ extension SmartBasketActions on WidgetRef {
     var saved = 0;
     try {
       for (final swap in swaps) {
-        final used = swap.isCertified
-            ? CartItemRef.certifiedUsed(swap.copy.id)
-            : CartItemRef.listing(swap.copy.id);
-        if (await cart.add(used)) {
+        if (await cart.add(CartItemRef.certifiedUsed(swap.copy.id))) {
           await cart.remove(swap.line.id);
           saved += swap.savingBdt;
         }

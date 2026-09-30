@@ -25,22 +25,12 @@ CartLine _line(String bookId, int price, {int quantity = 1}) => CartLine(
   format: BookFormat.paperback,
 );
 
-UsedOptions _used(int certified, [int? listing]) => UsedOptions(
+UsedOptions _used(int certified) => UsedOptions(
   certifiedUsed: UsedCopy(
     id: 'cu',
     priceBdt: certified,
     condition: BookCondition.good,
   ),
-  listings: [
-    if (listing != null)
-      UsedCopy(
-        id: 'ls',
-        priceBdt: listing,
-        condition: BookCondition.good,
-        sellerName: 'S',
-        area: 'A',
-      ),
-  ],
 );
 
 void main() {
@@ -50,24 +40,24 @@ void main() {
     Cart(
       lines: [_line('a', 590), _line('b', 650), _line('c', 300, quantity: 2)],
     ),
-    {'a': _used(380, 300), 'b': _used(420), 'c': _used(100)},
+    {'a': _used(380), 'b': _used(420), 'c': _used(100)},
     freeDeliveryFromBdt: 2500,
   );
 
   test('suggests the cheapest used copy, biggest saving first', () {
-    expect([for (final s in basket.swaps) s.line.bookId], ['a', 'b']);
-    expect(basket.swaps.first.isCertified, isFalse, reason: 'listing is ৳300');
-    expect(basket.usedSavingsBdt, 290 + 230);
+    // b saves ৳230, a ৳210; c has two copies, so it isn't swapped.
+    expect([for (final s in basket.swaps) s.line.bookId], ['b', 'a']);
+    expect(basket.usedSavingsBdt, 230 + 210);
     // 590 + 650 + 600 = 1840.
     expect(basket.toFreeDeliveryBdt, 660);
   });
 
   test('budget mode swaps only as much as it needs to', () {
-    final fits = basket.planFor(1600);
-    expect((fits.swaps.length, fits.totalBdt, fits.fits), (1, 1550, true));
+    final fits = basket.planFor(1650);
+    expect((fits.swaps.length, fits.totalBdt, fits.fits), (1, 1610, true));
 
     final short = basket.planFor(1000);
-    expect((short.swaps.length, short.totalBdt, short.fits), (2, 1320, false));
+    expect((short.swaps.length, short.totalBdt, short.fits), (2, 1400, false));
   });
 
   testWidgets('the cart suggests used copies and switches them', (
@@ -83,15 +73,15 @@ void main() {
     await settle(tester);
 
     expect(find.text('Smart Basket'), findsOneWidget);
-    // Atomic Habits from a reader at ৳300 instead of ৳590.
-    expect(find.text('1 book is available used, save ৳290'), findsOneWidget);
+    // Atomic Habits Certified Used at ৳380 instead of ৳590.
+    expect(find.text('1 book is available used, save ৳210'), findsOneWidget);
     expect(find.text('Add ৳910 more for free delivery'), findsOneWidget);
 
     await tester.tap(find.text('Switch'));
     // Two requests: add the used copy, then remove the new one.
     await settle(tester);
     await settle(tester);
-    expect(find.text('Switched to used · saved ৳290'), findsOneWidget);
-    expect(find.text('From a reader · Good'), findsOneWidget);
+    expect(find.text('Switched to used · saved ৳210'), findsOneWidget);
+    expect(find.text('Certified Used · Very good'), findsOneWidget);
   });
 }
