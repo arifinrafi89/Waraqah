@@ -1,4 +1,5 @@
 import '../models/book_extras_model.dart';
+import 'book_fixtures.dart';
 
 /// Series for the fake API, in reading order. Books Waraqah sells carry
 /// their `bookId` (the fake API adds their covers); the rest are listed so
@@ -65,4 +66,21 @@ abstract final class SeriesFixtures {
 
   static BookSeriesModel? forBook(String bookId) =>
       all.where((s) => s.entries.any((e) => e.bookId == bookId)).firstOrNull;
+
+  /// [forBook] as JSON with each entry's cover from the catalog, or `null`.
+  static Object? jsonForBook(String bookId) => forBook(bookId)
+      ?.copyWith(
+        entries: [
+          for (final entry in forBook(bookId)!.entries)
+            entry.copyWith(
+              coverSeed:
+                  BookFixtures.all
+                      .where((b) => b.id == entry.bookId)
+                      .firstOrNull
+                      ?.coverSeed ??
+                  entry.position,
+            ),
+        ],
+      )
+      .toJson();
 }

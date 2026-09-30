@@ -607,6 +607,12 @@ abstract class AppL10n {
   /// **'{count} books'**
   String sectionBookCount(int count);
 
+  /// No description provided for @categoryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books in this Category yet.'**
+  String get categoryEmpty;
+
   /// No description provided for @sectionEmpty.
   ///
   /// In en, this message translates to:

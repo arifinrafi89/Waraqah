@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'author_fixtures.dart';
 import 'book_details_fixtures.dart';
 import 'book_fixtures.dart';
+import 'category_fixtures.dart';
 import 'look_inside_fixtures.dart';
 import 'publisher_fixtures.dart';
 import 'series_fixtures.dart';
@@ -27,6 +28,9 @@ abstract final class BookFakeApi {
   /// The series a book is in, in reading order: `?id=<bookId>`, or `null`.
   static const String series = '/books/series';
 
+  /// A Section's Categories: `?section=<section>`.
+  static const String categories = '/categories';
+
   /// One Author: `?id=<authorId>`, or `null` when unknown.
   static const String author = '/authors/detail';
 
@@ -44,7 +48,10 @@ abstract final class BookFakeApi {
     bookDetails: _bookDetails,
     usedOptions: _usedOptions,
     lookInside: (options) => LookInsideFixtures.byBook[_id(options)]?.toJson(),
-    series: _series,
+    series: (options) => SeriesFixtures.jsonForBook(_id(options)),
+    categories: (options) => CategoryFixtures.forSection(
+      options.queryParameters['section'] as String?,
+    ),
     author: (options) => AuthorFixtures.all
         .where((a) => a.id == _id(options))
         .firstOrNull
@@ -65,35 +72,15 @@ abstract final class BookFakeApi {
   static String _id(RequestOptions options) =>
       options.queryParameters['id'] as String? ?? '';
 
-  static Object? _series(RequestOptions options) {
-    final series = SeriesFixtures.forBook(_id(options));
-    if (series == null) return null;
-    return series
-        .copyWith(
-          entries: [
-            for (final entry in series.entries)
-              entry.copyWith(
-                coverSeed:
-                    BookFixtures.all
-                        .where((b) => b.id == entry.bookId)
-                        .firstOrNull
-                        ?.coverSeed ??
-                    entry.position,
-              ),
-          ],
-        )
-        .toJson();
-  }
-
   static Object? _usedOptions(RequestOptions options) {
-    final id = options.queryParameters['id'] as String? ?? '';
-    final book = BookFixtures.all.where((b) => b.id == id).firstOrNull;
+    final book = BookFixtures.all
+        .where((b) => b.id == _id(options))
+        .firstOrNull;
     return book == null ? null : UsedOptionsFixtures.forBook(book).toJson();
   }
 
   static Object? _bookDetails(RequestOptions options) {
-    final id = options.queryParameters['id'] as String? ?? '';
-    return BookDetailsFixtures.find(id)?.toJson();
+    return BookDetailsFixtures.find(_id(options))?.toJson();
   }
 
   static Object _books(RequestOptions options) {

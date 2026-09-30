@@ -274,6 +274,9 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
+  String get categoryEmpty => 'এই ক্যাটাগরিতে এখনো কোনো বই নেই।';
+
+  @override
   String get sectionEmpty => 'এই বিভাগে এখনো কোনো বই নেই।';
 
   @override

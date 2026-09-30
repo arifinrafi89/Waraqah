@@ -3,6 +3,12 @@ import '../models/catalog_record_models.dart';
 
 /// Offline Categories. Ids are what `Book.categoryId` points at.
 abstract final class CategoryFixtures {
+  /// JSON for the Categories of the Section named [section].
+  static List<Map<String, dynamic>> forSection(String? section) => [
+    for (final c in all)
+      if (c.section.name == section) c.toJson(),
+  ];
+
   static const List<CategoryModel> all = [
     CategoryModel(
       id: 'cat-islamic-studies',

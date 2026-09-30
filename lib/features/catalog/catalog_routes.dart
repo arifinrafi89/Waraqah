@@ -4,6 +4,7 @@ import '../../core/models/book.dart';
 import 'presentation/pages/author_page.dart';
 import 'presentation/pages/book_detail_page.dart';
 import 'presentation/pages/catalog_page.dart';
+import 'presentation/pages/category_page.dart';
 import 'presentation/pages/look_inside_page.dart';
 import 'presentation/pages/questions_page.dart';
 import 'presentation/pages/section_page.dart';
@@ -15,6 +16,12 @@ abstract final class CatalogRoutes {
   /// A Section's page, inside the Catalog tab so the bottom nav stays.
   static String sectionFor(Section section) =>
       '/catalog/section/${section.name}';
+
+  static const String category = '/catalog/section/:section/:category';
+
+  /// A Category's page, inside the Catalog tab so the bottom nav stays.
+  static String categoryFor(Section section, String id) =>
+      '/catalog/section/${section.name}/$id';
 
   static const String author = '/catalog/author/:id';
 
@@ -66,6 +73,17 @@ abstract final class CatalogRoutes {
                     null
                 ? catalog
                 : null,
+            routes: [
+              GoRoute(
+                path: ':category',
+                builder: (_, state) => CategoryPage(
+                  section: Section.values.byName(
+                    state.pathParameters['section']!,
+                  ),
+                  categoryId: state.pathParameters['category']!,
+                ),
+              ),
+            ],
             builder: (_, state) => SectionPage(
               section: Section.values.byName(state.pathParameters['section']!),
             ),

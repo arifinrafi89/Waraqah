@@ -34,7 +34,7 @@ class BookRepositoryImpl implements BookRepository {
       );
       // ponytail: Book has no publish date yet, so a Section or Author lists
       // newest (last seeded) first; sort by date once Book has one.
-      return section == null && author == null
+      return section == null && author == null && category == null
           ? _sortByValue(books)
           : books.reversed.toList();
     },

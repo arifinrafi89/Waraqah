@@ -88,6 +88,7 @@
   "sectionChildren": "Children",
   "sectionBookCount": "{count} books",
   "@sectionBookCount": { "placeholders": { "count": { "type": "int" } } },
+  "categoryEmpty": "No books in this Category yet.",
   "sectionEmpty": "No books in this Section yet.",
   "bookFormatPaperback": "Paperback",
   "bookFormatHardcover": "Hardcover",

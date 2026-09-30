@@ -88,6 +88,7 @@
   "sectionChildren": "শিশু-কিশোর",
   "sectionBookCount": "{count}টি বই",
   "@sectionBookCount": { "placeholders": { "count": { "type": "int" } } },
+  "categoryEmpty": "এই ক্যাটাগরিতে এখনো কোনো বই নেই।",
   "sectionEmpty": "এই বিভাগে এখনো কোনো বই নেই।",
   "bookFormatPaperback": "পেপারব্যাক",
   "bookFormatHardcover": "হার্ডকভার",
