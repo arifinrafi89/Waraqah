@@ -27,6 +27,8 @@ abstract class OrderModel with _$OrderModel {
     required int discountBdt,
     required int totalBdt,
     @Default(true) bool needsDelivery,
+    @Default(0) int pointsUsed,
+    @Default(0) int pointsEarned,
     ReturnRequestModel? returnRequest,
   }) = _OrderModel;
 
@@ -49,6 +51,8 @@ extension OrderModelX on OrderModel {
     discountBdt: discountBdt,
     totalBdt: totalBdt,
     needsDelivery: needsDelivery,
+    pointsUsed: pointsUsed,
+    pointsEarned: pointsEarned,
     returnRequest: returnRequest?.toEntity(),
   );
 

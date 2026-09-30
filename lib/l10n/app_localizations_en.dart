@@ -607,6 +607,57 @@ class AppL10nEn extends AppL10n {
   String get offerPreorderNow => 'Pre-order';
 
   @override
+  String get pointsTitle => 'Waraqah points';
+
+  @override
+  String pointsBalance(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count points',
+      one: '1 point',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pointsRuleEarn => 'Earn 1 point for every ৳100 you pay for books.';
+
+  @override
+  String get pointsRuleSpend =>
+      'Use them at checkout: 1 point = ৳1 off, once you have 50, for up to 20% of the books.';
+
+  @override
+  String get pointsRuleCancel =>
+      'Cancelling an order gives back the points it used.';
+
+  @override
+  String get pointsHistory => 'History';
+
+  @override
+  String get pointsWelcome => 'Welcome bonus';
+
+  @override
+  String pointsEarnedOn(String order) {
+    return 'Earned on $order';
+  }
+
+  @override
+  String pointsSpentOn(String order) {
+    return 'Used on $order';
+  }
+
+  @override
+  String pointsRefunded(String order) {
+    return 'Given back · $order cancelled';
+  }
+
+  @override
+  String pointsReversed(String order) {
+    return 'Taken back · $order cancelled';
+  }
+
+  @override
   String get cartTitle => 'Cart';
 
   @override
@@ -845,6 +896,24 @@ class AppL10nEn extends AppL10n {
   String get checkoutPlaceOrder => 'Place order';
 
   @override
+  String checkoutUsePoints(int count) {
+    return 'Use $count points';
+  }
+
+  @override
+  String checkoutPointsSave(String amount, int balance) {
+    return '$amount off · you have $balance';
+  }
+
+  @override
+  String checkoutPointsNotYet(int balance) {
+    return 'You have $balance points. You can use them once you have 50.';
+  }
+
+  @override
+  String get checkoutPointsDiscount => 'Points';
+
+  @override
   String get orderPlacedTitle => 'Order placed!';
 
   @override
@@ -864,6 +933,14 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get orderPlacedContinue => 'Continue shopping';
+
+  @override
+  String orderPointsEarned(int count) {
+    return 'You earned $count Waraqah points';
+  }
+
+  @override
+  String get orderPointsEarnedRow => 'Points earned';
 
   @override
   String get orderTrack => 'Track order';

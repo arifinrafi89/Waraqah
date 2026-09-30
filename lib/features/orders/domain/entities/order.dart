@@ -26,6 +26,8 @@ abstract class Order with _$Order {
     required int discountBdt,
     required int totalBdt,
     @Default(true) bool needsDelivery,
+    @Default(0) int pointsUsed,
+    @Default(0) int pointsEarned,
     ReturnRequest? returnRequest,
   }) = _Order;
 }

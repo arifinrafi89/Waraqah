@@ -17,5 +17,6 @@ abstract class OrderReceipt with _$OrderReceipt {
     required bool needsDelivery,
     required bool insideDhaka,
     @Default(false) bool hasPreorders,
+    @Default(0) int pointsEarned,
   }) = _OrderReceipt;
 }

@@ -8,11 +8,15 @@ class PlaceOrderRequest {
     required this.addressId,
     required this.payment,
     this.couponCode,
+    this.usePoints = false,
   });
 
   final String addressId;
   final PaymentMethod payment;
   final String? couponCode;
+
+  /// Pay part of the books with Waraqah points, as far as the rules allow.
+  final bool usePoints;
 }
 
 /// Everything checkout asks the server. Placing an order turns the cart into

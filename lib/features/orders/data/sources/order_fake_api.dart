@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../domain/entities/order_return.dart';
+import '../../../loyalty/data/sources/points_fake_store.dart';
 import 'order_fake_store.dart';
 
 /// Orders' fake endpoints, merged into `FakeApiInterceptor` by
@@ -20,15 +21,27 @@ abstract final class OrderFakeApi {
   /// return can't be asked for.
   static const String requestReturn = '/orders/return';
 
+  /// Cancelling gives back the order's [points] spent and takes back those
+  /// it earned.
   static Map<String, Object? Function(RequestOptions)> routes(
     OrderFakeStore store,
+    PointsFakeStore points,
   ) => {
     orders: (_) => [for (final order in store.all) order.toJson()],
     details: (options) => store
         .find(options.queryParameters['number'] as String? ?? '')
         ?.toJson(),
-    cancel: (options) =>
-        store.cancel(_body(options)['number'] as String? ?? '')?.toJson(),
+    cancel: (options) {
+      final order = store.cancel(_body(options)['number'] as String? ?? '');
+      if (order != null) {
+        points.undo(
+          order.number,
+          spent: order.pointsUsed,
+          earned: order.pointsEarned,
+        );
+      }
+      return order?.toJson();
+    },
     requestReturn: (options) {
       final body = _body(options);
       return store

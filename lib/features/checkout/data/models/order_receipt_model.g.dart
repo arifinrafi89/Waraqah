@@ -15,6 +15,7 @@ _OrderReceiptModel _$OrderReceiptModelFromJson(Map<String, dynamic> json) =>
       needsDelivery: json['needsDelivery'] as bool,
       insideDhaka: json['insideDhaka'] as bool,
       hasPreorders: json['hasPreorders'] as bool? ?? false,
+      pointsEarned: (json['pointsEarned'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$OrderReceiptModelToJson(_OrderReceiptModel instance) =>
@@ -26,6 +27,7 @@ Map<String, dynamic> _$OrderReceiptModelToJson(_OrderReceiptModel instance) =>
       'needsDelivery': instance.needsDelivery,
       'insideDhaka': instance.insideDhaka,
       'hasPreorders': instance.hasPreorders,
+      'pointsEarned': instance.pointsEarned,
     };
 
 const _$PaymentMethodEnumMap = {
