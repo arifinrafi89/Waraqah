@@ -41,6 +41,8 @@ The app also has:
 
 - **Setup steps 1–6 are done:** Book model with Editions, per-feature routes and fake APIs, login state and roles, the Admin area shell.
 - **Setup step 7** (Moderation Center shell) is in progress (Arifin).
+- **Browsing pages are done** (Rahinur, #87): Section, Category, Author, Publisher and Series pages, inside the Catalog tab so the bottom nav stays. Routes are in `CatalogRoutes` (`sectionFor`, `categoryFor`, `authorFor`, `publisherFor`, `seriesFor`); pages in `features/catalog/presentation/pages/`; fixtures in `features/catalog/data/sources/` (`*_fixtures.dart`, `seed/`).
+- **Search is done** (Rahinur): `/catalog/search` (`CatalogRoutes.search`, `search_page.dart`). Live search by title, Author, Publisher or ISBN; filters (Section, price, format, language, rating, in stock); sort (relevance, price, newest, bestselling); recent searches kept on the device. Every catalog query goes through `BookRepository.searchCatalog(CatalogFilters)` (`domain/entities/catalog_filters.dart`); state in `search_providers.dart` and `recent_searches_provider.dart`. No results shows "Request this book".
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
 - `main` passes `flutter analyze` with no issues, and all tests pass.
 
@@ -212,6 +214,8 @@ Use these words in code, tests and PRs. Don't drift to the "avoid" words.
 | **Publisher** | The company that published a Book. A Book has exactly one Publisher. | brand, prokashoni |
 | **Series** | Books meant to be read in order. May list titles Waraqah doesn't sell yet. | collection (that's an editor's pick) |
 | **From-price** | Price shown before an Edition is chosen: the cheapest orderable Edition (`book.fromPriceBdt`) | lowest vendor price |
+| **New arrival** | A Book recently added to Waraqah's catalog, not recently published | new release |
+| **Bestseller** | A Book ranked by copies Waraqah sold in the last 30 days, all Editions together (used copies not counted) | top seller, popular |
 | **List price** | An Edition's price before discount (`listPriceBdt`) | MRP, original price |
 | **Stock / Pre-order** | Copies Waraqah can ship now / not released yet but orderable | |
 | **Guest** | Using the app without signing in (no Role) | |
@@ -307,4 +311,5 @@ Set `GoogleFonts.config.allowRuntimeFetching = false` in `setUpAll`.
 - Sign-up doesn't create an account yet; it just opens the app. "Continue with Google" signs in as a demo reader. Real sign-up is Niloy's task.
 - Profile stats (books read, Bites posted, listings) are placeholder numbers.
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
+- Search's "Request this book" opens a stand-in page (`CatalogRoutes.requestBook`) until the Request a Book flow lands (Arifin). Point it at the real flow then.
 - "Add to cart" on the book page shows a "coming soon" message until the cart exists (Farhan).
