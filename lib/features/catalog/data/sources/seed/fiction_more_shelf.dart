@@ -6,6 +6,7 @@ abstract final class FictionMoreShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-sherlock',
+      addedAt: DateTime(2026, 5, 7),
       title: 'Sherlock Holmes: A Study in Scarlet',
       shortTitle: 'Sherlock Holmes',
       author: 'Arthur Conan Doyle',

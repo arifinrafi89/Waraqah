@@ -6,6 +6,7 @@ abstract final class GeneralMoreShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-calculus',
+      addedAt: DateTime(2026, 1, 22),
       title: 'Calculus: Early Transcendentals',
       shortTitle: 'Calculus',
       author: 'James Stewart',
@@ -37,6 +38,7 @@ abstract final class GeneralMoreShelf {
     ),
     Book(
       id: 'bk-zero',
+      addedAt: DateTime(2026, 1, 29),
       title: 'Zero to One',
       author: 'Peter Thiel',
       authorId: 'au-thiel',

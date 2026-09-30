@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../../../core/models/book.dart';
+import '../../domain/entities/catalog_filters.dart';
 import 'book_fake_api.dart';
 
 /// Talks to `GET /books`. In this app that request is always answered by the
@@ -10,21 +11,17 @@ class BookRemoteSource {
 
   final Dio _dio;
 
-  Future<List<Book>> fetchBooks({
-    String? category,
-    Section? section,
-    String? author,
-    String? publisher,
-    String query = '',
-  }) async {
+  Future<List<Book>> fetchBooks([
+    CatalogFilters filters = const CatalogFilters(),
+  ]) async {
     final response = await _dio.get<List<dynamic>>(
       BookFakeApi.books,
       queryParameters: {
-        'category': ?category,
-        'section': ?section?.name,
-        'author': ?author,
-        'publisher': ?publisher,
-        if (query.isNotEmpty) 'q': query,
+        'category': ?filters.categoryId,
+        'section': ?filters.section?.name,
+        'author': ?filters.authorId,
+        'publisher': ?filters.publisherId,
+        if (filters.query.isNotEmpty) 'q': filters.query,
       },
     );
     return (response.data ?? [])

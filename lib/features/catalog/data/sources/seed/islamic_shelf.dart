@@ -6,6 +6,7 @@ abstract final class IslamicShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-fiqh',
+      addedAt: DateTime(2026, 2, 5),
       title: 'Fiqh us-Sunnah, Vol. 1',
       shortTitle: 'Fiqh us-Sunnah',
       author: 'Sayyid Sabiq',
@@ -37,6 +38,7 @@ abstract final class IslamicShelf {
     ),
     Book(
       id: 'bk-nectar',
+      addedAt: DateTime(2026, 2, 12),
       title: 'The Sealed Nectar',
       shortTitle: 'Sealed Nectar',
       author: 'Safi-ur-Rahman al-Mubarakpuri',
@@ -68,6 +70,7 @@ abstract final class IslamicShelf {
     ),
     Book(
       id: 'bk-riyad',
+      addedAt: DateTime(2026, 2, 19),
       title: 'Riyad as-Salihin',
       author: 'Imam an-Nawawi',
       authorId: 'au-nawawi',

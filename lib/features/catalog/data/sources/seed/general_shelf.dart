@@ -6,6 +6,7 @@ abstract final class GeneralShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-sapiens',
+      addedAt: DateTime(2026, 1, 1),
       title: 'Sapiens: A Brief History of Humankind',
       shortTitle: 'Sapiens',
       author: 'Yuval Noah Harari',
@@ -44,6 +45,7 @@ abstract final class GeneralShelf {
     ),
     Book(
       id: 'bk-atomic',
+      addedAt: DateTime(2026, 1, 8),
       title: 'Atomic Habits',
       author: 'James Clear',
       authorId: 'au-clear',
@@ -74,6 +76,7 @@ abstract final class GeneralShelf {
     ),
     Book(
       id: 'bk-cleancode',
+      addedAt: DateTime(2026, 1, 15),
       title: 'Clean Code',
       author: 'Robert C. Martin',
       authorId: 'au-martin',

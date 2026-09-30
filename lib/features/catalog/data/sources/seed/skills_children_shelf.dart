@@ -6,6 +6,7 @@ abstract final class SkillsChildrenShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-pragmatic',
+      addedAt: DateTime(2026, 6, 11),
       title: 'The Pragmatic Programmer',
       shortTitle: 'Pragmatic Programmer',
       author: 'Andrew Hunt & David Thomas',
@@ -29,6 +30,7 @@ abstract final class SkillsChildrenShelf {
     ),
     Book(
       id: 'bk-ddia',
+      addedAt: DateTime(2026, 6, 18),
       title: 'Designing Data-Intensive Applications',
       shortTitle: 'Data-Intensive Apps',
       author: 'Martin Kleppmann',
@@ -52,6 +54,7 @@ abstract final class SkillsChildrenShelf {
     ),
     Book(
       id: 'bk-caterpillar',
+      addedAt: DateTime(2026, 6, 25),
       title: 'The Very Hungry Caterpillar',
       shortTitle: 'Hungry Caterpillar',
       author: 'Eric Carle',
@@ -75,6 +78,7 @@ abstract final class SkillsChildrenShelf {
     ),
     Book(
       id: 'bk-matilda',
+      addedAt: DateTime(2026, 7, 2),
       title: 'Matilda',
       author: 'Roald Dahl',
       authorId: 'au-dahl',

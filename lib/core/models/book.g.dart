@@ -21,6 +21,7 @@ _Book _$BookFromJson(Map<String, dynamic> json) => _Book(
   editions: (json['editions'] as List<dynamic>)
       .map((e) => Edition.fromJson(e as Map<String, dynamic>))
       .toList(),
+  addedAt: DateTime.parse(json['addedAt'] as String),
   rating: (json['rating'] as num?)?.toDouble() ?? 0,
   tags:
       (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ??
@@ -40,6 +41,7 @@ Map<String, dynamic> _$BookToJson(_Book instance) => <String, dynamic>{
   'section': _$SectionEnumMap[instance.section]!,
   'originalLanguage': _$BookLanguageEnumMap[instance.originalLanguage]!,
   'editions': instance.editions.map((e) => e.toJson()).toList(),
+  'addedAt': instance.addedAt.toIso8601String(),
   'rating': instance.rating,
   'tags': instance.tags,
   'isBeneficial': instance.isBeneficial,

@@ -7,6 +7,7 @@ import 'package:waraqah/core/models/book.dart';
 import 'package:waraqah/core/network/dio_client.dart';
 import 'package:waraqah/core/network/dio_provider.dart';
 import 'package:waraqah/core/usecase/usecase.dart';
+import 'package:waraqah/features/catalog/domain/entities/catalog_filters.dart';
 import 'package:waraqah/features/catalog/presentation/providers/catalog_providers.dart';
 import 'package:waraqah/features/home/presentation/providers/home_providers.dart';
 
@@ -28,7 +29,9 @@ void main() {
         List<Book>? byCategory;
         container
             .read(bookRepositoryProvider)
-            .searchCatalog(category: 'cat-islamic-studies')
+            .searchCatalog(
+              const CatalogFilters(categoryId: 'cat-islamic-studies'),
+            )
             .then((books) => byCategory = books);
         async.elapse(const Duration(seconds: 1));
         expect(byCategory, isNotEmpty);
@@ -40,7 +43,7 @@ void main() {
         List<Book>? byQuery;
         container
             .read(bookRepositoryProvider)
-            .searchCatalog(query: 'zzz-not-a-real-title')
+            .searchCatalog(const CatalogFilters(query: 'zzz-not-a-real-title'))
             .then((books) => byQuery = books);
         async.elapse(const Duration(seconds: 1));
         expect(byQuery, isEmpty);
@@ -55,20 +58,27 @@ void main() {
 
         List<Book>? kids;
         repo
-            .searchCatalog(section: Section.children)
+            .searchCatalog(const CatalogFilters(section: Section.children))
             .then((books) => kids = books);
         List<Book>? both;
         repo
-            .searchCatalog(section: Section.children, query: 'matilda')
+            .searchCatalog(
+              const CatalogFilters(section: Section.children, query: 'matilda'),
+            )
             .then((books) => both = books);
         List<Book>? none;
         repo
-            .searchCatalog(section: Section.academic, query: 'matilda')
+            .searchCatalog(
+              const CatalogFilters(section: Section.academic, query: 'matilda'),
+            )
             .then((books) => none = books);
         async.elapse(const Duration(seconds: 1));
 
         expect(kids, isNotEmpty);
         expect(kids!.every((b) => b.section == Section.children), isTrue);
+        for (var i = 1; i < kids!.length; i++) {
+          expect(kids![i - 1].addedAt.isBefore(kids![i].addedAt), isFalse);
+        }
         expect(both!.map((b) => b.id), ['bk-matilda']);
         expect(none, isEmpty);
       });

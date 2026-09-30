@@ -6,6 +6,7 @@ abstract final class IslamicHistoryShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-muqaddimah',
+      addedAt: DateTime(2026, 4, 9),
       title: 'Al-Muqaddimah',
       author: 'Ibn Khaldun',
       authorId: 'au-ibn-khaldun',

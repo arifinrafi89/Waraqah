@@ -6,6 +6,7 @@ abstract final class PrepSchoolShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-bcs-guide',
+      addedAt: DateTime(2026, 5, 14),
       title: 'BCS Preliminary Guide',
       author: 'Waraqah Editorial Board',
       authorId: 'au-editorial',
@@ -28,6 +29,7 @@ abstract final class PrepSchoolShelf {
     ),
     Book(
       id: 'bk-admission-guide',
+      addedAt: DateTime(2026, 5, 21),
       title: 'University Admission Test Guide',
       author: 'Waraqah Editorial Board',
       authorId: 'au-editorial',
@@ -50,6 +52,7 @@ abstract final class PrepSchoolShelf {
     ),
     Book(
       id: 'bk-general-math',
+      addedAt: DateTime(2026, 5, 28),
       title: 'General Mathematics, Class 9–10',
       shortTitle: 'General Math',
       author: 'NCTB',
@@ -73,6 +76,7 @@ abstract final class PrepSchoolShelf {
     ),
     Book(
       id: 'bk-english-grammar',
+      addedAt: DateTime(2026, 6, 4),
       title: 'High School English Grammar and Composition',
       shortTitle: 'English Grammar',
       author: 'P. C. Wren & H. Martin',

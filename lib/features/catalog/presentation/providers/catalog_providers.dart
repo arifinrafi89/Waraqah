@@ -8,6 +8,7 @@ import '../../data/repositories/catalog_records_repository_impl.dart';
 import '../../data/sources/book_remote_source.dart';
 import '../../data/sources/catalog_records_source.dart';
 import '../../domain/entities/author.dart';
+import '../../domain/entities/catalog_filters.dart';
 import '../../domain/entities/category.dart';
 import '../../domain/entities/publisher.dart';
 import '../../domain/repositories/book_repository.dart';
@@ -26,7 +27,9 @@ final catalogQueryProvider = selectionProvider<String>('');
 /// The filtered, sorted result list the catalog screen renders.
 final catalogResultsProvider = FutureProvider<List<Book>>((ref) async {
   final repository = ref.watch(bookRepositoryProvider);
-  return repository.searchCatalog(query: ref.watch(catalogQueryProvider));
+  return repository.searchCatalog(
+    CatalogFilters(query: ref.watch(catalogQueryProvider)),
+  );
 });
 
 /// Total catalog size, shown in the app bar subtitle.
@@ -50,7 +53,9 @@ final sectionCategoriesProvider =
 
 /// Every Book in one Category, newest first.
 final categoryBooksProvider = FutureProvider.family<List<Book>, String>(
-  (ref, id) => ref.watch(bookRepositoryProvider).searchCatalog(category: id),
+  (ref, id) => ref
+      .watch(bookRepositoryProvider)
+      .searchCatalog(CatalogFilters(categoryId: id)),
 );
 
 /// One Author by id; `null` when unknown.
@@ -60,7 +65,9 @@ final authorProvider = FutureProvider.family<Author?, String>(
 
 /// Every Book by one Author, newest first.
 final authorBooksProvider = FutureProvider.family<List<Book>, String>(
-  (ref, id) => ref.watch(bookRepositoryProvider).searchCatalog(author: id),
+  (ref, id) => ref
+      .watch(bookRepositoryProvider)
+      .searchCatalog(CatalogFilters(authorId: id)),
 );
 
 /// One Publisher by id; `null` when unknown.
@@ -70,7 +77,9 @@ final publisherProvider = FutureProvider.family<Publisher?, String>(
 
 /// Every Book from one Publisher, newest first.
 final publisherBooksProvider = FutureProvider.family<List<Book>, String>(
-  (ref, id) => ref.watch(bookRepositoryProvider).searchCatalog(publisher: id),
+  (ref, id) => ref
+      .watch(bookRepositoryProvider)
+      .searchCatalog(CatalogFilters(publisherId: id)),
 );
 
 /// Every Book in one Section, newest first.

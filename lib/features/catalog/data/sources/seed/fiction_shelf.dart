@@ -6,6 +6,7 @@ abstract final class FictionShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-hobbit',
+      addedAt: DateTime(2026, 4, 16),
       title: 'The Hobbit',
       shortTitle: 'Hobbit',
       author: 'J. R. R. Tolkien',
@@ -37,6 +38,7 @@ abstract final class FictionShelf {
     ),
     Book(
       id: 'bk-hpstone',
+      addedAt: DateTime(2026, 4, 23),
       title: "Harry Potter and the Philosopher's Stone",
       shortTitle: 'Harry Potter',
       author: 'J. K. Rowling',
@@ -67,6 +69,7 @@ abstract final class FictionShelf {
     ),
     Book(
       id: 'bk-davinci',
+      addedAt: DateTime(2026, 4, 30),
       title: 'The Da Vinci Code',
       shortTitle: 'Da Vinci Code',
       author: 'Dan Brown',

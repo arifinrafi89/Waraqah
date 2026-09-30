@@ -53,6 +53,7 @@ void main() {
 
   group('chosenEdition', () {
     final book = Book(
+      addedAt: DateTime(2026, 1, 1),
       id: 'b1',
       title: 'T',
       author: 'A',

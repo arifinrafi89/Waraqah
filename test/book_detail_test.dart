@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:waraqah/app/fake_api_routes.dart';
 import 'package:waraqah/core/models/book.dart';
 import 'package:waraqah/core/models/edition.dart';
+import 'package:waraqah/features/catalog/domain/entities/catalog_filters.dart';
 import 'package:waraqah/features/catalog/data/repositories/book_details_repository_impl.dart';
 import 'package:waraqah/features/catalog/data/repositories/book_repository_impl.dart';
 import 'package:waraqah/features/catalog/data/sources/book_details_source.dart';
@@ -27,13 +28,9 @@ class _StaticBookSource extends BookRemoteSource {
   final List<Book> books;
 
   @override
-  Future<List<Book>> fetchBooks({
-    String? category,
-    Section? section,
-    String? author,
-    String? publisher,
-    String query = '',
-  }) async => books;
+  Future<List<Book>> fetchBooks([
+    CatalogFilters filters = const CatalogFilters(),
+  ]) async => books;
 }
 
 BookDetailsRepositoryImpl _repository([List<Book>? books]) =>
@@ -55,6 +52,7 @@ void main() {
 
     test('without seed data, returns empty details for a known book', () async {
       final book = Book(
+        addedAt: DateTime(2026, 1, 1),
         id: 'bk-unseeded',
         title: 'Unseeded',
         author: 'Someone',
