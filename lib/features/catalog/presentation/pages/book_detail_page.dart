@@ -12,12 +12,8 @@ import '../../../cart/presentation/widgets/cart_button.dart';
 import '../../../wishlist/presentation/widgets/wishlist_heart_button.dart';
 import '../providers/book_detail_providers.dart';
 import '../widgets/add_to_cart_bar.dart';
-import '../widgets/book_about_section.dart';
-import '../widgets/book_detail_header.dart';
+import '../widgets/book_detail_body.dart';
 import '../widgets/book_detail_skeleton.dart';
-import '../widgets/book_reviews_section.dart';
-import '../widgets/edition_picker.dart';
-import '../widgets/other_ways_to_buy.dart';
 import '../widgets/share_book_button.dart';
 
 /// `/catalog/book/:id` — one title: pick an Edition, see when it arrives,
@@ -78,40 +74,12 @@ class BookDetailPage extends ConsumerWidget {
                           style: context.texts.bodyMedium,
                         ),
                       )
-                    : _Body(data: data),
+                    : BookDetailBody(data: data),
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class _Body extends StatelessWidget {
-  const _Body({required this.data});
-
-  final BookDetailData data;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(
-        Insets.screen,
-        0,
-        Insets.screen,
-        Insets.xl,
-      ),
-      children: [
-        BookDetailHeader(book: data.book),
-        const SizedBox(height: Insets.xl + 4),
-        EditionPicker(book: data.book),
-        const SizedBox(height: Insets.lg),
-        OtherWaysToBuy(bookId: data.book.id),
-        const SizedBox(height: Insets.xl + 4),
-        BookAboutSection(book: data.book, details: data.details),
-        BookReviewsSection(reviews: data.details.reviews),
-      ],
     );
   }
 }

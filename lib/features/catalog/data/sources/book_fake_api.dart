@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 
 import 'book_details_fixtures.dart';
 import 'book_fixtures.dart';
+import 'look_inside_fixtures.dart';
+import 'series_fixtures.dart';
 import 'used_options_fixtures.dart';
 
 /// Catalog's fake endpoints: paths and fixture handlers, merged into
@@ -17,11 +19,42 @@ abstract final class BookFakeApi {
   /// `?id=<bookId>`. Answers `null` for an unknown book.
   static const String usedOptions = '/books/used-options';
 
+  /// Table of contents and sample pages: `?id=<bookId>`, or `null`.
+  static const String lookInside = '/books/look-inside';
+
+  /// The series a book is in, in reading order: `?id=<bookId>`, or `null`.
+  static const String series = '/books/series';
+
   static final Map<String, Object? Function(RequestOptions)> routes = {
     books: _books,
     bookDetails: _bookDetails,
     usedOptions: _usedOptions,
+    lookInside: (options) => LookInsideFixtures.byBook[_id(options)]?.toJson(),
+    series: _series,
   };
+
+  static String _id(RequestOptions options) =>
+      options.queryParameters['id'] as String? ?? '';
+
+  static Object? _series(RequestOptions options) {
+    final series = SeriesFixtures.forBook(_id(options));
+    if (series == null) return null;
+    return series
+        .copyWith(
+          entries: [
+            for (final entry in series.entries)
+              entry.copyWith(
+                coverSeed:
+                    BookFixtures.all
+                        .where((b) => b.id == entry.bookId)
+                        .firstOrNull
+                        ?.coverSeed ??
+                    entry.position,
+              ),
+          ],
+        )
+        .toJson();
+  }
 
   static Object? _usedOptions(RequestOptions options) {
     final id = options.queryParameters['id'] as String? ?? '';

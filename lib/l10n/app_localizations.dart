@@ -841,6 +841,66 @@ abstract class AppL10n {
   /// **'Waraqah picks the book up from the reader, checks it and delivers it to you.'**
   String get bookReaderSaleNote;
 
+  /// No description provided for @bookLookInside.
+  ///
+  /// In en, this message translates to:
+  /// **'Look inside'**
+  String get bookLookInside;
+
+  /// No description provided for @bookLookInsideNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to show for this book yet.'**
+  String get bookLookInsideNone;
+
+  /// No description provided for @bookContents.
+  ///
+  /// In en, this message translates to:
+  /// **'Contents'**
+  String get bookContents;
+
+  /// No description provided for @bookSamplePages.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample pages'**
+  String get bookSamplePages;
+
+  /// No description provided for @bookPageOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Page {page} of {total}'**
+  String bookPageOf(int page, int total);
+
+  /// No description provided for @bookSwipeForMore.
+  ///
+  /// In en, this message translates to:
+  /// **'swipe for more'**
+  String get bookSwipeForMore;
+
+  /// No description provided for @bookSampleEnds.
+  ///
+  /// In en, this message translates to:
+  /// **'end of the sample'**
+  String get bookSampleEnds;
+
+  /// No description provided for @bookSeriesPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Book {position} of {total}'**
+  String bookSeriesPosition(int position, int total);
+
+  /// No description provided for @bookSeriesNotYet.
+  ///
+  /// In en, this message translates to:
+  /// **'Not in Waraqah yet'**
+  String get bookSeriesNotYet;
+
+  /// No description provided for @bookSeriesNotYetLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah doesn\'t sell this one yet.'**
+  String get bookSeriesNotYetLong;
+
   /// No description provided for @cartTitle.
   ///
   /// In en, this message translates to:
