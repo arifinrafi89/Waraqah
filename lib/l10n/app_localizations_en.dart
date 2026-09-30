@@ -1160,6 +1160,58 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
+  String get walletTitle => 'Wallet';
+
+  @override
+  String get walletRuleIn =>
+      'Money back from cancelled or returned orders, and from books you sell back to Waraqah, lands here.';
+
+  @override
+  String get walletRuleSpend =>
+      'Use it at checkout like cash, for books and delivery.';
+
+  @override
+  String get walletHistory => 'History';
+
+  @override
+  String walletCancelRefund(String order) {
+    return 'Refund for cancelled $order';
+  }
+
+  @override
+  String walletReturnRefund(String order) {
+    return 'Refund for returned $order';
+  }
+
+  @override
+  String walletSellBack(String book) {
+    return 'Sell Back: $book';
+  }
+
+  @override
+  String walletSpentOn(String order) {
+    return 'Used on $order';
+  }
+
+  @override
+  String walletUseAtCheckout(String amount) {
+    return 'Pay $amount from your wallet';
+  }
+
+  @override
+  String walletYouHave(String amount) {
+    return 'You have $amount';
+  }
+
+  @override
+  String get orderRefundedToWallet => 'Refunded to your wallet';
+
+  @override
+  String orderPlacedFromWallet(String amount) {
+    return '$amount came from your wallet.';
+  }
+
+  @override
   String get orderPlacedTitle => 'Order placed!';
 
   @override
@@ -1244,7 +1296,7 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get orderCancelBody =>
-      'This can\'t be undone. If you paid online, the money goes back the same way.';
+      'This can\'t be undone. Anything you paid goes back to your Waraqah wallet.';
 
   @override
   String get orderKeep => 'Keep order';

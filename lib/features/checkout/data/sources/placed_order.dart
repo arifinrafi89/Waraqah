@@ -21,6 +21,7 @@ OrderModel placedOrder({
   int pointsUsed = 0,
   int pointsEarned = 0,
   OrderGiftModel? gift,
+  int walletUsed = 0,
 }) => OrderModel(
   number: number,
   placedAt: at,
@@ -39,6 +40,7 @@ OrderModel placedOrder({
   pointsEarned: pointsEarned,
   gift: gift,
   giftWrapBdt: totals.giftWrapBdt,
+  walletUsedBdt: walletUsed,
 );
 
 OrderLineModel _line(CartLine line) => OrderLineModel(

@@ -87,6 +87,8 @@ class OrderPlacedPage extends ConsumerWidget {
       receipt.needsDelivery
           ? l10n.bookArrivesInDays(days.minDays, days.maxDays)
           : l10n.checkoutEbooksOnly,
+      if (receipt.walletUsedBdt > 0)
+        l10n.orderPlacedFromWallet(Bdt.format(receipt.walletUsedBdt)),
       if (receipt.hasPreorders) l10n.bookShipsOnRelease,
       if (receipt.giftFor case final name?) l10n.orderPlacedGiftFor(name),
       if (receipt.pointsEarned > 0)

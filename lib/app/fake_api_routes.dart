@@ -17,6 +17,8 @@ import '../features/deals/data/sources/deals_fake_store.dart';
 import '../features/orders/data/sources/order_admin_fake_api.dart';
 import '../features/orders/data/sources/order_fake_api.dart';
 import '../features/orders/data/sources/order_fake_store.dart';
+import '../features/wallet/data/sources/wallet_fake_api.dart';
+import '../features/wallet/data/sources/wallet_fake_store.dart';
 import '../features/wishlist/data/sources/wishlist_fake_api.dart';
 
 /// The composition root's route table for [FakeApiInterceptor]: one line per
@@ -32,6 +34,7 @@ abstract final class FakeApiRoutes {
     final orders = OrderFakeStore();
     final coupons = CouponFakeStore();
     final points = PointsFakeStore();
+    final wallet = WalletFakeStore();
     return FakeApiInterceptor({
       ...AuthFakeApi.routes,
       ...BookFakeApi.routes,
@@ -40,13 +43,14 @@ abstract final class FakeApiRoutes {
       ...CartFakeApi.routes(cart),
       ...WishlistFakeApi.routes(),
       ...AlertFakeApi.routes(),
-      ...CheckoutFakeApi.routes(cart, orders, coupons, points),
-      ...OrderFakeApi.routes(orders, points),
+      ...CheckoutFakeApi.routes(cart, orders, coupons, points, wallet),
+      ...OrderFakeApi.routes(orders, points, wallet),
       ...PointsFakeApi.routes(points),
-      ...OrderAdminFakeApi.routes(orders),
+      ...OrderAdminFakeApi.routes(orders, wallet),
       ...CouponAdminFakeApi.routes(coupons),
       ...DealsFakeApi.routes(deals),
       ...DonateFakeApi.routes(orders),
+      ...WalletFakeApi.routes(wallet),
     });
   }
 }

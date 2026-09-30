@@ -2005,6 +2005,78 @@ abstract class AppL10n {
   /// **'Donation to {name}'**
   String orderDonationTo(String name);
 
+  /// No description provided for @walletTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet'**
+  String get walletTitle;
+
+  /// No description provided for @walletRuleIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Money back from cancelled or returned orders, and from books you sell back to Waraqah, lands here.'**
+  String get walletRuleIn;
+
+  /// No description provided for @walletRuleSpend.
+  ///
+  /// In en, this message translates to:
+  /// **'Use it at checkout like cash, for books and delivery.'**
+  String get walletRuleSpend;
+
+  /// No description provided for @walletHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get walletHistory;
+
+  /// No description provided for @walletCancelRefund.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund for cancelled {order}'**
+  String walletCancelRefund(String order);
+
+  /// No description provided for @walletReturnRefund.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund for returned {order}'**
+  String walletReturnRefund(String order);
+
+  /// No description provided for @walletSellBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Sell Back: {book}'**
+  String walletSellBack(String book);
+
+  /// No description provided for @walletSpentOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Used on {order}'**
+  String walletSpentOn(String order);
+
+  /// No description provided for @walletUseAtCheckout.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {amount} from your wallet'**
+  String walletUseAtCheckout(String amount);
+
+  /// No description provided for @walletYouHave.
+  ///
+  /// In en, this message translates to:
+  /// **'You have {amount}'**
+  String walletYouHave(String amount);
+
+  /// No description provided for @orderRefundedToWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Refunded to your wallet'**
+  String get orderRefundedToWallet;
+
+  /// No description provided for @orderPlacedFromWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} came from your wallet.'**
+  String orderPlacedFromWallet(String amount);
+
   /// No description provided for @orderPlacedTitle.
   ///
   /// In en, this message translates to:
@@ -2152,7 +2224,7 @@ abstract class AppL10n {
   /// No description provided for @orderCancelBody.
   ///
   /// In en, this message translates to:
-  /// **'This can\'t be undone. If you paid online, the money goes back the same way.'**
+  /// **'This can\'t be undone. Anything you paid goes back to your Waraqah wallet.'**
   String get orderCancelBody;
 
   /// No description provided for @orderKeep.

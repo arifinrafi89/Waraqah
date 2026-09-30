@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/network/dio_provider.dart';
 import '../../../../core/state/selection_notifier.dart';
 import '../../../../core/usecase/usecase.dart';
+import '../../../wallet/presentation/providers/wallet_providers.dart';
 import '../../data/repositories/order_admin_repository_impl.dart';
 import '../../data/sources/order_admin_remote_source.dart';
 import '../../domain/entities/order.dart';
@@ -54,7 +55,8 @@ class AllOrdersNotifier extends AsyncNotifier<List<Order>> {
     ]);
     ref
       ..invalidate(orderProvider(changed.number))
-      ..invalidate(myOrdersProvider);
+      ..invalidate(myOrdersProvider)
+      ..invalidate(walletProvider);
   }
 }
 

@@ -21,5 +21,6 @@ abstract class OrderReceipt with _$OrderReceipt {
 
     /// Who the order is a gift for, if it is one.
     String? giftFor,
+    @Default(0) int walletUsedBdt,
   }) = _OrderReceipt;
 }
