@@ -8,6 +8,7 @@ import '../../features/checkout/checkout_routes.dart';
 import '../../features/home/home_routes.dart';
 import '../../features/loyalty/loyalty_routes.dart';
 import '../../features/orders/orders_routes.dart';
+import '../../features/wallet/wallet_routes.dart';
 
 /// Which pages need a signed-in user or a staff account, and where to send
 /// someone who isn't allowed in.
@@ -23,6 +24,7 @@ abstract final class RouteAccess {
     OrdersRoutes.orders,
     AlertsRoutes.alerts,
     LoyaltyRoutes.points,
+    WalletRoutes.wallet,
   ];
 
   /// Where to redirect [location] for [user], or `null` to let it open.

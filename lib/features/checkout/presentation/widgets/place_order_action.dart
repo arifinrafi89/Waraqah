@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../cart/presentation/providers/cart_providers.dart';
 import '../../../loyalty/presentation/providers/points_providers.dart';
+import '../../../wallet/presentation/providers/wallet_providers.dart';
 import '../../checkout_routes.dart';
 import '../../domain/entities/payment_method.dart';
 import '../../domain/repositories/checkout_repository.dart';
@@ -36,6 +37,7 @@ extension PlaceOrderAction on WidgetRef {
       payment: read(paymentMethodProvider),
       couponCode: read(couponProvider).value?.code,
       usePoints: read(usePointsProvider),
+      useWallet: read(useWalletProvider),
       gift: read(checkoutTotalsProvider)?.needsDelivery == true
           ? read(giftProvider)
           : null,
@@ -47,9 +49,11 @@ extension PlaceOrderAction on WidgetRef {
       read(lastReceiptProvider.notifier).select(receipt);
       read(couponProvider.notifier).remove();
       read(usePointsProvider.notifier).select(false);
+      read(useWalletProvider.notifier).select(false);
       read(giftProvider.notifier).clear();
       invalidate(cartProvider);
       invalidate(pointsProvider);
+      invalidate(walletProvider);
       router.go(CheckoutRoutes.placed);
     } catch (_) {
       messenger.showSnackBar(SnackBar(content: Text(error)));

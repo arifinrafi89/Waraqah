@@ -37,6 +37,7 @@ class CheckoutRemoteSource {
         'payment': request.payment.name,
         'couponCode': ?request.couponCode,
         'usePoints': request.usePoints,
+        'useWallet': request.useWallet,
         if (request.gift case final gift?)
           'gift': {
             'recipientName': gift.recipientName.trim(),

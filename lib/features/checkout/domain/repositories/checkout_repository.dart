@@ -11,6 +11,7 @@ class PlaceOrderRequest {
     this.couponCode,
     this.usePoints = false,
     this.gift,
+    this.useWallet = false,
   });
 
   final String addressId;
@@ -22,6 +23,9 @@ class PlaceOrderRequest {
 
   /// Set when the order is a gift.
   final Gift? gift;
+
+  /// Pay what the wallet can cover from it.
+  final bool useWallet;
 }
 
 /// Everything checkout asks the server. Placing an order turns the cart into

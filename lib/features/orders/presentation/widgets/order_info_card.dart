@@ -68,7 +68,19 @@ class OrderInfoCard extends StatelessWidget {
               l10n.checkoutPointsDiscount,
               '-${Bdt.format(order.pointsUsed)}',
             ),
+          if (order.walletUsedBdt > 0)
+            _row(
+              context,
+              l10n.walletTitle,
+              '-${Bdt.format(order.walletUsedBdt)}',
+            ),
           _row(context, l10n.checkoutTotal, Bdt.format(order.totalBdt)),
+          if (order.refundedBdt > 0)
+            _row(
+              context,
+              l10n.orderRefundedToWallet,
+              Bdt.format(order.refundedBdt),
+            ),
           if (order.pointsEarned > 0)
             _row(context, l10n.orderPointsEarnedRow, '+${order.pointsEarned}'),
         ],

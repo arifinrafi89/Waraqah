@@ -20,6 +20,7 @@ abstract class OrderReceiptModel with _$OrderReceiptModel {
 
     /// Who the order is a gift for, if it is one.
     String? giftFor,
+    @Default(0) int walletUsedBdt,
   }) = _OrderReceiptModel;
 
   factory OrderReceiptModel.fromJson(Map<String, dynamic> json) =>
@@ -37,5 +38,6 @@ extension OrderReceiptModelX on OrderReceiptModel {
     hasPreorders: hasPreorders,
     pointsEarned: pointsEarned,
     giftFor: giftFor,
+    walletUsedBdt: walletUsedBdt,
   );
 }

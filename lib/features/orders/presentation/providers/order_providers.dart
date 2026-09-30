@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/network/dio_provider.dart';
 import '../../../../core/usecase/usecase.dart';
+import '../../../wallet/presentation/providers/wallet_providers.dart';
 import '../../data/repositories/order_repository_impl.dart';
 import '../../data/sources/order_remote_source.dart';
 import '../../domain/entities/order.dart';
@@ -52,7 +53,9 @@ class OrderNotifier extends AsyncNotifier<Order?> {
   /// Throws if the order can't be cancelled any more.
   Future<void> cancel() async {
     state = AsyncData(await ref.read(cancelOrderProvider).call(number));
-    ref.invalidate(myOrdersProvider);
+    ref
+      ..invalidate(myOrdersProvider)
+      ..invalidate(walletProvider);
   }
 
   Future<void> requestReturn(

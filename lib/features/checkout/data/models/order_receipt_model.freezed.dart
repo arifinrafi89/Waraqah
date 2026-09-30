@@ -17,7 +17,7 @@ T _$identity<T>(T value) => value;
 mixin _$OrderReceiptModel {
 
  String get number; int get totalBdt; int get itemCount; PaymentMethod get payment; bool get needsDelivery; bool get insideDhaka; bool get hasPreorders; int get pointsEarned;/// Who the order is a gift for, if it is one.
- String? get giftFor;
+ String? get giftFor; int get walletUsedBdt;
 /// Create a copy of OrderReceiptModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -31,20 +31,20 @@ $OrderReceiptModelCopyWith<OrderReceiptModel> get copyWith => _$OrderReceiptMode
 @override
 bool operator ==(Object other) {
   final _this = this as OrderReceiptModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderReceiptModel&&(identical(other.number, _this.number) || other.number == _this.number)&&(identical(other.totalBdt, _this.totalBdt) || other.totalBdt == _this.totalBdt)&&(identical(other.itemCount, _this.itemCount) || other.itemCount == _this.itemCount)&&(identical(other.payment, _this.payment) || other.payment == _this.payment)&&(identical(other.needsDelivery, _this.needsDelivery) || other.needsDelivery == _this.needsDelivery)&&(identical(other.insideDhaka, _this.insideDhaka) || other.insideDhaka == _this.insideDhaka)&&(identical(other.hasPreorders, _this.hasPreorders) || other.hasPreorders == _this.hasPreorders)&&(identical(other.pointsEarned, _this.pointsEarned) || other.pointsEarned == _this.pointsEarned)&&(identical(other.giftFor, _this.giftFor) || other.giftFor == _this.giftFor));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderReceiptModel&&(identical(other.number, _this.number) || other.number == _this.number)&&(identical(other.totalBdt, _this.totalBdt) || other.totalBdt == _this.totalBdt)&&(identical(other.itemCount, _this.itemCount) || other.itemCount == _this.itemCount)&&(identical(other.payment, _this.payment) || other.payment == _this.payment)&&(identical(other.needsDelivery, _this.needsDelivery) || other.needsDelivery == _this.needsDelivery)&&(identical(other.insideDhaka, _this.insideDhaka) || other.insideDhaka == _this.insideDhaka)&&(identical(other.hasPreorders, _this.hasPreorders) || other.hasPreorders == _this.hasPreorders)&&(identical(other.pointsEarned, _this.pointsEarned) || other.pointsEarned == _this.pointsEarned)&&(identical(other.giftFor, _this.giftFor) || other.giftFor == _this.giftFor)&&(identical(other.walletUsedBdt, _this.walletUsedBdt) || other.walletUsedBdt == _this.walletUsedBdt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as OrderReceiptModel;
-  return Object.hash(runtimeType,_this.number,_this.totalBdt,_this.itemCount,_this.payment,_this.needsDelivery,_this.insideDhaka,_this.hasPreorders,_this.pointsEarned,_this.giftFor);
+  return Object.hash(runtimeType,_this.number,_this.totalBdt,_this.itemCount,_this.payment,_this.needsDelivery,_this.insideDhaka,_this.hasPreorders,_this.pointsEarned,_this.giftFor,_this.walletUsedBdt);
 }
 
 @override
 String toString() {
   final _this = this as OrderReceiptModel;
-  return 'OrderReceiptModel(number: ${_this.number}, totalBdt: ${_this.totalBdt}, itemCount: ${_this.itemCount}, payment: ${_this.payment}, needsDelivery: ${_this.needsDelivery}, insideDhaka: ${_this.insideDhaka}, hasPreorders: ${_this.hasPreorders}, pointsEarned: ${_this.pointsEarned}, giftFor: ${_this.giftFor})';
+  return 'OrderReceiptModel(number: ${_this.number}, totalBdt: ${_this.totalBdt}, itemCount: ${_this.itemCount}, payment: ${_this.payment}, needsDelivery: ${_this.needsDelivery}, insideDhaka: ${_this.insideDhaka}, hasPreorders: ${_this.hasPreorders}, pointsEarned: ${_this.pointsEarned}, giftFor: ${_this.giftFor}, walletUsedBdt: ${_this.walletUsedBdt})';
 }
 
 
@@ -55,7 +55,7 @@ abstract mixin class $OrderReceiptModelCopyWith<$Res>  {
   factory $OrderReceiptModelCopyWith(OrderReceiptModel value, $Res Function(OrderReceiptModel) _then) = _$OrderReceiptModelCopyWithImpl;
 @useResult
 $Res call({
- String number, int totalBdt, int itemCount, PaymentMethod payment, bool needsDelivery, bool insideDhaka, bool hasPreorders, int pointsEarned, String? giftFor
+ String number, int totalBdt, int itemCount, PaymentMethod payment, bool needsDelivery, bool insideDhaka, bool hasPreorders, int pointsEarned, String? giftFor, int walletUsedBdt
 });
 
 
@@ -72,7 +72,7 @@ class _$OrderReceiptModelCopyWithImpl<$Res>
 
 /// Create a copy of OrderReceiptModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? number = null,Object? totalBdt = null,Object? itemCount = null,Object? payment = null,Object? needsDelivery = null,Object? insideDhaka = null,Object? hasPreorders = null,Object? pointsEarned = null,Object? giftFor = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? number = null,Object? totalBdt = null,Object? itemCount = null,Object? payment = null,Object? needsDelivery = null,Object? insideDhaka = null,Object? hasPreorders = null,Object? pointsEarned = null,Object? giftFor = freezed,Object? walletUsedBdt = null,}) {
   return _then(OrderReceiptModel(
 number: null == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
 as String,totalBdt: null == totalBdt ? _self.totalBdt : totalBdt // ignore: cast_nullable_to_non_nullable
@@ -83,7 +83,8 @@ as bool,insideDhaka: null == insideDhaka ? _self.insideDhaka : insideDhaka // ig
 as bool,hasPreorders: null == hasPreorders ? _self.hasPreorders : hasPreorders // ignore: cast_nullable_to_non_nullable
 as bool,pointsEarned: null == pointsEarned ? _self.pointsEarned : pointsEarned // ignore: cast_nullable_to_non_nullable
 as int,giftFor: freezed == giftFor ? _self.giftFor : giftFor // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,walletUsedBdt: null == walletUsedBdt ? _self.walletUsedBdt : walletUsedBdt // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 
@@ -168,10 +169,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String number,  int totalBdt,  int itemCount,  PaymentMethod payment,  bool needsDelivery,  bool insideDhaka,  bool hasPreorders,  int pointsEarned,  String? giftFor)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String number,  int totalBdt,  int itemCount,  PaymentMethod payment,  bool needsDelivery,  bool insideDhaka,  bool hasPreorders,  int pointsEarned,  String? giftFor,  int walletUsedBdt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OrderReceiptModel() when $default != null:
-return $default(_that.number,_that.totalBdt,_that.itemCount,_that.payment,_that.needsDelivery,_that.insideDhaka,_that.hasPreorders,_that.pointsEarned,_that.giftFor);case _:
+return $default(_that.number,_that.totalBdt,_that.itemCount,_that.payment,_that.needsDelivery,_that.insideDhaka,_that.hasPreorders,_that.pointsEarned,_that.giftFor,_that.walletUsedBdt);case _:
   return orElse();
 
 }
@@ -189,10 +190,10 @@ return $default(_that.number,_that.totalBdt,_that.itemCount,_that.payment,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String number,  int totalBdt,  int itemCount,  PaymentMethod payment,  bool needsDelivery,  bool insideDhaka,  bool hasPreorders,  int pointsEarned,  String? giftFor)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String number,  int totalBdt,  int itemCount,  PaymentMethod payment,  bool needsDelivery,  bool insideDhaka,  bool hasPreorders,  int pointsEarned,  String? giftFor,  int walletUsedBdt)  $default,) {final _that = this;
 switch (_that) {
 case _OrderReceiptModel():
-return $default(_that.number,_that.totalBdt,_that.itemCount,_that.payment,_that.needsDelivery,_that.insideDhaka,_that.hasPreorders,_that.pointsEarned,_that.giftFor);case _:
+return $default(_that.number,_that.totalBdt,_that.itemCount,_that.payment,_that.needsDelivery,_that.insideDhaka,_that.hasPreorders,_that.pointsEarned,_that.giftFor,_that.walletUsedBdt);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -209,10 +210,10 @@ return $default(_that.number,_that.totalBdt,_that.itemCount,_that.payment,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String number,  int totalBdt,  int itemCount,  PaymentMethod payment,  bool needsDelivery,  bool insideDhaka,  bool hasPreorders,  int pointsEarned,  String? giftFor)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String number,  int totalBdt,  int itemCount,  PaymentMethod payment,  bool needsDelivery,  bool insideDhaka,  bool hasPreorders,  int pointsEarned,  String? giftFor,  int walletUsedBdt)?  $default,) {final _that = this;
 switch (_that) {
 case _OrderReceiptModel() when $default != null:
-return $default(_that.number,_that.totalBdt,_that.itemCount,_that.payment,_that.needsDelivery,_that.insideDhaka,_that.hasPreorders,_that.pointsEarned,_that.giftFor);case _:
+return $default(_that.number,_that.totalBdt,_that.itemCount,_that.payment,_that.needsDelivery,_that.insideDhaka,_that.hasPreorders,_that.pointsEarned,_that.giftFor,_that.walletUsedBdt);case _:
   return null;
 
 }
@@ -224,7 +225,7 @@ return $default(_that.number,_that.totalBdt,_that.itemCount,_that.payment,_that.
 @JsonSerializable()
 
 class _OrderReceiptModel implements OrderReceiptModel {
-  const _OrderReceiptModel({required this.number, required this.totalBdt, required this.itemCount, required this.payment, required this.needsDelivery, required this.insideDhaka, this.hasPreorders = false, this.pointsEarned = 0, this.giftFor});
+  const _OrderReceiptModel({required this.number, required this.totalBdt, required this.itemCount, required this.payment, required this.needsDelivery, required this.insideDhaka, this.hasPreorders = false, this.pointsEarned = 0, this.giftFor, this.walletUsedBdt = 0});
   factory _OrderReceiptModel.fromJson(Map<String, dynamic> json) => _$OrderReceiptModelFromJson(json);
 
 @override final  String number;
@@ -237,6 +238,7 @@ class _OrderReceiptModel implements OrderReceiptModel {
 @override@JsonKey() final  int pointsEarned;
 /// Who the order is a gift for, if it is one.
 @override final  String? giftFor;
+@override@JsonKey() final  int walletUsedBdt;
 
 /// Create a copy of OrderReceiptModel
 /// with the given fields replaced by the non-null parameter values.
@@ -251,18 +253,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderReceiptModel&&(identical(other.number, number) || other.number == number)&&(identical(other.totalBdt, totalBdt) || other.totalBdt == totalBdt)&&(identical(other.itemCount, itemCount) || other.itemCount == itemCount)&&(identical(other.payment, payment) || other.payment == payment)&&(identical(other.needsDelivery, needsDelivery) || other.needsDelivery == needsDelivery)&&(identical(other.insideDhaka, insideDhaka) || other.insideDhaka == insideDhaka)&&(identical(other.hasPreorders, hasPreorders) || other.hasPreorders == hasPreorders)&&(identical(other.pointsEarned, pointsEarned) || other.pointsEarned == pointsEarned)&&(identical(other.giftFor, giftFor) || other.giftFor == giftFor));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderReceiptModel&&(identical(other.number, number) || other.number == number)&&(identical(other.totalBdt, totalBdt) || other.totalBdt == totalBdt)&&(identical(other.itemCount, itemCount) || other.itemCount == itemCount)&&(identical(other.payment, payment) || other.payment == payment)&&(identical(other.needsDelivery, needsDelivery) || other.needsDelivery == needsDelivery)&&(identical(other.insideDhaka, insideDhaka) || other.insideDhaka == insideDhaka)&&(identical(other.hasPreorders, hasPreorders) || other.hasPreorders == hasPreorders)&&(identical(other.pointsEarned, pointsEarned) || other.pointsEarned == pointsEarned)&&(identical(other.giftFor, giftFor) || other.giftFor == giftFor)&&(identical(other.walletUsedBdt, walletUsedBdt) || other.walletUsedBdt == walletUsedBdt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,number,totalBdt,itemCount,payment,needsDelivery,insideDhaka,hasPreorders,pointsEarned,giftFor);
+    return Object.hash(runtimeType,number,totalBdt,itemCount,payment,needsDelivery,insideDhaka,hasPreorders,pointsEarned,giftFor,walletUsedBdt);
 }
 
 @override
 String toString() {
-    return 'OrderReceiptModel(number: $number, totalBdt: $totalBdt, itemCount: $itemCount, payment: $payment, needsDelivery: $needsDelivery, insideDhaka: $insideDhaka, hasPreorders: $hasPreorders, pointsEarned: $pointsEarned, giftFor: $giftFor)';
+    return 'OrderReceiptModel(number: $number, totalBdt: $totalBdt, itemCount: $itemCount, payment: $payment, needsDelivery: $needsDelivery, insideDhaka: $insideDhaka, hasPreorders: $hasPreorders, pointsEarned: $pointsEarned, giftFor: $giftFor, walletUsedBdt: $walletUsedBdt)';
 }
 
 
@@ -273,7 +275,7 @@ abstract mixin class _$OrderReceiptModelCopyWith<$Res> implements $OrderReceiptM
   factory _$OrderReceiptModelCopyWith(_OrderReceiptModel value, $Res Function(_OrderReceiptModel) _then) = __$OrderReceiptModelCopyWithImpl;
 @override @useResult
 $Res call({
- String number, int totalBdt, int itemCount, PaymentMethod payment, bool needsDelivery, bool insideDhaka, bool hasPreorders, int pointsEarned, String? giftFor
+ String number, int totalBdt, int itemCount, PaymentMethod payment, bool needsDelivery, bool insideDhaka, bool hasPreorders, int pointsEarned, String? giftFor, int walletUsedBdt
 });
 
 
@@ -290,7 +292,7 @@ class __$OrderReceiptModelCopyWithImpl<$Res>
 
 /// Create a copy of OrderReceiptModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? number = null,Object? totalBdt = null,Object? itemCount = null,Object? payment = null,Object? needsDelivery = null,Object? insideDhaka = null,Object? hasPreorders = null,Object? pointsEarned = null,Object? giftFor = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? number = null,Object? totalBdt = null,Object? itemCount = null,Object? payment = null,Object? needsDelivery = null,Object? insideDhaka = null,Object? hasPreorders = null,Object? pointsEarned = null,Object? giftFor = freezed,Object? walletUsedBdt = null,}) {
   return _then(_OrderReceiptModel(
 number: null == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
 as String,totalBdt: null == totalBdt ? _self.totalBdt : totalBdt // ignore: cast_nullable_to_non_nullable
@@ -301,7 +303,8 @@ as bool,insideDhaka: null == insideDhaka ? _self.insideDhaka : insideDhaka // ig
 as bool,hasPreorders: null == hasPreorders ? _self.hasPreorders : hasPreorders // ignore: cast_nullable_to_non_nullable
 as bool,pointsEarned: null == pointsEarned ? _self.pointsEarned : pointsEarned // ignore: cast_nullable_to_non_nullable
 as int,giftFor: freezed == giftFor ? _self.giftFor : giftFor // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,walletUsedBdt: null == walletUsedBdt ? _self.walletUsedBdt : walletUsedBdt // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 

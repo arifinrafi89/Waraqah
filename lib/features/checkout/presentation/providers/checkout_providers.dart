@@ -6,6 +6,7 @@ import '../../../../core/usecase/usecase.dart';
 import '../../../cart/domain/entities/cart.dart';
 import '../../../cart/presentation/providers/cart_providers.dart';
 import '../../../loyalty/presentation/providers/points_providers.dart';
+import '../../../wallet/presentation/providers/wallet_providers.dart';
 import '../../data/repositories/checkout_repository_impl.dart';
 import '../../data/sources/checkout_remote_source.dart';
 import '../../domain/entities/checkout_totals.dart';
@@ -35,15 +36,16 @@ final placeOrderProvider = Provider<PlaceOrder>(
   (ref) => PlaceOrder(ref.watch(checkoutRepositoryProvider)),
 );
 
-/// The reader's saved addresses, once the cart and points have loaded too
-/// (all three at once), so the page has everything before it stops
+/// The reader's saved addresses, once the cart, points and wallet have
+/// loaded too (all at once), so the page has everything before it stops
 /// shimmering.
 final checkoutAddressesProvider = FutureProvider<List<SavedAddress>>((
   ref,
 ) async {
-  final (_, _, addresses) = await (
+  final (_, _, _, addresses) = await (
     ref.watch(cartProvider.future),
     ref.watch(pointsProvider.future),
+    ref.watch(walletProvider.future),
     ref.watch(getAddressesProvider).call(const NoParams()),
   ).wait;
   return addresses;
@@ -97,11 +99,16 @@ final checkoutTotalsProvider = Provider<CheckoutTotals?>((ref) {
     pointsBalance: ref.watch(pointsProvider).value?.balance ?? 0,
     usePoints: ref.watch(usePointsProvider),
     giftWrap: ref.watch(giftProvider)?.wrapped ?? false,
+    walletBalance: ref.watch(walletProvider).value?.balanceBdt ?? 0,
+    useWallet: ref.watch(useWalletProvider),
   );
 });
 
 /// Whether the reader chose to pay part of the books with points.
 final usePointsProvider = selectionProvider<bool>(false);
+
+/// Whether the reader pays what they can from their wallet.
+final useWalletProvider = selectionProvider<bool>(false);
 
 final placingOrderProvider = selectionProvider<bool>(false);
 

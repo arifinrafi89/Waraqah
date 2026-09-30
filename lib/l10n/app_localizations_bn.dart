@@ -1027,6 +1027,58 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
+  String get walletTitle => 'ওয়ালেট';
+
+  @override
+  String get walletRuleIn =>
+      'বাতিল বা ফেরত দেওয়া অর্ডারের টাকা, আর ওয়ারাকাহকে বিক্রি করা বইয়ের টাকা এখানে জমা হয়।';
+
+  @override
+  String get walletRuleSpend =>
+      'চেকআউটে নগদ টাকার মতো ব্যবহার করুন, বই আর ডেলিভারি দুটোতেই।';
+
+  @override
+  String get walletHistory => 'ইতিহাস';
+
+  @override
+  String walletCancelRefund(String order) {
+    return 'বাতিল $order-এর রিফান্ড';
+  }
+
+  @override
+  String walletReturnRefund(String order) {
+    return 'ফেরত $order-এর রিফান্ড';
+  }
+
+  @override
+  String walletSellBack(String book) {
+    return 'সেল ব্যাক: $book';
+  }
+
+  @override
+  String walletSpentOn(String order) {
+    return '$order-এ ব্যবহার';
+  }
+
+  @override
+  String walletUseAtCheckout(String amount) {
+    return 'ওয়ালেট থেকে $amount দিন';
+  }
+
+  @override
+  String walletYouHave(String amount) {
+    return 'আপনার আছে $amount';
+  }
+
+  @override
+  String get orderRefundedToWallet => 'আপনার ওয়ালেটে ফেরত';
+
+  @override
+  String orderPlacedFromWallet(String amount) {
+    return '$amount আপনার ওয়ালেট থেকে দেওয়া হয়েছে।';
+  }
+
+  @override
   String get orderPlacedTitle => 'অর্ডার সম্পন্ন হয়েছে!';
 
   @override
@@ -1110,7 +1162,7 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get orderCancelBody =>
-      'এটি আর ফেরানো যাবে না। অনলাইনে পরিশোধ করে থাকলে টাকা একই পথে ফেরত যাবে।';
+      'এটি আর ফেরানো যাবে না। যা পরিশোধ করেছেন, তা আপনার ওয়ারাকাহ ওয়ালেটে ফেরত যাবে।';
 
   @override
   String get orderKeep => 'অর্ডার রাখুন';

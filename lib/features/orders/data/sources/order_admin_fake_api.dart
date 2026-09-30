@@ -1,6 +1,11 @@
 import 'package:dio/dio.dart';
 
+// Refunds go to the reader's wallet on the fake backend.
+import '../../../wallet/data/sources/wallet_fake_store.dart';
+import '../../../wallet/domain/entities/wallet.dart';
+import '../../domain/entities/order_refunds.dart';
 import '../../domain/entities/order_status.dart';
+import '../models/order_model.dart';
 import 'order_fake_store.dart';
 
 /// The Admin area's order endpoints, merged into `FakeApiInterceptor` by
@@ -14,11 +19,12 @@ abstract final class OrderAdminFakeApi {
   static const String advance = '/admin/orders/advance';
 
   /// Body: `{number, approve}`. Answers the order, or `null` if it has no
-  /// waiting return.
+  /// waiting return. Approving refunds the books to the reader's wallet.
   static const String decideReturn = '/admin/orders/return';
 
   static Map<String, Object? Function(RequestOptions)> routes(
     OrderFakeStore store,
+    WalletFakeStore wallet,
   ) => {
     orders: (_) => [for (final order in store.all) order.toJson()],
     advance: (options) {
@@ -32,12 +38,19 @@ abstract final class OrderAdminFakeApi {
     },
     decideReturn: (options) {
       final body = _body(options);
-      return store
-          .decideReturn(
-            body['number'] as String? ?? '',
-            approve: body['approve'] == true,
-          )
-          ?.toJson();
+      final approve = body['approve'] == true;
+      final order = store.decideReturn(
+        body['number'] as String? ?? '',
+        approve: approve,
+      );
+      if (order == null || !approve) return order?.toJson();
+      final refund = order.toEntity().returnRefundBdt;
+      wallet.credit(
+        refund,
+        WalletReason.returnRefund,
+        orderNumber: order.number,
+      );
+      return store.refund(order.number, refund)?.toJson();
     },
   };
 

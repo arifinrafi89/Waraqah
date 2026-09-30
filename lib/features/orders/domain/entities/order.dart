@@ -37,6 +37,12 @@ abstract class Order with _$Order {
 
     /// A donation to a verified place; [gift] says which.
     @Default(false) bool isDonation,
+
+    /// Paid from the wallet, on top of [totalBdt].
+    @Default(0) int walletUsedBdt,
+
+    /// Put back in the wallet after a cancel or an approved return.
+    @Default(0) int refundedBdt,
   }) = _Order;
 }
 

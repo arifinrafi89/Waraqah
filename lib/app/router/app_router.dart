@@ -17,6 +17,7 @@ import '../../features/donate/donate_routes.dart';
 import '../../features/orders/orders_routes.dart';
 import '../../features/p2p/p2p_routes.dart';
 import '../../features/profile/profile_routes.dart';
+import '../../features/wallet/wallet_routes.dart';
 import '../../features/wishlist/wishlist_routes.dart';
 import '../shell/app_shell.dart';
 import 'route_access.dart';
@@ -57,6 +58,7 @@ abstract final class AppRouter {
       ...DealsRoutes.routes,
       ...LoyaltyRoutes.routes,
       ...DonateRoutes.routes,
+      ...WalletRoutes.routes,
       ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),
