@@ -11,12 +11,14 @@ import '../../data/repositories/banner_repository_impl.dart';
 import '../../data/sources/banner_remote_source.dart';
 import '../../domain/entities/ayah.dart';
 import '../../domain/entities/banner.dart';
+import '../../domain/entities/season.dart';
 import '../../domain/repositories/ayah_repository.dart';
 import '../../domain/repositories/banner_repository.dart';
 import '../../domain/usecases/get_ayah_of_the_day.dart';
 import '../../domain/usecases/get_banners.dart';
 import '../../domain/usecases/get_bestsellers.dart';
 import '../../domain/usecases/get_new_arrivals.dart';
+import '../../domain/usecases/get_season.dart';
 
 final ayahRepositoryProvider = Provider<AyahRepository>(
   (ref) => AyahRepositoryImpl(AyahRemoteSource(ref.watch(dioProvider))),
@@ -66,4 +68,9 @@ final getBannersProvider = Provider<GetBanners>(
 
 final bannersProvider = FutureProvider<List<Banner>>(
   (ref) => ref.watch(getBannersProvider).call(const NoParams()),
+);
+
+/// The Season Home's hero card shows, or `null` when none is on.
+final homeSeasonProvider = FutureProvider<SeasonInfo?>(
+  (ref) => GetSeason(ref.watch(bannerRepositoryProvider))(const NoParams()),
 );

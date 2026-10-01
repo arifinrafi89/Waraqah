@@ -15,6 +15,7 @@ import '../widgets/book_shelf_section.dart';
 import '../widgets/collections_section.dart';
 import '../widgets/home_header.dart';
 import '../widgets/nearby_p2p_section.dart';
+import '../widgets/season_hero_card.dart';
 import '../widgets/section_chip_row.dart';
 
 /// Screen 1 — Home. Nothing but composition: every section is an independent
@@ -31,6 +32,7 @@ class HomePage extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(child: SizedBox(height: top)),
           const _Box(DealsBanner()),
+          const _Box(SeasonHeroCard()),
           const _Box(BannerCarousel()),
           const _Box(SectionChipRow()),
           const _Box(AyahSection()),
