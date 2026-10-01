@@ -2415,6 +2415,35 @@ class AppL10nEn extends AppL10n {
       'Moderators reject listings that break these rules, and repeat breaks can get an account banned.';
 
   @override
+  String listingFairPrice(String low, String high) {
+    return 'Fair price: $low–$high';
+  }
+
+  @override
+  String listingFairPriceBasis(String price) {
+    return 'From the new price ($price), the condition and the flags.';
+  }
+
+  @override
+  String get listingFairPriceUnknown =>
+      'Scan or pick the book from the catalog to see a fair price.';
+
+  @override
+  String get listingPriceLow => 'Lower than most: it should sell fast.';
+
+  @override
+  String get listingPriceFair => 'A fair price.';
+
+  @override
+  String get listingPriceHigh =>
+      'Higher than most used copies, so it may take longer to sell.';
+
+  @override
+  String listingPriceAboveNew(String price) {
+    return 'That\'s as much as buying it new ($price). Buyers will buy new instead.';
+  }
+
+  @override
   String get scanTitle => 'Scan a book';
 
   @override

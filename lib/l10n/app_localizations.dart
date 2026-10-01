@@ -4225,6 +4225,48 @@ abstract class AppL10n {
   /// **'Moderators reject listings that break these rules, and repeat breaks can get an account banned.'**
   String get listingRuleWarning;
 
+  /// No description provided for @listingFairPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Fair price: {low}–{high}'**
+  String listingFairPrice(String low, String high);
+
+  /// No description provided for @listingFairPriceBasis.
+  ///
+  /// In en, this message translates to:
+  /// **'From the new price ({price}), the condition and the flags.'**
+  String listingFairPriceBasis(String price);
+
+  /// No description provided for @listingFairPriceUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan or pick the book from the catalog to see a fair price.'**
+  String get listingFairPriceUnknown;
+
+  /// No description provided for @listingPriceLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Lower than most: it should sell fast.'**
+  String get listingPriceLow;
+
+  /// No description provided for @listingPriceFair.
+  ///
+  /// In en, this message translates to:
+  /// **'A fair price.'**
+  String get listingPriceFair;
+
+  /// No description provided for @listingPriceHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Higher than most used copies, so it may take longer to sell.'**
+  String get listingPriceHigh;
+
+  /// No description provided for @listingPriceAboveNew.
+  ///
+  /// In en, this message translates to:
+  /// **'That\'s as much as buying it new ({price}). Buyers will buy new instead.'**
+  String listingPriceAboveNew(String price);
+
   /// No description provided for @scanTitle.
   ///
   /// In en, this message translates to:
