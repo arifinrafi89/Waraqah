@@ -7,14 +7,16 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/app_buttons.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../alerts/presentation/widgets/alert_buttons.dart';
+import '../../../cart/domain/entities/cart_item_ref.dart';
+import '../../../cart/presentation/providers/cart_providers.dart';
+import '../../../cart/presentation/widgets/add_to_cart_action.dart';
 import '../providers/edition_providers.dart';
 import 'edition_price.dart';
 
 /// Pinned bottom bar: the chosen Edition's price, an Add to cart icon and a
-/// wide Buy now button. Both are disabled when that Edition can't be ordered.
-///
-/// The cart is the next piece of work, so for now both say so instead of
-/// pretending to add anything.
+/// wide Buy now button, which adds it and opens the cart (both wait while an
+/// add is on its way). A sold-out Edition gets "Notify me" instead.
 class AddToCartBar extends ConsumerWidget {
   const AddToCartBar({super.key, required this.book});
 
@@ -27,7 +29,9 @@ class AddToCartBar extends ConsumerWidget {
     final edition = book.chosenEdition(
       ref.watch(selectedEditionIdProvider(book.id)),
     );
-    final onPressed = edition.isOrderable ? () => _comingSoon(context) : null;
+    final isAdding = ref.watch(addingToCartProvider);
+    final item = CartItemRef.edition(edition.id);
+    final canAdd = edition.isOrderable && !isAdding;
     return DecoratedBox(
       decoration: BoxDecoration(
         color: palette.surface,
@@ -50,35 +54,39 @@ class AddToCartBar extends ConsumerWidget {
                 size: 18,
                 alignment: CrossAxisAlignment.start,
               ),
-              IconButton.outlined(
-                tooltip: l10n.bookDetailAddToCart,
-                onPressed: onPressed,
-                icon: const Icon(Icons.add_shopping_cart_rounded),
-                style: IconButton.styleFrom(
-                  fixedSize: const Size.square(Sizes.buttonHeight),
-                  foregroundColor: palette.accent,
-                  side: BorderSide(color: palette.border),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(Radii.md),
+              if (!edition.isOrderable)
+                Expanded(
+                  child: NotifyMeButton(bookId: book.id, edition: edition),
+                )
+              else ...[
+                IconButton.outlined(
+                  tooltip: l10n.bookDetailAddToCart,
+                  onPressed: canAdd ? () => ref.addToCart(context, item) : null,
+                  icon: const Icon(Icons.add_shopping_cart_rounded),
+                  style: IconButton.styleFrom(
+                    fixedSize: const Size.square(Sizes.buttonHeight),
+                    foregroundColor: palette.accent,
+                    side: BorderSide(color: palette.border),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(Radii.md),
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: PrimaryButton(
-                  label: l10n.bookBuyNow,
-                  onPressed: onPressed,
+                Expanded(
+                  child: PrimaryButton(
+                    label: edition.stock == 0 && edition.isPreorder
+                        ? l10n.dealPreorderNow
+                        : l10n.bookBuyNow,
+                    isBusy: isAdding,
+                    onPressed: () =>
+                        ref.addToCart(context, item, openCart: true),
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
         ),
       ),
     );
   }
-
-  void _comingSoon(BuildContext context) => ScaffoldMessenger.of(context)
-    ..hideCurrentSnackBar()
-    ..showSnackBar(
-      SnackBar(content: Text(AppL10n.of(context)!.bookDetailCartSoon)),
-    );
 }

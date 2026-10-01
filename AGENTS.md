@@ -27,7 +27,7 @@ The app also has:
 | Decision | Meaning for code |
 |---|---|
 | **Self-run store** | No vendor comparison anywhere (no "Rokomari vs Wafilife"). A Book's price comes from its own **Editions**. |
-| **No Beneficial / Non-Beneficial label** | Religious books get curated **collections** and **Expert Picks** with a "why read this" note instead. Ayah of the Day is an optional home module. *(The old `isBeneficial` field and home filter still exist; see §10.)* |
+| **No Beneficial / Non-Beneficial label** | Religious books get curated **collections** and **Expert Picks** with a "why read this" note instead. Ayah of the Day is an optional home module. |
 | **For every reader** | No university, department or course fields in the profile. Course lists are just one kind of **Booklist**. |
 | **Bites use likes only** | No downvotes. Bad content is handled by reporting. |
 | **One Moderation Center** | Listing approvals, all reports (Bites, comments, reviews, listings, users, messages) and disputes live in one admin section, with one strike system and one audit log. |
@@ -41,6 +41,10 @@ The app also has:
 
 - **Setup steps 1–6 are done:** Book model with Editions, per-feature routes and fake APIs, login state and roles, the Admin area shell.
 - **Setup step 7** (Moderation Center shell) is in progress (Arifin).
+- **Browsing pages are done** (Rahinur, #87): Section, Category, Author, Publisher and Series pages, inside the Catalog tab so the bottom nav stays. Routes are in `CatalogRoutes` (`sectionFor`, `categoryFor`, `authorFor`, `publisherFor`, `seriesFor`); pages in `features/catalog/presentation/pages/`; fixtures in `features/catalog/data/sources/` (`*_fixtures.dart`, `seed/`).
+- **Search is done** (Rahinur, #99): `/catalog/search` (`CatalogRoutes.search`, `search_page.dart`). Live search by title, Author, Publisher or ISBN; filters (Section, price, format, language, rating, in stock); sort (relevance, price, newest, bestselling); recent searches kept on the device. Every catalog query goes through `BookRepository.searchCatalog(CatalogFilters)` (`domain/entities/catalog_filters.dart`); state in `search_providers.dart` and `recent_searches_provider.dart`. No results shows "Request this book".
+- **Home feed is done** (Rahinur, #100): Home is composition only (`features/home/presentation/pages/home_page.dart`), in this order: flash-sale strip (Farhan's), Banners carousel, Section chips, Ayah of the Day, New arrivals, Bestsellers, Collections, Bites, "Used books from readers". Each part loads through its own provider with a skeleton and retry. Banners come from Home's own fake API (`/home/banners`, `home_fake_api.dart`, `GetBanners`); a `BannerTarget` (Collection, Section, Book or search) is mapped to a route by `bannerRoute` in `banner_card.dart`. New arrivals and Bestsellers come from `searchCatalog` (`GetNewArrivals`, `GetBestsellers`); "See all" opens `CatalogRoutes.searchFor(sort:)`, and Search also reads `?q=`. Every book card shows Waraqah's From-price, list price when discounted, and stock, and opens the book page.
+- **Religious section is done** (Rahinur, #100): the Beneficial / Non-Beneficial filter and `Book.isBeneficial` are gone. Staff-picked **Collections** replace them: page at `CatalogRoutes.collectionFor(id)`, fake API `/collections` and `/collections/detail` (`collection_fake_api.dart`), use cases `GetCollections` / `GetCollection`, widgets `CollectionTile` and `CollectionStrip`. Any Section page with Collections shows a strip (Religious has 3); Home shows all 5. Ayah of the Day is on by default; readers hide it with the ✕ (with Undo) or the switch in Profile's "Home" group (`AyahSwitchTile`, saved on the device by `ayah_visible_provider.dart`).
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
 - `main` passes `flutter analyze` with no issues, and all tests pass.
 
@@ -207,8 +211,16 @@ Use these words in code, tests and PRs. Don't drift to the "avoid" words.
 | **Format** | paperback, hardcover or eBook | binding |
 | **Translation** | An Edition in a language other than the Book's original. Not a separate Book. | |
 | **Section** | One of the 8 fixed top-level shelves | department, genre |
-| **Category** | A group of Books inside one Section | subcategory |
+| **Category** | A group of Books inside one Section, with an English and a Bangla name. Staff manage the list. | subcategory |
+| **Author** | The person who wrote a Book. A Book has exactly one Author for now. | writer |
+| **Publisher** | The company that published a Book. A Book has exactly one Publisher. | brand, prokashoni |
+| **Series** | Books meant to be read in order. May list titles Waraqah doesn't sell yet. | collection (that's a Collection) |
+| **Collection** | An ordered set of Books picked by Staff, with a title and a short note on why they were picked. May belong to one Section. Not read in order (that's a Series) and not bought together (that's a Booklist). | list, shelf, bundle |
 | **From-price** | Price shown before an Edition is chosen: the cheapest orderable Edition (`book.fromPriceBdt`) | lowest vendor price |
+| **New arrival** | A Book recently added to Waraqah's catalog, not recently published | new release |
+| **Bestseller** | A Book ranked by copies Waraqah sold in the last 30 days, all Editions together (used copies not counted) | top seller, popular |
+| **Banner** | A promo tile at the top of Home, made by Staff: a title, a subtitle and one link to a Collection, Section, Book or search | ad, slider, hero |
+| **Ayah of the Day** | A daily Quran verse on Home. Readers can turn it off. | |
 | **List price** | An Edition's price before discount (`listPriceBdt`) | MRP, original price |
 | **Stock / Pre-order** | Copies Waraqah can ship now / not released yet but orderable | |
 | **Guest** | Using the app without signing in (no Role) | |
@@ -289,6 +301,7 @@ Commit generated files (`*.freezed.dart`, `*.g.dart`, `lib/l10n/app_localization
 
 **Widget tests:** use `test/helpers/app_harness.dart`:
 - `openApp(tester, location, role: 'superAdmin')` opens the real app at phone size, signed in (or a guest when `role` is null)
+- `openApp(..., prefs: {...})` starts with those values already saved on the device (e.g. to test what survives a restart)
 - `settle(tester)` waits for fake API calls
 - `pathOf(router)` gives the current page
 
@@ -298,10 +311,10 @@ Set `GoogleFonts.config.allowRuntimeFetching = false` in `setUpAll`.
 
 ## 10. Known gaps (don't be surprised by these)
 
-- `Book.isBeneficial` and Home's Beneficial / Non-Beneficial filter still exist. They're scheduled for removal (Rahinur, Religious section). Don't build on them.
 - The AI assistant still shows an old vendor price table. It's scheduled to use Waraqah's own catalog (Niloy). Don't copy it.
 - `BookDetailsSource` (catalog) still catches `DioException` and falls back to fixtures, which breaks rule 8. Scheduled to move to a fake API route (Farhan).
 - Sign-up doesn't create an account yet; it just opens the app. "Continue with Google" signs in as a demo reader. Real sign-up is Niloy's task.
 - Profile stats (books read, Bites posted, listings) are placeholder numbers.
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
+- Search's "Request this book" opens a stand-in page (`CatalogRoutes.requestBook`) until the Request a Book flow lands (Arifin). Point it at the real flow then.
 - "Add to cart" on the book page shows a "coming soon" message until the cart exists (Farhan).

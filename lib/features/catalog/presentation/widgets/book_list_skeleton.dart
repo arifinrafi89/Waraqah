@@ -12,9 +12,13 @@ class BookListSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: 10,
-      children: [for (var i = 0; i < rows; i++) const _Row()],
+    // Scrollable (but not scrolled) so a short screen clips instead of overflowing.
+    return SingleChildScrollView(
+      physics: const NeverScrollableScrollPhysics(),
+      child: Column(
+        spacing: 10,
+        children: [for (var i = 0; i < rows; i++) const _Row()],
+      ),
     );
   }
 }

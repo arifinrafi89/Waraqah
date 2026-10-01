@@ -27,17 +27,20 @@ abstract class Book with _$Book {
   // ignore: invalid_annotation_target
   @JsonSerializable(explicitToJson: true)
   @Assert('editions.isNotEmpty', 'A Book needs at least one Edition')
-  const factory Book({
+  factory Book({
     required String id,
     required String title,
     required String author,
-    required String category,
+    required String categoryId,
+    required String authorId,
+    required String publisherId,
     required Section section,
     required BookLanguage originalLanguage,
     required List<Edition> editions,
+    // The day Waraqah added this Book to the catalog (not its publication date).
+    required DateTime addedAt,
     @Default(0) double rating,
     @Default(<String>[]) List<String> tags,
-    @Default(false) bool isBeneficial,
     @Default(0) int coverSeed,
     String? shortTitle,
   }) = _Book;

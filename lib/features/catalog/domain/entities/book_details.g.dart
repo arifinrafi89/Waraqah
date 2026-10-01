@@ -15,7 +15,6 @@ _BookDetails _$BookDetailsFromJson(Map<String, dynamic> json) => _BookDetails(
       const <BookReview>[],
   description: json['description'] as String?,
   pages: (json['pages'] as num?)?.toInt(),
-  publisher: json['publisher'] as String?,
 );
 
 Map<String, dynamic> _$BookDetailsToJson(_BookDetails instance) =>
@@ -24,5 +23,4 @@ Map<String, dynamic> _$BookDetailsToJson(_BookDetails instance) =>
       'reviews': instance.reviews.map((e) => e.toJson()).toList(),
       'description': instance.description,
       'pages': instance.pages,
-      'publisher': instance.publisher,
     };

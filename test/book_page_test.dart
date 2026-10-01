@@ -53,12 +53,14 @@ void main() {
     expect(find.text('Deliver to Outside Dhaka'), findsOneWidget);
   });
 
-  testWidgets('add to cart says the cart is coming', (tester) async {
+  testWidgets('add to cart adds the chosen edition', (tester) async {
     await openApp(tester, _atomic);
 
-    await tester.tap(find.byTooltip('Add to cart'));
+    await tester.tap(find.text('Hardcover · English'));
     await tester.pump();
+    await tester.tap(find.byTooltip('Add to cart'));
+    await settle(tester);
 
-    expect(find.byType(SnackBar), findsOneWidget);
+    expect(find.widgetWithText(SnackBar, 'Added to cart'), findsOneWidget);
   });
 }

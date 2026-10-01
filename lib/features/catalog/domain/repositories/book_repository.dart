@@ -1,4 +1,5 @@
 import '../../../../core/models/book.dart';
+import '../entities/catalog_filters.dart';
 
 /// What the catalog LEGO block promises to the rest of the app.
 ///
@@ -9,8 +10,10 @@ abstract interface class BookRepository {
   /// Newest arrivals for the home screen, cheapest From-price first.
   Future<List<Book>> fetchNewArrivals();
 
-  /// Full catalog, optionally narrowed by category and free-text query.
-  Future<List<Book>> searchCatalog({String? category, String query = ''});
+  /// Full catalog narrowed by [filters].
+  Future<List<Book>> searchCatalog([
+    CatalogFilters filters = const CatalogFilters(),
+  ]);
 
   /// A single title, used by the AI assistant's recommendation cards.
   Future<Book?> findById(String id);

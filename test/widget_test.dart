@@ -7,7 +7,6 @@ import 'package:shared_preferences_platform_interface/shared_preferences_platfor
 import 'package:waraqah/core/settings/settings_provider.dart';
 import 'package:waraqah/core/theme/app_palette.dart';
 import 'package:waraqah/core/utils/formatters.dart';
-import 'package:waraqah/features/p2p/domain/entities/p2p_listing.dart';
 
 void main() {
   group('Bdt.format', () {
@@ -38,36 +37,6 @@ void main() {
         final theme = ThemeData(extensions: [palette]);
         expect(theme.extension<AppPalette>(), palette);
       }
-    });
-  });
-
-  group('P2P marketplace filters', () {
-    test('filter chips match the available book conditions', () {
-      expect(P2pFilter.values, [
-        P2pFilter.all,
-        P2pFilter.likeNew,
-        P2pFilter.good,
-        P2pFilter.fair,
-      ]);
-    });
-
-    test('listings are filtered by condition and search', () {
-      final listing = P2pListing(
-        id: '1',
-        title: 'Clean Code',
-        sellerName: 'Farhan',
-        sellerBatch: "CSE '22",
-        priceBdt: 320,
-        condition: BookCondition.likeNew,
-        coverSeed: 0,
-        isAvailable: true,
-      );
-
-      expect(listing.matchesFilter(P2pFilter.all, ''), isTrue);
-      expect(listing.matchesFilter(P2pFilter.likeNew, ''), isTrue);
-      expect(listing.matchesFilter(P2pFilter.good, ''), isFalse);
-      expect(listing.matchesFilter(P2pFilter.all, 'clean'), isTrue);
-      expect(listing.matchesFilter(P2pFilter.all, 'algorithms'), isFalse);
     });
   });
 

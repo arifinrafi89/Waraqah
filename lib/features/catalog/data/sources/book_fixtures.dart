@@ -7,6 +7,8 @@ import 'seed/islamic_classics_shelf.dart';
 import 'seed/islamic_history_shelf.dart';
 import 'seed/islamic_scholars_shelf.dart';
 import 'seed/islamic_shelf.dart';
+import 'seed/prep_school_shelf.dart';
+import 'seed/skills_children_shelf.dart';
 
 /// Offline catalog used until the Go backend is deployed.
 ///
@@ -22,5 +24,7 @@ abstract final class BookFixtures {
     ...IslamicHistoryShelf.books,
     ...FictionShelf.books,
     ...FictionMoreShelf.books,
+    ...PrepSchoolShelf.books,
+    ...SkillsChildrenShelf.books,
   ];
 }

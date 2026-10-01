@@ -7,9 +7,17 @@ import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../core/widgets/segmented_selector.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../admin/presentation/widgets/admin_area_button.dart';
+import '../../../alerts/presentation/widgets/my_alerts_link.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
 import '../../../auth/presentation/widgets/session_actions.dart';
+import '../../../home/presentation/widgets/ayah_switch_tile.dart';
+import '../../../donate/presentation/widgets/donate_link.dart';
+import '../../../loyalty/presentation/widgets/points_link.dart';
+import '../../../orders/presentation/widgets/my_orders_link.dart';
+import '../../../wallet/presentation/widgets/wallet_link.dart';
+import '../../../wishlist/presentation/widgets/wishlist_link.dart';
 import '../widgets/profile_header.dart';
+import '../../../p2p/presentation/widgets/my_listings_button.dart';
 import '../widgets/settings_group.dart';
 
 /// Screen 5 — Profile. Also the home of the theme and language switchers, both
@@ -48,7 +56,14 @@ class ProfilePage extends ConsumerWidget {
                 ),
                 const SizedBox(height: Insets.md),
                 const SessionActions(),
+                const MyOrdersLink(),
+                const WishlistLink(),
+                const MyAlertsLink(),
+                const PointsLink(),
+                const DonateLink(),
+                const WalletLink(),
                 const AdminAreaButton(),
+                const MyListingsButton(),
                 const SizedBox(height: Insets.xl),
                 SettingsGroup(
                   label: l10n.profileAppearance,
@@ -79,6 +94,12 @@ class ProfilePage extends ConsumerWidget {
                     onChanged: (code) =>
                         settingsNotifier.setLocale(Locale(code)),
                   ),
+                ),
+                const SizedBox(height: Insets.xl),
+                SettingsGroup(
+                  label: l10n.homeSettingsTitle,
+                  icon: Icons.home_rounded,
+                  child: const AyahSwitchTile(),
                 ),
               ],
             ),

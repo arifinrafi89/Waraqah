@@ -14,7 +14,6 @@ abstract final class BookDetailsFixtures {
       reviews: reviews ?? const [],
       description: about?.$1,
       pages: about?.$2,
-      publisher: about?.$3,
     );
   }
 }

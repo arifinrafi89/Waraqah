@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/content_width.dart';
 import '../../../../core/widgets/glass_background.dart';
-import 'benefit_filter_row.dart';
 import 'home_app_bar.dart';
 
-const double _barHeight = 50;
-const double _filterHeight = 42;
-
 /// Height of [HomeHeader] below the status bar.
-const double kHomeHeaderHeight = _barHeight + _filterHeight;
+const double kHomeHeaderHeight = 50;
 
-/// Home's one glass header: the app bar with the Benefit filter row under it.
+/// Home's one glass header: the app bar.
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});
 
@@ -21,17 +17,9 @@ class HomeHeader extends StatelessWidget {
       child: SafeArea(
         bottom: false,
         child: ContentWidth(
-          child: Column(
-            children: [
-              SizedBox(
-                height: _barHeight,
-                child: Center(child: HomeAppBar()),
-              ),
-              SizedBox(
-                height: _filterHeight,
-                child: Center(child: BenefitFilterRow()),
-              ),
-            ],
+          child: SizedBox(
+            height: kHomeHeaderHeight,
+            child: Center(child: HomeAppBar()),
           ),
         ),
       ),
