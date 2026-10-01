@@ -7,6 +7,7 @@ import '../features/cart/data/sources/cart_fake_api.dart';
 import '../features/cart/data/sources/cart_fake_store.dart';
 import '../features/catalog/data/sources/book_fake_api.dart';
 import '../features/catalog/data/sources/book_questions_fake_api.dart';
+import '../features/catalog/data/sources/book_suggest_fake_api.dart';
 import '../features/catalog/data/sources/collection_fake_api.dart';
 import '../features/catalog_admin/data/sources/catalog_admin_fake_api.dart';
 import '../features/catalog_admin/data/sources/catalog_admin_fake_store.dart';
@@ -64,6 +65,7 @@ abstract final class FakeApiRoutes {
     return FakeApiInterceptor({
       ...AuthFakeApi.routes,
       ...BookFakeApi.routes,
+      ...BookSuggestFakeApi.routes,
       ...BookQuestionsFakeApi.routes(),
       ...CollectionFakeApi.routes,
       // Staff edit the catalog's and Home's fixture lists in place.

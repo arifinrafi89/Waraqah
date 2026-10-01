@@ -44,11 +44,11 @@ abstract final class PhoneticKey {
       w = w.replaceAll(from, to);
     }
     if (w.isEmpty) return w;
+    // Doubles collapse before vowels go, so "harari" (hrr) stays apart from
+    // "harry" (hr).
+    w = w.replaceAllMapped(RegExp(r'(.)\1+'), (m) => m[1]!);
     final lead = 'aeiou'.contains(w[0]) ? 'a' : '';
-    return (lead + w.replaceAll(RegExp('[aeiou]'), '')).replaceAllMapped(
-      RegExp(r'(.)\1+'),
-      (m) => m[1]!,
-    );
+    return lead + w.replaceAll(RegExp('[aeiou]'), '');
   }
 
   static const List<(String, String)> _folds = [

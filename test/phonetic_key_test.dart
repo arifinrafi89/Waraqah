@@ -38,10 +38,17 @@ void main() {
 
   test('different books keep different keys', () {
     final keys = {
-      for (final title in ['Sapiens', 'Satanic', 'Atomic Habits', 'Matilda'])
+      for (final title in [
+        'Sapiens',
+        'Satanic',
+        'Atomic Habits',
+        'Matilda',
+        'Harari',
+        'Harry',
+      ])
         PhoneticKey.of(title),
     };
-    expect(keys, hasLength(4));
+    expect(keys, hasLength(6));
   });
 
   test('levenshtein counts single-letter edits', () {
