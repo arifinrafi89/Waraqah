@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 
 import '../../domain/entities/order_return.dart';
+import '../../../cart/data/sources/cart_fake_store.dart';
 import '../../../loyalty/data/sources/points_fake_store.dart';
 import '../../../wallet/data/sources/wallet_fake_store.dart';
 import '../../../wallet/domain/entities/wallet.dart';
 import '../../domain/entities/order_refunds.dart';
 import '../models/order_model.dart';
 import 'order_fake_store.dart';
+import 'order_reorder.dart';
 
 /// Orders' fake endpoints, merged into `FakeApiInterceptor` by
 /// `app/fake_api_routes.dart`. Placing an order lives with checkout
@@ -25,14 +27,23 @@ abstract final class OrderFakeApi {
   /// return can't be asked for.
   static const String requestReturn = '/orders/return';
 
+  /// Body: `{number}`. Puts the order's Editions back in the cart and
+  /// answers `{added, skipped}` (books), or `null` for an unknown order.
+  static const String reorder = '/orders/reorder';
+
   /// Cancelling gives back the order's [points] spent and takes back those
   /// it earned, and puts what was paid back in the [wallet].
   static Map<String, Object? Function(RequestOptions)> routes(
     OrderFakeStore store,
     PointsFakeStore points,
     WalletFakeStore wallet,
+    CartFakeStore cart,
   ) => {
     orders: (_) => [for (final order in store.all) order.toJson()],
+    reorder: (options) {
+      final order = store.find(_body(options)['number'] as String? ?? '');
+      return order == null ? null : reorderInto(order, cart).toJson();
+    },
     details: (options) => store
         .find(options.queryParameters['number'] as String? ?? '')
         ?.toJson(),

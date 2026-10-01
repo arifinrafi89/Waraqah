@@ -53,6 +53,8 @@ void main() {
     await tester.tap(find.text('From readers'));
     await settle(tester);
     expect(pathOf(router), P2pRoutes.listingDetailFor('p2p-1'));
+    // The seller's rating loads once the listing has.
+    await settle(tester);
   });
 
   testWidgets('Certified Used goes in the cart, grouped apart from new', (

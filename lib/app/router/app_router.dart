@@ -11,6 +11,7 @@ import '../../features/cart/cart_routes.dart';
 import '../../features/catalog/catalog_routes.dart';
 import '../../features/checkout/checkout_routes.dart';
 import '../../features/home/home_routes.dart';
+import '../../features/inbox/inbox_routes.dart';
 import '../../features/loyalty/loyalty_routes.dart';
 import '../../features/deals/deals_routes.dart';
 import '../../features/donate/donate_routes.dart';
@@ -49,6 +50,7 @@ abstract final class AppRouter {
       ...AuthRoutes.routes,
       ...AiAssistantRoutes.routes,
       ...P2pRoutes.routes,
+      ...InboxRoutes.routes,
       ...CatalogRoutes.routes,
       ...CartRoutes.routes,
       ...WishlistRoutes.routes,

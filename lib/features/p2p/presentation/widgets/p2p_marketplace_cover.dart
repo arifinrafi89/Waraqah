@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/cover_art.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../../catalog/presentation/widgets/used_labels.dart';
 import '../../domain/entities/p2p_listing.dart';
 
 class P2pMarketplaceCover extends StatelessWidget {
@@ -37,7 +39,7 @@ class P2pMarketplaceCover extends StatelessWidget {
               borderRadius: BorderRadius.circular(999),
             ),
             child: Text(
-              listing.conditionLabel,
+              AppL10n.of(context)!.conditionLabel(listing.condition),
               style: const TextStyle(
                 fontSize: 9,
                 fontWeight: FontWeight.w800,

@@ -35,6 +35,7 @@ OrderModel donationOrder({
         format: edition.format,
         language: edition.language,
         coverSeed: book.coverSeed,
+        editionId: edition.id,
       ),
     ],
     history: [StatusChangeModel(status: OrderStatus.placed, at: at)],
