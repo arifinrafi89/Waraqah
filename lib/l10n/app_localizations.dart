@@ -4543,6 +4543,186 @@ abstract class AppL10n {
   /// **'Your listing'**
   String get requestOpenListing;
 
+  /// No description provided for @sellBackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sell Back to Waraqah'**
+  String get sellBackTitle;
+
+  /// No description provided for @sellBackIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Get an instant price for a book you own. A courier picks it up, we check it, and the money goes to your wallet.'**
+  String get sellBackIntro;
+
+  /// No description provided for @sellBackFindLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Which book?'**
+  String get sellBackFindLabel;
+
+  /// No description provided for @sellBackFindHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Title or author'**
+  String get sellBackFindHint;
+
+  /// No description provided for @sellBackNoBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'No books found. Waraqah buys back printed books from its catalog.'**
+  String get sellBackNoBooks;
+
+  /// No description provided for @sellBackChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get sellBackChange;
+
+  /// No description provided for @sellBackCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'Its condition'**
+  String get sellBackCondition;
+
+  /// No description provided for @sellBackQuote.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah pays {price}'**
+  String sellBackQuote(String price);
+
+  /// No description provided for @sellBackQuoteNote.
+  ///
+  /// In en, this message translates to:
+  /// **'If our check finds a different condition, the price follows our grade.'**
+  String get sellBackQuoteNote;
+
+  /// No description provided for @sellBackAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup address'**
+  String get sellBackAddress;
+
+  /// No description provided for @sellBackAddressHint.
+  ///
+  /// In en, this message translates to:
+  /// **'House, road, area'**
+  String get sellBackAddressHint;
+
+  /// No description provided for @sellBackAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept {price} and book a pickup'**
+  String sellBackAccept(String price);
+
+  /// No description provided for @sellBackBooked.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup booked. We\'ll pay into your wallet once we\'ve checked the book.'**
+  String get sellBackBooked;
+
+  /// No description provided for @sellBackMine.
+  ///
+  /// In en, this message translates to:
+  /// **'My Sell Backs'**
+  String get sellBackMine;
+
+  /// No description provided for @sellBackEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing sold back yet.'**
+  String get sellBackEmpty;
+
+  /// No description provided for @sellBackStatusScheduled.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup booked'**
+  String get sellBackStatusScheduled;
+
+  /// No description provided for @sellBackStatusPickedUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Being checked'**
+  String get sellBackStatusPickedUp;
+
+  /// No description provided for @sellBackStatusPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid {price}'**
+  String sellBackStatusPaid(String price);
+
+  /// No description provided for @sellBackStatusReturned.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent back to you'**
+  String get sellBackStatusReturned;
+
+  /// No description provided for @sellBackQuoted.
+  ///
+  /// In en, this message translates to:
+  /// **'Quoted {price}'**
+  String sellBackQuoted(String price);
+
+  /// No description provided for @sellBackFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Sold by {name}'**
+  String sellBackFrom(String name);
+
+  /// No description provided for @sellBackReaderSays.
+  ///
+  /// In en, this message translates to:
+  /// **'Reader says: {condition}'**
+  String sellBackReaderSays(String condition);
+
+  /// No description provided for @sellBackGradeAs.
+  ///
+  /// In en, this message translates to:
+  /// **'Our grade'**
+  String get sellBackGradeAs;
+
+  /// No description provided for @sellBackPayAndPublish.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {pay} · sell for {resell}'**
+  String sellBackPayAndPublish(String pay, String resell);
+
+  /// No description provided for @sellBackReturn.
+  ///
+  /// In en, this message translates to:
+  /// **'Send it back'**
+  String get sellBackReturn;
+
+  /// No description provided for @sellBackGraded.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid, and on sale as Certified Used.'**
+  String get sellBackGraded;
+
+  /// No description provided for @sellBackReturned.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent back to the reader.'**
+  String get sellBackReturned;
+
+  /// No description provided for @sellBackAdminTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Trade-ins'**
+  String get sellBackAdminTitle;
+
+  /// No description provided for @sellBackAdminHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade Sell Back books and publish them as Certified Used'**
+  String get sellBackAdminHint;
+
+  /// No description provided for @sellBackAdminEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books waiting to be graded.'**
+  String get sellBackAdminEmpty;
+
   /// No description provided for @usedMarketTitle.
   ///
   /// In en, this message translates to:

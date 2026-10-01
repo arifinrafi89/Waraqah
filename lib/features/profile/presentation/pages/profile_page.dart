@@ -24,6 +24,7 @@ import '../widgets/profile_action_tile.dart';
 import '../../../p2p/presentation/widgets/my_listings_button.dart';
 import '../../../book_request/presentation/widgets/my_requests_link.dart';
 import '../../../handled_sale/presentation/widgets/sales_link.dart';
+import '../../../sell_back/presentation/widgets/sell_back_link.dart';
 import '../../../report/presentation/widgets/blocked_readers_link.dart';
 import '../widgets/settings_group.dart';
 import 'edit_profile_page.dart';
@@ -116,6 +117,7 @@ class ProfilePage extends ConsumerWidget {
                 const WalletLink(),
                 const AdminAreaButton(),
                 const MyListingsButton(),
+                const SellBackLink(),
                 const SalesLink(),
                 const MyRequestsLink(),
                 const BlockedReadersLink(),

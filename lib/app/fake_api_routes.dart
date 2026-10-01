@@ -31,6 +31,8 @@ import '../features/p2p/data/sources/p2p_fake_api.dart';
 import '../features/p2p/data/sources/p2p_fake_store.dart';
 import '../features/report/data/sources/report_fake_api.dart';
 import '../features/scan/data/sources/scan_fake_api.dart';
+import '../features/sell_back/data/sources/sell_back_fake_api.dart';
+import '../features/sell_back/data/sources/sell_back_fake_store.dart';
 import '../features/report/data/sources/report_fake_store.dart';
 import '../features/wallet/data/sources/wallet_fake_api.dart';
 import '../features/wallet/data/sources/wallet_fake_store.dart';
@@ -90,6 +92,8 @@ abstract final class FakeApiRoutes {
       ...HandledSaleFakeApi.routes(
         HandledSaleFakeStore(p2p, wallet, moderation: moderation),
       ),
+      // Sell Back pays into the wallet and stocks Certified Used.
+      ...SellBackFakeApi.routes(SellBackFakeStore(wallet)),
     });
   }
 }
