@@ -6,6 +6,7 @@ import '../../features/auth/domain/entities/app_user.dart';
 import '../../features/auth/domain/entities/user_role.dart';
 import '../../features/checkout/checkout_routes.dart';
 import '../../features/home/home_routes.dart';
+import '../../features/inbox/inbox_routes.dart';
 import '../../features/loyalty/loyalty_routes.dart';
 import '../../features/orders/orders_routes.dart';
 import '../../features/wallet/wallet_routes.dart';
@@ -26,6 +27,7 @@ abstract final class RouteAccess {
     AlertsRoutes.notifications,
     LoyaltyRoutes.points,
     WalletRoutes.wallet,
+    InboxRoutes.inbox,
   ];
 
   /// Where to redirect [location] for [user], or `null` to let it open.

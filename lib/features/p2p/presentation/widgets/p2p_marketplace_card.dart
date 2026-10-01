@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_theme.dart';
-import '../../../../core/utils/formatters.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../domain/entities/p2p_listing.dart';
 import '../../p2p_routes.dart';
@@ -43,26 +42,17 @@ class P2pMarketplaceCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    listing.sellerLine,
+                    '${listing.sellerName} · ${listing.area ?? ''}',
                     style: Theme.of(context).textTheme.bodySmall
                         ?.copyWith(color: palette.textFaint),
                   ),
                   const SizedBox(height: 10),
-                  P2pMarketplacePriceBlock(
-                    price: Bdt.format(listing.priceBdt),
-                    available: listing.availabilityLabel,
-                    color: listing.isAvailable
-                        ? palette.accent
-                        : palette.textFaint,
-                  ),
+                  P2pMarketplacePriceBlock(listing: listing),
                   const SizedBox(height: 8),
                   // Own line: beside the price it overflowed narrow tiles.
                   SizedBox(
                     width: double.infinity,
-                    child: P2pMarketplaceMessageButton(
-                      color: palette.accentSoft,
-                      accent: palette.accent,
-                    ),
+                    child: P2pMarketplaceMessageButton(listing: listing),
                   ),
                 ],
               ),

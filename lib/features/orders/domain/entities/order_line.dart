@@ -16,5 +16,9 @@ abstract class OrderLine with _$OrderLine {
     BookFormat? format,
     BookLanguage? language,
     @Default(0) int coverSeed,
+
+    /// The Edition bought, so the order can be bought again. `null` for
+    /// one-of-a-kind used copies and bundles.
+    String? editionId,
   }) = _OrderLine;
 }

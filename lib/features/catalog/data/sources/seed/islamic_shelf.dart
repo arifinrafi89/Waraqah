@@ -120,14 +120,14 @@ abstract final class IslamicShelf {
       originalLanguage: BookLanguage.arabic,
       editions: [
         Edition(
-          id: 'bk-islamic-history-pb-bn',
+          id: 'bk-nectar-pb-bn',
           format: BookFormat.paperback,
           language: BookLanguage.bangla,
           priceBdt: 420,
           stock: 22,
         ),
         Edition(
-          id: 'bk-islamic-history-pb-en',
+          id: 'bk-nectar-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
           priceBdt: 520,

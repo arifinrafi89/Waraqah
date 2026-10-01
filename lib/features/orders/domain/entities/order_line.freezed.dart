@@ -15,7 +15,9 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$OrderLine {
 
- String get bookId; String get title; String get author; int get quantity; int get unitPriceBdt; BookFormat? get format; BookLanguage? get language; int get coverSeed;
+ String get bookId; String get title; String get author; int get quantity; int get unitPriceBdt; BookFormat? get format; BookLanguage? get language; int get coverSeed;/// The Edition bought, so the order can be bought again. `null` for
+/// one-of-a-kind used copies and bundles.
+ String? get editionId;
 /// Create a copy of OrderLine
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +29,20 @@ $OrderLineCopyWith<OrderLine> get copyWith => _$OrderLineCopyWithImpl<OrderLine>
 @override
 bool operator ==(Object other) {
   final _this = this as OrderLine;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderLine&&(identical(other.bookId, _this.bookId) || other.bookId == _this.bookId)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.author, _this.author) || other.author == _this.author)&&(identical(other.quantity, _this.quantity) || other.quantity == _this.quantity)&&(identical(other.unitPriceBdt, _this.unitPriceBdt) || other.unitPriceBdt == _this.unitPriceBdt)&&(identical(other.format, _this.format) || other.format == _this.format)&&(identical(other.language, _this.language) || other.language == _this.language)&&(identical(other.coverSeed, _this.coverSeed) || other.coverSeed == _this.coverSeed));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderLine&&(identical(other.bookId, _this.bookId) || other.bookId == _this.bookId)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.author, _this.author) || other.author == _this.author)&&(identical(other.quantity, _this.quantity) || other.quantity == _this.quantity)&&(identical(other.unitPriceBdt, _this.unitPriceBdt) || other.unitPriceBdt == _this.unitPriceBdt)&&(identical(other.format, _this.format) || other.format == _this.format)&&(identical(other.language, _this.language) || other.language == _this.language)&&(identical(other.coverSeed, _this.coverSeed) || other.coverSeed == _this.coverSeed)&&(identical(other.editionId, _this.editionId) || other.editionId == _this.editionId));
 }
 
 
 @override
 int get hashCode {
   final _this = this as OrderLine;
-  return Object.hash(runtimeType,_this.bookId,_this.title,_this.author,_this.quantity,_this.unitPriceBdt,_this.format,_this.language,_this.coverSeed);
+  return Object.hash(runtimeType,_this.bookId,_this.title,_this.author,_this.quantity,_this.unitPriceBdt,_this.format,_this.language,_this.coverSeed,_this.editionId);
 }
 
 @override
 String toString() {
   final _this = this as OrderLine;
-  return 'OrderLine(bookId: ${_this.bookId}, title: ${_this.title}, author: ${_this.author}, quantity: ${_this.quantity}, unitPriceBdt: ${_this.unitPriceBdt}, format: ${_this.format}, language: ${_this.language}, coverSeed: ${_this.coverSeed})';
+  return 'OrderLine(bookId: ${_this.bookId}, title: ${_this.title}, author: ${_this.author}, quantity: ${_this.quantity}, unitPriceBdt: ${_this.unitPriceBdt}, format: ${_this.format}, language: ${_this.language}, coverSeed: ${_this.coverSeed}, editionId: ${_this.editionId})';
 }
 
 
@@ -51,7 +53,7 @@ abstract mixin class $OrderLineCopyWith<$Res>  {
   factory $OrderLineCopyWith(OrderLine value, $Res Function(OrderLine) _then) = _$OrderLineCopyWithImpl;
 @useResult
 $Res call({
- String bookId, String title, String author, int quantity, int unitPriceBdt, BookFormat? format, BookLanguage? language, int coverSeed
+ String bookId, String title, String author, int quantity, int unitPriceBdt, BookFormat? format, BookLanguage? language, int coverSeed, String? editionId
 });
 
 
@@ -68,7 +70,7 @@ class _$OrderLineCopyWithImpl<$Res>
 
 /// Create a copy of OrderLine
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? bookId = null,Object? title = null,Object? author = null,Object? quantity = null,Object? unitPriceBdt = null,Object? format = freezed,Object? language = freezed,Object? coverSeed = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? bookId = null,Object? title = null,Object? author = null,Object? quantity = null,Object? unitPriceBdt = null,Object? format = freezed,Object? language = freezed,Object? coverSeed = null,Object? editionId = freezed,}) {
   return _then(OrderLine(
 bookId: null == bookId ? _self.bookId : bookId // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
@@ -78,7 +80,8 @@ as int,unitPriceBdt: null == unitPriceBdt ? _self.unitPriceBdt : unitPriceBdt //
 as int,format: freezed == format ? _self.format : format // ignore: cast_nullable_to_non_nullable
 as BookFormat?,language: freezed == language ? _self.language : language // ignore: cast_nullable_to_non_nullable
 as BookLanguage?,coverSeed: null == coverSeed ? _self.coverSeed : coverSeed // ignore: cast_nullable_to_non_nullable
-as int,
+as int,editionId: freezed == editionId ? _self.editionId : editionId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -163,10 +166,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String bookId,  String title,  String author,  int quantity,  int unitPriceBdt,  BookFormat? format,  BookLanguage? language,  int coverSeed)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String bookId,  String title,  String author,  int quantity,  int unitPriceBdt,  BookFormat? format,  BookLanguage? language,  int coverSeed,  String? editionId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OrderLine() when $default != null:
-return $default(_that.bookId,_that.title,_that.author,_that.quantity,_that.unitPriceBdt,_that.format,_that.language,_that.coverSeed);case _:
+return $default(_that.bookId,_that.title,_that.author,_that.quantity,_that.unitPriceBdt,_that.format,_that.language,_that.coverSeed,_that.editionId);case _:
   return orElse();
 
 }
@@ -184,10 +187,10 @@ return $default(_that.bookId,_that.title,_that.author,_that.quantity,_that.unitP
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String bookId,  String title,  String author,  int quantity,  int unitPriceBdt,  BookFormat? format,  BookLanguage? language,  int coverSeed)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String bookId,  String title,  String author,  int quantity,  int unitPriceBdt,  BookFormat? format,  BookLanguage? language,  int coverSeed,  String? editionId)  $default,) {final _that = this;
 switch (_that) {
 case _OrderLine():
-return $default(_that.bookId,_that.title,_that.author,_that.quantity,_that.unitPriceBdt,_that.format,_that.language,_that.coverSeed);case _:
+return $default(_that.bookId,_that.title,_that.author,_that.quantity,_that.unitPriceBdt,_that.format,_that.language,_that.coverSeed,_that.editionId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -204,10 +207,10 @@ return $default(_that.bookId,_that.title,_that.author,_that.quantity,_that.unitP
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String bookId,  String title,  String author,  int quantity,  int unitPriceBdt,  BookFormat? format,  BookLanguage? language,  int coverSeed)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String bookId,  String title,  String author,  int quantity,  int unitPriceBdt,  BookFormat? format,  BookLanguage? language,  int coverSeed,  String? editionId)?  $default,) {final _that = this;
 switch (_that) {
 case _OrderLine() when $default != null:
-return $default(_that.bookId,_that.title,_that.author,_that.quantity,_that.unitPriceBdt,_that.format,_that.language,_that.coverSeed);case _:
+return $default(_that.bookId,_that.title,_that.author,_that.quantity,_that.unitPriceBdt,_that.format,_that.language,_that.coverSeed,_that.editionId);case _:
   return null;
 
 }
@@ -219,7 +222,7 @@ return $default(_that.bookId,_that.title,_that.author,_that.quantity,_that.unitP
 
 
 class _OrderLine implements OrderLine {
-  const _OrderLine({required this.bookId, required this.title, required this.author, required this.quantity, required this.unitPriceBdt, this.format, this.language, this.coverSeed = 0});
+  const _OrderLine({required this.bookId, required this.title, required this.author, required this.quantity, required this.unitPriceBdt, this.format, this.language, this.coverSeed = 0, this.editionId});
   
 
 @override final  String bookId;
@@ -230,6 +233,9 @@ class _OrderLine implements OrderLine {
 @override final  BookFormat? format;
 @override final  BookLanguage? language;
 @override@JsonKey() final  int coverSeed;
+/// The Edition bought, so the order can be bought again. `null` for
+/// one-of-a-kind used copies and bundles.
+@override final  String? editionId;
 
 /// Create a copy of OrderLine
 /// with the given fields replaced by the non-null parameter values.
@@ -241,18 +247,18 @@ _$OrderLineCopyWith<_OrderLine> get copyWith => __$OrderLineCopyWithImpl<_OrderL
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderLine&&(identical(other.bookId, bookId) || other.bookId == bookId)&&(identical(other.title, title) || other.title == title)&&(identical(other.author, author) || other.author == author)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.unitPriceBdt, unitPriceBdt) || other.unitPriceBdt == unitPriceBdt)&&(identical(other.format, format) || other.format == format)&&(identical(other.language, language) || other.language == language)&&(identical(other.coverSeed, coverSeed) || other.coverSeed == coverSeed));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderLine&&(identical(other.bookId, bookId) || other.bookId == bookId)&&(identical(other.title, title) || other.title == title)&&(identical(other.author, author) || other.author == author)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.unitPriceBdt, unitPriceBdt) || other.unitPriceBdt == unitPriceBdt)&&(identical(other.format, format) || other.format == format)&&(identical(other.language, language) || other.language == language)&&(identical(other.coverSeed, coverSeed) || other.coverSeed == coverSeed)&&(identical(other.editionId, editionId) || other.editionId == editionId));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,bookId,title,author,quantity,unitPriceBdt,format,language,coverSeed);
+    return Object.hash(runtimeType,bookId,title,author,quantity,unitPriceBdt,format,language,coverSeed,editionId);
 }
 
 @override
 String toString() {
-    return 'OrderLine(bookId: $bookId, title: $title, author: $author, quantity: $quantity, unitPriceBdt: $unitPriceBdt, format: $format, language: $language, coverSeed: $coverSeed)';
+    return 'OrderLine(bookId: $bookId, title: $title, author: $author, quantity: $quantity, unitPriceBdt: $unitPriceBdt, format: $format, language: $language, coverSeed: $coverSeed, editionId: $editionId)';
 }
 
 
@@ -263,7 +269,7 @@ abstract mixin class _$OrderLineCopyWith<$Res> implements $OrderLineCopyWith<$Re
   factory _$OrderLineCopyWith(_OrderLine value, $Res Function(_OrderLine) _then) = __$OrderLineCopyWithImpl;
 @override @useResult
 $Res call({
- String bookId, String title, String author, int quantity, int unitPriceBdt, BookFormat? format, BookLanguage? language, int coverSeed
+ String bookId, String title, String author, int quantity, int unitPriceBdt, BookFormat? format, BookLanguage? language, int coverSeed, String? editionId
 });
 
 
@@ -280,7 +286,7 @@ class __$OrderLineCopyWithImpl<$Res>
 
 /// Create a copy of OrderLine
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? bookId = null,Object? title = null,Object? author = null,Object? quantity = null,Object? unitPriceBdt = null,Object? format = freezed,Object? language = freezed,Object? coverSeed = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? bookId = null,Object? title = null,Object? author = null,Object? quantity = null,Object? unitPriceBdt = null,Object? format = freezed,Object? language = freezed,Object? coverSeed = null,Object? editionId = freezed,}) {
   return _then(_OrderLine(
 bookId: null == bookId ? _self.bookId : bookId // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
@@ -290,7 +296,8 @@ as int,unitPriceBdt: null == unitPriceBdt ? _self.unitPriceBdt : unitPriceBdt //
 as int,format: freezed == format ? _self.format : format // ignore: cast_nullable_to_non_nullable
 as BookFormat?,language: freezed == language ? _self.language : language // ignore: cast_nullable_to_non_nullable
 as BookLanguage?,coverSeed: null == coverSeed ? _self.coverSeed : coverSeed // ignore: cast_nullable_to_non_nullable
-as int,
+as int,editionId: freezed == editionId ? _self.editionId : editionId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

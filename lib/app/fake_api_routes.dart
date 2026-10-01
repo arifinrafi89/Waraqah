@@ -16,9 +16,13 @@ import '../features/loyalty/data/sources/points_fake_store.dart';
 import '../features/deals/data/sources/deals_fake_api.dart';
 import '../features/donate/data/sources/donate_fake_api.dart';
 import '../features/deals/data/sources/deals_fake_store.dart';
+import '../features/inbox/data/sources/inbox_fake_api.dart';
+import '../features/inbox/data/sources/inbox_fake_store.dart';
 import '../features/orders/data/sources/order_admin_fake_api.dart';
 import '../features/orders/data/sources/order_fake_api.dart';
 import '../features/orders/data/sources/order_fake_store.dart';
+import '../features/p2p/data/sources/p2p_fake_api.dart';
+import '../features/p2p/data/sources/p2p_fake_store.dart';
 import '../features/wallet/data/sources/wallet_fake_api.dart';
 import '../features/wallet/data/sources/wallet_fake_store.dart';
 import '../features/wishlist/data/sources/wishlist_fake_api.dart';
@@ -37,6 +41,9 @@ abstract final class FakeApiRoutes {
     final coupons = CouponFakeStore();
     final points = PointsFakeStore();
     final wallet = WalletFakeStore();
+    // Offers in the inbox reserve and sell marketplace listings.
+    final p2p = P2pFakeStore();
+    final inbox = InboxFakeStore(p2p);
     return FakeApiInterceptor({
       ...AuthFakeApi.routes,
       ...BookFakeApi.routes,
@@ -48,13 +55,15 @@ abstract final class FakeApiRoutes {
       ...WishlistFakeApi.routes(),
       ...AlertFakeApi.routes(),
       ...CheckoutFakeApi.routes(cart, orders, coupons, points, wallet),
-      ...OrderFakeApi.routes(orders, points, wallet),
+      ...OrderFakeApi.routes(orders, points, wallet, cart),
       ...PointsFakeApi.routes(points),
       ...OrderAdminFakeApi.routes(orders, wallet),
       ...CouponAdminFakeApi.routes(coupons),
       ...DealsFakeApi.routes(deals),
       ...DonateFakeApi.routes(orders),
       ...WalletFakeApi.routes(wallet),
+      ...P2pFakeApi.routes(p2p),
+      ...InboxFakeApi.routes(inbox),
     });
   }
 }

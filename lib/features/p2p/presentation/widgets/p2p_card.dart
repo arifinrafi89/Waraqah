@@ -6,6 +6,8 @@ import '../../../../core/utils/formatters.dart';
 import '../../../../core/widgets/cover_art.dart';
 import '../../../../core/widgets/press_scale.dart';
 import '../../../../core/widgets/surface_card.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../../catalog/presentation/widgets/used_labels.dart';
 import '../../domain/entities/p2p_listing.dart';
 
 /// Compact second-hand listing tile with the condition grade on the cover.
@@ -31,7 +33,10 @@ class P2pCard extends StatelessWidget {
                   seed: listing.coverSeed,
                   aspectRatio: null,
                   centerTitle: true,
-                  cornerTag: _ConditionBadge(label: listing.conditionLabel),
+                  cornerTag: _ConditionBadge(
+                    label: AppL10n.of(context)!
+                        .conditionLabel(listing.condition),
+                  ),
                 ),
               ),
               Padding(
@@ -52,7 +57,7 @@ class P2pCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      listing.sellerLine,
+                      '${listing.sellerName} · ${listing.area ?? ''}',
                       style: AppFonts.ui(size: 10, color: palette.textFaint),
                     ),
                     Text(

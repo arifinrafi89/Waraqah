@@ -13,8 +13,10 @@ class P2pAddListingNotifier extends Notifier<P2pListing> {
     return const P2pListing(
       id: 'draft',
       title: '',
-      sellerName: 'Farhan',
-      sellerBatch: "CSE '22",
+      // The server fills in who's selling from the login.
+      sellerId: '',
+      sellerName: '',
+      isMine: true,
       priceBdt: 0,
       condition: BookCondition.good,
       status: P2pListingStatus.draft,
