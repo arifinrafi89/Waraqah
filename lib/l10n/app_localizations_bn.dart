@@ -2068,6 +2068,65 @@ class AppL10nBn extends AppL10n {
   String get adminCatalogNoRecords => 'এখানে এখনো কিছু নেই।';
 
   @override
+  String get adminCatalogBannerNew => 'নতুন ব্যানার';
+
+  @override
+  String get adminCatalogBannerEdit => 'ব্যানার সম্পাদনা';
+
+  @override
+  String get adminCatalogFieldTitleEn => 'শিরোনাম (ইংরেজি)';
+
+  @override
+  String get adminCatalogFieldTitleBnBanner => 'শিরোনাম (বাংলা)';
+
+  @override
+  String get adminCatalogFieldSubtitleEn => 'উপশিরোনাম (ইংরেজি)';
+
+  @override
+  String get adminCatalogFieldSubtitleBn => 'উপশিরোনাম (বাংলা)';
+
+  @override
+  String get adminCatalogBannerColour => 'রং';
+
+  @override
+  String get adminCatalogBannerOpens => 'যা খুলবে';
+
+  @override
+  String get adminCatalogTargetCollection => 'সংকলন';
+
+  @override
+  String get adminCatalogTargetBook => 'বই';
+
+  @override
+  String get adminCatalogTargetSearch => 'সার্চ';
+
+  @override
+  String get adminCatalogSearchWords => 'সার্চের শব্দ';
+
+  @override
+  String get adminCatalogMoveUp => 'উপরে নিন';
+
+  @override
+  String get adminCatalogMoveDown => 'নিচে নিন';
+
+  @override
+  String get adminCatalogEdit => 'সম্পাদনা';
+
+  @override
+  String get adminCatalogDeleteBannerTitle => 'এই ব্যানারটি মুছে ফেলবেন?';
+
+  @override
+  String get adminCatalogDeleteBannerBody =>
+      'এটি সঙ্গে সঙ্গে হোম থেকে সরে যাবে।';
+
+  @override
+  String get adminCatalogCancel => 'বাতিল';
+
+  @override
+  String get adminCatalogNoBanners =>
+      'কোনো ব্যানার নেই। আপনি যোগ না করা পর্যন্ত হোমে কিছু দেখাবে না।';
+
+  @override
   String get adminOrders => 'অর্ডার';
 
   @override

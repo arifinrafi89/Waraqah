@@ -9,6 +9,7 @@ import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../admin/admin_routes.dart';
 import '../../domain/entities/catalog_record.dart';
+import '../widgets/banners_admin_tab.dart';
 import '../widgets/books_admin_tab.dart';
 import '../widgets/records_admin_tab.dart';
 
@@ -32,7 +33,7 @@ class CatalogAdminPage extends StatelessWidget {
         l10n.adminCatalogTabPublishers,
         const RecordsAdminTab(RecordKind.publisher),
       ),
-      (l10n.adminCatalogTabBanners, const SizedBox.shrink()),
+      (l10n.adminCatalogTabBanners, const BannersAdminTab()),
     ];
     return DefaultTabController(
       length: tabs.length,

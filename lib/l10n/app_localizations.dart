@@ -3781,6 +3781,120 @@ abstract class AppL10n {
   /// **'Nothing here yet.'**
   String get adminCatalogNoRecords;
 
+  /// No description provided for @adminCatalogBannerNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New banner'**
+  String get adminCatalogBannerNew;
+
+  /// No description provided for @adminCatalogBannerEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit banner'**
+  String get adminCatalogBannerEdit;
+
+  /// No description provided for @adminCatalogFieldTitleEn.
+  ///
+  /// In en, this message translates to:
+  /// **'Title (English)'**
+  String get adminCatalogFieldTitleEn;
+
+  /// No description provided for @adminCatalogFieldTitleBnBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Title (Bangla)'**
+  String get adminCatalogFieldTitleBnBanner;
+
+  /// No description provided for @adminCatalogFieldSubtitleEn.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtitle (English)'**
+  String get adminCatalogFieldSubtitleEn;
+
+  /// No description provided for @adminCatalogFieldSubtitleBn.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtitle (Bangla)'**
+  String get adminCatalogFieldSubtitleBn;
+
+  /// No description provided for @adminCatalogBannerColour.
+  ///
+  /// In en, this message translates to:
+  /// **'Colours'**
+  String get adminCatalogBannerColour;
+
+  /// No description provided for @adminCatalogBannerOpens.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens'**
+  String get adminCatalogBannerOpens;
+
+  /// No description provided for @adminCatalogTargetCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'Collection'**
+  String get adminCatalogTargetCollection;
+
+  /// No description provided for @adminCatalogTargetBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Book'**
+  String get adminCatalogTargetBook;
+
+  /// No description provided for @adminCatalogTargetSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get adminCatalogTargetSearch;
+
+  /// No description provided for @adminCatalogSearchWords.
+  ///
+  /// In en, this message translates to:
+  /// **'Search words'**
+  String get adminCatalogSearchWords;
+
+  /// No description provided for @adminCatalogMoveUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Move up'**
+  String get adminCatalogMoveUp;
+
+  /// No description provided for @adminCatalogMoveDown.
+  ///
+  /// In en, this message translates to:
+  /// **'Move down'**
+  String get adminCatalogMoveDown;
+
+  /// No description provided for @adminCatalogEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get adminCatalogEdit;
+
+  /// No description provided for @adminCatalogDeleteBannerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this banner?'**
+  String get adminCatalogDeleteBannerTitle;
+
+  /// No description provided for @adminCatalogDeleteBannerBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It leaves Home at once.'**
+  String get adminCatalogDeleteBannerBody;
+
+  /// No description provided for @adminCatalogCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get adminCatalogCancel;
+
+  /// No description provided for @adminCatalogNoBanners.
+  ///
+  /// In en, this message translates to:
+  /// **'No banners. Home shows none until you add one.'**
+  String get adminCatalogNoBanners;
+
   /// No description provided for @adminOrders.
   ///
   /// In en, this message translates to:

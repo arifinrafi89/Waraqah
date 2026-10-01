@@ -2157,6 +2157,64 @@ class AppL10nEn extends AppL10n {
   String get adminCatalogNoRecords => 'Nothing here yet.';
 
   @override
+  String get adminCatalogBannerNew => 'New banner';
+
+  @override
+  String get adminCatalogBannerEdit => 'Edit banner';
+
+  @override
+  String get adminCatalogFieldTitleEn => 'Title (English)';
+
+  @override
+  String get adminCatalogFieldTitleBnBanner => 'Title (Bangla)';
+
+  @override
+  String get adminCatalogFieldSubtitleEn => 'Subtitle (English)';
+
+  @override
+  String get adminCatalogFieldSubtitleBn => 'Subtitle (Bangla)';
+
+  @override
+  String get adminCatalogBannerColour => 'Colours';
+
+  @override
+  String get adminCatalogBannerOpens => 'Opens';
+
+  @override
+  String get adminCatalogTargetCollection => 'Collection';
+
+  @override
+  String get adminCatalogTargetBook => 'Book';
+
+  @override
+  String get adminCatalogTargetSearch => 'Search';
+
+  @override
+  String get adminCatalogSearchWords => 'Search words';
+
+  @override
+  String get adminCatalogMoveUp => 'Move up';
+
+  @override
+  String get adminCatalogMoveDown => 'Move down';
+
+  @override
+  String get adminCatalogEdit => 'Edit';
+
+  @override
+  String get adminCatalogDeleteBannerTitle => 'Delete this banner?';
+
+  @override
+  String get adminCatalogDeleteBannerBody => 'It leaves Home at once.';
+
+  @override
+  String get adminCatalogCancel => 'Cancel';
+
+  @override
+  String get adminCatalogNoBanners =>
+      'No banners. Home shows none until you add one.';
+
+  @override
   String get adminOrders => 'Orders';
 
   @override
