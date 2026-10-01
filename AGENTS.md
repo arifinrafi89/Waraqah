@@ -2,7 +2,7 @@
 
 Read this before writing any code in this repo. It describes what Waraqah is, how the code is organised, the rules every change must follow, and who owns what.
 
-This file is **not committed** to the repo (the team keeps AI context files out of `main`). Keep it at the repo root on your machine.
+This file is committed at the repo root so the whole team works from the same picture. **When you finish a feature, update §2 (Current status) and §10 (Known gaps) in the same PR.**
 
 ---
 
@@ -11,7 +11,7 @@ This file is **not committed** to the repo (the team keeps AI context files out 
 Waraqah is a **book store app for Bangladesh**, like Rokomari, with two connected marketplaces:
 
 - **First-hand (new books):** Waraqah runs its own store. **Staff** add books, set prices and manage stock. Readers buy with bKash, Nagad, cash on delivery or card.
-- **Second-hand (used books):** Readers list their own used books. **Every listing is approved by a moderator** before it goes live. Buyers and sellers chat, make offers, and meet in person or let Waraqah handle the sale.
+- **Second-hand (used books):** Readers list their own used books. **Every listing is approved by a moderator** before it goes live. Buyers send offers that land in the seller's inbox, chat there to arrange a meetup or courier (payment happens outside the app), or let Waraqah handle the sale.
 
 **The core idea is a circular book economy:** buy a book new → read it → sell it back to Waraqah or list it for another reader → someone buys it used. Most of the features that make Waraqah special connect the two marketplaces.
 
@@ -39,12 +39,33 @@ The app also has:
 
 ## 2. Current status
 
-- **Setup steps 1–6 are done:** Book model with Editions, per-feature routes and fake APIs, login state and roles, the Admin area shell.
-- **Setup step 7** (Moderation Center shell) is in progress (Arifin).
+- **Setup is done:** Book model with Editions, per-feature routes and fake APIs, login state and roles, the Admin area shell, and the Moderation Center shell (Arifin: tabs for Listings, Reports and Disputes).
 - **Browsing pages are done** (Rahinur, #87): Section, Category, Author, Publisher and Series pages, inside the Catalog tab so the bottom nav stays. Routes are in `CatalogRoutes` (`sectionFor`, `categoryFor`, `authorFor`, `publisherFor`, `seriesFor`); pages in `features/catalog/presentation/pages/`; fixtures in `features/catalog/data/sources/` (`*_fixtures.dart`, `seed/`).
 - **Search is done** (Rahinur, #99): `/catalog/search` (`CatalogRoutes.search`, `search_page.dart`). Live search by title, Author, Publisher or ISBN; filters (Section, price, format, language, rating, in stock); sort (relevance, price, newest, bestselling); recent searches kept on the device. Every catalog query goes through `BookRepository.searchCatalog(CatalogFilters)` (`domain/entities/catalog_filters.dart`); state in `search_providers.dart` and `recent_searches_provider.dart`. No results shows "Request this book".
 - **Home feed is done** (Rahinur, #100): Home is composition only (`features/home/presentation/pages/home_page.dart`), in this order: flash-sale strip (Farhan's), Banners carousel, Section chips, Ayah of the Day, New arrivals, Bestsellers, Collections, Bites, "Used books from readers". Each part loads through its own provider with a skeleton and retry. Banners come from Home's own fake API (`/home/banners`, `home_fake_api.dart`, `GetBanners`); a `BannerTarget` (Collection, Section, Book or search) is mapped to a route by `bannerRoute` in `banner_card.dart`. New arrivals and Bestsellers come from `searchCatalog` (`GetNewArrivals`, `GetBestsellers`); "See all" opens `CatalogRoutes.searchFor(sort:)`, and Search also reads `?q=`. Every book card shows Waraqah's From-price, list price when discounted, and stock, and opens the book page.
 - **Religious section is done** (Rahinur, #100): the Beneficial / Non-Beneficial filter and `Book.isBeneficial` are gone. Staff-picked **Collections** replace them: page at `CatalogRoutes.collectionFor(id)`, fake API `/collections` and `/collections/detail` (`collection_fake_api.dart`), use cases `GetCollections` / `GetCollection`, widgets `CollectionTile` and `CollectionStrip`. Any Section page with Collections shows a strip (Religious has 3); Home shows all 5. Ayah of the Day is on by default; readers hide it with the ✕ (with Undo) or the switch in Profile's "Home" group (`AyahSwitchTile`, saved on the device by `ayah_visible_provider.dart`).
+- **Buying new is done** (Farhan):
+  - **Book page:** Editions and formats, stock and delivery estimate, Look Inside, series, questions, lowest-price badge, price and stock alerts, and "Other ways to buy": a Certified Used copy (into the cart), readers' copies (open the listing to make an offer) and the resale value.
+  - **Cart** (`features/cart`): `ref.addToCart(context, CartItemRef.edition(id) | .certifiedUsed(id) | .bundle(id))`; flash sales and bundles (`features/deals`); Smart Basket (budget, used swaps).
+  - **Wishlist** (`features/wishlist`), with a share link friends open without an account (`WishlistRoutes.sharedFor(id)`).
+  - **Checkout** (`features/checkout`): address, delivery, bKash / Nagad / COD / card, coupons, Waraqah points (`features/loyalty`), wallet, and "Send as a gift" (card message, gift wrap, no prices). The maths is one place: `CheckoutTotals`.
+  - **Orders and returns** (`features/orders`): tracking, cancel, returns with photos; refunds go to the wallet (`OrderRefunds`).
+  - **Admin → Orders:** orders, returns and coupons.
+  - **Donate books** (`/donate`, `features/donate`) to verified places, and the **Wallet** (`/wallet`, `features/wallet`).
+- **Offers and inbox are done** (Farhan, #109). They follow the Chat & Meetup plan:
+  - A buyer makes an offer (price, meetup or courier). It lands in the seller's inbox in a thread: one per buyer per Listing.
+  - The seller accepts (the Listing becomes **Reserved**) or declines. Both chat in the thread.
+  - The seller can make the book available again or mark it sold. **Those changes only happen in the thread with that buyer.**
+  - Payment happens outside the app.
+  - Code: `features/inbox`. Routes: `InboxRoutes.inbox` (`/p2p/inbox`) and `threadFor(id)`.
+  - Starting points: `ref.openChat(context, listing)` and `ref.offerOn(context, listing)`. The header icon `InboxButton` carries the unread badge, which is the notification.
+  - Updates arrive live (§4.4).
+- **P2P listings go through the fake API** (`P2pFakeApi`, `P2pFakeStore`; #109). A `P2pListing` knows its `sellerId`, `isMine` and `isMyDeal`, and its status includes `reserved`. Listings show the seller's area, not a university batch.
+- **Seller pages and ratings are done** (Farhan, #110):
+  - `P2pRoutes.sellerFor(id)` shows name, area, member since, books sold, rating, reviews and what's on sale now.
+  - After a sale, buyer and seller rate each other once in the thread (`RatingRules`: 1–5 stars, comment up to 300 characters).
+- **Accounts** (Niloy, #108): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`).
+- **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
 - `main` passes `flutter analyze` with no issues, and all tests pass.
 
@@ -93,7 +114,8 @@ lib/
 │   ├── cache/              TtlCache
 │   └── utils/              Bdt.format (৳ prices), stock labels, cover gradients
 ├── features/
-│   ├── admin/  ai_assistant/  auth/  bites/  catalog/  home/  p2p/  profile/
+│   ├── admin/  ai_assistant/  alerts/  auth/  bites/  cart/  catalog/  checkout/
+│   ├── deals/  donate/  home/  inbox/  loyalty/  orders/  p2p/  profile/  wallet/  wishlist/
 └── l10n/                   app_en.arb, app_bn.arb (+ generated AppL10n)
 ```
 
@@ -153,6 +175,13 @@ features/<feature>/
 - Paths are matched exactly, so **use query parameters instead of path parameters** (`/books/details?id=…`, not `/books/:id/details`). Read the body from `options.data` and the query from `options.queryParameters`.
 - Handlers return JSON built from fixtures in the same `data/sources/` folder.
 - **Remote sources must never catch `DioException` to fall back to fixtures.** Errors surface to the UI's error state.
+- A handler answers `null` when the server would refuse (not allowed, unknown id). The remote source turns a refused change into an error.
+- **Shared fake stores.** Stores that several features change are created once in `fake_api_routes.dart` and passed to each feature's `routes(...)`. For example:
+  - checkout, orders and the wallet share `OrderFakeStore` and `WalletFakeStore`;
+  - the inbox reserves and sells `P2pFakeStore`'s listings.
+  - A fake backend file may import another feature's `data/sources` for this, with a comment saying why. App code never does (§4.2).
+- **One signed-in reader.** The fake backend has one signed-in reader ("me"), the way the real server will know who is asking from the login token. JSON says what's theirs (`isMine`, `isMyDeal`, a thread's `role`); the app never compares names.
+- **Live updates.** A handler may answer a `ResponseBody` stream. `/inbox/live` streams server-sent events, one `data: {...}` line per change. `InboxLiveSource` reads it through `dioProvider` with `ResponseType.stream`, and the Go backend should stream the same lines. Providers listen to `inboxChangesProvider` and reload what changed.
 - Going live later = point `ApiConfig.baseUrl` at the Go service and remove the interceptor.
 
 ### 4.5 Accounts and roles (already built)
@@ -228,6 +257,12 @@ Use these words in code, tests and PRs. Don't drift to the "avoid" words.
 | **Staff** | Any account whose Role isn't Reader. Only staff open the Admin area. | admin (for the group) |
 | **Admin area / Admin section** | The staff-only area / one area of work inside it | back office, module |
 | **Listing** | A used book a Reader offers for sale (second-hand) | post, ad |
+| **Offer** | A buyer's proposed price on a Listing (with meetup or courier), sent to the seller's inbox. Seller accepts or declines. | bid |
+| **Reserved** | A Listing held for the buyer whose Offer the seller accepted. The seller can make it available again or mark it sold. | on hold, booked |
+| **Inbox / Thread** | All of a Reader's conversations about used books / one buyer and one seller about one Listing. Offers and deal events land in the thread. | chat room, DM |
+| **Rating** | 1–5 stars a buyer and a seller give each other after a sale. Shown on the seller page. | review (that's for Books) |
+| **Wallet** | Taka a Reader holds with Waraqah: refunds and Sell Back money, spent at checkout. | credit, balance |
+| **Donation** | Books a Reader pays for, delivered free to a verified place (library, school, madrasa, orphanage). | charity order |
 | **Certified Used** | A used book Waraqah bought back, inspected and resells itself | refurbished |
 | **Sell Back** | A Reader selling a used book to Waraqah for an instant quote | trade-in (in UI text) |
 | **Booklist** | Any list of books needed together (class list, exam prep, a reader's own list) | course list |
@@ -242,8 +277,8 @@ Build **only your own area**. If you need something from another area that isn't
 | Person | Area |
 |---|---|
 | **Rahinur** | Storefront & catalog: Section/category/author pages, search (incl. Bangla + Banglish), home feed, seasonal home, collections & Expert Picks, Booklists, Religious section, Academic browsing, design system, `core/`. **Admin:** catalog, banners, collections. |
-| **Farhan** | Book page & buying new: book page (editions, formats, stock, delivery), wishlist, **cart**, checkout (bKash / Nagad / COD / card), orders & returns, "every way to buy" (new + used on one page), alerts, pre-orders, bundles, flash sales, loyalty points, Smart Basket, gift & donate, wallet. **Admin:** orders, returns, coupons. |
-| **Arifin** | Second-hand & moderation: listing flow, listing status, used marketplace, chat & offers, meetups, seller profiles & ratings, report & block, scan a book, fair price meter, Request a book, Waraqah-handled sales, Sell Back & Certified Used, "Finished it? Sell it". **Admin:** Moderation Center, trade-in grading. |
+| **Farhan** | Book page & buying new: book page (editions, formats, stock, delivery), wishlist, **cart**, checkout (bKash / Nagad / COD / card), orders & returns, "every way to buy" (new + used on one page), alerts, pre-orders, bundles, flash sales, loyalty points, Smart Basket, gift & donate, wallet; **offers & inbox (chat, arranging meetup or courier), seller profiles & ratings** (taken over from Arifin). **Admin:** orders, returns, coupons. |
+| **Arifin** | Second-hand & moderation: listing flow, listing status, used marketplace, report & block, scan a book, fair price meter, Request a book, Waraqah-handled sales, Sell Back & Certified Used, "Finished it? Sell it". **Admin:** Moderation Center, trade-in grading. |
 | **Niloy** | Accounts, community & AI: sign up / log in, profile & saved addresses, notifications, shelves & reading stats, Book-Bites (post, like, comment, spoilers, follow, quote cards), reviews, AI assistant. **Admin:** dashboard. |
 
 ### Shared pieces
@@ -255,8 +290,10 @@ The owner builds these and keeps their shape stable; everyone else uses them.
 | `Book` / `Edition` models, design system, `core/` | Rahinur | everyone |
 | Catalog search, collections & Booklists data | Rahinur | Niloy (AI), Farhan |
 | **Add to cart** (new edition, Certified Used, reader listing) | Farhan | Rahinur, Arifin, Niloy |
-| Payment method picker, wallet credit | Farhan | Arifin |
-| **Used options for a book** (Certified Used price, cheapest listing, count), resale value | Arifin | Farhan, Rahinur, Niloy |
+| Payment method picker, wallet credit (fake backend: `WalletFakeStore.credit(amount, WalletReason.sellBack, note: title)`) | Farhan | Arifin |
+| Certified Used copy and resale value for a book (catalog `UsedOptions`) | Farhan | Rahinur, Niloy |
+| Readers' listings for a book (`listingsForBookProvider`), listing statuses | Arifin | Farhan, Rahinur |
+| **Make an offer / message a seller** (`ref.offerOn`, `ref.openChat`), inbox badge (`InboxButton`), seller page (`P2pRoutes.sellerFor`) | Farhan | Arifin, everyone showing a listing |
 | Report content, create a book request, barcode scanner | Arifin | Niloy, Rahinur |
 | `sessionProvider` & roles | (built) | everyone |
 | Saved addresses, send a notification, "book finished" event | Niloy | Farhan, Arifin, everyone |
@@ -272,13 +309,13 @@ The owner builds these and keeps their shape stable; everyone else uses them.
 - **Nobody merges their own PR.** Reviewers: Rahinur → Farhan merges, Farhan → Arifin, Arifin → Niloy, Niloy → Rahinur.
 - Merge with **"Create a merge commit"** (never squash).
 - Commit messages: a clear title (`feat(cart): …`), then *what* and *why*, with `Committed by:` and `Feature:` lines.
-- **Keep AI tool files and AI attribution out of the repo.** Don't commit agent context files (like this one) or "generated by / co-authored by AI" lines.
+- **Keep AI attribution out of the repo.** No "generated by / co-authored by AI" lines in commits or PRs, and no AI tool files other than this one.
 
 **Avoiding conflicts**
 - **ARB keys:** add yours in your own block with your prefixes:
   - Rahinur: `home`, `search`, `section`, `collection`, `expert`, `booklist`, `adminCatalog`
-  - Farhan: `book`, `cart`, `checkout`, `order`, `wishlist`, `wallet`, `gift`, `adminOrder`
-  - Arifin: `listing`, `used`, `chat`, `seller`, `sellBack`, `scan`, `request`, `report`, `moderation`
+  - Farhan: `book`, `cart`, `checkout`, `order`, `wishlist`, `wallet`, `gift`, `adminOrder`, `offer`, `inbox`, `chat`, `seller`
+  - Arifin: `listing`, `used`, `sellBack`, `scan`, `request`, `report`, `moderation` (the listing page also has `used…` keys from Farhan: check before adding one)
   - Niloy: `auth`, `profile`, `notification`, `shelf`, `bite`, `review`, `ai`, `adminDashboard`
 - Routes and fake APIs: only in **your own feature's files**, plus one line in the shared lists when adding a new feature.
 - **Announce before adding a package** to `pubspec.yaml`.
@@ -307,14 +344,16 @@ Commit generated files (`*.freezed.dart`, `*.g.dart`, `lib/l10n/app_localization
 
 Set `GoogleFonts.config.allowRuntimeFetching = false` in `setUpAll`.
 
+In the demo, the other person in a thread replies about 4 s after you first write, and rates you about 4 s after you mark a sale. Tests that do either must `pump(const Duration(seconds: 5))` and `settle` before they end, or the timer is still pending.
+
 ---
 
 ## 10. Known gaps (don't be surprised by these)
 
 - The AI assistant still shows an old vendor price table. It's scheduled to use Waraqah's own catalog (Niloy). Don't copy it.
-- `BookDetailsSource` (catalog) still catches `DioException` and falls back to fixtures, which breaks rule 8. Scheduled to move to a fake API route (Farhan).
-- Sign-up doesn't create an account yet; it just opens the app. "Continue with Google" signs in as a demo reader. Real sign-up is Niloy's task.
 - Profile stats (books read, Bites posted, listings) are placeholder numbers.
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
 - Search's "Request this book" opens a stand-in page (`CatalogRoutes.requestBook`) until the Request a Book flow lands (Arifin). Point it at the real flow then.
-- "Add to cart" on the book page shows a "coming soon" message until the cart exists (Farhan).
+- The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
+- No push alerts while the app is closed: the inbox badge is the notification, by design for now.
+- The P2P marketplace filter bar's text is English-only, and "Save draft" on the add-listing form doesn't save yet (Arifin's listing flow).
