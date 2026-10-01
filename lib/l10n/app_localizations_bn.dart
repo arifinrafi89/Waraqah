@@ -2328,6 +2328,35 @@ class AppL10nBn extends AppL10n {
       'এই নিয়ম ভাঙলে মডারেটর লিস্টিং বাতিল করবেন, বারবার ভাঙলে অ্যাকাউন্ট নিষিদ্ধ হতে পারে।';
 
   @override
+  String listingFairPrice(String low, String high) {
+    return 'ন্যায্য দাম: $low–$high';
+  }
+
+  @override
+  String listingFairPriceBasis(String price) {
+    return 'নতুন দাম ($price), অবস্থা ও চিহ্ন দেখে।';
+  }
+
+  @override
+  String get listingFairPriceUnknown =>
+      'ন্যায্য দাম দেখতে ক্যাটালগ থেকে বইটি স্ক্যান বা বাছাই করুন।';
+
+  @override
+  String get listingPriceLow => 'বেশিরভাগের চেয়ে কম: দ্রুত বিক্রি হওয়া উচিত।';
+
+  @override
+  String get listingPriceFair => 'ন্যায্য দাম।';
+
+  @override
+  String get listingPriceHigh =>
+      'বেশিরভাগ পুরোনো কপির চেয়ে বেশি, তাই বিক্রি হতে সময় লাগতে পারে।';
+
+  @override
+  String listingPriceAboveNew(String price) {
+    return 'এটি নতুন কেনার ($price) সমান বা বেশি। ক্রেতারা নতুনটাই কিনবেন।';
+  }
+
+  @override
   String get scanTitle => 'বই স্ক্যান করুন';
 
   @override

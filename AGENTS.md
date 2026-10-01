@@ -85,6 +85,7 @@ The app also has:
   - `Isbn.normalize` checks the check digit and turns an ISBN-10 into an ISBN-13. Fake API `/scan/lookup?isbn=` answers the Book (`ScanFakeApi`).
   - Found: open the book page, or **Sell your copy** (the add-listing form starts with the Book's title and new price). Not found: Request this book, or list it anyway.
   - Drop in `ScanButton()` to open it (Search's field and the P2P header have one). `ScanButton(forSell: true, wide: true)` on the add-listing form fills the form in.
+- **Fair price meter is done** (Arifin): under the price on the add-listing form, `FairPriceMeter` shows "Fair price: ৳700–৳960" from the Book's new price, the condition and the flags (`FairPrice.of`: Like New 60–75% of new, Very Good 50–65%, Good 40–55%, Acceptable 25–40%, 5% off per flag, rounded to ৳10). A bar marks the asking price, and it warns when the price is as much as buying new. It needs a catalog Book (scanned), so a typed title shows a hint instead. The form's steps are now separate widgets (`listing_*_step.dart`).
 - **Accounts** (Niloy, #108): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`).
 - **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
