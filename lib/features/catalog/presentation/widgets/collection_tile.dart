@@ -11,9 +11,11 @@ import '../../../../core/widgets/surface_card.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../catalog_routes.dart';
 import '../../domain/entities/collection.dart';
+import 'expert_badge.dart';
 
-/// A Collection in a strip: the first 3 covers overlapping, its title and
-/// how many books it has. Opens the Collection page.
+/// A Collection in a strip: the first 3 covers overlapping, its title, who
+/// picked it when it's an Expert Pick, and how many books it has. Opens the
+/// Collection page.
 class CollectionTile extends StatelessWidget {
   const CollectionTile({super.key, required this.collection});
 
@@ -42,6 +44,17 @@ class CollectionTile extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: AppFonts.ui(size: 13, weight: FontWeight.w800),
                 ),
+                if (collection.expert case final expert?)
+                  ExpertBadge(
+                    expert: expert,
+                    text: l10n.expertBy(expert.label(isBangla)),
+                    maxLines: 1,
+                    style: AppFonts.ui(
+                      size: 11,
+                      weight: FontWeight.w600,
+                      color: context.palette.textDim,
+                    ),
+                  ),
                 Text(
                   l10n.sectionBookCount(collection.books.length),
                   style: AppFonts.ui(

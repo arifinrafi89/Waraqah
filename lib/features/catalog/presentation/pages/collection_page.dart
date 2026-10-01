@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:go_router/go_router.dart';
+
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../core/widgets/not_found_view.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../catalog_routes.dart';
 import '../providers/catalog_providers.dart';
 import '../widgets/back_app_bar.dart';
 import '../widgets/book_list_skeleton.dart';
+import '../widgets/expert_badge.dart';
 import 'catalog_results_list.dart';
 
-/// `/catalog/collection/:id`: the Collection's title, why its books were
-/// picked, then the books in the order Staff chose.
+/// `/catalog/collection/:id`: the Collection's title, who picked it when
+/// it's an Expert Pick, why its books were picked, then the books in order.
 class CollectionPage extends ConsumerWidget {
   const CollectionPage({super.key, required this.collectionId});
 
@@ -58,6 +62,26 @@ class CollectionPage extends ConsumerWidget {
                 ),
               )
             else ...[
+              if (collection.expert case final expert?)
+                InkWell(
+                  onTap: () => context.push(CatalogRoutes.expertFor(expert.id)),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      Insets.screen,
+                      0,
+                      Insets.screen,
+                      Insets.sm,
+                    ),
+                    child: ExpertBadge(
+                      expert: expert,
+                      text: l10n.expertPickedBy(expert.label(isBangla)),
+                      after: expert.credential(isBangla),
+                      style: context.texts.titleSmall?.copyWith(
+                        color: context.palette.accent,
+                      ),
+                    ),
+                  ),
+                ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(
                   Insets.screen,

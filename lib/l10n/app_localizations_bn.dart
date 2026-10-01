@@ -454,6 +454,37 @@ class AppL10nBn extends AppL10n {
   String get collectionStripSub => 'সম্পাদকদের বাছাই করা বই, আর কেন';
 
   @override
+  String get expertPicksTitle => 'বিশেষজ্ঞদের বাছাই';
+
+  @override
+  String get expertPicksSub => 'যাচাই করা শিক্ষক, আলেম ও লেখকদের বাছাই করা বই';
+
+  @override
+  String expertBy(String name) {
+    return '$name-এর বাছাই';
+  }
+
+  @override
+  String expertPickedBy(String name) {
+    return 'বাছাই করেছেন $name';
+  }
+
+  @override
+  String get expertVerified => 'যাচাইকৃত';
+
+  @override
+  String get expertKindTeacher => 'শিক্ষক';
+
+  @override
+  String get expertKindScholar => 'আলেম';
+
+  @override
+  String get expertKindWriter => 'লেখক';
+
+  @override
+  String get expertTheirPicks => 'তাঁর বাছাই';
+
+  @override
   String get bookFormatPaperback => 'পেপারব্যাক';
 
   @override

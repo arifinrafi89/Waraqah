@@ -943,6 +943,60 @@ abstract class AppL10n {
   /// **'Books our editors picked, and why'**
   String get collectionStripSub;
 
+  /// No description provided for @expertPicksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert Picks'**
+  String get expertPicksTitle;
+
+  /// No description provided for @expertPicksSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Shelves from verified teachers, scholars and writers'**
+  String get expertPicksSub;
+
+  /// No description provided for @expertBy.
+  ///
+  /// In en, this message translates to:
+  /// **'by {name}'**
+  String expertBy(String name);
+
+  /// No description provided for @expertPickedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Picked by {name}'**
+  String expertPickedBy(String name);
+
+  /// No description provided for @expertVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get expertVerified;
+
+  /// No description provided for @expertKindTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get expertKindTeacher;
+
+  /// No description provided for @expertKindScholar.
+  ///
+  /// In en, this message translates to:
+  /// **'Scholar'**
+  String get expertKindScholar;
+
+  /// No description provided for @expertKindWriter.
+  ///
+  /// In en, this message translates to:
+  /// **'Writer'**
+  String get expertKindWriter;
+
+  /// No description provided for @expertTheirPicks.
+  ///
+  /// In en, this message translates to:
+  /// **'Their picks'**
+  String get expertTheirPicks;
+
   /// No description provided for @bookFormatPaperback.
   ///
   /// In en, this message translates to:

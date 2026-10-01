@@ -456,6 +456,38 @@ class AppL10nEn extends AppL10n {
   String get collectionStripSub => 'Books our editors picked, and why';
 
   @override
+  String get expertPicksTitle => 'Expert Picks';
+
+  @override
+  String get expertPicksSub =>
+      'Shelves from verified teachers, scholars and writers';
+
+  @override
+  String expertBy(String name) {
+    return 'by $name';
+  }
+
+  @override
+  String expertPickedBy(String name) {
+    return 'Picked by $name';
+  }
+
+  @override
+  String get expertVerified => 'Verified';
+
+  @override
+  String get expertKindTeacher => 'Teacher';
+
+  @override
+  String get expertKindScholar => 'Scholar';
+
+  @override
+  String get expertKindWriter => 'Writer';
+
+  @override
+  String get expertTheirPicks => 'Their picks';
+
+  @override
   String get bookFormatPaperback => 'Paperback';
 
   @override

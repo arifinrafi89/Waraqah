@@ -6,6 +6,7 @@ import 'domain/entities/catalog_filters.dart';
 import 'presentation/pages/author_page.dart';
 import 'presentation/pages/category_page.dart';
 import 'presentation/pages/collection_page.dart';
+import 'presentation/pages/expert_page.dart';
 import 'presentation/pages/publisher_page.dart';
 import 'presentation/pages/search_page.dart';
 import 'presentation/pages/section_page.dart';
@@ -49,6 +50,10 @@ final List<RouteBase> catalogTabRoutes = [
     path: 'collection/:id',
     builder: (_, state) =>
         CollectionPage(collectionId: state.pathParameters['id']!),
+  ),
+  GoRoute(
+    path: 'expert/:id',
+    builder: (_, state) => ExpertPage(expertId: state.pathParameters['id']!),
   ),
   GoRoute(
     path: 'search',

@@ -73,7 +73,8 @@ void main() {
       200,
       scrollable: home,
     );
-    await tester.drag(home, const Offset(0, -100));
+    // scrollUntilVisible leaves the strip at the very top; bring it down.
+    await tester.drag(home, const Offset(0, 300));
     await settle(tester);
 
     await tester.tap(find.text('Start with these'));
