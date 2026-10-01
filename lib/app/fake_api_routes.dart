@@ -75,7 +75,7 @@ abstract final class FakeApiRoutes {
       ...CollectionFakeApi.routes,
       ...BooklistFakeApi.routes,
       ...CatalogAdminFakeApi.routes(catalogAdmin),
-      ...CatalogToolsFakeApi.routes(),
+      ...CatalogToolsFakeApi.routes(catalogAdmin),
       ...AyahFakeApi.routes,
       ...HomeFakeApi.routes(() => catalogAdmin.seasonOverride),
       ...CartFakeApi.routes(cart),

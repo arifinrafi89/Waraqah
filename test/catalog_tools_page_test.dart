@@ -80,4 +80,28 @@ void main() {
     await _tapText(tester, 'Save');
     expect(find.text('The Alchemist'), findsNothing);
   });
+
+  testWidgets('Import CSV: the example checks 3 Books and 1 bad row', (
+    tester,
+  ) async {
+    await openApp(tester, '/admin/catalog', role: 'catalogManager');
+    await tester.tap(find.byTooltip('More tools'));
+    await settle(tester);
+    await _tapText(tester, 'Import CSV');
+    await _tapText(tester, 'Paste example');
+    await _tapText(tester, 'Check');
+    // The preview sits under the paste box.
+    await tester.drag(find.byType(ListView).first, const Offset(0, -400));
+    await settle(tester);
+    expect(find.byIcon(Icons.check_circle_rounded), findsNWidgets(3));
+    expect(find.byIcon(Icons.error_rounded), findsOneWidget);
+    expect(find.textContaining('unknown Category “Poetry”'), findsOneWidget);
+    expect(find.textContaining('new Author'), findsWidgets);
+
+    await _tapText(tester, 'Import 3 books');
+    expect(find.text('Imported 3 books, skipped 0.'), findsOneWidget);
+    await tester.enterText(find.byType(TextField).first, 'deep work');
+    await settle(tester);
+    expect(find.text('Deep Work'), findsWidgets);
+  });
 }

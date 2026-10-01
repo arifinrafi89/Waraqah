@@ -2162,6 +2162,89 @@ class AppL10nBn extends AppL10n {
   String get adminCatalogSetStock => 'স্টক বদলান';
 
   @override
+  String get adminCatalogImport => 'CSV ইমপোর্ট';
+
+  @override
+  String get adminCatalogImportHint =>
+      'এই হেডারসহ সারি পেস্ট করুন। এক সারি মানে এক সংস্করণ; একই শিরোনাম আর লেখকের সারিগুলো মিলে একটি বই।';
+
+  @override
+  String get adminCatalogImportField => 'CSV সারি';
+
+  @override
+  String get adminCatalogImportExample => 'উদাহরণ বসান';
+
+  @override
+  String get adminCatalogImportCheck => 'যাচাই করুন';
+
+  @override
+  String adminCatalogImportBooks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি বই ইমপোর্ট করুন',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminCatalogImportEditions(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি সংস্করণ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get adminCatalogImportNewAuthor => 'নতুন লেখক';
+
+  @override
+  String get adminCatalogImportNewPublisher => 'নতুন প্রকাশক';
+
+  @override
+  String adminCatalogImportRow(int row) {
+    return 'সারি $row:';
+  }
+
+  @override
+  String get adminCatalogImportColumns => '১২টি কলাম লাগবে';
+
+  @override
+  String get adminCatalogImportBlank => 'শিরোনাম, লেখক আর প্রকাশক লাগবে';
+
+  @override
+  String adminCatalogImportSection(String value) {
+    return 'অজানা বিভাগ “$value”';
+  }
+
+  @override
+  String adminCatalogImportCategory(String value) {
+    return 'অজানা ক্যাটাগরি “$value”';
+  }
+
+  @override
+  String adminCatalogImportFormat(String value) {
+    return 'অজানা ফরম্যাট “$value”';
+  }
+
+  @override
+  String adminCatalogImportLanguage(String value) {
+    return 'অজানা ভাষা “$value”';
+  }
+
+  @override
+  String adminCatalogImportNumber(String value) {
+    return '“$value” পূর্ণসংখ্যা নয়';
+  }
+
+  @override
+  String adminCatalogImportDone(int imported, int skipped) {
+    return '$importedটি বই ইমপোর্ট হয়েছে, $skippedটি বাদ গেছে।';
+  }
+
+  @override
   String get adminCatalogEditBook => 'বই সম্পাদনা';
 
   @override

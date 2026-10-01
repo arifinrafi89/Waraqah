@@ -3937,6 +3937,114 @@ abstract class AppL10n {
   /// **'Set stock'**
   String get adminCatalogSetStock;
 
+  /// No description provided for @adminCatalogImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Import CSV'**
+  String get adminCatalogImport;
+
+  /// No description provided for @adminCatalogImportHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Paste rows with this header. One row is one Edition; rows with the same title and Author make one Book.'**
+  String get adminCatalogImportHint;
+
+  /// No description provided for @adminCatalogImportField.
+  ///
+  /// In en, this message translates to:
+  /// **'CSV rows'**
+  String get adminCatalogImportField;
+
+  /// No description provided for @adminCatalogImportExample.
+  ///
+  /// In en, this message translates to:
+  /// **'Paste example'**
+  String get adminCatalogImportExample;
+
+  /// No description provided for @adminCatalogImportCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Check'**
+  String get adminCatalogImportCheck;
+
+  /// No description provided for @adminCatalogImportBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Import 1 book} other{Import {count} books}}'**
+  String adminCatalogImportBooks(int count);
+
+  /// No description provided for @adminCatalogImportEditions.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 edition} other{{count} editions}}'**
+  String adminCatalogImportEditions(int count);
+
+  /// No description provided for @adminCatalogImportNewAuthor.
+  ///
+  /// In en, this message translates to:
+  /// **'new Author'**
+  String get adminCatalogImportNewAuthor;
+
+  /// No description provided for @adminCatalogImportNewPublisher.
+  ///
+  /// In en, this message translates to:
+  /// **'new Publisher'**
+  String get adminCatalogImportNewPublisher;
+
+  /// No description provided for @adminCatalogImportRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Row {row}:'**
+  String adminCatalogImportRow(int row);
+
+  /// No description provided for @adminCatalogImportColumns.
+  ///
+  /// In en, this message translates to:
+  /// **'needs 12 columns'**
+  String get adminCatalogImportColumns;
+
+  /// No description provided for @adminCatalogImportBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'title, Author and Publisher are needed'**
+  String get adminCatalogImportBlank;
+
+  /// No description provided for @adminCatalogImportSection.
+  ///
+  /// In en, this message translates to:
+  /// **'unknown Section “{value}”'**
+  String adminCatalogImportSection(String value);
+
+  /// No description provided for @adminCatalogImportCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'unknown Category “{value}”'**
+  String adminCatalogImportCategory(String value);
+
+  /// No description provided for @adminCatalogImportFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'unknown format “{value}”'**
+  String adminCatalogImportFormat(String value);
+
+  /// No description provided for @adminCatalogImportLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'unknown language “{value}”'**
+  String adminCatalogImportLanguage(String value);
+
+  /// No description provided for @adminCatalogImportNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'“{value}” isn\'t a whole number'**
+  String adminCatalogImportNumber(String value);
+
+  /// No description provided for @adminCatalogImportDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Imported {imported} books, skipped {skipped}.'**
+  String adminCatalogImportDone(int imported, int skipped);
+
   /// No description provided for @adminCatalogEditBook.
   ///
   /// In en, this message translates to:

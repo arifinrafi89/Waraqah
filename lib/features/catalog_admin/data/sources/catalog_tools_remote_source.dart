@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 
 import '../../../../core/models/edition.dart';
+import '../../domain/entities/import_book.dart';
 import '../../domain/entities/isbn_lookup.dart';
+import '../models/book_draft_json.dart';
 import '../../domain/entities/low_stock_edition.dart';
 import 'catalog_tools_fake_api.dart';
 
@@ -46,6 +48,27 @@ class CatalogToolsRemoteSource {
         stock: j['stock'] as int,
       ),
   ];
+
+  Future<ImportResult> importBooks(List<ImportBook> books) async {
+    final j = (await _dio.post<Map<String, dynamic>>(
+      CatalogToolsFakeApi.importBooks,
+      data: {
+        'books': [
+          for (final b in books)
+            {
+              ...b.draft.toJson(),
+              'row': b.row,
+              'author': b.author,
+              'publisher': b.publisher,
+            },
+        ],
+      },
+    )).data!;
+    return (
+      imported: j['imported'] as int,
+      skipped: (j['skipped'] as List).length,
+    );
+  }
 
   /// Throws when refused.
   Future<void> setStock(String editionId, int stock) async {

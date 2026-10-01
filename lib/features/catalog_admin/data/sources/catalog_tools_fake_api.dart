@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import '../../../../core/models/edition.dart';
 import '../../../catalog/data/sources/book_fixtures.dart';
 import '../../domain/entities/catalog_admin_rules.dart';
+import 'catalog_admin_fake_store.dart';
+import 'catalog_import_fake.dart';
 import 'isbn_lookup_fixtures.dart';
 
 /// Admin → Catalog's tools on the fake backend, merged into
@@ -24,7 +26,15 @@ abstract final class CatalogToolsFakeApi {
   /// negative stock.
   static const String editionStock = '$_base/editions/stock';
 
-  static Map<String, Object? Function(RequestOptions)> routes() => {
+  /// Body `{books: [{row, author, publisher, ...BookDraft}]}` → `{imported,
+  /// skipped: [{row, reason}]}`. See [CatalogImportFake.run].
+  static const String importBooks = '$_base/import';
+
+  static Map<String, Object? Function(RequestOptions)> routes(
+    CatalogAdminFakeStore store,
+  ) => {
+    importBooks: (o) =>
+        CatalogImportFake.run(store, (o.data as Map)['books'] as List),
     isbnLookup: (o) => _lookUp(o.queryParameters['isbn'] as String? ?? ''),
     lowStock: (_) => [
       for (final b in BookFixtures.all)

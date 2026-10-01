@@ -51,10 +51,11 @@ class BooksAdminTab extends ConsumerWidget {
                   tooltip: l10n.adminCatalogMoreTools,
                   onSelected: context.push,
                   itemBuilder: (_) => [
-                    PopupMenuItem(
-                      value: CatalogAdminRoutes.lowStock,
-                      child: Text(l10n.adminCatalogLowStock),
-                    ),
+                    for (final (path, label) in [
+                      (CatalogAdminRoutes.importCsv, l10n.adminCatalogImport),
+                      (CatalogAdminRoutes.lowStock, l10n.adminCatalogLowStock),
+                    ])
+                      PopupMenuItem(value: path, child: Text(label)),
                   ],
                 ),
               ],

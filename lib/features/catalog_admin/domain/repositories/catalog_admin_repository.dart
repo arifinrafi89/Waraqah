@@ -3,6 +3,7 @@ import '../../../home/domain/entities/banner.dart';
 import '../../../home/domain/entities/season.dart';
 import '../entities/book_draft.dart';
 import '../entities/catalog_record.dart';
+import '../entities/import_book.dart';
 import '../entities/isbn_lookup.dart';
 import '../entities/list_draft.dart';
 import '../entities/low_stock_edition.dart';
@@ -44,6 +45,10 @@ abstract interface class CatalogAdminRepository {
 
   /// `null` when nobody knows [isbn] (an ISBN-13).
   Future<IsbnLookup?> lookUpIsbn(String isbn);
+
+  /// Adds [books], creating new Authors and Publishers; the server checks
+  /// each again and skips the ones it refuses.
+  Future<ImportResult> importBooks(List<ImportBook> books);
 
   /// Printed Editions at or under `CatalogAdminRules.lowStock`, lowest
   /// first.
