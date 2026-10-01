@@ -3379,6 +3379,138 @@ abstract class AppL10n {
   /// **'Add and edit books, editions and stock'**
   String get adminCatalogHint;
 
+  /// No description provided for @adminCatalogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalog'**
+  String get adminCatalogTitle;
+
+  /// No description provided for @adminCatalogTabBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Books'**
+  String get adminCatalogTabBooks;
+
+  /// No description provided for @adminCatalogTabCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get adminCatalogTabCategories;
+
+  /// No description provided for @adminCatalogTabAuthors.
+  ///
+  /// In en, this message translates to:
+  /// **'Authors'**
+  String get adminCatalogTabAuthors;
+
+  /// No description provided for @adminCatalogTabPublishers.
+  ///
+  /// In en, this message translates to:
+  /// **'Publishers'**
+  String get adminCatalogTabPublishers;
+
+  /// No description provided for @adminCatalogTabBanners.
+  ///
+  /// In en, this message translates to:
+  /// **'Banners'**
+  String get adminCatalogTabBanners;
+
+  /// No description provided for @adminCatalogErrTitleBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a title'**
+  String get adminCatalogErrTitleBlank;
+
+  /// No description provided for @adminCatalogErrAuthorMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick an author'**
+  String get adminCatalogErrAuthorMissing;
+
+  /// No description provided for @adminCatalogErrPublisherMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a publisher'**
+  String get adminCatalogErrPublisherMissing;
+
+  /// No description provided for @adminCatalogErrCategoryMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a category'**
+  String get adminCatalogErrCategoryMissing;
+
+  /// No description provided for @adminCatalogErrCategoryWrongSection.
+  ///
+  /// In en, this message translates to:
+  /// **'This category is in another section'**
+  String get adminCatalogErrCategoryWrongSection;
+
+  /// No description provided for @adminCatalogErrNoEditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Add at least one edition'**
+  String get adminCatalogErrNoEditions;
+
+  /// No description provided for @adminCatalogErrPriceNotPositive.
+  ///
+  /// In en, this message translates to:
+  /// **'Price must be more than ৳0'**
+  String get adminCatalogErrPriceNotPositive;
+
+  /// No description provided for @adminCatalogErrListPriceTooLow.
+  ///
+  /// In en, this message translates to:
+  /// **'List price must be more than the price'**
+  String get adminCatalogErrListPriceTooLow;
+
+  /// No description provided for @adminCatalogErrStockNegative.
+  ///
+  /// In en, this message translates to:
+  /// **'Stock can\'t be below 0'**
+  String get adminCatalogErrStockNegative;
+
+  /// No description provided for @adminCatalogErrIsbnInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Not a valid ISBN. Check the 10 or 13 digits.'**
+  String get adminCatalogErrIsbnInvalid;
+
+  /// No description provided for @adminCatalogErrIsbnTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Another edition already has this ISBN'**
+  String get adminCatalogErrIsbnTaken;
+
+  /// No description provided for @adminCatalogErrEditionTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'This book already has an edition in this format and language'**
+  String get adminCatalogErrEditionTaken;
+
+  /// No description provided for @adminCatalogErrNameBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a name'**
+  String get adminCatalogErrNameBlank;
+
+  /// No description provided for @adminCatalogErrNameBnBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the Bangla name'**
+  String get adminCatalogErrNameBnBlank;
+
+  /// No description provided for @adminCatalogErrBannerTitleBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the title in English and Bangla'**
+  String get adminCatalogErrBannerTitleBlank;
+
+  /// No description provided for @adminCatalogErrBannerTargetBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose what the banner opens'**
+  String get adminCatalogErrBannerTargetBlank;
+
   /// No description provided for @adminOrders.
   ///
   /// In en, this message translates to:

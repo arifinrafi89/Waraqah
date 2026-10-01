@@ -5,7 +5,7 @@ import 'package:waraqah/features/catalog/data/sources/book_fake_api.dart';
 import 'package:waraqah/features/catalog/data/sources/book_fixtures.dart';
 import 'package:waraqah/features/catalog/data/sources/collection_fake_api.dart';
 
-final _dio = Dio()..interceptors.add(FakeApiRoutes.interceptor());
+late Dio _dio;
 
 Future<List<String>> _bookIds([Map<String, dynamic> query = const {}]) async {
   final res = await _dio.get<List<dynamic>>(
@@ -21,6 +21,8 @@ void _hide(String id) {
 }
 
 void main() {
+  // A new fake backend resets the catalog, so make it before hiding.
+  setUp(() => _dio = Dio()..interceptors.add(FakeApiRoutes.interceptor()));
   tearDown(BookFixtures.reset);
 
   test(

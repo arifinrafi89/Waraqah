@@ -8,6 +8,8 @@ import '../features/cart/data/sources/cart_fake_store.dart';
 import '../features/catalog/data/sources/book_fake_api.dart';
 import '../features/catalog/data/sources/book_questions_fake_api.dart';
 import '../features/catalog/data/sources/collection_fake_api.dart';
+import '../features/catalog_admin/data/sources/catalog_admin_fake_api.dart';
+import '../features/catalog_admin/data/sources/catalog_admin_fake_store.dart';
 import '../features/checkout/data/sources/checkout_fake_api.dart';
 import '../features/checkout/data/sources/coupon_admin_fake_api.dart';
 import '../features/checkout/data/sources/coupon_fake_store.dart';
@@ -64,6 +66,8 @@ abstract final class FakeApiRoutes {
       ...BookFakeApi.routes,
       ...BookQuestionsFakeApi.routes(),
       ...CollectionFakeApi.routes,
+      // Staff edit the catalog's and Home's fixture lists in place.
+      ...CatalogAdminFakeApi.routes(CatalogAdminFakeStore()),
       ...AyahFakeApi.routes,
       ...HomeFakeApi.routes,
       ...CartFakeApi.routes(cart),

@@ -1929,6 +1929,78 @@ class AppL10nEn extends AppL10n {
   String get adminCatalogHint => 'Add and edit books, editions and stock';
 
   @override
+  String get adminCatalogTitle => 'Catalog';
+
+  @override
+  String get adminCatalogTabBooks => 'Books';
+
+  @override
+  String get adminCatalogTabCategories => 'Categories';
+
+  @override
+  String get adminCatalogTabAuthors => 'Authors';
+
+  @override
+  String get adminCatalogTabPublishers => 'Publishers';
+
+  @override
+  String get adminCatalogTabBanners => 'Banners';
+
+  @override
+  String get adminCatalogErrTitleBlank => 'Add a title';
+
+  @override
+  String get adminCatalogErrAuthorMissing => 'Pick an author';
+
+  @override
+  String get adminCatalogErrPublisherMissing => 'Pick a publisher';
+
+  @override
+  String get adminCatalogErrCategoryMissing => 'Pick a category';
+
+  @override
+  String get adminCatalogErrCategoryWrongSection =>
+      'This category is in another section';
+
+  @override
+  String get adminCatalogErrNoEditions => 'Add at least one edition';
+
+  @override
+  String get adminCatalogErrPriceNotPositive => 'Price must be more than ৳0';
+
+  @override
+  String get adminCatalogErrListPriceTooLow =>
+      'List price must be more than the price';
+
+  @override
+  String get adminCatalogErrStockNegative => 'Stock can\'t be below 0';
+
+  @override
+  String get adminCatalogErrIsbnInvalid =>
+      'Not a valid ISBN. Check the 10 or 13 digits.';
+
+  @override
+  String get adminCatalogErrIsbnTaken =>
+      'Another edition already has this ISBN';
+
+  @override
+  String get adminCatalogErrEditionTaken =>
+      'This book already has an edition in this format and language';
+
+  @override
+  String get adminCatalogErrNameBlank => 'Add a name';
+
+  @override
+  String get adminCatalogErrNameBnBlank => 'Add the Bangla name';
+
+  @override
+  String get adminCatalogErrBannerTitleBlank =>
+      'Add the title in English and Bangla';
+
+  @override
+  String get adminCatalogErrBannerTargetBlank => 'Choose what the banner opens';
+
+  @override
   String get adminOrders => 'Orders';
 
   @override

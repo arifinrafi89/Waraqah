@@ -1848,6 +1848,77 @@ class AppL10nBn extends AppL10n {
   String get adminCatalogHint => 'বই, সংস্করণ আর স্টক যোগ ও সম্পাদনা';
 
   @override
+  String get adminCatalogTitle => 'ক্যাটালগ';
+
+  @override
+  String get adminCatalogTabBooks => 'বই';
+
+  @override
+  String get adminCatalogTabCategories => 'ক্যাটাগরি';
+
+  @override
+  String get adminCatalogTabAuthors => 'লেখক';
+
+  @override
+  String get adminCatalogTabPublishers => 'প্রকাশক';
+
+  @override
+  String get adminCatalogTabBanners => 'ব্যানার';
+
+  @override
+  String get adminCatalogErrTitleBlank => 'শিরোনাম লিখুন';
+
+  @override
+  String get adminCatalogErrAuthorMissing => 'লেখক বেছে নিন';
+
+  @override
+  String get adminCatalogErrPublisherMissing => 'প্রকাশক বেছে নিন';
+
+  @override
+  String get adminCatalogErrCategoryMissing => 'ক্যাটাগরি বেছে নিন';
+
+  @override
+  String get adminCatalogErrCategoryWrongSection => 'এই ক্যাটাগরি অন্য সেকশনের';
+
+  @override
+  String get adminCatalogErrNoEditions => 'অন্তত একটি সংস্করণ যোগ করুন';
+
+  @override
+  String get adminCatalogErrPriceNotPositive => 'দাম ৳০-এর বেশি হতে হবে';
+
+  @override
+  String get adminCatalogErrListPriceTooLow =>
+      'তালিকা মূল্য দামের চেয়ে বেশি হতে হবে';
+
+  @override
+  String get adminCatalogErrStockNegative => 'স্টক ০-এর কম হতে পারে না';
+
+  @override
+  String get adminCatalogErrIsbnInvalid =>
+      'সঠিক ISBN নয়। ১০ বা ১৩টি অঙ্ক মিলিয়ে দেখুন।';
+
+  @override
+  String get adminCatalogErrIsbnTaken => 'এই ISBN আরেকটি সংস্করণে আছে';
+
+  @override
+  String get adminCatalogErrEditionTaken =>
+      'এই ফরম্যাট ও ভাষায় বইটির একটি সংস্করণ আগেই আছে';
+
+  @override
+  String get adminCatalogErrNameBlank => 'নাম লিখুন';
+
+  @override
+  String get adminCatalogErrNameBnBlank => 'বাংলা নাম লিখুন';
+
+  @override
+  String get adminCatalogErrBannerTitleBlank =>
+      'ইংরেজি ও বাংলায় শিরোনাম লিখুন';
+
+  @override
+  String get adminCatalogErrBannerTargetBlank =>
+      'ব্যানারটি কী খুলবে তা বেছে নিন';
+
+  @override
   String get adminOrders => 'অর্ডার';
 
   @override

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'domain/entities/admin_section.dart';
 import 'presentation/pages/admin_hub_page.dart';
 import 'presentation/pages/admin_section_page.dart';
+import '../catalog_admin/presentation/pages/catalog_admin_page.dart';
 import '../moderation/presentation/pages/moderation_center_page.dart';
 import '../sell_back/presentation/pages/trade_in_page.dart';
 import '../orders/presentation/pages/orders_admin_page.dart';
@@ -26,7 +27,7 @@ abstract final class AdminRoutes {
         ),
         GoRoute(
           path: AdminSection.catalog.name,
-          builder: (_, _) => const AdminSectionPage(AdminSection.catalog),
+          builder: (_, _) => const CatalogAdminPage(),
         ),
         GoRoute(
           path: AdminSection.orders.name,
