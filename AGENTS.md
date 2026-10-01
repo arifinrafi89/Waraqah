@@ -50,6 +50,9 @@ The app also has:
   - **Wishlist** (`features/wishlist`), with a share link friends open without an account (`WishlistRoutes.sharedFor(id)`).
   - **Checkout** (`features/checkout`): address, delivery, bKash / Nagad / COD / card, coupons, Waraqah points (`features/loyalty`), wallet, and "Send as a gift" (card message, gift wrap, no prices). The maths is one place: `CheckoutTotals`.
   - **Orders and returns** (`features/orders`): tracking, cancel, returns with photos; refunds go to the wallet (`OrderRefunds`).
+    - **Buy again** puts a delivered or cancelled order's Editions back in the cart (`/orders/reorder`). Order lines keep their `editionId` for this.
+    - Each order has an **invoice** (`OrdersRoutes.invoiceFor(number)`).
+    - The **return policy** (`OrdersRoutes.returnPolicy`, `/return-policy`) is open to guests too. Its wording matches the rules in code.
   - **Admin → Orders:** orders, returns and coupons.
   - **Donate books** (`/donate`, `features/donate`) to verified places, and the **Wallet** (`/wallet`, `features/wallet`).
 - **Offers and inbox are done** (Farhan, #109). They follow the Chat & Meetup plan:

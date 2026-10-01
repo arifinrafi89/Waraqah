@@ -55,7 +55,7 @@ abstract final class FakeApiRoutes {
       ...WishlistFakeApi.routes(),
       ...AlertFakeApi.routes(),
       ...CheckoutFakeApi.routes(cart, orders, coupons, points, wallet),
-      ...OrderFakeApi.routes(orders, points, wallet),
+      ...OrderFakeApi.routes(orders, points, wallet, cart),
       ...PointsFakeApi.routes(points),
       ...OrderAdminFakeApi.routes(orders, wallet),
       ...CouponAdminFakeApi.routes(coupons),

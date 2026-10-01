@@ -1439,6 +1439,87 @@ class AppL10nBn extends AppL10n {
   String get orderReturnWindow => 'পৌঁছানোর ৭ দিনের মধ্যে ফেরত দেওয়া যায়।';
 
   @override
+  String get orderBuyAgain => 'আবার কিনুন';
+
+  @override
+  String orderBackInCart(int count) {
+    return '$countটি বই আবার আপনার কার্টে।';
+  }
+
+  @override
+  String orderSomeUnavailable(int count) {
+    return '$countটি এখন আর কেনা যাচ্ছে না।';
+  }
+
+  @override
+  String get orderNoneAvailable => 'এই বইগুলোর কোনোটিই এখন আর কেনা যাচ্ছে না।';
+
+  @override
+  String get orderInvoice => 'ইনভয়েস';
+
+  @override
+  String get orderInvoiceSeller => 'ওয়ারাকাহ · ইনভয়েস';
+
+  @override
+  String orderInvoiceQuantity(int count, String price) {
+    return '$count × $price';
+  }
+
+  @override
+  String get orderInvoiceShipTo => 'যে ঠিকানায় পাঠানো হয়';
+
+  @override
+  String get orderInvoiceThanks => 'ওয়ারাকাহর সাথে পড়ার জন্য ধন্যবাদ।';
+
+  @override
+  String get orderReturnPolicy => 'ফেরত নীতি';
+
+  @override
+  String get orderPolicyTitle => 'ফেরত ও রিফান্ড';
+
+  @override
+  String get orderPolicyWhenTitle => 'ডেলিভারির ৭ দিনের মধ্যে';
+
+  @override
+  String get orderPolicyWhen =>
+      'ডেলিভারির ৭ দিনের মধ্যে অর্ডারের পাতা থেকে ফেরতের অনুরোধ করুন। সময় থাকা পর্যন্ত বোতামটি সেখানে থাকবে।';
+
+  @override
+  String get orderPolicyWhatTitle => 'কী ফেরত দেওয়া যায়';
+
+  @override
+  String get orderPolicyWhat =>
+      'যে ছাপা বই নষ্ট অবস্থায় এসেছে, বা ভুল বই এসেছে। অন্য কিছু হলে “অন্য কারণ” বেছে নিয়ে কী হয়েছে লিখুন। সার্টিফায়েড ইউজড বইয়েও একই নিয়ম। লাইব্রেরিতে যোগ হওয়া ই-বুক ফেরত দেওয়া যায় না।';
+
+  @override
+  String get orderPolicyHowTitle => 'কীভাবে হয়';
+
+  @override
+  String get orderPolicyHow =>
+      'সমস্যার ৩টি পর্যন্ত ছবি দিন। আমরা ২ দিনের মধ্যে অর্ডারের পাতায় উত্তর দিই। অনুমোদন হলে আপনার ঠিকানা থেকে বইটি নিয়ে আসি।';
+
+  @override
+  String get orderPolicyMoneyTitle => 'আপনার টাকা';
+
+  @override
+  String get orderPolicyMoney =>
+      'ফেরত অনুমোদন হলে বইয়ের দাম আপনার ওয়ারাকাহ ওয়ালেটে যায়, পরের অর্ডারে ব্যবহার করতে পারবেন। ডেলিভারি আর গিফট র‍্যাপের টাকা ফেরত হয় না।';
+
+  @override
+  String get orderPolicyCancelTitle => 'বরং বাতিল করতে চাইলে';
+
+  @override
+  String get orderPolicyCancel =>
+      'অর্ডার পাঠানোর আগ পর্যন্ত অর্ডারের পাতা থেকে বাতিল করা যায়। যা দিয়েছেন, সব ওয়ালেটে ফেরত যায়।';
+
+  @override
+  String get orderPolicyUsedTitle => 'অন্য পাঠকদের বই';
+
+  @override
+  String get orderPolicyUsed =>
+      'অন্য পাঠকদের কাছ থেকে কেনা বই ওয়ারাকাহ বিক্রি করে না, তাই এখানে ফেরত দেওয়া যায় না। বিক্রেতাকে টাকা দেওয়ার আগে বইটি দেখে নিন।';
+
+  @override
   String get adminOrderTitle => 'অর্ডার';
 
   @override

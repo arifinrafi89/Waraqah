@@ -52,4 +52,5 @@ OrderLineModel _line(CartLine line) => OrderLineModel(
   format: line.format,
   language: line.language,
   coverSeed: line.coverSeed,
+  editionId: line.kind == CartItemKind.edition ? line.itemId : null,
 );

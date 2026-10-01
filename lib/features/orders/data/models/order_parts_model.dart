@@ -22,6 +22,7 @@ abstract class OrderLineModel with _$OrderLineModel {
     BookFormat? format,
     BookLanguage? language,
     @Default(0) int coverSeed,
+    String? editionId,
   }) = _OrderLineModel;
 
   factory OrderLineModel.fromJson(Map<String, dynamic> json) =>
@@ -83,6 +84,7 @@ extension OrderLineModelX on OrderLineModel {
     format: format,
     language: language,
     coverSeed: coverSeed,
+    editionId: editionId,
   );
 }
 

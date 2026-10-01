@@ -2617,6 +2617,144 @@ abstract class AppL10n {
   /// **'Returns are open for 7 days after delivery.'**
   String get orderReturnWindow;
 
+  /// No description provided for @orderBuyAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy again'**
+  String get orderBuyAgain;
+
+  /// No description provided for @orderBackInCart.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 book is back in your cart.} other{{count} books are back in your cart.}}'**
+  String orderBackInCart(int count);
+
+  /// No description provided for @orderSomeUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 can\'t be bought again right now.} other{{count} can\'t be bought again right now.}}'**
+  String orderSomeUnavailable(int count);
+
+  /// No description provided for @orderNoneAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'None of these books can be bought again right now.'**
+  String get orderNoneAvailable;
+
+  /// No description provided for @orderInvoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice'**
+  String get orderInvoice;
+
+  /// No description provided for @orderInvoiceSeller.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah · Invoice'**
+  String get orderInvoiceSeller;
+
+  /// No description provided for @orderInvoiceQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} × {price}'**
+  String orderInvoiceQuantity(int count, String price);
+
+  /// No description provided for @orderInvoiceShipTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Ship to'**
+  String get orderInvoiceShipTo;
+
+  /// No description provided for @orderInvoiceThanks.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you for reading with Waraqah.'**
+  String get orderInvoiceThanks;
+
+  /// No description provided for @orderReturnPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Return policy'**
+  String get orderReturnPolicy;
+
+  /// No description provided for @orderPolicyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Returns and refunds'**
+  String get orderPolicyTitle;
+
+  /// No description provided for @orderPolicyWhenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Within 7 days of delivery'**
+  String get orderPolicyWhenTitle;
+
+  /// No description provided for @orderPolicyWhen.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask for a return from the order\'s page within 7 days of delivery. The button is there while the window is open.'**
+  String get orderPolicyWhen;
+
+  /// No description provided for @orderPolicyWhatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What can go back'**
+  String get orderPolicyWhatTitle;
+
+  /// No description provided for @orderPolicyWhat.
+  ///
+  /// In en, this message translates to:
+  /// **'Printed books that arrived damaged, or the wrong book. For anything else, choose “Something else” and tell us what happened. Certified Used copies follow the same rules. eBooks can\'t be returned once they\'re in your library.'**
+  String get orderPolicyWhat;
+
+  /// No description provided for @orderPolicyHowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How it works'**
+  String get orderPolicyHowTitle;
+
+  /// No description provided for @orderPolicyHow.
+  ///
+  /// In en, this message translates to:
+  /// **'Add up to 3 photos of the problem. We reply within 2 days, on the order\'s page. Once it\'s approved, we pick the book up from your address.'**
+  String get orderPolicyHow;
+
+  /// No description provided for @orderPolicyMoneyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your money'**
+  String get orderPolicyMoneyTitle;
+
+  /// No description provided for @orderPolicyMoney.
+  ///
+  /// In en, this message translates to:
+  /// **'When a return is approved, the price of the books goes to your Waraqah wallet, ready for your next order. Delivery and gift wrap aren\'t refunded.'**
+  String get orderPolicyMoney;
+
+  /// No description provided for @orderPolicyCancelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelling instead'**
+  String get orderPolicyCancelTitle;
+
+  /// No description provided for @orderPolicyCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Until your order ships, you can cancel it from the order\'s page. Everything you paid goes back to your wallet.'**
+  String get orderPolicyCancel;
+
+  /// No description provided for @orderPolicyUsedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Books from other readers'**
+  String get orderPolicyUsedTitle;
+
+  /// No description provided for @orderPolicyUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Copies you buy from other readers aren\'t sold by Waraqah, so they can\'t be returned here. Check the copy before you pay the seller.'**
+  String get orderPolicyUsed;
+
   /// No description provided for @adminOrderTitle.
   ///
   /// In en, this message translates to:

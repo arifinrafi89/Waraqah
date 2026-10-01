@@ -16,6 +16,7 @@ _OrderLineModel _$OrderLineModelFromJson(Map<String, dynamic> json) =>
       format: $enumDecodeNullable(_$BookFormatEnumMap, json['format']),
       language: $enumDecodeNullable(_$BookLanguageEnumMap, json['language']),
       coverSeed: (json['coverSeed'] as num?)?.toInt() ?? 0,
+      editionId: json['editionId'] as String?,
     );
 
 Map<String, dynamic> _$OrderLineModelToJson(_OrderLineModel instance) =>
@@ -28,6 +29,7 @@ Map<String, dynamic> _$OrderLineModelToJson(_OrderLineModel instance) =>
       'format': _$BookFormatEnumMap[instance.format],
       'language': _$BookLanguageEnumMap[instance.language],
       'coverSeed': instance.coverSeed,
+      'editionId': instance.editionId,
     };
 
 const _$BookFormatEnumMap = {
