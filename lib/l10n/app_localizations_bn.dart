@@ -1987,6 +1987,150 @@ class AppL10nBn extends AppL10n {
   String get listingReasonPrefix => 'কারণ: ';
 
   @override
+  String get reportAction => 'রিপোর্ট করুন';
+
+  @override
+  String get reportMoreOptions => 'আরও অপশন';
+
+  @override
+  String get reportTitleListing => 'এই লিস্টিং রিপোর্ট করুন';
+
+  @override
+  String get reportTitleUser => 'এই পাঠককে রিপোর্ট করুন';
+
+  @override
+  String get reportTitleMessage => 'এই মেসেজ রিপোর্ট করুন';
+
+  @override
+  String get reportTitleBite => 'এই বাইট রিপোর্ট করুন';
+
+  @override
+  String get reportTitleComment => 'এই মন্তব্য রিপোর্ট করুন';
+
+  @override
+  String get reportTitleReview => 'এই রিভিউ রিপোর্ট করুন';
+
+  @override
+  String get reportWhy => 'কেন রিপোর্ট করছেন?';
+
+  @override
+  String get reportReasonSpam => 'স্প্যাম বা প্রতারণা';
+
+  @override
+  String get reportReasonFake => 'ভুয়া বা বিভ্রান্তিকর';
+
+  @override
+  String get reportReasonPhotocopy => 'ফটোকপি বা পাইরেটেড বই';
+
+  @override
+  String get reportReasonHarassment => 'হয়রানি বা ঘৃণা';
+
+  @override
+  String get reportReasonOffensive => 'আপত্তিকর বা অনুপযুক্ত';
+
+  @override
+  String get reportReasonOther => 'অন্য কিছু';
+
+  @override
+  String get reportNoteLabel => 'আরও বলুন';
+
+  @override
+  String get reportNoteHint => 'ঐচ্ছিক। মডারেটরদের সিদ্ধান্ত নিতে সাহায্য করে।';
+
+  @override
+  String get reportNoteRequired => 'সমস্যাটি কী তা লিখুন।';
+
+  @override
+  String reportNoteTooLong(int max) {
+    return '$max অক্ষরের মধ্যে রাখুন।';
+  }
+
+  @override
+  String get reportPrivacy =>
+      'কে রিপোর্ট করেছে তা তারা জানবে না। একজন মডারেটর এটি দেখবেন।';
+
+  @override
+  String get reportSend => 'রিপোর্ট পাঠান';
+
+  @override
+  String get reportSent => 'ধন্যবাদ। একজন মডারেটর আপনার রিপোর্ট দেখবেন।';
+
+  @override
+  String reportBlockUser(String name) {
+    return '$name-কে ব্লক করুন';
+  }
+
+  @override
+  String reportUnblockUser(String name) {
+    return '$name-কে আনব্লক করুন';
+  }
+
+  @override
+  String reportBlockTitle(String name) {
+    return '$name-কে ব্লক করবেন?';
+  }
+
+  @override
+  String get reportBlockBody =>
+      'তাঁদের লিস্টিং মার্কেটপ্লেসে দেখাবে না। প্রোফাইল থেকে যেকোনো সময় আনব্লক করতে পারবেন।';
+
+  @override
+  String get reportBlockConfirm => 'ব্লক করুন';
+
+  @override
+  String get reportCancel => 'বাতিল';
+
+  @override
+  String reportBlocked(String name) {
+    return '$name-কে ব্লক করা হয়েছে।';
+  }
+
+  @override
+  String reportUnblocked(String name) {
+    return '$name-কে আনব্লক করা হয়েছে।';
+  }
+
+  @override
+  String reportBlockedNotice(String name) {
+    return 'আপনি $name-কে ব্লক করেছেন। অফার দিতে আনব্লক করুন।';
+  }
+
+  @override
+  String get reportUnblock => 'আনব্লক';
+
+  @override
+  String get reportBlockedTitle => 'ব্লক করা পাঠক';
+
+  @override
+  String get reportBlockedEmpty => 'আপনি কাউকে ব্লক করেননি।';
+
+  @override
+  String get reportBlockedEmptyBody =>
+      'কোনো পাঠকের প্রোফাইল বা লিস্টিংয়ের মেনু থেকে ব্লক করুন। তাঁদের লিস্টিং মার্কেটপ্লেসে আর দেখাবে না।';
+
+  @override
+  String reportBlockedSince(String date) {
+    return 'ব্লক করা হয়েছে $date';
+  }
+
+  @override
+  String get listingRulesTitle => 'লিস্ট করার আগে';
+
+  @override
+  String get listingRuleOriginal => 'শুধু আসল ছাপা বই। কোনো ফটোকপি নয়।';
+
+  @override
+  String get listingRulePirated =>
+      'কোনো পাইরেটেড বই, পিডিএফ প্রিন্ট বা অননুমোদিত কপি নয়।';
+
+  @override
+  String get listingRuleHonest => 'অবস্থা সৎভাবে লিখুন, নিজের কপির ছবি দিন।';
+
+  @override
+  String get listingRuleWarning =>
+      'এই নিয়ম ভাঙলে মডারেটর লিস্টিং বাতিল করবেন, বারবার ভাঙলে অ্যাকাউন্ট নিষিদ্ধ হতে পারে।';
+
+  @override
   String get usedMarketTitle => 'পি২পি মার্কেটপ্লেস';
 
   @override

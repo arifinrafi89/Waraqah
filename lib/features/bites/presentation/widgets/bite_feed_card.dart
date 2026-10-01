@@ -4,6 +4,8 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../report/domain/entities/content_report.dart';
+import '../../../report/presentation/widgets/report_icon_button.dart';
 import '../../domain/entities/bite.dart';
 import 'bite_feed_parts.dart';
 
@@ -86,6 +88,12 @@ class BiteFeedCard extends StatelessWidget {
                   label: l10n.bitesLike,
                   active: bite.liked,
                   onTap: onLike,
+                ),
+                ReportIconButton(
+                  target: ReportTarget(
+                    kind: ReportTargetKind.bite,
+                    id: bite.id,
+                  ),
                 ),
               ],
             ),

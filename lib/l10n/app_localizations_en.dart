@@ -2068,6 +2068,152 @@ class AppL10nEn extends AppL10n {
   String get listingReasonPrefix => 'Reason: ';
 
   @override
+  String get reportAction => 'Report';
+
+  @override
+  String get reportMoreOptions => 'More options';
+
+  @override
+  String get reportTitleListing => 'Report this listing';
+
+  @override
+  String get reportTitleUser => 'Report this reader';
+
+  @override
+  String get reportTitleMessage => 'Report this message';
+
+  @override
+  String get reportTitleBite => 'Report this Bite';
+
+  @override
+  String get reportTitleComment => 'Report this comment';
+
+  @override
+  String get reportTitleReview => 'Report this review';
+
+  @override
+  String get reportWhy => 'Why are you reporting it?';
+
+  @override
+  String get reportReasonSpam => 'Spam or scam';
+
+  @override
+  String get reportReasonFake => 'Fake or misleading';
+
+  @override
+  String get reportReasonPhotocopy => 'Photocopy or pirated book';
+
+  @override
+  String get reportReasonHarassment => 'Harassment or hate';
+
+  @override
+  String get reportReasonOffensive => 'Offensive or inappropriate';
+
+  @override
+  String get reportReasonOther => 'Something else';
+
+  @override
+  String get reportNoteLabel => 'Tell us more';
+
+  @override
+  String get reportNoteHint => 'Optional. Helps moderators decide.';
+
+  @override
+  String get reportNoteRequired => 'Tell us what\'s wrong.';
+
+  @override
+  String reportNoteTooLong(int max) {
+    return 'Keep it under $max characters.';
+  }
+
+  @override
+  String get reportPrivacy =>
+      'They won\'t know who reported them. A moderator will review it.';
+
+  @override
+  String get reportSend => 'Send report';
+
+  @override
+  String get reportSent => 'Thanks. A moderator will review your report.';
+
+  @override
+  String reportBlockUser(String name) {
+    return 'Block $name';
+  }
+
+  @override
+  String reportUnblockUser(String name) {
+    return 'Unblock $name';
+  }
+
+  @override
+  String reportBlockTitle(String name) {
+    return 'Block $name?';
+  }
+
+  @override
+  String get reportBlockBody =>
+      'Their listings won\'t show in the marketplace. You can unblock them any time from Profile.';
+
+  @override
+  String get reportBlockConfirm => 'Block';
+
+  @override
+  String get reportCancel => 'Cancel';
+
+  @override
+  String reportBlocked(String name) {
+    return '$name is blocked.';
+  }
+
+  @override
+  String reportUnblocked(String name) {
+    return '$name is unblocked.';
+  }
+
+  @override
+  String reportBlockedNotice(String name) {
+    return 'You blocked $name. Unblock them to make an offer.';
+  }
+
+  @override
+  String get reportUnblock => 'Unblock';
+
+  @override
+  String get reportBlockedTitle => 'Blocked readers';
+
+  @override
+  String get reportBlockedEmpty => 'You haven\'t blocked anyone.';
+
+  @override
+  String get reportBlockedEmptyBody =>
+      'Block a reader from their profile or a listing\'s menu. Their listings stop showing in the marketplace.';
+
+  @override
+  String reportBlockedSince(String date) {
+    return 'Blocked $date';
+  }
+
+  @override
+  String get listingRulesTitle => 'Before you list';
+
+  @override
+  String get listingRuleOriginal =>
+      'Only original printed books. No photocopies.';
+
+  @override
+  String get listingRulePirated =>
+      'No pirated books, PDF printouts or unofficial copies.';
+
+  @override
+  String get listingRuleHonest =>
+      'Describe the condition honestly, with photos of your own copy.';
+
+  @override
+  String get listingRuleWarning =>
+      'Moderators reject listings that break these rules, and repeat breaks can get an account banned.';
+
+  @override
   String get usedMarketTitle => 'P2P Marketplace';
 
   @override

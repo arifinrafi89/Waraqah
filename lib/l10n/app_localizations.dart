@@ -3655,6 +3655,252 @@ abstract class AppL10n {
   /// **'Reason: '**
   String get listingReasonPrefix;
 
+  /// No description provided for @reportAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Report'**
+  String get reportAction;
+
+  /// No description provided for @reportMoreOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'More options'**
+  String get reportMoreOptions;
+
+  /// No description provided for @reportTitleListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Report this listing'**
+  String get reportTitleListing;
+
+  /// No description provided for @reportTitleUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Report this reader'**
+  String get reportTitleUser;
+
+  /// No description provided for @reportTitleMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Report this message'**
+  String get reportTitleMessage;
+
+  /// No description provided for @reportTitleBite.
+  ///
+  /// In en, this message translates to:
+  /// **'Report this Bite'**
+  String get reportTitleBite;
+
+  /// No description provided for @reportTitleComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Report this comment'**
+  String get reportTitleComment;
+
+  /// No description provided for @reportTitleReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Report this review'**
+  String get reportTitleReview;
+
+  /// No description provided for @reportWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Why are you reporting it?'**
+  String get reportWhy;
+
+  /// No description provided for @reportReasonSpam.
+  ///
+  /// In en, this message translates to:
+  /// **'Spam or scam'**
+  String get reportReasonSpam;
+
+  /// No description provided for @reportReasonFake.
+  ///
+  /// In en, this message translates to:
+  /// **'Fake or misleading'**
+  String get reportReasonFake;
+
+  /// No description provided for @reportReasonPhotocopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Photocopy or pirated book'**
+  String get reportReasonPhotocopy;
+
+  /// No description provided for @reportReasonHarassment.
+  ///
+  /// In en, this message translates to:
+  /// **'Harassment or hate'**
+  String get reportReasonHarassment;
+
+  /// No description provided for @reportReasonOffensive.
+  ///
+  /// In en, this message translates to:
+  /// **'Offensive or inappropriate'**
+  String get reportReasonOffensive;
+
+  /// No description provided for @reportReasonOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Something else'**
+  String get reportReasonOther;
+
+  /// No description provided for @reportNoteLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us more'**
+  String get reportNoteLabel;
+
+  /// No description provided for @reportNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. Helps moderators decide.'**
+  String get reportNoteHint;
+
+  /// No description provided for @reportNoteRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us what\'s wrong.'**
+  String get reportNoteRequired;
+
+  /// No description provided for @reportNoteTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep it under {max} characters.'**
+  String reportNoteTooLong(int max);
+
+  /// No description provided for @reportPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'They won\'t know who reported them. A moderator will review it.'**
+  String get reportPrivacy;
+
+  /// No description provided for @reportSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send report'**
+  String get reportSend;
+
+  /// No description provided for @reportSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks. A moderator will review your report.'**
+  String get reportSent;
+
+  /// No description provided for @reportBlockUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Block {name}'**
+  String reportBlockUser(String name);
+
+  /// No description provided for @reportUnblockUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Unblock {name}'**
+  String reportUnblockUser(String name);
+
+  /// No description provided for @reportBlockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Block {name}?'**
+  String reportBlockTitle(String name);
+
+  /// No description provided for @reportBlockBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Their listings won\'t show in the marketplace. You can unblock them any time from Profile.'**
+  String get reportBlockBody;
+
+  /// No description provided for @reportBlockConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Block'**
+  String get reportBlockConfirm;
+
+  /// No description provided for @reportCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get reportCancel;
+
+  /// No description provided for @reportBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is blocked.'**
+  String reportBlocked(String name);
+
+  /// No description provided for @reportUnblocked.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is unblocked.'**
+  String reportUnblocked(String name);
+
+  /// No description provided for @reportBlockedNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'You blocked {name}. Unblock them to make an offer.'**
+  String reportBlockedNotice(String name);
+
+  /// No description provided for @reportUnblock.
+  ///
+  /// In en, this message translates to:
+  /// **'Unblock'**
+  String get reportUnblock;
+
+  /// No description provided for @reportBlockedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked readers'**
+  String get reportBlockedTitle;
+
+  /// No description provided for @reportBlockedEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t blocked anyone.'**
+  String get reportBlockedEmpty;
+
+  /// No description provided for @reportBlockedEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Block a reader from their profile or a listing\'s menu. Their listings stop showing in the marketplace.'**
+  String get reportBlockedEmptyBody;
+
+  /// No description provided for @reportBlockedSince.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked {date}'**
+  String reportBlockedSince(String date);
+
+  /// No description provided for @listingRulesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Before you list'**
+  String get listingRulesTitle;
+
+  /// No description provided for @listingRuleOriginal.
+  ///
+  /// In en, this message translates to:
+  /// **'Only original printed books. No photocopies.'**
+  String get listingRuleOriginal;
+
+  /// No description provided for @listingRulePirated.
+  ///
+  /// In en, this message translates to:
+  /// **'No pirated books, PDF printouts or unofficial copies.'**
+  String get listingRulePirated;
+
+  /// No description provided for @listingRuleHonest.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe the condition honestly, with photos of your own copy.'**
+  String get listingRuleHonest;
+
+  /// No description provided for @listingRuleWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Moderators reject listings that break these rules, and repeat breaks can get an account banned.'**
+  String get listingRuleWarning;
+
   /// No description provided for @usedMarketTitle.
   ///
   /// In en, this message translates to:

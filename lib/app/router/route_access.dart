@@ -9,6 +9,7 @@ import '../../features/home/home_routes.dart';
 import '../../features/inbox/inbox_routes.dart';
 import '../../features/loyalty/loyalty_routes.dart';
 import '../../features/orders/orders_routes.dart';
+import '../../features/report/report_routes.dart';
 import '../../features/wallet/wallet_routes.dart';
 
 /// Which pages need a signed-in user or a staff account, and where to send
@@ -28,6 +29,7 @@ abstract final class RouteAccess {
     LoyaltyRoutes.points,
     WalletRoutes.wallet,
     InboxRoutes.inbox,
+    ReportRoutes.blocked,
   ];
 
   /// Where to redirect [location] for [user], or `null` to let it open.

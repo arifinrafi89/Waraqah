@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_dimens.dart';
+import '../../../report/domain/entities/content_report.dart';
+import '../../../report/presentation/widgets/report_on_long_press.dart';
+import '../../domain/entities/inbox_message.dart';
 import '../../domain/entities/inbox_thread.dart';
 import 'event_line.dart';
 import 'message_bubble.dart';
@@ -33,7 +36,12 @@ class MessageList extends StatelessWidget {
         if (message.event != null) {
           return EventLine(thread: thread, message: message);
         }
-        return MessageBubble(message: message);
+        // Long-press the other person's message to report it.
+        return ReportOnLongPress(
+          target: ReportTarget(kind: ReportTargetKind.message, id: message.id),
+          enabled: message.from == MessageFrom.them,
+          child: MessageBubble(message: message),
+        );
       },
     );
   }

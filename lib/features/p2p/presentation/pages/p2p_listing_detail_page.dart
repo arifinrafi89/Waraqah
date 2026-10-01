@@ -8,6 +8,10 @@ import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../inbox/presentation/widgets/listing_offer_bar.dart';
+import '../../../report/domain/entities/content_report.dart';
+import '../../../report/presentation/providers/report_providers.dart';
+import '../../../report/presentation/widgets/blocked_seller_bar.dart';
+import '../../../report/presentation/widgets/report_menu_button.dart';
 import '../../p2p_routes.dart';
 import '../providers/p2p_providers.dart';
 import '../widgets/listing_details.dart';
@@ -26,10 +30,15 @@ class P2pListingDetailPage extends ConsumerWidget {
     final l10n = AppL10n.of(context)!;
     final listing = ref.watch(p2pListingDetailProvider(id));
     final loaded = listing.value;
+    final theirs = loaded == null || loaded.isMine ? null : loaded;
+    final blocked =
+        theirs != null && ref.watch(isBlockedProvider(theirs.sellerId));
     return Scaffold(
-      bottomNavigationBar: loaded == null || loaded.isMine
+      bottomNavigationBar: theirs == null
           ? null
-          : ListingOfferBar(listing: loaded),
+          : blocked
+          ? BlockedSellerBar(readerId: theirs.sellerId, name: theirs.sellerName)
+          : ListingOfferBar(listing: theirs),
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -46,6 +55,17 @@ class P2pListingDetailPage extends ConsumerWidget {
                         : context.go(P2pRoutes.p2p),
                   ),
                   Text(l10n.usedListingTitle, style: context.texts.titleLarge),
+                  if (theirs != null) ...[
+                    const Spacer(),
+                    ReportMenuButton(
+                      target: ReportTarget(
+                        kind: ReportTargetKind.listing,
+                        id: theirs.id,
+                      ),
+                      readerId: theirs.sellerId,
+                      readerName: theirs.sellerName,
+                    ),
+                  ],
                 ],
               ),
             ),

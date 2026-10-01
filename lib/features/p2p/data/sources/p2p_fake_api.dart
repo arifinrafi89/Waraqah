@@ -25,11 +25,15 @@ abstract final class P2pFakeApi {
   /// `?id=p-nabila`: a reader's seller page, or `null`.
   static const String seller = '/p2p/seller';
 
+  /// [isBlocked] says whether the signed-in reader blocked a seller; their
+  /// listings stay out of the marketplace and the book page.
   static Map<String, Object? Function(RequestOptions)> routes(
-    P2pFakeStore store,
-  ) {
+    P2pFakeStore store, {
+    bool Function(String sellerId) isBlocked = _nobody,
+  }) {
     List<Object?> answer(Iterable<P2pListingModel> listings) => [
-      for (final listing in listings) store.json(listing),
+      for (final listing in listings)
+        if (!isBlocked(listing.sellerId)) store.json(listing),
     ];
     return {
       listings: (options) {
@@ -40,8 +44,9 @@ abstract final class P2pFakeApi {
               ? l.status == P2pListingStatus.live && l.sellerId != P2pPeople.me
               : l.toEntity().isOpen,
         );
+        final shown = found.where((l) => !isBlocked(l.sellerId));
         final limit = int.tryParse('${query['limit']}');
-        return answer(limit == null ? found : found.take(limit));
+        return answer(limit == null ? shown : shown.take(limit));
       },
       mine: (_) => answer(store.all.where((l) => l.sellerId == P2pPeople.me)),
       forBook: (options) => answer(
@@ -62,4 +67,6 @@ abstract final class P2pFakeApi {
       },
     };
   }
+
+  static bool _nobody(String _) => false;
 }

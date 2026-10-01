@@ -23,6 +23,8 @@ import '../features/orders/data/sources/order_fake_api.dart';
 import '../features/orders/data/sources/order_fake_store.dart';
 import '../features/p2p/data/sources/p2p_fake_api.dart';
 import '../features/p2p/data/sources/p2p_fake_store.dart';
+import '../features/report/data/sources/report_fake_api.dart';
+import '../features/report/data/sources/report_fake_store.dart';
 import '../features/wallet/data/sources/wallet_fake_api.dart';
 import '../features/wallet/data/sources/wallet_fake_store.dart';
 import '../features/wishlist/data/sources/wishlist_fake_api.dart';
@@ -44,6 +46,8 @@ abstract final class FakeApiRoutes {
     // Offers in the inbox reserve and sell marketplace listings.
     final p2p = P2pFakeStore();
     final inbox = InboxFakeStore(p2p);
+    // Blocking a reader hides their listings from the marketplace.
+    final reports = ReportFakeStore(p2p);
     return FakeApiInterceptor({
       ...AuthFakeApi.routes,
       ...BookFakeApi.routes,
@@ -62,8 +66,9 @@ abstract final class FakeApiRoutes {
       ...DealsFakeApi.routes(deals),
       ...DonateFakeApi.routes(orders),
       ...WalletFakeApi.routes(wallet),
-      ...P2pFakeApi.routes(p2p),
+      ...P2pFakeApi.routes(p2p, isBlocked: reports.isBlocked),
       ...InboxFakeApi.routes(inbox),
+      ...ReportFakeApi.routes(reports),
     });
   }
 }
