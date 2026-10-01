@@ -7,6 +7,8 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../report/domain/entities/content_report.dart';
+import '../../../report/presentation/widgets/report_menu_button.dart';
 import '../../p2p_routes.dart';
 import '../providers/p2p_providers.dart';
 import '../widgets/listing_details_skeleton.dart';
@@ -26,6 +28,7 @@ class SellerPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppL10n.of(context)!;
     final seller = ref.watch(sellerProvider(id));
+    final loaded = seller.value;
     return Scaffold(
       body: SafeArea(
         bottom: false,
@@ -43,6 +46,17 @@ class SellerPage extends ConsumerWidget {
                         : context.go(P2pRoutes.p2p),
                   ),
                   Text(l10n.sellerTitle, style: context.texts.titleLarge),
+                  if (loaded != null) ...[
+                    const Spacer(),
+                    ReportMenuButton(
+                      target: ReportTarget(
+                        kind: ReportTargetKind.user,
+                        id: loaded.id,
+                      ),
+                      readerId: loaded.id,
+                      readerName: loaded.name,
+                    ),
+                  ],
                 ],
               ),
             ),

@@ -4,6 +4,8 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/surface_card.dart';
+import '../../../report/domain/entities/content_report.dart';
+import '../../../report/presentation/widgets/report_icon_button.dart';
 import '../../domain/entities/book_review.dart';
 import 'rating_stars.dart';
 
@@ -61,6 +63,12 @@ class ReviewTile extends StatelessWidget {
                 ),
               ),
               RatingStars(rating: review.rating.toDouble()),
+              ReportIconButton(
+                target: ReportTarget(
+                  kind: ReportTargetKind.review,
+                  id: review.id,
+                ),
+              ),
             ],
           ),
           const SizedBox(height: Insets.sm),

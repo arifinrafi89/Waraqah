@@ -8,6 +8,7 @@ import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/p2p_listing.dart';
 import '../providers/p2p_add_listing_notifier.dart';
+import '../widgets/listing_rules_card.dart';
 import '../widgets/p2p_add_listing_field.dart';
 
 class P2pAddListingPage extends ConsumerStatefulWidget {
@@ -87,6 +88,8 @@ class _P2pAddListingPageState extends ConsumerState<P2pAddListingPage> {
                     content: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const ListingRulesCard(),
+                        const SizedBox(height: Insets.md),
                         P2pAddListingField(
                           label: l10n.listingBookTitle,
                           hint: l10n.listingBookTitleHint,

@@ -67,6 +67,12 @@ The app also has:
 - **Seller pages and ratings are done** (Farhan, #110):
   - `P2pRoutes.sellerFor(id)` shows name, area, member since, books sold, rating, reviews and what's on sale now.
   - After a sale, buyer and seller rate each other once in the thread (`RatingRules`: 1–5 stars, comment up to 300 characters).
+- **Report and block are done** (Arifin):
+  - Report from any page with `ref.report(context, ReportTarget(kind: ReportTargetKind.listing | user | message | bite | comment | review, id: ...))`: a sheet with a reason and an optional note (`ReportRules`: "Something else" needs a note, up to 500 characters; only Listings offer "Photocopy"). Guests log in first.
+  - Ready-made bricks in `features/report/presentation/widgets/`: `ReportMenuButton` (the ⋮ menu: report, plus block or unblock a reader), `ReportIconButton` (a small flag, on Bites and reviews) and `ReportOnLongPress` (on the other person's messages).
+  - Blocking: `ref.block(context, readerId, name)` / `ref.unblock(...)`, `isBlockedProvider(readerId)`. Blocked sellers' Listings leave the marketplace, Home and the book page; their Listing page shows "You blocked …" instead of the offer bar. Profile → **Blocked readers** (`ReportRoutes.blocked`, `/blocked`) lists them to unblock.
+  - Fake API: `/reports`, `/blocks`, `/blocks/add`, `/blocks/remove` (`ReportFakeApi`, `ReportFakeStore`, shared with `P2pFakeApi` through `isBlocked`). The server refuses reporting or blocking yourself.
+  - The add-listing form shows the rules first (`ListingRulesCard`): no photocopies, no pirated books, honest condition.
 - **Accounts** (Niloy, #108): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`).
 - **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
@@ -118,7 +124,7 @@ lib/
 │   └── utils/              Bdt.format (৳ prices), stock labels, cover gradients
 ├── features/
 │   ├── admin/  ai_assistant/  alerts/  auth/  bites/  cart/  catalog/  checkout/
-│   ├── deals/  donate/  home/  inbox/  loyalty/  orders/  p2p/  profile/  wallet/  wishlist/
+│   ├── deals/  donate/  home/  inbox/  loyalty/  orders/  p2p/  profile/  report/  wallet/  wishlist/
 └── l10n/                   app_en.arb, app_bn.arb (+ generated AppL10n)
 ```
 
@@ -359,4 +365,7 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - Search's "Request this book" opens a stand-in page (`CatalogRoutes.requestBook`) until the Request a Book flow lands (Arifin). Point it at the real flow then.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
 - No push alerts while the app is closed: the inbox badge is the notification, by design for now.
+- Reports are saved by the fake backend but the Moderation Center's Reports tab is still empty until the Moderation Center is built (Arifin, next).
+- Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Farhan's inbox: refuse sends to and from blocked readers).
+- Bite comments don't exist yet, so nothing reports them. When they land, add `ReportIconButton(target: ReportTarget(kind: ReportTargetKind.comment, id: ...))` (Niloy).
 - The P2P marketplace filter bar's text is English-only, and "Save draft" on the add-listing form doesn't save yet (Arifin's listing flow).

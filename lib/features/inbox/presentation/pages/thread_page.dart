@@ -9,6 +9,8 @@ import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../p2p/p2p_routes.dart';
+import '../../../report/domain/entities/content_report.dart';
+import '../../../report/presentation/widgets/report_menu_button.dart';
 import '../../domain/entities/inbox_thread.dart';
 import '../../inbox_routes.dart';
 import '../providers/thread_providers.dart';
@@ -42,9 +44,17 @@ class ThreadPage extends ConsumerWidget {
                         ? context.pop()
                         : context.go(InboxRoutes.inbox),
                   ),
-                  if (loaded != null)
-                    Expanded(child: _Who(thread: loaded))
-                  else
+                  if (loaded != null) ...[
+                    Expanded(child: _Who(thread: loaded)),
+                    ReportMenuButton(
+                      target: ReportTarget(
+                        kind: ReportTargetKind.user,
+                        id: loaded.otherId,
+                      ),
+                      readerId: loaded.otherId,
+                      readerName: loaded.otherName,
+                    ),
+                  ] else
                     const Spacer(),
                 ],
               ),
