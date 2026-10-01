@@ -97,7 +97,7 @@ class ProfilePage extends ConsumerWidget {
                 ),
                 const SizedBox(height: Insets.xl),
                 SettingsGroup(
-                  label: l10n.profileHome,
+                  label: l10n.homeSettingsTitle,
                   icon: Icons.home_rounded,
                   child: const AyahSwitchTile(),
                 ),

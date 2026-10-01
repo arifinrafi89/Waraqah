@@ -179,6 +179,9 @@ class AppL10nEn extends AppL10n {
   String get homeShowAyah => 'Show Ayah of the Day';
 
   @override
+  String get homeSettingsTitle => 'Home';
+
+  @override
   String get commonUndo => 'Undo';
 
   @override
@@ -1613,9 +1616,6 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get profileAppearance => 'Appearance';
-
-  @override
-  String get profileHome => 'Home';
 
   @override
   String get profileThemeLight => 'Light';

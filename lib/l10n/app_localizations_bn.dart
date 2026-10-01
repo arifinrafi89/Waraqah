@@ -177,6 +177,9 @@ class AppL10nBn extends AppL10n {
   String get homeShowAyah => 'আজকের আয়াত দেখান';
 
   @override
+  String get homeSettingsTitle => 'হোম';
+
+  @override
   String get commonUndo => 'আগের অবস্থায় ফেরান';
 
   @override
@@ -1544,9 +1547,6 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get profileAppearance => 'থিম';
-
-  @override
-  String get profileHome => 'হোম';
 
   @override
   String get profileThemeLight => 'লাইট';

@@ -427,6 +427,12 @@ abstract class AppL10n {
   /// **'Show Ayah of the Day'**
   String get homeShowAyah;
 
+  /// No description provided for @homeSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get homeSettingsTitle;
+
   /// No description provided for @commonUndo.
   ///
   /// In en, this message translates to:
@@ -2814,12 +2820,6 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Appearance'**
   String get profileAppearance;
-
-  /// No description provided for @profileHome.
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get profileHome;
 
   /// No description provided for @profileThemeLight.
   ///
