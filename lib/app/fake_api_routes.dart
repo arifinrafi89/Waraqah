@@ -18,6 +18,8 @@ import '../features/donate/data/sources/donate_fake_api.dart';
 import '../features/deals/data/sources/deals_fake_store.dart';
 import '../features/inbox/data/sources/inbox_fake_api.dart';
 import '../features/inbox/data/sources/inbox_fake_store.dart';
+import '../features/moderation/data/sources/moderation_fake_api.dart';
+import '../features/moderation/data/sources/moderation_fake_store.dart';
 import '../features/orders/data/sources/order_admin_fake_api.dart';
 import '../features/orders/data/sources/order_fake_api.dart';
 import '../features/orders/data/sources/order_fake_store.dart';
@@ -48,6 +50,8 @@ abstract final class FakeApiRoutes {
     final inbox = InboxFakeStore(p2p);
     // Blocking a reader hides their listings from the marketplace.
     final reports = ReportFakeStore(p2p);
+    // Moderators approve listings, act on reports and ban readers.
+    final moderation = ModerationFakeStore(p2p, reports, inbox: inbox);
     return FakeApiInterceptor({
       ...AuthFakeApi.routes,
       ...BookFakeApi.routes,
@@ -66,9 +70,13 @@ abstract final class FakeApiRoutes {
       ...DealsFakeApi.routes(deals),
       ...DonateFakeApi.routes(orders),
       ...WalletFakeApi.routes(wallet),
-      ...P2pFakeApi.routes(p2p, isBlocked: reports.isBlocked),
+      ...P2pFakeApi.routes(
+        p2p,
+        isBlocked: (id) => reports.isBlocked(id) || moderation.isBanned(id),
+      ),
       ...InboxFakeApi.routes(inbox),
       ...ReportFakeApi.routes(reports),
+      ...ModerationFakeApi.routes(moderation),
     });
   }
 }

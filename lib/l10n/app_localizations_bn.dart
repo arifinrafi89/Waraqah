@@ -1884,6 +1884,203 @@ class AppL10nBn extends AppL10n {
   String get moderationEmptyDisputes => 'কোনো সক্রিয় বিরোধ নেই।';
 
   @override
+  String get moderationTabLog => 'লগ';
+
+  @override
+  String get moderationApprove => 'অনুমোদন';
+
+  @override
+  String get moderationRequestChanges => 'পরিবর্তন চান';
+
+  @override
+  String get moderationReject => 'বাতিল করুন';
+
+  @override
+  String get moderationReasonChangesTitle => 'বিক্রেতাকে কী বদলাতে হবে?';
+
+  @override
+  String get moderationReasonRejectTitle => 'কেন বাতিল করা হচ্ছে?';
+
+  @override
+  String get moderationReasonLabel => 'কারণ';
+
+  @override
+  String get moderationReasonHint => 'বিক্রেতা এটি দেখবেন।';
+
+  @override
+  String get moderationReasonRequired => 'বিক্রেতার জন্য একটি কারণ লিখুন।';
+
+  @override
+  String moderationReasonTooLong(int max) {
+    return '$max অক্ষরের মধ্যে রাখুন।';
+  }
+
+  @override
+  String get moderationQuickPhotos => 'আপনার কপির আরও পরিষ্কার ছবি দিন';
+
+  @override
+  String get moderationQuickPhotocopy => 'এটি ফটোকপি মনে হচ্ছে';
+
+  @override
+  String get moderationQuickPrice => 'দাম নতুন কেনার চেয়ে বেশি';
+
+  @override
+  String get moderationQuickCondition => 'অবস্থা ছবির সঙ্গে মিলছে না';
+
+  @override
+  String get moderationSend => 'পাঠান';
+
+  @override
+  String moderationApproved(String title) {
+    return '$title এখন লাইভ।';
+  }
+
+  @override
+  String moderationChangesSent(String name) {
+    return '$name-এর কাছে পরিবর্তন চাওয়া হয়েছে।';
+  }
+
+  @override
+  String moderationRejected(String title) {
+    return '$title বাতিল করা হয়েছে।';
+  }
+
+  @override
+  String moderationStrikes(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি স্ট্রাইক',
+      zero: 'কোনো স্ট্রাইক নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get moderationBannedTag => 'নিষিদ্ধ';
+
+  @override
+  String get moderationPhotoFront => 'সামনে';
+
+  @override
+  String get moderationPhotoBack => 'পেছনে';
+
+  @override
+  String get moderationPhotoSpine => 'বাঁধাই';
+
+  @override
+  String get moderationPhotoInside => 'ভেতরে';
+
+  @override
+  String get moderationPhotoDamage => 'ক্ষতি';
+
+  @override
+  String get moderationNoPhotos => 'কোনো ছবি নেই। অনুমোদনের আগে ছবি চান।';
+
+  @override
+  String moderationNewPrice(String price) {
+    return 'নতুন $price';
+  }
+
+  @override
+  String moderationReportCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি রিপোর্ট',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get moderationKindListing => 'লিস্টিং';
+
+  @override
+  String get moderationKindUser => 'পাঠক';
+
+  @override
+  String get moderationKindMessage => 'মেসেজ';
+
+  @override
+  String get moderationKindBite => 'বাইট';
+
+  @override
+  String get moderationKindComment => 'মন্তব্য';
+
+  @override
+  String get moderationKindReview => 'রিভিউ';
+
+  @override
+  String moderationOwner(String name) {
+    return '$name-এর';
+  }
+
+  @override
+  String moderationReporterNote(String note) {
+    return 'রিপোর্টকারী: $note';
+  }
+
+  @override
+  String get moderationRemove => 'সরান';
+
+  @override
+  String get moderationDismiss => 'খারিজ';
+
+  @override
+  String get moderationWarn => 'সতর্ক করুন';
+
+  @override
+  String get moderationBan => 'নিষিদ্ধ করুন';
+
+  @override
+  String moderationBanTitle(String name) {
+    return '$name-কে নিষিদ্ধ করবেন?';
+  }
+
+  @override
+  String get moderationBanBody =>
+      'তাঁরা আর বিক্রি বা পোস্ট করতে পারবেন না, তাঁদের লিস্টিং মার্কেটপ্লেস থেকে সরে যাবে।';
+
+  @override
+  String get moderationCancel => 'বাতিল';
+
+  @override
+  String get moderationDone => 'সম্পন্ন। লগে রাখা হয়েছে।';
+
+  @override
+  String get moderationEmptyLog =>
+      'এখনো কোনো কাজ হয়নি। মডারেটরদের সব কাজ এখানে দেখাবে।';
+
+  @override
+  String get moderationLogApproved => 'অনুমোদন করেছেন';
+
+  @override
+  String get moderationLogChangesRequested => 'পরিবর্তন চেয়েছেন';
+
+  @override
+  String get moderationLogRejected => 'বাতিল করেছেন';
+
+  @override
+  String get moderationLogRemoved => 'সরিয়েছেন';
+
+  @override
+  String get moderationLogDismissed => 'রিপোর্ট খারিজ করেছেন:';
+
+  @override
+  String get moderationLogWarned => 'সতর্ক করেছেন';
+
+  @override
+  String get moderationLogBanned => 'নিষিদ্ধ করেছেন';
+
+  @override
+  String get moderationLogThirdStrike => 'তৃতীয় স্ট্রাইক';
+
+  @override
+  String moderationLogBy(String by, String time) {
+    return '$by · $time';
+  }
+
+  @override
   String get listingSellBook => 'বই বিক্রি করুন';
 
   @override

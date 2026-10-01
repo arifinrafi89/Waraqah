@@ -17,6 +17,8 @@ P2pListingModel seedListing(
   HandoverMethod handover = HandoverMethod.meetInPerson,
   String? note,
   String? category,
+  List<String> flags = const [],
+  List<String> photos = const [],
 }) {
   final seller = P2pPeople.find(sellerId)!;
   return P2pListingModel(
@@ -26,6 +28,8 @@ P2pListingModel seedListing(
     sellerName: seller.name,
     priceBdt: price,
     condition: condition,
+    flags: flags,
+    photos: photos,
     status: status,
     isNegotiable: negotiable,
     handover: handover,

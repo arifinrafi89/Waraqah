@@ -39,7 +39,7 @@ The app also has:
 
 ## 2. Current status
 
-- **Setup is done:** Book model with Editions, per-feature routes and fake APIs, login state and roles, the Admin area shell, and the Moderation Center shell (Arifin: tabs for Listings, Reports and Disputes).
+- **Setup is done:** Book model with Editions, per-feature routes and fake APIs, login state and roles, and the Admin area shell.
 - **Browsing pages are done** (Rahinur, #87): Section, Category, Author, Publisher and Series pages, inside the Catalog tab so the bottom nav stays. Routes are in `CatalogRoutes` (`sectionFor`, `categoryFor`, `authorFor`, `publisherFor`, `seriesFor`); pages in `features/catalog/presentation/pages/`; fixtures in `features/catalog/data/sources/` (`*_fixtures.dart`, `seed/`).
 - **Search is done** (Rahinur, #99): `/catalog/search` (`CatalogRoutes.search`, `search_page.dart`). Live search by title, Author, Publisher or ISBN; filters (Section, price, format, language, rating, in stock); sort (relevance, price, newest, bestselling); recent searches kept on the device. Every catalog query goes through `BookRepository.searchCatalog(CatalogFilters)` (`domain/entities/catalog_filters.dart`); state in `search_providers.dart` and `recent_searches_provider.dart`. No results shows "Request this book".
 - **Home feed is done** (Rahinur, #100): Home is composition only (`features/home/presentation/pages/home_page.dart`), in this order: flash-sale strip (Farhan's), Banners carousel, Section chips, Ayah of the Day, New arrivals, Bestsellers, Collections, Bites, "Used books from readers". Each part loads through its own provider with a skeleton and retry. Banners come from Home's own fake API (`/home/banners`, `home_fake_api.dart`, `GetBanners`); a `BannerTarget` (Collection, Section, Book or search) is mapped to a route by `bannerRoute` in `banner_card.dart`. New arrivals and Bestsellers come from `searchCatalog` (`GetNewArrivals`, `GetBestsellers`); "See all" opens `CatalogRoutes.searchFor(sort:)`, and Search also reads `?q=`. Every book card shows Waraqah's From-price, list price when discounted, and stock, and opens the book page.
@@ -73,6 +73,13 @@ The app also has:
   - Blocking: `ref.block(context, readerId, name)` / `ref.unblock(...)`, `isBlockedProvider(readerId)`. Blocked sellers' Listings leave the marketplace, Home and the book page; their Listing page shows "You blocked …" instead of the offer bar. Profile → **Blocked readers** (`ReportRoutes.blocked`, `/blocked`) lists them to unblock.
   - Fake API: `/reports`, `/blocks`, `/blocks/add`, `/blocks/remove` (`ReportFakeApi`, `ReportFakeStore`, shared with `P2pFakeApi` through `isBlocked`). The server refuses reporting or blocking yourself.
   - The add-listing form shows the rules first (`ListingRulesCard`): no photocopies, no pirated books, honest condition.
+- **Moderation Center is done** (Arifin): `features/moderation`, page at `AdminRoutes.section(AdminSection.moderation)`. Four tabs:
+  - **Listings to approve:** every Listing `inReview`, with photos, condition, flags, note, price vs new and the seller's strikes. Approve (goes live), Ask for changes or Reject; both need a reason the seller sees (`ModerationRules`: up to 300 characters, with one-tap reasons).
+  - **Reports:** open reports, one card per reported thing (with how many readers reported it), showing what was reported and whose it is. Remove (a Listing is taken down), Dismiss, Warn or Ban (with a confirm). Acting closes every open report on that thing.
+  - **Disputes:** empty until Waraqah-handled sales.
+  - **Log:** every action, newest first: what, on what, why, who and when.
+  - One strike system: a warning adds a strike, the third bans (`ModerationRules.maxStrikes`). Banned sellers' Listings leave the marketplace like blocked ones.
+  - Fake API `/moderation/listings`, `/moderation/listings/decide`, `/moderation/reports`, `/moderation/reports/act`, `/moderation/log` (`ModerationFakeStore`, shared with `P2pFakeStore` and `ReportFakeStore`). It finds reported messages, Bites and reviews in their features' own records (`ModerationSubjects`). Until there are login tokens, the app sends the staff member's name (`by`) for the log.
 - **Accounts** (Niloy, #108): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`).
 - **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
@@ -124,7 +131,7 @@ lib/
 │   └── utils/              Bdt.format (৳ prices), stock labels, cover gradients
 ├── features/
 │   ├── admin/  ai_assistant/  alerts/  auth/  bites/  cart/  catalog/  checkout/
-│   ├── deals/  donate/  home/  inbox/  loyalty/  orders/  p2p/  profile/  report/  wallet/  wishlist/
+│   ├── deals/  donate/  home/  inbox/  loyalty/  moderation/  orders/  p2p/  profile/  report/  wallet/  wishlist/
 └── l10n/                   app_en.arb, app_bn.arb (+ generated AppL10n)
 ```
 
@@ -365,7 +372,7 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - Search's "Request this book" opens a stand-in page (`CatalogRoutes.requestBook`) until the Request a Book flow lands (Arifin). Point it at the real flow then.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
 - No push alerts while the app is closed: the inbox badge is the notification, by design for now.
-- Reports are saved by the fake backend but the Moderation Center's Reports tab is still empty until the Moderation Center is built (Arifin, next).
+- Removing a reported message, Bite or review closes the report, but the item itself stays: Bites and reviews have no backend store yet, and the inbox doesn't delete messages. Bans don't stop posting Bites or reviews yet either (Niloy, Farhan).
 - Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Farhan's inbox: refuse sends to and from blocked readers).
 - Bite comments don't exist yet, so nothing reports them. When they land, add `ReportIconButton(target: ReportTarget(kind: ReportTargetKind.comment, id: ...))` (Niloy).
 - The P2P marketplace filter bar's text is English-only, and "Save draft" on the add-listing form doesn't save yet (Arifin's listing flow).

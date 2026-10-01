@@ -17,6 +17,7 @@ _ContentReportModel _$ContentReportModelFromJson(Map<String, dynamic> json) =>
           $enumDecodeNullable(_$ReportStatusEnumMap, json['status']) ??
           ReportStatus.open,
       note: json['note'] as String?,
+      reporterId: json['reporterId'] as String? ?? 'me',
     );
 
 Map<String, dynamic> _$ContentReportModelToJson(_ContentReportModel instance) =>

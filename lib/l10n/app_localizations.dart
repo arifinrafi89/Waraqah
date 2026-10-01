@@ -3451,6 +3451,330 @@ abstract class AppL10n {
   /// **'No active disputes.'**
   String get moderationEmptyDisputes;
 
+  /// No description provided for @moderationTabLog.
+  ///
+  /// In en, this message translates to:
+  /// **'Log'**
+  String get moderationTabLog;
+
+  /// No description provided for @moderationApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve'**
+  String get moderationApprove;
+
+  /// No description provided for @moderationRequestChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask for changes'**
+  String get moderationRequestChanges;
+
+  /// No description provided for @moderationReject.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get moderationReject;
+
+  /// No description provided for @moderationReasonChangesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What should the seller change?'**
+  String get moderationReasonChangesTitle;
+
+  /// No description provided for @moderationReasonRejectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Why is it rejected?'**
+  String get moderationReasonRejectTitle;
+
+  /// No description provided for @moderationReasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get moderationReasonLabel;
+
+  /// No description provided for @moderationReasonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The seller sees this.'**
+  String get moderationReasonHint;
+
+  /// No description provided for @moderationReasonRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a reason for the seller.'**
+  String get moderationReasonRequired;
+
+  /// No description provided for @moderationReasonTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep it under {max} characters.'**
+  String moderationReasonTooLong(int max);
+
+  /// No description provided for @moderationQuickPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Add clearer photos of your copy'**
+  String get moderationQuickPhotos;
+
+  /// No description provided for @moderationQuickPhotocopy.
+  ///
+  /// In en, this message translates to:
+  /// **'This looks like a photocopy'**
+  String get moderationQuickPhotocopy;
+
+  /// No description provided for @moderationQuickPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'The price is higher than buying new'**
+  String get moderationQuickPrice;
+
+  /// No description provided for @moderationQuickCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'The condition doesn\'t match the photos'**
+  String get moderationQuickCondition;
+
+  /// No description provided for @moderationSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get moderationSend;
+
+  /// No description provided for @moderationApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} is live.'**
+  String moderationApproved(String title);
+
+  /// No description provided for @moderationChangesSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Asked {name} for changes.'**
+  String moderationChangesSent(String name);
+
+  /// No description provided for @moderationRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} was rejected.'**
+  String moderationRejected(String title);
+
+  /// No description provided for @moderationStrikes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No strikes} =1{1 strike} other{{count} strikes}}'**
+  String moderationStrikes(int count);
+
+  /// No description provided for @moderationBannedTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Banned'**
+  String get moderationBannedTag;
+
+  /// No description provided for @moderationPhotoFront.
+  ///
+  /// In en, this message translates to:
+  /// **'Front'**
+  String get moderationPhotoFront;
+
+  /// No description provided for @moderationPhotoBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get moderationPhotoBack;
+
+  /// No description provided for @moderationPhotoSpine.
+  ///
+  /// In en, this message translates to:
+  /// **'Spine'**
+  String get moderationPhotoSpine;
+
+  /// No description provided for @moderationPhotoInside.
+  ///
+  /// In en, this message translates to:
+  /// **'Inside'**
+  String get moderationPhotoInside;
+
+  /// No description provided for @moderationPhotoDamage.
+  ///
+  /// In en, this message translates to:
+  /// **'Damage'**
+  String get moderationPhotoDamage;
+
+  /// No description provided for @moderationNoPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'No photos added. Ask for photos before approving.'**
+  String get moderationNoPhotos;
+
+  /// No description provided for @moderationNewPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'New {price}'**
+  String moderationNewPrice(String price);
+
+  /// No description provided for @moderationReportCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 report} other{{count} reports}}'**
+  String moderationReportCount(int count);
+
+  /// No description provided for @moderationKindListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Listing'**
+  String get moderationKindListing;
+
+  /// No description provided for @moderationKindUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Reader'**
+  String get moderationKindUser;
+
+  /// No description provided for @moderationKindMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get moderationKindMessage;
+
+  /// No description provided for @moderationKindBite.
+  ///
+  /// In en, this message translates to:
+  /// **'Bite'**
+  String get moderationKindBite;
+
+  /// No description provided for @moderationKindComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Comment'**
+  String get moderationKindComment;
+
+  /// No description provided for @moderationKindReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get moderationKindReview;
+
+  /// No description provided for @moderationOwner.
+  ///
+  /// In en, this message translates to:
+  /// **'By {name}'**
+  String moderationOwner(String name);
+
+  /// No description provided for @moderationReporterNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Reporter: {note}'**
+  String moderationReporterNote(String note);
+
+  /// No description provided for @moderationRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get moderationRemove;
+
+  /// No description provided for @moderationDismiss.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get moderationDismiss;
+
+  /// No description provided for @moderationWarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Warn'**
+  String get moderationWarn;
+
+  /// No description provided for @moderationBan.
+  ///
+  /// In en, this message translates to:
+  /// **'Ban'**
+  String get moderationBan;
+
+  /// No description provided for @moderationBanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ban {name}?'**
+  String moderationBanTitle(String name);
+
+  /// No description provided for @moderationBanBody.
+  ///
+  /// In en, this message translates to:
+  /// **'They can\'t sell or post any more, and their listings leave the marketplace.'**
+  String get moderationBanBody;
+
+  /// No description provided for @moderationCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get moderationCancel;
+
+  /// No description provided for @moderationDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done. It\'s in the log.'**
+  String get moderationDone;
+
+  /// No description provided for @moderationEmptyLog.
+  ///
+  /// In en, this message translates to:
+  /// **'No actions yet. Everything moderators do shows up here.'**
+  String get moderationEmptyLog;
+
+  /// No description provided for @moderationLogApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get moderationLogApproved;
+
+  /// No description provided for @moderationLogChangesRequested.
+  ///
+  /// In en, this message translates to:
+  /// **'Asked for changes'**
+  String get moderationLogChangesRequested;
+
+  /// No description provided for @moderationLogRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get moderationLogRejected;
+
+  /// No description provided for @moderationLogRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Removed'**
+  String get moderationLogRemoved;
+
+  /// No description provided for @moderationLogDismissed.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismissed a report on'**
+  String get moderationLogDismissed;
+
+  /// No description provided for @moderationLogWarned.
+  ///
+  /// In en, this message translates to:
+  /// **'Warned'**
+  String get moderationLogWarned;
+
+  /// No description provided for @moderationLogBanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Banned'**
+  String get moderationLogBanned;
+
+  /// No description provided for @moderationLogThirdStrike.
+  ///
+  /// In en, this message translates to:
+  /// **'Third strike'**
+  String get moderationLogThirdStrike;
+
+  /// No description provided for @moderationLogBy.
+  ///
+  /// In en, this message translates to:
+  /// **'{by} · {time}'**
+  String moderationLogBy(String by, String time);
+
   /// No description provided for @listingSellBook.
   ///
   /// In en, this message translates to:

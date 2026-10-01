@@ -1965,6 +1965,207 @@ class AppL10nEn extends AppL10n {
   String get moderationEmptyDisputes => 'No active disputes.';
 
   @override
+  String get moderationTabLog => 'Log';
+
+  @override
+  String get moderationApprove => 'Approve';
+
+  @override
+  String get moderationRequestChanges => 'Ask for changes';
+
+  @override
+  String get moderationReject => 'Reject';
+
+  @override
+  String get moderationReasonChangesTitle => 'What should the seller change?';
+
+  @override
+  String get moderationReasonRejectTitle => 'Why is it rejected?';
+
+  @override
+  String get moderationReasonLabel => 'Reason';
+
+  @override
+  String get moderationReasonHint => 'The seller sees this.';
+
+  @override
+  String get moderationReasonRequired => 'Add a reason for the seller.';
+
+  @override
+  String moderationReasonTooLong(int max) {
+    return 'Keep it under $max characters.';
+  }
+
+  @override
+  String get moderationQuickPhotos => 'Add clearer photos of your copy';
+
+  @override
+  String get moderationQuickPhotocopy => 'This looks like a photocopy';
+
+  @override
+  String get moderationQuickPrice => 'The price is higher than buying new';
+
+  @override
+  String get moderationQuickCondition =>
+      'The condition doesn\'t match the photos';
+
+  @override
+  String get moderationSend => 'Send';
+
+  @override
+  String moderationApproved(String title) {
+    return '$title is live.';
+  }
+
+  @override
+  String moderationChangesSent(String name) {
+    return 'Asked $name for changes.';
+  }
+
+  @override
+  String moderationRejected(String title) {
+    return '$title was rejected.';
+  }
+
+  @override
+  String moderationStrikes(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count strikes',
+      one: '1 strike',
+      zero: 'No strikes',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get moderationBannedTag => 'Banned';
+
+  @override
+  String get moderationPhotoFront => 'Front';
+
+  @override
+  String get moderationPhotoBack => 'Back';
+
+  @override
+  String get moderationPhotoSpine => 'Spine';
+
+  @override
+  String get moderationPhotoInside => 'Inside';
+
+  @override
+  String get moderationPhotoDamage => 'Damage';
+
+  @override
+  String get moderationNoPhotos =>
+      'No photos added. Ask for photos before approving.';
+
+  @override
+  String moderationNewPrice(String price) {
+    return 'New $price';
+  }
+
+  @override
+  String moderationReportCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count reports',
+      one: '1 report',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get moderationKindListing => 'Listing';
+
+  @override
+  String get moderationKindUser => 'Reader';
+
+  @override
+  String get moderationKindMessage => 'Message';
+
+  @override
+  String get moderationKindBite => 'Bite';
+
+  @override
+  String get moderationKindComment => 'Comment';
+
+  @override
+  String get moderationKindReview => 'Review';
+
+  @override
+  String moderationOwner(String name) {
+    return 'By $name';
+  }
+
+  @override
+  String moderationReporterNote(String note) {
+    return 'Reporter: $note';
+  }
+
+  @override
+  String get moderationRemove => 'Remove';
+
+  @override
+  String get moderationDismiss => 'Dismiss';
+
+  @override
+  String get moderationWarn => 'Warn';
+
+  @override
+  String get moderationBan => 'Ban';
+
+  @override
+  String moderationBanTitle(String name) {
+    return 'Ban $name?';
+  }
+
+  @override
+  String get moderationBanBody =>
+      'They can\'t sell or post any more, and their listings leave the marketplace.';
+
+  @override
+  String get moderationCancel => 'Cancel';
+
+  @override
+  String get moderationDone => 'Done. It\'s in the log.';
+
+  @override
+  String get moderationEmptyLog =>
+      'No actions yet. Everything moderators do shows up here.';
+
+  @override
+  String get moderationLogApproved => 'Approved';
+
+  @override
+  String get moderationLogChangesRequested => 'Asked for changes';
+
+  @override
+  String get moderationLogRejected => 'Rejected';
+
+  @override
+  String get moderationLogRemoved => 'Removed';
+
+  @override
+  String get moderationLogDismissed => 'Dismissed a report on';
+
+  @override
+  String get moderationLogWarned => 'Warned';
+
+  @override
+  String get moderationLogBanned => 'Banned';
+
+  @override
+  String get moderationLogThirdStrike => 'Third strike';
+
+  @override
+  String moderationLogBy(String by, String time) {
+    return '$by · $time';
+  }
+
+  @override
   String get listingSellBook => 'Sell a Book';
 
   @override
