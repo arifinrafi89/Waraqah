@@ -104,6 +104,10 @@ The app also has:
   - **Admin → Trade-ins** (`AdminSection.tradeIn`, catalog managers and super admin): staff set their own grade, then **Pay ৳X · sell for ৳Y**. Waraqah pays at that grade into the reader's wallet (`WalletReason.sellBack`) and publishes it as **Certified Used** (`SellBackRules.resellPrice`: 65/55/45/35% of new). Or they **Send it back**.
   - **Certified Used stock** is `CertifiedUsedStock` (fake backend). The catalog's `UsedOptionsFixtures` reads it, so a published copy shows on the book page's "Other ways to buy" and goes in the cart. It starts with the demo Atomic Habits and Sapiens copies, and resets with each new fake backend.
   - Fake API `/sell-back/...` (`SellBackFakeStore`, sharing `WalletFakeStore`). In the demo the courier picks a book up 4 s after it's booked; tests that book one must `pump(const Duration(seconds: 5))` and `settle`.
+- **"Finished it? Sell it" is done** (Arifin): `features/finished_it`.
+  - `ref.bookFinished(context, bookId)` opens **Finished Sapiens?**: what readers pay for a copy read once (`FinishedItOffers`: the Like New fair range), **List it for readers** (the add-listing form filled in: title, new price, Like New), or **Sell it back to Waraqah** (Sell Back's quote for the book), or Keep it.
+  - **Niloy:** when a book moves to Finished on a shelf, call `ref.bookFinished(context, bookId)`.
+  - Until shelves exist, My Listings shows **Finished a book you bought?** with the books from the reader's delivered orders (`boughtBooksProvider`, from Farhan's `myOrdersProvider`).
 - **Accounts** (Niloy, #108): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`).
 - **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
@@ -156,7 +160,7 @@ lib/
 │   └── utils/              Bdt.format (৳ prices), stock labels, cover gradients
 ├── features/
 │   ├── admin/  ai_assistant/  alerts/  auth/  bites/  book_request/  cart/  catalog/  checkout/
-│   ├── handled_sale/  sell_back/
+│   ├── finished_it/  handled_sale/  sell_back/
 │   ├── deals/  donate/  home/  inbox/  loyalty/  moderation/  orders/  p2p/  profile/  report/  scan/
 │   ├── wallet/  wishlist/
 └── l10n/                   app_en.arb, app_bn.arb (+ generated AppL10n)
@@ -399,6 +403,7 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - Book demand (`bookDemandProvider`) isn't shown anywhere yet: the admin dashboard (Niloy) should list it. Sellers see requests on My Listings, but nothing goes to the notification center yet.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
 - Handled sales don't update live: pull down on a sale, or open it again, to see the other side's move. Wallet refunds show as "Refund for returned/cancelled HS-…" until the wallet has its own reason for them (Farhan).
+- "Finished it? Sell it" opens from My Listings' delivered books until Niloy's shelves have a Finished shelf; then shelves call `ref.bookFinished` and the stand-in card can go.
 - No push alerts while the app is closed: the inbox badge is the notification, by design for now.
 - Removing a reported message, Bite or review closes the report, but the item itself stays: Bites and reviews have no backend store yet, and the inbox doesn't delete messages. Bans don't stop posting Bites or reviews yet either (Niloy, Farhan).
 - Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Farhan's inbox: refuse sends to and from blocked readers).

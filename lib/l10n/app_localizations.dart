@@ -4267,6 +4267,60 @@ abstract class AppL10n {
   /// **'That\'s as much as buying it new ({price}). Buyers will buy new instead.'**
   String listingPriceAboveNew(String price);
 
+  /// No description provided for @listingFinishedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished {title}?'**
+  String listingFinishedTitle(String title);
+
+  /// No description provided for @listingFinishedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Pass it on: another reader gets it for less, and you get money back.'**
+  String get listingFinishedBody;
+
+  /// No description provided for @listingFinishedListRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Readers pay about {low}–{high} for a copy read once.'**
+  String listingFinishedListRange(String low, String high);
+
+  /// No description provided for @listingFinishedList.
+  ///
+  /// In en, this message translates to:
+  /// **'List it for readers'**
+  String get listingFinishedList;
+
+  /// No description provided for @listingFinishedSellBackLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Or Waraqah pays {price} now, and a courier picks it up.'**
+  String listingFinishedSellBackLine(String price);
+
+  /// No description provided for @listingFinishedSellBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Sell it back to Waraqah'**
+  String get listingFinishedSellBack;
+
+  /// No description provided for @listingFinishedKeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep it'**
+  String get listingFinishedKeep;
+
+  /// No description provided for @listingFinishedCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished a book you bought?'**
+  String get listingFinishedCardTitle;
+
+  /// No description provided for @listingFinishedCardBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap it to sell it on.'**
+  String get listingFinishedCardBody;
+
   /// No description provided for @scanTitle.
   ///
   /// In en, this message translates to:

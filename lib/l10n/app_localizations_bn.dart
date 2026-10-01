@@ -2357,6 +2357,40 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
+  String listingFinishedTitle(String title) {
+    return '$title পড়া শেষ?';
+  }
+
+  @override
+  String get listingFinishedBody =>
+      'অন্যকে দিন: আরেকজন পাঠক কম দামে পাবেন, আপনি টাকা ফেরত পাবেন।';
+
+  @override
+  String listingFinishedListRange(String low, String high) {
+    return 'একবার পড়া কপির জন্য পাঠকেরা প্রায় $low–$high দেন।';
+  }
+
+  @override
+  String get listingFinishedList => 'পাঠকদের জন্য লিস্ট করুন';
+
+  @override
+  String listingFinishedSellBackLine(String price) {
+    return 'অথবা ওয়ারাকাহ এখনই $price দেবে, কুরিয়ার বই নিয়ে যাবে।';
+  }
+
+  @override
+  String get listingFinishedSellBack => 'ওয়ারাকাহকে ফেরত বিক্রি করুন';
+
+  @override
+  String get listingFinishedKeep => 'রেখে দিন';
+
+  @override
+  String get listingFinishedCardTitle => 'কেনা কোনো বই পড়া শেষ?';
+
+  @override
+  String get listingFinishedCardBody => 'বিক্রি করতে বইটিতে চাপুন।';
+
+  @override
   String get scanTitle => 'বই স্ক্যান করুন';
 
   @override

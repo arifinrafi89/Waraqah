@@ -2444,6 +2444,40 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
+  String listingFinishedTitle(String title) {
+    return 'Finished $title?';
+  }
+
+  @override
+  String get listingFinishedBody =>
+      'Pass it on: another reader gets it for less, and you get money back.';
+
+  @override
+  String listingFinishedListRange(String low, String high) {
+    return 'Readers pay about $low–$high for a copy read once.';
+  }
+
+  @override
+  String get listingFinishedList => 'List it for readers';
+
+  @override
+  String listingFinishedSellBackLine(String price) {
+    return 'Or Waraqah pays $price now, and a courier picks it up.';
+  }
+
+  @override
+  String get listingFinishedSellBack => 'Sell it back to Waraqah';
+
+  @override
+  String get listingFinishedKeep => 'Keep it';
+
+  @override
+  String get listingFinishedCardTitle => 'Finished a book you bought?';
+
+  @override
+  String get listingFinishedCardBody => 'Tap it to sell it on.';
+
+  @override
   String get scanTitle => 'Scan a book';
 
   @override

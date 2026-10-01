@@ -7,6 +7,8 @@ import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../book_request/presentation/providers/book_request_providers.dart';
 import '../../../book_request/presentation/widgets/wanted_section.dart';
+import '../../../finished_it/presentation/widgets/finished_books_card.dart';
+import '../../../orders/presentation/providers/order_providers.dart';
 import '../providers/p2p_providers.dart';
 import '../widgets/p2p_my_listing_card.dart';
 
@@ -16,8 +18,11 @@ class P2pMyListingsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final listingsAsync = ref.watch(myListingsProvider);
-    // Load who wants these books alongside them, not after.
-    ref.watch(wantedBooksProvider);
+    // Load who wants these books, and what the reader bought, alongside
+    // them, not after.
+    ref
+      ..watch(wantedBooksProvider)
+      ..watch(myOrdersProvider);
     final l10n = AppL10n.of(context)!;
 
     return Scaffold(
@@ -45,7 +50,10 @@ class P2pMyListingsPage extends ConsumerWidget {
                   separatorBuilder: (_, i) =>
                       SizedBox(height: i == 0 ? 0 : Insets.md),
                   itemBuilder: (context, index) => index == 0
-                      ? const WantedSection()
+                      ? const Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [FinishedBooksCard(), WantedSection()],
+                        )
                       : P2pMyListingCard(listing: listings[index - 1]),
                 ),
               ),
