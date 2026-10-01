@@ -1,9 +1,9 @@
-// The admin fake backend edits the catalog's and Home's fixture lists in
-// place, so every reader of them sees Staff's changes.
+// Edits the catalog's and Home's fixture lists in place, for every reader.
 import '../../../../core/models/book.dart';
 import '../../../../core/models/edition.dart';
 import '../../../catalog/data/sources/author_fixtures.dart';
 import '../../../catalog/data/sources/book_fixtures.dart';
+import '../../../catalog/data/sources/booklist_fixtures.dart';
 import '../../../catalog/data/sources/category_fixtures.dart';
 import '../../../catalog/data/sources/collection_fixtures.dart';
 import '../../../catalog/data/sources/publisher_fixtures.dart';
@@ -12,8 +12,7 @@ import '../../../home/domain/entities/season.dart';
 import '../../domain/entities/catalog_admin_rules.dart';
 import '../models/book_draft_json.dart';
 
-/// Staff's Book changes on the fake backend. Creating one resets the
-/// catalog to its seed, so each test's fake backend starts clean.
+/// Staff's Book changes on the fake backend. A new one resets every seed.
 // ponytail: in-place fixture lists; the Go backend owns the catalog.
 class CatalogAdminFakeStore {
   CatalogAdminFakeStore() {
@@ -22,6 +21,7 @@ class CatalogAdminFakeStore {
     AuthorFixtures.reset();
     PublisherFixtures.reset();
     CollectionFixtures.reset();
+    BooklistFixtures.reset();
     BannerFixtures.reset();
   }
 

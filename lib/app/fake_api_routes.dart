@@ -8,6 +8,7 @@ import '../features/cart/data/sources/cart_fake_store.dart';
 import '../features/catalog/data/sources/book_fake_api.dart';
 import '../features/catalog/data/sources/book_questions_fake_api.dart';
 import '../features/catalog/data/sources/book_suggest_fake_api.dart';
+import '../features/catalog/data/sources/booklist_fake_api.dart';
 import '../features/catalog/data/sources/collection_fake_api.dart';
 import '../features/catalog_admin/data/sources/catalog_admin_fake_api.dart';
 import '../features/catalog_admin/data/sources/catalog_admin_fake_store.dart';
@@ -71,6 +72,7 @@ abstract final class FakeApiRoutes {
       ...BookSuggestFakeApi.routes,
       ...BookQuestionsFakeApi.routes(),
       ...CollectionFakeApi.routes,
+      ...BooklistFakeApi.routes,
       ...CatalogAdminFakeApi.routes(catalogAdmin),
       ...AyahFakeApi.routes,
       ...HomeFakeApi.routes(() => catalogAdmin.seasonOverride),
