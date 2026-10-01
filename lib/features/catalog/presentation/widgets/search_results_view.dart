@@ -12,16 +12,19 @@ import 'book_list_skeleton.dart';
 import 'search_no_results.dart';
 
 /// The Search page's results: count and list, skeleton, retry, or no-results.
-/// [onOpen] runs when the Reader opens a Book from the list.
+/// [onOpen] runs when the Reader opens a Book from the list; [onPick] when
+/// they tap "Did you mean…?".
 class SearchResultsView extends ConsumerWidget {
   const SearchResultsView({
     super.key,
     required this.query,
     required this.onOpen,
+    required this.onPick,
   });
 
   final String query;
   final VoidCallback onOpen;
+  final ValueChanged<String> onPick;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,7 +39,7 @@ class SearchResultsView extends ConsumerWidget {
         child: BookListSkeleton(),
       ),
       builder: (books) => books.isEmpty
-          ? SearchNoResults(query: query)
+          ? SearchNoResults(query: query, onPick: onPick)
           : Column(
               children: [
                 Padding(
@@ -55,7 +58,11 @@ class SearchResultsView extends ConsumerWidget {
                   ),
                 ),
                 Expanded(
-                  child: CatalogResultsList(books: books, onOpen: onOpen),
+                  child: CatalogResultsList(
+                    books: books,
+                    onOpen: onOpen,
+                    showBanglaTitles: true,
+                  ),
                 ),
               ],
             ),

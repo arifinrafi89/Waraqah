@@ -6,13 +6,14 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../core/widgets/cover_art.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../../home/presentation/providers/home_providers.dart';
+import '../providers/catalog_admin_providers.dart';
 import '../providers/catalog_admin_actions.dart';
 import 'admin_list_skeleton.dart';
 import 'banner_sheet.dart';
+import 'season_dropdown.dart';
 
-/// Home's Banners in display order: move each up or down, tap to edit,
-/// or add one.
+/// Home's Season at the top, then every Banner in display order: move each
+/// up or down, tap to edit, or add one.
 class BannersAdminTab extends ConsumerWidget {
   const BannersAdminTab({super.key});
 
@@ -29,11 +30,11 @@ class BannersAdminTab extends ConsumerWidget {
         label: Text(l10n.adminCatalogAdd),
       ),
       body: AsyncView(
-        value: ref.watch(bannersProvider),
+        value: ref.watch(adminBannersProvider),
         skeleton: const AdminListSkeleton(),
         errorLabel: l10n.commonSomethingWentWrong,
         retryLabel: l10n.commonRetry,
-        onRetry: () => ref.invalidate(bannersProvider),
+        onRetry: () => ref.invalidate(adminBannersProvider),
         builder: (banners) => ListView(
           padding: const EdgeInsets.fromLTRB(
             Insets.screen,
@@ -42,6 +43,8 @@ class BannersAdminTab extends ConsumerWidget {
             96,
           ),
           children: [
+            const SeasonOverrideDropdown(),
+            const SizedBox(height: Insets.md),
             if (banners.isEmpty)
               Text(l10n.adminCatalogNoBanners, textAlign: TextAlign.center),
             for (final (i, b) in banners.indexed)

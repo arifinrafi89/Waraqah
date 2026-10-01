@@ -1,10 +1,13 @@
 import '../../../../core/cache/ttl_cache.dart';
 import '../../domain/entities/banner.dart';
+import '../../domain/entities/season.dart';
 import '../../domain/repositories/banner_repository.dart';
 import '../models/banner_model.dart';
+import '../models/season_model.dart';
 import '../sources/banner_remote_source.dart';
 
-/// Cached for a few minutes; Staff change Banners rarely.
+/// Banners cached for a few minutes; Staff change them rarely. The Season
+/// is read fresh: it's one small call.
 class BannerRepositoryImpl implements BannerRepository {
   BannerRepositoryImpl(this._source);
 
@@ -18,4 +21,8 @@ class BannerRepositoryImpl implements BannerRepository {
     'all',
     () async => [for (final b in await _source.fetchBanners()) b.toEntity()],
   );
+
+  @override
+  Future<SeasonInfo?> fetchSeason() async =>
+      (await _source.fetchSeason())?.toEntity();
 }

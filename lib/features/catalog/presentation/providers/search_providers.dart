@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/models/book.dart';
 import '../../../../core/state/selection_notifier.dart';
 import '../../domain/entities/catalog_filters.dart';
+import '../../domain/usecases/get_search_suggestions.dart';
 import 'catalog_providers.dart';
 
 /// What the Search page is searching for (already debounced).
@@ -61,3 +62,20 @@ final searchCountProvider = FutureProvider.autoDispose
           .searchCatalog(_searchOf(ref, filters));
       return books.length;
     });
+
+/// Titles and Author names for the typed query (2+ characters), shown as
+/// chips while typing.
+final searchSuggestionsProvider = FutureProvider.autoDispose<List<String>>((
+  ref,
+) {
+  final query = ref.watch(searchQueryProvider).trim();
+  return query.length < 2
+      ? Future.value(const <String>[])
+      : GetSearchSuggestions(ref.watch(bookRepositoryProvider))(query);
+});
+
+/// The title the query most likely meant; asked only when nothing matched.
+final didYouMeanProvider = FutureProvider.autoDispose<String?>((ref) {
+  final query = ref.watch(searchQueryProvider).trim();
+  return GetDidYouMean(ref.watch(bookRepositoryProvider))(query);
+});

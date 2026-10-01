@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/entities/banner.dart';
+import '../../domain/entities/season.dart';
 
 part 'banner_model.freezed.dart';
 part 'banner_model.g.dart';
@@ -19,6 +20,8 @@ abstract class BannerModel with _$BannerModel {
     required String subtitleBn,
     required int seed,
     required BannerTargetModel target,
+    // Shown only while this Season is on; `null` = all year.
+    Season? season,
   }) = _BannerModel;
 
   factory BannerModel.fromJson(Map<String, dynamic> json) =>
@@ -45,5 +48,6 @@ extension BannerModelX on BannerModel {
     subtitleBn: subtitleBn,
     seed: seed,
     target: BannerTarget(target.kind, target.value),
+    season: season,
   );
 }

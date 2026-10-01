@@ -7,7 +7,8 @@ import 'package:waraqah/core/models/book.dart';
 import 'package:waraqah/features/catalog/catalog_routes.dart';
 import 'package:waraqah/features/catalog/data/sources/book_fixtures.dart';
 import 'package:waraqah/features/catalog/data/sources/collection_fixtures.dart';
-import 'package:waraqah/features/home/data/sources/home_fake_api.dart';
+import 'package:waraqah/features/catalog_admin/data/sources/catalog_admin_fake_api.dart';
+import 'package:waraqah/features/home/data/sources/season_picker.dart';
 import 'package:waraqah/features/home/domain/entities/banner.dart';
 import 'package:waraqah/features/home/home_routes.dart';
 import 'package:waraqah/features/home/presentation/widgets/banner_card.dart';
@@ -40,10 +41,11 @@ Future<void> _tapBanner(WidgetTester tester, int index, String title) async {
 void main() {
   setUpAll(() => GoogleFonts.config.allowRuntimeFetching = false);
 
-  test('/home/banners returns 3 Banners with targets that exist', () async {
+  test('all 7 Banners, Season ones too, have targets that exist', () async {
     final dio = Dio()..interceptors.add(FakeApiRoutes.interceptor());
-    final banners = (await dio.get<List<dynamic>>(HomeFakeApi.banners)).data!;
-    expect(banners, hasLength(3));
+    final banners = (await dio.get<List<dynamic>>(CatalogAdminFakeApi.banners))
+        .data!;
+    expect(banners, hasLength(7));
     for (final b in banners.cast<Map<String, dynamic>>()) {
       expect(
         _exists(b['target'] as Map<String, dynamic>),
@@ -67,7 +69,9 @@ void main() {
       final router = await openApp(tester, HomeRoutes.home);
       expect(find.byType(BannerCard), findsWidgets);
 
-      await _tapBanner(tester, index, title);
+      // Today's Season Banner, if any, comes first.
+      final shift = SeasonPicker.activeOn(DateTime.now()) == null ? 0 : 1;
+      await _tapBanner(tester, index + shift, title);
       expect(pathOf(router), path);
       await tester.pump(const Duration(seconds: 5));
     });

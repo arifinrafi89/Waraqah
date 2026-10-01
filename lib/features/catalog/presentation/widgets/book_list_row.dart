@@ -7,10 +7,10 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_palette.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/utils/formatters.dart';
 import '../../../../core/widgets/cover_art.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../core/widgets/tags.dart';
+import 'book_row_price.dart';
 import 'rating_stars.dart';
 
 /// One horizontal catalog row: thumbnail, title block, tags, rating, price.
@@ -21,10 +21,14 @@ class BookListRow extends StatelessWidget {
     required this.book,
     required this.stockLabel,
     this.onOpen,
+    this.subtitle,
   });
 
   final Book book;
   final String stockLabel;
+
+  /// A faint line under the title (Search shows the Bangla title here).
+  final String? subtitle;
 
   /// Called as the Book opens (the Search page saves the search).
   final VoidCallback? onOpen;
@@ -76,6 +80,13 @@ class BookListRow extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: context.texts.titleSmall,
       ),
+      if (subtitle != null)
+        Text(
+          subtitle!,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: AppFonts.ui(size: 10.5, color: palette.textFaint),
+        ),
       Text(
         book.author,
         style: AppFonts.ui(size: 10.5, color: palette.textFaint),
@@ -89,32 +100,7 @@ class BookListRow extends StatelessWidget {
         ),
       ),
       RatingStars(rating: book.rating),
-      Padding(
-        padding: const EdgeInsets.only(top: 5),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              Bdt.format(book.fromPriceBdt),
-              style: AppFonts.numeric(size: 14, color: palette.text),
-            ),
-            const Spacer(),
-            Flexible(
-              child: Text(
-                stockLabel,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.end,
-                style: AppFonts.ui(
-                  size: 9.5,
-                  weight: FontWeight.w700,
-                  color: palette.textFaint,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      BookRowPrice(book: book, stockLabel: stockLabel),
     ],
   );
 }

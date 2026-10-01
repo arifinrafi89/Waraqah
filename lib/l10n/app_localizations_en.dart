@@ -249,6 +249,18 @@ class AppL10nEn extends AppL10n {
   String get homeBestsellersSub => 'Most bought in the last 30 days';
 
   @override
+  String get homeSeasonRamadan => 'Ramadan';
+
+  @override
+  String get homeSeasonBoiMela => 'Boi Mela';
+
+  @override
+  String get homeSeasonAdmission => 'Admission season';
+
+  @override
+  String get homeSeasonBackToSchool => 'Back to school';
+
+  @override
   String get homeFromStudents => 'Used books from readers';
 
   @override
@@ -314,6 +326,11 @@ class AppL10nEn extends AppL10n {
   @override
   String searchRecentRemove(String query) {
     return 'Remove \'$query\'';
+  }
+
+  @override
+  String searchDidYouMean(String title) {
+    return 'Did you mean $title?';
   }
 
   @override
@@ -2213,6 +2230,18 @@ class AppL10nEn extends AppL10n {
   @override
   String get adminCatalogNoBanners =>
       'No banners. Home shows none until you add one.';
+
+  @override
+  String get adminCatalogSeasonHome => 'Home\'s season';
+
+  @override
+  String get adminCatalogSeasonAuto => 'Automatic (by date)';
+
+  @override
+  String get adminCatalogSeason => 'Season';
+
+  @override
+  String get adminCatalogSeasonNone => 'None (all year)';
 
   @override
   String get adminOrders => 'Orders';

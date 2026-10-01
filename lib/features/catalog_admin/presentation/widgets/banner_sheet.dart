@@ -6,6 +6,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/app_buttons.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../home/domain/entities/banner.dart';
+import '../../../home/domain/entities/season.dart';
 import '../../domain/entities/catalog_admin_rules.dart';
 import '../providers/catalog_admin_actions.dart';
 import 'banner_look.dart';
@@ -40,6 +41,7 @@ class _BannerFormState extends ConsumerState<_BannerForm> {
     widget.initial?.subtitleBn ?? '',
   ];
   late var _seed = widget.initial?.seed ?? 0;
+  late Season? _season = widget.initial?.season;
   late var _target =
       widget.initial?.target ?? const BannerTarget(BannerTargetKind.search, '');
   Set<RuleError> _errors = const {};
@@ -52,6 +54,7 @@ class _BannerFormState extends ConsumerState<_BannerForm> {
     subtitleBn: _text[3].trim(),
     seed: _seed,
     target: _target,
+    season: _season,
   );
 
   @override
@@ -82,6 +85,7 @@ class _BannerFormState extends ConsumerState<_BannerForm> {
           BannerLook(
             banner: _banner,
             onSeed: (seed) => setState(() => _seed = seed),
+            onSeason: (season) => setState(() => _season = season),
           ),
           BannerTargetField(
             target: _target,

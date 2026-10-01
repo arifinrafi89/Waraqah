@@ -1,5 +1,7 @@
 import '../../../../core/models/book.dart';
+import '../../../home/data/models/banner_model.dart';
 import '../../../home/domain/entities/banner.dart';
+import '../../../home/domain/entities/season.dart';
 import '../../domain/entities/book_draft.dart';
 import '../../domain/entities/catalog_record.dart';
 import '../../domain/repositories/catalog_admin_repository.dart';
@@ -33,6 +35,18 @@ class CatalogAdminRepositoryImpl implements CatalogAdminRepository {
   @override
   Future<void> deleteRecord(RecordKind kind, String id) =>
       _source.deleteRecord(kind, id);
+
+  @override
+  Future<List<Banner>> banners() async => [
+    for (final b in await _source.banners()) b.toEntity(),
+  ];
+
+  @override
+  Future<Season?> seasonOverride() => _source.seasonOverride();
+
+  @override
+  Future<void> setSeasonOverride(Season? season) =>
+      _source.setSeasonOverride(season);
 
   @override
   Future<void> saveBanner(Banner banner) => _source.saveBanner(banner);

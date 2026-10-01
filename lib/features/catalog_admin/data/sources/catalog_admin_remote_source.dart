@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 
 import '../../../../core/models/book.dart';
+import '../../../home/data/models/banner_model.dart';
 import '../../../home/domain/entities/banner.dart';
+import '../../../home/domain/entities/season.dart';
 import '../../domain/entities/book_draft.dart';
 import '../../domain/entities/catalog_record.dart';
 import '../models/book_draft_json.dart';
@@ -47,6 +49,26 @@ class CatalogAdminRemoteSource {
   Future<void> deleteRecord(RecordKind kind, String id) =>
       _post('${CatalogAdminFakeApi.records(kind)}/delete', {'id': id});
 
+  Future<List<BannerModel>> banners() async {
+    final response = await _dio.get<List<dynamic>>(CatalogAdminFakeApi.banners);
+    return [
+      for (final json in response.data ?? const [])
+        BannerModel.fromJson(json as Map<String, dynamic>),
+    ];
+  }
+
+  /// The Season Staff forced on Home; `null` = automatic.
+  Future<Season?> seasonOverride() async {
+    final response = await _dio.get<Map<String, dynamic>>(
+      CatalogAdminFakeApi.season,
+    );
+    final name = response.data?['season'] as String?;
+    return name == null ? null : Season.values.byName(name);
+  }
+
+  Future<void> setSeasonOverride(Season? season) =>
+      _post('${CatalogAdminFakeApi.season}/save', {'season': season?.name});
+
   Future<void> saveBanner(Banner b) => _post(CatalogAdminFakeApi.saveBanner, {
     'id': b.id,
     'titleEn': b.titleEn,
@@ -55,6 +77,7 @@ class CatalogAdminRemoteSource {
     'subtitleBn': b.subtitleBn,
     'seed': b.seed,
     'target': {'kind': b.target.kind.name, 'value': b.target.value},
+    'season': b.season?.name,
   });
 
   Future<void> deleteBanner(String id) =>

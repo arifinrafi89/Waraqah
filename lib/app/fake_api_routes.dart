@@ -7,6 +7,7 @@ import '../features/cart/data/sources/cart_fake_api.dart';
 import '../features/cart/data/sources/cart_fake_store.dart';
 import '../features/catalog/data/sources/book_fake_api.dart';
 import '../features/catalog/data/sources/book_questions_fake_api.dart';
+import '../features/catalog/data/sources/book_suggest_fake_api.dart';
 import '../features/catalog/data/sources/collection_fake_api.dart';
 import '../features/catalog_admin/data/sources/catalog_admin_fake_api.dart';
 import '../features/catalog_admin/data/sources/catalog_admin_fake_store.dart';
@@ -61,15 +62,18 @@ abstract final class FakeApiRoutes {
     final reports = ReportFakeStore(p2p);
     // Moderators approve listings, act on reports and ban readers.
     final moderation = ModerationFakeStore(p2p, reports, inbox: inbox);
+    // Staff edit the catalog's and Home's fixture lists in place, and can
+    // force Home's Season.
+    final catalogAdmin = CatalogAdminFakeStore();
     return FakeApiInterceptor({
       ...AuthFakeApi.routes,
       ...BookFakeApi.routes,
+      ...BookSuggestFakeApi.routes,
       ...BookQuestionsFakeApi.routes(),
       ...CollectionFakeApi.routes,
-      // Staff edit the catalog's and Home's fixture lists in place.
-      ...CatalogAdminFakeApi.routes(CatalogAdminFakeStore()),
+      ...CatalogAdminFakeApi.routes(catalogAdmin),
       ...AyahFakeApi.routes,
-      ...HomeFakeApi.routes,
+      ...HomeFakeApi.routes(() => catalogAdmin.seasonOverride),
       ...CartFakeApi.routes(cart),
       ...WishlistFakeApi.routes(),
       ...AlertFakeApi.routes(),

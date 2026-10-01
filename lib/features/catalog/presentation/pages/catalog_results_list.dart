@@ -8,10 +8,18 @@ import '../widgets/book_list_row.dart';
 
 /// Scrollable list of catalog rows, padded clear of the floating nav bar.
 class CatalogResultsList extends StatelessWidget {
-  const CatalogResultsList({super.key, required this.books, this.onOpen});
+  const CatalogResultsList({
+    super.key,
+    required this.books,
+    this.onOpen,
+    this.showBanglaTitles = false,
+  });
 
   final List<Book> books;
   final VoidCallback? onOpen;
+
+  /// Search only: each row's Bangla title under its title, when it differs.
+  final bool showBanglaTitles;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +39,9 @@ class CatalogResultsList extends StatelessWidget {
           book: book,
           stockLabel: l10n.stockStatus(book.cardStockStatus),
           onOpen: onOpen,
+          subtitle: showBanglaTitles && book.titleBn != book.title
+              ? book.titleBn
+              : null,
         );
       },
     );
