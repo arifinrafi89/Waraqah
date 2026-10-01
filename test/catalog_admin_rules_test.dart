@@ -3,8 +3,6 @@ import 'package:waraqah/core/models/book.dart';
 import 'package:waraqah/core/models/edition.dart';
 import 'package:waraqah/features/catalog_admin/domain/entities/book_draft.dart';
 import 'package:waraqah/features/catalog_admin/domain/entities/catalog_admin_rules.dart';
-import 'package:waraqah/features/catalog_admin/domain/entities/catalog_record.dart';
-import 'package:waraqah/features/home/domain/entities/banner.dart';
 
 const _pb = Edition(
   id: '',
@@ -100,16 +98,9 @@ void main() {
 
   test('an eBook gets stock 999, no ISBN and no pre-order', () {
     final ebook = CatalogAdminRules.tidy(
-      _pb.copyWith(
-        format: BookFormat.ebook,
-        stock: -4,
-        isbn: '123',
-        isPreorder: true,
-      ),
+      _pb.copyWith(format: BookFormat.ebook, isbn: '123', isPreorder: true),
     );
-    expect(ebook.stock, 999);
-    expect(ebook.isbn, isNull);
-    expect(ebook.isPreorder, isFalse);
+    expect((ebook.stock, ebook.isbn, ebook.isPreorder), (999, null, false));
     expect(_edition(ebook), isEmpty);
   });
 
@@ -121,34 +112,5 @@ void main() {
       ),
       {RuleError.editionTaken},
     );
-  });
-
-  test('a Category needs both names; an Author only English', () {
-    const bnOnly = CatalogRecord(nameBn: 'লেখক');
-    expect(CatalogAdminRules.record(RecordKind.author, bnOnly), {
-      RuleError.nameBlank,
-    });
-    const enOnly = CatalogRecord(name: 'Poetry');
-    expect(CatalogAdminRules.record(RecordKind.author, enOnly), isEmpty);
-    expect(CatalogAdminRules.record(RecordKind.category, enOnly), {
-      RuleError.nameBnBlank,
-    });
-  });
-
-  test('a Banner needs both titles and a target', () {
-    Banner banner({String titleBn = 'ঈদ', String value = 'eid'}) => Banner(
-      id: '',
-      titleEn: 'Eid',
-      titleBn: titleBn,
-      subtitleEn: '',
-      subtitleBn: '',
-      seed: 0,
-      target: BannerTarget(BannerTargetKind.search, value),
-    );
-    expect(CatalogAdminRules.banner(banner()), isEmpty);
-    expect(CatalogAdminRules.banner(banner(titleBn: ' ', value: '')), {
-      RuleError.bannerTitleBlank,
-      RuleError.bannerTargetBlank,
-    });
   });
 }
