@@ -10,6 +10,7 @@ import '../features/checkout/data/sources/checkout_fake_api.dart';
 import '../features/checkout/data/sources/coupon_admin_fake_api.dart';
 import '../features/checkout/data/sources/coupon_fake_store.dart';
 import '../features/home/data/sources/ayah_fake_api.dart';
+import '../features/home/data/sources/home_fake_api.dart';
 import '../features/loyalty/data/sources/points_fake_api.dart';
 import '../features/loyalty/data/sources/points_fake_store.dart';
 import '../features/deals/data/sources/deals_fake_api.dart';
@@ -42,6 +43,7 @@ abstract final class FakeApiRoutes {
       ...BookQuestionsFakeApi.routes(),
       ...CollectionFakeApi.routes,
       ...AyahFakeApi.routes,
+      ...HomeFakeApi.routes,
       ...CartFakeApi.routes(cart),
       ...WishlistFakeApi.routes(),
       ...AlertFakeApi.routes(),

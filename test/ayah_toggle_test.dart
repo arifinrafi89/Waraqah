@@ -10,7 +10,10 @@ import 'helpers/app_harness.dart';
 
 const _hidden = 'Hidden. Turn it back on in Profile.';
 
+/// Scrolls the Ayah card to mid-screen, then taps its ✕.
 Future<void> _hide(WidgetTester tester) async {
+  await tester.drag(find.byType(CustomScrollView), const Offset(0, -250));
+  await settle(tester);
   await tester.tap(find.byTooltip('Hide Ayah of the Day'));
   await tester.pump();
 }

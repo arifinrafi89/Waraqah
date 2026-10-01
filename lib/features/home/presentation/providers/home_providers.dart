@@ -7,9 +7,13 @@ import '../../../../core/state/selection_notifier.dart';
 import '../../../catalog/presentation/providers/catalog_providers.dart';
 import '../../data/repositories/ayah_repository_impl.dart';
 import '../../data/sources/ayah_remote_source.dart';
+import '../../data/repositories/banner_repository_impl.dart';
+import '../../data/sources/banner_remote_source.dart';
 import '../../domain/entities/ayah.dart';
+import '../../domain/entities/banner.dart';
 import '../../domain/repositories/ayah_repository.dart';
 import '../../domain/usecases/get_ayah_of_the_day.dart';
+import '../../domain/usecases/get_banners.dart';
 import '../../domain/usecases/get_bestsellers.dart';
 import '../../domain/usecases/get_new_arrivals.dart';
 
@@ -47,4 +51,14 @@ final homeNewArrivalsProvider = FutureProvider<List<Book>>(
 
 final homeBestsellersProvider = FutureProvider<List<Book>>(
   (ref) => ref.watch(getBestsellersProvider).call(const NoParams()),
+);
+
+final getBannersProvider = Provider<GetBanners>(
+  (ref) => GetBanners(
+    BannerRepositoryImpl(BannerRemoteSource(ref.watch(dioProvider))),
+  ),
+);
+
+final bannersProvider = FutureProvider<List<Banner>>(
+  (ref) => ref.watch(getBannersProvider).call(const NoParams()),
 );

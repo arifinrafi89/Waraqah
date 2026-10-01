@@ -9,6 +9,7 @@ import '../../../deals/presentation/widgets/deals_banner.dart';
 import '../providers/home_providers.dart';
 import '../widgets/auto_hide_header.dart';
 import '../widgets/ayah_section.dart';
+import '../widgets/banner_carousel.dart';
 import '../widgets/bites_section.dart';
 import '../widgets/book_shelf_section.dart';
 import '../widgets/collections_section.dart';
@@ -30,6 +31,7 @@ class HomePage extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(child: SizedBox(height: top)),
           const _Box(DealsBanner()),
+          const _Box(BannerCarousel()),
           const _Box(SectionChipRow()),
           const _Box(AyahSection()),
           _Box(
