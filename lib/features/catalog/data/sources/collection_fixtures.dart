@@ -2,8 +2,17 @@ import '../../../../core/models/book.dart';
 import '../models/collection_model.dart';
 
 /// Offline Collections, in the order Home shows them.
+// ponytail: in-place fixture lists; the Go backend owns the catalog.
 abstract final class CollectionFixtures {
-  static const List<CollectionModel> all = [
+  /// Staff's admin edits change this list in place.
+  static final List<CollectionModel> all = [..._seed];
+
+  /// Back to the seed. Each new fake backend starts here.
+  static void reset() => all
+    ..clear()
+    ..addAll(_seed);
+
+  static const List<CollectionModel> _seed = [
     CollectionModel(
       id: 'col-seerah-beginners',
       section: Section.religious,

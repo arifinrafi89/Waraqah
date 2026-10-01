@@ -43,6 +43,11 @@ abstract class Book with _$Book {
     @Default(<String>[]) List<String> tags,
     @Default(0) int coverSeed,
     String? shortTitle,
+    // The Bangla title, when the Book has one. Staff set it; search reads it.
+    String? titleBn,
+    // Taken off the storefront by Staff: not in lists, search, Home or
+    // Collections, but its page still opens from old links.
+    @Default(false) bool hidden,
   }) = _Book;
 
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);

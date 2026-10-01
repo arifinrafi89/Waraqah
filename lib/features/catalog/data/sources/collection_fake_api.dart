@@ -5,7 +5,8 @@ import 'book_fixtures.dart';
 import 'collection_fixtures.dart';
 
 /// Collections' fake endpoints, merged into `FakeApiInterceptor` by
-/// `app/fake_api_routes.dart`. Each Collection comes with its `books`.
+/// `app/fake_api_routes.dart`. Each Collection comes with its `books`,
+/// hidden ones left out.
 abstract final class CollectionFakeApi {
   /// Every Collection, or one Section's: `?section=<Section name>`.
   static const String collections = '/collections';
@@ -32,7 +33,9 @@ abstract final class CollectionFakeApi {
     ...collection.toJson(),
     'books': [
       for (final id in collection.bookIds)
-        ...BookFixtures.all.where((b) => b.id == id).map((b) => b.toJson()),
+        ...BookFixtures.all
+            .where((b) => b.id == id && !b.hidden)
+            .map((b) => b.toJson()),
     ],
   };
 }

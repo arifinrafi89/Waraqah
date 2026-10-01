@@ -24,6 +24,7 @@ class CatalogFilters {
     this.languages = const {},
     this.minRating,
     this.inStockOnly = false,
+    this.includeHidden = false,
   });
 
   final String query;
@@ -42,6 +43,9 @@ class CatalogFilters {
   final Set<BookLanguage> languages;
   final double? minRating;
   final bool inStockOnly;
+
+  /// Staff's list: hidden Books too.
+  final bool includeHidden;
 
   /// A Section, Category, Author or Publisher page lists newest first.
   bool get isScoped =>
@@ -76,7 +80,8 @@ class CatalogFilters {
   String get cacheKey =>
       '$categoryId:$section:$authorId:$publisherId:$query:${sort?.name}:'
       '$minPrice:$maxPrice:${formats.map((f) => f.name).toList()..sort()}:'
-      '${languages.map((l) => l.name).toList()..sort()}:$minRating:$inStockOnly';
+      '${languages.map((l) => l.name).toList()..sort()}:$minRating:$inStockOnly:'
+      '$includeHidden';
 
   @override
   bool operator ==(Object other) =>
