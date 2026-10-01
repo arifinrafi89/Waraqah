@@ -8,6 +8,7 @@ import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/p2p_listing.dart';
 import '../providers/p2p_add_listing_notifier.dart';
+import '../../../scan/presentation/widgets/scan_button.dart';
 import '../widgets/listing_rules_card.dart';
 import '../widgets/p2p_add_listing_field.dart';
 
@@ -90,7 +91,12 @@ class _P2pAddListingPageState extends ConsumerState<P2pAddListingPage> {
                       children: [
                         const ListingRulesCard(),
                         const SizedBox(height: Insets.md),
+                        const ScanButton(forSell: true, wide: true),
+                        const SizedBox(height: Insets.md),
                         P2pAddListingField(
+                          // A scanned book replaces what was typed.
+                          key: ValueKey(draft.bookId),
+                          initialValue: draft.title,
                           label: l10n.listingBookTitle,
                           hint: l10n.listingBookTitleHint,
                           onChanged: notifier.updateTitle,

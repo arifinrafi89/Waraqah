@@ -13,6 +13,7 @@ import '../widgets/back_app_bar.dart';
 import '../widgets/search_filter_pill.dart';
 import '../widgets/search_recents.dart';
 import '../widgets/search_results_view.dart';
+import '../../../scan/presentation/widgets/scan_button.dart';
 
 /// `/catalog/search`: live search by title, Author or Publisher.
 /// [sort] and [query] come from the address (`?sort=`, `?q=`), preset by
@@ -86,6 +87,8 @@ class _SearchPageState extends ConsumerState<SearchPage> {
               radius: 14,
               autofocus: widget.query.isEmpty && widget.sort == null,
               controller: _controller,
+              // Look a book up by its barcode.
+              trailing: const ScanButton(),
               onChanged: _onChanged,
               onSubmitted: (value) {
                 _run(value);

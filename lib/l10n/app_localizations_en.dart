@@ -2415,6 +2415,69 @@ class AppL10nEn extends AppL10n {
       'Moderators reject listings that break these rules, and repeat breaks can get an account banned.';
 
   @override
+  String get scanTitle => 'Scan a book';
+
+  @override
+  String get scanAim =>
+      'Point the camera at the barcode on the back of the book.';
+
+  @override
+  String get scanNoCamera =>
+      'The camera isn\'t available here. Type the ISBN from the back of the book instead.';
+
+  @override
+  String get scanCameraError =>
+      'Couldn\'t open the camera. Type the ISBN instead.';
+
+  @override
+  String get scanIsbnLabel => 'Or type the ISBN';
+
+  @override
+  String get scanIsbnHint => '978…';
+
+  @override
+  String get scanFind => 'Find';
+
+  @override
+  String get scanInvalid =>
+      'That isn\'t a valid ISBN. Check the 10 or 13 digits.';
+
+  @override
+  String scanIsbn(String isbn) {
+    return 'ISBN $isbn';
+  }
+
+  @override
+  String scanNewFrom(String price) {
+    return 'New from $price';
+  }
+
+  @override
+  String get scanOpenBook => 'Open book page';
+
+  @override
+  String get scanSellCopy => 'Sell your copy';
+
+  @override
+  String get scanNotFoundTitle => 'We don\'t have this book yet';
+
+  @override
+  String scanNotFoundBody(String isbn) {
+    return 'ISBN $isbn isn\'t in Waraqah\'s catalog.';
+  }
+
+  @override
+  String get scanRequest => 'Request this book';
+
+  @override
+  String get scanListAnyway => 'List it anyway';
+
+  @override
+  String scanSelling(String title) {
+    return 'From the catalog: $title';
+  }
+
+  @override
   String get usedMarketTitle => 'P2P Marketplace';
 
   @override
