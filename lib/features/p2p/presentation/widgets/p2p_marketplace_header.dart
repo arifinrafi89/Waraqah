@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/screen_app_bar.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../../inbox/presentation/widgets/inbox_button.dart';
 import '../../domain/entities/p2p_listing.dart';
 
+/// The marketplace title and count, with the inbox (and its live badge of
+/// new offers and messages) on the right.
 class P2pMarketplaceHeader extends StatelessWidget {
   const P2pMarketplaceHeader({super.key, required this.listings});
 
@@ -11,12 +14,11 @@ class P2pMarketplaceHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppL10n.of(context)!;
     return ScreenAppBar(
-      title: 'P2P Marketplace',
-      subtitle: '${listings.length} listings',
-      actions: [
-        AppIconButton(icon: Icons.notifications_outlined, onPressed: () {}),
-      ],
+      title: l10n.usedMarketTitle,
+      subtitle: l10n.bookListingCount(listings.length),
+      actions: const [InboxButton()],
     );
   }
 }

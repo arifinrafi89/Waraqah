@@ -1,35 +1,48 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'p2p_listing.freezed.dart';
-part 'p2p_listing.g.dart';
 
 enum BookCondition { likeNew, veryGood, good, acceptable }
 
+/// Where a listing is in its life. A moderator takes it from [inReview] to
+/// [live]; accepting a buyer's offer makes it [reserved] for that buyer,
+/// and the seller marks it [sold] after the handover (or makes it [live]
+/// again if the deal falls through).
 enum P2pListingStatus {
   draft,
   inReview,
   changesRequested,
   rejected,
   live,
+  reserved,
   sold,
 }
 
+/// How the seller would rather hand the book over. Buyers can still
+/// suggest the other way in their offer.
 enum HandoverMethod { meetInPerson, delivery }
 
+/// A used book a Reader offers for sale.
 @freezed
 abstract class P2pListing with _$P2pListing {
   const factory P2pListing({
     required String id,
     required String title,
+    required String sellerId,
     required String sellerName,
-    required String sellerBatch,
     required int priceBdt,
     @Default(BookCondition.good) BookCondition condition,
-    @Default([]) List<String> flags,
-    @Default([]) List<String> photos,
+    @Default(<String>[]) List<String> flags,
+    @Default(<String>[]) List<String> photos,
     @Default(false) bool isNegotiable,
     @Default(HandoverMethod.meetInPerson) HandoverMethod handover,
     @Default(P2pListingStatus.live) P2pListingStatus status,
+
+    /// The signed-in reader is the seller. The server works this out.
+    @Default(false) bool isMine,
+
+    /// Reserved for, or sold to, the signed-in reader.
+    @Default(false) bool isMyDeal,
     String? rejectionReason,
     String? bookId,
     @Default(0) int coverSeed,
@@ -37,34 +50,25 @@ abstract class P2pListing with _$P2pListing {
     String? area,
     String? category,
     int? newPriceBdt,
-  }) = _P2pListing;
 
-  factory P2pListing.fromJson(Map<String, dynamic> json) =>
-      _$P2pListingFromJson(json);
+    /// The seller's own words about the copy.
+    String? note,
+  }) = _P2pListing;
 }
 
 extension P2pListingX on P2pListing {
-  String get sellerLine => '$sellerName · $sellerBatch';
-
-  String get conditionLabel => switch (condition) {
-    BookCondition.likeNew => 'Like New',
-    BookCondition.veryGood => 'Very Good',
-    BookCondition.good => 'Good',
-    BookCondition.acceptable => 'Acceptable',
-  };
-
-  String get statusLabel => switch (status) {
-    P2pListingStatus.draft => 'Draft',
-    P2pListingStatus.inReview => 'In review',
-    P2pListingStatus.changesRequested => 'Changes requested',
-    P2pListingStatus.rejected => 'Rejected',
-    P2pListingStatus.live => 'Live',
-    P2pListingStatus.sold => 'Sold',
-  };
-
+  /// Buyers can make offers.
   bool get isAvailable => status == P2pListingStatus.live;
 
-  String get availabilityLabel => isAvailable ? 'Available' : 'Sold';
+  bool get isReserved => status == P2pListingStatus.reserved;
+
+  bool get isSold => status == P2pListingStatus.sold;
+
+  /// Shown in the marketplace: on sale, or reserved and maybe back soon.
+  bool get isOpen => isAvailable || isReserved;
+
+  /// "Dhanmondi, Dhaka".
+  String get place => [?area, ?district].join(', ');
 
   int? get saveAmount => (newPriceBdt != null && newPriceBdt! > priceBdt)
       ? newPriceBdt! - priceBdt

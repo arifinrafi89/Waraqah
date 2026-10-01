@@ -1741,4 +1741,292 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get listingReasonPrefix => 'কারণ: ';
+
+  @override
+  String get usedMarketTitle => 'পি২পি মার্কেটপ্লেস';
+
+  @override
+  String get usedListingTitle => 'পুরোনো বই';
+
+  @override
+  String get usedListingMissing => 'এই লিস্টিং আর নেই।';
+
+  @override
+  String get usedStatusAvailable => 'পাওয়া যাচ্ছে';
+
+  @override
+  String get usedStatusReserved => 'সংরক্ষিত';
+
+  @override
+  String get usedNegotiable => 'দাম আলোচনাসাপেক্ষ';
+
+  @override
+  String get usedFixedPrice => 'নির্ধারিত দাম';
+
+  @override
+  String get usedPrefersMeetup => 'দেখা করে দিতে চান';
+
+  @override
+  String get usedPrefersCourier => 'কুরিয়ারে পাঠাতে চান';
+
+  @override
+  String get usedYourListing => 'আপনার লিস্টিং';
+
+  @override
+  String get usedMessage => 'মেসেজ';
+
+  @override
+  String get usedOpenChat => 'চ্যাট খুলুন';
+
+  @override
+  String usedSoldBy(String name, String place) {
+    return '$name · $place';
+  }
+
+  @override
+  String usedSaveVsNew(String amount) {
+    return 'নতুনের চেয়ে $amount কম';
+  }
+
+  @override
+  String get usedSellerNote => 'বিক্রেতার কথা';
+
+  @override
+  String usedConditionAndSafety(String condition) {
+    return 'অবস্থা: $condition। টাকা দেওয়ার আগে বইটি দেখে নিন, আর ব্যস্ত কোনো প্রকাশ্য জায়গায় দেখা করুন।';
+  }
+
+  @override
+  String usedOfferWaiting(String amount, String name) {
+    return 'আপনার $amount-এর অফার $name-এর উত্তরের অপেক্ষায়।';
+  }
+
+  @override
+  String get usedOffersAndMessages => 'অফার ও মেসেজ';
+
+  @override
+  String get usedNoOffersYet =>
+      'এখনো কোনো অফার নেই। ক্রেতাদের অফার ও মেসেজ এখানে আর আপনার ইনবক্সে আসবে।';
+
+  @override
+  String get inboxTitle => 'ইনবক্স';
+
+  @override
+  String inboxUnread(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি নতুন',
+      zero: 'সব দেখা হয়েছে',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inboxBuying => 'কিনছেন';
+
+  @override
+  String get inboxSelling => 'বিক্রি করছেন';
+
+  @override
+  String get inboxMissing => 'এই কথোপকথন আর নেই।';
+
+  @override
+  String get inboxEmptyTitle => 'এখনো কোনো অফার বা মেসেজ নেই';
+
+  @override
+  String get inboxEmptyBody =>
+      'পুরোনো বইয়ে অফার দিলে, বা কেউ আপনার বই চাইলে, কথোপকথন এখানে দেখা যাবে।';
+
+  @override
+  String get inboxBrowse => 'পুরোনো বই দেখুন';
+
+  @override
+  String get chatHint => 'মেসেজ লিখুন';
+
+  @override
+  String get chatSend => 'পাঠান';
+
+  @override
+  String chatYou(String text) {
+    return 'আপনি: $text';
+  }
+
+  @override
+  String chatEventAcceptedByMe(String name, String amount) {
+    return 'আপনি $name-এর $amount-এর অফার গ্রহণ করেছেন। বইটি $name-এর জন্য সংরক্ষিত।';
+  }
+
+  @override
+  String chatEventAcceptedByThem(String name, String amount) {
+    return '$name আপনার $amount-এর অফার গ্রহণ করেছেন। বইটি আপনার জন্য সংরক্ষিত।';
+  }
+
+  @override
+  String chatEventDeclinedByMe(String name, String amount) {
+    return 'আপনি $name-এর $amount-এর অফার ফিরিয়ে দিয়েছেন।';
+  }
+
+  @override
+  String chatEventDeclinedByThem(String name, String amount) {
+    return '$name আপনার $amount-এর অফার ফিরিয়ে দিয়েছেন।';
+  }
+
+  @override
+  String get chatEventReservedElsewhere =>
+      'বইটি এখন অন্য একজন ক্রেতার জন্য সংরক্ষিত।';
+
+  @override
+  String get chatEventAvailableByMe => 'আপনি বইটি আবার বিক্রির জন্য দিয়েছেন।';
+
+  @override
+  String chatEventAvailableByThem(String name) {
+    return '$name বইটি আবার বিক্রির জন্য দিয়েছেন।';
+  }
+
+  @override
+  String chatEventSoldByMe(String name) {
+    return 'আপনি বইটি $name-এর কাছে বিক্রি হয়েছে বলে চিহ্নিত করেছেন।';
+  }
+
+  @override
+  String chatEventSoldByThem(String name) {
+    return '$name বইটি আপনার কাছে বিক্রি হয়েছে বলে চিহ্নিত করেছেন।';
+  }
+
+  @override
+  String get chatEventSoldElsewhere =>
+      'বইটি অন্য একজন ক্রেতার কাছে বিক্রি হয়েছে।';
+
+  @override
+  String get chatReservedForYou => 'আপনার জন্য সংরক্ষিত';
+
+  @override
+  String get chatPayOnHandover =>
+      'সময় ও জায়গা এখানেই ঠিক করুন। হাতে পাওয়ার সময় সরাসরি বিক্রেতাকে টাকা দেবেন; ওয়ারাকাহ টাকা লেনদেন করে না।';
+
+  @override
+  String chatReservedFor(String name) {
+    return '$name-এর জন্য সংরক্ষিত';
+  }
+
+  @override
+  String chatSellerNext(String name) {
+    return 'হস্তান্তর এখানেই ঠিক করুন। বই হাতে পৌঁছালে বিক্রি হয়েছে বলে চিহ্নিত করুন।';
+  }
+
+  @override
+  String get chatBoughtIt => 'আপনি বইটি কিনেছেন';
+
+  @override
+  String chatSoldTo(String name) {
+    return '$name-এর কাছে বিক্রি হয়েছে';
+  }
+
+  @override
+  String get chatSoldElsewhere => 'অন্য ক্রেতার কাছে বিক্রি হয়েছে';
+
+  @override
+  String get chatReservedElsewhere => 'অন্য ক্রেতার জন্য সংরক্ষিত';
+
+  @override
+  String get chatMarkSold => 'বিক্রি হয়েছে';
+
+  @override
+  String get chatMakeAvailable => 'আবার বিক্রিতে দিন';
+
+  @override
+  String get chatMarkSoldTitle => 'বিক্রি হয়েছে বলে চিহ্নিত করবেন?';
+
+  @override
+  String chatMarkSoldBody(String name) {
+    return '$name বই হাতে পাওয়ার পরই এটি করুন। অন্য ক্রেতারা জানবেন বইটি বিক্রি হয়ে গেছে।';
+  }
+
+  @override
+  String get chatMakeAvailableTitle => 'বইটি আবার বিক্রিতে দেবেন?';
+
+  @override
+  String chatMakeAvailableBody(String name) {
+    return '$name-এর সংরক্ষণ শেষ হবে, আর অন্য ক্রেতারা আবার অফার দিতে পারবেন।';
+  }
+
+  @override
+  String get offerMake => 'অফার দিন';
+
+  @override
+  String offerTo(String name, String amount) {
+    return '$name-কে · চাওয়া দাম $amount';
+  }
+
+  @override
+  String get offerYourPrice => 'আপনার দাম (৳)';
+
+  @override
+  String offerFixedPrice(String name, String amount) {
+    return '$name-এর $amount দাম আলোচনাসাপেক্ষ নয়।';
+  }
+
+  @override
+  String offerTooHigh(String amount) {
+    return '$amount বা তার কম অফার দিন।';
+  }
+
+  @override
+  String get offerHandover => 'বইটি কীভাবে নিতে চান?';
+
+  @override
+  String get offerMeetup => 'দেখা করে';
+
+  @override
+  String get offerCourier => 'কুরিয়ারে';
+
+  @override
+  String offerSellerPrefers(String name, String method) {
+    String _temp0 = intl.Intl.selectLogic(method, {
+      'delivery': '$name কুরিয়ারে পাঠাতে চান।',
+      'other': '$name দেখা করে দিতে চান।',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get offerSend => 'অফার পাঠান';
+
+  @override
+  String offerSent(String name) {
+    return '$name-কে অফার পাঠানো হয়েছে';
+  }
+
+  @override
+  String offerCardTitle(String amount) {
+    return 'অফার · $amount';
+  }
+
+  @override
+  String offerWaitingFor(String name) {
+    return '$name-এর অপেক্ষায়';
+  }
+
+  @override
+  String get offerStatusPending => 'অপেক্ষমাণ';
+
+  @override
+  String get offerStatusAccepted => 'গৃহীত';
+
+  @override
+  String get offerStatusDeclined => 'ফিরিয়ে দেওয়া';
+
+  @override
+  String get offerStatusClosed => 'বন্ধ';
+
+  @override
+  String get offerAccept => 'গ্রহণ করুন';
+
+  @override
+  String get offerDecline => 'ফিরিয়ে দিন';
+
+  @override
+  String get offerReservedHint =>
+      'বইটি অন্য ক্রেতার জন্য সংরক্ষিত। এই অফার গ্রহণ করতে আগে বইটি আবার বিক্রিতে দিন।';
 }
