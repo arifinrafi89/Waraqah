@@ -22,6 +22,7 @@ import '../widgets/profile_header.dart';
 import '../providers/profile_providers.dart';
 import '../widgets/profile_action_tile.dart';
 import '../../../p2p/presentation/widgets/my_listings_button.dart';
+import '../../../book_request/presentation/widgets/my_requests_link.dart';
 import '../../../report/presentation/widgets/blocked_readers_link.dart';
 import '../widgets/settings_group.dart';
 import 'edit_profile_page.dart';
@@ -114,6 +115,7 @@ class ProfilePage extends ConsumerWidget {
                 const WalletLink(),
                 const AdminAreaButton(),
                 const MyListingsButton(),
+                const MyRequestsLink(),
                 const BlockedReadersLink(),
                 const SizedBox(height: Insets.xl),
                 SettingsGroup(

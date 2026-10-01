@@ -1,6 +1,8 @@
 import '../core/network/fake_api_interceptor.dart';
 import '../features/alerts/data/sources/alert_fake_api.dart';
 import '../features/auth/data/sources/auth_fake_api.dart';
+import '../features/book_request/data/sources/book_request_fake_api.dart';
+import '../features/book_request/data/sources/book_request_fake_store.dart';
 import '../features/cart/data/sources/cart_fake_api.dart';
 import '../features/cart/data/sources/cart_fake_store.dart';
 import '../features/catalog/data/sources/book_fake_api.dart';
@@ -79,6 +81,8 @@ abstract final class FakeApiRoutes {
       ...ReportFakeApi.routes(reports),
       ...ModerationFakeApi.routes(moderation),
       ...ScanFakeApi.routes,
+      // Requests are matched against marketplace Listings.
+      ...BookRequestFakeApi.routes(BookRequestFakeStore(p2p)),
     });
   }
 }

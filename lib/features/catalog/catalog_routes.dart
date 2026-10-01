@@ -51,9 +51,6 @@ abstract final class CatalogRoutes {
     queryParameters: {'sort': ?sort?.name, 'q': ?query},
   ).toString();
 
-  /// Stand-in for Request this book, until that flow lands.
-  static const String requestBook = '/catalog/request-book';
-
   static const String bookDetail = '/catalog/book/:id';
 
   /// Concrete location for one title's detail page.

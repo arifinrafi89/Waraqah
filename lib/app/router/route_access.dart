@@ -4,6 +4,7 @@ import '../../features/alerts/alerts_routes.dart';
 import '../../features/auth/auth_routes.dart';
 import '../../features/auth/domain/entities/app_user.dart';
 import '../../features/auth/domain/entities/user_role.dart';
+import '../../features/book_request/book_request_routes.dart';
 import '../../features/checkout/checkout_routes.dart';
 import '../../features/home/home_routes.dart';
 import '../../features/inbox/inbox_routes.dart';
@@ -30,6 +31,7 @@ abstract final class RouteAccess {
     WalletRoutes.wallet,
     InboxRoutes.inbox,
     ReportRoutes.blocked,
+    BookRequestRoutes.requests,
   ];
 
   /// Where to redirect [location] for [user], or `null` to let it open.

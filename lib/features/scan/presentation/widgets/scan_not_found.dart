@@ -8,7 +8,7 @@ import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/app_buttons.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../../catalog/catalog_routes.dart';
+import '../../../book_request/book_request_routes.dart';
 import 'scan_actions.dart';
 
 /// A valid ISBN Waraqah doesn't have: ask for it, or list it anyway.
@@ -36,7 +36,7 @@ class ScanNotFound extends ConsumerWidget {
           const SizedBox(height: Insets.sm),
           SecondaryButton(
             label: l10n.scanRequest,
-            onPressed: () => context.push(CatalogRoutes.requestBook),
+            onPressed: () => context.push(BookRequestRoutes.newRequest),
           ),
           TextButton(
             onPressed: () => ref.sellCopy(context, null, forSell: forSell),

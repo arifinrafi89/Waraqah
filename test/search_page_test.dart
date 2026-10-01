@@ -89,8 +89,9 @@ void main() {
 
     await tester.tap(find.text('Request this book'));
     await settle(tester);
-    expect(pathOf(router), CatalogRoutes.requestBook);
-    expect(find.text('Coming soon'), findsOneWidget);
+    // The request form, with what was searched for filled in.
+    expect(pathOf(router), '/request-book');
+    expect(find.text('zzzz'), findsOneWidget);
   });
 
   testWidgets('recent searches: saved on submit, tap runs, clear empties', (

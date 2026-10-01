@@ -2417,7 +2417,124 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
+  String get requestTitle => 'বই চান';
+
+  @override
+  String get requestIntro =>
+      'কী খুঁজছেন জানান। যাঁদের কাছে আছে তাঁরা জানতে পারবেন, আর ওয়ারাকাহ দেখবে পাঠকেরা কী চান।';
+
+  @override
+  String get requestBookTitle => 'বইয়ের নাম';
+
+  @override
+  String get requestBookTitleHint => 'ক্যালকুলাস';
+
+  @override
+  String get requestAuthor => 'লেখক (ঐচ্ছিক)';
+
+  @override
+  String get requestAuthorHint => 'জেমস স্টুয়ার্ট';
+
+  @override
+  String get requestMaxPrice => 'সর্বোচ্চ কত দেবেন, ৳ (ঐচ্ছিক)';
+
+  @override
+  String get requestMaxPriceHint => '৯০০';
+
+  @override
+  String get requestNote => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get requestNoteHint => 'সংস্করণ, অবস্থা, আপনার এলাকা…';
+
+  @override
+  String get requestTitleMissing => 'বইয়ের নাম লিখুন।';
+
+  @override
+  String requestTitleTooLong(int max) {
+    return 'নাম $max অক্ষরের মধ্যে রাখুন।';
+  }
+
+  @override
+  String get requestBadPrice => '৳০-এর বেশি দাম লিখুন।';
+
+  @override
+  String requestNoteTooLong(int max) {
+    return 'নোট $max অক্ষরের মধ্যে রাখুন।';
+  }
+
+  @override
+  String get requestSend => 'অনুরোধ পাঠান';
+
+  @override
+  String requestSent(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          'অনুরোধ পাঠানো হয়েছে। যাঁদের কাছে আছে এমন $count জন পাঠক জেনেছেন।',
+      zero: 'অনুরোধ পাঠানো হয়েছে। যাঁরা লিস্ট করবেন তাঁরা দেখবেন।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get requestMine => 'আমার বইয়ের অনুরোধ';
+
+  @override
+  String get requestNew => 'নতুন অনুরোধ';
+
+  @override
+  String get requestEmptyTitle => 'এখনো কোনো অনুরোধ নেই';
+
+  @override
+  String get requestEmptyBody =>
+      'যে বই পাচ্ছেন না তা চান। যাঁদের কাছে আছে তাঁরা আপনার অনুরোধ দেখবেন।';
+
+  @override
+  String requestUnder(String price) {
+    return '$price-এর মধ্যে';
+  }
+
+  @override
+  String requestMatches(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'এখন $countটি কপি বিক্রিতে আছে',
+      zero: 'এখনো কোনো কপি বিক্রিতে নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get requestSeeCopies => 'কপিগুলো দেখুন';
+
+  @override
+  String get requestClose => 'বন্ধ করুন';
+
+  @override
+  String get requestClosed => 'বন্ধ';
+
+  @override
+  String get requestClosedDone => 'অনুরোধ বন্ধ করা হয়েছে।';
+
+  @override
+  String get requestWantedTitle => 'পাঠকেরা আপনার বই চান';
+
+  @override
+  String requestWantedLine(String name, String title) {
+    return '$name খুঁজছেন $title';
+  }
+
+  @override
+  String get requestOpenListing => 'আপনার লিস্টিং';
+
+  @override
   String get usedMarketTitle => 'পি২পি মার্কেটপ্লেস';
+
+  @override
+  String get usedSearchHint => 'পুরোনো বই খুঁজুন...';
 
   @override
   String get usedListingTitle => 'পুরোনো বই';

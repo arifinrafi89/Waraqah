@@ -4369,11 +4369,191 @@ abstract class AppL10n {
   /// **'From the catalog: {title}'**
   String scanSelling(String title);
 
+  /// No description provided for @requestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Request a book'**
+  String get requestTitle;
+
+  /// No description provided for @requestIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us what you\'re looking for. Readers who have it are told, and Waraqah sees what readers want.'**
+  String get requestIntro;
+
+  /// No description provided for @requestBookTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Book title'**
+  String get requestBookTitle;
+
+  /// No description provided for @requestBookTitleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculus'**
+  String get requestBookTitleHint;
+
+  /// No description provided for @requestAuthor.
+  ///
+  /// In en, this message translates to:
+  /// **'Author (optional)'**
+  String get requestAuthor;
+
+  /// No description provided for @requestAuthorHint.
+  ///
+  /// In en, this message translates to:
+  /// **'James Stewart'**
+  String get requestAuthorHint;
+
+  /// No description provided for @requestMaxPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Most you\'d pay, in ৳ (optional)'**
+  String get requestMaxPrice;
+
+  /// No description provided for @requestMaxPriceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'900'**
+  String get requestMaxPriceHint;
+
+  /// No description provided for @requestNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note (optional)'**
+  String get requestNote;
+
+  /// No description provided for @requestNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Edition, condition, your area…'**
+  String get requestNoteHint;
+
+  /// No description provided for @requestTitleMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the book\'s title.'**
+  String get requestTitleMissing;
+
+  /// No description provided for @requestTitleTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep the title under {max} characters.'**
+  String requestTitleTooLong(int max);
+
+  /// No description provided for @requestBadPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a price above ৳0.'**
+  String get requestBadPrice;
+
+  /// No description provided for @requestNoteTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep the note under {max} characters.'**
+  String requestNoteTooLong(int max);
+
+  /// No description provided for @requestSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send request'**
+  String get requestSend;
+
+  /// No description provided for @requestSent.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Request sent. Readers who list it will see it.} =1{Request sent. 1 reader who has it was told.} other{Request sent. {count} readers who have it were told.}}'**
+  String requestSent(int count);
+
+  /// No description provided for @requestMine.
+  ///
+  /// In en, this message translates to:
+  /// **'My book requests'**
+  String get requestMine;
+
+  /// No description provided for @requestNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New request'**
+  String get requestNew;
+
+  /// No description provided for @requestEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests yet'**
+  String get requestEmptyTitle;
+
+  /// No description provided for @requestEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask for a book you can\'t find. Readers who have it will see your request.'**
+  String get requestEmptyBody;
+
+  /// No description provided for @requestUnder.
+  ///
+  /// In en, this message translates to:
+  /// **'Under {price}'**
+  String requestUnder(String price);
+
+  /// No description provided for @requestMatches.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No copies on sale yet} =1{1 copy on sale now} other{{count} copies on sale now}}'**
+  String requestMatches(int count);
+
+  /// No description provided for @requestSeeCopies.
+  ///
+  /// In en, this message translates to:
+  /// **'See copies'**
+  String get requestSeeCopies;
+
+  /// No description provided for @requestClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get requestClose;
+
+  /// No description provided for @requestClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get requestClosed;
+
+  /// No description provided for @requestClosedDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Request closed.'**
+  String get requestClosedDone;
+
+  /// No description provided for @requestWantedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Readers want your books'**
+  String get requestWantedTitle;
+
+  /// No description provided for @requestWantedLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is looking for {title}'**
+  String requestWantedLine(String name, String title);
+
+  /// No description provided for @requestOpenListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Your listing'**
+  String get requestOpenListing;
+
   /// No description provided for @usedMarketTitle.
   ///
   /// In en, this message translates to:
   /// **'P2P Marketplace'**
   String get usedMarketTitle;
+
+  /// No description provided for @usedSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search second-hand books...'**
+  String get usedSearchHint;
 
   /// No description provided for @usedListingTitle.
   ///

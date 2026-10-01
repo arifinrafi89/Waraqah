@@ -7,6 +7,7 @@ import '../../features/alerts/alerts_routes.dart';
 import '../../features/auth/auth_routes.dart';
 import '../../features/auth/domain/entities/app_user.dart';
 import '../../features/bites/bites_routes.dart';
+import '../../features/book_request/book_request_routes.dart';
 import '../../features/cart/cart_routes.dart';
 import '../../features/catalog/catalog_routes.dart';
 import '../../features/checkout/checkout_routes.dart';
@@ -65,6 +66,7 @@ abstract final class AppRouter {
       ...WalletRoutes.routes,
       ...ReportRoutes.routes,
       ...ScanRoutes.routes,
+      ...BookRequestRoutes.routes,
       ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),
