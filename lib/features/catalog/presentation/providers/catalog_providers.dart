@@ -77,10 +77,11 @@ final sectionBooksProvider = FutureProvider.family<List<Book>, Section>(
   (ref, section) => GetSectionBooks(ref.watch(bookRepositoryProvider))(section),
 );
 
-/// Every Collection (`null`), or one Section's. Home reads this too.
+/// Every Collection (`null`), or one Section's, Expert Picks included.
 final collectionsProvider = FutureProvider.family<List<Collection>, Section?>(
-  (ref, section) =>
-      GetCollections(ref.watch(catalogRecordsRepositoryProvider))(section),
+  (ref, section) => GetCollections(ref.watch(catalogRecordsRepositoryProvider))(
+    (section: section, hasExpert: null),
+  ),
 );
 
 /// One Collection by id; `null` when unknown.

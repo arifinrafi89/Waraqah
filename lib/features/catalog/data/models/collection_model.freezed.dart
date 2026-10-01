@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CollectionModel {
 
- String get id; String get titleEn; String get titleBn; String get noteEn; String get noteBn; List<String> get bookIds; Section? get section;
+ String get id; String get titleEn; String get titleBn; String get noteEn; String get noteBn; List<String> get bookIds; Section? get section; String? get expertId;
 /// Create a copy of CollectionModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $CollectionModelCopyWith<CollectionModel> get copyWith => _$CollectionModelCopyW
 @override
 bool operator ==(Object other) {
   final _this = this as CollectionModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectionModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.titleEn, _this.titleEn) || other.titleEn == _this.titleEn)&&(identical(other.titleBn, _this.titleBn) || other.titleBn == _this.titleBn)&&(identical(other.noteEn, _this.noteEn) || other.noteEn == _this.noteEn)&&(identical(other.noteBn, _this.noteBn) || other.noteBn == _this.noteBn)&&const DeepCollectionEquality().equals(other.bookIds, _this.bookIds)&&(identical(other.section, _this.section) || other.section == _this.section));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CollectionModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.titleEn, _this.titleEn) || other.titleEn == _this.titleEn)&&(identical(other.titleBn, _this.titleBn) || other.titleBn == _this.titleBn)&&(identical(other.noteEn, _this.noteEn) || other.noteEn == _this.noteEn)&&(identical(other.noteBn, _this.noteBn) || other.noteBn == _this.noteBn)&&const DeepCollectionEquality().equals(other.bookIds, _this.bookIds)&&(identical(other.section, _this.section) || other.section == _this.section)&&(identical(other.expertId, _this.expertId) || other.expertId == _this.expertId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as CollectionModel;
-  return Object.hash(runtimeType,_this.id,_this.titleEn,_this.titleBn,_this.noteEn,_this.noteBn,const DeepCollectionEquality().hash(_this.bookIds),_this.section);
+  return Object.hash(runtimeType,_this.id,_this.titleEn,_this.titleBn,_this.noteEn,_this.noteBn,const DeepCollectionEquality().hash(_this.bookIds),_this.section,_this.expertId);
 }
 
 @override
 String toString() {
   final _this = this as CollectionModel;
-  return 'CollectionModel(id: ${_this.id}, titleEn: ${_this.titleEn}, titleBn: ${_this.titleBn}, noteEn: ${_this.noteEn}, noteBn: ${_this.noteBn}, bookIds: ${_this.bookIds}, section: ${_this.section})';
+  return 'CollectionModel(id: ${_this.id}, titleEn: ${_this.titleEn}, titleBn: ${_this.titleBn}, noteEn: ${_this.noteEn}, noteBn: ${_this.noteBn}, bookIds: ${_this.bookIds}, section: ${_this.section}, expertId: ${_this.expertId})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $CollectionModelCopyWith<$Res>  {
   factory $CollectionModelCopyWith(CollectionModel value, $Res Function(CollectionModel) _then) = _$CollectionModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String titleEn, String titleBn, String noteEn, String noteBn, List<String> bookIds, Section? section
+ String id, String titleEn, String titleBn, String noteEn, String noteBn, List<String> bookIds, Section? section, String? expertId
 });
 
 
@@ -71,7 +71,7 @@ class _$CollectionModelCopyWithImpl<$Res>
 
 /// Create a copy of CollectionModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? titleEn = null,Object? titleBn = null,Object? noteEn = null,Object? noteBn = null,Object? bookIds = null,Object? section = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? titleEn = null,Object? titleBn = null,Object? noteEn = null,Object? noteBn = null,Object? bookIds = null,Object? section = freezed,Object? expertId = freezed,}) {
   return _then(CollectionModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,titleEn: null == titleEn ? _self.titleEn : titleEn // ignore: cast_nullable_to_non_nullable
@@ -80,7 +80,8 @@ as String,noteEn: null == noteEn ? _self.noteEn : noteEn // ignore: cast_nullabl
 as String,noteBn: null == noteBn ? _self.noteBn : noteBn // ignore: cast_nullable_to_non_nullable
 as String,bookIds: null == bookIds ? _self.bookIds : bookIds // ignore: cast_nullable_to_non_nullable
 as List<String>,section: freezed == section ? _self.section : section // ignore: cast_nullable_to_non_nullable
-as Section?,
+as Section?,expertId: freezed == expertId ? _self.expertId : expertId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -165,10 +166,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String titleEn,  String titleBn,  String noteEn,  String noteBn,  List<String> bookIds,  Section? section)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String titleEn,  String titleBn,  String noteEn,  String noteBn,  List<String> bookIds,  Section? section,  String? expertId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CollectionModel() when $default != null:
-return $default(_that.id,_that.titleEn,_that.titleBn,_that.noteEn,_that.noteBn,_that.bookIds,_that.section);case _:
+return $default(_that.id,_that.titleEn,_that.titleBn,_that.noteEn,_that.noteBn,_that.bookIds,_that.section,_that.expertId);case _:
   return orElse();
 
 }
@@ -186,10 +187,10 @@ return $default(_that.id,_that.titleEn,_that.titleBn,_that.noteEn,_that.noteBn,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String titleEn,  String titleBn,  String noteEn,  String noteBn,  List<String> bookIds,  Section? section)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String titleEn,  String titleBn,  String noteEn,  String noteBn,  List<String> bookIds,  Section? section,  String? expertId)  $default,) {final _that = this;
 switch (_that) {
 case _CollectionModel():
-return $default(_that.id,_that.titleEn,_that.titleBn,_that.noteEn,_that.noteBn,_that.bookIds,_that.section);case _:
+return $default(_that.id,_that.titleEn,_that.titleBn,_that.noteEn,_that.noteBn,_that.bookIds,_that.section,_that.expertId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -206,10 +207,10 @@ return $default(_that.id,_that.titleEn,_that.titleBn,_that.noteEn,_that.noteBn,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String titleEn,  String titleBn,  String noteEn,  String noteBn,  List<String> bookIds,  Section? section)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String titleEn,  String titleBn,  String noteEn,  String noteBn,  List<String> bookIds,  Section? section,  String? expertId)?  $default,) {final _that = this;
 switch (_that) {
 case _CollectionModel() when $default != null:
-return $default(_that.id,_that.titleEn,_that.titleBn,_that.noteEn,_that.noteBn,_that.bookIds,_that.section);case _:
+return $default(_that.id,_that.titleEn,_that.titleBn,_that.noteEn,_that.noteBn,_that.bookIds,_that.section,_that.expertId);case _:
   return null;
 
 }
@@ -221,7 +222,7 @@ return $default(_that.id,_that.titleEn,_that.titleBn,_that.noteEn,_that.noteBn,_
 @JsonSerializable()
 
 class _CollectionModel implements CollectionModel {
-  const _CollectionModel({required this.id, required this.titleEn, required this.titleBn, required this.noteEn, required this.noteBn, required  List<String> bookIds, this.section}): _bookIds = bookIds;
+  const _CollectionModel({required this.id, required this.titleEn, required this.titleBn, required this.noteEn, required this.noteBn, required  List<String> bookIds, this.section, this.expertId}): _bookIds = bookIds;
   factory _CollectionModel.fromJson(Map<String, dynamic> json) => _$CollectionModelFromJson(json);
 
 @override final  String id;
@@ -237,6 +238,7 @@ class _CollectionModel implements CollectionModel {
 }
 
 @override final  Section? section;
+@override final  String? expertId;
 
 /// Create a copy of CollectionModel
 /// with the given fields replaced by the non-null parameter values.
@@ -251,18 +253,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectionModel&&(identical(other.id, id) || other.id == id)&&(identical(other.titleEn, titleEn) || other.titleEn == titleEn)&&(identical(other.titleBn, titleBn) || other.titleBn == titleBn)&&(identical(other.noteEn, noteEn) || other.noteEn == noteEn)&&(identical(other.noteBn, noteBn) || other.noteBn == noteBn)&&const DeepCollectionEquality().equals(other.bookIds, _bookIds)&&(identical(other.section, section) || other.section == section));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CollectionModel&&(identical(other.id, id) || other.id == id)&&(identical(other.titleEn, titleEn) || other.titleEn == titleEn)&&(identical(other.titleBn, titleBn) || other.titleBn == titleBn)&&(identical(other.noteEn, noteEn) || other.noteEn == noteEn)&&(identical(other.noteBn, noteBn) || other.noteBn == noteBn)&&const DeepCollectionEquality().equals(other.bookIds, _bookIds)&&(identical(other.section, section) || other.section == section)&&(identical(other.expertId, expertId) || other.expertId == expertId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,titleEn,titleBn,noteEn,noteBn,const DeepCollectionEquality().hash(_bookIds),section);
+    return Object.hash(runtimeType,id,titleEn,titleBn,noteEn,noteBn,const DeepCollectionEquality().hash(_bookIds),section,expertId);
 }
 
 @override
 String toString() {
-    return 'CollectionModel(id: $id, titleEn: $titleEn, titleBn: $titleBn, noteEn: $noteEn, noteBn: $noteBn, bookIds: $bookIds, section: $section)';
+    return 'CollectionModel(id: $id, titleEn: $titleEn, titleBn: $titleBn, noteEn: $noteEn, noteBn: $noteBn, bookIds: $bookIds, section: $section, expertId: $expertId)';
 }
 
 
@@ -273,7 +275,7 @@ abstract mixin class _$CollectionModelCopyWith<$Res> implements $CollectionModel
   factory _$CollectionModelCopyWith(_CollectionModel value, $Res Function(_CollectionModel) _then) = __$CollectionModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String titleEn, String titleBn, String noteEn, String noteBn, List<String> bookIds, Section? section
+ String id, String titleEn, String titleBn, String noteEn, String noteBn, List<String> bookIds, Section? section, String? expertId
 });
 
 
@@ -290,7 +292,7 @@ class __$CollectionModelCopyWithImpl<$Res>
 
 /// Create a copy of CollectionModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? titleEn = null,Object? titleBn = null,Object? noteEn = null,Object? noteBn = null,Object? bookIds = null,Object? section = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? titleEn = null,Object? titleBn = null,Object? noteEn = null,Object? noteBn = null,Object? bookIds = null,Object? section = freezed,Object? expertId = freezed,}) {
   return _then(_CollectionModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,titleEn: null == titleEn ? _self.titleEn : titleEn // ignore: cast_nullable_to_non_nullable
@@ -299,7 +301,8 @@ as String,noteEn: null == noteEn ? _self.noteEn : noteEn // ignore: cast_nullabl
 as String,noteBn: null == noteBn ? _self.noteBn : noteBn // ignore: cast_nullable_to_non_nullable
 as String,bookIds: null == bookIds ? _self._bookIds : bookIds // ignore: cast_nullable_to_non_nullable
 as List<String>,section: freezed == section ? _self.section : section // ignore: cast_nullable_to_non_nullable
-as Section?,
+as Section?,expertId: freezed == expertId ? _self.expertId : expertId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

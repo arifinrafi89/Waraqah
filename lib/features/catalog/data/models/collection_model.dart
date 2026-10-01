@@ -2,11 +2,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/models/book.dart';
 import '../../domain/entities/collection.dart';
+import '../../domain/entities/expert.dart';
 
 part 'collection_model.freezed.dart';
 part 'collection_model.g.dart';
 
-/// A Collection as stored: its books by id, in order.
+/// A Collection as stored: its books by id, in order. An Expert Pick has
+/// its Expert's id.
 @freezed
 abstract class CollectionModel with _$CollectionModel {
   const factory CollectionModel({
@@ -17,6 +19,7 @@ abstract class CollectionModel with _$CollectionModel {
     required String noteBn,
     required List<String> bookIds,
     Section? section,
+    String? expertId,
   }) = _CollectionModel;
 
   factory CollectionModel.fromJson(Map<String, dynamic> json) =>
@@ -24,7 +27,7 @@ abstract class CollectionModel with _$CollectionModel {
 }
 
 extension CollectionModelX on CollectionModel {
-  Collection toEntity(List<Book> books) => Collection(
+  Collection toEntity(List<Book> books, {Expert? expert}) => Collection(
     id: id,
     titleEn: titleEn,
     titleBn: titleBn,
@@ -32,5 +35,6 @@ extension CollectionModelX on CollectionModel {
     noteBn: noteBn,
     section: section,
     books: books,
+    expert: expert,
   );
 }
