@@ -10,6 +10,7 @@ import '../../../admin/presentation/widgets/admin_area_button.dart';
 import '../../../alerts/presentation/widgets/my_alerts_link.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
 import '../../../auth/presentation/widgets/session_actions.dart';
+import '../../../home/presentation/widgets/ayah_switch_tile.dart';
 import '../../../donate/presentation/widgets/donate_link.dart';
 import '../../../loyalty/presentation/widgets/points_link.dart';
 import '../../../orders/presentation/widgets/my_orders_link.dart';
@@ -93,6 +94,12 @@ class ProfilePage extends ConsumerWidget {
                     onChanged: (code) =>
                         settingsNotifier.setLocale(Locale(code)),
                   ),
+                ),
+                const SizedBox(height: Insets.xl),
+                SettingsGroup(
+                  label: l10n.homeSettingsTitle,
+                  icon: Icons.home_rounded,
+                  child: const AyahSwitchTile(),
                 ),
               ],
             ),

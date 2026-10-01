@@ -168,17 +168,19 @@ class AppL10nBn extends AppL10n {
   String get homeAyahOfTheDay => 'আজকের আয়াত';
 
   @override
-  String get homeAllBooks => 'সব বই';
+  String get homeHideAyah => 'আজকের আয়াত লুকান';
 
   @override
-  String get homeBeneficial => 'উপকারী';
+  String get homeAyahHidden => 'লুকানো হয়েছে। প্রোফাইল থেকে আবার চালু করুন।';
 
   @override
-  String get homeNonBeneficial => 'অনুপকারী';
+  String get homeShowAyah => 'আজকের আয়াত দেখান';
 
   @override
-  String get homeNonBeneficialNote =>
-      'এই তালিকার বইগুলো আমাদের অ্যাডমিন বাছাই করেছেন। কোনো বই পাঠকের উপকারে আসবে কি না, তা অনেক সময় তার নিয়ত ও জ্ঞানের ভিত্তির ওপর নির্ভর করে। যেমন, অনেক প্রসিদ্ধ মুফাসসির তাফসিরে বাড়তি প্রেক্ষাপট ও ব্যাখ্যার জন্য তাওরাত ও বাইবেল পড়েছেন। তবে সাধারণ পাঠকের জন্য এ ধরনের বই উপকারী নয়, এবং সতর্ক না হলে ক্ষতিকরও হতে পারে।';
+  String get homeSettingsTitle => 'হোম';
+
+  @override
+  String get commonUndo => 'আগের অবস্থায় ফেরান';
 
   @override
   String get homeBookBites => 'বুক-বাইটস';
@@ -187,22 +189,25 @@ class AppL10nBn extends AppL10n {
   String get homeBookBitesSub => 'পাঠকরা যা শেয়ার করছেন';
 
   @override
-  String get homeNewBooks => 'নতুন বই';
+  String get homeNewArrivals => 'নতুন এসেছে';
 
   @override
-  String get homeNewBooksSub => 'সবচেয়ে কম দাম আগে';
+  String get homeNewArrivalsSub => 'ওয়ারাকাহ-তে সদ্য যোগ হয়েছে';
 
   @override
-  String get homeFromStudents => 'আপনার কাছের শিক্ষার্থীদের থেকে';
+  String get homeBestsellers => 'বেস্টসেলার';
+
+  @override
+  String get homeBestsellersSub => 'গত ৩০ দিনে সবচেয়ে বেশি কেনা';
+
+  @override
+  String get homeFromStudents => 'পাঠকদের পুরোনো বই';
 
   @override
   String get homeFromStudentsSub => 'সেকেন্ড-হ্যান্ড · আইইউটি ক্যাম্পাস';
 
   @override
   String get commonSeeAll => 'সব দেখুন';
-
-  @override
-  String get commonSort => 'সাজান';
 
   @override
   String get commonFilter => 'ফিল্টার';
@@ -377,6 +382,12 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get sectionEmpty => 'এই বিভাগে এখনো কোনো বই নেই।';
+
+  @override
+  String get collectionStripTitle => 'সংকলন';
+
+  @override
+  String get collectionStripSub => 'সম্পাদকদের বাছাই করা বই, আর কেন';
 
   @override
   String get bookFormatPaperback => 'পেপারব্যাক';

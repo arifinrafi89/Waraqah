@@ -19,6 +19,7 @@ abstract final class PublisherFixtures {
     PublisherModel(id: 'pub-penguin', name: 'Penguin Classics'),
     PublisherModel(id: 'pub-princeton', name: 'Princeton University Press'),
     PublisherModel(id: 'pub-ibt', name: 'Islamic Book Trust'),
+    PublisherModel(id: 'pub-inner-traditions', name: 'Inner Traditions'),
     PublisherModel(id: 'pub-dar-al-taqwa', name: 'Dar al-Taqwa'),
     PublisherModel(id: 'pub-waraqah-press', name: 'Waraqah Press'),
     PublisherModel(id: 'pub-nctb', name: 'NCTB'),

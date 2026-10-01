@@ -9,8 +9,10 @@ import '../../data/sources/catalog_records_source.dart';
 import '../../domain/entities/author.dart';
 import '../../domain/entities/catalog_filters.dart';
 import '../../domain/entities/category.dart';
+import '../../domain/entities/collection.dart';
 import '../../domain/entities/publisher.dart';
 import '../../domain/repositories/book_repository.dart';
+import '../../domain/usecases/get_collections.dart';
 import '../../domain/usecases/get_section_books.dart';
 import '../../domain/repositories/catalog_records_repository.dart';
 
@@ -73,4 +75,15 @@ final publisherBooksProvider = FutureProvider.family<List<Book>, String>(
 /// Every Book in one Section, newest first.
 final sectionBooksProvider = FutureProvider.family<List<Book>, Section>(
   (ref, section) => GetSectionBooks(ref.watch(bookRepositoryProvider))(section),
+);
+
+/// Every Collection (`null`), or one Section's. Home reads this too.
+final collectionsProvider = FutureProvider.family<List<Collection>, Section?>(
+  (ref, section) =>
+      GetCollections(ref.watch(catalogRecordsRepositoryProvider))(section),
+);
+
+/// One Collection by id; `null` when unknown.
+final collectionProvider = FutureProvider.family<Collection?, String>(
+  (ref, id) => GetCollection(ref.watch(catalogRecordsRepositoryProvider))(id),
 );

@@ -167,13 +167,16 @@ class _P2pAddListingPageState extends ConsumerState<P2pAddListingPage> {
                         Text(l10n.listingHandoverMethod),
                         _HandoverOption(
                           label: l10n.listingHandoverMeet,
-                          selected: draft.handover == HandoverMethod.meetInPerson,
-                          onTap: () => notifier.setHandover(HandoverMethod.meetInPerson),
+                          selected:
+                              draft.handover == HandoverMethod.meetInPerson,
+                          onTap: () =>
+                              notifier.setHandover(HandoverMethod.meetInPerson),
                         ),
                         _HandoverOption(
                           label: l10n.listingHandoverDelivery,
                           selected: draft.handover == HandoverMethod.delivery,
-                          onTap: () => notifier.setHandover(HandoverMethod.delivery),
+                          onTap: () =>
+                              notifier.setHandover(HandoverMethod.delivery),
                         ),
                       ],
                     ),

@@ -25,7 +25,10 @@ void main() {
     final line = cart().lines.single;
     expect(line.title, 'Atomic Habits');
     expect(line.bookId, 'bk-atomic');
-    expect((line.unitPriceBdt, line.listPriceBdt, line.quantity), (590, 650, 1));
+    expect(
+      (line.unitPriceBdt, line.listPriceBdt, line.quantity),
+      (590, 650, 1),
+    );
   });
 
   test('adding it again adds a copy, up to the stock', () {

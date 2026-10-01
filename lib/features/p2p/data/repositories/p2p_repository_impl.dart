@@ -38,7 +38,9 @@ class P2pRepositoryImpl implements P2pRepository {
       _cache.resolve('listings_for_book:$bookId', () async {
         await Future<void>.delayed(const Duration(milliseconds: 700));
         return P2pFixtures.listings
-            .where((l) => l.bookId == bookId && l.status == P2pListingStatus.live)
+            .where(
+              (l) => l.bookId == bookId && l.status == P2pListingStatus.live,
+            )
             .toList();
       });
 }

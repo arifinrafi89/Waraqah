@@ -15,7 +15,6 @@ abstract final class GeneralMoreShelf {
       rating: 4.2,
       tags: ['Academic'],
       categoryId: 'cat-academic',
-      isBeneficial: true,
       coverSeed: 2,
       section: Section.academic,
       originalLanguage: BookLanguage.english,

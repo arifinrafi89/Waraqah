@@ -15,7 +15,7 @@ class P2pMyListingsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final listingsAsync = ref.watch(myListingsProvider);
     final l10n = AppL10n.of(context)!;
-    
+
     return Scaffold(
       body: SafeArea(
         bottom: false,

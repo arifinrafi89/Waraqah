@@ -41,7 +41,6 @@ abstract class Book with _$Book {
     required DateTime addedAt,
     @Default(0) double rating,
     @Default(<String>[]) List<String> tags,
-    @Default(false) bool isBeneficial,
     @Default(0) int coverSeed,
     String? shortTitle,
   }) = _Book;

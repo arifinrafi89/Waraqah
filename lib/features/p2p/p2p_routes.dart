@@ -10,7 +10,7 @@ abstract final class P2pRoutes {
   static const String addListing = '/p2p/add-listing';
   static const String myListings = '/p2p/my-listings';
   static const String listingDetail = '/p2p/listing/:id';
-  
+
   static String listingDetailFor(String id) => '/p2p/listing/$id';
 
   static final List<RouteBase> routes = [

@@ -10,11 +10,13 @@ import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/ayah.dart';
 
 /// Ayah of the Day — an accent-gradient hero card with the Arabic verse set
-/// right-to-left in Amiri, its translation, and the surah reference.
+/// right-to-left in Amiri, its translation, and the surah reference. The ✕
+/// calls [onHide].
 class AyahCard extends StatelessWidget {
-  const AyahCard({super.key, required this.ayah});
+  const AyahCard({super.key, required this.ayah, required this.onHide});
 
   final Ayah ayah;
+  final VoidCallback onHide;
 
   @override
   Widget build(BuildContext context) {
@@ -26,42 +28,65 @@ class AyahCard extends StatelessWidget {
       clip: true,
       child: AuroraGlass(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(18, 18, 18, 16),
+          padding: const EdgeInsets.fromLTRB(18, 8, 8, 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _tag(palette, l10n.homeAyahOfTheDay),
-              const SizedBox(height: 10),
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: Text(
-                  ayah.arabic,
-                  textAlign: TextAlign.right,
-                  style: AppFonts.arabic(size: 23, color: palette.text),
-                ),
+              Row(
+                children: [
+                  Expanded(child: _tag(palette, l10n.homeAyahOfTheDay)),
+                  IconButton(
+                    tooltip: l10n.homeHideAyah,
+                    icon: Icon(Icons.close_rounded, color: palette.textFaint),
+                    onPressed: onHide,
+                  ),
+                ],
               ),
-              const SizedBox(height: 10),
-              Text(
-                '"${ayah.translation}"',
-                style: AppFonts.ui(
-                  size: 13,
-                  height: 1.55,
-                  color: palette.textDim,
-                  style: FontStyle.italic,
-                ),
-              ),
-              const SizedBox(height: Insets.sm),
-              Text(
-                ayah.reference(isBangla),
-                style: AppFonts.ui(
-                  size: 11.5,
-                  weight: FontWeight.w800,
-                  color: palette.textFaint,
-                ),
-              ),
+              _verse(context, isBangla),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  /// The verse, translation and reference, inset to match the card's left
+  /// padding on the right too.
+  Widget _verse(BuildContext context, bool isBangla) {
+    final palette = context.palette;
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Directionality(
+            textDirection: TextDirection.rtl,
+            child: Text(
+              ayah.arabic,
+              textAlign: TextAlign.right,
+              style: AppFonts.arabic(size: 23, color: palette.text),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            '"${ayah.translation}"',
+            style: AppFonts.ui(
+              size: 13,
+              height: 1.55,
+              color: palette.textDim,
+              style: FontStyle.italic,
+            ),
+          ),
+          const SizedBox(height: Insets.sm),
+          Text(
+            ayah.reference(isBangla),
+            style: AppFonts.ui(
+              size: 11.5,
+              weight: FontWeight.w800,
+              color: palette.textFaint,
+            ),
+          ),
+        ],
       ),
     );
   }

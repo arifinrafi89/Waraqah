@@ -48,7 +48,11 @@ void main() {
   });
 
   test('a return can be asked for once, within 7 days of delivery', () {
-    final order = store.requestReturn('WQ-100201', ReturnReason.damaged, 'Torn');
+    final order = store.requestReturn(
+      'WQ-100201',
+      ReturnReason.damaged,
+      'Torn',
+    );
     expect(order!.returnRequest!.status, ReturnStatus.requested);
     expect(order.returnRequest!.note, 'Torn');
 

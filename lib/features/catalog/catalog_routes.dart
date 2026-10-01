@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import '../../core/models/book.dart';
+import 'domain/entities/catalog_filters.dart';
 import 'presentation/pages/book_detail_page.dart';
 import 'catalog_tab_routes.dart';
 import 'presentation/pages/catalog_page.dart';
@@ -36,8 +37,19 @@ abstract final class CatalogRoutes {
   /// A Series' page, inside the Catalog tab so the bottom nav stays.
   static String seriesFor(String id) => '/catalog/series/$id';
 
+  static const String collection = '/catalog/collection/:id';
+
+  /// A Collection's page, inside the Catalog tab so the bottom nav stays.
+  static String collectionFor(String id) => '/catalog/collection/$id';
+
   /// The Search page, inside the Catalog tab so the bottom nav stays.
   static const String search = '/catalog/search';
+
+  /// Search opened with [sort] already chosen and/or [query] filled in.
+  static String searchFor({SearchSort? sort, String? query}) => Uri(
+    path: search,
+    queryParameters: {'sort': ?sort?.name, 'q': ?query},
+  ).toString();
 
   /// Stand-in for Request this book, until that flow lands.
   static const String requestBook = '/catalog/request-book';

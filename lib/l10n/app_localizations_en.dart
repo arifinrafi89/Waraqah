@@ -170,17 +170,19 @@ class AppL10nEn extends AppL10n {
   String get homeAyahOfTheDay => 'Ayah of the Day';
 
   @override
-  String get homeAllBooks => 'All Books';
+  String get homeHideAyah => 'Hide Ayah of the Day';
 
   @override
-  String get homeBeneficial => 'Beneficial';
+  String get homeAyahHidden => 'Hidden. Turn it back on in Profile.';
 
   @override
-  String get homeNonBeneficial => 'Non-Beneficial';
+  String get homeShowAyah => 'Show Ayah of the Day';
 
   @override
-  String get homeNonBeneficialNote =>
-      'Books in this list are curated by our admins. Whether a book benefits a reader often depends on their intention and grounding. Many classical mufassirun, for example, consulted the Torah and the Bible for added context in their tafsir. For the general reader, however, such books are not beneficial, and without due care they may even cause harm.';
+  String get homeSettingsTitle => 'Home';
+
+  @override
+  String get commonUndo => 'Undo';
 
   @override
   String get homeBookBites => 'Book-Bites';
@@ -189,22 +191,25 @@ class AppL10nEn extends AppL10n {
   String get homeBookBitesSub => 'What readers are sharing';
 
   @override
-  String get homeNewBooks => 'New Books';
+  String get homeNewArrivals => 'New arrivals';
 
   @override
-  String get homeNewBooksSub => 'Cheapest prices first';
+  String get homeNewArrivalsSub => 'Just added to Waraqah';
 
   @override
-  String get homeFromStudents => 'From Students Near You';
+  String get homeBestsellers => 'Bestsellers';
+
+  @override
+  String get homeBestsellersSub => 'Most bought in the last 30 days';
+
+  @override
+  String get homeFromStudents => 'Used books from readers';
 
   @override
   String get homeFromStudentsSub => 'Second-hand · IUT campus';
 
   @override
   String get commonSeeAll => 'See all';
-
-  @override
-  String get commonSort => 'Sort';
 
   @override
   String get commonFilter => 'Filter';
@@ -380,6 +385,12 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get sectionEmpty => 'No books in this Section yet.';
+
+  @override
+  String get collectionStripTitle => 'Collections';
+
+  @override
+  String get collectionStripSub => 'Books our editors picked, and why';
 
   @override
   String get bookFormatPaperback => 'Paperback';

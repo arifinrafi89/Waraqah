@@ -2,8 +2,10 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/models/book.dart';
 import 'catalog_routes.dart';
+import 'domain/entities/catalog_filters.dart';
 import 'presentation/pages/author_page.dart';
 import 'presentation/pages/category_page.dart';
+import 'presentation/pages/collection_page.dart';
 import 'presentation/pages/publisher_page.dart';
 import 'presentation/pages/request_book_page.dart';
 import 'presentation/pages/search_page.dart';
@@ -44,6 +46,17 @@ final List<RouteBase> catalogTabRoutes = [
     path: 'series/:id',
     builder: (_, state) => SeriesPage(seriesId: state.pathParameters['id']!),
   ),
-  GoRoute(path: 'search', builder: (_, _) => const SearchPage()),
+  GoRoute(
+    path: 'collection/:id',
+    builder: (_, state) =>
+        CollectionPage(collectionId: state.pathParameters['id']!),
+  ),
+  GoRoute(
+    path: 'search',
+    builder: (_, state) => SearchPage(
+      sort: SearchSort.values.asNameMap()[state.uri.queryParameters['sort']],
+      query: state.uri.queryParameters['q'] ?? '',
+    ),
+  ),
   GoRoute(path: 'request-book', builder: (_, _) => const RequestBookPage()),
 ];

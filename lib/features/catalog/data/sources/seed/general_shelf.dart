@@ -88,7 +88,6 @@ abstract final class GeneralShelf {
       rating: 4.6,
       tags: ['Academic', 'Software'],
       categoryId: 'cat-academic',
-      isBeneficial: true,
       coverSeed: 0,
       section: Section.academic,
       originalLanguage: BookLanguage.english,

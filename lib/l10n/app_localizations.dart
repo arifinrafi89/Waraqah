@@ -409,29 +409,35 @@ abstract class AppL10n {
   /// **'Ayah of the Day'**
   String get homeAyahOfTheDay;
 
-  /// No description provided for @homeAllBooks.
+  /// No description provided for @homeHideAyah.
   ///
   /// In en, this message translates to:
-  /// **'All Books'**
-  String get homeAllBooks;
+  /// **'Hide Ayah of the Day'**
+  String get homeHideAyah;
 
-  /// No description provided for @homeBeneficial.
+  /// No description provided for @homeAyahHidden.
   ///
   /// In en, this message translates to:
-  /// **'Beneficial'**
-  String get homeBeneficial;
+  /// **'Hidden. Turn it back on in Profile.'**
+  String get homeAyahHidden;
 
-  /// No description provided for @homeNonBeneficial.
+  /// No description provided for @homeShowAyah.
   ///
   /// In en, this message translates to:
-  /// **'Non-Beneficial'**
-  String get homeNonBeneficial;
+  /// **'Show Ayah of the Day'**
+  String get homeShowAyah;
 
-  /// No description provided for @homeNonBeneficialNote.
+  /// No description provided for @homeSettingsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Books in this list are curated by our admins. Whether a book benefits a reader often depends on their intention and grounding. Many classical mufassirun, for example, consulted the Torah and the Bible for added context in their tafsir. For the general reader, however, such books are not beneficial, and without due care they may even cause harm.'**
-  String get homeNonBeneficialNote;
+  /// **'Home'**
+  String get homeSettingsTitle;
+
+  /// No description provided for @commonUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get commonUndo;
 
   /// No description provided for @homeBookBites.
   ///
@@ -445,22 +451,34 @@ abstract class AppL10n {
   /// **'What readers are sharing'**
   String get homeBookBitesSub;
 
-  /// No description provided for @homeNewBooks.
+  /// No description provided for @homeNewArrivals.
   ///
   /// In en, this message translates to:
-  /// **'New Books'**
-  String get homeNewBooks;
+  /// **'New arrivals'**
+  String get homeNewArrivals;
 
-  /// No description provided for @homeNewBooksSub.
+  /// No description provided for @homeNewArrivalsSub.
   ///
   /// In en, this message translates to:
-  /// **'Cheapest prices first'**
-  String get homeNewBooksSub;
+  /// **'Just added to Waraqah'**
+  String get homeNewArrivalsSub;
+
+  /// No description provided for @homeBestsellers.
+  ///
+  /// In en, this message translates to:
+  /// **'Bestsellers'**
+  String get homeBestsellers;
+
+  /// No description provided for @homeBestsellersSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Most bought in the last 30 days'**
+  String get homeBestsellersSub;
 
   /// No description provided for @homeFromStudents.
   ///
   /// In en, this message translates to:
-  /// **'From Students Near You'**
+  /// **'Used books from readers'**
   String get homeFromStudents;
 
   /// No description provided for @homeFromStudentsSub.
@@ -474,12 +492,6 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'See all'**
   String get commonSeeAll;
-
-  /// No description provided for @commonSort.
-  ///
-  /// In en, this message translates to:
-  /// **'Sort'**
-  String get commonSort;
 
   /// No description provided for @commonFilter.
   ///
@@ -804,6 +816,18 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'No books in this Section yet.'**
   String get sectionEmpty;
+
+  /// No description provided for @collectionStripTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Collections'**
+  String get collectionStripTitle;
+
+  /// No description provided for @collectionStripSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Books our editors picked, and why'**
+  String get collectionStripSub;
 
   /// No description provided for @bookFormatPaperback.
   ///
