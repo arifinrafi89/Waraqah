@@ -44,6 +44,11 @@ The app also has:
 - **Search is done** (Rahinur, #99): `/catalog/search` (`CatalogRoutes.search`, `search_page.dart`). Live search by title, Author, Publisher or ISBN; filters (Section, price, format, language, rating, in stock); sort (relevance, price, newest, bestselling); recent searches kept on the device. Every catalog query goes through `BookRepository.searchCatalog(CatalogFilters)` (`domain/entities/catalog_filters.dart`); state in `search_providers.dart` and `recent_searches_provider.dart`. No results shows "Request this book".
 - **Home feed is done** (Rahinur, #100): Home is composition only (`features/home/presentation/pages/home_page.dart`), in this order: flash-sale strip (Farhan's), Banners carousel, Section chips, Ayah of the Day, New arrivals, Bestsellers, Collections, Bites, "Used books from readers". Each part loads through its own provider with a skeleton and retry. Banners come from Home's own fake API (`/home/banners`, `home_fake_api.dart`, `GetBanners`); a `BannerTarget` (Collection, Section, Book or search) is mapped to a route by `bannerRoute` in `banner_card.dart`. New arrivals and Bestsellers come from `searchCatalog` (`GetNewArrivals`, `GetBestsellers`); "See all" opens `CatalogRoutes.searchFor(sort:)`, and Search also reads `?q=`. Every book card shows Waraqah's From-price, list price when discounted, and stock, and opens the book page.
 - **Religious section is done** (Rahinur, #100): the Beneficial / Non-Beneficial filter and `Book.isBeneficial` are gone. Staff-picked **Collections** replace them: page at `CatalogRoutes.collectionFor(id)`, fake API `/collections` and `/collections/detail` (`collection_fake_api.dart`), use cases `GetCollections` / `GetCollection`, widgets `CollectionTile` and `CollectionStrip`. Any Section page with Collections shows a strip (Religious has 3); Home shows all 5. Ayah of the Day is on by default; readers hide it with the ✕ (with Undo) or the switch in Profile's "Home" group (`AyahSwitchTile`, saved on the device by `ayah_visible_provider.dart`).
+- **Admin: catalog is done** (Rahinur): `features/catalog_admin`, Admin → Catalog (`AdminRoutes.section(AdminSection.catalog)`).
+  - Tabs: Books, Categories, Authors, Publishers, Banners. The Book form (`CatalogAdminRoutes.newBook`, `bookFor(id)`) has the details, a cover colour (gradient seed) and Editions with price and stock; Hide / Show again.
+  - Rules in `CatalogAdminRules`: the form shows them inline, and the server refuses a change that breaks one. A Category, Author or Publisher can be deleted only when no Book uses it. Renaming an Author renames it on all their Books.
+  - Fake API `/admin/catalog/...` (`CatalogAdminFakeApi`). The fixture lists (`BookFixtures.all` and the Category, Author, Publisher, Collection and Banner fixtures) are edited in place and reset with each new fake backend (`CatalogAdminFakeStore`). Keep reading them as before.
+  - `Book` now has `hidden` and `titleBn`. Hidden Books leave `/books` (Search, Section pages, Home) and Collections; Staff's list reads `/books?includeHidden=true` (`CatalogFilters.includeHidden`). The book page loads through `/books/detail` (`BookRepository.findById`), so a hidden Book still opens from an old link.
 - **Buying new is done** (Farhan):
   - **Book page:** Editions and formats, stock and delivery estimate, Look Inside, series, questions, lowest-price badge, price and stock alerts, and "Other ways to buy": a Certified Used copy (into the cart), readers' copies (open the listing to make an offer) and the resale value.
   - **Cart** (`features/cart`): `ref.addToCart(context, CartItemRef.edition(id) | .certifiedUsed(id) | .bundle(id))`; flash sales and bundles (`features/deals`); Smart Basket (budget, used swaps).
@@ -242,7 +247,8 @@ features/<feature>/
 ### 4.6 Admin area (already built)
 
 - `/admin` is a staff-only hub listing **Admin sections** the viewer may open. It's reached from Profile.
-- Sections are the `AdminSection` enum (`features/admin/domain/entities/admin_section.dart`): `dashboard` (all staff), `catalog` (catalog manager), `orders` (support), `moderation` (moderator), `tradeIn` (catalog manager: grading Sell Back books); super admin opens all. `canOpen(role)` drives both the menu and the guard.
+- Sections are the `AdminSection` enum (`features/admin/domain/entities/admin_section.dart`): `dashboard` (all staff), `catalog` (catalog manager: Books, Categories, Authors, Publishers and Home's Banners), `orders` (support), `moderation` (moderator), `tradeIn` (catalog manager: grading Sell Back books); super admin opens all. `canOpen(role)` drives both the menu and the guard.
+- Catalog, Orders, Moderation and Trade-ins are real pages; only the dashboard is still a placeholder (Niloy).
 - Each owner **replaces their own line** in `AdminRoutes.routes` with the real page. Link with `AdminRoutes.section(AdminSection.orders)`.
 
 ---
@@ -299,6 +305,7 @@ Use these words in code, tests and PRs. Don't drift to the "avoid" words.
 | **Ayah of the Day** | A daily Quran verse on Home. Readers can turn it off. | |
 | **List price** | An Edition's price before discount (`listPriceBdt`) | MRP, original price |
 | **Stock / Pre-order** | Copies Waraqah can ship now / not released yet but orderable | |
+| **Hidden** | A Book Staff took off the storefront: not in lists, search, Home or Collections, but its page still opens from old links. | deleted, archived |
 | **Guest** | Using the app without signing in (no Role) | |
 | **Reader** | A signed-in customer. Not staff. | normal user |
 | **Staff** | Any account whose Role isn't Reader. Only staff open the Admin area. | admin (for the group) |
@@ -409,3 +416,6 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Farhan's inbox: refuse sends to and from blocked readers).
 - Bite comments don't exist yet, so nothing reports them. When they land, add `ReportIconButton(target: ReportTarget(kind: ReportTargetKind.comment, id: ...))` (Niloy).
 - The P2P marketplace filter bar's text is English-only (its search field is translated now), and "Save draft" on the add-listing form doesn't save yet (Arifin's listing flow).
+- Book covers are gradient seeds (`coverSeed`): there's no photo upload until the backend.
+- Admin → Catalog edits live in the fake backend's memory, so they last until the app restarts.
+- A hidden Book can still be bought from an old link (cart, wishlist, scan). To stop sales, set its stock to 0.
