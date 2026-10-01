@@ -5,13 +5,17 @@ import '../../../../core/network/dio_provider.dart';
 import '../../../../core/state/selection_notifier.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../../../catalog/presentation/providers/catalog_providers.dart';
+import '../../../home/domain/entities/banner.dart';
+import '../../../home/domain/entities/season.dart';
 import '../../../home/presentation/providers/home_providers.dart';
 import '../../data/repositories/catalog_admin_repository_impl.dart';
 import '../../data/sources/catalog_admin_remote_source.dart';
 import '../../domain/entities/catalog_record.dart';
 import '../../domain/repositories/catalog_admin_repository.dart';
+import '../../domain/usecases/get_admin_banners.dart';
 import '../../domain/usecases/get_admin_books.dart';
 import '../../domain/usecases/get_admin_records.dart';
+import '../../domain/usecases/season_override.dart';
 
 final catalogAdminRepositoryProvider = Provider<CatalogAdminRepository>(
   (ref) => CatalogAdminRepositoryImpl(
@@ -31,6 +35,20 @@ final adminRecordsProvider =
           GetAdminRecords(ref.watch(catalogAdminRepositoryProvider))(kind),
     );
 
+/// Every Banner, every Season's too, in display order.
+final adminBannersProvider = FutureProvider<List<Banner>>(
+  (ref) => GetAdminBanners(ref.watch(catalogAdminRepositoryProvider))(
+    const NoParams(),
+  ),
+);
+
+/// The Season Staff forced on Home; `null` = picked by date.
+final seasonOverrideProvider = FutureProvider<Season?>(
+  (ref) => GetSeasonOverride(ref.watch(catalogAdminRepositoryProvider))(
+    const NoParams(),
+  ),
+);
+
 /// The Books tab's search text, matched against title and Author.
 final adminBookQueryProvider = selectionProvider<String>('');
 
@@ -42,5 +60,7 @@ final adminShowHiddenProvider = selectionProvider<bool>(false);
 void refreshCatalog(Ref ref) => ref
   ..invalidate(bookRepositoryProvider)
   ..invalidate(catalogRecordsRepositoryProvider)
-  ..invalidate(getBannersProvider)
+  ..invalidate(bannerRepositoryProvider)
+  ..invalidate(adminBannersProvider)
+  ..invalidate(seasonOverrideProvider)
   ..invalidate(adminRecordsProvider);

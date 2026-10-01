@@ -23,13 +23,13 @@ List<String> _bookIds(Map<String, dynamic> json) => [
 ];
 
 void main() {
-  test('/collections returns all 5', () async {
-    expect(await _collections(), hasLength(5));
+  test('/collections returns all 9', () async {
+    expect(await _collections(), hasLength(9));
   });
 
-  test('section=religious returns only the 3 Religious ones', () async {
+  test('section=religious returns only the 4 Religious ones', () async {
     final religious = await _collections('religious');
-    expect(religious, hasLength(3));
+    expect(religious, hasLength(4));
     expect(religious.every((c) => c['section'] == 'religious'), isTrue);
   });
 

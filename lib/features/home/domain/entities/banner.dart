@@ -1,3 +1,5 @@
+import 'season.dart';
+
 /// What a Banner opens.
 enum BannerTargetKind { collection, section, book, search }
 
@@ -21,6 +23,7 @@ class Banner {
     required this.subtitleBn,
     required this.seed,
     required this.target,
+    this.season,
   });
 
   final String id;
@@ -30,6 +33,9 @@ class Banner {
   final String subtitleBn;
   final int seed;
   final BannerTarget target;
+
+  /// Shown first, and only, while this Season is on; `null` = all year.
+  final Season? season;
 
   String title(bool isBangla) => isBangla ? titleBn : titleEn;
 

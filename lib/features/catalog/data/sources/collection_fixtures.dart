@@ -1,5 +1,6 @@
 import '../../../../core/models/book.dart';
 import '../models/collection_model.dart';
+import 'seed/season_collections.dart';
 
 /// Offline Collections, in the order Home shows them.
 // ponytail: in-place fixture lists; the Go backend owns the catalog.
@@ -72,5 +73,6 @@ abstract final class CollectionFixtures {
           'সিস্টেম কীভাবে ডেটা রাখে ও আদান-প্রদান করে।',
       bookIds: ['bk-cleancode', 'bk-pragmatic', 'bk-ddia'],
     ),
+    ...SeasonCollections.all,
   ];
 }

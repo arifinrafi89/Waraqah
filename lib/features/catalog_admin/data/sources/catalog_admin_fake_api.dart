@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 
+import '../../../home/domain/entities/season.dart';
+
 import '../../domain/entities/catalog_record.dart';
 import 'catalog_admin_fake_banners.dart';
 import 'catalog_admin_fake_records.dart';
@@ -27,6 +29,9 @@ abstract final class CatalogAdminFakeApi {
     RecordKind.publisher => '$_base/publishers',
   };
 
+  /// Every Banner, every Season's too, in display order.
+  static const String banners = '$_base/banners';
+
   /// Body: a Banner (empty `id` = new) → every Banner.
   static const String saveBanner = '$_base/banners/save';
 
@@ -35,6 +40,10 @@ abstract final class CatalogAdminFakeApi {
 
   /// Body `{id, by: -1 | 1}` → every Banner.
   static const String moveBanner = '$_base/banners/move';
+
+  /// `{season: <name> | null}`: the Season Staff forced on Home, `null` =
+  /// automatic (by date). Add `/save` (same body) to change it.
+  static const String season = '$_base/season';
 
   static Map<String, Object? Function(RequestOptions)> routes(
     CatalogAdminFakeStore store,
@@ -49,10 +58,17 @@ abstract final class CatalogAdminFakeApi {
       '${records(kind)}/delete': (o) =>
           CatalogAdminFakeRecords.delete(kind, _id(o)),
     },
+    banners: (_) => CatalogAdminFakeBanners.all,
     saveBanner: (o) => CatalogAdminFakeBanners.save(_body(o)),
     deleteBanner: (o) => CatalogAdminFakeBanners.delete(_id(o)),
     moveBanner: (o) =>
         CatalogAdminFakeBanners.move(_id(o), _body(o)['by'] as int? ?? 0),
+    season: (_) => {'season': store.seasonOverride?.name},
+    '$season/save': (o) {
+      final name = _body(o)['season'] as String?;
+      store.seasonOverride = name == null ? null : Season.values.byName(name);
+      return {'season': name};
+    },
   };
 
   static Map<String, dynamic> _body(RequestOptions options) =>

@@ -12,6 +12,7 @@ import '../../data/sources/banner_remote_source.dart';
 import '../../domain/entities/ayah.dart';
 import '../../domain/entities/banner.dart';
 import '../../domain/repositories/ayah_repository.dart';
+import '../../domain/repositories/banner_repository.dart';
 import '../../domain/usecases/get_ayah_of_the_day.dart';
 import '../../domain/usecases/get_banners.dart';
 import '../../domain/usecases/get_bestsellers.dart';
@@ -53,10 +54,14 @@ final homeBestsellersProvider = FutureProvider<List<Book>>(
   (ref) => ref.watch(getBestsellersProvider).call(const NoParams()),
 );
 
+/// Banners and the Season, cached together; Admin invalidates it after a
+/// change.
+final bannerRepositoryProvider = Provider<BannerRepository>(
+  (ref) => BannerRepositoryImpl(BannerRemoteSource(ref.watch(dioProvider))),
+);
+
 final getBannersProvider = Provider<GetBanners>(
-  (ref) => GetBanners(
-    BannerRepositoryImpl(BannerRemoteSource(ref.watch(dioProvider))),
-  ),
+  (ref) => GetBanners(ref.watch(bannerRepositoryProvider)),
 );
 
 final bannersProvider = FutureProvider<List<Banner>>(

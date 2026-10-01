@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BannerModel {
 
- String get id; String get titleEn; String get titleBn; String get subtitleEn; String get subtitleBn; int get seed; BannerTargetModel get target;
+ String get id; String get titleEn; String get titleBn; String get subtitleEn; String get subtitleBn; int get seed; BannerTargetModel get target; Season? get season;
 /// Create a copy of BannerModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $BannerModelCopyWith<BannerModel> get copyWith => _$BannerModelCopyWithImpl<Bann
 @override
 bool operator ==(Object other) {
   final _this = this as BannerModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BannerModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.titleEn, _this.titleEn) || other.titleEn == _this.titleEn)&&(identical(other.titleBn, _this.titleBn) || other.titleBn == _this.titleBn)&&(identical(other.subtitleEn, _this.subtitleEn) || other.subtitleEn == _this.subtitleEn)&&(identical(other.subtitleBn, _this.subtitleBn) || other.subtitleBn == _this.subtitleBn)&&(identical(other.seed, _this.seed) || other.seed == _this.seed)&&(identical(other.target, _this.target) || other.target == _this.target));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BannerModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.titleEn, _this.titleEn) || other.titleEn == _this.titleEn)&&(identical(other.titleBn, _this.titleBn) || other.titleBn == _this.titleBn)&&(identical(other.subtitleEn, _this.subtitleEn) || other.subtitleEn == _this.subtitleEn)&&(identical(other.subtitleBn, _this.subtitleBn) || other.subtitleBn == _this.subtitleBn)&&(identical(other.seed, _this.seed) || other.seed == _this.seed)&&(identical(other.target, _this.target) || other.target == _this.target)&&(identical(other.season, _this.season) || other.season == _this.season));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as BannerModel;
-  return Object.hash(runtimeType,_this.id,_this.titleEn,_this.titleBn,_this.subtitleEn,_this.subtitleBn,_this.seed,_this.target);
+  return Object.hash(runtimeType,_this.id,_this.titleEn,_this.titleBn,_this.subtitleEn,_this.subtitleBn,_this.seed,_this.target,_this.season);
 }
 
 @override
 String toString() {
   final _this = this as BannerModel;
-  return 'BannerModel(id: ${_this.id}, titleEn: ${_this.titleEn}, titleBn: ${_this.titleBn}, subtitleEn: ${_this.subtitleEn}, subtitleBn: ${_this.subtitleBn}, seed: ${_this.seed}, target: ${_this.target})';
+  return 'BannerModel(id: ${_this.id}, titleEn: ${_this.titleEn}, titleBn: ${_this.titleBn}, subtitleEn: ${_this.subtitleEn}, subtitleBn: ${_this.subtitleBn}, seed: ${_this.seed}, target: ${_this.target}, season: ${_this.season})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $BannerModelCopyWith<$Res>  {
   factory $BannerModelCopyWith(BannerModel value, $Res Function(BannerModel) _then) = _$BannerModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String titleEn, String titleBn, String subtitleEn, String subtitleBn, int seed, BannerTargetModel target
+ String id, String titleEn, String titleBn, String subtitleEn, String subtitleBn, int seed, BannerTargetModel target, Season? season
 });
 
 
@@ -71,7 +71,7 @@ class _$BannerModelCopyWithImpl<$Res>
 
 /// Create a copy of BannerModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? titleEn = null,Object? titleBn = null,Object? subtitleEn = null,Object? subtitleBn = null,Object? seed = null,Object? target = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? titleEn = null,Object? titleBn = null,Object? subtitleEn = null,Object? subtitleBn = null,Object? seed = null,Object? target = null,Object? season = freezed,}) {
   return _then(BannerModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,titleEn: null == titleEn ? _self.titleEn : titleEn // ignore: cast_nullable_to_non_nullable
@@ -80,7 +80,8 @@ as String,subtitleEn: null == subtitleEn ? _self.subtitleEn : subtitleEn // igno
 as String,subtitleBn: null == subtitleBn ? _self.subtitleBn : subtitleBn // ignore: cast_nullable_to_non_nullable
 as String,seed: null == seed ? _self.seed : seed // ignore: cast_nullable_to_non_nullable
 as int,target: null == target ? _self.target : target // ignore: cast_nullable_to_non_nullable
-as BannerTargetModel,
+as BannerTargetModel,season: freezed == season ? _self.season : season // ignore: cast_nullable_to_non_nullable
+as Season?,
   ));
 }
 /// Create a copy of BannerModel
@@ -174,10 +175,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String titleEn,  String titleBn,  String subtitleEn,  String subtitleBn,  int seed,  BannerTargetModel target)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String titleEn,  String titleBn,  String subtitleEn,  String subtitleBn,  int seed,  BannerTargetModel target,  Season? season)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BannerModel() when $default != null:
-return $default(_that.id,_that.titleEn,_that.titleBn,_that.subtitleEn,_that.subtitleBn,_that.seed,_that.target);case _:
+return $default(_that.id,_that.titleEn,_that.titleBn,_that.subtitleEn,_that.subtitleBn,_that.seed,_that.target,_that.season);case _:
   return orElse();
 
 }
@@ -195,10 +196,10 @@ return $default(_that.id,_that.titleEn,_that.titleBn,_that.subtitleEn,_that.subt
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String titleEn,  String titleBn,  String subtitleEn,  String subtitleBn,  int seed,  BannerTargetModel target)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String titleEn,  String titleBn,  String subtitleEn,  String subtitleBn,  int seed,  BannerTargetModel target,  Season? season)  $default,) {final _that = this;
 switch (_that) {
 case _BannerModel():
-return $default(_that.id,_that.titleEn,_that.titleBn,_that.subtitleEn,_that.subtitleBn,_that.seed,_that.target);case _:
+return $default(_that.id,_that.titleEn,_that.titleBn,_that.subtitleEn,_that.subtitleBn,_that.seed,_that.target,_that.season);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -215,10 +216,10 @@ return $default(_that.id,_that.titleEn,_that.titleBn,_that.subtitleEn,_that.subt
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String titleEn,  String titleBn,  String subtitleEn,  String subtitleBn,  int seed,  BannerTargetModel target)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String titleEn,  String titleBn,  String subtitleEn,  String subtitleBn,  int seed,  BannerTargetModel target,  Season? season)?  $default,) {final _that = this;
 switch (_that) {
 case _BannerModel() when $default != null:
-return $default(_that.id,_that.titleEn,_that.titleBn,_that.subtitleEn,_that.subtitleBn,_that.seed,_that.target);case _:
+return $default(_that.id,_that.titleEn,_that.titleBn,_that.subtitleEn,_that.subtitleBn,_that.seed,_that.target,_that.season);case _:
   return null;
 
 }
@@ -230,7 +231,7 @@ return $default(_that.id,_that.titleEn,_that.titleBn,_that.subtitleEn,_that.subt
 
 @JsonSerializable(explicitToJson: true)
 class _BannerModel implements BannerModel {
-  const _BannerModel({required this.id, required this.titleEn, required this.titleBn, required this.subtitleEn, required this.subtitleBn, required this.seed, required this.target});
+  const _BannerModel({required this.id, required this.titleEn, required this.titleBn, required this.subtitleEn, required this.subtitleBn, required this.seed, required this.target, this.season});
   factory _BannerModel.fromJson(Map<String, dynamic> json) => _$BannerModelFromJson(json);
 
 @override final  String id;
@@ -240,6 +241,7 @@ class _BannerModel implements BannerModel {
 @override final  String subtitleBn;
 @override final  int seed;
 @override final  BannerTargetModel target;
+@override final  Season? season;
 
 /// Create a copy of BannerModel
 /// with the given fields replaced by the non-null parameter values.
@@ -254,18 +256,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BannerModel&&(identical(other.id, id) || other.id == id)&&(identical(other.titleEn, titleEn) || other.titleEn == titleEn)&&(identical(other.titleBn, titleBn) || other.titleBn == titleBn)&&(identical(other.subtitleEn, subtitleEn) || other.subtitleEn == subtitleEn)&&(identical(other.subtitleBn, subtitleBn) || other.subtitleBn == subtitleBn)&&(identical(other.seed, seed) || other.seed == seed)&&(identical(other.target, target) || other.target == target));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BannerModel&&(identical(other.id, id) || other.id == id)&&(identical(other.titleEn, titleEn) || other.titleEn == titleEn)&&(identical(other.titleBn, titleBn) || other.titleBn == titleBn)&&(identical(other.subtitleEn, subtitleEn) || other.subtitleEn == subtitleEn)&&(identical(other.subtitleBn, subtitleBn) || other.subtitleBn == subtitleBn)&&(identical(other.seed, seed) || other.seed == seed)&&(identical(other.target, target) || other.target == target)&&(identical(other.season, season) || other.season == season));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,titleEn,titleBn,subtitleEn,subtitleBn,seed,target);
+    return Object.hash(runtimeType,id,titleEn,titleBn,subtitleEn,subtitleBn,seed,target,season);
 }
 
 @override
 String toString() {
-    return 'BannerModel(id: $id, titleEn: $titleEn, titleBn: $titleBn, subtitleEn: $subtitleEn, subtitleBn: $subtitleBn, seed: $seed, target: $target)';
+    return 'BannerModel(id: $id, titleEn: $titleEn, titleBn: $titleBn, subtitleEn: $subtitleEn, subtitleBn: $subtitleBn, seed: $seed, target: $target, season: $season)';
 }
 
 
@@ -276,7 +278,7 @@ abstract mixin class _$BannerModelCopyWith<$Res> implements $BannerModelCopyWith
   factory _$BannerModelCopyWith(_BannerModel value, $Res Function(_BannerModel) _then) = __$BannerModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String titleEn, String titleBn, String subtitleEn, String subtitleBn, int seed, BannerTargetModel target
+ String id, String titleEn, String titleBn, String subtitleEn, String subtitleBn, int seed, BannerTargetModel target, Season? season
 });
 
 
@@ -293,7 +295,7 @@ class __$BannerModelCopyWithImpl<$Res>
 
 /// Create a copy of BannerModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? titleEn = null,Object? titleBn = null,Object? subtitleEn = null,Object? subtitleBn = null,Object? seed = null,Object? target = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? titleEn = null,Object? titleBn = null,Object? subtitleEn = null,Object? subtitleBn = null,Object? seed = null,Object? target = null,Object? season = freezed,}) {
   return _then(_BannerModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,titleEn: null == titleEn ? _self.titleEn : titleEn // ignore: cast_nullable_to_non_nullable
@@ -302,7 +304,8 @@ as String,subtitleEn: null == subtitleEn ? _self.subtitleEn : subtitleEn // igno
 as String,subtitleBn: null == subtitleBn ? _self.subtitleBn : subtitleBn // ignore: cast_nullable_to_non_nullable
 as String,seed: null == seed ? _self.seed : seed // ignore: cast_nullable_to_non_nullable
 as int,target: null == target ? _self.target : target // ignore: cast_nullable_to_non_nullable
-as BannerTargetModel,
+as BannerTargetModel,season: freezed == season ? _self.season : season // ignore: cast_nullable_to_non_nullable
+as Season?,
   ));
 }
 

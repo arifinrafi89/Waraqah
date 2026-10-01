@@ -14,6 +14,7 @@ _BannerModel _$BannerModelFromJson(Map<String, dynamic> json) => _BannerModel(
   subtitleBn: json['subtitleBn'] as String,
   seed: (json['seed'] as num).toInt(),
   target: BannerTargetModel.fromJson(json['target'] as Map<String, dynamic>),
+  season: $enumDecodeNullable(_$SeasonEnumMap, json['season']),
 );
 
 Map<String, dynamic> _$BannerModelToJson(_BannerModel instance) =>
@@ -25,7 +26,15 @@ Map<String, dynamic> _$BannerModelToJson(_BannerModel instance) =>
       'subtitleBn': instance.subtitleBn,
       'seed': instance.seed,
       'target': instance.target.toJson(),
+      'season': _$SeasonEnumMap[instance.season],
     };
+
+const _$SeasonEnumMap = {
+  Season.ramadan: 'ramadan',
+  Season.boiMela: 'boiMela',
+  Season.admission: 'admission',
+  Season.backToSchool: 'backToSchool',
+};
 
 _BannerTargetModel _$BannerTargetModelFromJson(Map<String, dynamic> json) =>
     _BannerTargetModel(

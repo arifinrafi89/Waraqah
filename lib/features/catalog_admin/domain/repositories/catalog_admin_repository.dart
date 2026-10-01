@@ -1,5 +1,6 @@
 import '../../../../core/models/book.dart';
 import '../../../home/domain/entities/banner.dart';
+import '../../../home/domain/entities/season.dart';
 import '../entities/book_draft.dart';
 import '../entities/catalog_record.dart';
 
@@ -17,6 +18,14 @@ abstract interface class CatalogAdminRepository {
 
   /// Refused while a Book uses it.
   Future<void> deleteRecord(RecordKind kind, String id);
+
+  /// Every Banner, every Season's too, in display order.
+  Future<List<Banner>> banners();
+
+  /// The Season Staff forced on Home; `null` = picked by date.
+  Future<Season?> seasonOverride();
+
+  Future<void> setSeasonOverride(Season? season);
 
   Future<void> saveBanner(Banner banner);
 

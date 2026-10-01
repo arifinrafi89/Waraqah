@@ -4,7 +4,6 @@ import 'package:waraqah/app/fake_api_routes.dart';
 import 'package:waraqah/features/catalog/data/sources/book_fake_api.dart';
 import 'package:waraqah/features/catalog_admin/data/sources/catalog_admin_fake_api.dart';
 import 'package:waraqah/features/catalog_admin/domain/entities/catalog_record.dart';
-import 'package:waraqah/features/home/data/sources/home_fake_api.dart';
 
 late Dio _dio;
 
@@ -59,21 +58,17 @@ void main() {
     expect(moved, isNull);
   });
 
+  // The all-year Banners come first; the 4 Season Banners follow.
+  Future<List<String>> allYear() async =>
+      (await _ids(CatalogAdminFakeApi.banners)).take(3).toList();
+
   test('Banners move and delete in display order', () async {
-    expect(await _ids(HomeFakeApi.banners), [
-      'ban-hadith',
-      'ban-admission',
-      'ban-sapiens-bn',
-    ]);
+    expect(await allYear(), ['ban-hadith', 'ban-admission', 'ban-sapiens-bn']);
     await _post(CatalogAdminFakeApi.moveBanner, {
       'id': 'ban-sapiens-bn',
       'by': -1,
     });
-    expect(await _ids(HomeFakeApi.banners), [
-      'ban-hadith',
-      'ban-sapiens-bn',
-      'ban-admission',
-    ]);
+    expect(await allYear(), ['ban-hadith', 'ban-sapiens-bn', 'ban-admission']);
     expect(
       await _post(CatalogAdminFakeApi.moveBanner, {
         'id': 'ban-hadith',
@@ -82,10 +77,7 @@ void main() {
       isNull,
     );
     await _post(CatalogAdminFakeApi.deleteBanner, {'id': 'ban-hadith'});
-    expect(await _ids(HomeFakeApi.banners), [
-      'ban-sapiens-bn',
-      'ban-admission',
-    ]);
+    expect((await allYear()).take(2), ['ban-sapiens-bn', 'ban-admission']);
   });
 
   test('a new fake backend starts from the seed again', () async {
@@ -95,7 +87,7 @@ void main() {
       'hidden': true,
     });
     _dio = Dio()..interceptors.add(FakeApiRoutes.interceptor());
-    expect(await _ids(HomeFakeApi.banners), hasLength(3));
+    expect(await _ids(CatalogAdminFakeApi.banners), hasLength(7));
     expect(await _ids(BookFakeApi.books), contains('bk-atomic'));
   });
 }

@@ -6,7 +6,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../core/widgets/cover_art.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../../home/presentation/providers/home_providers.dart';
+import '../providers/catalog_admin_providers.dart';
 import '../providers/catalog_admin_actions.dart';
 import 'admin_list_skeleton.dart';
 import 'banner_sheet.dart';
@@ -29,11 +29,11 @@ class BannersAdminTab extends ConsumerWidget {
         label: Text(l10n.adminCatalogAdd),
       ),
       body: AsyncView(
-        value: ref.watch(bannersProvider),
+        value: ref.watch(adminBannersProvider),
         skeleton: const AdminListSkeleton(),
         errorLabel: l10n.commonSomethingWentWrong,
         retryLabel: l10n.commonRetry,
-        onRetry: () => ref.invalidate(bannersProvider),
+        onRetry: () => ref.invalidate(adminBannersProvider),
         builder: (banners) => ListView(
           padding: const EdgeInsets.fromLTRB(
             Insets.screen,

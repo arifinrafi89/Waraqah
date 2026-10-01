@@ -8,6 +8,7 @@ import '../../../catalog/data/sources/category_fixtures.dart';
 import '../../../catalog/data/sources/collection_fixtures.dart';
 import '../../../catalog/data/sources/publisher_fixtures.dart';
 import '../../../home/data/sources/banner_fixtures.dart';
+import '../../../home/domain/entities/season.dart';
 import '../../domain/entities/catalog_admin_rules.dart';
 import '../models/book_draft_json.dart';
 
@@ -23,6 +24,9 @@ class CatalogAdminFakeStore {
     CollectionFixtures.reset();
     BannerFixtures.reset();
   }
+
+  /// The Season Staff forced on Home; `null` = picked by date.
+  Season? seasonOverride;
 
   static const _formatCodes = {
     BookFormat.paperback: 'pb',

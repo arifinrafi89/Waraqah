@@ -7,7 +7,7 @@ import 'catalog_admin_fake_store.dart';
 /// Staff's changes to Home's Banners on the fake backend. Each answers
 /// every Banner in display order, or `null` when refused.
 abstract final class CatalogAdminFakeBanners {
-  static List<Map<String, dynamic>> get _all => [
+  static List<Map<String, dynamic>> get all => [
     for (final b in BannerFixtures.all) b.toJson(),
   ];
 
@@ -24,13 +24,13 @@ abstract final class CatalogAdminFakeBanners {
     } else {
       return null;
     }
-    return _all;
+    return all;
   }
 
   static Object? delete(String id) {
     final before = BannerFixtures.all.length;
     BannerFixtures.all.removeWhere((b) => b.id == id);
-    return BannerFixtures.all.length < before ? _all : null;
+    return BannerFixtures.all.length < before ? all : null;
   }
 
   /// One place up ([by] = -1) or down (1).
@@ -39,6 +39,6 @@ abstract final class CatalogAdminFakeBanners {
     final to = from + by;
     if (from < 0 || to < 0 || to >= BannerFixtures.all.length) return null;
     BannerFixtures.all.insert(to, BannerFixtures.all.removeAt(from));
-    return _all;
+    return all;
   }
 }
