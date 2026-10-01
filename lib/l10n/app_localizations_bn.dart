@@ -2328,6 +2328,66 @@ class AppL10nBn extends AppL10n {
       'এই নিয়ম ভাঙলে মডারেটর লিস্টিং বাতিল করবেন, বারবার ভাঙলে অ্যাকাউন্ট নিষিদ্ধ হতে পারে।';
 
   @override
+  String get scanTitle => 'বই স্ক্যান করুন';
+
+  @override
+  String get scanAim => 'বইয়ের পেছনের বারকোডের দিকে ক্যামেরা ধরুন।';
+
+  @override
+  String get scanNoCamera =>
+      'এখানে ক্যামেরা নেই। বইয়ের পেছনের ISBN টাইপ করুন।';
+
+  @override
+  String get scanCameraError => 'ক্যামেরা খোলা যায়নি। ISBN টাইপ করুন।';
+
+  @override
+  String get scanIsbnLabel => 'অথবা ISBN টাইপ করুন';
+
+  @override
+  String get scanIsbnHint => '৯৭৮…';
+
+  @override
+  String get scanFind => 'খুঁজুন';
+
+  @override
+  String get scanInvalid => 'এটি সঠিক ISBN নয়। ১০ বা ১৩ সংখ্যা মিলিয়ে দেখুন।';
+
+  @override
+  String scanIsbn(String isbn) {
+    return 'ISBN $isbn';
+  }
+
+  @override
+  String scanNewFrom(String price) {
+    return 'নতুন $price থেকে';
+  }
+
+  @override
+  String get scanOpenBook => 'বইয়ের পেজ খুলুন';
+
+  @override
+  String get scanSellCopy => 'আপনার কপি বিক্রি করুন';
+
+  @override
+  String get scanNotFoundTitle => 'এই বইটি এখনো আমাদের কাছে নেই';
+
+  @override
+  String scanNotFoundBody(String isbn) {
+    return 'ISBN $isbn ওয়ারাকাহর ক্যাটালগে নেই।';
+  }
+
+  @override
+  String get scanRequest => 'এই বইটি চান';
+
+  @override
+  String get scanListAnyway => 'তবুও লিস্ট করুন';
+
+  @override
+  String scanSelling(String title) {
+    return 'ক্যাটালগ থেকে: $title';
+  }
+
+  @override
   String get usedMarketTitle => 'পি২পি মার্কেটপ্লেস';
 
   @override

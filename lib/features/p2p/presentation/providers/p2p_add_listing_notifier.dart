@@ -50,6 +50,11 @@ class P2pAddListingNotifier extends Notifier<P2pListing> {
     state = state.copyWith(bookId: bookId, title: title ?? state.title);
   }
 
+  /// Starts from a catalog Book (picked or scanned): its title, and its
+  /// new price for comparing.
+  void fromBook(String bookId, String title, {int? newPriceBdt}) => state =
+      state.copyWith(bookId: bookId, title: title, newPriceBdt: newPriceBdt);
+
   void saveAsDraft() {
     // Save logic
     state = state.copyWith(status: P2pListingStatus.draft);

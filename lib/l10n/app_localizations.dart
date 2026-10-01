@@ -4225,6 +4225,108 @@ abstract class AppL10n {
   /// **'Moderators reject listings that break these rules, and repeat breaks can get an account banned.'**
   String get listingRuleWarning;
 
+  /// No description provided for @scanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan a book'**
+  String get scanTitle;
+
+  /// No description provided for @scanAim.
+  ///
+  /// In en, this message translates to:
+  /// **'Point the camera at the barcode on the back of the book.'**
+  String get scanAim;
+
+  /// No description provided for @scanNoCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera isn\'t available here. Type the ISBN from the back of the book instead.'**
+  String get scanNoCamera;
+
+  /// No description provided for @scanCameraError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t open the camera. Type the ISBN instead.'**
+  String get scanCameraError;
+
+  /// No description provided for @scanIsbnLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Or type the ISBN'**
+  String get scanIsbnLabel;
+
+  /// No description provided for @scanIsbnHint.
+  ///
+  /// In en, this message translates to:
+  /// **'978…'**
+  String get scanIsbnHint;
+
+  /// No description provided for @scanFind.
+  ///
+  /// In en, this message translates to:
+  /// **'Find'**
+  String get scanFind;
+
+  /// No description provided for @scanInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'That isn\'t a valid ISBN. Check the 10 or 13 digits.'**
+  String get scanInvalid;
+
+  /// No description provided for @scanIsbn.
+  ///
+  /// In en, this message translates to:
+  /// **'ISBN {isbn}'**
+  String scanIsbn(String isbn);
+
+  /// No description provided for @scanNewFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'New from {price}'**
+  String scanNewFrom(String price);
+
+  /// No description provided for @scanOpenBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Open book page'**
+  String get scanOpenBook;
+
+  /// No description provided for @scanSellCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Sell your copy'**
+  String get scanSellCopy;
+
+  /// No description provided for @scanNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We don\'t have this book yet'**
+  String get scanNotFoundTitle;
+
+  /// No description provided for @scanNotFoundBody.
+  ///
+  /// In en, this message translates to:
+  /// **'ISBN {isbn} isn\'t in Waraqah\'s catalog.'**
+  String scanNotFoundBody(String isbn);
+
+  /// No description provided for @scanRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Request this book'**
+  String get scanRequest;
+
+  /// No description provided for @scanListAnyway.
+  ///
+  /// In en, this message translates to:
+  /// **'List it anyway'**
+  String get scanListAnyway;
+
+  /// No description provided for @scanSelling.
+  ///
+  /// In en, this message translates to:
+  /// **'From the catalog: {title}'**
+  String scanSelling(String title);
+
   /// No description provided for @usedMarketTitle.
   ///
   /// In en, this message translates to:

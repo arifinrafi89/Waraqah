@@ -80,6 +80,11 @@ The app also has:
   - **Log:** every action, newest first: what, on what, why, who and when.
   - One strike system: a warning adds a strike, the third bans (`ModerationRules.maxStrikes`). Banned sellers' Listings leave the marketplace like blocked ones.
   - Fake API `/moderation/listings`, `/moderation/listings/decide`, `/moderation/reports`, `/moderation/reports/act`, `/moderation/log` (`ModerationFakeStore`, shared with `P2pFakeStore` and `ReportFakeStore`). It finds reported messages, Bites and reviews in their features' own records (`ModerationSubjects`). Until there are login tokens, the app sends the staff member's name (`by`) for the log.
+- **Scan a book is done** (Arifin): one scanner (`features/scan`, `ScanRoutes.scan`) to look a book up or start a used Listing.
+  - The camera reads the EAN-13 barcode on the back of a book (`mobile_scanner`, on Android, iOS, macOS and the web); the ISBN can also be typed. Windows, Linux and tests type it.
+  - `Isbn.normalize` checks the check digit and turns an ISBN-10 into an ISBN-13. Fake API `/scan/lookup?isbn=` answers the Book (`ScanFakeApi`).
+  - Found: open the book page, or **Sell your copy** (the add-listing form starts with the Book's title and new price). Not found: Request this book, or list it anyway.
+  - Drop in `ScanButton()` to open it (Search's field and the P2P header have one). `ScanButton(forSell: true, wide: true)` on the add-listing form fills the form in.
 - **Accounts** (Niloy, #108): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`).
 - **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
@@ -99,6 +104,7 @@ The app also has:
 | Localisation | `flutter_localizations` + ARB files, **English and Bangla** (`AppL10n`) |
 | Storage | `shared_preferences` (settings, session) |
 | UI | `google_fonts`, `shimmer`, Material 3 with our own theme |
+| Barcode scanner | `mobile_scanner` (camera; Android, iOS, macOS, web) |
 | Tests | `flutter_test`, `fake_async` |
 | Backend (later) | Go + PostgreSQL, separate repo |
 
@@ -131,7 +137,8 @@ lib/
 │   └── utils/              Bdt.format (৳ prices), stock labels, cover gradients
 ├── features/
 │   ├── admin/  ai_assistant/  alerts/  auth/  bites/  cart/  catalog/  checkout/
-│   ├── deals/  donate/  home/  inbox/  loyalty/  moderation/  orders/  p2p/  profile/  report/  wallet/  wishlist/
+│   ├── deals/  donate/  home/  inbox/  loyalty/  moderation/  orders/  p2p/  profile/  report/  scan/
+│   ├── wallet/  wishlist/
 └── l10n/                   app_en.arb, app_bn.arb (+ generated AppL10n)
 ```
 
@@ -310,7 +317,7 @@ The owner builds these and keeps their shape stable; everyone else uses them.
 | Certified Used copy and resale value for a book (catalog `UsedOptions`) | Farhan | Rahinur, Niloy |
 | Readers' listings for a book (`listingsForBookProvider`), listing statuses | Arifin | Farhan, Rahinur |
 | **Make an offer / message a seller** (`ref.offerOn`, `ref.openChat`), inbox badge (`InboxButton`), seller page (`P2pRoutes.sellerFor`) | Farhan | Arifin, everyone showing a listing |
-| Report content, create a book request, barcode scanner | Arifin | Niloy, Rahinur |
+| Report content (`ref.report`), create a book request, barcode scanner (`ScanButton`) | Arifin | Niloy, Rahinur |
 | `sessionProvider` & roles | (built) | everyone |
 | Saved addresses, send a notification, "book finished" event | Niloy | Farhan, Arifin, everyone |
 | Reviews and "Bites about this book" widgets | Niloy | Farhan (book page) |
