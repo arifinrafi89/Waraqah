@@ -12,6 +12,7 @@ class ProfileHeader extends StatelessWidget {
     required this.name,
     required this.campus,
     required this.stats,
+    this.onEdit,
   });
 
   final String name;
@@ -19,6 +20,7 @@ class ProfileHeader extends StatelessWidget {
 
   /// Label to value, in display order.
   final Map<String, String> stats;
+  final VoidCallback? onEdit;
 
   @override
   Widget build(BuildContext context) {
@@ -31,18 +33,44 @@ class ProfileHeader extends StatelessWidget {
           Row(
             spacing: Insets.md,
             children: [
-              Container(
-                width: 54,
-                height: 54,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: palette.accent,
-                  borderRadius: BorderRadius.circular(Radii.card),
-                ),
-                child: Text(
-                  name.isEmpty ? '?' : name[0],
-                  style: AppFonts.display(size: 24, color: palette.accentInk),
-                ),
+              Stack(
+                children: [
+                  Container(
+                    width: 54,
+                    height: 54,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: palette.accent,
+                      borderRadius: BorderRadius.circular(Radii.card),
+                    ),
+                    child: Text(
+                      name.isEmpty ? '?' : name[0],
+                      style: AppFonts.display(
+                        size: 24,
+                        color: palette.accentInk,
+                      ),
+                    ),
+                  ),
+                  if (onEdit != null)
+                    Positioned(
+                      right: -4,
+                      bottom: -4,
+                      child: IconButton(
+                        onPressed: onEdit,
+                        icon: const Icon(Icons.edit_rounded),
+                        iconSize: 13,
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints.tightFor(
+                          width: 24,
+                          height: 24,
+                        ),
+                        style: IconButton.styleFrom(
+                          backgroundColor: palette.surface,
+                          foregroundColor: palette.accent,
+                        ),
+                      ),
+                    ),
+                ],
               ),
               Expanded(
                 child: Column(

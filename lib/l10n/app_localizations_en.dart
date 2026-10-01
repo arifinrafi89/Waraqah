@@ -1788,6 +1788,121 @@ class AppL10nEn extends AppL10n {
   String get profileListings => 'Listings';
 
   @override
+  String get profileEditProfile => 'Edit profile';
+
+  @override
+  String get profileEditName => 'Name';
+
+  @override
+  String get profileEditPhoto => 'Change photo';
+
+  @override
+  String get profilePhone => 'Phone number';
+
+  @override
+  String get profilePhoneHint => '01XXXXXXXXX';
+
+  @override
+  String get profileSaveChanges => 'Save changes';
+
+  @override
+  String get profileSaved => 'Profile updated';
+
+  @override
+  String get profileSavedAddresses => 'Saved addresses';
+
+  @override
+  String get profileAddAddress => 'Add address';
+
+  @override
+  String get profileNoAddresses => 'No saved addresses yet.';
+
+  @override
+  String get profileAddressLabel => 'Address label';
+
+  @override
+  String get profileAddressLine => 'House, road and area';
+
+  @override
+  String get profileDivision => 'Division';
+
+  @override
+  String get profileDistrict => 'District';
+
+  @override
+  String get profileUpazila => 'Upazila';
+
+  @override
+  String get profileSelectDivision => 'Select division';
+
+  @override
+  String get profileSelectDistrict => 'Select district';
+
+  @override
+  String get profileSelectUpazila => 'Select upazila';
+
+  @override
+  String get profileSaveAddress => 'Save address';
+
+  @override
+  String get profileAddressSaved => 'Address saved';
+
+  @override
+  String get profileEditAddress => 'Edit address';
+
+  @override
+  String get profileDeleteAddress => 'Delete address';
+
+  @override
+  String get profileDeleteAddressMessage => 'Remove this saved address?';
+
+  @override
+  String get profileAddressDeleted => 'Address deleted';
+
+  @override
+  String get profileNotifications => 'Notifications';
+
+  @override
+  String get profileNotificationCenter => 'Notification centre';
+
+  @override
+  String get profileMarkAllRead => 'Mark all read';
+
+  @override
+  String get profileNoNotifications => 'You are all caught up.';
+
+  @override
+  String get profilePushNotifications => 'Push notifications';
+
+  @override
+  String get profileOrderUpdates => 'Order updates';
+
+  @override
+  String get profilePromotions => 'Offers and recommendations';
+
+  @override
+  String get profilePrivacy => 'Privacy';
+
+  @override
+  String get profileProfileVisibility => 'Profile visibility';
+
+  @override
+  String get profileActivityVisibility => 'Reading activity visibility';
+
+  @override
+  String get profileDeleteAccount => 'Delete account';
+
+  @override
+  String get profileDeleteAccountMessage =>
+      'This will permanently remove your account and saved data.';
+
+  @override
+  String get profileDeleteConfirm => 'Delete permanently';
+
+  @override
+  String get profileCancel => 'Cancel';
+
+  @override
   String get comingSoonTitle => 'Coming soon';
 
   @override

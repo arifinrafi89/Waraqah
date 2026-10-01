@@ -3103,6 +3103,234 @@ abstract class AppL10n {
   /// **'Listings'**
   String get profileListings;
 
+  /// No description provided for @profileEditProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit profile'**
+  String get profileEditProfile;
+
+  /// No description provided for @profileEditName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get profileEditName;
+
+  /// No description provided for @profileEditPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Change photo'**
+  String get profileEditPhoto;
+
+  /// No description provided for @profilePhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get profilePhone;
+
+  /// No description provided for @profilePhoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'01XXXXXXXXX'**
+  String get profilePhoneHint;
+
+  /// No description provided for @profileSaveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get profileSaveChanges;
+
+  /// No description provided for @profileSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated'**
+  String get profileSaved;
+
+  /// No description provided for @profileSavedAddresses.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved addresses'**
+  String get profileSavedAddresses;
+
+  /// No description provided for @profileAddAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Add address'**
+  String get profileAddAddress;
+
+  /// No description provided for @profileNoAddresses.
+  ///
+  /// In en, this message translates to:
+  /// **'No saved addresses yet.'**
+  String get profileNoAddresses;
+
+  /// No description provided for @profileAddressLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Address label'**
+  String get profileAddressLabel;
+
+  /// No description provided for @profileAddressLine.
+  ///
+  /// In en, this message translates to:
+  /// **'House, road and area'**
+  String get profileAddressLine;
+
+  /// No description provided for @profileDivision.
+  ///
+  /// In en, this message translates to:
+  /// **'Division'**
+  String get profileDivision;
+
+  /// No description provided for @profileDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get profileDistrict;
+
+  /// No description provided for @profileUpazila.
+  ///
+  /// In en, this message translates to:
+  /// **'Upazila'**
+  String get profileUpazila;
+
+  /// No description provided for @profileSelectDivision.
+  ///
+  /// In en, this message translates to:
+  /// **'Select division'**
+  String get profileSelectDivision;
+
+  /// No description provided for @profileSelectDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'Select district'**
+  String get profileSelectDistrict;
+
+  /// No description provided for @profileSelectUpazila.
+  ///
+  /// In en, this message translates to:
+  /// **'Select upazila'**
+  String get profileSelectUpazila;
+
+  /// No description provided for @profileSaveAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Save address'**
+  String get profileSaveAddress;
+
+  /// No description provided for @profileAddressSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Address saved'**
+  String get profileAddressSaved;
+
+  /// No description provided for @profileEditAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit address'**
+  String get profileEditAddress;
+
+  /// No description provided for @profileDeleteAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete address'**
+  String get profileDeleteAddress;
+
+  /// No description provided for @profileDeleteAddressMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this saved address?'**
+  String get profileDeleteAddressMessage;
+
+  /// No description provided for @profileAddressDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Address deleted'**
+  String get profileAddressDeleted;
+
+  /// No description provided for @profileNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get profileNotifications;
+
+  /// No description provided for @profileNotificationCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification centre'**
+  String get profileNotificationCenter;
+
+  /// No description provided for @profileMarkAllRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all read'**
+  String get profileMarkAllRead;
+
+  /// No description provided for @profileNoNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'You are all caught up.'**
+  String get profileNoNotifications;
+
+  /// No description provided for @profilePushNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Push notifications'**
+  String get profilePushNotifications;
+
+  /// No description provided for @profileOrderUpdates.
+  ///
+  /// In en, this message translates to:
+  /// **'Order updates'**
+  String get profileOrderUpdates;
+
+  /// No description provided for @profilePromotions.
+  ///
+  /// In en, this message translates to:
+  /// **'Offers and recommendations'**
+  String get profilePromotions;
+
+  /// No description provided for @profilePrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy'**
+  String get profilePrivacy;
+
+  /// No description provided for @profileProfileVisibility.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile visibility'**
+  String get profileProfileVisibility;
+
+  /// No description provided for @profileActivityVisibility.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading activity visibility'**
+  String get profileActivityVisibility;
+
+  /// No description provided for @profileDeleteAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account'**
+  String get profileDeleteAccount;
+
+  /// No description provided for @profileDeleteAccountMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently remove your account and saved data.'**
+  String get profileDeleteAccountMessage;
+
+  /// No description provided for @profileDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete permanently'**
+  String get profileDeleteConfirm;
+
+  /// No description provided for @profileCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get profileCancel;
+
   /// No description provided for @comingSoonTitle.
   ///
   /// In en, this message translates to:

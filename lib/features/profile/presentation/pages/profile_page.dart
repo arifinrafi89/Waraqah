@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/settings/settings_provider.dart';
 import '../../../../core/theme/app_dimens.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../core/widgets/segmented_selector.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../alerts/alerts_routes.dart';
 import '../../../admin/presentation/widgets/admin_area_button.dart';
 import '../../../alerts/presentation/widgets/my_alerts_link.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
@@ -17,8 +19,15 @@ import '../../../orders/presentation/widgets/my_orders_link.dart';
 import '../../../wallet/presentation/widgets/wallet_link.dart';
 import '../../../wishlist/presentation/widgets/wishlist_link.dart';
 import '../widgets/profile_header.dart';
+import '../providers/profile_providers.dart';
+import '../widgets/profile_action_tile.dart';
 import '../../../p2p/presentation/widgets/my_listings_button.dart';
 import '../widgets/settings_group.dart';
+import 'edit_profile_page.dart';
+import 'profile_preferences_page.dart';
+import 'saved_addresses_page.dart';
+
+import 'package:go_router/go_router.dart';
 
 /// Screen 5 — Profile. Also the home of the theme and language switchers, both
 /// wired to [settingsProvider].
@@ -31,6 +40,7 @@ class ProfilePage extends ConsumerWidget {
     final settings = ref.watch(settingsProvider);
     final settingsNotifier = ref.watch(settingsProvider.notifier);
     final user = ref.watch(sessionProvider);
+    final profile = ref.watch(profileDetailsProvider);
     return SafeArea(
       bottom: false,
       child: Column(
@@ -46,8 +56,14 @@ class ProfilePage extends ConsumerWidget {
               ),
               children: [
                 ProfileHeader(
-                  name: user?.name ?? l10n.authGuestName,
+                  name: profile.name.isEmpty
+                      ? user?.name ?? l10n.authGuestName
+                      : profile.name,
                   campus: user?.email ?? l10n.authGuestNote,
+                  onEdit: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const EditProfilePage()),
+                  ),
                   stats: {
                     l10n.profileBooksRead: '14',
                     l10n.profileBitesPosted: '23',
@@ -55,6 +71,39 @@ class ProfilePage extends ConsumerWidget {
                   },
                 ),
                 const SizedBox(height: Insets.md),
+                ProfileActionTile(
+                  icon: Icons.person_outline_rounded,
+                  title: l10n.profileEditProfile,
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const EditProfilePage()),
+                  ),
+                ),
+                ProfileActionTile(
+                  icon: Icons.location_on_outlined,
+                  title: l10n.profileSavedAddresses,
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const SavedAddressesPage(),
+                    ),
+                  ),
+                ),
+                ProfileActionTile(
+                  icon: Icons.notifications_none_rounded,
+                  title: l10n.profileNotificationCenter,
+                  onTap: () => context.push(AlertsRoutes.notifications),
+                ),
+                ProfileActionTile(
+                  icon: Icons.tune_rounded,
+                  title: l10n.profileNotifications,
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const ProfilePreferencesPage(),
+                    ),
+                  ),
+                ),
                 const SessionActions(),
                 const MyOrdersLink(),
                 const WishlistLink(),
@@ -99,7 +148,10 @@ class ProfilePage extends ConsumerWidget {
                 SettingsGroup(
                   label: l10n.homeSettingsTitle,
                   icon: Icons.home_rounded,
-                  child: const AyahSwitchTile(),
+                  child: Material(
+                    color: context.palette.surface,
+                    child: const AyahSwitchTile(),
+                  ),
                 ),
               ],
             ),

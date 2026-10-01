@@ -52,8 +52,8 @@ class AssistantRepositoryImpl implements AssistantRepository {
   Future<List<Book>> _searchBooks(AssistantIntent intent) async {
     final books = await _books.searchCatalog(
       CatalogFilters(
+        categoryId: intent.isIslamic ? 'cat-islamic-studies' : null,
         query: intent.query,
-        section: intent.isIslamic ? Section.religious : null,
       ),
     );
     final relevantBooks = books.where((book) {
