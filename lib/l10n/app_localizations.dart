@@ -3115,6 +3115,24 @@ abstract class AppL10n {
   /// **'Notifications'**
   String get profileNotifications;
 
+  /// No description provided for @profileNotificationCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification centre'**
+  String get profileNotificationCenter;
+
+  /// No description provided for @profileMarkAllRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all read'**
+  String get profileMarkAllRead;
+
+  /// No description provided for @profileNoNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'You are all caught up.'**
+  String get profileNoNotifications;
+
   /// No description provided for @profilePushNotifications.
   ///
   /// In en, this message translates to:

@@ -7,6 +7,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../core/widgets/segmented_selector.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../alerts/alerts_routes.dart';
 import '../../../admin/presentation/widgets/admin_area_button.dart';
 import '../../../alerts/presentation/widgets/my_alerts_link.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
@@ -25,6 +26,8 @@ import '../widgets/settings_group.dart';
 import 'edit_profile_page.dart';
 import 'profile_preferences_page.dart';
 import 'saved_addresses_page.dart';
+
+import 'package:go_router/go_router.dart';
 
 /// Screen 5 — Profile. Also the home of the theme and language switchers, both
 /// wired to [settingsProvider].
@@ -85,6 +88,11 @@ class ProfilePage extends ConsumerWidget {
                       builder: (_) => const SavedAddressesPage(),
                     ),
                   ),
+                ),
+                ProfileActionTile(
+                  icon: Icons.notifications_none_rounded,
+                  title: l10n.profileNotificationCenter,
+                  onTap: () => context.push(AlertsRoutes.notifications),
                 ),
                 ProfileActionTile(
                   icon: Icons.tune_rounded,

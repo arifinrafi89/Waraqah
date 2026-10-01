@@ -1702,6 +1702,15 @@ class AppL10nBn extends AppL10n {
   String get profileNotifications => 'নোটিফিকেশন';
 
   @override
+  String get profileNotificationCenter => 'নোটিফিকেশন সেন্টার';
+
+  @override
+  String get profileMarkAllRead => 'সব পড়া হয়েছে হিসেবে চিহ্নিত করুন';
+
+  @override
+  String get profileNoNotifications => 'সব নোটিফিকেশন দেখা হয়েছে।';
+
+  @override
   String get profilePushNotifications => 'পুশ নোটিফিকেশন';
 
   @override

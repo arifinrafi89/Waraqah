@@ -23,6 +23,7 @@ abstract final class RouteAccess {
     CheckoutRoutes.checkout,
     OrdersRoutes.orders,
     AlertsRoutes.alerts,
+    AlertsRoutes.notifications,
     LoyaltyRoutes.points,
     WalletRoutes.wallet,
   ];

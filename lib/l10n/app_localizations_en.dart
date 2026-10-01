@@ -1769,6 +1769,15 @@ class AppL10nEn extends AppL10n {
   String get profileNotifications => 'Notifications';
 
   @override
+  String get profileNotificationCenter => 'Notification centre';
+
+  @override
+  String get profileMarkAllRead => 'Mark all read';
+
+  @override
+  String get profileNoNotifications => 'You are all caught up.';
+
+  @override
   String get profilePushNotifications => 'Push notifications';
 
   @override
