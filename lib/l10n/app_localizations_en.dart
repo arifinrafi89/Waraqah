@@ -509,6 +509,102 @@ class AppL10nEn extends AppL10n {
   String get booklistPickerEmpty => 'No books match.';
 
   @override
+  String get booklistTitle => 'Booklists';
+
+  @override
+  String get booklistEntrySub =>
+      'Class lists, exam prep, book clubs and your own lists';
+
+  @override
+  String get booklistProfileLink => 'My booklists';
+
+  @override
+  String get booklistMine => 'My lists';
+
+  @override
+  String get booklistNew => 'New list';
+
+  @override
+  String get booklistMineEmpty =>
+      'No lists yet. Make one for books you want to buy together.';
+
+  @override
+  String get booklistGuestHint => 'Log in to make your own lists.';
+
+  @override
+  String get booklistGroupClassLists => 'Class lists';
+
+  @override
+  String booklistNewTotal(int count, String price) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'New: $price for $count books',
+      one: 'New: $price for 1 book',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get booklistPriceNew => 'New';
+
+  @override
+  String get booklistPriceCertified => 'Certified Used';
+
+  @override
+  String get booklistPriceUsed => 'Used';
+
+  @override
+  String get booklistAddAll => 'Add whole list to cart';
+
+  @override
+  String booklistAdded(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Added $count books',
+      one: 'Added 1 book',
+      zero: 'Nothing added',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String booklistOutOfStock(int count) {
+    return '$count out of stock';
+  }
+
+  @override
+  String get booklistAddBooks => 'Add books';
+
+  @override
+  String get booklistRemoveBook => 'Remove from list';
+
+  @override
+  String get booklistEmpty => 'No books in this list yet.';
+
+  @override
+  String get booklistRename => 'Rename';
+
+  @override
+  String get booklistDelete => 'Delete list';
+
+  @override
+  String get booklistDeleteConfirm => 'Delete this list?';
+
+  @override
+  String get booklistDeleted => 'List deleted';
+
+  @override
+  String get booklistNameHint => 'List name';
+
+  @override
+  String get booklistCancel => 'Cancel';
+
+  @override
+  String get booklistSave => 'Save';
+
+  @override
   String get bookFormatPaperback => 'Paperback';
 
   @override

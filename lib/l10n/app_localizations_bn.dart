@@ -506,6 +506,100 @@ class AppL10nBn extends AppL10n {
   String get booklistPickerEmpty => 'কোনো বই মেলেনি।';
 
   @override
+  String get booklistTitle => 'বুকলিস্ট';
+
+  @override
+  String get booklistEntrySub =>
+      'ক্লাসের তালিকা, পরীক্ষার প্রস্তুতি, বুক ক্লাব আর নিজের তালিকা';
+
+  @override
+  String get booklistProfileLink => 'আমার বুকলিস্ট';
+
+  @override
+  String get booklistMine => 'আমার তালিকা';
+
+  @override
+  String get booklistNew => 'নতুন তালিকা';
+
+  @override
+  String get booklistMineEmpty =>
+      'এখনো কোনো তালিকা নেই। একসাথে কিনতে চান এমন বইয়ের তালিকা বানান।';
+
+  @override
+  String get booklistGuestHint => 'নিজের তালিকা বানাতে লগ ইন করুন।';
+
+  @override
+  String get booklistGroupClassLists => 'ক্লাসের বইয়ের তালিকা';
+
+  @override
+  String booklistNewTotal(int count, String price) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'নতুন: $countটি বই $price',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get booklistPriceNew => 'নতুন';
+
+  @override
+  String get booklistPriceCertified => 'সার্টিফায়েড ব্যবহৃত';
+
+  @override
+  String get booklistPriceUsed => 'ব্যবহৃত';
+
+  @override
+  String get booklistAddAll => 'পুরো তালিকা কার্টে যোগ করুন';
+
+  @override
+  String booklistAdded(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি বই যোগ হয়েছে',
+      zero: 'কিছু যোগ হয়নি',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String booklistOutOfStock(int count) {
+    return '$countটি স্টকে নেই';
+  }
+
+  @override
+  String get booklistAddBooks => 'বই যোগ করুন';
+
+  @override
+  String get booklistRemoveBook => 'তালিকা থেকে সরান';
+
+  @override
+  String get booklistEmpty => 'এই তালিকায় এখনো কোনো বই নেই।';
+
+  @override
+  String get booklistRename => 'নাম বদলান';
+
+  @override
+  String get booklistDelete => 'তালিকা মুছুন';
+
+  @override
+  String get booklistDeleteConfirm => 'এই তালিকা মুছবেন?';
+
+  @override
+  String get booklistDeleted => 'তালিকা মুছে ফেলা হয়েছে';
+
+  @override
+  String get booklistNameHint => 'তালিকার নাম';
+
+  @override
+  String get booklistCancel => 'বাতিল';
+
+  @override
+  String get booklistSave => 'সেভ করুন';
+
+  @override
   String get bookFormatPaperback => 'পেপারব্যাক';
 
   @override

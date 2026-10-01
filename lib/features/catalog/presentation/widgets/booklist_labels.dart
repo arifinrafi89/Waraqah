@@ -8,4 +8,9 @@ extension BooklistKindLabel on BooklistKind {
     BooklistKind.bookClub => l10n.booklistKindBookClub,
     BooklistKind.personal => l10n.booklistKindPersonal,
   };
+
+  /// A group heading on the Booklists page.
+  String group(AppL10n l10n) => this == BooklistKind.classList
+      ? l10n.booklistGroupClassLists
+      : label(l10n);
 }

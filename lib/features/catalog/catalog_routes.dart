@@ -47,6 +47,14 @@ abstract final class CatalogRoutes {
   /// An Expert's page, inside the Catalog tab so the bottom nav stays.
   static String expertFor(String id) => '/catalog/expert/$id';
 
+  /// Staff's Booklists and the Reader's own, inside the Catalog tab.
+  static const String booklists = '/catalog/booklists';
+
+  static const String booklist = '/catalog/booklist/:id';
+
+  /// A Booklist's page, inside the Catalog tab so the bottom nav stays.
+  static String booklistFor(String id) => '/catalog/booklist/$id';
+
   /// The Search page, inside the Catalog tab so the bottom nav stays.
   static const String search = '/catalog/search';
 

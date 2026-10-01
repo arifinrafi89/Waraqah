@@ -1039,6 +1039,156 @@ abstract class AppL10n {
   /// **'No books match.'**
   String get booklistPickerEmpty;
 
+  /// No description provided for @booklistTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Booklists'**
+  String get booklistTitle;
+
+  /// No description provided for @booklistEntrySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Class lists, exam prep, book clubs and your own lists'**
+  String get booklistEntrySub;
+
+  /// No description provided for @booklistProfileLink.
+  ///
+  /// In en, this message translates to:
+  /// **'My booklists'**
+  String get booklistProfileLink;
+
+  /// No description provided for @booklistMine.
+  ///
+  /// In en, this message translates to:
+  /// **'My lists'**
+  String get booklistMine;
+
+  /// No description provided for @booklistNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New list'**
+  String get booklistNew;
+
+  /// No description provided for @booklistMineEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No lists yet. Make one for books you want to buy together.'**
+  String get booklistMineEmpty;
+
+  /// No description provided for @booklistGuestHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to make your own lists.'**
+  String get booklistGuestHint;
+
+  /// No description provided for @booklistGroupClassLists.
+  ///
+  /// In en, this message translates to:
+  /// **'Class lists'**
+  String get booklistGroupClassLists;
+
+  /// No description provided for @booklistNewTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{New: {price} for 1 book} other{New: {price} for {count} books}}'**
+  String booklistNewTotal(int count, String price);
+
+  /// No description provided for @booklistPriceNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get booklistPriceNew;
+
+  /// No description provided for @booklistPriceCertified.
+  ///
+  /// In en, this message translates to:
+  /// **'Certified Used'**
+  String get booklistPriceCertified;
+
+  /// No description provided for @booklistPriceUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Used'**
+  String get booklistPriceUsed;
+
+  /// No description provided for @booklistAddAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Add whole list to cart'**
+  String get booklistAddAll;
+
+  /// No description provided for @booklistAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Nothing added} =1{Added 1 book} other{Added {count} books}}'**
+  String booklistAdded(int count);
+
+  /// No description provided for @booklistOutOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} out of stock'**
+  String booklistOutOfStock(int count);
+
+  /// No description provided for @booklistAddBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Add books'**
+  String get booklistAddBooks;
+
+  /// No description provided for @booklistRemoveBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from list'**
+  String get booklistRemoveBook;
+
+  /// No description provided for @booklistEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books in this list yet.'**
+  String get booklistEmpty;
+
+  /// No description provided for @booklistRename.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename'**
+  String get booklistRename;
+
+  /// No description provided for @booklistDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete list'**
+  String get booklistDelete;
+
+  /// No description provided for @booklistDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this list?'**
+  String get booklistDeleteConfirm;
+
+  /// No description provided for @booklistDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'List deleted'**
+  String get booklistDeleted;
+
+  /// No description provided for @booklistNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'List name'**
+  String get booklistNameHint;
+
+  /// No description provided for @booklistCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get booklistCancel;
+
+  /// No description provided for @booklistSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get booklistSave;
+
   /// No description provided for @bookFormatPaperback.
   ///
   /// In en, this message translates to:
