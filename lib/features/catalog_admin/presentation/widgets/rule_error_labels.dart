@@ -16,6 +16,8 @@ extension RuleErrorLabels on AppL10n {
     RuleError.publisherMissing => adminCatalogErrPublisherMissing,
     RuleError.categoryMissing => adminCatalogErrCategoryMissing,
     RuleError.categoryWrongSection => adminCatalogErrCategoryWrongSection,
+    RuleError.classNotAllowed => adminCatalogErrClassNotAllowed,
+    RuleError.examNotAllowed => adminCatalogErrExamNotAllowed,
     RuleError.noEditions => adminCatalogErrNoEditions,
     RuleError.priceNotPositive => adminCatalogErrPriceNotPositive,
     RuleError.listPriceTooLow => adminCatalogErrListPriceTooLow,

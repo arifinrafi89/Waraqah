@@ -1,5 +1,6 @@
 import '../../../../core/models/book.dart';
 import '../../../../core/models/edition.dart';
+import '../../../../core/models/section_academics.dart';
 import '../../../home/domain/entities/banner.dart';
 import '../../../scan/domain/entities/isbn.dart';
 import 'book_draft.dart';
@@ -12,6 +13,8 @@ enum RuleError {
   publisherMissing,
   categoryMissing,
   categoryWrongSection,
+  classNotAllowed,
+  examNotAllowed,
   noEditions,
   priceNotPositive,
   listPriceTooLow,
@@ -32,11 +35,10 @@ enum RuleError {
 /// What a catalog change must satisfy. The form shows these inline; the
 /// server refuses a change that breaks any of them.
 abstract final class CatalogAdminRules {
-  /// eBooks never run out.
-  static const int ebookStock = 999;
+  static const int ebookStock = 999; // eBooks never run out.
 
   /// Problems with a Book's details. [categorySection] is the picked
-  /// Category's Section.
+  /// Category's Section. Classes and Exams must be ones its Section offers.
   static Set<RuleError> book(BookDraft draft, {Section? categorySection}) => {
     if (draft.title.trim().isEmpty) RuleError.titleBlank,
     if (draft.authorId.isEmpty) RuleError.authorMissing,
@@ -46,6 +48,10 @@ abstract final class CatalogAdminRules {
     else if (categorySection != draft.section)
       RuleError.categoryWrongSection,
     if (draft.editions.isEmpty) RuleError.noEditions,
+    if (!draft.classes.every(draft.section.classLevels.contains))
+      RuleError.classNotAllowed,
+    if (!draft.exams.every(draft.section.allowedExams.contains))
+      RuleError.examNotAllowed,
   };
 
   /// [edition] as it's stored: an eBook has stock 999, no ISBN and no

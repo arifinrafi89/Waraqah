@@ -13,6 +13,7 @@ class AcademicChipRow<T> extends StatelessWidget {
     required this.selected,
     required this.labelOf,
     required this.onTap,
+    this.padding = const EdgeInsets.symmetric(horizontal: Insets.screen),
   });
 
   final String title;
@@ -20,6 +21,7 @@ class AcademicChipRow<T> extends StatelessWidget {
   final Set<T> selected;
   final String Function(T) labelOf;
   final ValueChanged<T> onTap;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class AcademicChipRow<T> extends StatelessWidget {
       height: 48,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: Insets.screen),
+        padding: padding,
         child: Row(
           children: [
             Center(child: Text(title, style: context.texts.labelLarge)),

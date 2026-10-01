@@ -7,10 +7,12 @@ import '../../../catalog/data/sources/booklist_fixtures.dart';
 import '../../../catalog/data/sources/category_fixtures.dart';
 import '../../../catalog/data/sources/collection_fixtures.dart';
 import '../../../catalog/data/sources/publisher_fixtures.dart';
+import '../../../catalog/data/sources/subject_fixtures.dart';
 import '../../../home/data/sources/banner_fixtures.dart';
 import '../../../home/domain/entities/season.dart';
 import '../../domain/entities/catalog_admin_rules.dart';
 import '../models/book_draft_json.dart';
+import 'unique_id.dart';
 
 /// Staff's Book changes on the fake backend. A new one resets every seed.
 // ponytail: in-place fixture lists; the Go backend owns the catalog.
@@ -23,6 +25,7 @@ class CatalogAdminFakeStore {
     CollectionFixtures.reset();
     BooklistFixtures.reset();
     BannerFixtures.reset();
+    SubjectFixtures.reset();
   }
 
   /// The Season Staff forced on Home; `null` = picked by date.
@@ -84,6 +87,9 @@ class CatalogAdminFakeStore {
       rating: old?.rating ?? 0,
       tags: old?.tags ?? const [],
       hidden: old?.hidden ?? false,
+      classes: draft.classes,
+      exams: draft.exams,
+      subjectId: draft.subjectId.isEmpty ? null : draft.subjectId,
       editions: [
         for (final e in draft.editions)
           CatalogAdminRules.tidy(e).copyWith(
@@ -101,20 +107,5 @@ class CatalogAdminFakeStore {
     final i = BookFixtures.all.indexWhere((b) => b.id == id);
     if (i < 0) return null;
     return BookFixtures.all[i] = BookFixtures.all[i].copyWith(hidden: hidden);
-  }
-
-  /// `<prefix>-<slug of text>`, with `-2`, `-3`… when [taken] has it.
-  static String uniqueId(String prefix, String text, Iterable<String> taken) {
-    final slug = text
-        .toLowerCase()
-        .replaceAll(RegExp('[^a-z0-9]+'), '-')
-        .replaceAll(RegExp(r'^-+|-+$'), '');
-    final base = '$prefix-${slug.isEmpty ? 'new' : slug}';
-    final used = taken.toSet();
-    var id = base;
-    for (var n = 2; used.contains(id); n++) {
-      id = '$base-$n';
-    }
-    return id;
   }
 }

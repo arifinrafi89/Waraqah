@@ -2161,6 +2161,20 @@ class AppL10nEn extends AppL10n {
       'This category is in another section';
 
   @override
+  String get adminCatalogErrClassNotAllowed =>
+      'Classes 6–12, and only on School & College books.';
+
+  @override
+  String get adminCatalogErrExamNotAllowed =>
+      'This Section doesn\'t offer that Exam.';
+
+  @override
+  String get adminCatalogFieldSubject => 'Subject';
+
+  @override
+  String get adminCatalogFieldNoSubject => 'No Subject';
+
+  @override
   String get adminCatalogErrNoEditions => 'Add at least one edition';
 
   @override

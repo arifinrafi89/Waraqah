@@ -25,8 +25,8 @@ class CatalogRecordsSource {
     (json) => CategoryModel.fromJson(json).toEntity(),
   );
 
-  /// Subjects with Books in [section].
-  Future<List<Subject>> subjects(Section section) => _inSection(
+  /// Subjects with Books in [section]; every Subject when `null`.
+  Future<List<Subject>> subjects(Section? section) => _inSection(
     BookFakeApi.subjects,
     section,
     (json) => SubjectModel.fromJson(json).toEntity(),
@@ -34,12 +34,12 @@ class CatalogRecordsSource {
 
   Future<List<T>> _inSection<T>(
     String path,
-    Section section,
+    Section? section,
     T Function(Map<String, dynamic>) read,
   ) async {
     final response = await _dio.get<List<dynamic>>(
       path,
-      queryParameters: {'section': section.name},
+      queryParameters: {'section': ?section?.name},
     );
     return [for (final json in response.data ?? const []) read(json)];
   }

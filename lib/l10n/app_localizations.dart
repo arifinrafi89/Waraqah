@@ -3781,6 +3781,30 @@ abstract class AppL10n {
   /// **'This category is in another section'**
   String get adminCatalogErrCategoryWrongSection;
 
+  /// No description provided for @adminCatalogErrClassNotAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Classes 6–12, and only on School & College books.'**
+  String get adminCatalogErrClassNotAllowed;
+
+  /// No description provided for @adminCatalogErrExamNotAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'This Section doesn\'t offer that Exam.'**
+  String get adminCatalogErrExamNotAllowed;
+
+  /// No description provided for @adminCatalogFieldSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get adminCatalogFieldSubject;
+
+  /// No description provided for @adminCatalogFieldNoSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'No Subject'**
+  String get adminCatalogFieldNoSubject;
+
   /// No description provided for @adminCatalogErrNoEditions.
   ///
   /// In en, this message translates to:

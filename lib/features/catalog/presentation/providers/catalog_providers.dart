@@ -82,8 +82,8 @@ final sectionBooksProvider = FutureProvider.autoDispose
           .searchCatalog(ref.watch(sectionFiltersProvider(section))),
     );
 
-/// Subjects with Books in a Section.
-final sectionSubjectsProvider = FutureProvider.family<List<Subject>, Section>(
+/// Subjects with Books in a Section; every Subject for `null`.
+final subjectsProvider = FutureProvider.family<List<Subject>, Section?>(
   (ref, section) =>
       ref.watch(catalogRecordsRepositoryProvider).subjects(section),
 );

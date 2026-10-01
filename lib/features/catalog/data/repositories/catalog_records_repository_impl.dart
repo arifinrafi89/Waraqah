@@ -31,8 +31,8 @@ class CatalogRecordsRepositoryImpl implements CatalogRecordsRepository {
       _categories.resolve(section.name, () => _source.categories(section));
 
   @override
-  Future<List<Subject>> subjects(Section section) =>
-      _subjects.resolve(section.name, () => _source.subjects(section));
+  Future<List<Subject>> subjects(Section? section) =>
+      _subjects.resolve(section?.name ?? '', () => _source.subjects(section));
 
   @override
   Future<Author?> author(String id) =>

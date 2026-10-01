@@ -22,7 +22,7 @@ class AcademicFilterBar extends ConsumerWidget {
     final l10n = AppL10n.of(context)!;
     final picked = ref.watch(sectionFiltersProvider(section));
     final filters = ref.read(sectionFiltersProvider(section).notifier);
-    final subjects = ref.watch(sectionSubjectsProvider(section)).value ?? [];
+    final subjects = ref.watch(subjectsProvider(section)).value ?? [];
     final isBangla = Localizations.localeOf(context).languageCode == 'bn';
     final names = {
       for (final s in subjects) s.id: isBangla ? s.nameBn : s.nameEn,

@@ -2076,6 +2076,19 @@ class AppL10nBn extends AppL10n {
   String get adminCatalogErrCategoryWrongSection => 'এই ক্যাটাগরি অন্য সেকশনের';
 
   @override
+  String get adminCatalogErrClassNotAllowed =>
+      'শ্রেণি ৬–১২, আর শুধু স্কুল ও কলেজের বইয়ে।';
+
+  @override
+  String get adminCatalogErrExamNotAllowed => 'এই বিভাগে এই পরীক্ষা নেই।';
+
+  @override
+  String get adminCatalogFieldSubject => 'বিষয়';
+
+  @override
+  String get adminCatalogFieldNoSubject => 'কোনো বিষয় নেই';
+
+  @override
   String get adminCatalogErrNoEditions => 'অন্তত একটি সংস্করণ যোগ করুন';
 
   @override

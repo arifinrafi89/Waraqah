@@ -12,6 +12,7 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../admin/admin_routes.dart';
 import '../../../admin/domain/entities/admin_section.dart';
 import '../providers/book_form_provider.dart';
+import '../widgets/academic_fields.dart';
 import '../widgets/admin_list_skeleton.dart';
 import '../widgets/book_details_fields.dart';
 import '../widgets/book_form_bar.dart';
@@ -19,7 +20,7 @@ import '../widgets/cover_seed_picker.dart';
 import '../widgets/edition_list_editor.dart';
 
 /// `/admin/catalog/book?id=`: adds a Book (no id) or edits one, with its
-/// cover colours and Editions.
+/// Class, Exam and Subject, cover colours and Editions.
 class BookFormPage extends ConsumerWidget {
   const BookFormPage({super.key, this.bookId});
 
@@ -73,6 +74,8 @@ class BookFormPage extends ConsumerWidget {
                     padding: const EdgeInsets.all(Insets.screen),
                     children: [
                       BookDetailsFields(form: form, bookId: bookId),
+                      const SizedBox(height: Insets.md),
+                      AcademicFields(form: form, bookId: bookId),
                       const SizedBox(height: Insets.xl),
                       CoverSeedPicker(
                         title: form.draft.title,

@@ -11,8 +11,8 @@ abstract interface class CatalogRecordsRepository {
   /// A Section's Categories.
   Future<List<Category>> categories(Section section);
 
-  /// Subjects with Books in [section].
-  Future<List<Subject>> subjects(Section section);
+  /// Subjects with Books in [section]; every Subject when `null`.
+  Future<List<Subject>> subjects(Section? section);
 
   /// `null` when [id] is not a known Author.
   Future<Author?> author(String id);

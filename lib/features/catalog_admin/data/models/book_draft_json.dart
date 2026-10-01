@@ -15,6 +15,9 @@ extension BookDraftJson on BookDraft {
     'originalLanguage': originalLanguage.name,
     'coverSeed': coverSeed,
     'editions': [for (final e in editions) e.toJson()],
+    'classes': classes,
+    'exams': [for (final e in exams) e.name],
+    'subjectId': subjectId,
   };
 
   static BookDraft fromJson(Map<String, dynamic> json) => BookDraft(
@@ -33,5 +36,11 @@ extension BookDraftJson on BookDraft {
       for (final e in json['editions'] as List<dynamic>? ?? const [])
         Edition.fromJson(e as Map<String, dynamic>),
     ],
+    classes: [for (final c in json['classes'] as List? ?? const []) c as int],
+    exams: [
+      for (final e in json['exams'] as List? ?? const [])
+        Exam.values.byName(e as String),
+    ],
+    subjectId: json['subjectId'] as String? ?? '',
   );
 }

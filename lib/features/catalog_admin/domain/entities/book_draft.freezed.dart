@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BookDraft {
 
- String? get id; String get title; String get titleBn; String get authorId; String get publisherId; Section get section; String get categoryId; BookLanguage get originalLanguage; int get coverSeed; List<Edition> get editions;
+ String? get id; String get title; String get titleBn; String get authorId; String get publisherId; Section get section; String get categoryId; BookLanguage get originalLanguage; int get coverSeed; List<Edition> get editions; List<int> get classes; List<Exam> get exams; String get subjectId;
 /// Create a copy of BookDraft
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $BookDraftCopyWith<BookDraft> get copyWith => _$BookDraftCopyWithImpl<BookDraft>
 @override
 bool operator ==(Object other) {
   final _this = this as BookDraft;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BookDraft&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.titleBn, _this.titleBn) || other.titleBn == _this.titleBn)&&(identical(other.authorId, _this.authorId) || other.authorId == _this.authorId)&&(identical(other.publisherId, _this.publisherId) || other.publisherId == _this.publisherId)&&(identical(other.section, _this.section) || other.section == _this.section)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId)&&(identical(other.originalLanguage, _this.originalLanguage) || other.originalLanguage == _this.originalLanguage)&&(identical(other.coverSeed, _this.coverSeed) || other.coverSeed == _this.coverSeed)&&const DeepCollectionEquality().equals(other.editions, _this.editions));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BookDraft&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.titleBn, _this.titleBn) || other.titleBn == _this.titleBn)&&(identical(other.authorId, _this.authorId) || other.authorId == _this.authorId)&&(identical(other.publisherId, _this.publisherId) || other.publisherId == _this.publisherId)&&(identical(other.section, _this.section) || other.section == _this.section)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId)&&(identical(other.originalLanguage, _this.originalLanguage) || other.originalLanguage == _this.originalLanguage)&&(identical(other.coverSeed, _this.coverSeed) || other.coverSeed == _this.coverSeed)&&const DeepCollectionEquality().equals(other.editions, _this.editions)&&const DeepCollectionEquality().equals(other.classes, _this.classes)&&const DeepCollectionEquality().equals(other.exams, _this.exams)&&(identical(other.subjectId, _this.subjectId) || other.subjectId == _this.subjectId));
 }
 
 
 @override
 int get hashCode {
   final _this = this as BookDraft;
-  return Object.hash(runtimeType,_this.id,_this.title,_this.titleBn,_this.authorId,_this.publisherId,_this.section,_this.categoryId,_this.originalLanguage,_this.coverSeed,const DeepCollectionEquality().hash(_this.editions));
+  return Object.hash(runtimeType,_this.id,_this.title,_this.titleBn,_this.authorId,_this.publisherId,_this.section,_this.categoryId,_this.originalLanguage,_this.coverSeed,const DeepCollectionEquality().hash(_this.editions),const DeepCollectionEquality().hash(_this.classes),const DeepCollectionEquality().hash(_this.exams),_this.subjectId);
 }
 
 @override
 String toString() {
   final _this = this as BookDraft;
-  return 'BookDraft(id: ${_this.id}, title: ${_this.title}, titleBn: ${_this.titleBn}, authorId: ${_this.authorId}, publisherId: ${_this.publisherId}, section: ${_this.section}, categoryId: ${_this.categoryId}, originalLanguage: ${_this.originalLanguage}, coverSeed: ${_this.coverSeed}, editions: ${_this.editions})';
+  return 'BookDraft(id: ${_this.id}, title: ${_this.title}, titleBn: ${_this.titleBn}, authorId: ${_this.authorId}, publisherId: ${_this.publisherId}, section: ${_this.section}, categoryId: ${_this.categoryId}, originalLanguage: ${_this.originalLanguage}, coverSeed: ${_this.coverSeed}, editions: ${_this.editions}, classes: ${_this.classes}, exams: ${_this.exams}, subjectId: ${_this.subjectId})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $BookDraftCopyWith<$Res>  {
   factory $BookDraftCopyWith(BookDraft value, $Res Function(BookDraft) _then) = _$BookDraftCopyWithImpl;
 @useResult
 $Res call({
- String? id, String title, String titleBn, String authorId, String publisherId, Section section, String categoryId, BookLanguage originalLanguage, int coverSeed, List<Edition> editions
+ String? id, String title, String titleBn, String authorId, String publisherId, Section section, String categoryId, BookLanguage originalLanguage, int coverSeed, List<Edition> editions, List<int> classes, List<Exam> exams, String subjectId
 });
 
 
@@ -68,7 +68,7 @@ class _$BookDraftCopyWithImpl<$Res>
 
 /// Create a copy of BookDraft
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? title = null,Object? titleBn = null,Object? authorId = null,Object? publisherId = null,Object? section = null,Object? categoryId = null,Object? originalLanguage = null,Object? coverSeed = null,Object? editions = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? title = null,Object? titleBn = null,Object? authorId = null,Object? publisherId = null,Object? section = null,Object? categoryId = null,Object? originalLanguage = null,Object? coverSeed = null,Object? editions = null,Object? classes = null,Object? exams = null,Object? subjectId = null,}) {
   return _then(BookDraft(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
@@ -80,7 +80,10 @@ as Section,categoryId: null == categoryId ? _self.categoryId : categoryId // ign
 as String,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
 as BookLanguage,coverSeed: null == coverSeed ? _self.coverSeed : coverSeed // ignore: cast_nullable_to_non_nullable
 as int,editions: null == editions ? _self.editions : editions // ignore: cast_nullable_to_non_nullable
-as List<Edition>,
+as List<Edition>,classes: null == classes ? _self.classes : classes // ignore: cast_nullable_to_non_nullable
+as List<int>,exams: null == exams ? _self.exams : exams // ignore: cast_nullable_to_non_nullable
+as List<Exam>,subjectId: null == subjectId ? _self.subjectId : subjectId // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -165,10 +168,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  String title,  String titleBn,  String authorId,  String publisherId,  Section section,  String categoryId,  BookLanguage originalLanguage,  int coverSeed,  List<Edition> editions)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  String title,  String titleBn,  String authorId,  String publisherId,  Section section,  String categoryId,  BookLanguage originalLanguage,  int coverSeed,  List<Edition> editions,  List<int> classes,  List<Exam> exams,  String subjectId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BookDraft() when $default != null:
-return $default(_that.id,_that.title,_that.titleBn,_that.authorId,_that.publisherId,_that.section,_that.categoryId,_that.originalLanguage,_that.coverSeed,_that.editions);case _:
+return $default(_that.id,_that.title,_that.titleBn,_that.authorId,_that.publisherId,_that.section,_that.categoryId,_that.originalLanguage,_that.coverSeed,_that.editions,_that.classes,_that.exams,_that.subjectId);case _:
   return orElse();
 
 }
@@ -186,10 +189,10 @@ return $default(_that.id,_that.title,_that.titleBn,_that.authorId,_that.publishe
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  String title,  String titleBn,  String authorId,  String publisherId,  Section section,  String categoryId,  BookLanguage originalLanguage,  int coverSeed,  List<Edition> editions)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  String title,  String titleBn,  String authorId,  String publisherId,  Section section,  String categoryId,  BookLanguage originalLanguage,  int coverSeed,  List<Edition> editions,  List<int> classes,  List<Exam> exams,  String subjectId)  $default,) {final _that = this;
 switch (_that) {
 case _BookDraft():
-return $default(_that.id,_that.title,_that.titleBn,_that.authorId,_that.publisherId,_that.section,_that.categoryId,_that.originalLanguage,_that.coverSeed,_that.editions);case _:
+return $default(_that.id,_that.title,_that.titleBn,_that.authorId,_that.publisherId,_that.section,_that.categoryId,_that.originalLanguage,_that.coverSeed,_that.editions,_that.classes,_that.exams,_that.subjectId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -206,10 +209,10 @@ return $default(_that.id,_that.title,_that.titleBn,_that.authorId,_that.publishe
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  String title,  String titleBn,  String authorId,  String publisherId,  Section section,  String categoryId,  BookLanguage originalLanguage,  int coverSeed,  List<Edition> editions)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  String title,  String titleBn,  String authorId,  String publisherId,  Section section,  String categoryId,  BookLanguage originalLanguage,  int coverSeed,  List<Edition> editions,  List<int> classes,  List<Exam> exams,  String subjectId)?  $default,) {final _that = this;
 switch (_that) {
 case _BookDraft() when $default != null:
-return $default(_that.id,_that.title,_that.titleBn,_that.authorId,_that.publisherId,_that.section,_that.categoryId,_that.originalLanguage,_that.coverSeed,_that.editions);case _:
+return $default(_that.id,_that.title,_that.titleBn,_that.authorId,_that.publisherId,_that.section,_that.categoryId,_that.originalLanguage,_that.coverSeed,_that.editions,_that.classes,_that.exams,_that.subjectId);case _:
   return null;
 
 }
@@ -221,7 +224,7 @@ return $default(_that.id,_that.title,_that.titleBn,_that.authorId,_that.publishe
 
 
 class _BookDraft implements BookDraft {
-  const _BookDraft({this.id, this.title = '', this.titleBn = '', this.authorId = '', this.publisherId = '', this.section = Section.academic, this.categoryId = '', this.originalLanguage = BookLanguage.bangla, this.coverSeed = 0,  List<Edition> editions = const <Edition>[]}): _editions = editions;
+  const _BookDraft({this.id, this.title = '', this.titleBn = '', this.authorId = '', this.publisherId = '', this.section = Section.academic, this.categoryId = '', this.originalLanguage = BookLanguage.bangla, this.coverSeed = 0,  List<Edition> editions = const <Edition>[],  List<int> classes = const <int>[],  List<Exam> exams = const <Exam>[], this.subjectId = ''}): _editions = editions,_classes = classes,_exams = exams;
   
 
 @override final  String? id;
@@ -240,6 +243,21 @@ class _BookDraft implements BookDraft {
   return EqualUnmodifiableListView(_editions);
 }
 
+ final  List<int> _classes;
+@override@JsonKey() List<int> get classes {
+  if (_classes is EqualUnmodifiableListView) return _classes;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_classes);
+}
+
+ final  List<Exam> _exams;
+@override@JsonKey() List<Exam> get exams {
+  if (_exams is EqualUnmodifiableListView) return _exams;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_exams);
+}
+
+@override@JsonKey() final  String subjectId;
 
 /// Create a copy of BookDraft
 /// with the given fields replaced by the non-null parameter values.
@@ -251,18 +269,18 @@ _$BookDraftCopyWith<_BookDraft> get copyWith => __$BookDraftCopyWithImpl<_BookDr
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BookDraft&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.titleBn, titleBn) || other.titleBn == titleBn)&&(identical(other.authorId, authorId) || other.authorId == authorId)&&(identical(other.publisherId, publisherId) || other.publisherId == publisherId)&&(identical(other.section, section) || other.section == section)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.coverSeed, coverSeed) || other.coverSeed == coverSeed)&&const DeepCollectionEquality().equals(other.editions, _editions));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BookDraft&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.titleBn, titleBn) || other.titleBn == titleBn)&&(identical(other.authorId, authorId) || other.authorId == authorId)&&(identical(other.publisherId, publisherId) || other.publisherId == publisherId)&&(identical(other.section, section) || other.section == section)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.coverSeed, coverSeed) || other.coverSeed == coverSeed)&&const DeepCollectionEquality().equals(other.editions, _editions)&&const DeepCollectionEquality().equals(other.classes, _classes)&&const DeepCollectionEquality().equals(other.exams, _exams)&&(identical(other.subjectId, subjectId) || other.subjectId == subjectId));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,title,titleBn,authorId,publisherId,section,categoryId,originalLanguage,coverSeed,const DeepCollectionEquality().hash(_editions));
+    return Object.hash(runtimeType,id,title,titleBn,authorId,publisherId,section,categoryId,originalLanguage,coverSeed,const DeepCollectionEquality().hash(_editions),const DeepCollectionEquality().hash(_classes),const DeepCollectionEquality().hash(_exams),subjectId);
 }
 
 @override
 String toString() {
-    return 'BookDraft(id: $id, title: $title, titleBn: $titleBn, authorId: $authorId, publisherId: $publisherId, section: $section, categoryId: $categoryId, originalLanguage: $originalLanguage, coverSeed: $coverSeed, editions: $editions)';
+    return 'BookDraft(id: $id, title: $title, titleBn: $titleBn, authorId: $authorId, publisherId: $publisherId, section: $section, categoryId: $categoryId, originalLanguage: $originalLanguage, coverSeed: $coverSeed, editions: $editions, classes: $classes, exams: $exams, subjectId: $subjectId)';
 }
 
 
@@ -273,7 +291,7 @@ abstract mixin class _$BookDraftCopyWith<$Res> implements $BookDraftCopyWith<$Re
   factory _$BookDraftCopyWith(_BookDraft value, $Res Function(_BookDraft) _then) = __$BookDraftCopyWithImpl;
 @override @useResult
 $Res call({
- String? id, String title, String titleBn, String authorId, String publisherId, Section section, String categoryId, BookLanguage originalLanguage, int coverSeed, List<Edition> editions
+ String? id, String title, String titleBn, String authorId, String publisherId, Section section, String categoryId, BookLanguage originalLanguage, int coverSeed, List<Edition> editions, List<int> classes, List<Exam> exams, String subjectId
 });
 
 
@@ -290,7 +308,7 @@ class __$BookDraftCopyWithImpl<$Res>
 
 /// Create a copy of BookDraft
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? title = null,Object? titleBn = null,Object? authorId = null,Object? publisherId = null,Object? section = null,Object? categoryId = null,Object? originalLanguage = null,Object? coverSeed = null,Object? editions = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? title = null,Object? titleBn = null,Object? authorId = null,Object? publisherId = null,Object? section = null,Object? categoryId = null,Object? originalLanguage = null,Object? coverSeed = null,Object? editions = null,Object? classes = null,Object? exams = null,Object? subjectId = null,}) {
   return _then(_BookDraft(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
@@ -302,7 +320,10 @@ as Section,categoryId: null == categoryId ? _self.categoryId : categoryId // ign
 as String,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
 as BookLanguage,coverSeed: null == coverSeed ? _self.coverSeed : coverSeed // ignore: cast_nullable_to_non_nullable
 as int,editions: null == editions ? _self._editions : editions // ignore: cast_nullable_to_non_nullable
-as List<Edition>,
+as List<Edition>,classes: null == classes ? _self._classes : classes // ignore: cast_nullable_to_non_nullable
+as List<int>,exams: null == exams ? _self._exams : exams // ignore: cast_nullable_to_non_nullable
+as List<Exam>,subjectId: null == subjectId ? _self.subjectId : subjectId // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
