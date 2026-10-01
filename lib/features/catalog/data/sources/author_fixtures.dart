@@ -21,6 +21,7 @@ abstract final class AuthorFixtures {
     AuthorModel(id: 'au-ghazali', name: 'Imam al-Ghazali'),
     AuthorModel(id: 'au-ibn-qayyim', name: 'Ibn Qayyim al-Jawziyya'),
     AuthorModel(id: 'au-ibn-khaldun', name: 'Ibn Khaldun'),
+    AuthorModel(id: 'au-lings', name: 'Martin Lings'),
     AuthorModel(id: 'au-sayyid-sabiq', name: 'Sayyid Sabiq'),
     AuthorModel(id: 'au-mubarakpuri', name: 'Safi-ur-Rahman al-Mubarakpuri'),
     AuthorModel(id: 'au-nawawi', name: 'Imam an-Nawawi'),

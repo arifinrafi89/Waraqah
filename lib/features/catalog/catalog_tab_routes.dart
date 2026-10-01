@@ -5,6 +5,7 @@ import 'catalog_routes.dart';
 import 'domain/entities/catalog_filters.dart';
 import 'presentation/pages/author_page.dart';
 import 'presentation/pages/category_page.dart';
+import 'presentation/pages/collection_page.dart';
 import 'presentation/pages/publisher_page.dart';
 import 'presentation/pages/request_book_page.dart';
 import 'presentation/pages/search_page.dart';
@@ -44,6 +45,11 @@ final List<RouteBase> catalogTabRoutes = [
   GoRoute(
     path: 'series/:id',
     builder: (_, state) => SeriesPage(seriesId: state.pathParameters['id']!),
+  ),
+  GoRoute(
+    path: 'collection/:id',
+    builder: (_, state) =>
+        CollectionPage(collectionId: state.pathParameters['id']!),
   ),
   GoRoute(
     path: 'search',

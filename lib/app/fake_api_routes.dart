@@ -5,6 +5,7 @@ import '../features/cart/data/sources/cart_fake_api.dart';
 import '../features/cart/data/sources/cart_fake_store.dart';
 import '../features/catalog/data/sources/book_fake_api.dart';
 import '../features/catalog/data/sources/book_questions_fake_api.dart';
+import '../features/catalog/data/sources/collection_fake_api.dart';
 import '../features/checkout/data/sources/checkout_fake_api.dart';
 import '../features/checkout/data/sources/coupon_admin_fake_api.dart';
 import '../features/checkout/data/sources/coupon_fake_store.dart';
@@ -39,6 +40,7 @@ abstract final class FakeApiRoutes {
       ...AuthFakeApi.routes,
       ...BookFakeApi.routes,
       ...BookQuestionsFakeApi.routes(),
+      ...CollectionFakeApi.routes,
       ...AyahFakeApi.routes,
       ...CartFakeApi.routes(cart),
       ...WishlistFakeApi.routes(),

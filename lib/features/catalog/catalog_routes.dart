@@ -37,6 +37,11 @@ abstract final class CatalogRoutes {
   /// A Series' page, inside the Catalog tab so the bottom nav stays.
   static String seriesFor(String id) => '/catalog/series/$id';
 
+  static const String collection = '/catalog/collection/:id';
+
+  /// A Collection's page, inside the Catalog tab so the bottom nav stays.
+  static String collectionFor(String id) => '/catalog/collection/$id';
+
   /// The Search page, inside the Catalog tab so the bottom nav stays.
   static const String search = '/catalog/search';
 

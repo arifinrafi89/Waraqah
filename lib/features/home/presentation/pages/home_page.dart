@@ -11,6 +11,7 @@ import '../widgets/auto_hide_header.dart';
 import '../widgets/ayah_section.dart';
 import '../widgets/bites_section.dart';
 import '../widgets/book_shelf_section.dart';
+import '../widgets/collections_section.dart';
 import '../widgets/home_header.dart';
 import '../widgets/nearby_p2p_section.dart';
 
@@ -47,8 +48,9 @@ class HomePage extends StatelessWidget {
             ),
             step: 2,
           ),
-          const _Box(BitesSection(), step: 3),
-          const _Box(NearbyP2pSection(), step: 4),
+          const _Box(CollectionsSection(), step: 3),
+          const _Box(BitesSection(), step: 4),
+          const _Box(NearbyP2pSection(), step: 5),
           SliverToBoxAdapter(child: SizedBox(height: Sizes.navClearance)),
         ],
       ),

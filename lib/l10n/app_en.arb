@@ -121,6 +121,8 @@
   "@sectionBookCount": { "placeholders": { "count": { "type": "int" } } },
   "categoryEmpty": "No books in this Category yet.",
   "sectionEmpty": "No books in this Section yet.",
+  "collectionStripTitle": "Collections",
+  "collectionStripSub": "Books our editors picked, and why",
   "bookFormatPaperback": "Paperback",
   "bookFormatHardcover": "Hardcover",
   "bookFormatEbook": "eBook",

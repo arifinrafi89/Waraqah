@@ -787,6 +787,18 @@ abstract class AppL10n {
   /// **'No books in this Section yet.'**
   String get sectionEmpty;
 
+  /// No description provided for @collectionStripTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Collections'**
+  String get collectionStripTitle;
+
+  /// No description provided for @collectionStripSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Books our editors picked, and why'**
+  String get collectionStripSub;
+
   /// No description provided for @bookFormatPaperback.
   ///
   /// In en, this message translates to:

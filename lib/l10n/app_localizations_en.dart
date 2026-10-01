@@ -372,6 +372,12 @@ class AppL10nEn extends AppL10n {
   String get sectionEmpty => 'No books in this Section yet.';
 
   @override
+  String get collectionStripTitle => 'Collections';
+
+  @override
+  String get collectionStripSub => 'Books our editors picked, and why';
+
+  @override
   String get bookFormatPaperback => 'Paperback';
 
   @override

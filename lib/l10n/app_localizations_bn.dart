@@ -369,6 +369,12 @@ class AppL10nBn extends AppL10n {
   String get sectionEmpty => 'এই বিভাগে এখনো কোনো বই নেই।';
 
   @override
+  String get collectionStripTitle => 'সংকলন';
+
+  @override
+  String get collectionStripSub => 'সম্পাদকদের বাছাই করা বই, আর কেন';
+
+  @override
   String get bookFormatPaperback => 'পেপারব্যাক';
 
   @override

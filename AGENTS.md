@@ -212,10 +212,13 @@ Use these words in code, tests and PRs. Don't drift to the "avoid" words.
 | **Category** | A group of Books inside one Section, with an English and a Bangla name. Staff manage the list. | subcategory |
 | **Author** | The person who wrote a Book. A Book has exactly one Author for now. | writer |
 | **Publisher** | The company that published a Book. A Book has exactly one Publisher. | brand, prokashoni |
-| **Series** | Books meant to be read in order. May list titles Waraqah doesn't sell yet. | collection (that's an editor's pick) |
+| **Series** | Books meant to be read in order. May list titles Waraqah doesn't sell yet. | collection (that's a Collection) |
+| **Collection** | An ordered set of Books picked by Staff, with a title and a short note on why they were picked. May belong to one Section. Not read in order (that's a Series) and not bought together (that's a Booklist). | list, shelf, bundle |
 | **From-price** | Price shown before an Edition is chosen: the cheapest orderable Edition (`book.fromPriceBdt`) | lowest vendor price |
 | **New arrival** | A Book recently added to Waraqah's catalog, not recently published | new release |
 | **Bestseller** | A Book ranked by copies Waraqah sold in the last 30 days, all Editions together (used copies not counted) | top seller, popular |
+| **Banner** | A promo tile at the top of Home, made by Staff: a title, a subtitle and one link to a Collection, Section, Book or search | ad, slider, hero |
+| **Ayah of the Day** | A daily Quran verse on Home. Readers can turn it off. | |
 | **List price** | An Edition's price before discount (`listPriceBdt`) | MRP, original price |
 | **Stock / Pre-order** | Copies Waraqah can ship now / not released yet but orderable | |
 | **Guest** | Using the app without signing in (no Role) | |

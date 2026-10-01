@@ -10,6 +10,7 @@ import '../providers/catalog_providers.dart';
 import '../widgets/back_app_bar.dart';
 import '../widgets/book_list_skeleton.dart';
 import '../widgets/category_chips.dart';
+import '../widgets/collection_strip.dart';
 import '../widgets/section_style.dart';
 import 'catalog_results_list.dart';
 
@@ -34,6 +35,7 @@ class SectionPage extends ConsumerWidget {
                 : null,
           ),
           CategoryChips(section: section),
+          SectionCollections(section: section),
           Expanded(
             child: AsyncView(
               value: books,

@@ -121,6 +121,8 @@
   "@sectionBookCount": { "placeholders": { "count": { "type": "int" } } },
   "categoryEmpty": "এই ক্যাটাগরিতে এখনো কোনো বই নেই।",
   "sectionEmpty": "এই বিভাগে এখনো কোনো বই নেই।",
+  "collectionStripTitle": "সংকলন",
+  "collectionStripSub": "সম্পাদকদের বাছাই করা বই, আর কেন",
   "bookFormatPaperback": "পেপারব্যাক",
   "bookFormatHardcover": "হার্ডকভার",
   "bookFormatEbook": "ই-বুক",
