@@ -2040,6 +2040,34 @@ class AppL10nBn extends AppL10n {
   String get adminCatalogFieldNameBnOptional => 'নাম (বাংলা, ঐচ্ছিক)';
 
   @override
+  String adminCatalogBookCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি বই',
+      zero: 'কোনো বই নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminCatalogUsedBy(int count) {
+    return '$countটি বইয়ে ব্যবহৃত';
+  }
+
+  @override
+  String get adminCatalogDelete => 'মুছে ফেলুন';
+
+  @override
+  String get adminCatalogDeleted => 'মুছে ফেলা হয়েছে';
+
+  @override
+  String get adminCatalogAdd => 'যোগ করুন';
+
+  @override
+  String get adminCatalogNoRecords => 'এখানে এখনো কিছু নেই।';
+
+  @override
   String get adminOrders => 'অর্ডার';
 
   @override

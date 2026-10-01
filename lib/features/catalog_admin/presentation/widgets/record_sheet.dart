@@ -78,6 +78,7 @@ class _RecordFormState extends ConsumerState<_RecordForm> {
           if (isCategory)
             DropdownButtonFormField<Section>(
               initialValue: _record.section,
+              isExpanded: true,
               decoration: adminInputDecoration(
                 context,
                 l10n.adminCatalogFieldSection,

@@ -2122,6 +2122,41 @@ class AppL10nEn extends AppL10n {
   String get adminCatalogFieldNameBnOptional => 'Name (Bangla, optional)';
 
   @override
+  String adminCatalogBookCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count books',
+      one: '1 book',
+      zero: 'No books',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminCatalogUsedBy(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Used by $count books',
+      one: 'Used by 1 book',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get adminCatalogDelete => 'Delete';
+
+  @override
+  String get adminCatalogDeleted => 'Deleted';
+
+  @override
+  String get adminCatalogAdd => 'Add';
+
+  @override
+  String get adminCatalogNoRecords => 'Nothing here yet.';
+
+  @override
   String get adminOrders => 'Orders';
 
   @override

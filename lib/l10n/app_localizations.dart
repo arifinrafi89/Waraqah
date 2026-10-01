@@ -3745,6 +3745,42 @@ abstract class AppL10n {
   /// **'Name (Bangla, optional)'**
   String get adminCatalogFieldNameBnOptional;
 
+  /// No description provided for @adminCatalogBookCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No books} =1{1 book} other{{count} books}}'**
+  String adminCatalogBookCount(int count);
+
+  /// No description provided for @adminCatalogUsedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Used by 1 book} other{Used by {count} books}}'**
+  String adminCatalogUsedBy(int count);
+
+  /// No description provided for @adminCatalogDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get adminCatalogDelete;
+
+  /// No description provided for @adminCatalogDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted'**
+  String get adminCatalogDeleted;
+
+  /// No description provided for @adminCatalogAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get adminCatalogAdd;
+
+  /// No description provided for @adminCatalogNoRecords.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing here yet.'**
+  String get adminCatalogNoRecords;
+
   /// No description provided for @adminOrders.
   ///
   /// In en, this message translates to:

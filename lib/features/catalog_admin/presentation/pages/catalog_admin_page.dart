@@ -8,7 +8,9 @@ import '../../../../core/widgets/content_width.dart';
 import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../admin/admin_routes.dart';
+import '../../domain/entities/catalog_record.dart';
 import '../widgets/books_admin_tab.dart';
+import '../widgets/records_admin_tab.dart';
 
 /// `/admin/catalog`: Books, Categories, Authors, Publishers and Home's
 /// Banners, one tab each.
@@ -21,9 +23,15 @@ class CatalogAdminPage extends StatelessWidget {
     final palette = context.palette;
     final tabs = <(String, Widget)>[
       (l10n.adminCatalogTabBooks, const BooksAdminTab()),
-      (l10n.adminCatalogTabCategories, const SizedBox.shrink()),
-      (l10n.adminCatalogTabAuthors, const SizedBox.shrink()),
-      (l10n.adminCatalogTabPublishers, const SizedBox.shrink()),
+      (
+        l10n.adminCatalogTabCategories,
+        const RecordsAdminTab(RecordKind.category),
+      ),
+      (l10n.adminCatalogTabAuthors, const RecordsAdminTab(RecordKind.author)),
+      (
+        l10n.adminCatalogTabPublishers,
+        const RecordsAdminTab(RecordKind.publisher),
+      ),
       (l10n.adminCatalogTabBanners, const SizedBox.shrink()),
     ];
     return DefaultTabController(

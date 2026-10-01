@@ -24,6 +24,7 @@ class BooksAdminTab extends ConsumerWidget {
     final showHidden = ref.watch(adminShowHiddenProvider);
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'books',
         onPressed: () => context.push(CatalogAdminRoutes.newBook),
         icon: const Icon(Icons.add_rounded),
         label: Text(l10n.adminCatalogAddBook),
