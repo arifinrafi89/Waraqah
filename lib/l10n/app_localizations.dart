@@ -3511,6 +3511,240 @@ abstract class AppL10n {
   /// **'Choose what the banner opens'**
   String get adminCatalogErrBannerTargetBlank;
 
+  /// No description provided for @adminCatalogAddBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Add book'**
+  String get adminCatalogAddBook;
+
+  /// No description provided for @adminCatalogEditBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit book'**
+  String get adminCatalogEditBook;
+
+  /// No description provided for @adminCatalogSearchBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Search title or author'**
+  String get adminCatalogSearchBooks;
+
+  /// No description provided for @adminCatalogShowHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Show hidden books'**
+  String get adminCatalogShowHidden;
+
+  /// No description provided for @adminCatalogHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden'**
+  String get adminCatalogHidden;
+
+  /// No description provided for @adminCatalogInStock.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} in stock'**
+  String adminCatalogInStock(int count);
+
+  /// No description provided for @adminCatalogNoBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'No books match.'**
+  String get adminCatalogNoBooks;
+
+  /// No description provided for @adminCatalogFieldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get adminCatalogFieldTitle;
+
+  /// No description provided for @adminCatalogFieldTitleBn.
+  ///
+  /// In en, this message translates to:
+  /// **'Bangla title (optional)'**
+  String get adminCatalogFieldTitleBn;
+
+  /// No description provided for @adminCatalogFieldAuthor.
+  ///
+  /// In en, this message translates to:
+  /// **'Author'**
+  String get adminCatalogFieldAuthor;
+
+  /// No description provided for @adminCatalogFieldPublisher.
+  ///
+  /// In en, this message translates to:
+  /// **'Publisher'**
+  String get adminCatalogFieldPublisher;
+
+  /// No description provided for @adminCatalogFieldSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Section'**
+  String get adminCatalogFieldSection;
+
+  /// No description provided for @adminCatalogFieldCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get adminCatalogFieldCategory;
+
+  /// No description provided for @adminCatalogFieldLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Original language'**
+  String get adminCatalogFieldLanguage;
+
+  /// No description provided for @adminCatalogPick.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose…'**
+  String get adminCatalogPick;
+
+  /// No description provided for @adminCatalogCover.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover colours'**
+  String get adminCatalogCover;
+
+  /// No description provided for @adminCatalogEditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Editions'**
+  String get adminCatalogEditions;
+
+  /// No description provided for @adminCatalogAddEdition.
+  ///
+  /// In en, this message translates to:
+  /// **'Add edition'**
+  String get adminCatalogAddEdition;
+
+  /// No description provided for @adminCatalogRemoveEdition.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove edition'**
+  String get adminCatalogRemoveEdition;
+
+  /// No description provided for @adminCatalogFieldFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Format'**
+  String get adminCatalogFieldFormat;
+
+  /// No description provided for @adminCatalogFieldEditionLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get adminCatalogFieldEditionLanguage;
+
+  /// No description provided for @adminCatalogFieldPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price (৳)'**
+  String get adminCatalogFieldPrice;
+
+  /// No description provided for @adminCatalogFieldListPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'List price (৳, optional)'**
+  String get adminCatalogFieldListPrice;
+
+  /// No description provided for @adminCatalogFieldStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Stock'**
+  String get adminCatalogFieldStock;
+
+  /// No description provided for @adminCatalogFieldPreorder.
+  ///
+  /// In en, this message translates to:
+  /// **'Pre-order'**
+  String get adminCatalogFieldPreorder;
+
+  /// No description provided for @adminCatalogFieldIsbn.
+  ///
+  /// In en, this message translates to:
+  /// **'ISBN (optional)'**
+  String get adminCatalogFieldIsbn;
+
+  /// No description provided for @adminCatalogEbookNote.
+  ///
+  /// In en, this message translates to:
+  /// **'eBooks never run out and have no ISBN.'**
+  String get adminCatalogEbookNote;
+
+  /// No description provided for @adminCatalogDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get adminCatalogDone;
+
+  /// No description provided for @adminCatalogSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get adminCatalogSave;
+
+  /// No description provided for @adminCatalogSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get adminCatalogSaved;
+
+  /// No description provided for @adminCatalogSaveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t save. Check the form and try again.'**
+  String get adminCatalogSaveFailed;
+
+  /// No description provided for @adminCatalogHide.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide'**
+  String get adminCatalogHide;
+
+  /// No description provided for @adminCatalogUnhide.
+  ///
+  /// In en, this message translates to:
+  /// **'Show again'**
+  String get adminCatalogUnhide;
+
+  /// No description provided for @adminCatalogHideHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A hidden book leaves lists, search, Home and collections, but its page still opens from old links and can be bought. To stop sales, set stock to 0.'**
+  String get adminCatalogHideHint;
+
+  /// No description provided for @adminCatalogSearchRecords.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get adminCatalogSearchRecords;
+
+  /// No description provided for @adminCatalogAddNew.
+  ///
+  /// In en, this message translates to:
+  /// **'Add new…'**
+  String get adminCatalogAddNew;
+
+  /// No description provided for @adminCatalogFieldName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name (English)'**
+  String get adminCatalogFieldName;
+
+  /// No description provided for @adminCatalogFieldNameBn.
+  ///
+  /// In en, this message translates to:
+  /// **'Name (Bangla)'**
+  String get adminCatalogFieldNameBn;
+
+  /// No description provided for @adminCatalogFieldNameBnOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Name (Bangla, optional)'**
+  String get adminCatalogFieldNameBnOptional;
+
   /// No description provided for @adminOrders.
   ///
   /// In en, this message translates to:

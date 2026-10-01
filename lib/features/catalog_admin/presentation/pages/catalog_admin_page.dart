@@ -8,6 +8,7 @@ import '../../../../core/widgets/content_width.dart';
 import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../admin/admin_routes.dart';
+import '../widgets/books_admin_tab.dart';
 
 /// `/admin/catalog`: Books, Categories, Authors, Publishers and Home's
 /// Banners, one tab each.
@@ -19,7 +20,7 @@ class CatalogAdminPage extends StatelessWidget {
     final l10n = AppL10n.of(context)!;
     final palette = context.palette;
     final tabs = <(String, Widget)>[
-      (l10n.adminCatalogTabBooks, const SizedBox.shrink()),
+      (l10n.adminCatalogTabBooks, const BooksAdminTab()),
       (l10n.adminCatalogTabCategories, const SizedBox.shrink()),
       (l10n.adminCatalogTabAuthors, const SizedBox.shrink()),
       (l10n.adminCatalogTabPublishers, const SizedBox.shrink()),

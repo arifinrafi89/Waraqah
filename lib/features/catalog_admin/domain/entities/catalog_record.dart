@@ -19,3 +19,8 @@ abstract class CatalogRecord with _$CatalogRecord {
     @Default(0) int bookCount,
   }) = _CatalogRecord;
 }
+
+extension CatalogRecordX on CatalogRecord {
+  /// The Bangla name in Bangla when there is one, else the English name.
+  String label(bool isBangla) => isBangla && nameBn.isNotEmpty ? nameBn : name;
+}

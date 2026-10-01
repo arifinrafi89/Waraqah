@@ -1,8 +1,15 @@
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/catalog_admin_rules.dart';
+import '../../domain/entities/catalog_record.dart';
 
-/// What each [RuleError] says on the form, in the current language.
+/// What each [RuleError] and [RecordKind] says, in the current language.
 extension RuleErrorLabels on AppL10n {
+  String recordKind(RecordKind kind) => switch (kind) {
+    RecordKind.category => adminCatalogFieldCategory,
+    RecordKind.author => adminCatalogFieldAuthor,
+    RecordKind.publisher => adminCatalogFieldPublisher,
+  };
+
   String ruleError(RuleError error) => switch (error) {
     RuleError.titleBlank => adminCatalogErrTitleBlank,
     RuleError.authorMissing => adminCatalogErrAuthorMissing,
