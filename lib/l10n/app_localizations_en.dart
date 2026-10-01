@@ -87,16 +87,22 @@ class AppL10nEn extends AppL10n {
   String get authEmail => 'Email';
 
   @override
+  String get authEmailOrPhone => 'Email or phone';
+
+  @override
+  String get authEmailOrPhoneHint => 'you@example.com or 01XXXXXXXXX';
+
+  @override
+  String get authMobileNumber => 'Mobile number';
+
+  @override
+  String get authMobileNumberHint => '01XXXXXXXXX';
+
+  @override
   String get authPassword => 'Password';
 
   @override
   String get authFullName => 'Full name';
-
-  @override
-  String get authStudentId => 'Student ID';
-
-  @override
-  String get authOptional => '(optional)';
 
   @override
   String get authConfirmPassword => 'Confirm password';
@@ -124,13 +130,10 @@ class AppL10nEn extends AppL10n {
   String get authHaveAccount => 'Already have an account?';
 
   @override
-  String get authEmailHint => 'you@iut-dhaka.edu';
+  String get authEmailHint => 'you@example.com';
 
   @override
   String get authNameHint => 'Your name';
-
-  @override
-  String get authStudentIdHint => '220041118';
 
   @override
   String get authContinueAsGuest => 'Continue as guest';
@@ -140,6 +143,49 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get authMissingPassword => 'Enter your password.';
+
+  @override
+  String get authOtpTitle => 'Verify your contact';
+
+  @override
+  String authOtpMessage(Object contact) {
+    return 'Enter the 6-digit code sent to $contact.';
+  }
+
+  @override
+  String get authOtpHint => '6-digit OTP';
+
+  @override
+  String get authVerifyOtp => 'Verify OTP';
+
+  @override
+  String get authOtpDemoNote => 'Demo code: 123456';
+
+  @override
+  String get authOtpInvalid => 'Enter the 6-digit OTP.';
+
+  @override
+  String get authInvalidMobileNumber =>
+      'Enter a valid Bangladesh mobile number.';
+
+  @override
+  String get authForgotTitle => 'Reset your password';
+
+  @override
+  String get authForgotMessage =>
+      'Enter your mobile number and we will send you a verification code.';
+
+  @override
+  String get authSendOtp => 'Send OTP';
+
+  @override
+  String get authResetPassword => 'Reset password';
+
+  @override
+  String get authPasswordReset => 'Password reset. You can now log in.';
+
+  @override
+  String get authBackToLogin => 'Back to log in';
 
   @override
   String get authLogOut => 'Log out';

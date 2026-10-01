@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/auth_failure.dart';
@@ -12,9 +13,6 @@ import 'login_form.dart';
 /// guard moves the user off the login page by itself.
 class LoginPanel extends ConsumerStatefulWidget {
   const LoginPanel({super.key});
-
-  /// Google sign-in isn't wired yet, so it signs in as a demo reader.
-  static const _googleDemoEmail = 'reader@waraqah.test';
 
   @override
   ConsumerState<LoginPanel> createState() => _LoginPanelState();
@@ -51,7 +49,20 @@ class _LoginPanelState extends ConsumerState<LoginPanel> {
       isBusy: _busy,
       errorText: _error,
       onSubmit: _signIn,
-      onGoogle: () => _signIn(LoginPanel._googleDemoEmail, 'google'),
+      onGoogle: () async {
+        final l10n = AppL10n.of(context)!;
+        setState(() {
+          _busy = true;
+          _error = null;
+        });
+        try {
+          await ref.read(sessionProvider.notifier).signInWithGoogle();
+        } catch (_) {
+          _error = l10n.commonSomethingWentWrong;
+        }
+        if (mounted) setState(() => _busy = false);
+      },
+      onForgotPassword: () => context.go('/login?forgot=1'),
     );
   }
 }

@@ -44,8 +44,8 @@ final class GeminiChatbot {
               .map(
                 (book) =>
                     '${book.id}: ${book.title} by ${book.author}; '
-                    '${book.priceBdt} BDT; rating ${book.rating}; '
-                    'category ${book.category ?? 'Uncategorized'}',
+                    '${book.fromPriceBdt} BDT; rating ${book.rating}; '
+                    'category ${book.category}',
               )
               .join('\n');
 

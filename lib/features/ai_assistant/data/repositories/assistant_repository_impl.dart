@@ -54,23 +54,27 @@ class AssistantRepositoryImpl implements AssistantRepository {
       query: intent.query,
     );
     final relevantBooks = books.where((book) {
-      final searchableText = [book.title, book.author, ...book.tags]
-        .join(' ')
-        .toLowerCase();
+      final searchableText = [
+        book.title,
+        book.author,
+        ...book.tags,
+      ].join(' ').toLowerCase();
       return switch (intent.kind) {
-      AssistantIntentKind.quran => searchableText.contains('quran') ||
-        searchableText.contains('tafsir'),
-      AssistantIntentKind.hadith => searchableText.contains('hadith'),
-      AssistantIntentKind.seerah => searchableText.contains('seerah') ||
-        searchableText.contains('sealed nectar'),
-      AssistantIntentKind.islamicHistory =>
-        searchableText.contains('history'),
-      _ => true,
+        AssistantIntentKind.quran =>
+          searchableText.contains('quran') || searchableText.contains('tafsir'),
+        AssistantIntentKind.hadith => searchableText.contains('hadith'),
+        AssistantIntentKind.seerah =>
+          searchableText.contains('seerah') ||
+              searchableText.contains('sealed nectar'),
+        AssistantIntentKind.islamicHistory => searchableText.contains(
+          'history',
+        ),
+        _ => true,
       };
     });
     final filtered = intent.maxPrice == null
-      ? relevantBooks
-      : relevantBooks.where((book) => book.priceBdt <= intent.maxPrice!);
+        ? relevantBooks
+        : relevantBooks.where((book) => book.fromPriceBdt <= intent.maxPrice!);
     return filtered.take(4).toList();
   }
 }
