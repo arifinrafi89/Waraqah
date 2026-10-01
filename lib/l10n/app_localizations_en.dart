@@ -244,7 +244,104 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
-  String get catalogSortPriceAsc => 'Price: Low–High';
+  String get searchFieldHint => 'Search books';
+
+  @override
+  String get searchHint => 'Search by title, author, publisher or ISBN';
+
+  @override
+  String searchNoResults(String query) {
+    return 'No books found for \'$query\'';
+  }
+
+  @override
+  String get searchRecent => 'Recent searches';
+
+  @override
+  String get searchRecentClear => 'Clear all';
+
+  @override
+  String searchRecentRemove(String query) {
+    return 'Remove \'$query\'';
+  }
+
+  @override
+  String get searchRequestBook => 'Request this book';
+
+  @override
+  String get searchRequestBookSoon =>
+      'Asking us to stock a book is coming soon.';
+
+  @override
+  String get searchSort => 'Sort';
+
+  @override
+  String get searchSortRelevance => 'Relevance';
+
+  @override
+  String get searchSortPriceLow => 'Price: low to high';
+
+  @override
+  String get searchSortPriceHigh => 'Price: high to low';
+
+  @override
+  String get searchSortNewest => 'Newest';
+
+  @override
+  String get searchSortBestselling => 'Bestselling';
+
+  @override
+  String get searchFilter => 'Filter';
+
+  @override
+  String get searchFilterReset => 'Reset';
+
+  @override
+  String get searchFilterSection => 'Section';
+
+  @override
+  String get searchFilterPrice => 'Price';
+
+  @override
+  String get searchFilterFormat => 'Format';
+
+  @override
+  String get searchFilterLanguage => 'Language';
+
+  @override
+  String get searchFilterRating => 'Minimum rating';
+
+  @override
+  String get searchFilterAny => 'Any';
+
+  @override
+  String get searchFilterInStock => 'In stock only';
+
+  @override
+  String searchFilterShow(int count) {
+    return 'Show $count books';
+  }
+
+  @override
+  String get searchPriceUnder300 => 'Under ৳300';
+
+  @override
+  String get searchPrice300to600 => '৳300–600';
+
+  @override
+  String get searchPrice600to1000 => '৳600–1,000';
+
+  @override
+  String get searchPriceOver1000 => 'Over ৳1,000';
+
+  @override
+  String get searchRating3 => '3★+';
+
+  @override
+  String get searchRating4 => '4★+';
+
+  @override
+  String get searchRating45 => '4.5★+';
 
   @override
   String get catalogBrowseSections => 'Browse by Section';

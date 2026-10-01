@@ -37,6 +37,8 @@ abstract class Book with _$Book {
     required Section section,
     required BookLanguage originalLanguage,
     required List<Edition> editions,
+    // The day Waraqah added this Book to the catalog (not its publication date).
+    required DateTime addedAt,
     @Default(0) double rating,
     @Default(<String>[]) List<String> tags,
     @Default(false) bool isBeneficial,

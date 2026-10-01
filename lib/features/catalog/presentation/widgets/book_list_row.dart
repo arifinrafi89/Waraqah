@@ -16,10 +16,18 @@ import 'rating_stars.dart';
 /// One horizontal catalog row: thumbnail, title block, tags, rating, price.
 /// Tapping it opens the book's detail page.
 class BookListRow extends StatelessWidget {
-  const BookListRow({super.key, required this.book, required this.stockLabel});
+  const BookListRow({
+    super.key,
+    required this.book,
+    required this.stockLabel,
+    this.onOpen,
+  });
 
   final Book book;
   final String stockLabel;
+
+  /// Called as the Book opens (the Search page saves the search).
+  final VoidCallback? onOpen;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +37,10 @@ class BookListRow extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          onTap: () => context.push(CatalogRoutes.bookDetailFor(book.id)),
+          onTap: () {
+            onOpen?.call();
+            context.push(CatalogRoutes.bookDetailFor(book.id));
+          },
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Row(

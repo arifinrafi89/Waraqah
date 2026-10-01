@@ -25,6 +25,7 @@ Edition _ed(
 );
 
 Book _book(List<Edition> editions) => Book(
+  addedAt: DateTime(2026, 1, 1),
   id: 'b',
   title: 'T',
   author: 'A',

@@ -1,5 +1,6 @@
 import '../../../../core/cache/ttl_cache.dart';
 import '../../../../core/models/book.dart';
+import '../../domain/entities/catalog_filters.dart';
 import '../../domain/repositories/book_repository.dart';
 import '../sources/book_remote_source.dart';
 
@@ -18,32 +19,15 @@ class BookRepositoryImpl implements BookRepository {
       });
 
   @override
-  Future<List<Book>> searchCatalog({
-    String? category,
-    Section? section,
-    String? author,
-    String? publisher,
-    String query = '',
-  }) => _cache.resolve(
-    'catalog:${category ?? 'all'}:${section?.name ?? 'all'}:${author ?? 'all'}:${publisher ?? 'all'}:$query',
-    () async {
-      final books = await _source.fetchBooks(
-        category: category,
-        section: section,
-        author: author,
-        publisher: publisher,
-        query: query,
-      );
-      // ponytail: Book has no publish date yet, so a Section, Author or Publisher lists
-      // newest (last seeded) first; sort by date once Book has one.
-      return section == null &&
-              author == null &&
-              publisher == null &&
-              category == null
-          ? _sortByValue(books)
-          : books.reversed.toList();
-    },
-  );
+  Future<List<Book>> searchCatalog([
+    CatalogFilters filters = const CatalogFilters(),
+  ]) => _cache.resolve('catalog:${filters.cacheKey}', () async {
+    final books = await _source.fetchBooks(filters);
+    // A chosen sort or a query keeps the API's relevance order; Section, Category, Author and
+    // Publisher pages list newest first.
+    if (filters.sort != null || filters.query.isNotEmpty) return books;
+    return filters.isScoped ? _sortNewest(books) : _sortByValue(books);
+  });
 
   @override
   Future<Book?> findById(String id) async {
@@ -60,6 +44,9 @@ class BookRepositoryImpl implements BookRepository {
     });
     return sorted;
   }
+
+  List<Book> _sortNewest(List<Book> books) =>
+      [...books]..sort((a, b) => b.addedAt.compareTo(a.addedAt));
 
   void invalidate() => _cache.clear();
 }

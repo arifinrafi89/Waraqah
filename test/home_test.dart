@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:waraqah/core/models/book.dart';
 import 'package:waraqah/core/models/edition.dart';
+import 'package:waraqah/features/catalog/domain/entities/catalog_filters.dart';
 import 'package:waraqah/features/catalog/domain/repositories/book_repository.dart';
 import 'package:waraqah/features/catalog/presentation/providers/catalog_providers.dart';
 import 'package:waraqah/features/home/domain/entities/benefit_filter.dart';
@@ -17,13 +18,9 @@ class _FakeBookRepository implements BookRepository {
   Future<List<Book>> fetchNewArrivals() async => books.take(4).toList();
 
   @override
-  Future<List<Book>> searchCatalog({
-    String? category,
-    Section? section,
-    String? author,
-    String? publisher,
-    String query = '',
-  }) async {
+  Future<List<Book>> searchCatalog([
+    CatalogFilters filters = const CatalogFilters(),
+  ]) async {
     final sorted = [...books];
     sorted.sort((a, b) {
       final byPrice = a.fromPriceBdt.compareTo(b.fromPriceBdt);
@@ -44,6 +41,7 @@ Book _book(
   double rating = 4.5,
 }) {
   return Book(
+    addedAt: DateTime(2026, 1, 1),
     id: id,
     title: id,
     author: 'Author',

@@ -8,9 +8,10 @@ import '../widgets/book_list_row.dart';
 
 /// Scrollable list of catalog rows, padded clear of the floating nav bar.
 class CatalogResultsList extends StatelessWidget {
-  const CatalogResultsList({super.key, required this.books});
+  const CatalogResultsList({super.key, required this.books, this.onOpen});
 
   final List<Book> books;
+  final VoidCallback? onOpen;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class CatalogResultsList extends StatelessWidget {
         return BookListRow(
           book: book,
           stockLabel: l10n.stockStatus(book.cardStockStatus),
+          onOpen: onOpen,
         );
       },
     );

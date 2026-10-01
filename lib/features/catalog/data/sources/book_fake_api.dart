@@ -1,8 +1,12 @@
 import 'package:dio/dio.dart';
 
+import '../../../../core/models/book.dart';
 import 'author_fixtures.dart';
 import 'book_details_fixtures.dart';
+import 'book_edition_filter.dart';
 import 'book_fixtures.dart';
+import 'book_search_match.dart';
+import 'book_sort.dart';
 import 'category_fixtures.dart';
 import 'look_inside_fixtures.dart';
 import 'publisher_fixtures.dart';
@@ -88,29 +92,22 @@ abstract final class BookFakeApi {
   }
 
   static Object _books(RequestOptions options) {
-    final category = options.queryParameters['category'] as String?;
-    final section = options.queryParameters['section'] as String?;
-    final author = options.queryParameters['author'] as String?;
-    final publisher = options.queryParameters['publisher'] as String?;
-    final query = (options.queryParameters['q'] as String? ?? '')
-        .trim()
-        .toLowerCase();
-    final matches = BookFixtures.all.where((book) {
-      final matchesCategory = category == null || book.categoryId == category;
-      final matchesSection = section == null || book.section.name == section;
-      final matchesAuthor = author == null || book.authorId == author;
-      final matchesPublisher =
-          publisher == null || book.publisherId == publisher;
-      final matchesQuery =
-          query.isEmpty ||
-          book.title.toLowerCase().contains(query) ||
-          book.author.toLowerCase().contains(query);
-      return matchesCategory &&
-          matchesSection &&
-          matchesAuthor &&
-          matchesPublisher &&
-          matchesQuery;
-    });
-    return matches.map((book) => book.toJson()).toList();
+    final params = options.queryParameters;
+    final query = (params['q'] as String? ?? '').trim().toLowerCase();
+    bool inScope(Book book) =>
+        (params['category'] == null || book.categoryId == params['category']) &&
+        (params['section'] == null || book.section.name == params['section']) &&
+        (params['author'] == null || book.authorId == params['author']) &&
+        (params['publisher'] == null ||
+            book.publisherId == params['publisher']);
+    final matches = BookEditionFilter.apply(
+      BookFixtures.all,
+      params,
+    ).where(inScope);
+    final found = query.isEmpty
+        ? matches.toList()
+        : BookSearchMatch.rank(matches, query);
+    final sort = params['sort'] as String?;
+    return BookSort.apply(found, sort).map((book) => book.toJson()).toList();
   }
 }

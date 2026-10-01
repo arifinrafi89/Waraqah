@@ -27,6 +27,12 @@ void main() {
       200,
       scrollable: find.byType(Scrollable).first,
     );
+    // Center the tag: at the top edge it sits under the header and misses.
+    await Scrollable.ensureVisible(
+      tester.element(find.text('Harper')),
+      alignment: 0.5,
+    );
+    await tester.pump();
     await tester.tap(find.text('Harper'));
     await settle(tester);
 

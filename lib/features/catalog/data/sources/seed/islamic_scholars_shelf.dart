@@ -6,6 +6,7 @@ abstract final class IslamicScholarsShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-tafsir-ibnkathir',
+      addedAt: DateTime(2026, 2, 26),
       title: 'Tafsir Ibn Kathir',
       author: 'Ibn Kathir',
       authorId: 'au-ibn-kathir',
@@ -22,6 +23,7 @@ abstract final class IslamicScholarsShelf {
           id: 'bk-tafsir-ibnkathir-hc-bn',
           format: BookFormat.hardcover,
           language: BookLanguage.bangla,
+          isbn: '9789840002405',
           priceBdt: 950,
           listPriceBdt: 1100,
           stock: 7,
@@ -37,6 +39,7 @@ abstract final class IslamicScholarsShelf {
     ),
     Book(
       id: 'bk-bidayah',
+      addedAt: DateTime(2026, 3, 5),
       title: 'Al-Bidayah wan-Nihayah',
       shortTitle: 'Al-Bidayah',
       author: 'Ibn Kathir',
@@ -54,6 +57,7 @@ abstract final class IslamicScholarsShelf {
           id: 'bk-bidayah-hc-bn',
           format: BookFormat.hardcover,
           language: BookLanguage.bangla,
+          isbn: '9789840002474',
           priceBdt: 1400,
           stock: 0,
           isPreorder: true,
@@ -62,6 +66,7 @@ abstract final class IslamicScholarsShelf {
     ),
     Book(
       id: 'bk-bukhari',
+      addedAt: DateTime(2026, 3, 12),
       title: 'Sahih al-Bukhari',
       author: 'Imam al-Bukhari',
       authorId: 'au-bukhari',
@@ -78,6 +83,7 @@ abstract final class IslamicScholarsShelf {
           id: 'bk-bukhari-hc-bn',
           format: BookFormat.hardcover,
           language: BookLanguage.bangla,
+          isbn: '9789840002542',
           priceBdt: 1200,
           listPriceBdt: 1350,
           stock: 11,
@@ -86,6 +92,7 @@ abstract final class IslamicScholarsShelf {
           id: 'bk-bukhari-hc-ar',
           format: BookFormat.hardcover,
           language: BookLanguage.arabic,
+          isbn: '9789840002610',
           priceBdt: 1800,
           stock: 4,
         ),

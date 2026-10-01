@@ -6,6 +6,7 @@ abstract final class FictionMoreShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-sherlock',
+      addedAt: DateTime(2026, 5, 7),
       title: 'Sherlock Holmes: A Study in Scarlet',
       shortTitle: 'Sherlock Holmes',
       author: 'Arthur Conan Doyle',
@@ -22,6 +23,7 @@ abstract final class FictionMoreShelf {
           id: 'bk-sherlock-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840001071',
           priceBdt: 380,
           stock: 30,
         ),

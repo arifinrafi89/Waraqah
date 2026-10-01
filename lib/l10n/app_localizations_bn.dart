@@ -242,7 +242,103 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
-  String get catalogSortPriceAsc => 'দাম: কম–বেশি';
+  String get searchFieldHint => 'বই খুঁজুন';
+
+  @override
+  String get searchHint => 'নাম, লেখক, প্রকাশনী বা আইএসবিএন দিয়ে খুঁজুন';
+
+  @override
+  String searchNoResults(String query) {
+    return '\'$query\' নামে কোনো বই পাওয়া যায়নি';
+  }
+
+  @override
+  String get searchRecent => 'সাম্প্রতিক অনুসন্ধান';
+
+  @override
+  String get searchRecentClear => 'সব মুছুন';
+
+  @override
+  String searchRecentRemove(String query) {
+    return '\'$query\' মুছুন';
+  }
+
+  @override
+  String get searchRequestBook => 'এই বইটি অনুরোধ করুন';
+
+  @override
+  String get searchRequestBookSoon => 'পছন্দের বই আনার অনুরোধ শীঘ্রই আসছে।';
+
+  @override
+  String get searchSort => 'সাজান';
+
+  @override
+  String get searchSortRelevance => 'প্রাসঙ্গিকতা';
+
+  @override
+  String get searchSortPriceLow => 'দাম: কম থেকে বেশি';
+
+  @override
+  String get searchSortPriceHigh => 'দাম: বেশি থেকে কম';
+
+  @override
+  String get searchSortNewest => 'নতুন';
+
+  @override
+  String get searchSortBestselling => 'সবচেয়ে বেশি বিক্রিত';
+
+  @override
+  String get searchFilter => 'ফিল্টার';
+
+  @override
+  String get searchFilterReset => 'রিসেট';
+
+  @override
+  String get searchFilterSection => 'বিভাগ';
+
+  @override
+  String get searchFilterPrice => 'দাম';
+
+  @override
+  String get searchFilterFormat => 'ধরন';
+
+  @override
+  String get searchFilterLanguage => 'ভাষা';
+
+  @override
+  String get searchFilterRating => 'ন্যূনতম রেটিং';
+
+  @override
+  String get searchFilterAny => 'যেকোনো';
+
+  @override
+  String get searchFilterInStock => 'শুধু স্টকে আছে';
+
+  @override
+  String searchFilterShow(int count) {
+    return '$count টি বই দেখুন';
+  }
+
+  @override
+  String get searchPriceUnder300 => '৳৩০০-এর কম';
+
+  @override
+  String get searchPrice300to600 => '৳৩০০–৬০০';
+
+  @override
+  String get searchPrice600to1000 => '৳৬০০–১,০০০';
+
+  @override
+  String get searchPriceOver1000 => '৳১,০০০-এর বেশি';
+
+  @override
+  String get searchRating3 => '৩★+';
+
+  @override
+  String get searchRating4 => '৪★+';
+
+  @override
+  String get searchRating45 => '৪.৫★+';
 
   @override
   String get catalogBrowseSections => 'বিভাগ অনুযায়ী দেখুন';

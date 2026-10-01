@@ -6,6 +6,7 @@ abstract final class FictionShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-hobbit',
+      addedAt: DateTime(2026, 4, 16),
       title: 'The Hobbit',
       shortTitle: 'Hobbit',
       author: 'J. R. R. Tolkien',
@@ -22,6 +23,7 @@ abstract final class FictionShelf {
           id: 'bk-hobbit-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840001149',
           priceBdt: 550,
           listPriceBdt: 650,
           stock: 20,
@@ -30,6 +32,7 @@ abstract final class FictionShelf {
           id: 'bk-hobbit-pb-bn',
           format: BookFormat.paperback,
           language: BookLanguage.bangla,
+          isbn: '9789840001217',
           priceBdt: 380,
           stock: 9,
         ),
@@ -37,6 +40,7 @@ abstract final class FictionShelf {
     ),
     Book(
       id: 'bk-hpstone',
+      addedAt: DateTime(2026, 4, 23),
       title: "Harry Potter and the Philosopher's Stone",
       shortTitle: 'Harry Potter',
       author: 'J. K. Rowling',
@@ -53,6 +57,7 @@ abstract final class FictionShelf {
           id: 'bk-hpstone-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840001286',
           priceBdt: 620,
           stock: 25,
         ),
@@ -60,6 +65,7 @@ abstract final class FictionShelf {
           id: 'bk-hpstone-hc-en',
           format: BookFormat.hardcover,
           language: BookLanguage.english,
+          isbn: '9789840001354',
           priceBdt: 1100,
           stock: 3,
         ),
@@ -67,6 +73,7 @@ abstract final class FictionShelf {
     ),
     Book(
       id: 'bk-davinci',
+      addedAt: DateTime(2026, 4, 30),
       title: 'The Da Vinci Code',
       shortTitle: 'Da Vinci Code',
       author: 'Dan Brown',
@@ -83,6 +90,7 @@ abstract final class FictionShelf {
           id: 'bk-davinci-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840001422',
           priceBdt: 450,
           listPriceBdt: 520,
           stock: 14,

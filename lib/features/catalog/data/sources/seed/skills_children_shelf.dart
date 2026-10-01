@@ -6,6 +6,7 @@ abstract final class SkillsChildrenShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-pragmatic',
+      addedAt: DateTime(2026, 6, 11),
       title: 'The Pragmatic Programmer',
       shortTitle: 'Pragmatic Programmer',
       author: 'Andrew Hunt & David Thomas',
@@ -22,6 +23,7 @@ abstract final class SkillsChildrenShelf {
           id: 'bk-pragmatic-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840003389',
           priceBdt: 1450,
           stock: 9,
         ),
@@ -29,6 +31,7 @@ abstract final class SkillsChildrenShelf {
     ),
     Book(
       id: 'bk-ddia',
+      addedAt: DateTime(2026, 6, 18),
       title: 'Designing Data-Intensive Applications',
       shortTitle: 'Data-Intensive Apps',
       author: 'Martin Kleppmann',
@@ -45,6 +48,7 @@ abstract final class SkillsChildrenShelf {
           id: 'bk-ddia-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840003457',
           priceBdt: 1900,
           stock: 6,
         ),
@@ -52,6 +56,7 @@ abstract final class SkillsChildrenShelf {
     ),
     Book(
       id: 'bk-caterpillar',
+      addedAt: DateTime(2026, 6, 25),
       title: 'The Very Hungry Caterpillar',
       shortTitle: 'Hungry Caterpillar',
       author: 'Eric Carle',
@@ -68,6 +73,7 @@ abstract final class SkillsChildrenShelf {
           id: 'bk-caterpillar-hc-en',
           format: BookFormat.hardcover,
           language: BookLanguage.english,
+          isbn: '9789840003525',
           priceBdt: 650,
           stock: 14,
         ),
@@ -75,6 +81,7 @@ abstract final class SkillsChildrenShelf {
     ),
     Book(
       id: 'bk-matilda',
+      addedAt: DateTime(2026, 7, 2),
       title: 'Matilda',
       author: 'Roald Dahl',
       authorId: 'au-dahl',
@@ -90,6 +97,7 @@ abstract final class SkillsChildrenShelf {
           id: 'bk-matilda-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840003594',
           priceBdt: 480,
           stock: 20,
         ),

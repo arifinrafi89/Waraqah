@@ -6,6 +6,7 @@ abstract final class PrepSchoolShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-bcs-guide',
+      addedAt: DateTime(2026, 5, 14),
       title: 'BCS Preliminary Guide',
       author: 'Waraqah Editorial Board',
       authorId: 'au-editorial',
@@ -21,6 +22,7 @@ abstract final class PrepSchoolShelf {
           id: 'bk-bcs-guide-pb-bn',
           format: BookFormat.paperback,
           language: BookLanguage.bangla,
+          isbn: '9789840003105',
           priceBdt: 550,
           stock: 25,
         ),
@@ -28,6 +30,7 @@ abstract final class PrepSchoolShelf {
     ),
     Book(
       id: 'bk-admission-guide',
+      addedAt: DateTime(2026, 5, 21),
       title: 'University Admission Test Guide',
       author: 'Waraqah Editorial Board',
       authorId: 'au-editorial',
@@ -43,6 +46,7 @@ abstract final class PrepSchoolShelf {
           id: 'bk-admission-guide-pb-bn',
           format: BookFormat.paperback,
           language: BookLanguage.bangla,
+          isbn: '9789840003174',
           priceBdt: 480,
           stock: 30,
         ),
@@ -50,6 +54,7 @@ abstract final class PrepSchoolShelf {
     ),
     Book(
       id: 'bk-general-math',
+      addedAt: DateTime(2026, 5, 28),
       title: 'General Mathematics, Class 9–10',
       shortTitle: 'General Math',
       author: 'NCTB',
@@ -66,6 +71,7 @@ abstract final class PrepSchoolShelf {
           id: 'bk-general-math-pb-bn',
           format: BookFormat.paperback,
           language: BookLanguage.bangla,
+          isbn: '9789840003242',
           priceBdt: 460,
           stock: 40,
         ),
@@ -73,6 +79,7 @@ abstract final class PrepSchoolShelf {
     ),
     Book(
       id: 'bk-english-grammar',
+      addedAt: DateTime(2026, 6, 4),
       title: 'High School English Grammar and Composition',
       shortTitle: 'English Grammar',
       author: 'P. C. Wren & H. Martin',
@@ -89,6 +96,7 @@ abstract final class PrepSchoolShelf {
           id: 'bk-english-grammar-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840003310',
           priceBdt: 490,
           stock: 22,
         ),

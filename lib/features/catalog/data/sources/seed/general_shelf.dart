@@ -6,6 +6,7 @@ abstract final class GeneralShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-sapiens',
+      addedAt: DateTime(2026, 1, 1),
       title: 'Sapiens: A Brief History of Humankind',
       shortTitle: 'Sapiens',
       author: 'Yuval Noah Harari',
@@ -22,6 +23,7 @@ abstract final class GeneralShelf {
           id: 'bk-sapiens-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840001774',
           priceBdt: 650,
           listPriceBdt: 780,
           stock: 24,
@@ -30,6 +32,7 @@ abstract final class GeneralShelf {
           id: 'bk-sapiens-pb-bn',
           format: BookFormat.paperback,
           language: BookLanguage.bangla,
+          isbn: '9789840001842',
           priceBdt: 520,
           stock: 15,
         ),
@@ -44,6 +47,7 @@ abstract final class GeneralShelf {
     ),
     Book(
       id: 'bk-atomic',
+      addedAt: DateTime(2026, 1, 8),
       title: 'Atomic Habits',
       author: 'James Clear',
       authorId: 'au-clear',
@@ -59,6 +63,7 @@ abstract final class GeneralShelf {
           id: 'bk-atomic-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840001910',
           priceBdt: 590,
           listPriceBdt: 650,
           stock: 30,
@@ -67,6 +72,7 @@ abstract final class GeneralShelf {
           id: 'bk-atomic-hc-en',
           format: BookFormat.hardcover,
           language: BookLanguage.english,
+          isbn: '9789840001989',
           priceBdt: 890,
           stock: 2,
         ),
@@ -74,6 +80,7 @@ abstract final class GeneralShelf {
     ),
     Book(
       id: 'bk-cleancode',
+      addedAt: DateTime(2026, 1, 15),
       title: 'Clean Code',
       author: 'Robert C. Martin',
       authorId: 'au-martin',
@@ -90,6 +97,7 @@ abstract final class GeneralShelf {
           id: 'bk-cleancode-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840002054',
           priceBdt: 1150,
           listPriceBdt: 1320,
           stock: 8,

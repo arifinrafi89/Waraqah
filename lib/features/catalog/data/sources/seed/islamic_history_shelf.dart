@@ -6,6 +6,7 @@ abstract final class IslamicHistoryShelf {
   static final List<Book> books = [
     Book(
       id: 'bk-muqaddimah',
+      addedAt: DateTime(2026, 4, 9),
       title: 'Al-Muqaddimah',
       author: 'Ibn Khaldun',
       authorId: 'au-ibn-khaldun',
@@ -22,6 +23,7 @@ abstract final class IslamicHistoryShelf {
           id: 'bk-muqaddimah-pb-en',
           format: BookFormat.paperback,
           language: BookLanguage.english,
+          isbn: '9789840002337',
           priceBdt: 780,
           stock: 12,
         ),

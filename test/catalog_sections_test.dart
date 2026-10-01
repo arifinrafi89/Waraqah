@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -30,19 +29,6 @@ void main() {
     expect(find.text('The Very Hungry Caterpillar'), findsOneWidget);
     // Still inside the Catalog tab, so the bottom nav is still there.
     expect(find.text('Home'), findsWidgets);
-  });
-
-  testWidgets('typing a query hides the Section grid', (tester) async {
-    await openApp(tester, CatalogRoutes.catalog);
-
-    await tester.enterText(find.byType(TextField), 'matilda');
-    await settle(tester);
-    expect(find.text('Academic'), findsNothing);
-    expect(find.text('Matilda'), findsWidgets);
-
-    await tester.enterText(find.byType(TextField), '');
-    await settle(tester);
-    expect(find.text('Academic'), findsOneWidget);
   });
 
   testWidgets('an unknown Section goes back to the Catalog', (tester) async {
