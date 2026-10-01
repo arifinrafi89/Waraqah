@@ -5,7 +5,7 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 
 /// A labelled field for the admin forms, with its rule error underneath.
-/// [number] takes digits only.
+/// [number] takes digits only; [multiline] grows with the text.
 class AdminTextField extends StatelessWidget {
   const AdminTextField({
     super.key,
@@ -14,6 +14,7 @@ class AdminTextField extends StatelessWidget {
     this.onChanged,
     this.error,
     this.number = false,
+    this.multiline = false,
   });
 
   final String label;
@@ -21,12 +22,15 @@ class AdminTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final String? error;
   final bool number;
+  final bool multiline;
 
   @override
   Widget build(BuildContext context) => TextFormField(
     initialValue: initialValue,
     onChanged: onChanged,
     keyboardType: number ? TextInputType.number : null,
+    minLines: multiline ? 2 : null,
+    maxLines: multiline ? null : 1,
     inputFormatters: number ? [FilteringTextInputFormatter.digitsOnly] : null,
     style: context.texts.bodyMedium?.copyWith(color: context.palette.text),
     decoration: adminInputDecoration(context, label, error: error),

@@ -4,6 +4,7 @@ import '../../../home/domain/entities/season.dart';
 
 import '../../domain/entities/catalog_record.dart';
 import 'catalog_admin_fake_banners.dart';
+import 'catalog_admin_fake_lists.dart';
 import 'catalog_admin_fake_records.dart';
 import 'catalog_admin_fake_store.dart';
 import 'record_counts.dart';
@@ -45,6 +46,18 @@ abstract final class CatalogAdminFakeApi {
   /// automatic (by date). Add `/save` (same body) to change it.
   static const String season = '$_base/season';
 
+  /// Body: a `ListDraft` without `kind` (no `id` = new) → `{id}`.
+  static const String saveCollection = '$_base/collections/save';
+
+  /// Body `{id}` → `{id}`.
+  static const String deleteCollection = '$_base/collections/delete';
+
+  /// Body: a `ListDraft` with a Staff `kind` (no `id` = new) → `{id}`.
+  static const String saveBooklist = '$_base/booklists/save';
+
+  /// Body `{id}` → `{id}`; a Reader's own list is refused.
+  static const String deleteBooklist = '$_base/booklists/delete';
+
   static Map<String, Object? Function(RequestOptions)> routes(
     CatalogAdminFakeStore store,
   ) => {
@@ -63,6 +76,10 @@ abstract final class CatalogAdminFakeApi {
     deleteBanner: (o) => CatalogAdminFakeBanners.delete(_id(o)),
     moveBanner: (o) =>
         CatalogAdminFakeBanners.move(_id(o), _body(o)['by'] as int? ?? 0),
+    saveCollection: (o) => CatalogAdminFakeLists.saveCollection(_body(o)),
+    deleteCollection: (o) => CatalogAdminFakeLists.deleteCollection(_id(o)),
+    saveBooklist: (o) => CatalogAdminFakeLists.saveBooklist(_body(o)),
+    deleteBooklist: (o) => CatalogAdminFakeLists.deleteBooklist(_id(o)),
     season: (_) => {'season': store.seasonOverride?.name},
     '$season/save': (o) {
       final name = _body(o)['season'] as String?;

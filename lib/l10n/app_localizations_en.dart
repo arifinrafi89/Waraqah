@@ -488,6 +488,27 @@ class AppL10nEn extends AppL10n {
   String get expertTheirPicks => 'Their picks';
 
   @override
+  String get booklistKindClassList => 'Class list';
+
+  @override
+  String get booklistKindExamPrep => 'Exam prep';
+
+  @override
+  String get booklistKindBookClub => 'Book club';
+
+  @override
+  String get booklistKindPersonal => 'My list';
+
+  @override
+  String get booklistPickerTitle => 'Add books';
+
+  @override
+  String get booklistPickerDone => 'Done';
+
+  @override
+  String get booklistPickerEmpty => 'No books match.';
+
+  @override
   String get bookFormatPaperback => 'Paperback';
 
   @override
@@ -2274,6 +2295,74 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get adminCatalogSeasonNone => 'None (all year)';
+
+  @override
+  String get adminCatalogTabCollections => 'Collections';
+
+  @override
+  String get adminCatalogListsBooklists => 'Booklists';
+
+  @override
+  String get adminCatalogNewCollection => 'New Collection';
+
+  @override
+  String get adminCatalogEditCollection => 'Edit Collection';
+
+  @override
+  String get adminCatalogNewBooklist => 'New Booklist';
+
+  @override
+  String get adminCatalogEditBooklist => 'Edit Booklist';
+
+  @override
+  String get adminCatalogFieldNoteEn => 'Why these books (English)';
+
+  @override
+  String get adminCatalogFieldNoteBn => 'Why these books (Bangla)';
+
+  @override
+  String get adminCatalogFieldSectionOptional => 'Section (optional)';
+
+  @override
+  String get adminCatalogNoSection => 'None (general)';
+
+  @override
+  String get adminCatalogFieldExpert => 'Expert (optional)';
+
+  @override
+  String get adminCatalogNoExpert => 'None (picked by Staff)';
+
+  @override
+  String get adminCatalogFieldKind => 'Kind';
+
+  @override
+  String get adminCatalogListBooks => 'Books';
+
+  @override
+  String get adminCatalogAddBooks => 'Add books';
+
+  @override
+  String get adminCatalogRemoveBook => 'Remove';
+
+  @override
+  String get adminCatalogErrListTitleBlank =>
+      'Add the title in English and Bangla';
+
+  @override
+  String get adminCatalogErrListNoBooks => 'Add at least one book';
+
+  @override
+  String get adminCatalogErrListDuplicateBook => 'A book is in the list twice';
+
+  @override
+  String get adminCatalogErrListNoteTooLong =>
+      'Keep each note to 300 characters';
+
+  @override
+  String get adminCatalogDeleteListTitle => 'Delete this list?';
+
+  @override
+  String get adminCatalogDeleteListBody => 'Readers stop seeing it at once.';
 
   @override
   String get adminOrders => 'Orders';

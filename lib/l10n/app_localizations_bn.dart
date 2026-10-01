@@ -485,6 +485,27 @@ class AppL10nBn extends AppL10n {
   String get expertTheirPicks => 'তাঁর বাছাই';
 
   @override
+  String get booklistKindClassList => 'ক্লাসের বইয়ের তালিকা';
+
+  @override
+  String get booklistKindExamPrep => 'পরীক্ষার প্রস্তুতি';
+
+  @override
+  String get booklistKindBookClub => 'বুক ক্লাব';
+
+  @override
+  String get booklistKindPersonal => 'আমার তালিকা';
+
+  @override
+  String get booklistPickerTitle => 'বই যোগ করুন';
+
+  @override
+  String get booklistPickerDone => 'হয়েছে';
+
+  @override
+  String get booklistPickerEmpty => 'কোনো বই মেলেনি।';
+
+  @override
   String get bookFormatPaperback => 'পেপারব্যাক';
 
   @override
@@ -2185,6 +2206,74 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get adminCatalogSeasonNone => 'নেই (সারা বছর)';
+
+  @override
+  String get adminCatalogTabCollections => 'সংকলন';
+
+  @override
+  String get adminCatalogListsBooklists => 'বুকলিস্ট';
+
+  @override
+  String get adminCatalogNewCollection => 'নতুন সংকলন';
+
+  @override
+  String get adminCatalogEditCollection => 'সংকলন সম্পাদনা';
+
+  @override
+  String get adminCatalogNewBooklist => 'নতুন বুকলিস্ট';
+
+  @override
+  String get adminCatalogEditBooklist => 'বুকলিস্ট সম্পাদনা';
+
+  @override
+  String get adminCatalogFieldNoteEn => 'কেন এই বইগুলো (ইংরেজি)';
+
+  @override
+  String get adminCatalogFieldNoteBn => 'কেন এই বইগুলো (বাংলা)';
+
+  @override
+  String get adminCatalogFieldSectionOptional => 'বিভাগ (ঐচ্ছিক)';
+
+  @override
+  String get adminCatalogNoSection => 'নেই (সাধারণ)';
+
+  @override
+  String get adminCatalogFieldExpert => 'বিশেষজ্ঞ (ঐচ্ছিক)';
+
+  @override
+  String get adminCatalogNoExpert => 'নেই (স্টাফের বাছাই)';
+
+  @override
+  String get adminCatalogFieldKind => 'ধরন';
+
+  @override
+  String get adminCatalogListBooks => 'বই';
+
+  @override
+  String get adminCatalogAddBooks => 'বই যোগ করুন';
+
+  @override
+  String get adminCatalogRemoveBook => 'সরান';
+
+  @override
+  String get adminCatalogErrListTitleBlank => 'ইংরেজি ও বাংলায় শিরোনাম দিন';
+
+  @override
+  String get adminCatalogErrListNoBooks => 'অন্তত একটি বই যোগ করুন';
+
+  @override
+  String get adminCatalogErrListDuplicateBook => 'একটি বই তালিকায় দুবার আছে';
+
+  @override
+  String get adminCatalogErrListNoteTooLong =>
+      'প্রতিটি নোট ৩০০ অক্ষরের মধ্যে রাখুন';
+
+  @override
+  String get adminCatalogDeleteListTitle => 'এই তালিকা মুছবেন?';
+
+  @override
+  String get adminCatalogDeleteListBody =>
+      'পাঠকেরা সঙ্গে সঙ্গে আর এটি দেখবেন না।';
 
   @override
   String get adminOrders => 'অর্ডার';

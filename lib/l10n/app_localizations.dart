@@ -997,6 +997,48 @@ abstract class AppL10n {
   /// **'Their picks'**
   String get expertTheirPicks;
 
+  /// No description provided for @booklistKindClassList.
+  ///
+  /// In en, this message translates to:
+  /// **'Class list'**
+  String get booklistKindClassList;
+
+  /// No description provided for @booklistKindExamPrep.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam prep'**
+  String get booklistKindExamPrep;
+
+  /// No description provided for @booklistKindBookClub.
+  ///
+  /// In en, this message translates to:
+  /// **'Book club'**
+  String get booklistKindBookClub;
+
+  /// No description provided for @booklistKindPersonal.
+  ///
+  /// In en, this message translates to:
+  /// **'My list'**
+  String get booklistKindPersonal;
+
+  /// No description provided for @booklistPickerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add books'**
+  String get booklistPickerTitle;
+
+  /// No description provided for @booklistPickerDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get booklistPickerDone;
+
+  /// No description provided for @booklistPickerEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books match.'**
+  String get booklistPickerEmpty;
+
   /// No description provided for @bookFormatPaperback.
   ///
   /// In en, this message translates to:
@@ -4002,6 +4044,138 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'None (all year)'**
   String get adminCatalogSeasonNone;
+
+  /// No description provided for @adminCatalogTabCollections.
+  ///
+  /// In en, this message translates to:
+  /// **'Collections'**
+  String get adminCatalogTabCollections;
+
+  /// No description provided for @adminCatalogListsBooklists.
+  ///
+  /// In en, this message translates to:
+  /// **'Booklists'**
+  String get adminCatalogListsBooklists;
+
+  /// No description provided for @adminCatalogNewCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'New Collection'**
+  String get adminCatalogNewCollection;
+
+  /// No description provided for @adminCatalogEditCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Collection'**
+  String get adminCatalogEditCollection;
+
+  /// No description provided for @adminCatalogNewBooklist.
+  ///
+  /// In en, this message translates to:
+  /// **'New Booklist'**
+  String get adminCatalogNewBooklist;
+
+  /// No description provided for @adminCatalogEditBooklist.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Booklist'**
+  String get adminCatalogEditBooklist;
+
+  /// No description provided for @adminCatalogFieldNoteEn.
+  ///
+  /// In en, this message translates to:
+  /// **'Why these books (English)'**
+  String get adminCatalogFieldNoteEn;
+
+  /// No description provided for @adminCatalogFieldNoteBn.
+  ///
+  /// In en, this message translates to:
+  /// **'Why these books (Bangla)'**
+  String get adminCatalogFieldNoteBn;
+
+  /// No description provided for @adminCatalogFieldSectionOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Section (optional)'**
+  String get adminCatalogFieldSectionOptional;
+
+  /// No description provided for @adminCatalogNoSection.
+  ///
+  /// In en, this message translates to:
+  /// **'None (general)'**
+  String get adminCatalogNoSection;
+
+  /// No description provided for @adminCatalogFieldExpert.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert (optional)'**
+  String get adminCatalogFieldExpert;
+
+  /// No description provided for @adminCatalogNoExpert.
+  ///
+  /// In en, this message translates to:
+  /// **'None (picked by Staff)'**
+  String get adminCatalogNoExpert;
+
+  /// No description provided for @adminCatalogFieldKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Kind'**
+  String get adminCatalogFieldKind;
+
+  /// No description provided for @adminCatalogListBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Books'**
+  String get adminCatalogListBooks;
+
+  /// No description provided for @adminCatalogAddBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Add books'**
+  String get adminCatalogAddBooks;
+
+  /// No description provided for @adminCatalogRemoveBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get adminCatalogRemoveBook;
+
+  /// No description provided for @adminCatalogErrListTitleBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the title in English and Bangla'**
+  String get adminCatalogErrListTitleBlank;
+
+  /// No description provided for @adminCatalogErrListNoBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Add at least one book'**
+  String get adminCatalogErrListNoBooks;
+
+  /// No description provided for @adminCatalogErrListDuplicateBook.
+  ///
+  /// In en, this message translates to:
+  /// **'A book is in the list twice'**
+  String get adminCatalogErrListDuplicateBook;
+
+  /// No description provided for @adminCatalogErrListNoteTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep each note to 300 characters'**
+  String get adminCatalogErrListNoteTooLong;
+
+  /// No description provided for @adminCatalogDeleteListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this list?'**
+  String get adminCatalogDeleteListTitle;
+
+  /// No description provided for @adminCatalogDeleteListBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Readers stop seeing it at once.'**
+  String get adminCatalogDeleteListBody;
 
   /// No description provided for @adminOrders.
   ///
