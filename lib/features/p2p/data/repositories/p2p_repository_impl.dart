@@ -1,46 +1,38 @@
-import '../../../../core/cache/ttl_cache.dart';
 import '../../domain/entities/p2p_listing.dart';
 import '../../domain/repositories/p2p_repository.dart';
-import '../sources/p2p_fixtures.dart';
+import '../models/p2p_listing_model.dart';
+import '../sources/p2p_remote_source.dart';
 
+/// No cache: a listing can be reserved or sold at any moment, and the
+/// server owns that.
 class P2pRepositoryImpl implements P2pRepository {
-  final TtlCache<List<P2pListing>> _cache = TtlCache(
-    ttl: const Duration(minutes: 2),
-  );
+  P2pRepositoryImpl(this._source);
+
+  final P2pRemoteSource _source;
 
   @override
-  Future<List<P2pListing>> fetchNearbyListings({int limit = 6}) =>
-      _cache.resolve('nearby:$limit', () async {
-        await Future<void>.delayed(const Duration(milliseconds: 850));
-        return P2pFixtures.listings
-            .where((l) => l.status == P2pListingStatus.live)
-            .take(limit)
-            .toList();
-      });
+  Future<List<P2pListing>> fetchListings({
+    bool onlyAvailable = false,
+    int? limit,
+  }) async => [
+    for (final listing in await _source.listings(
+      onlyAvailable: onlyAvailable,
+      limit: limit,
+    ))
+      listing.toEntity(),
+  ];
 
   @override
-  Future<List<P2pListing>> fetchMyListings() =>
-      _cache.resolve('my_listings', () async {
-        await Future<void>.delayed(const Duration(milliseconds: 600));
-        return P2pFixtures.listings
-            .where((l) => l.sellerName == 'Farhan')
-            .toList();
-      });
+  Future<List<P2pListing>> fetchMyListings() async => [
+    for (final listing in await _source.mine()) listing.toEntity(),
+  ];
 
   @override
-  Future<P2pListing?> fetchListing(String id) async {
-    await Future<void>.delayed(const Duration(milliseconds: 300));
-    return P2pFixtures.listings.where((l) => l.id == id).firstOrNull;
-  }
+  Future<P2pListing?> fetchListing(String id) async =>
+      (await _source.listing(id))?.toEntity();
 
   @override
-  Future<List<P2pListing>> fetchListingsForBook(String bookId) =>
-      _cache.resolve('listings_for_book:$bookId', () async {
-        await Future<void>.delayed(const Duration(milliseconds: 700));
-        return P2pFixtures.listings
-            .where(
-              (l) => l.bookId == bookId && l.status == P2pListingStatus.live,
-            )
-            .toList();
-      });
+  Future<List<P2pListing>> fetchListingsForBook(String bookId) async => [
+    for (final listing in await _source.forBook(bookId)) listing.toEntity(),
+  ];
 }

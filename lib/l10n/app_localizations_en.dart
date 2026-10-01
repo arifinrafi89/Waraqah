@@ -1811,4 +1811,292 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get listingReasonPrefix => 'Reason: ';
+
+  @override
+  String get usedMarketTitle => 'P2P Marketplace';
+
+  @override
+  String get usedListingTitle => 'Used copy';
+
+  @override
+  String get usedListingMissing => 'This listing isn\'t available.';
+
+  @override
+  String get usedStatusAvailable => 'Available';
+
+  @override
+  String get usedStatusReserved => 'Reserved';
+
+  @override
+  String get usedNegotiable => 'Price negotiable';
+
+  @override
+  String get usedFixedPrice => 'Fixed price';
+
+  @override
+  String get usedPrefersMeetup => 'Prefers to meet up';
+
+  @override
+  String get usedPrefersCourier => 'Prefers courier';
+
+  @override
+  String get usedYourListing => 'Your listing';
+
+  @override
+  String get usedMessage => 'Message';
+
+  @override
+  String get usedOpenChat => 'Open chat';
+
+  @override
+  String usedSoldBy(String name, String place) {
+    return '$name · $place';
+  }
+
+  @override
+  String usedSaveVsNew(String amount) {
+    return 'Save $amount vs new';
+  }
+
+  @override
+  String get usedSellerNote => 'From the seller';
+
+  @override
+  String usedConditionAndSafety(String condition) {
+    return 'Described as $condition. Check the copy before you pay, and meet somewhere public and busy.';
+  }
+
+  @override
+  String usedOfferWaiting(String amount, String name) {
+    return 'Your offer of $amount is waiting for $name.';
+  }
+
+  @override
+  String get usedOffersAndMessages => 'Offers and messages';
+
+  @override
+  String get usedNoOffersYet =>
+      'No offers yet. Buyers\' offers and messages show up here and in your inbox.';
+
+  @override
+  String get inboxTitle => 'Inbox';
+
+  @override
+  String inboxUnread(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count new',
+      one: '1 new',
+      zero: 'All caught up',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inboxBuying => 'Buying';
+
+  @override
+  String get inboxSelling => 'Selling';
+
+  @override
+  String get inboxMissing => 'This conversation isn\'t available.';
+
+  @override
+  String get inboxEmptyTitle => 'No offers or messages yet';
+
+  @override
+  String get inboxEmptyBody =>
+      'When you make an offer on a used book, or someone wants one of yours, the conversation shows up here.';
+
+  @override
+  String get inboxBrowse => 'Browse used books';
+
+  @override
+  String get chatHint => 'Write a message';
+
+  @override
+  String get chatSend => 'Send';
+
+  @override
+  String chatYou(String text) {
+    return 'You: $text';
+  }
+
+  @override
+  String chatEventAcceptedByMe(String name, String amount) {
+    return 'You accepted $name\'s offer of $amount. The book is reserved for $name.';
+  }
+
+  @override
+  String chatEventAcceptedByThem(String name, String amount) {
+    return '$name accepted your offer of $amount. The book is reserved for you.';
+  }
+
+  @override
+  String chatEventDeclinedByMe(String name, String amount) {
+    return 'You declined $name\'s offer of $amount.';
+  }
+
+  @override
+  String chatEventDeclinedByThem(String name, String amount) {
+    return '$name declined your offer of $amount.';
+  }
+
+  @override
+  String get chatEventReservedElsewhere =>
+      'This book is now reserved for another buyer.';
+
+  @override
+  String get chatEventAvailableByMe => 'You made the book available again.';
+
+  @override
+  String chatEventAvailableByThem(String name) {
+    return '$name made the book available again.';
+  }
+
+  @override
+  String chatEventSoldByMe(String name) {
+    return 'You marked the book as sold to $name.';
+  }
+
+  @override
+  String chatEventSoldByThem(String name) {
+    return '$name marked the book as sold to you.';
+  }
+
+  @override
+  String get chatEventSoldElsewhere => 'This book was sold to another buyer.';
+
+  @override
+  String get chatReservedForYou => 'Reserved for you';
+
+  @override
+  String get chatPayOnHandover =>
+      'Agree on the time and place here. You pay the seller directly at the handover; Waraqah doesn\'t handle the money.';
+
+  @override
+  String chatReservedFor(String name) {
+    return 'Reserved for $name';
+  }
+
+  @override
+  String chatSellerNext(String name) {
+    return 'Agree on the handover here. Mark it sold once $name has the book.';
+  }
+
+  @override
+  String get chatBoughtIt => 'You bought this book';
+
+  @override
+  String chatSoldTo(String name) {
+    return 'Sold to $name';
+  }
+
+  @override
+  String get chatSoldElsewhere => 'Sold to another buyer';
+
+  @override
+  String get chatReservedElsewhere => 'Reserved for another buyer';
+
+  @override
+  String get chatMarkSold => 'Mark as sold';
+
+  @override
+  String get chatMakeAvailable => 'Make available';
+
+  @override
+  String get chatMarkSoldTitle => 'Mark as sold?';
+
+  @override
+  String chatMarkSoldBody(String name) {
+    return 'Do this after $name has the book. Other buyers will be told it\'s sold.';
+  }
+
+  @override
+  String get chatMakeAvailableTitle => 'Make the book available again?';
+
+  @override
+  String chatMakeAvailableBody(String name) {
+    return '$name\'s reservation ends and other buyers can make offers again.';
+  }
+
+  @override
+  String get offerMake => 'Make an offer';
+
+  @override
+  String offerTo(String name, String amount) {
+    return 'To $name · asking $amount';
+  }
+
+  @override
+  String get offerYourPrice => 'Your price (৳)';
+
+  @override
+  String offerFixedPrice(String name, String amount) {
+    return '$name\'s price of $amount isn\'t negotiable.';
+  }
+
+  @override
+  String offerTooHigh(String amount) {
+    return 'Offer $amount or less.';
+  }
+
+  @override
+  String get offerHandover => 'How do you want the book?';
+
+  @override
+  String get offerMeetup => 'Meetup';
+
+  @override
+  String get offerCourier => 'Courier';
+
+  @override
+  String offerSellerPrefers(String name, String method) {
+    String _temp0 = intl.Intl.selectLogic(method, {
+      'delivery': '$name prefers to send it by courier.',
+      'other': '$name prefers to meet up.',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get offerSend => 'Send offer';
+
+  @override
+  String offerSent(String name) {
+    return 'Offer sent to $name';
+  }
+
+  @override
+  String offerCardTitle(String amount) {
+    return 'Offer · $amount';
+  }
+
+  @override
+  String offerWaitingFor(String name) {
+    return 'Waiting for $name';
+  }
+
+  @override
+  String get offerStatusPending => 'Waiting';
+
+  @override
+  String get offerStatusAccepted => 'Accepted';
+
+  @override
+  String get offerStatusDeclined => 'Declined';
+
+  @override
+  String get offerStatusClosed => 'Closed';
+
+  @override
+  String get offerAccept => 'Accept';
+
+  @override
+  String get offerDecline => 'Decline';
+
+  @override
+  String get offerReservedHint =>
+      'The book is reserved for another buyer. Make it available again to accept this offer.';
 }

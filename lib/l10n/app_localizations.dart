@@ -3204,6 +3204,450 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Reason: '**
   String get listingReasonPrefix;
+
+  /// No description provided for @usedMarketTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'P2P Marketplace'**
+  String get usedMarketTitle;
+
+  /// No description provided for @usedListingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Used copy'**
+  String get usedListingTitle;
+
+  /// No description provided for @usedListingMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'This listing isn\'t available.'**
+  String get usedListingMissing;
+
+  /// No description provided for @usedStatusAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get usedStatusAvailable;
+
+  /// No description provided for @usedStatusReserved.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserved'**
+  String get usedStatusReserved;
+
+  /// No description provided for @usedNegotiable.
+  ///
+  /// In en, this message translates to:
+  /// **'Price negotiable'**
+  String get usedNegotiable;
+
+  /// No description provided for @usedFixedPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Fixed price'**
+  String get usedFixedPrice;
+
+  /// No description provided for @usedPrefersMeetup.
+  ///
+  /// In en, this message translates to:
+  /// **'Prefers to meet up'**
+  String get usedPrefersMeetup;
+
+  /// No description provided for @usedPrefersCourier.
+  ///
+  /// In en, this message translates to:
+  /// **'Prefers courier'**
+  String get usedPrefersCourier;
+
+  /// No description provided for @usedYourListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Your listing'**
+  String get usedYourListing;
+
+  /// No description provided for @usedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get usedMessage;
+
+  /// No description provided for @usedOpenChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Open chat'**
+  String get usedOpenChat;
+
+  /// No description provided for @usedSoldBy.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} · {place}'**
+  String usedSoldBy(String name, String place);
+
+  /// No description provided for @usedSaveVsNew.
+  ///
+  /// In en, this message translates to:
+  /// **'Save {amount} vs new'**
+  String usedSaveVsNew(String amount);
+
+  /// No description provided for @usedSellerNote.
+  ///
+  /// In en, this message translates to:
+  /// **'From the seller'**
+  String get usedSellerNote;
+
+  /// No description provided for @usedConditionAndSafety.
+  ///
+  /// In en, this message translates to:
+  /// **'Described as {condition}. Check the copy before you pay, and meet somewhere public and busy.'**
+  String usedConditionAndSafety(String condition);
+
+  /// No description provided for @usedOfferWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Your offer of {amount} is waiting for {name}.'**
+  String usedOfferWaiting(String amount, String name);
+
+  /// No description provided for @usedOffersAndMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'Offers and messages'**
+  String get usedOffersAndMessages;
+
+  /// No description provided for @usedNoOffersYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No offers yet. Buyers\' offers and messages show up here and in your inbox.'**
+  String get usedNoOffersYet;
+
+  /// No description provided for @inboxTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inbox'**
+  String get inboxTitle;
+
+  /// No description provided for @inboxUnread.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{All caught up} =1{1 new} other{{count} new}}'**
+  String inboxUnread(int count);
+
+  /// No description provided for @inboxBuying.
+  ///
+  /// In en, this message translates to:
+  /// **'Buying'**
+  String get inboxBuying;
+
+  /// No description provided for @inboxSelling.
+  ///
+  /// In en, this message translates to:
+  /// **'Selling'**
+  String get inboxSelling;
+
+  /// No description provided for @inboxMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'This conversation isn\'t available.'**
+  String get inboxMissing;
+
+  /// No description provided for @inboxEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No offers or messages yet'**
+  String get inboxEmptyTitle;
+
+  /// No description provided for @inboxEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'When you make an offer on a used book, or someone wants one of yours, the conversation shows up here.'**
+  String get inboxEmptyBody;
+
+  /// No description provided for @inboxBrowse.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse used books'**
+  String get inboxBrowse;
+
+  /// No description provided for @chatHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a message'**
+  String get chatHint;
+
+  /// No description provided for @chatSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get chatSend;
+
+  /// No description provided for @chatYou.
+  ///
+  /// In en, this message translates to:
+  /// **'You: {text}'**
+  String chatYou(String text);
+
+  /// No description provided for @chatEventAcceptedByMe.
+  ///
+  /// In en, this message translates to:
+  /// **'You accepted {name}\'s offer of {amount}. The book is reserved for {name}.'**
+  String chatEventAcceptedByMe(String name, String amount);
+
+  /// No description provided for @chatEventAcceptedByThem.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} accepted your offer of {amount}. The book is reserved for you.'**
+  String chatEventAcceptedByThem(String name, String amount);
+
+  /// No description provided for @chatEventDeclinedByMe.
+  ///
+  /// In en, this message translates to:
+  /// **'You declined {name}\'s offer of {amount}.'**
+  String chatEventDeclinedByMe(String name, String amount);
+
+  /// No description provided for @chatEventDeclinedByThem.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} declined your offer of {amount}.'**
+  String chatEventDeclinedByThem(String name, String amount);
+
+  /// No description provided for @chatEventReservedElsewhere.
+  ///
+  /// In en, this message translates to:
+  /// **'This book is now reserved for another buyer.'**
+  String get chatEventReservedElsewhere;
+
+  /// No description provided for @chatEventAvailableByMe.
+  ///
+  /// In en, this message translates to:
+  /// **'You made the book available again.'**
+  String get chatEventAvailableByMe;
+
+  /// No description provided for @chatEventAvailableByThem.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} made the book available again.'**
+  String chatEventAvailableByThem(String name);
+
+  /// No description provided for @chatEventSoldByMe.
+  ///
+  /// In en, this message translates to:
+  /// **'You marked the book as sold to {name}.'**
+  String chatEventSoldByMe(String name);
+
+  /// No description provided for @chatEventSoldByThem.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} marked the book as sold to you.'**
+  String chatEventSoldByThem(String name);
+
+  /// No description provided for @chatEventSoldElsewhere.
+  ///
+  /// In en, this message translates to:
+  /// **'This book was sold to another buyer.'**
+  String get chatEventSoldElsewhere;
+
+  /// No description provided for @chatReservedForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserved for you'**
+  String get chatReservedForYou;
+
+  /// No description provided for @chatPayOnHandover.
+  ///
+  /// In en, this message translates to:
+  /// **'Agree on the time and place here. You pay the seller directly at the handover; Waraqah doesn\'t handle the money.'**
+  String get chatPayOnHandover;
+
+  /// No description provided for @chatReservedFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserved for {name}'**
+  String chatReservedFor(String name);
+
+  /// No description provided for @chatSellerNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Agree on the handover here. Mark it sold once {name} has the book.'**
+  String chatSellerNext(String name);
+
+  /// No description provided for @chatBoughtIt.
+  ///
+  /// In en, this message translates to:
+  /// **'You bought this book'**
+  String get chatBoughtIt;
+
+  /// No description provided for @chatSoldTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Sold to {name}'**
+  String chatSoldTo(String name);
+
+  /// No description provided for @chatSoldElsewhere.
+  ///
+  /// In en, this message translates to:
+  /// **'Sold to another buyer'**
+  String get chatSoldElsewhere;
+
+  /// No description provided for @chatReservedElsewhere.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserved for another buyer'**
+  String get chatReservedElsewhere;
+
+  /// No description provided for @chatMarkSold.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as sold'**
+  String get chatMarkSold;
+
+  /// No description provided for @chatMakeAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Make available'**
+  String get chatMakeAvailable;
+
+  /// No description provided for @chatMarkSoldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as sold?'**
+  String get chatMarkSoldTitle;
+
+  /// No description provided for @chatMarkSoldBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Do this after {name} has the book. Other buyers will be told it\'s sold.'**
+  String chatMarkSoldBody(String name);
+
+  /// No description provided for @chatMakeAvailableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Make the book available again?'**
+  String get chatMakeAvailableTitle;
+
+  /// No description provided for @chatMakeAvailableBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}\'s reservation ends and other buyers can make offers again.'**
+  String chatMakeAvailableBody(String name);
+
+  /// No description provided for @offerMake.
+  ///
+  /// In en, this message translates to:
+  /// **'Make an offer'**
+  String get offerMake;
+
+  /// No description provided for @offerTo.
+  ///
+  /// In en, this message translates to:
+  /// **'To {name} · asking {amount}'**
+  String offerTo(String name, String amount);
+
+  /// No description provided for @offerYourPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Your price (৳)'**
+  String get offerYourPrice;
+
+  /// No description provided for @offerFixedPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}\'s price of {amount} isn\'t negotiable.'**
+  String offerFixedPrice(String name, String amount);
+
+  /// No description provided for @offerTooHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer {amount} or less.'**
+  String offerTooHigh(String amount);
+
+  /// No description provided for @offerHandover.
+  ///
+  /// In en, this message translates to:
+  /// **'How do you want the book?'**
+  String get offerHandover;
+
+  /// No description provided for @offerMeetup.
+  ///
+  /// In en, this message translates to:
+  /// **'Meetup'**
+  String get offerMeetup;
+
+  /// No description provided for @offerCourier.
+  ///
+  /// In en, this message translates to:
+  /// **'Courier'**
+  String get offerCourier;
+
+  /// No description provided for @offerSellerPrefers.
+  ///
+  /// In en, this message translates to:
+  /// **'{method, select, delivery{{name} prefers to send it by courier.} other{{name} prefers to meet up.}}'**
+  String offerSellerPrefers(String name, String method);
+
+  /// No description provided for @offerSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send offer'**
+  String get offerSend;
+
+  /// No description provided for @offerSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer sent to {name}'**
+  String offerSent(String name);
+
+  /// No description provided for @offerCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer · {amount}'**
+  String offerCardTitle(String amount);
+
+  /// No description provided for @offerWaitingFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for {name}'**
+  String offerWaitingFor(String name);
+
+  /// No description provided for @offerStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting'**
+  String get offerStatusPending;
+
+  /// No description provided for @offerStatusAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get offerStatusAccepted;
+
+  /// No description provided for @offerStatusDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Declined'**
+  String get offerStatusDeclined;
+
+  /// No description provided for @offerStatusClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get offerStatusClosed;
+
+  /// No description provided for @offerAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get offerAccept;
+
+  /// No description provided for @offerDecline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get offerDecline;
+
+  /// No description provided for @offerReservedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The book is reserved for another buyer. Make it available again to accept this offer.'**
+  String get offerReservedHint;
 }
 
 class _AppL10nDelegate extends LocalizationsDelegate<AppL10n> {
