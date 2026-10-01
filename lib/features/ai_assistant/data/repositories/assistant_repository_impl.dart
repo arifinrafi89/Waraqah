@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../../../catalog/domain/entities/catalog_filters.dart';
 import '../../../catalog/domain/repositories/book_repository.dart';
 import '../../../../core/models/book.dart';
 import '../../domain/entities/chat_message.dart';
@@ -50,8 +51,10 @@ class AssistantRepositoryImpl implements AssistantRepository {
 
   Future<List<Book>> _searchBooks(AssistantIntent intent) async {
     final books = await _books.searchCatalog(
-      category: intent.isIslamic ? 'Islamic Studies' : null,
-      query: intent.query,
+      CatalogFilters(
+        query: intent.query,
+        section: intent.isIslamic ? Section.religious : null,
+      ),
     );
     final relevantBooks = books.where((book) {
       final searchableText = [
