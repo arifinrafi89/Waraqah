@@ -5,6 +5,8 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../core/widgets/screen_app_bar.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../book_request/presentation/providers/book_request_providers.dart';
+import '../../../book_request/presentation/widgets/wanted_section.dart';
 import '../providers/p2p_providers.dart';
 import '../widgets/p2p_my_listing_card.dart';
 
@@ -14,6 +16,8 @@ class P2pMyListingsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final listingsAsync = ref.watch(myListingsProvider);
+    // Load who wants these books alongside them, not after.
+    ref.watch(wantedBooksProvider);
     final l10n = AppL10n.of(context)!;
 
     return Scaffold(
@@ -36,10 +40,13 @@ class P2pMyListingsPage extends ConsumerWidget {
                     Insets.screen,
                     Sizes.navClearance,
                   ),
-                  itemCount: listings.length,
-                  separatorBuilder: (_, _) => const SizedBox(height: Insets.md),
-                  itemBuilder: (context, index) =>
-                      P2pMyListingCard(listing: listings[index]),
+                  // Readers looking for these books come first.
+                  itemCount: listings.length + 1,
+                  separatorBuilder: (_, i) =>
+                      SizedBox(height: i == 0 ? 0 : Insets.md),
+                  itemBuilder: (context, index) => index == 0
+                      ? const WantedSection()
+                      : P2pMyListingCard(listing: listings[index - 1]),
                 ),
               ),
             ),

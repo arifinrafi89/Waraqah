@@ -7,7 +7,6 @@ import 'presentation/pages/author_page.dart';
 import 'presentation/pages/category_page.dart';
 import 'presentation/pages/collection_page.dart';
 import 'presentation/pages/publisher_page.dart';
-import 'presentation/pages/request_book_page.dart';
 import 'presentation/pages/search_page.dart';
 import 'presentation/pages/section_page.dart';
 import 'presentation/pages/series_page.dart';
@@ -58,5 +57,4 @@ final List<RouteBase> catalogTabRoutes = [
       query: state.uri.queryParameters['q'] ?? '',
     ),
   ),
-  GoRoute(path: 'request-book', builder: (_, _) => const RequestBookPage()),
 ];

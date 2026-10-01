@@ -2507,7 +2507,125 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
+  String get requestTitle => 'Request a book';
+
+  @override
+  String get requestIntro =>
+      'Tell us what you\'re looking for. Readers who have it are told, and Waraqah sees what readers want.';
+
+  @override
+  String get requestBookTitle => 'Book title';
+
+  @override
+  String get requestBookTitleHint => 'Calculus';
+
+  @override
+  String get requestAuthor => 'Author (optional)';
+
+  @override
+  String get requestAuthorHint => 'James Stewart';
+
+  @override
+  String get requestMaxPrice => 'Most you\'d pay, in ৳ (optional)';
+
+  @override
+  String get requestMaxPriceHint => '900';
+
+  @override
+  String get requestNote => 'Note (optional)';
+
+  @override
+  String get requestNoteHint => 'Edition, condition, your area…';
+
+  @override
+  String get requestTitleMissing => 'Add the book\'s title.';
+
+  @override
+  String requestTitleTooLong(int max) {
+    return 'Keep the title under $max characters.';
+  }
+
+  @override
+  String get requestBadPrice => 'Enter a price above ৳0.';
+
+  @override
+  String requestNoteTooLong(int max) {
+    return 'Keep the note under $max characters.';
+  }
+
+  @override
+  String get requestSend => 'Send request';
+
+  @override
+  String requestSent(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Request sent. $count readers who have it were told.',
+      one: 'Request sent. 1 reader who has it was told.',
+      zero: 'Request sent. Readers who list it will see it.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get requestMine => 'My book requests';
+
+  @override
+  String get requestNew => 'New request';
+
+  @override
+  String get requestEmptyTitle => 'No requests yet';
+
+  @override
+  String get requestEmptyBody =>
+      'Ask for a book you can\'t find. Readers who have it will see your request.';
+
+  @override
+  String requestUnder(String price) {
+    return 'Under $price';
+  }
+
+  @override
+  String requestMatches(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count copies on sale now',
+      one: '1 copy on sale now',
+      zero: 'No copies on sale yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get requestSeeCopies => 'See copies';
+
+  @override
+  String get requestClose => 'Close';
+
+  @override
+  String get requestClosed => 'Closed';
+
+  @override
+  String get requestClosedDone => 'Request closed.';
+
+  @override
+  String get requestWantedTitle => 'Readers want your books';
+
+  @override
+  String requestWantedLine(String name, String title) {
+    return '$name is looking for $title';
+  }
+
+  @override
+  String get requestOpenListing => 'Your listing';
+
+  @override
   String get usedMarketTitle => 'P2P Marketplace';
+
+  @override
+  String get usedSearchHint => 'Search second-hand books...';
 
   @override
   String get usedListingTitle => 'Used copy';

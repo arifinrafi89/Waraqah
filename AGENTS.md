@@ -86,6 +86,13 @@ The app also has:
   - Found: open the book page, or **Sell your copy** (the add-listing form starts with the Book's title and new price). Not found: Request this book, or list it anyway.
   - Drop in `ScanButton()` to open it (Search's field and the P2P header have one). `ScanButton(forSell: true, wide: true)` on the add-listing form fills the form in.
 - **Fair price meter is done** (Arifin): under the price on the add-listing form, `FairPriceMeter` shows "Fair price: ৳700–৳960" from the Book's new price, the condition and the flags (`FairPrice.of`: Like New 60–75% of new, Very Good 50–65%, Good 40–55%, Acceptable 25–40%, 5% off per flag, rounded to ৳10). A bar marks the asking price, and it warns when the price is as much as buying new. It needs a catalog Book (scanned), so a typed title shows a hint instead. The form's steps are now separate widgets (`listing_*_step.dart`).
+- **Request a book is done** (Arifin): `features/book_request`.
+  - `BookRequestRoutes.newFor(title:, bookId:)` (`/request-book`) is the form: title, author, most you'd pay, note (`RequestRules`). Guests log in to send. Search's "Request this book" and the scanner's "not found" open it (the catalog's stand-in page is gone).
+  - Sending tells the readers who have the book: the answer says how many (`notifiedSellers`) and how many copies are on sale now (`matchCount`). A Listing matches by catalog Book or by title words (`RequestRules.matches`).
+  - **My book requests** (`BookRequestRoutes.requests`, signed-in only, linked from Profile): See copies (the marketplace searching for it) or Close.
+  - Sellers see **Readers want your books** on My Listings (`wantedBooksProvider`).
+  - Demand for admins: `bookDemandProvider` (titles, most asked first), ready for the admin dashboard.
+  - Fake API `/requests`, `/requests/mine`, `/requests/close`, `/requests/wanted`, `/requests/demand` (`BookRequestFakeStore`, sharing `P2pFakeStore`).
 - **Accounts** (Niloy, #108): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`).
 - **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
@@ -137,7 +144,7 @@ lib/
 │   ├── cache/              TtlCache
 │   └── utils/              Bdt.format (৳ prices), stock labels, cover gradients
 ├── features/
-│   ├── admin/  ai_assistant/  alerts/  auth/  bites/  cart/  catalog/  checkout/
+│   ├── admin/  ai_assistant/  alerts/  auth/  bites/  book_request/  cart/  catalog/  checkout/
 │   ├── deals/  donate/  home/  inbox/  loyalty/  moderation/  orders/  p2p/  profile/  report/  scan/
 │   ├── wallet/  wishlist/
 └── l10n/                   app_en.arb, app_bn.arb (+ generated AppL10n)
@@ -377,10 +384,10 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - The AI assistant still shows an old vendor price table. It's scheduled to use Waraqah's own catalog (Niloy). Don't copy it.
 - Profile stats (books read, Bites posted, listings) are placeholder numbers.
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
-- Search's "Request this book" opens a stand-in page (`CatalogRoutes.requestBook`) until the Request a Book flow lands (Arifin). Point it at the real flow then.
+- Book demand (`bookDemandProvider`) isn't shown anywhere yet: the admin dashboard (Niloy) should list it. Sellers see requests on My Listings, but nothing goes to the notification center yet.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
 - No push alerts while the app is closed: the inbox badge is the notification, by design for now.
 - Removing a reported message, Bite or review closes the report, but the item itself stays: Bites and reviews have no backend store yet, and the inbox doesn't delete messages. Bans don't stop posting Bites or reviews yet either (Niloy, Farhan).
 - Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Farhan's inbox: refuse sends to and from blocked readers).
 - Bite comments don't exist yet, so nothing reports them. When they land, add `ReportIconButton(target: ReportTarget(kind: ReportTargetKind.comment, id: ...))` (Niloy).
-- The P2P marketplace filter bar's text is English-only, and "Save draft" on the add-listing form doesn't save yet (Arifin's listing flow).
+- The P2P marketplace filter bar's text is English-only (its search field is translated now), and "Save draft" on the add-listing form doesn't save yet (Arifin's listing flow).

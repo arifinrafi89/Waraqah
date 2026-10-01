@@ -23,7 +23,7 @@ class P2pMarketplacePage extends ConsumerWidget {
           child: Column(
             children: [
               P2pMarketplaceHeader(listings: listings),
-              P2pMarketplaceSearchField(ref: ref),
+              const P2pMarketplaceSearchField(),
               const P2pMarketplaceFilterBar(),
               P2pMarketplaceResultRow(listings: listings),
               Expanded(child: P2pMarketplaceGrid(listings: listings)),

@@ -5,7 +5,7 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/app_buttons.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../catalog_routes.dart';
+import '../../../book_request/book_request_routes.dart';
 
 /// The no-results message for `query`, with a Request this book button.
 class SearchNoResults extends StatelessWidget {
@@ -30,7 +30,8 @@ class SearchNoResults extends StatelessWidget {
             ),
             PrimaryButton(
               label: l10n.searchRequestBook,
-              onPressed: () => context.push(CatalogRoutes.requestBook),
+              onPressed: () =>
+                  context.push(BookRequestRoutes.newFor(title: query)),
             ),
           ],
         ),
