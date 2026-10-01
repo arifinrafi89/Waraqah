@@ -1626,6 +1626,113 @@ class AppL10nBn extends AppL10n {
   String get profileListings => 'লিস্টিং';
 
   @override
+  String get profileEditProfile => 'প্রোফাইল সম্পাদনা';
+
+  @override
+  String get profileEditName => 'নাম';
+
+  @override
+  String get profileEditPhoto => 'ছবি পরিবর্তন করুন';
+
+  @override
+  String get profilePhone => 'ফোন নম্বর';
+
+  @override
+  String get profilePhoneHint => '০১XXXXXXXXX';
+
+  @override
+  String get profileSaveChanges => 'পরিবর্তন সংরক্ষণ করুন';
+
+  @override
+  String get profileSaved => 'প্রোফাইল আপডেট হয়েছে';
+
+  @override
+  String get profileSavedAddresses => 'সংরক্ষিত ঠিকানা';
+
+  @override
+  String get profileAddAddress => 'ঠিকানা যোগ করুন';
+
+  @override
+  String get profileNoAddresses => 'এখনও কোনো ঠিকানা সংরক্ষিত নেই।';
+
+  @override
+  String get profileAddressLabel => 'ঠিকানার নাম';
+
+  @override
+  String get profileAddressLine => 'বাড়ি, সড়ক ও এলাকা';
+
+  @override
+  String get profileDivision => 'বিভাগ';
+
+  @override
+  String get profileDistrict => 'জেলা';
+
+  @override
+  String get profileUpazila => 'উপজেলা';
+
+  @override
+  String get profileSelectDivision => 'বিভাগ নির্বাচন করুন';
+
+  @override
+  String get profileSelectDistrict => 'জেলা নির্বাচন করুন';
+
+  @override
+  String get profileSelectUpazila => 'উপজেলা নির্বাচন করুন';
+
+  @override
+  String get profileSaveAddress => 'ঠিকানা সংরক্ষণ করুন';
+
+  @override
+  String get profileAddressSaved => 'ঠিকানা সংরক্ষণ হয়েছে';
+
+  @override
+  String get profileEditAddress => 'ঠিকানা সম্পাদনা';
+
+  @override
+  String get profileDeleteAddress => 'ঠিকানা মুছুন';
+
+  @override
+  String get profileDeleteAddressMessage =>
+      'এই সংরক্ষিত ঠিকানাটি সরিয়ে দেবেন?';
+
+  @override
+  String get profileAddressDeleted => 'ঠিকানা মুছে ফেলা হয়েছে';
+
+  @override
+  String get profileNotifications => 'নোটিফিকেশন';
+
+  @override
+  String get profilePushNotifications => 'পুশ নোটিফিকেশন';
+
+  @override
+  String get profileOrderUpdates => 'অর্ডার আপডেট';
+
+  @override
+  String get profilePromotions => 'অফার ও সুপারিশ';
+
+  @override
+  String get profilePrivacy => 'গোপনীয়তা';
+
+  @override
+  String get profileProfileVisibility => 'প্রোফাইল দৃশ্যমানতা';
+
+  @override
+  String get profileActivityVisibility => 'পড়ার কার্যক্রমের দৃশ্যমানতা';
+
+  @override
+  String get profileDeleteAccount => 'অ্যাকাউন্ট মুছে ফেলুন';
+
+  @override
+  String get profileDeleteAccountMessage =>
+      'এতে আপনার অ্যাকাউন্ট ও সংরক্ষিত তথ্য স্থায়ীভাবে মুছে যাবে।';
+
+  @override
+  String get profileDeleteConfirm => 'স্থায়ীভাবে মুছুন';
+
+  @override
+  String get profileCancel => 'বাতিল';
+
+  @override
   String get comingSoonTitle => 'শীঘ্রই আসছে';
 
   @override
