@@ -86,6 +86,7 @@ void main() {
 
     await tester.tap(find.text('Add'));
     await settle(tester);
+    await tester.ensureVisible(find.text('Save'));
     await tester.tap(find.text('Save'));
     await settle(tester);
     expect(find.text('Add the title in English and Bangla'), findsNWidgets(2));
@@ -100,7 +101,9 @@ void main() {
     final words = find.widgetWithText(TextFormField, 'Search words');
     await tester.ensureVisible(words);
     await tester.enterText(words, 'eid');
-    await tester.ensureVisible(find.text('Save'));
+    // Scroll the sheet up to its Save button.
+    await tester.dragFrom(const Offset(187, 400), const Offset(0, -300));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Save'));
     await settle(tester);
     expect(find.text('Eid reads'), findsOneWidget);

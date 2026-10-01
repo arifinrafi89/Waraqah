@@ -10,9 +10,10 @@ import '../providers/catalog_admin_providers.dart';
 import '../providers/catalog_admin_actions.dart';
 import 'admin_list_skeleton.dart';
 import 'banner_sheet.dart';
+import 'season_dropdown.dart';
 
-/// Home's Banners in display order: move each up or down, tap to edit,
-/// or add one.
+/// Home's Season at the top, then every Banner in display order: move each
+/// up or down, tap to edit, or add one.
 class BannersAdminTab extends ConsumerWidget {
   const BannersAdminTab({super.key});
 
@@ -42,6 +43,8 @@ class BannersAdminTab extends ConsumerWidget {
             96,
           ),
           children: [
+            const SeasonOverrideDropdown(),
+            const SizedBox(height: Insets.md),
             if (banners.isEmpty)
               Text(l10n.adminCatalogNoBanners, textAlign: TextAlign.center),
             for (final (i, b) in banners.indexed)

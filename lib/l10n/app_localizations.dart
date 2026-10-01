@@ -559,6 +559,30 @@ abstract class AppL10n {
   /// **'Most bought in the last 30 days'**
   String get homeBestsellersSub;
 
+  /// No description provided for @homeSeasonRamadan.
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan'**
+  String get homeSeasonRamadan;
+
+  /// No description provided for @homeSeasonBoiMela.
+  ///
+  /// In en, this message translates to:
+  /// **'Boi Mela'**
+  String get homeSeasonBoiMela;
+
+  /// No description provided for @homeSeasonAdmission.
+  ///
+  /// In en, this message translates to:
+  /// **'Admission season'**
+  String get homeSeasonAdmission;
+
+  /// No description provided for @homeSeasonBackToSchool.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to school'**
+  String get homeSeasonBackToSchool;
+
   /// No description provided for @homeFromStudents.
   ///
   /// In en, this message translates to:
@@ -3900,6 +3924,30 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'No banners. Home shows none until you add one.'**
   String get adminCatalogNoBanners;
+
+  /// No description provided for @adminCatalogSeasonHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home\'s season'**
+  String get adminCatalogSeasonHome;
+
+  /// No description provided for @adminCatalogSeasonAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic (by date)'**
+  String get adminCatalogSeasonAuto;
+
+  /// No description provided for @adminCatalogSeason.
+  ///
+  /// In en, this message translates to:
+  /// **'Season'**
+  String get adminCatalogSeason;
+
+  /// No description provided for @adminCatalogSeasonNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None (all year)'**
+  String get adminCatalogSeasonNone;
 
   /// No description provided for @adminOrders.
   ///

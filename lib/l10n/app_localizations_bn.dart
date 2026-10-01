@@ -248,6 +248,18 @@ class AppL10nBn extends AppL10n {
   String get homeBestsellersSub => 'গত ৩০ দিনে সবচেয়ে বেশি কেনা';
 
   @override
+  String get homeSeasonRamadan => 'রমজান';
+
+  @override
+  String get homeSeasonBoiMela => 'বইমেলা';
+
+  @override
+  String get homeSeasonAdmission => 'ভর্তি মৌসুম';
+
+  @override
+  String get homeSeasonBackToSchool => 'স্কুলে ফেরা';
+
+  @override
   String get homeFromStudents => 'পাঠকদের পুরোনো বই';
 
   @override
@@ -2130,6 +2142,18 @@ class AppL10nBn extends AppL10n {
   @override
   String get adminCatalogNoBanners =>
       'কোনো ব্যানার নেই। আপনি যোগ না করা পর্যন্ত হোমে কিছু দেখাবে না।';
+
+  @override
+  String get adminCatalogSeasonHome => 'হোমের মৌসুম';
+
+  @override
+  String get adminCatalogSeasonAuto => 'স্বয়ংক্রিয় (তারিখ অনুযায়ী)';
+
+  @override
+  String get adminCatalogSeason => 'মৌসুম';
+
+  @override
+  String get adminCatalogSeasonNone => 'নেই (সারা বছর)';
 
   @override
   String get adminOrders => 'অর্ডার';

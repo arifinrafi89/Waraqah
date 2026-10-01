@@ -38,4 +38,30 @@ void main() {
     expect(pathOf(router), CatalogRoutes.collectionFor(info.collectionId));
     await tester.pump(const Duration(seconds: 5));
   });
+
+  testWidgets('Staff force Ramadan on the Banners tab; Home follows', (
+    tester,
+  ) async {
+    final router = await openApp(
+      tester,
+      '/admin/catalog',
+      role: 'catalogManager',
+    );
+    await tester.ensureVisible(find.text('Banners'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Banners'));
+    await settle(tester);
+    await settle(tester);
+
+    await tester.tap(find.text('Automatic (by date)'));
+    await settle(tester);
+    await tester.tap(find.text('Ramadan').last);
+    await settle(tester);
+
+    router.go(HomeRoutes.home);
+    await settle(tester);
+    await settle(tester);
+    expect(_hero('Ramadan reading'), findsOneWidget);
+    expect(find.text('Ramadan Mubarak'), findsOneWidget);
+  });
 }
