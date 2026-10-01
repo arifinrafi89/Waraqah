@@ -1,8 +1,17 @@
 import '../models/catalog_record_models.dart';
 
 /// Offline Publishers. Ids are what `Book.publisherId` points at.
+// ponytail: in-place fixture lists; the Go backend owns the catalog.
 abstract final class PublisherFixtures {
-  static const List<PublisherModel> all = [
+  /// Staff's admin edits change this list in place.
+  static final List<PublisherModel> all = [..._seed];
+
+  /// Back to the seed. Each new fake backend starts here.
+  static void reset() => all
+    ..clear()
+    ..addAll(_seed);
+
+  static const List<PublisherModel> _seed = [
     PublisherModel(id: 'pub-harper', name: 'Harper'),
     PublisherModel(id: 'pub-harpercollins', name: 'HarperCollins'),
     PublisherModel(id: 'pub-avery', name: 'Avery'),

@@ -2,6 +2,7 @@ import '../../../../core/models/book.dart';
 import '../models/catalog_record_models.dart';
 
 /// Offline Categories. Ids are what `Book.categoryId` points at.
+// ponytail: in-place fixture lists; the Go backend owns the catalog.
 abstract final class CategoryFixtures {
   /// JSON for the Categories of the Section named [section].
   static List<Map<String, dynamic>> forSection(String? section) => [
@@ -9,7 +10,15 @@ abstract final class CategoryFixtures {
       if (c.section.name == section) c.toJson(),
   ];
 
-  static const List<CategoryModel> all = [
+  /// Staff's admin edits change this list in place.
+  static final List<CategoryModel> all = [..._seed];
+
+  /// Back to the seed. Each new fake backend starts here.
+  static void reset() => all
+    ..clear()
+    ..addAll(_seed);
+
+  static const List<CategoryModel> _seed = [
     CategoryModel(
       id: 'cat-islamic-studies',
       section: Section.religious,

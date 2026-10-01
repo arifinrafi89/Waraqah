@@ -15,6 +15,7 @@ abstract interface class BookRepository {
     CatalogFilters filters = const CatalogFilters(),
   ]);
 
-  /// A single title, used by the AI assistant's recommendation cards.
+  /// A single title, even a hidden one (its page still opens from old
+  /// links); `null` when unknown.
   Future<Book?> findById(String id);
 }

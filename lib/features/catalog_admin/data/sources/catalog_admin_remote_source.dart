@@ -1,0 +1,71 @@
+import 'package:dio/dio.dart';
+
+import '../../../../core/models/book.dart';
+import '../../../home/domain/entities/banner.dart';
+import '../../domain/entities/book_draft.dart';
+import '../../domain/entities/catalog_record.dart';
+import '../models/book_draft_json.dart';
+import '../models/catalog_record_model.dart';
+import 'catalog_admin_fake_api.dart';
+
+/// Talks to the `/admin/catalog` endpoints, answered for now by the fake
+/// API. A refused change (`null`) is an error, shown by the page.
+class CatalogAdminRemoteSource {
+  CatalogAdminRemoteSource(this._dio);
+
+  final Dio _dio;
+
+  Future<Book> saveBook(BookDraft draft) async =>
+      Book.fromJson(await _post(CatalogAdminFakeApi.saveBook, draft.toJson()));
+
+  Future<Book> setHidden(String id, bool hidden) async => Book.fromJson(
+    await _post(CatalogAdminFakeApi.hideBook, {'id': id, 'hidden': hidden}),
+  );
+
+  Future<List<CatalogRecordModel>> records(RecordKind kind) async {
+    final response = await _dio.get<List<dynamic>>(
+      CatalogAdminFakeApi.records(kind),
+    );
+    return [
+      for (final json in response.data ?? const [])
+        CatalogRecordModel.fromJson(json as Map<String, dynamic>),
+    ];
+  }
+
+  Future<CatalogRecordModel> saveRecord(
+    RecordKind kind,
+    CatalogRecord r,
+  ) async => CatalogRecordModel.fromJson(
+    await _post('${CatalogAdminFakeApi.records(kind)}/save', {
+      'id': ?r.id,
+      'name': r.name,
+      'nameBn': r.nameBn,
+      'section': ?r.section?.name,
+    }),
+  );
+
+  Future<void> deleteRecord(RecordKind kind, String id) =>
+      _post('${CatalogAdminFakeApi.records(kind)}/delete', {'id': id});
+
+  Future<void> saveBanner(Banner b) => _post(CatalogAdminFakeApi.saveBanner, {
+    'id': b.id,
+    'titleEn': b.titleEn,
+    'titleBn': b.titleBn,
+    'subtitleEn': b.subtitleEn,
+    'subtitleBn': b.subtitleBn,
+    'seed': b.seed,
+    'target': {'kind': b.target.kind.name, 'value': b.target.value},
+  });
+
+  Future<void> deleteBanner(String id) =>
+      _post(CatalogAdminFakeApi.deleteBanner, {'id': id});
+
+  Future<void> moveBanner(String id, int by) =>
+      _post(CatalogAdminFakeApi.moveBanner, {'id': id, 'by': by});
+
+  Future<dynamic> _post(String path, Map<String, dynamic> body) async {
+    final data = (await _dio.post<dynamic>(path, data: body)).data;
+    if (data == null) throw StateError('The server refused the change.');
+    return data;
+  }
+}

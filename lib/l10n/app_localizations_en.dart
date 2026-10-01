@@ -1929,6 +1929,292 @@ class AppL10nEn extends AppL10n {
   String get adminCatalogHint => 'Add and edit books, editions and stock';
 
   @override
+  String get adminCatalogTitle => 'Catalog';
+
+  @override
+  String get adminCatalogTabBooks => 'Books';
+
+  @override
+  String get adminCatalogTabCategories => 'Categories';
+
+  @override
+  String get adminCatalogTabAuthors => 'Authors';
+
+  @override
+  String get adminCatalogTabPublishers => 'Publishers';
+
+  @override
+  String get adminCatalogTabBanners => 'Banners';
+
+  @override
+  String get adminCatalogErrTitleBlank => 'Add a title';
+
+  @override
+  String get adminCatalogErrAuthorMissing => 'Pick an author';
+
+  @override
+  String get adminCatalogErrPublisherMissing => 'Pick a publisher';
+
+  @override
+  String get adminCatalogErrCategoryMissing => 'Pick a category';
+
+  @override
+  String get adminCatalogErrCategoryWrongSection =>
+      'This category is in another section';
+
+  @override
+  String get adminCatalogErrNoEditions => 'Add at least one edition';
+
+  @override
+  String get adminCatalogErrPriceNotPositive => 'Price must be more than ৳0';
+
+  @override
+  String get adminCatalogErrListPriceTooLow =>
+      'List price must be more than the price';
+
+  @override
+  String get adminCatalogErrStockNegative => 'Stock can\'t be below 0';
+
+  @override
+  String get adminCatalogErrIsbnInvalid =>
+      'Not a valid ISBN. Check the 10 or 13 digits.';
+
+  @override
+  String get adminCatalogErrIsbnTaken =>
+      'Another edition already has this ISBN';
+
+  @override
+  String get adminCatalogErrEditionTaken =>
+      'This book already has an edition in this format and language';
+
+  @override
+  String get adminCatalogErrNameBlank => 'Add a name';
+
+  @override
+  String get adminCatalogErrNameBnBlank => 'Add the Bangla name';
+
+  @override
+  String get adminCatalogErrBannerTitleBlank =>
+      'Add the title in English and Bangla';
+
+  @override
+  String get adminCatalogErrBannerTargetBlank => 'Choose what the banner opens';
+
+  @override
+  String get adminCatalogAddBook => 'Add book';
+
+  @override
+  String get adminCatalogEditBook => 'Edit book';
+
+  @override
+  String get adminCatalogSearchBooks => 'Search title or author';
+
+  @override
+  String get adminCatalogShowHidden => 'Show hidden books';
+
+  @override
+  String get adminCatalogHidden => 'Hidden';
+
+  @override
+  String adminCatalogInStock(int count) {
+    return '$count in stock';
+  }
+
+  @override
+  String get adminCatalogNoBooks => 'No books match.';
+
+  @override
+  String get adminCatalogFieldTitle => 'Title';
+
+  @override
+  String get adminCatalogFieldTitleBn => 'Bangla title (optional)';
+
+  @override
+  String get adminCatalogFieldAuthor => 'Author';
+
+  @override
+  String get adminCatalogFieldPublisher => 'Publisher';
+
+  @override
+  String get adminCatalogFieldSection => 'Section';
+
+  @override
+  String get adminCatalogFieldCategory => 'Category';
+
+  @override
+  String get adminCatalogFieldLanguage => 'Original language';
+
+  @override
+  String get adminCatalogPick => 'Choose…';
+
+  @override
+  String get adminCatalogCover => 'Cover colours';
+
+  @override
+  String get adminCatalogEditions => 'Editions';
+
+  @override
+  String get adminCatalogAddEdition => 'Add edition';
+
+  @override
+  String get adminCatalogRemoveEdition => 'Remove edition';
+
+  @override
+  String get adminCatalogFieldFormat => 'Format';
+
+  @override
+  String get adminCatalogFieldEditionLanguage => 'Language';
+
+  @override
+  String get adminCatalogFieldPrice => 'Price (৳)';
+
+  @override
+  String get adminCatalogFieldListPrice => 'List price (৳, optional)';
+
+  @override
+  String get adminCatalogFieldStock => 'Stock';
+
+  @override
+  String get adminCatalogFieldPreorder => 'Pre-order';
+
+  @override
+  String get adminCatalogFieldIsbn => 'ISBN (optional)';
+
+  @override
+  String get adminCatalogEbookNote => 'eBooks never run out and have no ISBN.';
+
+  @override
+  String get adminCatalogDone => 'Done';
+
+  @override
+  String get adminCatalogSave => 'Save';
+
+  @override
+  String get adminCatalogSaved => 'Saved';
+
+  @override
+  String get adminCatalogSaveFailed =>
+      'Couldn\'t save. Check the form and try again.';
+
+  @override
+  String get adminCatalogHide => 'Hide';
+
+  @override
+  String get adminCatalogUnhide => 'Show again';
+
+  @override
+  String get adminCatalogHideHint =>
+      'A hidden book leaves lists, search, Home and collections, but its page still opens from old links and can be bought. To stop sales, set stock to 0.';
+
+  @override
+  String get adminCatalogSearchRecords => 'Search';
+
+  @override
+  String get adminCatalogAddNew => 'Add new…';
+
+  @override
+  String get adminCatalogFieldName => 'Name (English)';
+
+  @override
+  String get adminCatalogFieldNameBn => 'Name (Bangla)';
+
+  @override
+  String get adminCatalogFieldNameBnOptional => 'Name (Bangla, optional)';
+
+  @override
+  String adminCatalogBookCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count books',
+      one: '1 book',
+      zero: 'No books',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminCatalogUsedBy(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Used by $count books',
+      one: 'Used by 1 book',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get adminCatalogDelete => 'Delete';
+
+  @override
+  String get adminCatalogDeleted => 'Deleted';
+
+  @override
+  String get adminCatalogAdd => 'Add';
+
+  @override
+  String get adminCatalogNoRecords => 'Nothing here yet.';
+
+  @override
+  String get adminCatalogBannerNew => 'New banner';
+
+  @override
+  String get adminCatalogBannerEdit => 'Edit banner';
+
+  @override
+  String get adminCatalogFieldTitleEn => 'Title (English)';
+
+  @override
+  String get adminCatalogFieldTitleBnBanner => 'Title (Bangla)';
+
+  @override
+  String get adminCatalogFieldSubtitleEn => 'Subtitle (English)';
+
+  @override
+  String get adminCatalogFieldSubtitleBn => 'Subtitle (Bangla)';
+
+  @override
+  String get adminCatalogBannerColour => 'Colours';
+
+  @override
+  String get adminCatalogBannerOpens => 'Opens';
+
+  @override
+  String get adminCatalogTargetCollection => 'Collection';
+
+  @override
+  String get adminCatalogTargetBook => 'Book';
+
+  @override
+  String get adminCatalogTargetSearch => 'Search';
+
+  @override
+  String get adminCatalogSearchWords => 'Search words';
+
+  @override
+  String get adminCatalogMoveUp => 'Move up';
+
+  @override
+  String get adminCatalogMoveDown => 'Move down';
+
+  @override
+  String get adminCatalogEdit => 'Edit';
+
+  @override
+  String get adminCatalogDeleteBannerTitle => 'Delete this banner?';
+
+  @override
+  String get adminCatalogDeleteBannerBody => 'It leaves Home at once.';
+
+  @override
+  String get adminCatalogCancel => 'Cancel';
+
+  @override
+  String get adminCatalogNoBanners =>
+      'No banners. Home shows none until you add one.';
+
+  @override
   String get adminOrders => 'Orders';
 
   @override

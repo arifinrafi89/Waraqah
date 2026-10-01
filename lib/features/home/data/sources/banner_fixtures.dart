@@ -2,8 +2,17 @@ import '../../domain/entities/banner.dart';
 import '../models/banner_model.dart';
 
 /// Offline Banners, in the order Home shows them.
+// ponytail: in-place fixture lists; the Go backend owns the catalog.
 abstract final class BannerFixtures {
-  static const List<BannerModel> all = [
+  /// Staff's admin edits change this list in place.
+  static final List<BannerModel> all = [..._seed];
+
+  /// Back to the seed. Each new fake backend starts here.
+  static void reset() => all
+    ..clear()
+    ..addAll(_seed);
+
+  static const List<BannerModel> _seed = [
     BannerModel(
       id: 'ban-hadith',
       titleEn: 'Hadith collections',

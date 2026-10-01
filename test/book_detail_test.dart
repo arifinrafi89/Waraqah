@@ -31,6 +31,10 @@ class _StaticBookSource extends BookRemoteSource {
   Future<List<Book>> fetchBooks([
     CatalogFilters filters = const CatalogFilters(),
   ]) async => books;
+
+  @override
+  Future<Book?> fetchBook(String id) async =>
+      books.where((b) => b.id == id).firstOrNull;
 }
 
 BookDetailsRepositoryImpl _repository([List<Book>? books]) =>

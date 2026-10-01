@@ -28,7 +28,7 @@ void main() {
       role: 'catalogManager',
     );
     expect(pathOf(catalog), '/admin/catalog');
-    expect(find.text('Coming soon'), findsOneWidget);
+    expect(find.text('Categories'), findsOneWidget);
 
     final dashboard = await openApp(
       tester,

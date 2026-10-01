@@ -1,8 +1,17 @@
 import '../models/catalog_record_models.dart';
 
 /// Offline Authors. Ids are what `Book.authorId` points at.
+// ponytail: in-place fixture lists; the Go backend owns the catalog.
 abstract final class AuthorFixtures {
-  static const List<AuthorModel> all = [
+  /// Staff's admin edits change this list in place.
+  static final List<AuthorModel> all = [..._seed];
+
+  /// Back to the seed. Each new fake backend starts here.
+  static void reset() => all
+    ..clear()
+    ..addAll(_seed);
+
+  static const List<AuthorModel> _seed = [
     AuthorModel(id: 'au-tolkien', name: 'J. R. R. Tolkien'),
     AuthorModel(id: 'au-rowling', name: 'J. K. Rowling'),
     AuthorModel(id: 'au-brown', name: 'Dan Brown'),

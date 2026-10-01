@@ -30,10 +30,7 @@ class BookRepositoryImpl implements BookRepository {
   });
 
   @override
-  Future<Book?> findById(String id) async {
-    final books = await searchCatalog();
-    return books.where((book) => book.id == id).firstOrNull;
-  }
+  Future<Book?> findById(String id) => _source.fetchBook(id);
 
   /// Project rule: cheapest From-price first, ties broken by the better review score.
   List<Book> _sortByValue(List<Book> books) {

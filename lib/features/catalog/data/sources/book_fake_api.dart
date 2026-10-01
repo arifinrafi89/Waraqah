@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../../../core/models/book.dart';
+import '../../../../core/models/edition.dart';
 import 'author_fixtures.dart';
 import 'book_details_fixtures.dart';
 import 'book_edition_filter.dart';
@@ -16,7 +17,12 @@ import 'used_options_fixtures.dart';
 /// Catalog's fake endpoints: paths and fixture handlers, merged into
 /// `FakeApiInterceptor` by `app/fake_api_routes.dart`.
 abstract final class BookFakeApi {
+  /// Books on the storefront, narrowed by the query. Hidden Books only with
+  /// `includeHidden=true` (Staff's list).
   static const String books = '/books';
+
+  /// One Book, even a hidden one: `?id=<bookId>`, or `null` when unknown.
+  static const String book = '/books/detail';
 
   /// One book's summary, page count and reviews: `?id=<bookId>`.
   /// Answers `null` when there's nothing extra for that book.
@@ -52,8 +58,12 @@ abstract final class BookFakeApi {
 
   static final Map<String, Object? Function(RequestOptions)> routes = {
     books: _books,
-    bookDetails: _bookDetails,
-    usedOptions: _usedOptions,
+    book: (options) => _book(options)?.toJson(),
+    bookDetails: (options) => BookDetailsFixtures.find(_id(options))?.toJson(),
+    usedOptions: (options) => switch (_book(options)) {
+      final book? => UsedOptionsFixtures.forBook(book).toJson(),
+      null => null,
+    },
     lookInside: (options) => LookInsideFixtures.byBook[_id(options)]?.toJson(),
     series: (options) => SeriesFixtures.jsonForBook(_id(options)),
     seriesDetail: (options) => SeriesFixtures.jsonForId(_id(options)),
@@ -69,32 +79,25 @@ abstract final class BookFakeApi {
         .firstOrNull
         ?.toJson(),
     priceLows: (options) => {
-      for (final book in BookFixtures.all.where((b) => b.id == _id(options)))
-        for (final e in book.editions)
-          e.id: (_earlierLows[e.id] ?? e.priceBdt) < e.priceBdt
-              ? _earlierLows[e.id]!
-              : e.priceBdt,
+      for (final e in _book(options)?.editions ?? const <Edition>[])
+        e.id: (_earlierLows[e.id] ?? e.priceBdt) < e.priceBdt
+            ? _earlierLows[e.id]!
+            : e.priceBdt,
     },
   };
 
   static String _id(RequestOptions options) =>
       options.queryParameters['id'] as String? ?? '';
 
-  static Object? _usedOptions(RequestOptions options) {
-    final book = BookFixtures.all
-        .where((b) => b.id == _id(options))
-        .firstOrNull;
-    return book == null ? null : UsedOptionsFixtures.forBook(book).toJson();
-  }
-
-  static Object? _bookDetails(RequestOptions options) {
-    return BookDetailsFixtures.find(_id(options))?.toJson();
-  }
+  static Book? _book(RequestOptions options) =>
+      BookFixtures.all.where((b) => b.id == _id(options)).firstOrNull;
 
   static Object _books(RequestOptions options) {
     final params = options.queryParameters;
     final query = (params['q'] as String? ?? '').trim().toLowerCase();
+    final withHidden = params['includeHidden'] == true;
     bool inScope(Book book) =>
+        (withHidden || !book.hidden) &&
         (params['category'] == null || book.categoryId == params['category']) &&
         (params['section'] == null || book.section.name == params['section']) &&
         (params['author'] == null || book.authorId == params['author']) &&

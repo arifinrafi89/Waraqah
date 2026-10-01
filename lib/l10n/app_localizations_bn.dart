@@ -1848,6 +1848,285 @@ class AppL10nBn extends AppL10n {
   String get adminCatalogHint => 'বই, সংস্করণ আর স্টক যোগ ও সম্পাদনা';
 
   @override
+  String get adminCatalogTitle => 'ক্যাটালগ';
+
+  @override
+  String get adminCatalogTabBooks => 'বই';
+
+  @override
+  String get adminCatalogTabCategories => 'ক্যাটাগরি';
+
+  @override
+  String get adminCatalogTabAuthors => 'লেখক';
+
+  @override
+  String get adminCatalogTabPublishers => 'প্রকাশক';
+
+  @override
+  String get adminCatalogTabBanners => 'ব্যানার';
+
+  @override
+  String get adminCatalogErrTitleBlank => 'শিরোনাম লিখুন';
+
+  @override
+  String get adminCatalogErrAuthorMissing => 'লেখক বেছে নিন';
+
+  @override
+  String get adminCatalogErrPublisherMissing => 'প্রকাশক বেছে নিন';
+
+  @override
+  String get adminCatalogErrCategoryMissing => 'ক্যাটাগরি বেছে নিন';
+
+  @override
+  String get adminCatalogErrCategoryWrongSection => 'এই ক্যাটাগরি অন্য সেকশনের';
+
+  @override
+  String get adminCatalogErrNoEditions => 'অন্তত একটি সংস্করণ যোগ করুন';
+
+  @override
+  String get adminCatalogErrPriceNotPositive => 'দাম ৳০-এর বেশি হতে হবে';
+
+  @override
+  String get adminCatalogErrListPriceTooLow =>
+      'তালিকা মূল্য দামের চেয়ে বেশি হতে হবে';
+
+  @override
+  String get adminCatalogErrStockNegative => 'স্টক ০-এর কম হতে পারে না';
+
+  @override
+  String get adminCatalogErrIsbnInvalid =>
+      'সঠিক ISBN নয়। ১০ বা ১৩টি অঙ্ক মিলিয়ে দেখুন।';
+
+  @override
+  String get adminCatalogErrIsbnTaken => 'এই ISBN আরেকটি সংস্করণে আছে';
+
+  @override
+  String get adminCatalogErrEditionTaken =>
+      'এই ফরম্যাট ও ভাষায় বইটির একটি সংস্করণ আগেই আছে';
+
+  @override
+  String get adminCatalogErrNameBlank => 'নাম লিখুন';
+
+  @override
+  String get adminCatalogErrNameBnBlank => 'বাংলা নাম লিখুন';
+
+  @override
+  String get adminCatalogErrBannerTitleBlank =>
+      'ইংরেজি ও বাংলায় শিরোনাম লিখুন';
+
+  @override
+  String get adminCatalogErrBannerTargetBlank =>
+      'ব্যানারটি কী খুলবে তা বেছে নিন';
+
+  @override
+  String get adminCatalogAddBook => 'বই যোগ করুন';
+
+  @override
+  String get adminCatalogEditBook => 'বই সম্পাদনা';
+
+  @override
+  String get adminCatalogSearchBooks => 'শিরোনাম বা লেখক খুঁজুন';
+
+  @override
+  String get adminCatalogShowHidden => 'লুকানো বইও দেখান';
+
+  @override
+  String get adminCatalogHidden => 'লুকানো';
+
+  @override
+  String adminCatalogInStock(int count) {
+    return 'স্টকে $countটি';
+  }
+
+  @override
+  String get adminCatalogNoBooks => 'কোনো বই মেলেনি।';
+
+  @override
+  String get adminCatalogFieldTitle => 'শিরোনাম';
+
+  @override
+  String get adminCatalogFieldTitleBn => 'বাংলা শিরোনাম (ঐচ্ছিক)';
+
+  @override
+  String get adminCatalogFieldAuthor => 'লেখক';
+
+  @override
+  String get adminCatalogFieldPublisher => 'প্রকাশক';
+
+  @override
+  String get adminCatalogFieldSection => 'সেকশন';
+
+  @override
+  String get adminCatalogFieldCategory => 'ক্যাটাগরি';
+
+  @override
+  String get adminCatalogFieldLanguage => 'মূল ভাষা';
+
+  @override
+  String get adminCatalogPick => 'বেছে নিন…';
+
+  @override
+  String get adminCatalogCover => 'প্রচ্ছদের রং';
+
+  @override
+  String get adminCatalogEditions => 'সংস্করণ';
+
+  @override
+  String get adminCatalogAddEdition => 'সংস্করণ যোগ করুন';
+
+  @override
+  String get adminCatalogRemoveEdition => 'সংস্করণ সরান';
+
+  @override
+  String get adminCatalogFieldFormat => 'ফরম্যাট';
+
+  @override
+  String get adminCatalogFieldEditionLanguage => 'ভাষা';
+
+  @override
+  String get adminCatalogFieldPrice => 'দাম (৳)';
+
+  @override
+  String get adminCatalogFieldListPrice => 'তালিকা মূল্য (৳, ঐচ্ছিক)';
+
+  @override
+  String get adminCatalogFieldStock => 'স্টক';
+
+  @override
+  String get adminCatalogFieldPreorder => 'প্রি-অর্ডার';
+
+  @override
+  String get adminCatalogFieldIsbn => 'ISBN (ঐচ্ছিক)';
+
+  @override
+  String get adminCatalogEbookNote => 'ই-বুক কখনো শেষ হয় না, আর এর ISBN নেই।';
+
+  @override
+  String get adminCatalogDone => 'ঠিক আছে';
+
+  @override
+  String get adminCatalogSave => 'সেভ করুন';
+
+  @override
+  String get adminCatalogSaved => 'সেভ হয়েছে';
+
+  @override
+  String get adminCatalogSaveFailed =>
+      'সেভ করা যায়নি। ফর্মটি দেখে আবার চেষ্টা করুন।';
+
+  @override
+  String get adminCatalogHide => 'লুকান';
+
+  @override
+  String get adminCatalogUnhide => 'আবার দেখান';
+
+  @override
+  String get adminCatalogHideHint =>
+      'লুকানো বই তালিকা, সার্চ, হোম ও সংকলন থেকে সরে যায়, কিন্তু পুরোনো লিংক থেকে এর পেজ খোলে এবং কেনা যায়। বিক্রি বন্ধ করতে স্টক ০ করুন।';
+
+  @override
+  String get adminCatalogSearchRecords => 'খুঁজুন';
+
+  @override
+  String get adminCatalogAddNew => 'নতুন যোগ করুন…';
+
+  @override
+  String get adminCatalogFieldName => 'নাম (ইংরেজি)';
+
+  @override
+  String get adminCatalogFieldNameBn => 'নাম (বাংলা)';
+
+  @override
+  String get adminCatalogFieldNameBnOptional => 'নাম (বাংলা, ঐচ্ছিক)';
+
+  @override
+  String adminCatalogBookCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি বই',
+      zero: 'কোনো বই নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminCatalogUsedBy(int count) {
+    return '$countটি বইয়ে ব্যবহৃত';
+  }
+
+  @override
+  String get adminCatalogDelete => 'মুছে ফেলুন';
+
+  @override
+  String get adminCatalogDeleted => 'মুছে ফেলা হয়েছে';
+
+  @override
+  String get adminCatalogAdd => 'যোগ করুন';
+
+  @override
+  String get adminCatalogNoRecords => 'এখানে এখনো কিছু নেই।';
+
+  @override
+  String get adminCatalogBannerNew => 'নতুন ব্যানার';
+
+  @override
+  String get adminCatalogBannerEdit => 'ব্যানার সম্পাদনা';
+
+  @override
+  String get adminCatalogFieldTitleEn => 'শিরোনাম (ইংরেজি)';
+
+  @override
+  String get adminCatalogFieldTitleBnBanner => 'শিরোনাম (বাংলা)';
+
+  @override
+  String get adminCatalogFieldSubtitleEn => 'উপশিরোনাম (ইংরেজি)';
+
+  @override
+  String get adminCatalogFieldSubtitleBn => 'উপশিরোনাম (বাংলা)';
+
+  @override
+  String get adminCatalogBannerColour => 'রং';
+
+  @override
+  String get adminCatalogBannerOpens => 'যা খুলবে';
+
+  @override
+  String get adminCatalogTargetCollection => 'সংকলন';
+
+  @override
+  String get adminCatalogTargetBook => 'বই';
+
+  @override
+  String get adminCatalogTargetSearch => 'সার্চ';
+
+  @override
+  String get adminCatalogSearchWords => 'সার্চের শব্দ';
+
+  @override
+  String get adminCatalogMoveUp => 'উপরে নিন';
+
+  @override
+  String get adminCatalogMoveDown => 'নিচে নিন';
+
+  @override
+  String get adminCatalogEdit => 'সম্পাদনা';
+
+  @override
+  String get adminCatalogDeleteBannerTitle => 'এই ব্যানারটি মুছে ফেলবেন?';
+
+  @override
+  String get adminCatalogDeleteBannerBody =>
+      'এটি সঙ্গে সঙ্গে হোম থেকে সরে যাবে।';
+
+  @override
+  String get adminCatalogCancel => 'বাতিল';
+
+  @override
+  String get adminCatalogNoBanners =>
+      'কোনো ব্যানার নেই। আপনি যোগ না করা পর্যন্ত হোমে কিছু দেখাবে না।';
+
+  @override
   String get adminOrders => 'অর্ডার';
 
   @override
