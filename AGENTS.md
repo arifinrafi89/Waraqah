@@ -99,6 +99,11 @@ The app also has:
   - **Report a problem:** a reason, a note and up to 3 photos (Farhan's `ReturnPhotosPicker`). It goes to the Moderation Center's **Disputes** tab, where a moderator refunds the buyer (to the wallet; the Listing goes live again) or pays the seller. Both go into the audit log.
   - Pages: `HandledSaleRoutes.sales` (`/sales`, buying and selling, linked from Profile), `saleFor(id)`, `buyFor(listingId)` and `earnings`: held, earned, paid out, and "Pay ৳X to my bKash". Everything under `/sales` is signed-in only.
   - Fake API `/sales/...` (`HandledSaleFakeStore`, sharing `P2pFakeStore`, `WalletFakeStore` and `ModerationFakeStore`). Seeds: a sale the reader bought (on its way), two they sold (one paid, one completed and paid out), and a dispute. In the demo, another seller sends the book 4 s after it's paid, so tests that buy must `pump(const Duration(seconds: 5))` and `settle`.
+- **Sell Back and Certified Used are done** (Arifin): `features/sell_back`.
+  - `SellBackRoutes.sellBack` (`/sell-back`, `sellBackFor(bookId)`; signed-in only; linked from Profile and from the scanner's result): pick the book from the catalog, say its condition and flags, and get an **instant price** (`SellBackRules.quote`: Like New 35% of the cheapest printed Edition, Very Good 30%, Good 25%, Acceptable 15%, 5% off per flag, at least ৳30). Then book a courier pickup. **My Sell Backs** (`SellBackRoutes.mine`) tracks each one: pickup booked → being checked → paid, or sent back.
+  - **Admin → Trade-ins** (`AdminSection.tradeIn`, catalog managers and super admin): staff set their own grade, then **Pay ৳X · sell for ৳Y**. Waraqah pays at that grade into the reader's wallet (`WalletReason.sellBack`) and publishes it as **Certified Used** (`SellBackRules.resellPrice`: 65/55/45/35% of new). Or they **Send it back**.
+  - **Certified Used stock** is `CertifiedUsedStock` (fake backend). The catalog's `UsedOptionsFixtures` reads it, so a published copy shows on the book page's "Other ways to buy" and goes in the cart. It starts with the demo Atomic Habits and Sapiens copies, and resets with each new fake backend.
+  - Fake API `/sell-back/...` (`SellBackFakeStore`, sharing `WalletFakeStore`). In the demo the courier picks a book up 4 s after it's booked; tests that book one must `pump(const Duration(seconds: 5))` and `settle`.
 - **Accounts** (Niloy, #108): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`).
 - **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
@@ -151,7 +156,7 @@ lib/
 │   └── utils/              Bdt.format (৳ prices), stock labels, cover gradients
 ├── features/
 │   ├── admin/  ai_assistant/  alerts/  auth/  bites/  book_request/  cart/  catalog/  checkout/
-│   ├── handled_sale/
+│   ├── handled_sale/  sell_back/
 │   ├── deals/  donate/  home/  inbox/  loyalty/  moderation/  orders/  p2p/  profile/  report/  scan/
 │   ├── wallet/  wishlist/
 └── l10n/                   app_en.arb, app_bn.arb (+ generated AppL10n)
@@ -233,7 +238,7 @@ features/<feature>/
 ### 4.6 Admin area (already built)
 
 - `/admin` is a staff-only hub listing **Admin sections** the viewer may open. It's reached from Profile.
-- Sections are the `AdminSection` enum (`features/admin/domain/entities/admin_section.dart`): `dashboard` (all staff), `catalog` (catalog manager), `orders` (support), `moderation` (moderator); super admin opens all. `canOpen(role)` drives both the menu and the guard.
+- Sections are the `AdminSection` enum (`features/admin/domain/entities/admin_section.dart`): `dashboard` (all staff), `catalog` (catalog manager), `orders` (support), `moderation` (moderator), `tradeIn` (catalog manager: grading Sell Back books); super admin opens all. `canOpen(role)` drives both the menu and the guard.
 - Each owner **replaces their own line** in `AdminRoutes.routes` with the real page. Link with `AdminRoutes.section(AdminSection.orders)`.
 
 ---

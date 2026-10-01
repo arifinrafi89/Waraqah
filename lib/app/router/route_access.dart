@@ -12,6 +12,7 @@ import '../../features/inbox/inbox_routes.dart';
 import '../../features/loyalty/loyalty_routes.dart';
 import '../../features/orders/orders_routes.dart';
 import '../../features/report/report_routes.dart';
+import '../../features/sell_back/sell_back_routes.dart';
 import '../../features/wallet/wallet_routes.dart';
 
 /// Which pages need a signed-in user or a staff account, and where to send
@@ -34,6 +35,7 @@ abstract final class RouteAccess {
     ReportRoutes.blocked,
     BookRequestRoutes.requests,
     HandledSaleRoutes.sales,
+    SellBackRoutes.sellBack,
   ];
 
   /// Where to redirect [location] for [user], or `null` to let it open.

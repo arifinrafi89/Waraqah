@@ -11,6 +11,7 @@ import '../../../../core/widgets/cover_art.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../catalog/catalog_routes.dart';
+import '../../../sell_back/sell_back_routes.dart';
 import '../../domain/entities/scanned_book.dart';
 import 'scan_actions.dart';
 
@@ -73,7 +74,14 @@ class ScanFoundCard extends ConsumerWidget {
             onPressed: () =>
                 context.push(CatalogRoutes.bookDetailFor(book.bookId)),
           ),
-          if (!forSell) sell,
+          if (!forSell) ...[
+            sell,
+            TextButton(
+              onPressed: () =>
+                  context.push(SellBackRoutes.sellBackFor(book.bookId)),
+              child: Text(l10n.sellBackTitle),
+            ),
+          ],
         ],
       ),
     );

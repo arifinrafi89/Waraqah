@@ -2531,6 +2531,116 @@ class AppL10nBn extends AppL10n {
   String get requestOpenListing => 'আপনার লিস্টিং';
 
   @override
+  String get sellBackTitle => 'ওয়ারাকাহকে বই ফেরত বিক্রি';
+
+  @override
+  String get sellBackIntro =>
+      'আপনার বইয়ের সঙ্গে সঙ্গে দাম জানুন। কুরিয়ার বইটি নিয়ে যাবে, আমরা যাচাই করব, টাকা যাবে আপনার ওয়ালেটে।';
+
+  @override
+  String get sellBackFindLabel => 'কোন বই?';
+
+  @override
+  String get sellBackFindHint => 'নাম বা লেখক';
+
+  @override
+  String get sellBackNoBooks =>
+      'কোনো বই পাওয়া যায়নি। ওয়ারাকাহ তার ক্যাটালগের ছাপা বই ফেরত কেনে।';
+
+  @override
+  String get sellBackChange => 'বদলান';
+
+  @override
+  String get sellBackCondition => 'বইয়ের অবস্থা';
+
+  @override
+  String sellBackQuote(String price) {
+    return 'ওয়ারাকাহ দেবে $price';
+  }
+
+  @override
+  String get sellBackQuoteNote =>
+      'যাচাইয়ে অবস্থা ভিন্ন হলে দাম আমাদের গ্রেড অনুযায়ী হবে।';
+
+  @override
+  String get sellBackAddress => 'বই নেওয়ার ঠিকানা';
+
+  @override
+  String get sellBackAddressHint => 'বাসা, রোড, এলাকা';
+
+  @override
+  String sellBackAccept(String price) {
+    return '$price নিন ও পিকআপ বুক করুন';
+  }
+
+  @override
+  String get sellBackBooked =>
+      'পিকআপ বুক হয়েছে। বই যাচাইয়ের পর আপনার ওয়ালেটে টাকা দেব।';
+
+  @override
+  String get sellBackMine => 'আমার ফেরত বিক্রি';
+
+  @override
+  String get sellBackEmpty => 'এখনো কিছু ফেরত বিক্রি হয়নি।';
+
+  @override
+  String get sellBackStatusScheduled => 'পিকআপ বুক হয়েছে';
+
+  @override
+  String get sellBackStatusPickedUp => 'যাচাই হচ্ছে';
+
+  @override
+  String sellBackStatusPaid(String price) {
+    return '$price দেওয়া হয়েছে';
+  }
+
+  @override
+  String get sellBackStatusReturned => 'আপনাকে ফেরত পাঠানো হয়েছে';
+
+  @override
+  String sellBackQuoted(String price) {
+    return 'প্রস্তাবিত $price';
+  }
+
+  @override
+  String sellBackFrom(String name) {
+    return 'বিক্রেতা: $name';
+  }
+
+  @override
+  String sellBackReaderSays(String condition) {
+    return 'পাঠক বলেছেন: $condition';
+  }
+
+  @override
+  String get sellBackGradeAs => 'আমাদের গ্রেড';
+
+  @override
+  String sellBackPayAndPublish(String pay, String resell) {
+    return '$pay দিন · $resell-এ বিক্রি';
+  }
+
+  @override
+  String get sellBackReturn => 'ফেরত পাঠান';
+
+  @override
+  String get sellBackGraded =>
+      'টাকা দেওয়া হয়েছে, সার্টিফায়েড ইউজড হিসেবে বিক্রিতে।';
+
+  @override
+  String get sellBackReturned => 'পাঠককে ফেরত পাঠানো হয়েছে।';
+
+  @override
+  String get sellBackAdminTitle => 'ট্রেড-ইন';
+
+  @override
+  String get sellBackAdminHint =>
+      'ফেরত কেনা বই গ্রেড করে সার্টিফায়েড ইউজড হিসেবে প্রকাশ করুন';
+
+  @override
+  String get sellBackAdminEmpty => 'গ্রেড করার মতো কোনো বই নেই।';
+
+  @override
   String get usedMarketTitle => 'পি২পি মার্কেটপ্লেস';
 
   @override

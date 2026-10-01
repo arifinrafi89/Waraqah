@@ -2622,6 +2622,115 @@ class AppL10nEn extends AppL10n {
   String get requestOpenListing => 'Your listing';
 
   @override
+  String get sellBackTitle => 'Sell Back to Waraqah';
+
+  @override
+  String get sellBackIntro =>
+      'Get an instant price for a book you own. A courier picks it up, we check it, and the money goes to your wallet.';
+
+  @override
+  String get sellBackFindLabel => 'Which book?';
+
+  @override
+  String get sellBackFindHint => 'Title or author';
+
+  @override
+  String get sellBackNoBooks =>
+      'No books found. Waraqah buys back printed books from its catalog.';
+
+  @override
+  String get sellBackChange => 'Change';
+
+  @override
+  String get sellBackCondition => 'Its condition';
+
+  @override
+  String sellBackQuote(String price) {
+    return 'Waraqah pays $price';
+  }
+
+  @override
+  String get sellBackQuoteNote =>
+      'If our check finds a different condition, the price follows our grade.';
+
+  @override
+  String get sellBackAddress => 'Pickup address';
+
+  @override
+  String get sellBackAddressHint => 'House, road, area';
+
+  @override
+  String sellBackAccept(String price) {
+    return 'Accept $price and book a pickup';
+  }
+
+  @override
+  String get sellBackBooked =>
+      'Pickup booked. We\'ll pay into your wallet once we\'ve checked the book.';
+
+  @override
+  String get sellBackMine => 'My Sell Backs';
+
+  @override
+  String get sellBackEmpty => 'Nothing sold back yet.';
+
+  @override
+  String get sellBackStatusScheduled => 'Pickup booked';
+
+  @override
+  String get sellBackStatusPickedUp => 'Being checked';
+
+  @override
+  String sellBackStatusPaid(String price) {
+    return 'Paid $price';
+  }
+
+  @override
+  String get sellBackStatusReturned => 'Sent back to you';
+
+  @override
+  String sellBackQuoted(String price) {
+    return 'Quoted $price';
+  }
+
+  @override
+  String sellBackFrom(String name) {
+    return 'Sold by $name';
+  }
+
+  @override
+  String sellBackReaderSays(String condition) {
+    return 'Reader says: $condition';
+  }
+
+  @override
+  String get sellBackGradeAs => 'Our grade';
+
+  @override
+  String sellBackPayAndPublish(String pay, String resell) {
+    return 'Pay $pay · sell for $resell';
+  }
+
+  @override
+  String get sellBackReturn => 'Send it back';
+
+  @override
+  String get sellBackGraded => 'Paid, and on sale as Certified Used.';
+
+  @override
+  String get sellBackReturned => 'Sent back to the reader.';
+
+  @override
+  String get sellBackAdminTitle => 'Trade-ins';
+
+  @override
+  String get sellBackAdminHint =>
+      'Grade Sell Back books and publish them as Certified Used';
+
+  @override
+  String get sellBackAdminEmpty => 'No books waiting to be graded.';
+
+  @override
   String get usedMarketTitle => 'P2P Marketplace';
 
   @override

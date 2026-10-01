@@ -4,6 +4,7 @@ import 'domain/entities/admin_section.dart';
 import 'presentation/pages/admin_hub_page.dart';
 import 'presentation/pages/admin_section_page.dart';
 import '../moderation/presentation/pages/moderation_center_page.dart';
+import '../sell_back/presentation/pages/trade_in_page.dart';
 import '../orders/presentation/pages/orders_admin_page.dart';
 
 abstract final class AdminRoutes {
@@ -34,6 +35,10 @@ abstract final class AdminRoutes {
         GoRoute(
           path: AdminSection.moderation.name,
           builder: (_, _) => const ModerationCenterPage(),
+        ),
+        GoRoute(
+          path: AdminSection.tradeIn.name,
+          builder: (_, _) => const TradeInPage(),
         ),
       ],
     ),
