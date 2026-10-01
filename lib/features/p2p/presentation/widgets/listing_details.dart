@@ -7,6 +7,7 @@ import '../../../../core/utils/formatters.dart';
 import '../../../../core/widgets/section_header.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../catalog/presentation/widgets/used_labels.dart';
+import '../../../handled_sale/presentation/widgets/handled_sale_card.dart';
 import '../../../inbox/presentation/widgets/listing_conversations.dart';
 import '../../domain/entities/p2p_listing.dart';
 import 'listing_facts.dart';
@@ -69,6 +70,10 @@ class ListingDetails extends StatelessWidget {
         ),
         const SizedBox(height: Insets.md),
         ListingFacts(listing: listing),
+        if (!listing.isMine && listing.isAvailable) ...[
+          const SizedBox(height: Insets.lg),
+          HandledSaleCard(listingId: listing.id, priceBdt: listing.priceBdt),
+        ],
         if (!listing.isMine) ...[
           const SizedBox(height: Insets.lg),
           SellerRow(listing: listing),

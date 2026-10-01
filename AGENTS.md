@@ -93,6 +93,12 @@ The app also has:
   - Sellers see **Readers want your books** on My Listings (`wantedBooksProvider`).
   - Demand for admins: `bookDemandProvider` (titles, most asked first), ready for the admin dashboard.
   - Fake API `/requests`, `/requests/mine`, `/requests/close`, `/requests/wanted`, `/requests/demand` (`BookRequestFakeStore`, sharing `P2pFakeStore`).
+- **Waraqah-handled sales are done** (Arifin): `features/handled_sale`.
+  - A live Listing shows **Let Waraqah handle it** (`HandledSaleCard`). The buyer pays the price plus ৳80 courier delivery by bKash, Nagad or card (no cash on delivery: Waraqah holds the money). The Listing becomes Reserved.
+  - A sale goes paid → sent (the seller marks it) → completed (the buyer confirms it's as described; the seller gets the price minus a 5% fee, at least ৳10, from `SaleMath`). Before it's sent, the buyer can cancel, and the money goes back to their wallet.
+  - **Report a problem:** a reason, a note and up to 3 photos (Farhan's `ReturnPhotosPicker`). It goes to the Moderation Center's **Disputes** tab, where a moderator refunds the buyer (to the wallet; the Listing goes live again) or pays the seller. Both go into the audit log.
+  - Pages: `HandledSaleRoutes.sales` (`/sales`, buying and selling, linked from Profile), `saleFor(id)`, `buyFor(listingId)` and `earnings`: held, earned, paid out, and "Pay ৳X to my bKash". Everything under `/sales` is signed-in only.
+  - Fake API `/sales/...` (`HandledSaleFakeStore`, sharing `P2pFakeStore`, `WalletFakeStore` and `ModerationFakeStore`). Seeds: a sale the reader bought (on its way), two they sold (one paid, one completed and paid out), and a dispute. In the demo, another seller sends the book 4 s after it's paid, so tests that buy must `pump(const Duration(seconds: 5))` and `settle`.
 - **Accounts** (Niloy, #108): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`).
 - **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
@@ -145,6 +151,7 @@ lib/
 │   └── utils/              Bdt.format (৳ prices), stock labels, cover gradients
 ├── features/
 │   ├── admin/  ai_assistant/  alerts/  auth/  bites/  book_request/  cart/  catalog/  checkout/
+│   ├── handled_sale/
 │   ├── deals/  donate/  home/  inbox/  loyalty/  moderation/  orders/  p2p/  profile/  report/  scan/
 │   ├── wallet/  wishlist/
 └── l10n/                   app_en.arb, app_bn.arb (+ generated AppL10n)
@@ -386,6 +393,7 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
 - Book demand (`bookDemandProvider`) isn't shown anywhere yet: the admin dashboard (Niloy) should list it. Sellers see requests on My Listings, but nothing goes to the notification center yet.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
+- Handled sales don't update live: pull down on a sale, or open it again, to see the other side's move. Wallet refunds show as "Refund for returned/cancelled HS-…" until the wallet has its own reason for them (Farhan).
 - No push alerts while the app is closed: the inbox badge is the notification, by design for now.
 - Removing a reported message, Bite or review closes the report, but the item itself stays: Bites and reviews have no backend store yet, and the inbox doesn't delete messages. Bans don't stop posting Bites or reviews yet either (Niloy, Farhan).
 - Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Farhan's inbox: refuse sends to and from blocked readers).

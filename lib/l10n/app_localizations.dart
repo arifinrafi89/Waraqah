@@ -4555,6 +4555,420 @@ abstract class AppL10n {
   /// **'Search second-hand books...'**
   String get usedSearchHint;
 
+  /// No description provided for @usedHandledTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let Waraqah handle it'**
+  String get usedHandledTitle;
+
+  /// No description provided for @usedHandledBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay in the app and a courier brings the book. Waraqah holds your money until you confirm it\'s as described.'**
+  String get usedHandledBody;
+
+  /// No description provided for @usedHandledBuy.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy for {price}'**
+  String usedHandledBuy(String price);
+
+  /// No description provided for @usedBuyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy through Waraqah'**
+  String get usedBuyTitle;
+
+  /// No description provided for @usedBuyBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Book'**
+  String get usedBuyBook;
+
+  /// No description provided for @usedBuyDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Courier delivery'**
+  String get usedBuyDelivery;
+
+  /// No description provided for @usedBuyTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'You pay'**
+  String get usedBuyTotal;
+
+  /// No description provided for @usedBuyHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah holds this until you confirm the book is as described.'**
+  String get usedBuyHeld;
+
+  /// No description provided for @usedBuyPayWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay with'**
+  String get usedBuyPayWith;
+
+  /// No description provided for @usedBuyNoCod.
+  ///
+  /// In en, this message translates to:
+  /// **'No cash on delivery: Waraqah holds the money until you confirm.'**
+  String get usedBuyNoCod;
+
+  /// No description provided for @usedBuyPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {price}'**
+  String usedBuyPay(String price);
+
+  /// No description provided for @usedBuyUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'This book isn\'t on sale any more.'**
+  String get usedBuyUnavailable;
+
+  /// No description provided for @usedSaleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Handled sale'**
+  String get usedSaleTitle;
+
+  /// No description provided for @usedSaleFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From {name}'**
+  String usedSaleFrom(String name);
+
+  /// No description provided for @usedSaleTo.
+  ///
+  /// In en, this message translates to:
+  /// **'To {name}'**
+  String usedSaleTo(String name);
+
+  /// No description provided for @usedSaleStatusPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get usedSaleStatusPaid;
+
+  /// No description provided for @usedSaleStatusSent.
+  ///
+  /// In en, this message translates to:
+  /// **'On its way'**
+  String get usedSaleStatusSent;
+
+  /// No description provided for @usedSaleStatusCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get usedSaleStatusCompleted;
+
+  /// No description provided for @usedSaleStatusDisputed.
+  ///
+  /// In en, this message translates to:
+  /// **'In dispute'**
+  String get usedSaleStatusDisputed;
+
+  /// No description provided for @usedSaleStatusRefunded.
+  ///
+  /// In en, this message translates to:
+  /// **'Refunded'**
+  String get usedSaleStatusRefunded;
+
+  /// No description provided for @usedSaleStatusReleased.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid to the seller'**
+  String get usedSaleStatusReleased;
+
+  /// No description provided for @usedSaleStatusCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get usedSaleStatusCancelled;
+
+  /// No description provided for @usedSaleHintBuyerPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah is holding {price}. {name} will hand the book to the courier.'**
+  String usedSaleHintBuyerPaid(String name, String price);
+
+  /// No description provided for @usedSaleHintSellerPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} paid. Hand the book to the courier, then mark it sent. You get {price} once they confirm.'**
+  String usedSaleHintSellerPaid(String name, String price);
+
+  /// No description provided for @usedSaleHintBuyerSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the book when it arrives. Confirm it\'s as described, or report a problem.'**
+  String get usedSaleHintBuyerSent;
+
+  /// No description provided for @usedSaleHintSellerSent.
+  ///
+  /// In en, this message translates to:
+  /// **'On its way to {name}. Waraqah pays you {price} when they confirm.'**
+  String usedSaleHintSellerSent(String name, String price);
+
+  /// No description provided for @usedSaleHintDisputed.
+  ///
+  /// In en, this message translates to:
+  /// **'A moderator is looking at it. The money stays with Waraqah until they decide.'**
+  String get usedSaleHintDisputed;
+
+  /// No description provided for @usedSaleHintBuyerDone.
+  ///
+  /// In en, this message translates to:
+  /// **'You confirmed it, and {name} has been paid.'**
+  String usedSaleHintBuyerDone(String name);
+
+  /// No description provided for @usedSaleHintSellerDone.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} is yours. It goes out with your next payout.'**
+  String usedSaleHintSellerDone(String price);
+
+  /// No description provided for @usedSaleHintBuyerRefunded.
+  ///
+  /// In en, this message translates to:
+  /// **'A moderator refunded you: {price} is back in your wallet.'**
+  String usedSaleHintBuyerRefunded(String price);
+
+  /// No description provided for @usedSaleHintSellerRefunded.
+  ///
+  /// In en, this message translates to:
+  /// **'A moderator refunded the buyer. The book comes back to you.'**
+  String get usedSaleHintSellerRefunded;
+
+  /// No description provided for @usedSaleHintBuyerReleased.
+  ///
+  /// In en, this message translates to:
+  /// **'A moderator decided for the seller and paid them.'**
+  String get usedSaleHintBuyerReleased;
+
+  /// No description provided for @usedSaleHintSellerReleased.
+  ///
+  /// In en, this message translates to:
+  /// **'A moderator decided for you: {price} is yours.'**
+  String usedSaleHintSellerReleased(String price);
+
+  /// No description provided for @usedSaleHintCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled before it was sent. The money went back to the buyer\'s wallet.'**
+  String get usedSaleHintCancelled;
+
+  /// No description provided for @usedSaleSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as sent'**
+  String get usedSaleSend;
+
+  /// No description provided for @usedSaleCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel and refund'**
+  String get usedSaleCancel;
+
+  /// No description provided for @usedSaleConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'It\'s as described'**
+  String get usedSaleConfirm;
+
+  /// No description provided for @usedSaleProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'Report a problem'**
+  String get usedSaleProblem;
+
+  /// No description provided for @usedSaleFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah fee (5%)'**
+  String get usedSaleFee;
+
+  /// No description provided for @usedSaleYouGet.
+  ///
+  /// In en, this message translates to:
+  /// **'You get'**
+  String get usedSaleYouGet;
+
+  /// No description provided for @usedDisputeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s wrong with the book?'**
+  String get usedDisputeTitle;
+
+  /// No description provided for @usedDisputeNotAsDescribed.
+  ///
+  /// In en, this message translates to:
+  /// **'Not as described'**
+  String get usedDisputeNotAsDescribed;
+
+  /// No description provided for @usedDisputeDamaged.
+  ///
+  /// In en, this message translates to:
+  /// **'Damaged'**
+  String get usedDisputeDamaged;
+
+  /// No description provided for @usedDisputePhotocopy.
+  ///
+  /// In en, this message translates to:
+  /// **'It\'s a photocopy'**
+  String get usedDisputePhotocopy;
+
+  /// No description provided for @usedDisputeWrongBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong book'**
+  String get usedDisputeWrongBook;
+
+  /// No description provided for @usedDisputeNotReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'It never arrived'**
+  String get usedDisputeNotReceived;
+
+  /// No description provided for @usedDisputeNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell the moderator what happened'**
+  String get usedDisputeNoteHint;
+
+  /// No description provided for @usedDisputeSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send to a moderator'**
+  String get usedDisputeSend;
+
+  /// No description provided for @usedDisputeSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent. A moderator will look at it.'**
+  String get usedDisputeSent;
+
+  /// No description provided for @usedSalesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah-handled sales'**
+  String get usedSalesTitle;
+
+  /// No description provided for @usedSalesBuying.
+  ///
+  /// In en, this message translates to:
+  /// **'Buying'**
+  String get usedSalesBuying;
+
+  /// No description provided for @usedSalesSelling.
+  ///
+  /// In en, this message translates to:
+  /// **'Selling'**
+  String get usedSalesSelling;
+
+  /// No description provided for @usedSalesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No handled sales yet. On a used book, choose \"Let Waraqah handle it\".'**
+  String get usedSalesEmpty;
+
+  /// No description provided for @usedEarningsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Earnings'**
+  String get usedEarningsTitle;
+
+  /// No description provided for @usedEarningsHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Held by Waraqah'**
+  String get usedEarningsHeld;
+
+  /// No description provided for @usedEarningsEarned.
+  ///
+  /// In en, this message translates to:
+  /// **'Earned'**
+  String get usedEarningsEarned;
+
+  /// No description provided for @usedEarningsPaidOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid out'**
+  String get usedEarningsPaidOut;
+
+  /// No description provided for @usedEarningsAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to pay out'**
+  String get usedEarningsAvailable;
+
+  /// No description provided for @usedEarningsPayout.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {price} to my bKash'**
+  String usedEarningsPayout(String price);
+
+  /// No description provided for @usedEarningsPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} is on its way to your bKash.'**
+  String usedEarningsPaid(String price);
+
+  /// No description provided for @usedEarningsPayouts.
+  ///
+  /// In en, this message translates to:
+  /// **'Payouts'**
+  String get usedEarningsPayouts;
+
+  /// No description provided for @usedEarningsNoPayouts.
+  ///
+  /// In en, this message translates to:
+  /// **'No payouts yet.'**
+  String get usedEarningsNoPayouts;
+
+  /// No description provided for @usedEarningsPayoutLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} to bKash'**
+  String usedEarningsPayoutLine(String price);
+
+  /// No description provided for @usedDisputeCase.
+  ///
+  /// In en, this message translates to:
+  /// **'{buyer} bought from {seller}'**
+  String usedDisputeCase(String buyer, String seller);
+
+  /// No description provided for @usedDisputeHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah holds {price}'**
+  String usedDisputeHeld(String price);
+
+  /// No description provided for @usedDisputeRefund.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund the buyer'**
+  String get usedDisputeRefund;
+
+  /// No description provided for @usedDisputePaySeller.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay the seller'**
+  String get usedDisputePaySeller;
+
+  /// No description provided for @moderationLogRefunded.
+  ///
+  /// In en, this message translates to:
+  /// **'Refunded the buyer for'**
+  String get moderationLogRefunded;
+
+  /// No description provided for @moderationLogPaidSeller.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid the seller for'**
+  String get moderationLogPaidSeller;
+
   /// No description provided for @usedListingTitle.
   ///
   /// In en, this message translates to:

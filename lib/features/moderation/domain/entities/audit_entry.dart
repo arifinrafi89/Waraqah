@@ -11,6 +11,11 @@ enum AuditAction {
   dismissed,
   warned,
   banned,
+
+  /// A disputed Waraqah-handled sale: money back to the buyer, or to the
+  /// seller.
+  refunded,
+  paidSeller,
 }
 
 /// One line of the audit log: who did what to which thing, and why.

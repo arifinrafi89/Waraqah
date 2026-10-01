@@ -6,6 +6,7 @@ import '../../features/auth/domain/entities/app_user.dart';
 import '../../features/auth/domain/entities/user_role.dart';
 import '../../features/book_request/book_request_routes.dart';
 import '../../features/checkout/checkout_routes.dart';
+import '../../features/handled_sale/handled_sale_routes.dart';
 import '../../features/home/home_routes.dart';
 import '../../features/inbox/inbox_routes.dart';
 import '../../features/loyalty/loyalty_routes.dart';
@@ -32,6 +33,7 @@ abstract final class RouteAccess {
     InboxRoutes.inbox,
     ReportRoutes.blocked,
     BookRequestRoutes.requests,
+    HandledSaleRoutes.sales,
   ];
 
   /// Where to redirect [location] for [user], or `null` to let it open.
