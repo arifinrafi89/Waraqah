@@ -14,18 +14,21 @@ import 'package:waraqah/core/network/dio_provider.dart';
 import 'package:waraqah/core/settings/settings_provider.dart';
 
 /// The real app at phone size, signed in as [role] (a guest when `null`),
-/// opened straight at [location]. Returns the app's router.
+/// opened straight at [location], with [prefs] already saved on the device.
+/// Returns the app's router.
 Future<GoRouter> openApp(
   WidgetTester tester,
   String location, {
   String? role,
   String? locale,
+  Map<String, Object> prefs = const {},
 }) async {
   tester.view.physicalSize = const Size(375, 812);
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.reset);
 
   SharedPreferences.setMockInitialValues({
+    ...prefs,
     'waraqah.localeCode': ?locale,
     if (role != null)
       'waraqah.session': jsonEncode({

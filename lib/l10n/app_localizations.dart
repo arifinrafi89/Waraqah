@@ -409,6 +409,30 @@ abstract class AppL10n {
   /// **'Ayah of the Day'**
   String get homeAyahOfTheDay;
 
+  /// No description provided for @homeHideAyah.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide Ayah of the Day'**
+  String get homeHideAyah;
+
+  /// No description provided for @homeAyahHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden. Turn it back on in Profile.'**
+  String get homeAyahHidden;
+
+  /// No description provided for @homeShowAyah.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Ayah of the Day'**
+  String get homeShowAyah;
+
+  /// No description provided for @commonUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get commonUndo;
+
   /// No description provided for @homeBookBites.
   ///
   /// In en, this message translates to:
@@ -2790,6 +2814,12 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Appearance'**
   String get profileAppearance;
+
+  /// No description provided for @profileHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get profileHome;
 
   /// No description provided for @profileThemeLight.
   ///
