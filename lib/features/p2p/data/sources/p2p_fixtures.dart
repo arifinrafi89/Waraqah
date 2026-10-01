@@ -1,5 +1,6 @@
 import '../../domain/entities/p2p_listing.dart';
 import '../models/p2p_listing_model.dart';
+import 'p2p_handled_seed.dart';
 import 'p2p_listing_seed.dart';
 import 'p2p_people.dart';
 import 'p2p_review_seed.dart';
@@ -107,6 +108,7 @@ abstract final class P2pFixtures {
       category: 'Computer Science',
     ),
     ...p2pReviewSeed,
+    ...p2pHandledSeed,
   ];
 
   /// Who each reserved or sold listing went to.

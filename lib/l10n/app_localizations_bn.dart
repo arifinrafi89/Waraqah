@@ -2537,6 +2537,254 @@ class AppL10nBn extends AppL10n {
   String get usedSearchHint => 'পুরোনো বই খুঁজুন...';
 
   @override
+  String get usedHandledTitle => 'ওয়ারাকাহকে দায়িত্ব দিন';
+
+  @override
+  String get usedHandledBody =>
+      'অ্যাপে টাকা দিন, কুরিয়ার বই পৌঁছে দেবে। বই বর্ণনামতো কিনা নিশ্চিত না করা পর্যন্ত টাকা ওয়ারাকাহর কাছে থাকবে।';
+
+  @override
+  String usedHandledBuy(String price) {
+    return '$price-এ কিনুন';
+  }
+
+  @override
+  String get usedBuyTitle => 'ওয়ারাকাহর মাধ্যমে কিনুন';
+
+  @override
+  String get usedBuyBook => 'বই';
+
+  @override
+  String get usedBuyDelivery => 'কুরিয়ার ডেলিভারি';
+
+  @override
+  String get usedBuyTotal => 'আপনি দেবেন';
+
+  @override
+  String get usedBuyHeld =>
+      'বই বর্ণনামতো কিনা নিশ্চিত না করা পর্যন্ত ওয়ারাকাহ এটি রাখবে।';
+
+  @override
+  String get usedBuyPayWith => 'যেভাবে দেবেন';
+
+  @override
+  String get usedBuyNoCod =>
+      'ক্যাশ অন ডেলিভারি নেই: নিশ্চিত না করা পর্যন্ত টাকা ওয়ারাকাহর কাছে থাকে।';
+
+  @override
+  String usedBuyPay(String price) {
+    return '$price দিন';
+  }
+
+  @override
+  String get usedBuyUnavailable => 'এই বইটি আর বিক্রিতে নেই।';
+
+  @override
+  String get usedSaleTitle => 'ওয়ারাকাহর মাধ্যমে বিক্রি';
+
+  @override
+  String usedSaleFrom(String name) {
+    return '$name-এর কাছ থেকে';
+  }
+
+  @override
+  String usedSaleTo(String name) {
+    return '$name-এর কাছে';
+  }
+
+  @override
+  String get usedSaleStatusPaid => 'পরিশোধিত';
+
+  @override
+  String get usedSaleStatusSent => 'পথে আছে';
+
+  @override
+  String get usedSaleStatusCompleted => 'সম্পন্ন';
+
+  @override
+  String get usedSaleStatusDisputed => 'বিরোধে';
+
+  @override
+  String get usedSaleStatusRefunded => 'ফেরত দেওয়া হয়েছে';
+
+  @override
+  String get usedSaleStatusReleased => 'বিক্রেতাকে দেওয়া হয়েছে';
+
+  @override
+  String get usedSaleStatusCancelled => 'বাতিল';
+
+  @override
+  String usedSaleHintBuyerPaid(String name, String price) {
+    return 'ওয়ারাকাহ $price রাখছে। $name বইটি কুরিয়ারে দেবেন।';
+  }
+
+  @override
+  String usedSaleHintSellerPaid(String name, String price) {
+    return '$name টাকা দিয়েছেন। বইটি কুরিয়ারে দিয়ে \'পাঠানো হয়েছে\' চাপুন। তাঁরা নিশ্চিত করলে আপনি $price পাবেন।';
+  }
+
+  @override
+  String get usedSaleHintBuyerSent =>
+      'বই এলে দেখে নিন। বর্ণনামতো হলে নিশ্চিত করুন, না হলে সমস্যা জানান।';
+
+  @override
+  String usedSaleHintSellerSent(String name, String price) {
+    return '$name-এর কাছে যাচ্ছে। তাঁরা নিশ্চিত করলে ওয়ারাকাহ আপনাকে $price দেবে।';
+  }
+
+  @override
+  String get usedSaleHintDisputed =>
+      'একজন মডারেটর দেখছেন। সিদ্ধান্ত না হওয়া পর্যন্ত টাকা ওয়ারাকাহর কাছে থাকবে।';
+
+  @override
+  String usedSaleHintBuyerDone(String name) {
+    return 'আপনি নিশ্চিত করেছেন, $name টাকা পেয়েছেন।';
+  }
+
+  @override
+  String usedSaleHintSellerDone(String price) {
+    return '$price আপনার। পরের পেআউটে পাঠানো হবে।';
+  }
+
+  @override
+  String usedSaleHintBuyerRefunded(String price) {
+    return 'একজন মডারেটর টাকা ফেরত দিয়েছেন: $price আপনার ওয়ালেটে।';
+  }
+
+  @override
+  String get usedSaleHintSellerRefunded =>
+      'একজন মডারেটর ক্রেতাকে টাকা ফেরত দিয়েছেন। বইটি আপনার কাছে ফিরবে।';
+
+  @override
+  String get usedSaleHintBuyerReleased =>
+      'একজন মডারেটর বিক্রেতার পক্ষে সিদ্ধান্ত দিয়ে তাঁকে টাকা দিয়েছেন।';
+
+  @override
+  String usedSaleHintSellerReleased(String price) {
+    return 'একজন মডারেটর আপনার পক্ষে সিদ্ধান্ত দিয়েছেন: $price আপনার।';
+  }
+
+  @override
+  String get usedSaleHintCancelled =>
+      'পাঠানোর আগে বাতিল হয়েছে। টাকা ক্রেতার ওয়ালেটে ফিরে গেছে।';
+
+  @override
+  String get usedSaleSend => 'পাঠানো হয়েছে';
+
+  @override
+  String get usedSaleCancel => 'বাতিল করে টাকা ফেরত নিন';
+
+  @override
+  String get usedSaleConfirm => 'বর্ণনামতো পেয়েছি';
+
+  @override
+  String get usedSaleProblem => 'সমস্যা জানান';
+
+  @override
+  String get usedSaleFee => 'ওয়ারাকাহ ফি (৫%)';
+
+  @override
+  String get usedSaleYouGet => 'আপনি পাবেন';
+
+  @override
+  String get usedDisputeTitle => 'বইটিতে কী সমস্যা?';
+
+  @override
+  String get usedDisputeNotAsDescribed => 'বর্ণনামতো নয়';
+
+  @override
+  String get usedDisputeDamaged => 'ক্ষতিগ্রস্ত';
+
+  @override
+  String get usedDisputePhotocopy => 'এটি ফটোকপি';
+
+  @override
+  String get usedDisputeWrongBook => 'ভুল বই';
+
+  @override
+  String get usedDisputeNotReceived => 'বই পৌঁছায়নি';
+
+  @override
+  String get usedDisputeNoteHint => 'মডারেটরকে কী হয়েছে বলুন';
+
+  @override
+  String get usedDisputeSend => 'মডারেটরকে পাঠান';
+
+  @override
+  String get usedDisputeSent => 'পাঠানো হয়েছে। একজন মডারেটর দেখবেন।';
+
+  @override
+  String get usedSalesTitle => 'ওয়ারাকাহর মাধ্যমে কেনাবেচা';
+
+  @override
+  String get usedSalesBuying => 'কিনছেন';
+
+  @override
+  String get usedSalesSelling => 'বেচছেন';
+
+  @override
+  String get usedSalesEmpty =>
+      'এখনো কিছু নেই। পুরোনো বইয়ে \"ওয়ারাকাহকে দায়িত্ব দিন\" বেছে নিন।';
+
+  @override
+  String get usedEarningsTitle => 'আয়';
+
+  @override
+  String get usedEarningsHeld => 'ওয়ারাকাহর কাছে';
+
+  @override
+  String get usedEarningsEarned => 'আয় হয়েছে';
+
+  @override
+  String get usedEarningsPaidOut => 'পাঠানো হয়েছে';
+
+  @override
+  String get usedEarningsAvailable => 'পাঠানোর জন্য প্রস্তুত';
+
+  @override
+  String usedEarningsPayout(String price) {
+    return '$price আমার বিকাশে পাঠান';
+  }
+
+  @override
+  String usedEarningsPaid(String price) {
+    return '$price আপনার বিকাশে যাচ্ছে।';
+  }
+
+  @override
+  String get usedEarningsPayouts => 'পেআউট';
+
+  @override
+  String get usedEarningsNoPayouts => 'এখনো কোনো পেআউট নেই।';
+
+  @override
+  String usedEarningsPayoutLine(String price) {
+    return 'বিকাশে $price';
+  }
+
+  @override
+  String usedDisputeCase(String buyer, String seller) {
+    return '$buyer কিনেছেন $seller-এর কাছ থেকে';
+  }
+
+  @override
+  String usedDisputeHeld(String price) {
+    return 'ওয়ারাকাহর কাছে $price';
+  }
+
+  @override
+  String get usedDisputeRefund => 'ক্রেতাকে ফেরত দিন';
+
+  @override
+  String get usedDisputePaySeller => 'বিক্রেতাকে দিন';
+
+  @override
+  String get moderationLogRefunded => 'ক্রেতাকে ফেরত দিয়েছেন:';
+
+  @override
+  String get moderationLogPaidSeller => 'বিক্রেতাকে দিয়েছেন:';
+
+  @override
   String get usedListingTitle => 'পুরোনো বই';
 
   @override

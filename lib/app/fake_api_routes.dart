@@ -11,6 +11,8 @@ import '../features/catalog/data/sources/collection_fake_api.dart';
 import '../features/checkout/data/sources/checkout_fake_api.dart';
 import '../features/checkout/data/sources/coupon_admin_fake_api.dart';
 import '../features/checkout/data/sources/coupon_fake_store.dart';
+import '../features/handled_sale/data/sources/handled_sale_fake_api.dart';
+import '../features/handled_sale/data/sources/handled_sale_fake_store.dart';
 import '../features/home/data/sources/ayah_fake_api.dart';
 import '../features/home/data/sources/home_fake_api.dart';
 import '../features/loyalty/data/sources/points_fake_api.dart';
@@ -83,6 +85,11 @@ abstract final class FakeApiRoutes {
       ...ScanFakeApi.routes,
       // Requests are matched against marketplace Listings.
       ...BookRequestFakeApi.routes(BookRequestFakeStore(p2p)),
+      // Handled sales hold money, refund into the wallet and log
+      // moderators' decisions.
+      ...HandledSaleFakeApi.routes(
+        HandledSaleFakeStore(p2p, wallet, moderation: moderation),
+      ),
     });
   }
 }

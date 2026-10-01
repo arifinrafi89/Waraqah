@@ -2628,6 +2628,254 @@ class AppL10nEn extends AppL10n {
   String get usedSearchHint => 'Search second-hand books...';
 
   @override
+  String get usedHandledTitle => 'Let Waraqah handle it';
+
+  @override
+  String get usedHandledBody =>
+      'Pay in the app and a courier brings the book. Waraqah holds your money until you confirm it\'s as described.';
+
+  @override
+  String usedHandledBuy(String price) {
+    return 'Buy for $price';
+  }
+
+  @override
+  String get usedBuyTitle => 'Buy through Waraqah';
+
+  @override
+  String get usedBuyBook => 'Book';
+
+  @override
+  String get usedBuyDelivery => 'Courier delivery';
+
+  @override
+  String get usedBuyTotal => 'You pay';
+
+  @override
+  String get usedBuyHeld =>
+      'Waraqah holds this until you confirm the book is as described.';
+
+  @override
+  String get usedBuyPayWith => 'Pay with';
+
+  @override
+  String get usedBuyNoCod =>
+      'No cash on delivery: Waraqah holds the money until you confirm.';
+
+  @override
+  String usedBuyPay(String price) {
+    return 'Pay $price';
+  }
+
+  @override
+  String get usedBuyUnavailable => 'This book isn\'t on sale any more.';
+
+  @override
+  String get usedSaleTitle => 'Handled sale';
+
+  @override
+  String usedSaleFrom(String name) {
+    return 'From $name';
+  }
+
+  @override
+  String usedSaleTo(String name) {
+    return 'To $name';
+  }
+
+  @override
+  String get usedSaleStatusPaid => 'Paid';
+
+  @override
+  String get usedSaleStatusSent => 'On its way';
+
+  @override
+  String get usedSaleStatusCompleted => 'Completed';
+
+  @override
+  String get usedSaleStatusDisputed => 'In dispute';
+
+  @override
+  String get usedSaleStatusRefunded => 'Refunded';
+
+  @override
+  String get usedSaleStatusReleased => 'Paid to the seller';
+
+  @override
+  String get usedSaleStatusCancelled => 'Cancelled';
+
+  @override
+  String usedSaleHintBuyerPaid(String name, String price) {
+    return 'Waraqah is holding $price. $name will hand the book to the courier.';
+  }
+
+  @override
+  String usedSaleHintSellerPaid(String name, String price) {
+    return '$name paid. Hand the book to the courier, then mark it sent. You get $price once they confirm.';
+  }
+
+  @override
+  String get usedSaleHintBuyerSent =>
+      'Check the book when it arrives. Confirm it\'s as described, or report a problem.';
+
+  @override
+  String usedSaleHintSellerSent(String name, String price) {
+    return 'On its way to $name. Waraqah pays you $price when they confirm.';
+  }
+
+  @override
+  String get usedSaleHintDisputed =>
+      'A moderator is looking at it. The money stays with Waraqah until they decide.';
+
+  @override
+  String usedSaleHintBuyerDone(String name) {
+    return 'You confirmed it, and $name has been paid.';
+  }
+
+  @override
+  String usedSaleHintSellerDone(String price) {
+    return '$price is yours. It goes out with your next payout.';
+  }
+
+  @override
+  String usedSaleHintBuyerRefunded(String price) {
+    return 'A moderator refunded you: $price is back in your wallet.';
+  }
+
+  @override
+  String get usedSaleHintSellerRefunded =>
+      'A moderator refunded the buyer. The book comes back to you.';
+
+  @override
+  String get usedSaleHintBuyerReleased =>
+      'A moderator decided for the seller and paid them.';
+
+  @override
+  String usedSaleHintSellerReleased(String price) {
+    return 'A moderator decided for you: $price is yours.';
+  }
+
+  @override
+  String get usedSaleHintCancelled =>
+      'Cancelled before it was sent. The money went back to the buyer\'s wallet.';
+
+  @override
+  String get usedSaleSend => 'Mark as sent';
+
+  @override
+  String get usedSaleCancel => 'Cancel and refund';
+
+  @override
+  String get usedSaleConfirm => 'It\'s as described';
+
+  @override
+  String get usedSaleProblem => 'Report a problem';
+
+  @override
+  String get usedSaleFee => 'Waraqah fee (5%)';
+
+  @override
+  String get usedSaleYouGet => 'You get';
+
+  @override
+  String get usedDisputeTitle => 'What\'s wrong with the book?';
+
+  @override
+  String get usedDisputeNotAsDescribed => 'Not as described';
+
+  @override
+  String get usedDisputeDamaged => 'Damaged';
+
+  @override
+  String get usedDisputePhotocopy => 'It\'s a photocopy';
+
+  @override
+  String get usedDisputeWrongBook => 'Wrong book';
+
+  @override
+  String get usedDisputeNotReceived => 'It never arrived';
+
+  @override
+  String get usedDisputeNoteHint => 'Tell the moderator what happened';
+
+  @override
+  String get usedDisputeSend => 'Send to a moderator';
+
+  @override
+  String get usedDisputeSent => 'Sent. A moderator will look at it.';
+
+  @override
+  String get usedSalesTitle => 'Waraqah-handled sales';
+
+  @override
+  String get usedSalesBuying => 'Buying';
+
+  @override
+  String get usedSalesSelling => 'Selling';
+
+  @override
+  String get usedSalesEmpty =>
+      'No handled sales yet. On a used book, choose \"Let Waraqah handle it\".';
+
+  @override
+  String get usedEarningsTitle => 'Earnings';
+
+  @override
+  String get usedEarningsHeld => 'Held by Waraqah';
+
+  @override
+  String get usedEarningsEarned => 'Earned';
+
+  @override
+  String get usedEarningsPaidOut => 'Paid out';
+
+  @override
+  String get usedEarningsAvailable => 'Ready to pay out';
+
+  @override
+  String usedEarningsPayout(String price) {
+    return 'Pay $price to my bKash';
+  }
+
+  @override
+  String usedEarningsPaid(String price) {
+    return '$price is on its way to your bKash.';
+  }
+
+  @override
+  String get usedEarningsPayouts => 'Payouts';
+
+  @override
+  String get usedEarningsNoPayouts => 'No payouts yet.';
+
+  @override
+  String usedEarningsPayoutLine(String price) {
+    return '$price to bKash';
+  }
+
+  @override
+  String usedDisputeCase(String buyer, String seller) {
+    return '$buyer bought from $seller';
+  }
+
+  @override
+  String usedDisputeHeld(String price) {
+    return 'Waraqah holds $price';
+  }
+
+  @override
+  String get usedDisputeRefund => 'Refund the buyer';
+
+  @override
+  String get usedDisputePaySeller => 'Pay the seller';
+
+  @override
+  String get moderationLogRefunded => 'Refunded the buyer for';
+
+  @override
+  String get moderationLogPaidSeller => 'Paid the seller for';
+
+  @override
   String get usedListingTitle => 'Used copy';
 
   @override

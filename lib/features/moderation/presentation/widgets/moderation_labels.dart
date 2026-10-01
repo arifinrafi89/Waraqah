@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../l10n/app_localizations.dart';
+import '../../../handled_sale/domain/entities/handled_sale.dart';
+import '../../../handled_sale/presentation/widgets/sale_labels.dart';
 import '../../../report/domain/entities/content_report.dart';
 import '../../../report/presentation/widgets/report_labels.dart';
 import '../../domain/entities/audit_entry.dart';
@@ -57,11 +59,15 @@ extension ModerationLabels on AppL10n {
     AuditAction.dismissed => moderationLogDismissed,
     AuditAction.warned => moderationLogWarned,
     AuditAction.banned => moderationLogBanned,
+    AuditAction.refunded => moderationLogRefunded,
+    AuditAction.paidSeller => moderationLogPaidSeller,
   };
 
   /// A report reason in words; a moderator's own words stay as they are.
   String auditReason(String reason) {
     if (reason == 'strikes') return moderationLogThirdStrike;
+    final dispute = DisputeReason.values.where((r) => r.name == reason);
+    if (dispute.isNotEmpty) return disputeReason(dispute.first);
     final known = ReportReason.values.where((r) => r.name == reason);
     return known.isEmpty ? reason : reportReason(known.first);
   }

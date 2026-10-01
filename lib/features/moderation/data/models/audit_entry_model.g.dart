@@ -34,4 +34,6 @@ const _$AuditActionEnumMap = {
   AuditAction.dismissed: 'dismissed',
   AuditAction.warned: 'warned',
   AuditAction.banned: 'banned',
+  AuditAction.refunded: 'refunded',
+  AuditAction.paidSeller: 'paidSeller',
 };
