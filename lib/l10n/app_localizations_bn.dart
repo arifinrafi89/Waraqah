@@ -86,16 +86,22 @@ class AppL10nBn extends AppL10n {
   String get authEmail => 'ইমেইল';
 
   @override
+  String get authEmailOrPhone => 'ইমেইল বা ফোন';
+
+  @override
+  String get authEmailOrPhoneHint => 'you@example.com বা ০১XXXXXXXXX';
+
+  @override
+  String get authMobileNumber => 'মোবাইল নম্বর';
+
+  @override
+  String get authMobileNumberHint => '০১XXXXXXXXX';
+
+  @override
   String get authPassword => 'পাসওয়ার্ড';
 
   @override
   String get authFullName => 'পুরো নাম';
-
-  @override
-  String get authStudentId => 'স্টুডেন্ট আইডি';
-
-  @override
-  String get authOptional => '(ঐচ্ছিক)';
 
   @override
   String get authConfirmPassword => 'পাসওয়ার্ড নিশ্চিত করুন';
@@ -122,13 +128,10 @@ class AppL10nBn extends AppL10n {
   String get authHaveAccount => 'ইতিমধ্যে অ্যাকাউন্ট আছে?';
 
   @override
-  String get authEmailHint => 'you@iut-dhaka.edu';
+  String get authEmailHint => 'you@example.com';
 
   @override
   String get authNameHint => 'আপনার নাম';
-
-  @override
-  String get authStudentIdHint => '২২০০৪১১১৮';
 
   @override
   String get authContinueAsGuest => 'অতিথি হিসেবে চালিয়ে যান';
@@ -138,6 +141,50 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get authMissingPassword => 'আপনার পাসওয়ার্ড লিখুন।';
+
+  @override
+  String get authOtpTitle => 'আপনার যোগাযোগ যাচাই করুন';
+
+  @override
+  String authOtpMessage(Object contact) {
+    return '$contact-এ পাঠানো ৬ সংখ্যার কোড লিখুন।';
+  }
+
+  @override
+  String get authOtpHint => '৬ সংখ্যার OTP';
+
+  @override
+  String get authVerifyOtp => 'OTP যাচাই করুন';
+
+  @override
+  String get authOtpDemoNote => 'ডেমো কোড: ১২৩৪৫৬';
+
+  @override
+  String get authOtpInvalid => '৬ সংখ্যার OTP লিখুন।';
+
+  @override
+  String get authInvalidMobileNumber =>
+      'একটি সঠিক বাংলাদেশি মোবাইল নম্বর লিখুন।';
+
+  @override
+  String get authForgotTitle => 'পাসওয়ার্ড রিসেট করুন';
+
+  @override
+  String get authForgotMessage =>
+      'আপনার মোবাইল নম্বর লিখুন, আমরা একটি যাচাইকরণ কোড পাঠাব।';
+
+  @override
+  String get authSendOtp => 'OTP পাঠান';
+
+  @override
+  String get authResetPassword => 'পাসওয়ার্ড রিসেট করুন';
+
+  @override
+  String get authPasswordReset =>
+      'পাসওয়ার্ড রিসেট হয়েছে। এখন লগ ইন করতে পারেন।';
+
+  @override
+  String get authBackToLogin => 'লগ ইনে ফিরে যান';
 
   @override
   String get authLogOut => 'লগ আউট';

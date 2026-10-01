@@ -247,6 +247,30 @@ abstract class AppL10n {
   /// **'Email'**
   String get authEmail;
 
+  /// No description provided for @authEmailOrPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Email or phone'**
+  String get authEmailOrPhone;
+
+  /// No description provided for @authEmailOrPhoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'you@example.com or 01XXXXXXXXX'**
+  String get authEmailOrPhoneHint;
+
+  /// No description provided for @authMobileNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile number'**
+  String get authMobileNumber;
+
+  /// No description provided for @authMobileNumberHint.
+  ///
+  /// In en, this message translates to:
+  /// **'01XXXXXXXXX'**
+  String get authMobileNumberHint;
+
   /// No description provided for @authPassword.
   ///
   /// In en, this message translates to:
@@ -258,18 +282,6 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Full name'**
   String get authFullName;
-
-  /// No description provided for @authStudentId.
-  ///
-  /// In en, this message translates to:
-  /// **'Student ID'**
-  String get authStudentId;
-
-  /// No description provided for @authOptional.
-  ///
-  /// In en, this message translates to:
-  /// **'(optional)'**
-  String get authOptional;
 
   /// No description provided for @authConfirmPassword.
   ///
@@ -322,7 +334,7 @@ abstract class AppL10n {
   /// No description provided for @authEmailHint.
   ///
   /// In en, this message translates to:
-  /// **'you@iut-dhaka.edu'**
+  /// **'you@example.com'**
   String get authEmailHint;
 
   /// No description provided for @authNameHint.
@@ -330,12 +342,6 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Your name'**
   String get authNameHint;
-
-  /// No description provided for @authStudentIdHint.
-  ///
-  /// In en, this message translates to:
-  /// **'220041118'**
-  String get authStudentIdHint;
 
   /// No description provided for @authContinueAsGuest.
   ///
@@ -354,6 +360,84 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Enter your password.'**
   String get authMissingPassword;
+
+  /// No description provided for @authOtpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your contact'**
+  String get authOtpTitle;
+
+  /// No description provided for @authOtpMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the 6-digit code sent to {contact}.'**
+  String authOtpMessage(Object contact);
+
+  /// No description provided for @authOtpHint.
+  ///
+  /// In en, this message translates to:
+  /// **'6-digit OTP'**
+  String get authOtpHint;
+
+  /// No description provided for @authVerifyOtp.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify OTP'**
+  String get authVerifyOtp;
+
+  /// No description provided for @authOtpDemoNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Demo code: 123456'**
+  String get authOtpDemoNote;
+
+  /// No description provided for @authOtpInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the 6-digit OTP.'**
+  String get authOtpInvalid;
+
+  /// No description provided for @authInvalidMobileNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid Bangladesh mobile number.'**
+  String get authInvalidMobileNumber;
+
+  /// No description provided for @authForgotTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset your password'**
+  String get authForgotTitle;
+
+  /// No description provided for @authForgotMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your mobile number and we will send you a verification code.'**
+  String get authForgotMessage;
+
+  /// No description provided for @authSendOtp.
+  ///
+  /// In en, this message translates to:
+  /// **'Send OTP'**
+  String get authSendOtp;
+
+  /// No description provided for @authResetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get authResetPassword;
+
+  /// No description provided for @authPasswordReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Password reset. You can now log in.'**
+  String get authPasswordReset;
+
+  /// No description provided for @authBackToLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to log in'**
+  String get authBackToLogin;
 
   /// No description provided for @authLogOut.
   ///

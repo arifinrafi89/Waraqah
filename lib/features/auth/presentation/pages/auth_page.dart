@@ -8,21 +8,33 @@ import '../../../../l10n/app_localizations.dart';
 import '../widgets/auth_hero.dart';
 import '../widgets/auth_tab_switcher.dart';
 import '../widgets/login_panel.dart';
-import '../widgets/signup_form.dart';
+import '../widgets/password_reset_panel.dart';
+import '../widgets/signup_panel.dart';
 
 /// Screen 2 — Log In / Sign Up. Sits outside the shell route, so it has no
 /// bottom navigation.
 class AuthPage extends StatefulWidget {
-  const AuthPage({super.key});
+  const AuthPage({super.key, this.forgotPassword = false});
+
+  final bool forgotPassword;
 
   @override
   State<AuthPage> createState() => _AuthPageState();
 }
 
 class _AuthPageState extends State<AuthPage> {
-  int _tab = 0;
+  late int _tab = widget.forgotPassword ? 2 : 0;
 
   bool get _isLogin => _tab == 0;
+  bool get _isForgot => _tab == 2;
+
+  @override
+  void didUpdateWidget(covariant AuthPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.forgotPassword != widget.forgotPassword) {
+      _tab = widget.forgotPassword ? 2 : 0;
+    }
+  }
 
   /// Opens the app without an account. Sign-up also lands here until the
   /// real sign-up flow is built.
@@ -36,24 +48,34 @@ class _AuthPageState extends State<AuthPage> {
         child: Column(
           children: [
             const AuthHero(),
-            AuthTabSwitcher(
-              labels: [l10n.authLogIn, l10n.authSignUp],
-              selectedIndex: _tab,
-              onSelected: (index) => setState(() => _tab = index),
-            ),
+            if (!_isForgot)
+              AuthTabSwitcher(
+                labels: [l10n.authLogIn, l10n.authSignUp],
+                selectedIndex: _tab,
+                onSelected: (index) => setState(() => _tab = index),
+              ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    if (_isLogin)
+                    if (_isForgot)
+                      const PasswordResetPanel()
+                    else if (_isLogin)
                       const LoginPanel()
                     else
-                      SignupForm(onSubmit: _enterApp),
-                    _footSwitch(l10n),
-                    TextButton(
-                      onPressed: _enterApp,
-                      child: Text(l10n.authContinueAsGuest),
-                    ),
+                      const SignupPanel(),
+                    if (_isForgot)
+                      TextButton(
+                        onPressed: () => setState(() => _tab = 0),
+                        child: Text(l10n.authBackToLogin),
+                      )
+                    else ...[
+                      _footSwitch(l10n),
+                      TextButton(
+                        onPressed: _enterApp,
+                        child: Text(l10n.authContinueAsGuest),
+                      ),
+                    ],
                   ],
                 ),
               ),

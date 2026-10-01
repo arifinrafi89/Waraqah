@@ -292,7 +292,7 @@ as bool,
 /// @nodoc
 mixin _$ChatMessage {
 
- String get id; ChatRole get role; String get text; String? get recommendedBookId; List<VendorQuote> get quotes;
+ String get id; ChatRole get role; String get text; String? get recommendedBookId; List<String> get recommendedBookIds; List<VendorQuote> get quotes;
 /// Create a copy of ChatMessage
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -306,20 +306,20 @@ $ChatMessageCopyWith<ChatMessage> get copyWith => _$ChatMessageCopyWithImpl<Chat
 @override
 bool operator ==(Object other) {
   final _this = this as ChatMessage;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatMessage&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.role, _this.role) || other.role == _this.role)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.recommendedBookId, _this.recommendedBookId) || other.recommendedBookId == _this.recommendedBookId)&&const DeepCollectionEquality().equals(other.quotes, _this.quotes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatMessage&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.role, _this.role) || other.role == _this.role)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.recommendedBookId, _this.recommendedBookId) || other.recommendedBookId == _this.recommendedBookId)&&const DeepCollectionEquality().equals(other.recommendedBookIds, _this.recommendedBookIds)&&const DeepCollectionEquality().equals(other.quotes, _this.quotes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ChatMessage;
-  return Object.hash(runtimeType,_this.id,_this.role,_this.text,_this.recommendedBookId,const DeepCollectionEquality().hash(_this.quotes));
+  return Object.hash(runtimeType,_this.id,_this.role,_this.text,_this.recommendedBookId,const DeepCollectionEquality().hash(_this.recommendedBookIds),const DeepCollectionEquality().hash(_this.quotes));
 }
 
 @override
 String toString() {
   final _this = this as ChatMessage;
-  return 'ChatMessage(id: ${_this.id}, role: ${_this.role}, text: ${_this.text}, recommendedBookId: ${_this.recommendedBookId}, quotes: ${_this.quotes})';
+  return 'ChatMessage(id: ${_this.id}, role: ${_this.role}, text: ${_this.text}, recommendedBookId: ${_this.recommendedBookId}, recommendedBookIds: ${_this.recommendedBookIds}, quotes: ${_this.quotes})';
 }
 
 
@@ -330,7 +330,7 @@ abstract mixin class $ChatMessageCopyWith<$Res>  {
   factory $ChatMessageCopyWith(ChatMessage value, $Res Function(ChatMessage) _then) = _$ChatMessageCopyWithImpl;
 @useResult
 $Res call({
- String id, ChatRole role, String text, String? recommendedBookId, List<VendorQuote> quotes
+ String id, ChatRole role, String text, String? recommendedBookId, List<String> recommendedBookIds, List<VendorQuote> quotes
 });
 
 
@@ -347,13 +347,14 @@ class _$ChatMessageCopyWithImpl<$Res>
 
 /// Create a copy of ChatMessage
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? role = null,Object? text = null,Object? recommendedBookId = freezed,Object? quotes = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? role = null,Object? text = null,Object? recommendedBookId = freezed,Object? recommendedBookIds = null,Object? quotes = null,}) {
   return _then(ChatMessage(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
 as ChatRole,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,recommendedBookId: freezed == recommendedBookId ? _self.recommendedBookId : recommendedBookId // ignore: cast_nullable_to_non_nullable
-as String?,quotes: null == quotes ? _self.quotes : quotes // ignore: cast_nullable_to_non_nullable
+as String?,recommendedBookIds: null == recommendedBookIds ? _self.recommendedBookIds : recommendedBookIds // ignore: cast_nullable_to_non_nullable
+as List<String>,quotes: null == quotes ? _self.quotes : quotes // ignore: cast_nullable_to_non_nullable
 as List<VendorQuote>,
   ));
 }
@@ -439,10 +440,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  ChatRole role,  String text,  String? recommendedBookId,  List<VendorQuote> quotes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  ChatRole role,  String text,  String? recommendedBookId,  List<String> recommendedBookIds,  List<VendorQuote> quotes)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ChatMessage() when $default != null:
-return $default(_that.id,_that.role,_that.text,_that.recommendedBookId,_that.quotes);case _:
+return $default(_that.id,_that.role,_that.text,_that.recommendedBookId,_that.recommendedBookIds,_that.quotes);case _:
   return orElse();
 
 }
@@ -460,10 +461,10 @@ return $default(_that.id,_that.role,_that.text,_that.recommendedBookId,_that.quo
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  ChatRole role,  String text,  String? recommendedBookId,  List<VendorQuote> quotes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  ChatRole role,  String text,  String? recommendedBookId,  List<String> recommendedBookIds,  List<VendorQuote> quotes)  $default,) {final _that = this;
 switch (_that) {
 case _ChatMessage():
-return $default(_that.id,_that.role,_that.text,_that.recommendedBookId,_that.quotes);case _:
+return $default(_that.id,_that.role,_that.text,_that.recommendedBookId,_that.recommendedBookIds,_that.quotes);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -480,10 +481,10 @@ return $default(_that.id,_that.role,_that.text,_that.recommendedBookId,_that.quo
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  ChatRole role,  String text,  String? recommendedBookId,  List<VendorQuote> quotes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  ChatRole role,  String text,  String? recommendedBookId,  List<String> recommendedBookIds,  List<VendorQuote> quotes)?  $default,) {final _that = this;
 switch (_that) {
 case _ChatMessage() when $default != null:
-return $default(_that.id,_that.role,_that.text,_that.recommendedBookId,_that.quotes);case _:
+return $default(_that.id,_that.role,_that.text,_that.recommendedBookId,_that.recommendedBookIds,_that.quotes);case _:
   return null;
 
 }
@@ -495,13 +496,20 @@ return $default(_that.id,_that.role,_that.text,_that.recommendedBookId,_that.quo
 @JsonSerializable()
 
 class _ChatMessage implements ChatMessage {
-  const _ChatMessage({required this.id, required this.role, required this.text, this.recommendedBookId,  List<VendorQuote> quotes = const <VendorQuote>[]}): _quotes = quotes;
+  const _ChatMessage({required this.id, required this.role, required this.text, this.recommendedBookId,  List<String> recommendedBookIds = const <String>[],  List<VendorQuote> quotes = const <VendorQuote>[]}): _recommendedBookIds = recommendedBookIds,_quotes = quotes;
   factory _ChatMessage.fromJson(Map<String, dynamic> json) => _$ChatMessageFromJson(json);
 
 @override final  String id;
 @override final  ChatRole role;
 @override final  String text;
 @override final  String? recommendedBookId;
+ final  List<String> _recommendedBookIds;
+@override@JsonKey() List<String> get recommendedBookIds {
+  if (_recommendedBookIds is EqualUnmodifiableListView) return _recommendedBookIds;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_recommendedBookIds);
+}
+
  final  List<VendorQuote> _quotes;
 @override@JsonKey() List<VendorQuote> get quotes {
   if (_quotes is EqualUnmodifiableListView) return _quotes;
@@ -523,18 +531,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatMessage&&(identical(other.id, id) || other.id == id)&&(identical(other.role, role) || other.role == role)&&(identical(other.text, text) || other.text == text)&&(identical(other.recommendedBookId, recommendedBookId) || other.recommendedBookId == recommendedBookId)&&const DeepCollectionEquality().equals(other.quotes, _quotes));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatMessage&&(identical(other.id, id) || other.id == id)&&(identical(other.role, role) || other.role == role)&&(identical(other.text, text) || other.text == text)&&(identical(other.recommendedBookId, recommendedBookId) || other.recommendedBookId == recommendedBookId)&&const DeepCollectionEquality().equals(other.recommendedBookIds, _recommendedBookIds)&&const DeepCollectionEquality().equals(other.quotes, _quotes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,role,text,recommendedBookId,const DeepCollectionEquality().hash(_quotes));
+    return Object.hash(runtimeType,id,role,text,recommendedBookId,const DeepCollectionEquality().hash(_recommendedBookIds),const DeepCollectionEquality().hash(_quotes));
 }
 
 @override
 String toString() {
-    return 'ChatMessage(id: $id, role: $role, text: $text, recommendedBookId: $recommendedBookId, quotes: $quotes)';
+    return 'ChatMessage(id: $id, role: $role, text: $text, recommendedBookId: $recommendedBookId, recommendedBookIds: $recommendedBookIds, quotes: $quotes)';
 }
 
 
@@ -545,7 +553,7 @@ abstract mixin class _$ChatMessageCopyWith<$Res> implements $ChatMessageCopyWith
   factory _$ChatMessageCopyWith(_ChatMessage value, $Res Function(_ChatMessage) _then) = __$ChatMessageCopyWithImpl;
 @override @useResult
 $Res call({
- String id, ChatRole role, String text, String? recommendedBookId, List<VendorQuote> quotes
+ String id, ChatRole role, String text, String? recommendedBookId, List<String> recommendedBookIds, List<VendorQuote> quotes
 });
 
 
@@ -562,13 +570,14 @@ class __$ChatMessageCopyWithImpl<$Res>
 
 /// Create a copy of ChatMessage
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? role = null,Object? text = null,Object? recommendedBookId = freezed,Object? quotes = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? role = null,Object? text = null,Object? recommendedBookId = freezed,Object? recommendedBookIds = null,Object? quotes = null,}) {
   return _then(_ChatMessage(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
 as ChatRole,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,recommendedBookId: freezed == recommendedBookId ? _self.recommendedBookId : recommendedBookId // ignore: cast_nullable_to_non_nullable
-as String?,quotes: null == quotes ? _self._quotes : quotes // ignore: cast_nullable_to_non_nullable
+as String?,recommendedBookIds: null == recommendedBookIds ? _self._recommendedBookIds : recommendedBookIds // ignore: cast_nullable_to_non_nullable
+as List<String>,quotes: null == quotes ? _self._quotes : quotes // ignore: cast_nullable_to_non_nullable
 as List<VendorQuote>,
   ));
 }

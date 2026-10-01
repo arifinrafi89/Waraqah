@@ -44,7 +44,10 @@ class ChatBubble extends StatelessWidget {
               color: isUser ? palette.accentInk : palette.text,
             ),
           ),
-          if (message.hasRecommendation)
+          if (message.recommendedBookIds.isNotEmpty)
+            for (final bookId in message.recommendedBookIds)
+              RecommendationCard(bookId: bookId),
+          if (message.recommendedBookIds.isEmpty && message.hasRecommendation)
             RecommendationCard(bookId: message.recommendedBookId!),
           if (message.quotes.isNotEmpty)
             VendorQuoteTable(quotes: message.quotes),

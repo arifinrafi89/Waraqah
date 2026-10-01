@@ -1,11 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/network/dio_provider.dart';
+import '../../../catalog/presentation/providers/catalog_providers.dart';
 import '../../data/repositories/assistant_repository_impl.dart';
 import '../../domain/entities/chat_message.dart';
 import '../../domain/repositories/assistant_repository.dart';
 
 final assistantRepositoryProvider = Provider<AssistantRepository>(
-  (ref) => AssistantRepositoryImpl(),
+  (ref) => AssistantRepositoryImpl(
+    ref.watch(dioProvider),
+    ref.watch(bookRepositoryProvider),
+  ),
 );
 
 /// Holds the conversation and the "assistant is typing" flag.
@@ -31,9 +36,17 @@ class ConversationNotifier extends AsyncNotifier<List<ChatMessage>> {
     _isReplying = true;
     state = AsyncData([...history, turn]);
 
-    final reply = await ref.read(assistantRepositoryProvider).ask(trimmed);
-    _isReplying = false;
-    state = AsyncData([...history, turn, reply]);
+    try {
+      final reply = await ref.read(assistantRepositoryProvider).ask(trimmed, [
+        ...history,
+        turn,
+      ]);
+      state = AsyncData([...history, turn, reply]);
+    } catch (error, stackTrace) {
+      state = AsyncError(error, stackTrace);
+    } finally {
+      _isReplying = false;
+    }
   }
 }
 

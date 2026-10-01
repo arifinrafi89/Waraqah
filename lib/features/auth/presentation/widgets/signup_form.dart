@@ -7,12 +7,18 @@ import '../../../../core/widgets/app_buttons.dart';
 import '../../../../core/widgets/app_text_field.dart';
 import '../../../../l10n/app_localizations.dart';
 
-/// Registration form. The optional student ID is what unlocks the campus P2P
-/// marketplace later.
+/// Registration form for readers.
 class SignupForm extends StatefulWidget {
-  const SignupForm({super.key, required this.onSubmit});
+  const SignupForm({
+    super.key,
+    required this.onSubmit,
+    this.isBusy = false,
+    this.errorText,
+  });
 
-  final VoidCallback onSubmit;
+  final void Function(String name, String contact, String password) onSubmit;
+  final bool isBusy;
+  final String? errorText;
 
   @override
   State<SignupForm> createState() => _SignupFormState();
@@ -20,6 +26,19 @@ class SignupForm extends StatefulWidget {
 
 class _SignupFormState extends State<SignupForm> {
   bool _agreed = false;
+  final _name = TextEditingController();
+  final _contact = TextEditingController();
+  final _password = TextEditingController();
+  final _confirm = TextEditingController();
+
+  @override
+  void dispose() {
+    _name.dispose();
+    _contact.dispose();
+    _password.dispose();
+    _confirm.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,32 +55,35 @@ class _SignupFormState extends State<SignupForm> {
             icon: Icons.person_outline_rounded,
           ),
           AppTextField(
-            label: l10n.authEmail,
-            hint: l10n.authEmailHint,
-            icon: Icons.mail_outline_rounded,
-            keyboardType: TextInputType.emailAddress,
-          ),
-          AppTextField(
-            label: '${l10n.authStudentId} ${l10n.authOptional}',
-            hint: l10n.authStudentIdHint,
-            icon: Icons.badge_outlined,
+            label: l10n.authEmailOrPhone,
+            hint: l10n.authEmailOrPhoneHint,
+            icon: Icons.contact_mail_outlined,
+            keyboardType: TextInputType.phone,
+            controller: _contact,
           ),
           AppTextField(
             label: l10n.authPassword,
             hint: '••••••••',
             icon: Icons.lock_outline_rounded,
             obscure: true,
+            controller: _password,
           ),
           AppTextField(
             label: l10n.authConfirmPassword,
             hint: '••••••••',
             icon: Icons.lock_outline_rounded,
             obscure: true,
+            controller: _confirm,
           ),
           _terms(context, l10n),
+          if (widget.errorText != null) Text(widget.errorText!),
           PrimaryButton(
             label: l10n.authCreateAccount,
-            onPressed: _agreed ? widget.onSubmit : null,
+            isBusy: widget.isBusy,
+            onPressed: _agreed && _password.text == _confirm.text
+                ? () =>
+                      widget.onSubmit(_name.text, _contact.text, _password.text)
+                : null,
           ),
         ],
       ),

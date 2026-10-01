@@ -9,6 +9,7 @@ import '../../data/sources/session_store.dart';
 import '../../domain/entities/app_user.dart';
 import '../../domain/entities/user_role.dart';
 import '../../domain/repositories/auth_repository.dart';
+import '../../domain/repositories/auth_flow_repository.dart';
 import '../../domain/usecases/sign_in.dart';
 import '../../domain/usecases/sign_out.dart';
 
@@ -25,6 +26,10 @@ final signInProvider = Provider<SignIn>(
 
 final signOutProvider = Provider<SignOut>(
   (ref) => SignOut(ref.watch(authRepositoryProvider)),
+);
+
+final authActionsProvider = Provider<AuthFlowRepository>(
+  (ref) => ref.watch(authRepositoryProvider) as AuthFlowRepository,
 );
 
 /// Who is using the app: `null` for a guest, otherwise the signed-in account.
@@ -46,6 +51,38 @@ class SessionNotifier extends Notifier<AppUser?> {
     await ref.read(signOutProvider).call(const NoParams());
     state = null;
   }
+
+  Future<void> signInWithGoogle() async {
+    state = await ref.read(authActionsProvider).signInWithGoogle();
+  }
+
+  Future<void> requestSignUpOtp({
+    required String name,
+    required String contact,
+    required String password,
+  }) => ref
+      .read(authActionsProvider)
+      .requestSignUpOtp(name: name, contact: contact, password: password);
+
+  Future<void> verifySignUpOtp({
+    required String contact,
+    required String otp,
+  }) async {
+    state = await ref
+        .read(authActionsProvider)
+        .verifySignUpOtp(contact: contact, otp: otp);
+  }
+
+  Future<void> requestPasswordReset(String contact) =>
+      ref.read(authActionsProvider).requestPasswordReset(contact);
+
+  Future<void> resetPassword({
+    required String contact,
+    required String otp,
+    required String password,
+  }) => ref
+      .read(authActionsProvider)
+      .resetPassword(contact: contact, otp: otp, password: password);
 }
 
 final sessionProvider = NotifierProvider<SessionNotifier, AppUser?>(

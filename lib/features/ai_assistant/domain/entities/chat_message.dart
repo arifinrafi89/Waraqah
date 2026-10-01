@@ -27,6 +27,7 @@ abstract class ChatMessage with _$ChatMessage {
     required ChatRole role,
     required String text,
     String? recommendedBookId,
+    @Default(<String>[]) List<String> recommendedBookIds,
     @Default(<VendorQuote>[]) List<VendorQuote> quotes,
   }) = _ChatMessage;
 

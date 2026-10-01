@@ -5,9 +5,7 @@ abstract final class AssistantFixtures {
   static const ChatMessage greeting = ChatMessage(
     id: 'ai-greeting',
     role: ChatRole.assistant,
-    text:
-        'Assalamu alaikum! Tell me what you are studying or what you enjoy '
-        'reading, and I will find it in the Waraqah catalog at the best price.',
+    text: 'Assalamu Alaikum. How can I help you?',
   );
 
   static const ChatMessage sampleUserTurn = ChatMessage(

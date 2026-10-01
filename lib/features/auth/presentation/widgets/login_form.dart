@@ -16,12 +16,14 @@ class LoginForm extends StatefulWidget {
     super.key,
     required this.onSubmit,
     required this.onGoogle,
+    required this.onForgotPassword,
     this.isBusy = false,
     this.errorText,
   });
 
   final void Function(String email, String password) onSubmit;
   final VoidCallback onGoogle;
+  final VoidCallback onForgotPassword;
   final bool isBusy;
   final String? errorText;
 
@@ -66,12 +68,16 @@ class _LoginFormState extends State<LoginForm> {
           ),
           Align(
             alignment: Alignment.centerRight,
-            child: Text(
-              l10n.authForgotPassword,
-              style: AppFonts.ui(
-                size: 11.5,
-                weight: FontWeight.w800,
-                color: palette.accent,
+            child: TextButton(
+              onPressed: widget.onForgotPassword,
+              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+              child: Text(
+                l10n.authForgotPassword,
+                style: AppFonts.ui(
+                  size: 11.5,
+                  weight: FontWeight.w800,
+                  color: palette.accent,
+                ),
               ),
             ),
           ),
