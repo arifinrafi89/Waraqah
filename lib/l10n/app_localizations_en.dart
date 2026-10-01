@@ -2231,6 +2231,23 @@ class AppL10nEn extends AppL10n {
   String get adminCatalogOpen => 'Open';
 
   @override
+  String get adminCatalogMoreTools => 'More tools';
+
+  @override
+  String get adminCatalogLowStock => 'Low stock';
+
+  @override
+  String get adminCatalogLowStockEmpty => 'All stocked up.';
+
+  @override
+  String adminCatalogStockLeft(int count) {
+    return '$count left';
+  }
+
+  @override
+  String get adminCatalogSetStock => 'Set stock';
+
+  @override
   String get adminCatalogEditBook => 'Edit book';
 
   @override

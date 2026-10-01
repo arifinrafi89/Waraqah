@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 
 import 'presentation/pages/book_form_page.dart';
 import 'presentation/pages/collection_form_page.dart';
+import 'presentation/pages/low_stock_page.dart';
 
 /// Admin → Catalog's sub-pages. [routes] are children of `/admin/catalog`,
 /// so the `/admin` guard covers them.
@@ -29,7 +30,11 @@ abstract final class CatalogAdminRoutes {
     queryParameters: {'id': id, 'list': 'booklist'},
   ).toString();
 
+  /// Printed Editions running low.
+  static const String lowStock = '/admin/catalog/low-stock';
+
   static final List<RouteBase> routes = [
+    GoRoute(path: 'low-stock', builder: (_, _) => const LowStockPage()),
     GoRoute(
       path: 'book',
       builder: (_, state) =>

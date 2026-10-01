@@ -5,6 +5,7 @@ import '../entities/book_draft.dart';
 import '../entities/catalog_record.dart';
 import '../entities/isbn_lookup.dart';
 import '../entities/list_draft.dart';
+import '../entities/low_stock_edition.dart';
 
 /// Staff's changes to the catalog. A refused change throws.
 abstract interface class CatalogAdminRepository {
@@ -43,4 +44,11 @@ abstract interface class CatalogAdminRepository {
 
   /// `null` when nobody knows [isbn] (an ISBN-13).
   Future<IsbnLookup?> lookUpIsbn(String isbn);
+
+  /// Printed Editions at or under `CatalogAdminRules.lowStock`, lowest
+  /// first.
+  Future<List<LowStockEdition>> lowStock();
+
+  /// Refused for an eBook or a negative [stock].
+  Future<void> setEditionStock(String editionId, int stock);
 }

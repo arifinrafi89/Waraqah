@@ -3907,6 +3907,36 @@ abstract class AppL10n {
   /// **'Open'**
   String get adminCatalogOpen;
 
+  /// No description provided for @adminCatalogMoreTools.
+  ///
+  /// In en, this message translates to:
+  /// **'More tools'**
+  String get adminCatalogMoreTools;
+
+  /// No description provided for @adminCatalogLowStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Low stock'**
+  String get adminCatalogLowStock;
+
+  /// No description provided for @adminCatalogLowStockEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'All stocked up.'**
+  String get adminCatalogLowStockEmpty;
+
+  /// No description provided for @adminCatalogStockLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} left'**
+  String adminCatalogStockLeft(int count);
+
+  /// No description provided for @adminCatalogSetStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Set stock'**
+  String get adminCatalogSetStock;
+
   /// No description provided for @adminCatalogEditBook.
   ///
   /// In en, this message translates to:

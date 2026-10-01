@@ -13,7 +13,7 @@ import 'admin_book_row.dart';
 import 'admin_list_skeleton.dart';
 
 /// The Books tab: search by title or Author, show or leave out hidden
-/// Books, and Add book.
+/// Books, Add book, and a ⋮ menu of tools.
 class BooksAdminTab extends ConsumerWidget {
   const BooksAdminTab({super.key});
 
@@ -38,10 +38,26 @@ class BooksAdminTab extends ConsumerWidget {
               Insets.screen,
               0,
             ),
-            child: AppTextField(
-              hint: l10n.adminCatalogSearchBooks,
-              icon: Icons.search_rounded,
-              onChanged: ref.read(adminBookQueryProvider.notifier).select,
+            child: Row(
+              children: [
+                Expanded(
+                  child: AppTextField(
+                    hint: l10n.adminCatalogSearchBooks,
+                    icon: Icons.search_rounded,
+                    onChanged: ref.read(adminBookQueryProvider.notifier).select,
+                  ),
+                ),
+                PopupMenuButton<String>(
+                  tooltip: l10n.adminCatalogMoreTools,
+                  onSelected: context.push,
+                  itemBuilder: (_) => [
+                    PopupMenuItem(
+                      value: CatalogAdminRoutes.lowStock,
+                      child: Text(l10n.adminCatalogLowStock),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
           SwitchListTile(

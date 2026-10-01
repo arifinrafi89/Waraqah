@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:waraqah/app/fake_api_routes.dart';
+import 'package:waraqah/core/models/edition.dart';
+import 'package:waraqah/features/catalog/data/sources/book_fixtures.dart';
 import 'package:waraqah/features/catalog_admin/data/sources/catalog_tools_remote_source.dart';
 import 'package:waraqah/features/catalog_admin/data/sources/isbn_lookup_fixtures.dart';
 import 'package:waraqah/features/catalog_admin/domain/entities/isbn_lookup.dart';
@@ -9,6 +11,7 @@ import 'package:waraqah/features/scan/domain/entities/isbn.dart';
 late CatalogToolsRemoteSource _tools;
 
 void main() {
+  tearDown(BookFixtures.reset);
   setUp(
     () => _tools = CatalogToolsRemoteSource(
       Dio()..interceptors.add(FakeApiRoutes.interceptor()),
@@ -38,6 +41,44 @@ void main() {
       for (final isbn in IsbnLookupFixtures.byIsbn.keys) {
         expect(Isbn.normalize(isbn), isbn);
       }
+    });
+  });
+
+  group('Low stock', () {
+    test('lists low printed Editions, lowest first', () async {
+      final low = await _tools.lowStock();
+      expect(low, isNotEmpty);
+      expect(low.map((e) => e.editionId), contains('bk-alchemist-pb-en'));
+      final stocks = [for (final e in low) e.stock];
+      expect(stocks, [...stocks]..sort());
+      expect(stocks.every((s) => s <= 5), isTrue);
+      expect(low.any((e) => e.format == BookFormat.ebook), isFalse);
+      final preorders = {
+        for (final b in BookFixtures.all)
+          for (final e in b.editions)
+            if (e.isPreorder) e.id,
+      };
+      expect(low.any((e) => preorders.contains(e.editionId)), isFalse);
+    });
+
+    test('new stock above the limit takes the Edition off', () async {
+      await _tools.setStock('bk-alchemist-pb-en', 20);
+      final low = await _tools.lowStock();
+      expect(
+        low.map((e) => e.editionId),
+        isNot(contains('bk-alchemist-pb-en')),
+      );
+    });
+
+    test('an eBook or a negative stock is refused', () async {
+      await expectLater(
+        _tools.setStock('bk-sherlock-eb-en', 3),
+        throwsStateError,
+      );
+      await expectLater(
+        _tools.setStock('bk-alchemist-pb-en', -1),
+        throwsStateError,
+      );
     });
   });
 }

@@ -36,7 +36,7 @@ enum RuleError {
 /// server refuses a change that breaks any of them.
 abstract final class CatalogAdminRules {
   static const int ebookStock = 999; // eBooks never run out.
-
+  static const int lowStock = 5; // A printed Edition this low needs more.
   /// Problems with a Book's details. [categorySection] is the picked
   /// Category's Section. Classes and Exams must be ones its Section offers.
   static Set<RuleError> book(BookDraft draft, {Section? categorySection}) => {

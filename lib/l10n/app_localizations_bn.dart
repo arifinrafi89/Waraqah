@@ -2145,6 +2145,23 @@ class AppL10nBn extends AppL10n {
   String get adminCatalogOpen => 'খুলুন';
 
   @override
+  String get adminCatalogMoreTools => 'আরও টুল';
+
+  @override
+  String get adminCatalogLowStock => 'স্টক কম';
+
+  @override
+  String get adminCatalogLowStockEmpty => 'সব বইয়ের যথেষ্ট স্টক আছে।';
+
+  @override
+  String adminCatalogStockLeft(int count) {
+    return '$countটি বাকি';
+  }
+
+  @override
+  String get adminCatalogSetStock => 'স্টক বদলান';
+
+  @override
   String get adminCatalogEditBook => 'বই সম্পাদনা';
 
   @override

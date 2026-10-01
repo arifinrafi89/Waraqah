@@ -6,6 +6,7 @@ import '../../domain/entities/book_draft.dart';
 import '../../domain/entities/catalog_record.dart';
 import '../../domain/entities/isbn_lookup.dart';
 import '../../domain/entities/list_draft.dart';
+import '../../domain/entities/low_stock_edition.dart';
 import '../../domain/repositories/catalog_admin_repository.dart';
 import '../models/catalog_record_model.dart';
 import '../sources/catalog_admin_remote_source.dart';
@@ -70,4 +71,11 @@ class CatalogAdminRepositoryImpl implements CatalogAdminRepository {
 
   @override
   Future<IsbnLookup?> lookUpIsbn(String isbn) => _tools.lookUpIsbn(isbn);
+
+  @override
+  Future<List<LowStockEdition>> lowStock() => _tools.lowStock();
+
+  @override
+  Future<void> setEditionStock(String editionId, int stock) =>
+      _tools.setStock(editionId, stock);
 }
