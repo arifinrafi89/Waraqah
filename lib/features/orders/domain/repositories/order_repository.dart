@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import '../entities/order.dart';
 import '../entities/order_return.dart';
+import '../entities/reorder_result.dart';
 
 /// The reader's orders. Changes answer the order as it is afterwards.
 abstract interface class OrderRepository {
@@ -19,4 +20,8 @@ abstract interface class OrderRepository {
     required String note,
     List<Uint8List> photos,
   });
+
+  /// Puts the order's books back in the cart, as far as they can be
+  /// bought now.
+  Future<ReorderResult> reorder(String number);
 }

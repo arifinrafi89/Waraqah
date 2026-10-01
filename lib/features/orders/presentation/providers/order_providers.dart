@@ -13,6 +13,7 @@ import '../../domain/repositories/order_repository.dart';
 import '../../domain/usecases/cancel_order.dart';
 import '../../domain/usecases/get_my_orders.dart';
 import '../../domain/usecases/get_order.dart';
+import '../../domain/usecases/reorder_order.dart';
 import '../../domain/usecases/request_return.dart';
 
 final orderRepositoryProvider = Provider<OrderRepository>(
@@ -33,6 +34,10 @@ final cancelOrderProvider = Provider<CancelOrder>(
 
 final requestReturnProvider = Provider<RequestReturn>(
   (ref) => RequestReturn(ref.watch(orderRepositoryProvider)),
+);
+
+final reorderOrderProvider = Provider<ReorderOrder>(
+  (ref) => ReorderOrder(ref.watch(orderRepositoryProvider)),
 );
 
 /// The reader's orders, newest first.

@@ -1505,6 +1505,100 @@ class AppL10nEn extends AppL10n {
   String get orderReturnWindow => 'Returns are open for 7 days after delivery.';
 
   @override
+  String get orderBuyAgain => 'Buy again';
+
+  @override
+  String orderBackInCart(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count books are back in your cart.',
+      one: '1 book is back in your cart.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String orderSomeUnavailable(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count can\'t be bought again right now.',
+      one: '1 can\'t be bought again right now.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get orderNoneAvailable =>
+      'None of these books can be bought again right now.';
+
+  @override
+  String get orderInvoice => 'Invoice';
+
+  @override
+  String get orderInvoiceSeller => 'Waraqah · Invoice';
+
+  @override
+  String orderInvoiceQuantity(int count, String price) {
+    return '$count × $price';
+  }
+
+  @override
+  String get orderInvoiceShipTo => 'Ship to';
+
+  @override
+  String get orderInvoiceThanks => 'Thank you for reading with Waraqah.';
+
+  @override
+  String get orderReturnPolicy => 'Return policy';
+
+  @override
+  String get orderPolicyTitle => 'Returns and refunds';
+
+  @override
+  String get orderPolicyWhenTitle => 'Within 7 days of delivery';
+
+  @override
+  String get orderPolicyWhen =>
+      'Ask for a return from the order\'s page within 7 days of delivery. The button is there while the window is open.';
+
+  @override
+  String get orderPolicyWhatTitle => 'What can go back';
+
+  @override
+  String get orderPolicyWhat =>
+      'Printed books that arrived damaged, or the wrong book. For anything else, choose “Something else” and tell us what happened. Certified Used copies follow the same rules. eBooks can\'t be returned once they\'re in your library.';
+
+  @override
+  String get orderPolicyHowTitle => 'How it works';
+
+  @override
+  String get orderPolicyHow =>
+      'Add up to 3 photos of the problem. We reply within 2 days, on the order\'s page. Once it\'s approved, we pick the book up from your address.';
+
+  @override
+  String get orderPolicyMoneyTitle => 'Your money';
+
+  @override
+  String get orderPolicyMoney =>
+      'When a return is approved, the price of the books goes to your Waraqah wallet, ready for your next order. Delivery and gift wrap aren\'t refunded.';
+
+  @override
+  String get orderPolicyCancelTitle => 'Cancelling instead';
+
+  @override
+  String get orderPolicyCancel =>
+      'Until your order ships, you can cancel it from the order\'s page. Everything you paid goes back to your wallet.';
+
+  @override
+  String get orderPolicyUsedTitle => 'Books from other readers';
+
+  @override
+  String get orderPolicyUsed =>
+      'Copies you buy from other readers aren\'t sold by Waraqah, so they can\'t be returned here. Check the copy before you pay the seller.';
+
+  @override
   String get adminOrderTitle => 'Orders';
 
   @override

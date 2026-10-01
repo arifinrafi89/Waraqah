@@ -11,12 +11,14 @@ import '../widgets/order_actions.dart';
 import '../widgets/order_info_card.dart';
 import '../widgets/order_labels.dart';
 import '../widgets/order_lines_card.dart';
+import '../widgets/order_links.dart';
 import '../widgets/order_timeline.dart';
 import '../widgets/orders_skeleton.dart';
 import '../widgets/orders_top_bar.dart';
 
 /// `/orders/:number`: where the order is, what's in it, where it goes and
-/// what it cost, with cancel or return when those are allowed.
+/// what it cost, with cancel or return when those are allowed, buy again,
+/// the invoice and the return policy.
 class OrderDetailsPage extends ConsumerWidget {
   const OrderDetailsPage({super.key, required this.number});
 
@@ -84,6 +86,8 @@ class _Details extends StatelessWidget {
         OrderInfoCard(order: order),
         const SizedBox(height: Insets.xl),
         OrderActions(order: order),
+        const SizedBox(height: Insets.sm),
+        OrderLinks(order: order),
       ],
     );
   }

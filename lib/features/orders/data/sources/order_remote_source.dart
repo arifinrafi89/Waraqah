@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 
 import '../../domain/entities/order_return.dart';
 import '../models/order_model.dart';
+import '../models/reorder_result_model.dart';
 import 'order_fake_api.dart';
 
 /// Talks to the `/orders` endpoints, answered for now by the fake API.
@@ -44,6 +45,16 @@ class OrderRemoteSource {
     'note': note,
     'photos': [for (final photo in photos) base64Encode(photo)],
   });
+
+  Future<ReorderResultModel> reorder(String number) async {
+    final response = await _dio.post<Map<String, dynamic>>(
+      OrderFakeApi.reorder,
+      data: {'number': number},
+    );
+    final data = response.data;
+    if (data == null) throw StateError('No order $number.');
+    return ReorderResultModel.fromJson(data);
+  }
 
   /// The server answers `null` when the change isn't allowed any more (say,
   /// the order shipped while the page was open).

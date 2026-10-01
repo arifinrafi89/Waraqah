@@ -290,7 +290,7 @@ mixin _$SellerProfile {
 
  String get id; String get name; String get area; String get district; DateTime get memberSince; int get booksSold; int get ratingCount;/// Average stars, `null` before anyone has rated them.
  double? get ratingAverage;/// Newest first.
- List<SellerReview> get reviews;/// On sale or reserved now.
+ List<SellerReview> get reviews;/// On sale now.
  List<P2pListing> get listings;
 /// Create a copy of SellerProfile
 /// with the given fields replaced by the non-null parameter values.
@@ -518,9 +518,9 @@ class _SellerProfile implements SellerProfile {
   return EqualUnmodifiableListView(_reviews);
 }
 
-/// On sale or reserved now.
+/// On sale now.
  final  List<P2pListing> _listings;
-/// On sale or reserved now.
+/// On sale now.
 @override@JsonKey() List<P2pListing> get listings {
   if (_listings is EqualUnmodifiableListView) return _listings;
   // ignore: implicit_dynamic_type
