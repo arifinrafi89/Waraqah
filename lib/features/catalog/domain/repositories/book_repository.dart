@@ -18,4 +18,11 @@ abstract interface class BookRepository {
   /// A single title, even a hidden one (its page still opens from old
   /// links); `null` when unknown.
   Future<Book?> findById(String id);
+
+  /// Up to 5 Book titles and Author names for [query], best first, in the
+  /// script the reader typed.
+  Future<List<String>> suggest(String query);
+
+  /// The one title [query] most likely meant, or `null` when none is close.
+  Future<String?> didYouMean(String query);
 }

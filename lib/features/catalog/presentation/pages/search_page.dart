@@ -13,6 +13,7 @@ import '../widgets/back_app_bar.dart';
 import '../widgets/search_filter_pill.dart';
 import '../widgets/search_recents.dart';
 import '../widgets/search_results_view.dart';
+import '../widgets/search_suggestions.dart';
 import '../../../scan/presentation/widgets/scan_button.dart';
 
 /// `/catalog/search`: live search by title, Author or Publisher.
@@ -59,6 +60,12 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     ref.read(searchQueryProvider.notifier).select(value);
   }
 
+  /// Runs and saves [value]: a suggestion or "Did you mean" was tapped.
+  void _pick(String value) {
+    _run(value);
+    _save();
+  }
+
   /// Runs the search 300 ms after the last keystroke.
   void _onChanged(String value) {
     _debounce?.cancel();
@@ -90,17 +97,15 @@ class _SearchPageState extends ConsumerState<SearchPage> {
               // Look a book up by its barcode.
               trailing: const ScanButton(),
               onChanged: _onChanged,
-              onSubmitted: (value) {
-                _run(value);
-                _save();
-              },
+              onSubmitted: _pick,
             ),
           ),
           const SearchPillRow(),
+          if (query.isNotEmpty) SearchSuggestions(onPick: _pick),
           Expanded(
             child: query.isEmpty && !hasFilters && !hasSort
                 ? SearchRecents(onPick: _run)
-                : SearchResultsView(query: query, onOpen: _save),
+                : SearchResultsView(query: query, onOpen: _save, onPick: _pick),
           ),
         ],
       ),

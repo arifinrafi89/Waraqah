@@ -679,6 +679,12 @@ abstract class AppL10n {
   /// **'Remove \'{query}\''**
   String searchRecentRemove(String query);
 
+  /// No description provided for @searchDidYouMean.
+  ///
+  /// In en, this message translates to:
+  /// **'Did you mean {title}?'**
+  String searchDidYouMean(String title);
+
   /// No description provided for @searchRequestBook.
   ///
   /// In en, this message translates to:

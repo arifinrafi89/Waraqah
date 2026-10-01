@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import '../../../../core/models/book.dart';
 import '../../domain/entities/catalog_filters.dart';
 import 'book_fake_api.dart';
+import 'book_suggest_fake_api.dart';
 
 /// Talks to `GET /books` and `GET /books/detail`. In this app that request is always answered by the
 /// `FakeApiInterceptor` installed on `dioProvider` (see `app/fake_api_routes.dart`).
@@ -48,5 +49,23 @@ class BookRemoteSource {
     );
     final data = response.data;
     return data == null ? null : Book.fromJson(data);
+  }
+
+  /// Up to 5 titles and Author names for [query], in the script it's typed in.
+  Future<List<String>> fetchSuggestions(String query) async {
+    final response = await _dio.get<List<dynamic>>(
+      BookSuggestFakeApi.suggest,
+      queryParameters: {'q': query},
+    );
+    return (response.data ?? []).cast<String>();
+  }
+
+  /// The one title closest to [query], or `null` when none is close.
+  Future<String?> fetchDidYouMean(String query) async {
+    final response = await _dio.get<String>(
+      BookSuggestFakeApi.didYouMean,
+      queryParameters: {'q': query},
+    );
+    return response.data;
   }
 }

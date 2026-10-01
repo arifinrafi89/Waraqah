@@ -101,6 +101,8 @@
   "searchRecentClear": "Clear all",
   "searchRecentRemove": "Remove '{query}'",
   "@searchRecentRemove": { "placeholders": { "query": { "type": "String" } } },
+  "searchDidYouMean": "Did you mean {title}?",
+  "@searchDidYouMean": { "placeholders": { "title": { "type": "String" } } },
   "searchRequestBook": "Request this book",
   "searchRequestBookSoon": "Asking us to stock a book is coming soon.",
   "searchSort": "Sort",

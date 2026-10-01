@@ -101,6 +101,8 @@
   "searchRecentClear": "সব মুছুন",
   "searchRecentRemove": "'{query}' মুছুন",
   "@searchRecentRemove": { "placeholders": { "query": { "type": "String" } } },
+  "searchDidYouMean": "আপনি কি {title} খুঁজছেন?",
+  "@searchDidYouMean": { "placeholders": { "title": { "type": "String" } } },
   "searchRequestBook": "এই বইটি অনুরোধ করুন",
   "searchRequestBookSoon": "পছন্দের বই আনার অনুরোধ শীঘ্রই আসছে।",
   "searchSort": "সাজান",

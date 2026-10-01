@@ -316,6 +316,11 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
+  String searchDidYouMean(String title) {
+    return 'আপনি কি $title খুঁজছেন?';
+  }
+
+  @override
   String get searchRequestBook => 'এই বইটি অনুরোধ করুন';
 
   @override

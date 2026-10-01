@@ -32,6 +32,12 @@ class BookRepositoryImpl implements BookRepository {
   @override
   Future<Book?> findById(String id) => _source.fetchBook(id);
 
+  @override
+  Future<List<String>> suggest(String query) => _source.fetchSuggestions(query);
+
+  @override
+  Future<String?> didYouMean(String query) => _source.fetchDidYouMean(query);
+
   /// Project rule: cheapest From-price first, ties broken by the better review score.
   List<Book> _sortByValue(List<Book> books) {
     final sorted = [...books];
