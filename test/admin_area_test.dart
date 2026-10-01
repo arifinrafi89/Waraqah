@@ -51,7 +51,11 @@ void main() {
     tester,
   ) async {
     final router = await openApp(tester, '/profile', role: 'moderator');
-    await tester.tap(find.text('Admin area'));
+    final button = find.text('Admin area');
+    await tester.scrollUntilVisible(button, 200);
+    await tester.ensureVisible(button);
+    await tester.pump();
+    await tester.tap(button);
     await settle(tester);
     _expectTiles(['Dashboard', 'Moderation']);
 

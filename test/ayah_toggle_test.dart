@@ -63,6 +63,8 @@ void main() {
 
     final tile = find.widgetWithText(SwitchListTile, 'Show Ayah of the Day');
     await tester.scrollUntilVisible(tile, 200);
+    await tester.ensureVisible(tile);
+    await tester.pump();
     expect(tester.widget<SwitchListTile>(tile).value, isFalse);
     await tester.tap(tile);
     await tester.pump();
