@@ -60,6 +60,8 @@ _InboxThreadModel _$InboxThreadModelFromJson(
           ?.map((e) => InboxMessageModel.fromJson(e as Map<String, dynamic>))
           .toList() ??
       const <InboxMessageModel>[],
+  myRating: (json['myRating'] as num?)?.toInt(),
+  theirRating: (json['theirRating'] as num?)?.toInt(),
 );
 
 Map<String, dynamic> _$InboxThreadModelToJson(_InboxThreadModel instance) =>
@@ -72,6 +74,8 @@ Map<String, dynamic> _$InboxThreadModelToJson(_InboxThreadModel instance) =>
       'dealHere': instance.dealHere,
       'unread': instance.unread,
       'messages': instance.messages.map((e) => e.toJson()).toList(),
+      'myRating': instance.myRating,
+      'theirRating': instance.theirRating,
     };
 
 const _$ThreadRoleEnumMap = {

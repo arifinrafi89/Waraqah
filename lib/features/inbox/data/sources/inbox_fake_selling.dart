@@ -61,6 +61,7 @@ extension InboxFakeSelling on InboxFakeStore {
       buyerId: thread.buyerId,
     );
     post(thread, _me, event: ThreadEvent.sold);
+    rateLater(thread);
     _tellOthers(thread, ThreadEvent.soldElsewhere, closeOffers: true);
     return readUp(thread);
   }

@@ -63,6 +63,13 @@ class InboxRemoteSource {
   Future<InboxThreadModel> markSold(String threadId) =>
       _change(InboxFakeApi.sold, {'threadId': threadId});
 
+  Future<InboxThreadModel> rate(String threadId, int stars, String? comment) =>
+      _change(InboxFakeApi.rate, {
+        'threadId': threadId,
+        'stars': stars,
+        'comment': ?comment,
+      });
+
   Future<InboxThreadModel> _change(
     String path,
     Map<String, Object> body,

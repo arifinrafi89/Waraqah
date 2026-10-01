@@ -2029,4 +2029,82 @@ class AppL10nBn extends AppL10n {
   @override
   String get offerReservedHint =>
       'বইটি অন্য ক্রেতার জন্য সংরক্ষিত। এই অফার গ্রহণ করতে আগে বইটি আবার বিক্রিতে দিন।';
+
+  @override
+  String get sellerTitle => 'পাঠকের প্রোফাইল';
+
+  @override
+  String get sellerMissing => 'এই পাঠক মার্কেটপ্লেসে নেই।';
+
+  @override
+  String sellerMemberSince(String date) {
+    return '$date থেকে সদস্য';
+  }
+
+  @override
+  String sellerBooksSold(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি বই বিক্রি',
+      zero: 'এখনো কোনো বই বিক্রি হয়নি',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String sellerRating(String average, int count) {
+    return '$average · $countটি রেটিং';
+  }
+
+  @override
+  String get sellerNoRatings => 'এখনো কোনো রেটিং নেই';
+
+  @override
+  String get sellerReviews => 'অন্যরা যা বলছেন';
+
+  @override
+  String get sellerOnSale => 'এখন বিক্রিতে';
+
+  @override
+  String get sellerNothingOnSale => 'এই মুহূর্তে কিছু বিক্রিতে নেই।';
+
+  @override
+  String get sellerSeeProfile => 'প্রোফাইল দেখুন';
+
+  @override
+  String chatRateTitle(String name) {
+    return '$name-এর সাথে লেনদেন কেমন ছিল?';
+  }
+
+  @override
+  String chatRateStars(int count) {
+    return '$count তারা';
+  }
+
+  @override
+  String get chatRateHint => 'দু-এক কথা (ঐচ্ছিক)';
+
+  @override
+  String get chatRateSend => 'রেটিং পাঠান';
+
+  @override
+  String chatRated(String name) {
+    return 'ধন্যবাদ! এটি $name-এর প্রোফাইলে দেখা যাবে।';
+  }
+
+  @override
+  String chatYouRated(String name) {
+    return 'আপনি $name-কে রেটিং দিয়েছেন';
+  }
+
+  @override
+  String chatTheyRated(String name) {
+    return '$name আপনাকে রেটিং দিয়েছেন';
+  }
+
+  @override
+  String chatNotRatedYet(String name) {
+    return '$name এখনো আপনাকে রেটিং দেননি।';
+  }
 }

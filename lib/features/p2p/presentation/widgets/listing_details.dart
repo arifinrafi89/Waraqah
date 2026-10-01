@@ -11,6 +11,7 @@ import '../../../inbox/presentation/widgets/listing_conversations.dart';
 import '../../domain/entities/p2p_listing.dart';
 import 'listing_facts.dart';
 import 'p2p_marketplace_cover.dart';
+import 'seller_row.dart';
 
 /// Everything about one used copy: cover, title, who's selling and where,
 /// condition and price, and the seller's note. On the reader's own
@@ -44,13 +45,13 @@ class ListingDetails extends StatelessWidget {
         ),
         const SizedBox(height: Insets.lg),
         Text(listing.title, style: context.texts.titleLarge),
-        const SizedBox(height: 4),
-        Text(
-          listing.isMine
-              ? l10n.usedYourListing
-              : l10n.usedSoldBy(listing.sellerName, listing.place),
-          style: AppFonts.ui(size: 13, color: palette.textDim),
-        ),
+        if (listing.isMine) ...[
+          const SizedBox(height: 4),
+          Text(
+            l10n.usedYourListing,
+            style: AppFonts.ui(size: 13, color: palette.textDim),
+          ),
+        ],
         const SizedBox(height: Insets.md),
         Row(
           spacing: Insets.md,
@@ -68,6 +69,10 @@ class ListingDetails extends StatelessWidget {
         ),
         const SizedBox(height: Insets.md),
         ListingFacts(listing: listing),
+        if (!listing.isMine) ...[
+          const SizedBox(height: Insets.lg),
+          SellerRow(listing: listing),
+        ],
         if (listing.note case final note?) ...[
           const SizedBox(height: Insets.lg),
           SectionHeader(title: l10n.usedSellerNote),

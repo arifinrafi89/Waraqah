@@ -5,6 +5,7 @@ import '../../domain/entities/inbox_thread.dart';
 import '../../domain/repositories/inbox_repository.dart';
 import '../../domain/usecases/decide_offer.dart';
 import '../../domain/usecases/make_offer.dart';
+import '../../domain/usecases/rate_deal.dart';
 import '../../domain/usecases/send_message.dart';
 import 'inbox_providers.dart';
 import 'inbox_use_case_providers.dart';
@@ -76,6 +77,12 @@ class ThreadNotifier extends AsyncNotifier<InboxThread?> {
   Future<void> release() => _apply(ref.read(releaseListingProvider).call(id));
 
   Future<void> markSold() => _apply(ref.read(markListingSoldProvider).call(id));
+
+  Future<void> rate(int stars, String comment) => _apply(
+    ref
+        .read(rateDealProvider)
+        .call(RateDealParams(threadId: id, stars: stars, comment: comment)),
+  );
 
   Future<void> _apply(Future<InboxThread> change) async =>
       state = AsyncData(await change);

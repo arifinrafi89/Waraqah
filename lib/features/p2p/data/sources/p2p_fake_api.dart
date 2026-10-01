@@ -4,6 +4,7 @@ import '../../domain/entities/p2p_listing.dart';
 import '../models/p2p_listing_model.dart';
 import 'p2p_fake_store.dart';
 import 'p2p_people.dart';
+import 'p2p_seller_json.dart';
 
 /// The used marketplace's fake endpoints, merged into `FakeApiInterceptor`
 /// by `app/fake_api_routes.dart`. The inbox changes the same store.
@@ -20,6 +21,9 @@ abstract final class P2pFakeApi {
 
   /// `?id=p2p-1`; answers the listing or `null`.
   static const String listing = '/p2p/listing';
+
+  /// `?id=p-nabila`: a reader's seller page, or `null`.
+  static const String seller = '/p2p/seller';
 
   static Map<String, Object? Function(RequestOptions)> routes(
     P2pFakeStore store,
@@ -48,6 +52,8 @@ abstract final class P2pFakeApi {
               l.sellerId != P2pPeople.me,
         ),
       ),
+      seller: (options) =>
+          store.sellerJson(options.queryParameters['id'] as String? ?? ''),
       listing: (options) {
         final found = store.find(
           options.queryParameters['id'] as String? ?? '',

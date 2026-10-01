@@ -6,6 +6,7 @@ import '../../domain/usecases/make_offer.dart';
 import '../../domain/usecases/mark_listing_sold.dart';
 import '../../domain/usecases/mark_thread_read.dart';
 import '../../domain/usecases/open_thread.dart';
+import '../../domain/usecases/rate_deal.dart';
 import '../../domain/usecases/release_listing.dart';
 import '../../domain/usecases/send_message.dart';
 import 'inbox_providers.dart';
@@ -36,6 +37,10 @@ final markThreadReadProvider = Provider<MarkThreadRead>(
 
 final releaseListingProvider = Provider<ReleaseListing>(
   (ref) => ReleaseListing(ref.watch(inboxRepositoryProvider)),
+);
+
+final rateDealProvider = Provider<RateDeal>(
+  (ref) => RateDeal(ref.watch(inboxRepositoryProvider)),
 );
 
 final markListingSoldProvider = Provider<MarkListingSold>(

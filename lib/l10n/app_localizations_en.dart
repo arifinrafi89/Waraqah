@@ -2099,4 +2099,95 @@ class AppL10nEn extends AppL10n {
   @override
   String get offerReservedHint =>
       'The book is reserved for another buyer. Make it available again to accept this offer.';
+
+  @override
+  String get sellerTitle => 'Reader profile';
+
+  @override
+  String get sellerMissing => 'This reader isn\'t on the marketplace.';
+
+  @override
+  String sellerMemberSince(String date) {
+    return 'Member since $date';
+  }
+
+  @override
+  String sellerBooksSold(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count books sold',
+      one: '1 book sold',
+      zero: 'No books sold yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String sellerRating(String average, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ratings',
+      one: '1 rating',
+    );
+    return '$average · $_temp0';
+  }
+
+  @override
+  String get sellerNoRatings => 'No ratings yet';
+
+  @override
+  String get sellerReviews => 'What people say';
+
+  @override
+  String get sellerOnSale => 'On sale now';
+
+  @override
+  String get sellerNothingOnSale => 'Nothing on sale right now.';
+
+  @override
+  String get sellerSeeProfile => 'See their profile';
+
+  @override
+  String chatRateTitle(String name) {
+    return 'How was the deal with $name?';
+  }
+
+  @override
+  String chatRateStars(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count stars',
+      one: '1 star',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get chatRateHint => 'A few words (optional)';
+
+  @override
+  String get chatRateSend => 'Send rating';
+
+  @override
+  String chatRated(String name) {
+    return 'Thanks! It shows on $name\'s profile.';
+  }
+
+  @override
+  String chatYouRated(String name) {
+    return 'You rated $name';
+  }
+
+  @override
+  String chatTheyRated(String name) {
+    return '$name rated you';
+  }
+
+  @override
+  String chatNotRatedYet(String name) {
+    return '$name hasn\'t rated you yet.';
+  }
 }

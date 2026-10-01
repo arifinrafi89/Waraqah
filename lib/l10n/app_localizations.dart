@@ -3648,6 +3648,114 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'The book is reserved for another buyer. Make it available again to accept this offer.'**
   String get offerReservedHint;
+
+  /// No description provided for @sellerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reader profile'**
+  String get sellerTitle;
+
+  /// No description provided for @sellerMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'This reader isn\'t on the marketplace.'**
+  String get sellerMissing;
+
+  /// No description provided for @sellerMemberSince.
+  ///
+  /// In en, this message translates to:
+  /// **'Member since {date}'**
+  String sellerMemberSince(String date);
+
+  /// No description provided for @sellerBooksSold.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No books sold yet} =1{1 book sold} other{{count} books sold}}'**
+  String sellerBooksSold(int count);
+
+  /// No description provided for @sellerRating.
+  ///
+  /// In en, this message translates to:
+  /// **'{average} · {count, plural, =1{1 rating} other{{count} ratings}}'**
+  String sellerRating(String average, int count);
+
+  /// No description provided for @sellerNoRatings.
+  ///
+  /// In en, this message translates to:
+  /// **'No ratings yet'**
+  String get sellerNoRatings;
+
+  /// No description provided for @sellerReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'What people say'**
+  String get sellerReviews;
+
+  /// No description provided for @sellerOnSale.
+  ///
+  /// In en, this message translates to:
+  /// **'On sale now'**
+  String get sellerOnSale;
+
+  /// No description provided for @sellerNothingOnSale.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing on sale right now.'**
+  String get sellerNothingOnSale;
+
+  /// No description provided for @sellerSeeProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'See their profile'**
+  String get sellerSeeProfile;
+
+  /// No description provided for @chatRateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How was the deal with {name}?'**
+  String chatRateTitle(String name);
+
+  /// No description provided for @chatRateStars.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 star} other{{count} stars}}'**
+  String chatRateStars(int count);
+
+  /// No description provided for @chatRateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A few words (optional)'**
+  String get chatRateHint;
+
+  /// No description provided for @chatRateSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send rating'**
+  String get chatRateSend;
+
+  /// No description provided for @chatRated.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks! It shows on {name}\'s profile.'**
+  String chatRated(String name);
+
+  /// No description provided for @chatYouRated.
+  ///
+  /// In en, this message translates to:
+  /// **'You rated {name}'**
+  String chatYouRated(String name);
+
+  /// No description provided for @chatTheyRated.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} rated you'**
+  String chatTheyRated(String name);
+
+  /// No description provided for @chatNotRatedYet.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} hasn\'t rated you yet.'**
+  String chatNotRatedYet(String name);
 }
 
 class _AppL10nDelegate extends LocalizationsDelegate<AppL10n> {

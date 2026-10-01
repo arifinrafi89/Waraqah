@@ -1,5 +1,7 @@
 import 'dart:async';
 
+// The fake backend keeps ratings with the marketplace's people.
+import '../../../p2p/data/sources/p2p_ratings.dart';
 import 'inbox_fake_records.dart';
 import 'inbox_fake_store.dart';
 
@@ -16,6 +18,21 @@ extension InboxFakeReplies on InboxFakeStore {
       thread.buyerId == InboxFakeStore.me
       ? "Hi! Yes, it's still available. Ask me anything."
       : 'Thanks for getting back to me!';
+
+  /// After a sale, the demo's other person rates the reader.
+  void rateLater(FakeThread thread) => Timer(replyDelay, () {
+    p2p.ratings.add(
+      P2pRating(
+        fromId: thread.otherOf(InboxFakeStore.me),
+        toId: InboxFakeStore.me,
+        stars: 5,
+        at: now(),
+        listingId: thread.listingId,
+        comment: 'Smooth handover, thank you!',
+      ),
+    );
+    changed(thread);
+  });
 
   void replyLater(FakeThread thread, String text) {
     if (thread.replied) return;
