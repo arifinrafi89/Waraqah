@@ -3,21 +3,19 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'p2p_listing.freezed.dart';
 part 'p2p_listing.g.dart';
 
-/// Condition grades a seller can pick when listing a second-hand book.
-enum BookCondition { likeNew, good, fair }
+enum BookCondition { likeNew, veryGood, good, acceptable }
 
-enum P2pFilter { all, likeNew, good, fair }
-
-extension P2pFilterX on P2pFilter {
-  String get label => switch (this) {
-    P2pFilter.all => 'All',
-    P2pFilter.likeNew => 'Like New',
-    P2pFilter.good => 'Good',
-    P2pFilter.fair => 'Fair',
-  };
+enum P2pListingStatus {
+  draft,
+  inReview,
+  changesRequested,
+  rejected,
+  live,
+  sold,
 }
 
-/// A student-to-student resale listing.
+enum HandoverMethod { meetInPerson, delivery }
+
 @freezed
 abstract class P2pListing with _$P2pListing {
   const factory P2pListing({
@@ -27,8 +25,18 @@ abstract class P2pListing with _$P2pListing {
     required String sellerBatch,
     required int priceBdt,
     @Default(BookCondition.good) BookCondition condition,
-    @Default(true) bool isAvailable,
+    @Default([]) List<String> flags,
+    @Default([]) List<String> photos,
+    @Default(false) bool isNegotiable,
+    @Default(HandoverMethod.meetInPerson) HandoverMethod handover,
+    @Default(P2pListingStatus.live) P2pListingStatus status,
+    String? rejectionReason,
+    String? bookId,
     @Default(0) int coverSeed,
+    String? district,
+    String? area,
+    String? category,
+    int? newPriceBdt,
   }) = _P2pListing;
 
   factory P2pListing.fromJson(Map<String, dynamic> json) =>
@@ -40,27 +48,25 @@ extension P2pListingX on P2pListing {
 
   String get conditionLabel => switch (condition) {
     BookCondition.likeNew => 'Like New',
+    BookCondition.veryGood => 'Very Good',
     BookCondition.good => 'Good',
-    BookCondition.fair => 'Fair',
+    BookCondition.acceptable => 'Acceptable',
   };
+
+  String get statusLabel => switch (status) {
+    P2pListingStatus.draft => 'Draft',
+    P2pListingStatus.inReview => 'In review',
+    P2pListingStatus.changesRequested => 'Changes requested',
+    P2pListingStatus.rejected => 'Rejected',
+    P2pListingStatus.live => 'Live',
+    P2pListingStatus.sold => 'Sold',
+  };
+
+  bool get isAvailable => status == P2pListingStatus.live;
 
   String get availabilityLabel => isAvailable ? 'Available' : 'Sold';
 
-  bool matchesFilter(P2pFilter filter, String query) {
-    final normalizedQuery = query.trim().toLowerCase();
-    final queryMatches =
-        normalizedQuery.isEmpty ||
-        title.toLowerCase().contains(normalizedQuery) ||
-        sellerName.toLowerCase().contains(normalizedQuery) ||
-        sellerBatch.toLowerCase().contains(normalizedQuery);
-
-    if (!queryMatches) return false;
-
-    return switch (filter) {
-      P2pFilter.all => true,
-      P2pFilter.likeNew => condition == BookCondition.likeNew,
-      P2pFilter.good => condition == BookCondition.good,
-      P2pFilter.fair => condition == BookCondition.fair,
-    };
-  }
+  int? get saveAmount => (newPriceBdt != null && newPriceBdt! > priceBdt)
+      ? newPriceBdt! - priceBdt
+      : null;
 }

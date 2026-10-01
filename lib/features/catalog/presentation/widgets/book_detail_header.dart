@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/models/book.dart';
 import '../../../../core/theme/app_dimens.dart';
@@ -6,6 +7,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/cover_art.dart';
 import '../../../../core/widgets/tags.dart';
+import '../../catalog_routes.dart';
 import 'rating_stars.dart';
 
 /// Cover on the left; title, author, rating and tags on the right.
@@ -35,9 +37,17 @@ class BookDetailHeader extends StatelessWidget {
             children: [
               Text(book.title, style: context.texts.titleLarge),
               const SizedBox(height: 4),
-              Text(
-                book.author,
-                style: AppFonts.ui(size: 12.5, color: palette.textFaint),
+              InkWell(
+                onTap: () =>
+                    context.push(CatalogRoutes.authorFor(book.authorId)),
+                child: Text(
+                  book.author,
+                  style: AppFonts.ui(
+                    size: 12.5,
+                    weight: FontWeight.w700,
+                    color: palette.accent,
+                  ),
+                ),
               ),
               const SizedBox(height: Insets.sm),
               RatingStars(rating: book.rating),

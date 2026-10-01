@@ -7,10 +7,12 @@ class P2pAddListingField extends StatelessWidget {
     super.key,
     required this.label,
     required this.hint,
+    this.onChanged,
   });
 
   final String label;
   final String hint;
+  final ValueChanged<String>? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class P2pAddListingField extends StatelessWidget {
           Text(label, style: Theme.of(context).textTheme.labelLarge),
           const SizedBox(height: Insets.sm),
           TextFormField(
+            onChanged: onChanged,
             decoration: InputDecoration(
               hintText: hint,
               filled: true,

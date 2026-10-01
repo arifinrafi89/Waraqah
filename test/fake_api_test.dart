@@ -7,6 +7,7 @@ import 'package:waraqah/core/models/book.dart';
 import 'package:waraqah/core/network/dio_client.dart';
 import 'package:waraqah/core/network/dio_provider.dart';
 import 'package:waraqah/core/usecase/usecase.dart';
+import 'package:waraqah/features/catalog/domain/entities/catalog_filters.dart';
 import 'package:waraqah/features/catalog/presentation/providers/catalog_providers.dart';
 import 'package:waraqah/features/home/presentation/providers/home_providers.dart';
 
@@ -28,22 +29,58 @@ void main() {
         List<Book>? byCategory;
         container
             .read(bookRepositoryProvider)
-            .searchCatalog(category: 'Islamic Studies')
+            .searchCatalog(
+              const CatalogFilters(categoryId: 'cat-islamic-studies'),
+            )
             .then((books) => byCategory = books);
         async.elapse(const Duration(seconds: 1));
         expect(byCategory, isNotEmpty);
         expect(
-          byCategory!.every((b) => b.category == 'Islamic Studies'),
+          byCategory!.every((b) => b.categoryId == 'cat-islamic-studies'),
           isTrue,
         );
 
         List<Book>? byQuery;
         container
             .read(bookRepositoryProvider)
-            .searchCatalog(query: 'zzz-not-a-real-title')
+            .searchCatalog(const CatalogFilters(query: 'zzz-not-a-real-title'))
             .then((books) => byQuery = books);
         async.elapse(const Duration(seconds: 1));
         expect(byQuery, isEmpty);
+      });
+    });
+
+    test('catalog search by Section, alone and combined with q', () {
+      fakeAsync((async) {
+        final container = _fakeApiContainer();
+        addTearDown(container.dispose);
+        final repo = container.read(bookRepositoryProvider);
+
+        List<Book>? kids;
+        repo
+            .searchCatalog(const CatalogFilters(section: Section.children))
+            .then((books) => kids = books);
+        List<Book>? both;
+        repo
+            .searchCatalog(
+              const CatalogFilters(section: Section.children, query: 'matilda'),
+            )
+            .then((books) => both = books);
+        List<Book>? none;
+        repo
+            .searchCatalog(
+              const CatalogFilters(section: Section.academic, query: 'matilda'),
+            )
+            .then((books) => none = books);
+        async.elapse(const Duration(seconds: 1));
+
+        expect(kids, isNotEmpty);
+        expect(kids!.every((b) => b.section == Section.children), isTrue);
+        for (var i = 1; i < kids!.length; i++) {
+          expect(kids![i - 1].addedAt.isBefore(kids![i].addedAt), isFalse);
+        }
+        expect(both!.map((b) => b.id), ['bk-matilda']);
+        expect(none, isEmpty);
       });
     });
 

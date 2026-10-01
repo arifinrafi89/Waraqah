@@ -3,13 +3,22 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/admin/admin_routes.dart';
 import '../../features/ai_assistant/ai_assistant_routes.dart';
+import '../../features/alerts/alerts_routes.dart';
 import '../../features/auth/auth_routes.dart';
 import '../../features/auth/domain/entities/app_user.dart';
 import '../../features/bites/bites_routes.dart';
+import '../../features/cart/cart_routes.dart';
 import '../../features/catalog/catalog_routes.dart';
+import '../../features/checkout/checkout_routes.dart';
 import '../../features/home/home_routes.dart';
+import '../../features/loyalty/loyalty_routes.dart';
+import '../../features/deals/deals_routes.dart';
+import '../../features/donate/donate_routes.dart';
+import '../../features/orders/orders_routes.dart';
 import '../../features/p2p/p2p_routes.dart';
 import '../../features/profile/profile_routes.dart';
+import '../../features/wallet/wallet_routes.dart';
+import '../../features/wishlist/wishlist_routes.dart';
 import '../shell/app_shell.dart';
 import 'route_access.dart';
 
@@ -41,6 +50,15 @@ abstract final class AppRouter {
       ...AiAssistantRoutes.routes,
       ...P2pRoutes.routes,
       ...CatalogRoutes.routes,
+      ...CartRoutes.routes,
+      ...WishlistRoutes.routes,
+      ...CheckoutRoutes.routes,
+      ...OrdersRoutes.routes,
+      ...AlertsRoutes.routes,
+      ...DealsRoutes.routes,
+      ...LoyaltyRoutes.routes,
+      ...DonateRoutes.routes,
+      ...WalletRoutes.routes,
       ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),

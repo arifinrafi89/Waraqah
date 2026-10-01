@@ -15,8 +15,6 @@ class P2pMarketplacePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final listings = ref.watch(filteredP2pListingsProvider);
-    final filter = ref.watch(p2pFilterProvider);
-    final query = ref.watch(p2pQueryProvider);
 
     return Stack(
       children: [
@@ -26,15 +24,9 @@ class P2pMarketplacePage extends ConsumerWidget {
             children: [
               P2pMarketplaceHeader(listings: listings),
               P2pMarketplaceSearchField(ref: ref),
-              P2pMarketplaceFilterBar(filter: filter, ref: ref),
+              const P2pMarketplaceFilterBar(),
               P2pMarketplaceResultRow(listings: listings),
-              Expanded(
-                child: P2pMarketplaceGrid(
-                  listings: listings,
-                  filter: filter,
-                  query: query,
-                ),
-              ),
+              Expanded(child: P2pMarketplaceGrid(listings: listings)),
             ],
           ),
         ),

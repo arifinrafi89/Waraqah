@@ -53,10 +53,13 @@ void main() {
 
   group('chosenEdition', () {
     final book = Book(
+      addedAt: DateTime(2026, 1, 1),
       id: 'b1',
       title: 'T',
       author: 'A',
-      category: 'C',
+      categoryId: 'cat-academic',
+      authorId: 'au-x',
+      publisherId: 'pub-x',
       section: Section.literature,
       originalLanguage: BookLanguage.english,
       editions: [

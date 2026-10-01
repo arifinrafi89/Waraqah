@@ -1,0 +1,21 @@
+import '../../../../core/cache/ttl_cache.dart';
+import '../../domain/entities/banner.dart';
+import '../../domain/repositories/banner_repository.dart';
+import '../models/banner_model.dart';
+import '../sources/banner_remote_source.dart';
+
+/// Cached for a few minutes; Staff change Banners rarely.
+class BannerRepositoryImpl implements BannerRepository {
+  BannerRepositoryImpl(this._source);
+
+  final BannerRemoteSource _source;
+  final TtlCache<List<Banner>> _cache = TtlCache(
+    ttl: const Duration(minutes: 10),
+  );
+
+  @override
+  Future<List<Banner>> fetchBanners() => _cache.resolve(
+    'all',
+    () async => [for (final b in await _source.fetchBanners()) b.toEntity()],
+  );
+}

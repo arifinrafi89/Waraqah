@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Book {
 
- String get id; String get title; String get author; String get category; Section get section; BookLanguage get originalLanguage; List<Edition> get editions; double get rating; List<String> get tags; bool get isBeneficial; int get coverSeed; String? get shortTitle;
+ String get id; String get title; String get author; String get categoryId; String get authorId; String get publisherId; Section get section; BookLanguage get originalLanguage; List<Edition> get editions; DateTime get addedAt; double get rating; List<String> get tags; int get coverSeed; String? get shortTitle;
 /// Create a copy of Book
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $BookCopyWith<Book> get copyWith => _$BookCopyWithImpl<Book>(this as Book, _$ide
 @override
 bool operator ==(Object other) {
   final _this = this as Book;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Book&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.author, _this.author) || other.author == _this.author)&&(identical(other.category, _this.category) || other.category == _this.category)&&(identical(other.section, _this.section) || other.section == _this.section)&&(identical(other.originalLanguage, _this.originalLanguage) || other.originalLanguage == _this.originalLanguage)&&const DeepCollectionEquality().equals(other.editions, _this.editions)&&(identical(other.rating, _this.rating) || other.rating == _this.rating)&&const DeepCollectionEquality().equals(other.tags, _this.tags)&&(identical(other.isBeneficial, _this.isBeneficial) || other.isBeneficial == _this.isBeneficial)&&(identical(other.coverSeed, _this.coverSeed) || other.coverSeed == _this.coverSeed)&&(identical(other.shortTitle, _this.shortTitle) || other.shortTitle == _this.shortTitle));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Book&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.author, _this.author) || other.author == _this.author)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId)&&(identical(other.authorId, _this.authorId) || other.authorId == _this.authorId)&&(identical(other.publisherId, _this.publisherId) || other.publisherId == _this.publisherId)&&(identical(other.section, _this.section) || other.section == _this.section)&&(identical(other.originalLanguage, _this.originalLanguage) || other.originalLanguage == _this.originalLanguage)&&const DeepCollectionEquality().equals(other.editions, _this.editions)&&(identical(other.addedAt, _this.addedAt) || other.addedAt == _this.addedAt)&&(identical(other.rating, _this.rating) || other.rating == _this.rating)&&const DeepCollectionEquality().equals(other.tags, _this.tags)&&(identical(other.coverSeed, _this.coverSeed) || other.coverSeed == _this.coverSeed)&&(identical(other.shortTitle, _this.shortTitle) || other.shortTitle == _this.shortTitle));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Book;
-  return Object.hash(runtimeType,_this.id,_this.title,_this.author,_this.category,_this.section,_this.originalLanguage,const DeepCollectionEquality().hash(_this.editions),_this.rating,const DeepCollectionEquality().hash(_this.tags),_this.isBeneficial,_this.coverSeed,_this.shortTitle);
+  return Object.hash(runtimeType,_this.id,_this.title,_this.author,_this.categoryId,_this.authorId,_this.publisherId,_this.section,_this.originalLanguage,const DeepCollectionEquality().hash(_this.editions),_this.addedAt,_this.rating,const DeepCollectionEquality().hash(_this.tags),_this.coverSeed,_this.shortTitle);
 }
 
 @override
 String toString() {
   final _this = this as Book;
-  return 'Book(id: ${_this.id}, title: ${_this.title}, author: ${_this.author}, category: ${_this.category}, section: ${_this.section}, originalLanguage: ${_this.originalLanguage}, editions: ${_this.editions}, rating: ${_this.rating}, tags: ${_this.tags}, isBeneficial: ${_this.isBeneficial}, coverSeed: ${_this.coverSeed}, shortTitle: ${_this.shortTitle})';
+  return 'Book(id: ${_this.id}, title: ${_this.title}, author: ${_this.author}, categoryId: ${_this.categoryId}, authorId: ${_this.authorId}, publisherId: ${_this.publisherId}, section: ${_this.section}, originalLanguage: ${_this.originalLanguage}, editions: ${_this.editions}, addedAt: ${_this.addedAt}, rating: ${_this.rating}, tags: ${_this.tags}, coverSeed: ${_this.coverSeed}, shortTitle: ${_this.shortTitle})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $BookCopyWith<$Res>  {
   factory $BookCopyWith(Book value, $Res Function(Book) _then) = _$BookCopyWithImpl;
 @useResult
 $Res call({
- String id, String title, String author, String category, Section section, BookLanguage originalLanguage, List<Edition> editions, double rating, List<String> tags, bool isBeneficial, int coverSeed, String? shortTitle
+ String id, String title, String author, String categoryId, String authorId, String publisherId, Section section, BookLanguage originalLanguage, List<Edition> editions, DateTime addedAt, double rating, List<String> tags, int coverSeed, String? shortTitle
 });
 
 
@@ -71,19 +71,21 @@ class _$BookCopyWithImpl<$Res>
 
 /// Create a copy of Book
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? author = null,Object? category = null,Object? section = null,Object? originalLanguage = null,Object? editions = null,Object? rating = null,Object? tags = null,Object? isBeneficial = null,Object? coverSeed = null,Object? shortTitle = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? author = null,Object? categoryId = null,Object? authorId = null,Object? publisherId = null,Object? section = null,Object? originalLanguage = null,Object? editions = null,Object? addedAt = null,Object? rating = null,Object? tags = null,Object? coverSeed = null,Object? shortTitle = freezed,}) {
   return _then(Book(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,author: null == author ? _self.author : author // ignore: cast_nullable_to_non_nullable
-as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as String,categoryId: null == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
+as String,authorId: null == authorId ? _self.authorId : authorId // ignore: cast_nullable_to_non_nullable
+as String,publisherId: null == publisherId ? _self.publisherId : publisherId // ignore: cast_nullable_to_non_nullable
 as String,section: null == section ? _self.section : section // ignore: cast_nullable_to_non_nullable
 as Section,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
 as BookLanguage,editions: null == editions ? _self.editions : editions // ignore: cast_nullable_to_non_nullable
-as List<Edition>,rating: null == rating ? _self.rating : rating // ignore: cast_nullable_to_non_nullable
+as List<Edition>,addedAt: null == addedAt ? _self.addedAt : addedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,rating: null == rating ? _self.rating : rating // ignore: cast_nullable_to_non_nullable
 as double,tags: null == tags ? _self.tags : tags // ignore: cast_nullable_to_non_nullable
-as List<String>,isBeneficial: null == isBeneficial ? _self.isBeneficial : isBeneficial // ignore: cast_nullable_to_non_nullable
-as bool,coverSeed: null == coverSeed ? _self.coverSeed : coverSeed // ignore: cast_nullable_to_non_nullable
+as List<String>,coverSeed: null == coverSeed ? _self.coverSeed : coverSeed // ignore: cast_nullable_to_non_nullable
 as int,shortTitle: freezed == shortTitle ? _self.shortTitle : shortTitle // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -170,10 +172,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String title,  String author,  String category,  Section section,  BookLanguage originalLanguage,  List<Edition> editions,  double rating,  List<String> tags,  bool isBeneficial,  int coverSeed,  String? shortTitle)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String title,  String author,  String categoryId,  String authorId,  String publisherId,  Section section,  BookLanguage originalLanguage,  List<Edition> editions,  DateTime addedAt,  double rating,  List<String> tags,  int coverSeed,  String? shortTitle)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Book() when $default != null:
-return $default(_that.id,_that.title,_that.author,_that.category,_that.section,_that.originalLanguage,_that.editions,_that.rating,_that.tags,_that.isBeneficial,_that.coverSeed,_that.shortTitle);case _:
+return $default(_that.id,_that.title,_that.author,_that.categoryId,_that.authorId,_that.publisherId,_that.section,_that.originalLanguage,_that.editions,_that.addedAt,_that.rating,_that.tags,_that.coverSeed,_that.shortTitle);case _:
   return orElse();
 
 }
@@ -191,10 +193,10 @@ return $default(_that.id,_that.title,_that.author,_that.category,_that.section,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String title,  String author,  String category,  Section section,  BookLanguage originalLanguage,  List<Edition> editions,  double rating,  List<String> tags,  bool isBeneficial,  int coverSeed,  String? shortTitle)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String title,  String author,  String categoryId,  String authorId,  String publisherId,  Section section,  BookLanguage originalLanguage,  List<Edition> editions,  DateTime addedAt,  double rating,  List<String> tags,  int coverSeed,  String? shortTitle)  $default,) {final _that = this;
 switch (_that) {
 case _Book():
-return $default(_that.id,_that.title,_that.author,_that.category,_that.section,_that.originalLanguage,_that.editions,_that.rating,_that.tags,_that.isBeneficial,_that.coverSeed,_that.shortTitle);case _:
+return $default(_that.id,_that.title,_that.author,_that.categoryId,_that.authorId,_that.publisherId,_that.section,_that.originalLanguage,_that.editions,_that.addedAt,_that.rating,_that.tags,_that.coverSeed,_that.shortTitle);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -211,10 +213,10 @@ return $default(_that.id,_that.title,_that.author,_that.category,_that.section,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String title,  String author,  String category,  Section section,  BookLanguage originalLanguage,  List<Edition> editions,  double rating,  List<String> tags,  bool isBeneficial,  int coverSeed,  String? shortTitle)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String title,  String author,  String categoryId,  String authorId,  String publisherId,  Section section,  BookLanguage originalLanguage,  List<Edition> editions,  DateTime addedAt,  double rating,  List<String> tags,  int coverSeed,  String? shortTitle)?  $default,) {final _that = this;
 switch (_that) {
 case _Book() when $default != null:
-return $default(_that.id,_that.title,_that.author,_that.category,_that.section,_that.originalLanguage,_that.editions,_that.rating,_that.tags,_that.isBeneficial,_that.coverSeed,_that.shortTitle);case _:
+return $default(_that.id,_that.title,_that.author,_that.categoryId,_that.authorId,_that.publisherId,_that.section,_that.originalLanguage,_that.editions,_that.addedAt,_that.rating,_that.tags,_that.coverSeed,_that.shortTitle);case _:
   return null;
 
 }
@@ -226,13 +228,15 @@ return $default(_that.id,_that.title,_that.author,_that.category,_that.section,_
 
 @JsonSerializable(explicitToJson: true)
 class _Book implements Book {
-  const _Book({required this.id, required this.title, required this.author, required this.category, required this.section, required this.originalLanguage, required  List<Edition> editions, this.rating = 0,  List<String> tags = const <String>[], this.isBeneficial = false, this.coverSeed = 0, this.shortTitle}): assert(editions.length > 0, 'A Book needs at least one Edition'),_editions = editions,_tags = tags;
+   _Book({required this.id, required this.title, required this.author, required this.categoryId, required this.authorId, required this.publisherId, required this.section, required this.originalLanguage, required  List<Edition> editions, required this.addedAt, this.rating = 0,  List<String> tags = const <String>[], this.coverSeed = 0, this.shortTitle}): assert(editions.isNotEmpty, 'A Book needs at least one Edition'),_editions = editions,_tags = tags;
   factory _Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
 
 @override final  String id;
 @override final  String title;
 @override final  String author;
-@override final  String category;
+@override final  String categoryId;
+@override final  String authorId;
+@override final  String publisherId;
 @override final  Section section;
 @override final  BookLanguage originalLanguage;
  final  List<Edition> _editions;
@@ -242,6 +246,7 @@ class _Book implements Book {
   return EqualUnmodifiableListView(_editions);
 }
 
+@override final  DateTime addedAt;
 @override@JsonKey() final  double rating;
  final  List<String> _tags;
 @override@JsonKey() List<String> get tags {
@@ -250,7 +255,6 @@ class _Book implements Book {
   return EqualUnmodifiableListView(_tags);
 }
 
-@override@JsonKey() final  bool isBeneficial;
 @override@JsonKey() final  int coverSeed;
 @override final  String? shortTitle;
 
@@ -267,18 +271,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Book&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.author, author) || other.author == author)&&(identical(other.category, category) || other.category == category)&&(identical(other.section, section) || other.section == section)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&const DeepCollectionEquality().equals(other.editions, _editions)&&(identical(other.rating, rating) || other.rating == rating)&&const DeepCollectionEquality().equals(other.tags, _tags)&&(identical(other.isBeneficial, isBeneficial) || other.isBeneficial == isBeneficial)&&(identical(other.coverSeed, coverSeed) || other.coverSeed == coverSeed)&&(identical(other.shortTitle, shortTitle) || other.shortTitle == shortTitle));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Book&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.author, author) || other.author == author)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.authorId, authorId) || other.authorId == authorId)&&(identical(other.publisherId, publisherId) || other.publisherId == publisherId)&&(identical(other.section, section) || other.section == section)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&const DeepCollectionEquality().equals(other.editions, _editions)&&(identical(other.addedAt, addedAt) || other.addedAt == addedAt)&&(identical(other.rating, rating) || other.rating == rating)&&const DeepCollectionEquality().equals(other.tags, _tags)&&(identical(other.coverSeed, coverSeed) || other.coverSeed == coverSeed)&&(identical(other.shortTitle, shortTitle) || other.shortTitle == shortTitle));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,title,author,category,section,originalLanguage,const DeepCollectionEquality().hash(_editions),rating,const DeepCollectionEquality().hash(_tags),isBeneficial,coverSeed,shortTitle);
+    return Object.hash(runtimeType,id,title,author,categoryId,authorId,publisherId,section,originalLanguage,const DeepCollectionEquality().hash(_editions),addedAt,rating,const DeepCollectionEquality().hash(_tags),coverSeed,shortTitle);
 }
 
 @override
 String toString() {
-    return 'Book(id: $id, title: $title, author: $author, category: $category, section: $section, originalLanguage: $originalLanguage, editions: $editions, rating: $rating, tags: $tags, isBeneficial: $isBeneficial, coverSeed: $coverSeed, shortTitle: $shortTitle)';
+    return 'Book(id: $id, title: $title, author: $author, categoryId: $categoryId, authorId: $authorId, publisherId: $publisherId, section: $section, originalLanguage: $originalLanguage, editions: $editions, addedAt: $addedAt, rating: $rating, tags: $tags, coverSeed: $coverSeed, shortTitle: $shortTitle)';
 }
 
 
@@ -289,7 +293,7 @@ abstract mixin class _$BookCopyWith<$Res> implements $BookCopyWith<$Res> {
   factory _$BookCopyWith(_Book value, $Res Function(_Book) _then) = __$BookCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String title, String author, String category, Section section, BookLanguage originalLanguage, List<Edition> editions, double rating, List<String> tags, bool isBeneficial, int coverSeed, String? shortTitle
+ String id, String title, String author, String categoryId, String authorId, String publisherId, Section section, BookLanguage originalLanguage, List<Edition> editions, DateTime addedAt, double rating, List<String> tags, int coverSeed, String? shortTitle
 });
 
 
@@ -306,19 +310,21 @@ class __$BookCopyWithImpl<$Res>
 
 /// Create a copy of Book
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? author = null,Object? category = null,Object? section = null,Object? originalLanguage = null,Object? editions = null,Object? rating = null,Object? tags = null,Object? isBeneficial = null,Object? coverSeed = null,Object? shortTitle = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? author = null,Object? categoryId = null,Object? authorId = null,Object? publisherId = null,Object? section = null,Object? originalLanguage = null,Object? editions = null,Object? addedAt = null,Object? rating = null,Object? tags = null,Object? coverSeed = null,Object? shortTitle = freezed,}) {
   return _then(_Book(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,author: null == author ? _self.author : author // ignore: cast_nullable_to_non_nullable
-as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as String,categoryId: null == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
+as String,authorId: null == authorId ? _self.authorId : authorId // ignore: cast_nullable_to_non_nullable
+as String,publisherId: null == publisherId ? _self.publisherId : publisherId // ignore: cast_nullable_to_non_nullable
 as String,section: null == section ? _self.section : section // ignore: cast_nullable_to_non_nullable
 as Section,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
 as BookLanguage,editions: null == editions ? _self._editions : editions // ignore: cast_nullable_to_non_nullable
-as List<Edition>,rating: null == rating ? _self.rating : rating // ignore: cast_nullable_to_non_nullable
+as List<Edition>,addedAt: null == addedAt ? _self.addedAt : addedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,rating: null == rating ? _self.rating : rating // ignore: cast_nullable_to_non_nullable
 as double,tags: null == tags ? _self._tags : tags // ignore: cast_nullable_to_non_nullable
-as List<String>,isBeneficial: null == isBeneficial ? _self.isBeneficial : isBeneficial // ignore: cast_nullable_to_non_nullable
-as bool,coverSeed: null == coverSeed ? _self.coverSeed : coverSeed // ignore: cast_nullable_to_non_nullable
+as List<String>,coverSeed: null == coverSeed ? _self.coverSeed : coverSeed // ignore: cast_nullable_to_non_nullable
 as int,shortTitle: freezed == shortTitle ? _self.shortTitle : shortTitle // ignore: cast_nullable_to_non_nullable
 as String?,
   ));

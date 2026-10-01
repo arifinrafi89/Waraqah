@@ -1,0 +1,102 @@
+import '../../domain/entities/order.dart';
+import '../../domain/entities/order_return.dart';
+import '../../domain/entities/order_status.dart';
+import '../models/order_model.dart';
+import '../models/order_parts_model.dart';
+import 'order_fixtures.dart';
+
+/// The orders the fake backend keeps in memory, with the server's rules.
+/// Checkout adds to it; staff move orders along in the Admin area.
+class OrderFakeStore {
+  OrderFakeStore({DateTime Function()? clock}) : _now = clock ?? DateTime.now {
+    _orders.addAll(OrderFixtures.seed(_now()));
+  }
+
+  final DateTime Function() _now;
+  final List<OrderModel> _orders = [];
+  var _nextNumber = 100231;
+
+  DateTime now() => _now();
+
+  /// Newest first.
+  List<OrderModel> get all =>
+      [..._orders]..sort((a, b) => b.placedAt.compareTo(a.placedAt));
+
+  OrderModel? find(String number) =>
+      _orders.where((order) => order.number == number).firstOrNull;
+
+  /// The next order number: WQ-100231, WQ-100232, …
+  String nextNumber() => 'WQ-${_nextNumber++}';
+
+  void add(OrderModel order) => _orders.add(order);
+
+  /// `null` when there's no such order or it has already shipped.
+  OrderModel? cancel(String number) {
+    final order = find(number);
+    if (order == null || !order.status.canCancel) return null;
+    return _replace(order.advanceTo(OrderStatus.cancelled, _now()));
+  }
+
+  /// `null` unless the order was delivered in the last 7 days and has no
+  /// return request yet.
+  OrderModel? requestReturn(
+    String number,
+    ReturnReason reason,
+    String note, {
+    List<String> photos = const [],
+  }) {
+    final order = find(number);
+    if (order == null || !order.toEntity().canRequestReturn(_now())) {
+      return null;
+    }
+    return _replace(
+      order.copyWith(
+        returnRequest: ReturnRequestModel(
+          reason: reason,
+          status: ReturnStatus.requested,
+          requestedAt: _now(),
+          note: note,
+          photos: photos.take(maxReturnPhotos).toList(),
+        ),
+      ),
+    );
+  }
+
+  /// Staff move an order to its next step. `null` once it's delivered or
+  /// cancelled, or if [expected] isn't the next step any more (someone else
+  /// moved it first).
+  OrderModel? advance(String number, OrderStatus expected) {
+    final order = find(number);
+    if (order == null || order.status.next != expected) return null;
+    return _replace(order.advanceTo(expected, _now()));
+  }
+
+  /// Staff approve or reject a waiting return. `null` if there isn't one.
+  OrderModel? decideReturn(String number, {required bool approve}) {
+    final order = find(number);
+    final request = order?.returnRequest;
+    if (order == null || request?.status != ReturnStatus.requested) {
+      return null;
+    }
+    return _replace(
+      order.copyWith(
+        returnRequest: request!.copyWith(
+          status: approve ? ReturnStatus.approved : ReturnStatus.rejected,
+        ),
+      ),
+    );
+  }
+
+  /// Notes [amountBdt] put back in the wallet for this order.
+  OrderModel? refund(String number, int amountBdt) {
+    final order = find(number);
+    if (order == null || amountBdt <= 0) return order;
+    return _replace(order.copyWith(refundedBdt: order.refundedBdt + amountBdt));
+  }
+
+  OrderModel _replace(OrderModel order) {
+    final index = _orders.indexWhere((o) => o.number == order.number);
+    _orders[index] = order;
+    return order;
+  }
+}

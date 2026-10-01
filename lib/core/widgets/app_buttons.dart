@@ -47,12 +47,17 @@ class PrimaryButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: Insets.sm,
                 children: [
-                  Text(
-                    label,
-                    style: AppFonts.ui(
-                      size: 14,
-                      weight: FontWeight.w800,
-                      color: palette.accentInk,
+                  // Shortens instead of overflowing on a narrow button.
+                  Flexible(
+                    child: Text(
+                      label,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppFonts.ui(
+                        size: 14,
+                        weight: FontWeight.w800,
+                        color: palette.accentInk,
+                      ),
                     ),
                   ),
                   if (icon != null) Icon(icon, size: 16),

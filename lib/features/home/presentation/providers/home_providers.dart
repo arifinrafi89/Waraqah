@@ -7,10 +7,14 @@ import '../../../../core/state/selection_notifier.dart';
 import '../../../catalog/presentation/providers/catalog_providers.dart';
 import '../../data/repositories/ayah_repository_impl.dart';
 import '../../data/sources/ayah_remote_source.dart';
+import '../../data/repositories/banner_repository_impl.dart';
+import '../../data/sources/banner_remote_source.dart';
 import '../../domain/entities/ayah.dart';
-import '../../domain/entities/benefit_filter.dart';
+import '../../domain/entities/banner.dart';
 import '../../domain/repositories/ayah_repository.dart';
 import '../../domain/usecases/get_ayah_of_the_day.dart';
+import '../../domain/usecases/get_banners.dart';
+import '../../domain/usecases/get_bestsellers.dart';
 import '../../domain/usecases/get_new_arrivals.dart';
 
 final ayahRepositoryProvider = Provider<AyahRepository>(
@@ -25,6 +29,10 @@ final getNewArrivalsProvider = Provider<GetNewArrivals>(
   (ref) => GetNewArrivals(ref.watch(bookRepositoryProvider)),
 );
 
+final getBestsellersProvider = Provider<GetBestsellers>(
+  (ref) => GetBestsellers(ref.watch(bookRepositoryProvider)),
+);
+
 final ayahOfTheDayProvider = FutureProvider<Ayah>(
   (ref) => ref.watch(getAyahOfTheDayProvider).call(const NoParams()),
 );
@@ -33,15 +41,24 @@ final ayahOfTheDayProvider = FutureProvider<Ayah>(
 /// moment after the user scrolls past it and shows it again on scroll up.
 final homeHeaderVisibleProvider = selectionProvider<bool>(true);
 
-final benefitFilterProvider = selectionProvider<BenefitFilter>(
-  BenefitFilter.all,
-);
-
-/// New arrivals from the catalog block, narrowed by the curation filter.
+/// New arrivals and Bestsellers from the catalog block.
 ///
 /// Home never touches the catalog's data layer — it composes the catalog's
 /// use case, which is what keeps the two LEGO blocks independent.
-final homeNewArrivalsProvider = FutureProvider<List<Book>>((ref) {
-  final filter = ref.watch(benefitFilterProvider);
-  return ref.watch(getNewArrivalsProvider).call(filter);
-});
+final homeNewArrivalsProvider = FutureProvider<List<Book>>(
+  (ref) => ref.watch(getNewArrivalsProvider).call(const NoParams()),
+);
+
+final homeBestsellersProvider = FutureProvider<List<Book>>(
+  (ref) => ref.watch(getBestsellersProvider).call(const NoParams()),
+);
+
+final getBannersProvider = Provider<GetBanners>(
+  (ref) => GetBanners(
+    BannerRepositoryImpl(BannerRemoteSource(ref.watch(dioProvider))),
+  ),
+);
+
+final bannersProvider = FutureProvider<List<Banner>>(
+  (ref) => ref.watch(getBannersProvider).call(const NoParams()),
+);

@@ -19,6 +19,10 @@ class AppTextField extends StatelessWidget {
     this.trailing,
     this.radius = Radii.md,
     this.onChanged,
+    this.onSubmitted,
+    this.onTap,
+    this.readOnly = false,
+    this.autofocus = false,
   });
 
   final String hint;
@@ -30,6 +34,10 @@ class AppTextField extends StatelessWidget {
   final Widget? trailing;
   final double radius;
   final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onSubmitted;
+  final VoidCallback? onTap;
+  final bool readOnly;
+  final bool autofocus;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +83,11 @@ class AppTextField extends StatelessWidget {
     obscureText: obscure,
     keyboardType: keyboardType,
     onChanged: onChanged,
+    onSubmitted: onSubmitted,
+    textInputAction: onSubmitted == null ? null : TextInputAction.search,
+    onTap: onTap,
+    readOnly: readOnly,
+    autofocus: autofocus,
     style: AppFonts.ui(size: 13, color: palette.text),
     cursorColor: palette.accent,
     decoration: InputDecoration(

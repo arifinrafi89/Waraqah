@@ -12,6 +12,35 @@ class P2pRepositoryImpl implements P2pRepository {
   Future<List<P2pListing>> fetchNearbyListings({int limit = 6}) =>
       _cache.resolve('nearby:$limit', () async {
         await Future<void>.delayed(const Duration(milliseconds: 850));
-        return P2pFixtures.listings.take(limit).toList();
+        return P2pFixtures.listings
+            .where((l) => l.status == P2pListingStatus.live)
+            .take(limit)
+            .toList();
+      });
+
+  @override
+  Future<List<P2pListing>> fetchMyListings() =>
+      _cache.resolve('my_listings', () async {
+        await Future<void>.delayed(const Duration(milliseconds: 600));
+        return P2pFixtures.listings
+            .where((l) => l.sellerName == 'Farhan')
+            .toList();
+      });
+
+  @override
+  Future<P2pListing?> fetchListing(String id) async {
+    await Future<void>.delayed(const Duration(milliseconds: 300));
+    return P2pFixtures.listings.where((l) => l.id == id).firstOrNull;
+  }
+
+  @override
+  Future<List<P2pListing>> fetchListingsForBook(String bookId) =>
+      _cache.resolve('listings_for_book:$bookId', () async {
+        await Future<void>.delayed(const Duration(milliseconds: 700));
+        return P2pFixtures.listings
+            .where(
+              (l) => l.bookId == bookId && l.status == P2pListingStatus.live,
+            )
+            .toList();
       });
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/formatters.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../domain/entities/p2p_listing.dart';
+import '../../p2p_routes.dart';
 import 'p2p_marketplace_cover.dart';
 import 'p2p_marketplace_message_button.dart';
 import 'p2p_marketplace_price_block.dart';
@@ -17,53 +19,56 @@ class P2pMarketplaceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final palette = context.palette;
 
-    return SurfaceCard(
-      clip: true,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Fills whatever height the details leave, so the tile never
-          // overflows at any width or text scale.
-          Expanded(child: P2pMarketplaceCover(listing: listing)),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 12, 10, 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  listing.title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleSmall
-                      ?.copyWith(color: palette.text),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  listing.sellerLine,
-                  style: Theme.of(context).textTheme.bodySmall
-                      ?.copyWith(color: palette.textFaint),
-                ),
-                const SizedBox(height: 10),
-                P2pMarketplacePriceBlock(
-                  price: Bdt.format(listing.priceBdt),
-                  available: listing.availabilityLabel,
-                  color: listing.isAvailable
-                      ? palette.accent
-                      : palette.textFaint,
-                ),
-                const SizedBox(height: 8),
-                // Own line: beside the price it overflowed narrow tiles.
-                SizedBox(
-                  width: double.infinity,
-                  child: P2pMarketplaceMessageButton(
-                    color: palette.accentSoft,
-                    accent: palette.accent,
+    return GestureDetector(
+      onTap: () => context.push(P2pRoutes.listingDetailFor(listing.id)),
+      child: SurfaceCard(
+        clip: true,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Fills whatever height the details leave, so the tile never
+            // overflows at any width or text scale.
+            Expanded(child: P2pMarketplaceCover(listing: listing)),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 12, 10, 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    listing.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleSmall
+                        ?.copyWith(color: palette.text),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 4),
+                  Text(
+                    listing.sellerLine,
+                    style: Theme.of(context).textTheme.bodySmall
+                        ?.copyWith(color: palette.textFaint),
+                  ),
+                  const SizedBox(height: 10),
+                  P2pMarketplacePriceBlock(
+                    price: Bdt.format(listing.priceBdt),
+                    available: listing.availabilityLabel,
+                    color: listing.isAvailable
+                        ? palette.accent
+                        : palette.textFaint,
+                  ),
+                  const SizedBox(height: 8),
+                  // Own line: beside the price it overflowed narrow tiles.
+                  SizedBox(
+                    width: double.infinity,
+                    child: P2pMarketplaceMessageButton(
+                      color: palette.accentSoft,
+                      accent: palette.accent,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
