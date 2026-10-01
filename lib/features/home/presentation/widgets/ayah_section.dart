@@ -39,7 +39,7 @@ class AyahSection extends ConsumerWidget {
 
   void _hide(BuildContext context, WidgetRef ref) {
     final l10n = AppL10n.of(context)!;
-    final visible = ref.read(ayahVisibleProvider.notifier)..set(false);
+    final notifier = ref.read(ayahVisibleProvider.notifier)..set(false);
     ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(
@@ -47,7 +47,7 @@ class AyahSection extends ConsumerWidget {
           content: Text(l10n.homeAyahHidden),
           action: SnackBarAction(
             label: l10n.commonUndo,
-            onPressed: () => visible.set(true),
+            onPressed: () => notifier.set(true),
           ),
         ),
       );

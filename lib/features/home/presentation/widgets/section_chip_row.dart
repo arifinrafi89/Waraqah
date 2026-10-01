@@ -25,17 +25,13 @@ class SectionChipRow extends StatelessWidget {
         child: Row(
           spacing: Insets.sm,
           children: [
-            for (final section in Section.values)
+            for (final (section, color) in [
+              for (final s in Section.values) (s, palette.chipFor(s.index)),
+            ])
               ActionChip(
-                avatar: Icon(
-                  section.icon,
-                  color: palette.chipFor(section.index),
-                  size: 18,
-                ),
+                avatar: Icon(section.icon, color: color, size: 18),
                 label: Text(section.label(l10n)),
-                side: BorderSide(
-                  color: palette.chipFor(section.index).withValues(alpha: 0.5),
-                ),
+                side: BorderSide(color: color.withValues(alpha: 0.5)),
                 onPressed: () => context.go(CatalogRoutes.sectionFor(section)),
               ),
           ],

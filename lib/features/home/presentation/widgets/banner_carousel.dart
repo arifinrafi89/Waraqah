@@ -31,7 +31,8 @@ class BannerCarousel extends ConsumerWidget {
           padding: EdgeInsets.symmetric(horizontal: Insets.screen),
           child: ShimmerBox(aspectRatio: _aspectRatio, radius: Radii.hero),
         ),
-        builder: (banners) => _Pages(banners),
+        builder: (banners) =>
+            banners.isEmpty ? const SizedBox() : _Pages(banners),
       ),
     );
   }
