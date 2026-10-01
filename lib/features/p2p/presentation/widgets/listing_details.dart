@@ -69,6 +69,7 @@ class ListingDetails extends StatelessWidget {
         const SizedBox(height: Insets.md),
         ListingFacts(listing: listing),
         if (listing.note case final note?) ...[
+          const SizedBox(height: Insets.lg),
           SectionHeader(title: l10n.usedSellerNote),
           Text(
             note,
