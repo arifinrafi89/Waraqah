@@ -3,6 +3,7 @@ import '../../../home/domain/entities/banner.dart';
 import '../../../home/domain/entities/season.dart';
 import '../entities/book_draft.dart';
 import '../entities/catalog_record.dart';
+import '../entities/list_draft.dart';
 
 /// Staff's changes to the catalog. A refused change throws.
 abstract interface class CatalogAdminRepository {
@@ -33,4 +34,9 @@ abstract interface class CatalogAdminRepository {
 
   /// Moves a Banner one place up ([by] = -1) or down (1).
   Future<void> moveBanner(String id, int by);
+
+  /// Saves a Collection, or a Staff Booklist when [draft] has a kind.
+  Future<void> saveList(ListDraft draft);
+
+  Future<void> deleteList(String id, {required bool booklist});
 }

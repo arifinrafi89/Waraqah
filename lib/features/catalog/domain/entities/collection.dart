@@ -1,7 +1,9 @@
 import '../../../../core/models/book.dart';
+import 'expert.dart';
 
 /// Books picked by Staff, with a note on why. Not read in order (that's a
-/// Series) and not bought together (that's a Booklist).
+/// Series) and not bought together (that's a Booklist). With an [expert],
+/// it's that Expert's Expert Pick.
 class Collection {
   const Collection({
     required this.id,
@@ -11,6 +13,7 @@ class Collection {
     required this.noteBn,
     required this.books,
     this.section,
+    this.expert,
   });
 
   final String id;
@@ -21,6 +24,9 @@ class Collection {
 
   /// `null` for a general Collection.
   final Section? section;
+
+  /// Who picked it; `null` for Staff's own Collections.
+  final Expert? expert;
 
   /// In the order Staff chose.
   final List<Book> books;

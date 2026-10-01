@@ -27,6 +27,10 @@ extension RuleErrorLabels on AppL10n {
     RuleError.nameBnBlank => adminCatalogErrNameBnBlank,
     RuleError.bannerTitleBlank => adminCatalogErrBannerTitleBlank,
     RuleError.bannerTargetBlank => adminCatalogErrBannerTargetBlank,
+    RuleError.listTitleBlank => adminCatalogErrListTitleBlank,
+    RuleError.listNoBooks => adminCatalogErrListNoBooks,
+    RuleError.listDuplicateBook => adminCatalogErrListDuplicateBook,
+    RuleError.listNoteTooLong => adminCatalogErrListNoteTooLong,
   };
 
   /// The first of [errors] among [which], for one field's error text.

@@ -4,6 +4,7 @@ import '../../../home/domain/entities/banner.dart';
 import '../../../home/domain/entities/season.dart';
 import '../../domain/entities/book_draft.dart';
 import '../../domain/entities/catalog_record.dart';
+import '../../domain/entities/list_draft.dart';
 import '../../domain/repositories/catalog_admin_repository.dart';
 import '../models/catalog_record_model.dart';
 import '../sources/catalog_admin_remote_source.dart';
@@ -56,4 +57,11 @@ class CatalogAdminRepositoryImpl implements CatalogAdminRepository {
 
   @override
   Future<void> moveBanner(String id, int by) => _source.moveBanner(id, by);
+
+  @override
+  Future<void> saveList(ListDraft draft) => _source.saveList(draft);
+
+  @override
+  Future<void> deleteList(String id, {required bool booklist}) =>
+      _source.deleteList(id, booklist: booklist);
 }

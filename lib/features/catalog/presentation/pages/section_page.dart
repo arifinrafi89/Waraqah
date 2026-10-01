@@ -7,6 +7,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../providers/catalog_providers.dart';
+import '../providers/expert_providers.dart';
 import '../widgets/back_app_bar.dart';
 import '../widgets/book_list_skeleton.dart';
 import '../widgets/category_chips.dart';
@@ -14,7 +15,8 @@ import '../widgets/collection_strip.dart';
 import '../widgets/section_style.dart';
 import 'catalog_results_list.dart';
 
-/// `/catalog/section/:section`: the Section's name and every Book in it.
+/// `/catalog/section/:section`: the Section's name, its Collections and
+/// Expert Picks, then every Book in it.
 class SectionPage extends ConsumerWidget {
   const SectionPage({super.key, required this.section});
 
@@ -24,6 +26,10 @@ class SectionPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppL10n.of(context)!;
     final books = ref.watch(sectionBooksProvider(section));
+    // Load the strips alongside the books, not once the list shows them.
+    ref
+      ..watch(staffCollectionsProvider(section))
+      ..watch(expertPicksProvider(section));
     return SafeArea(
       bottom: false,
       child: Column(
@@ -35,7 +41,6 @@ class SectionPage extends ConsumerWidget {
                 : null,
           ),
           CategoryChips(section: section),
-          SectionCollections(section: section),
           Expanded(
             child: AsyncView(
               value: books,
@@ -53,7 +58,19 @@ class SectionPage extends ConsumerWidget {
                         style: context.texts.bodyMedium,
                       ),
                     )
-                  : CatalogResultsList(books: list),
+                  : CatalogResultsList(
+                      books: list,
+                      header: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SectionCollections(section: section),
+                          SectionCollections(
+                            section: section,
+                            expertPicks: true,
+                          ),
+                        ],
+                      ),
+                    ),
             ),
           ),
         ],

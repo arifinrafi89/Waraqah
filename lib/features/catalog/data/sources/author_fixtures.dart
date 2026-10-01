@@ -42,5 +42,6 @@ abstract final class AuthorFixtures {
     AuthorModel(id: 'au-kleppmann', name: 'Martin Kleppmann'),
     AuthorModel(id: 'au-carle', name: 'Eric Carle'),
     AuthorModel(id: 'au-dahl', name: 'Roald Dahl'),
+    AuthorModel(id: 'au-coelho', name: 'Paulo Coelho'),
   ];
 }

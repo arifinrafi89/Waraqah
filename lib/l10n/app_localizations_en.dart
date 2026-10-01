@@ -456,6 +456,155 @@ class AppL10nEn extends AppL10n {
   String get collectionStripSub => 'Books our editors picked, and why';
 
   @override
+  String get expertPicksTitle => 'Expert Picks';
+
+  @override
+  String get expertPicksSub =>
+      'Shelves from verified teachers, scholars and writers';
+
+  @override
+  String expertBy(String name) {
+    return 'by $name';
+  }
+
+  @override
+  String expertPickedBy(String name) {
+    return 'Picked by $name';
+  }
+
+  @override
+  String get expertVerified => 'Verified';
+
+  @override
+  String get expertKindTeacher => 'Teacher';
+
+  @override
+  String get expertKindScholar => 'Scholar';
+
+  @override
+  String get expertKindWriter => 'Writer';
+
+  @override
+  String get expertTheirPicks => 'Their picks';
+
+  @override
+  String get booklistKindClassList => 'Class list';
+
+  @override
+  String get booklistKindExamPrep => 'Exam prep';
+
+  @override
+  String get booklistKindBookClub => 'Book club';
+
+  @override
+  String get booklistKindPersonal => 'My list';
+
+  @override
+  String get booklistPickerTitle => 'Add books';
+
+  @override
+  String get booklistPickerDone => 'Done';
+
+  @override
+  String get booklistPickerEmpty => 'No books match.';
+
+  @override
+  String get booklistTitle => 'Booklists';
+
+  @override
+  String get booklistEntrySub =>
+      'Class lists, exam prep, book clubs and your own lists';
+
+  @override
+  String get booklistProfileLink => 'My booklists';
+
+  @override
+  String get booklistMine => 'My lists';
+
+  @override
+  String get booklistNew => 'New list';
+
+  @override
+  String get booklistMineEmpty =>
+      'No lists yet. Make one for books you want to buy together.';
+
+  @override
+  String get booklistGuestHint => 'Log in to make your own lists.';
+
+  @override
+  String get booklistGroupClassLists => 'Class lists';
+
+  @override
+  String booklistNewTotal(int count, String price) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'New: $price for $count books',
+      one: 'New: $price for 1 book',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get booklistPriceNew => 'New';
+
+  @override
+  String get booklistPriceCertified => 'Certified Used';
+
+  @override
+  String get booklistPriceUsed => 'Used';
+
+  @override
+  String get booklistAddAll => 'Add whole list to cart';
+
+  @override
+  String booklistAdded(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Added $count books',
+      one: 'Added 1 book',
+      zero: 'Nothing added',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String booklistOutOfStock(int count) {
+    return '$count out of stock';
+  }
+
+  @override
+  String get booklistAddBooks => 'Add books';
+
+  @override
+  String get booklistRemoveBook => 'Remove from list';
+
+  @override
+  String get booklistEmpty => 'No books in this list yet.';
+
+  @override
+  String get booklistRename => 'Rename';
+
+  @override
+  String get booklistDelete => 'Delete list';
+
+  @override
+  String get booklistDeleteConfirm => 'Delete this list?';
+
+  @override
+  String get booklistDeleted => 'List deleted';
+
+  @override
+  String get booklistNameHint => 'List name';
+
+  @override
+  String get booklistCancel => 'Cancel';
+
+  @override
+  String get booklistSave => 'Save';
+
+  @override
   String get bookFormatPaperback => 'Paperback';
 
   @override
@@ -2242,6 +2391,74 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get adminCatalogSeasonNone => 'None (all year)';
+
+  @override
+  String get adminCatalogTabCollections => 'Collections';
+
+  @override
+  String get adminCatalogListsBooklists => 'Booklists';
+
+  @override
+  String get adminCatalogNewCollection => 'New Collection';
+
+  @override
+  String get adminCatalogEditCollection => 'Edit Collection';
+
+  @override
+  String get adminCatalogNewBooklist => 'New Booklist';
+
+  @override
+  String get adminCatalogEditBooklist => 'Edit Booklist';
+
+  @override
+  String get adminCatalogFieldNoteEn => 'Why these books (English)';
+
+  @override
+  String get adminCatalogFieldNoteBn => 'Why these books (Bangla)';
+
+  @override
+  String get adminCatalogFieldSectionOptional => 'Section (optional)';
+
+  @override
+  String get adminCatalogNoSection => 'None (general)';
+
+  @override
+  String get adminCatalogFieldExpert => 'Expert (optional)';
+
+  @override
+  String get adminCatalogNoExpert => 'None (picked by Staff)';
+
+  @override
+  String get adminCatalogFieldKind => 'Kind';
+
+  @override
+  String get adminCatalogListBooks => 'Books';
+
+  @override
+  String get adminCatalogAddBooks => 'Add books';
+
+  @override
+  String get adminCatalogRemoveBook => 'Remove';
+
+  @override
+  String get adminCatalogErrListTitleBlank =>
+      'Add the title in English and Bangla';
+
+  @override
+  String get adminCatalogErrListNoBooks => 'Add at least one book';
+
+  @override
+  String get adminCatalogErrListDuplicateBook => 'A book is in the list twice';
+
+  @override
+  String get adminCatalogErrListNoteTooLong =>
+      'Keep each note to 300 characters';
+
+  @override
+  String get adminCatalogDeleteListTitle => 'Delete this list?';
+
+  @override
+  String get adminCatalogDeleteListBody => 'Readers stop seeing it at once.';
 
   @override
   String get adminOrders => 'Orders';

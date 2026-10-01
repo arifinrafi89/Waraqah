@@ -943,6 +943,252 @@ abstract class AppL10n {
   /// **'Books our editors picked, and why'**
   String get collectionStripSub;
 
+  /// No description provided for @expertPicksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert Picks'**
+  String get expertPicksTitle;
+
+  /// No description provided for @expertPicksSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Shelves from verified teachers, scholars and writers'**
+  String get expertPicksSub;
+
+  /// No description provided for @expertBy.
+  ///
+  /// In en, this message translates to:
+  /// **'by {name}'**
+  String expertBy(String name);
+
+  /// No description provided for @expertPickedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Picked by {name}'**
+  String expertPickedBy(String name);
+
+  /// No description provided for @expertVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get expertVerified;
+
+  /// No description provided for @expertKindTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get expertKindTeacher;
+
+  /// No description provided for @expertKindScholar.
+  ///
+  /// In en, this message translates to:
+  /// **'Scholar'**
+  String get expertKindScholar;
+
+  /// No description provided for @expertKindWriter.
+  ///
+  /// In en, this message translates to:
+  /// **'Writer'**
+  String get expertKindWriter;
+
+  /// No description provided for @expertTheirPicks.
+  ///
+  /// In en, this message translates to:
+  /// **'Their picks'**
+  String get expertTheirPicks;
+
+  /// No description provided for @booklistKindClassList.
+  ///
+  /// In en, this message translates to:
+  /// **'Class list'**
+  String get booklistKindClassList;
+
+  /// No description provided for @booklistKindExamPrep.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam prep'**
+  String get booklistKindExamPrep;
+
+  /// No description provided for @booklistKindBookClub.
+  ///
+  /// In en, this message translates to:
+  /// **'Book club'**
+  String get booklistKindBookClub;
+
+  /// No description provided for @booklistKindPersonal.
+  ///
+  /// In en, this message translates to:
+  /// **'My list'**
+  String get booklistKindPersonal;
+
+  /// No description provided for @booklistPickerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add books'**
+  String get booklistPickerTitle;
+
+  /// No description provided for @booklistPickerDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get booklistPickerDone;
+
+  /// No description provided for @booklistPickerEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books match.'**
+  String get booklistPickerEmpty;
+
+  /// No description provided for @booklistTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Booklists'**
+  String get booklistTitle;
+
+  /// No description provided for @booklistEntrySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Class lists, exam prep, book clubs and your own lists'**
+  String get booklistEntrySub;
+
+  /// No description provided for @booklistProfileLink.
+  ///
+  /// In en, this message translates to:
+  /// **'My booklists'**
+  String get booklistProfileLink;
+
+  /// No description provided for @booklistMine.
+  ///
+  /// In en, this message translates to:
+  /// **'My lists'**
+  String get booklistMine;
+
+  /// No description provided for @booklistNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New list'**
+  String get booklistNew;
+
+  /// No description provided for @booklistMineEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No lists yet. Make one for books you want to buy together.'**
+  String get booklistMineEmpty;
+
+  /// No description provided for @booklistGuestHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to make your own lists.'**
+  String get booklistGuestHint;
+
+  /// No description provided for @booklistGroupClassLists.
+  ///
+  /// In en, this message translates to:
+  /// **'Class lists'**
+  String get booklistGroupClassLists;
+
+  /// No description provided for @booklistNewTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{New: {price} for 1 book} other{New: {price} for {count} books}}'**
+  String booklistNewTotal(int count, String price);
+
+  /// No description provided for @booklistPriceNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get booklistPriceNew;
+
+  /// No description provided for @booklistPriceCertified.
+  ///
+  /// In en, this message translates to:
+  /// **'Certified Used'**
+  String get booklistPriceCertified;
+
+  /// No description provided for @booklistPriceUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Used'**
+  String get booklistPriceUsed;
+
+  /// No description provided for @booklistAddAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Add whole list to cart'**
+  String get booklistAddAll;
+
+  /// No description provided for @booklistAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Nothing added} =1{Added 1 book} other{Added {count} books}}'**
+  String booklistAdded(int count);
+
+  /// No description provided for @booklistOutOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} out of stock'**
+  String booklistOutOfStock(int count);
+
+  /// No description provided for @booklistAddBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Add books'**
+  String get booklistAddBooks;
+
+  /// No description provided for @booklistRemoveBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from list'**
+  String get booklistRemoveBook;
+
+  /// No description provided for @booklistEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books in this list yet.'**
+  String get booklistEmpty;
+
+  /// No description provided for @booklistRename.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename'**
+  String get booklistRename;
+
+  /// No description provided for @booklistDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete list'**
+  String get booklistDelete;
+
+  /// No description provided for @booklistDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this list?'**
+  String get booklistDeleteConfirm;
+
+  /// No description provided for @booklistDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'List deleted'**
+  String get booklistDeleted;
+
+  /// No description provided for @booklistNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'List name'**
+  String get booklistNameHint;
+
+  /// No description provided for @booklistCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get booklistCancel;
+
+  /// No description provided for @booklistSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get booklistSave;
+
   /// No description provided for @bookFormatPaperback.
   ///
   /// In en, this message translates to:
@@ -3948,6 +4194,138 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'None (all year)'**
   String get adminCatalogSeasonNone;
+
+  /// No description provided for @adminCatalogTabCollections.
+  ///
+  /// In en, this message translates to:
+  /// **'Collections'**
+  String get adminCatalogTabCollections;
+
+  /// No description provided for @adminCatalogListsBooklists.
+  ///
+  /// In en, this message translates to:
+  /// **'Booklists'**
+  String get adminCatalogListsBooklists;
+
+  /// No description provided for @adminCatalogNewCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'New Collection'**
+  String get adminCatalogNewCollection;
+
+  /// No description provided for @adminCatalogEditCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Collection'**
+  String get adminCatalogEditCollection;
+
+  /// No description provided for @adminCatalogNewBooklist.
+  ///
+  /// In en, this message translates to:
+  /// **'New Booklist'**
+  String get adminCatalogNewBooklist;
+
+  /// No description provided for @adminCatalogEditBooklist.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Booklist'**
+  String get adminCatalogEditBooklist;
+
+  /// No description provided for @adminCatalogFieldNoteEn.
+  ///
+  /// In en, this message translates to:
+  /// **'Why these books (English)'**
+  String get adminCatalogFieldNoteEn;
+
+  /// No description provided for @adminCatalogFieldNoteBn.
+  ///
+  /// In en, this message translates to:
+  /// **'Why these books (Bangla)'**
+  String get adminCatalogFieldNoteBn;
+
+  /// No description provided for @adminCatalogFieldSectionOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Section (optional)'**
+  String get adminCatalogFieldSectionOptional;
+
+  /// No description provided for @adminCatalogNoSection.
+  ///
+  /// In en, this message translates to:
+  /// **'None (general)'**
+  String get adminCatalogNoSection;
+
+  /// No description provided for @adminCatalogFieldExpert.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert (optional)'**
+  String get adminCatalogFieldExpert;
+
+  /// No description provided for @adminCatalogNoExpert.
+  ///
+  /// In en, this message translates to:
+  /// **'None (picked by Staff)'**
+  String get adminCatalogNoExpert;
+
+  /// No description provided for @adminCatalogFieldKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Kind'**
+  String get adminCatalogFieldKind;
+
+  /// No description provided for @adminCatalogListBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Books'**
+  String get adminCatalogListBooks;
+
+  /// No description provided for @adminCatalogAddBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Add books'**
+  String get adminCatalogAddBooks;
+
+  /// No description provided for @adminCatalogRemoveBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get adminCatalogRemoveBook;
+
+  /// No description provided for @adminCatalogErrListTitleBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the title in English and Bangla'**
+  String get adminCatalogErrListTitleBlank;
+
+  /// No description provided for @adminCatalogErrListNoBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Add at least one book'**
+  String get adminCatalogErrListNoBooks;
+
+  /// No description provided for @adminCatalogErrListDuplicateBook.
+  ///
+  /// In en, this message translates to:
+  /// **'A book is in the list twice'**
+  String get adminCatalogErrListDuplicateBook;
+
+  /// No description provided for @adminCatalogErrListNoteTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep each note to 300 characters'**
+  String get adminCatalogErrListNoteTooLong;
+
+  /// No description provided for @adminCatalogDeleteListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this list?'**
+  String get adminCatalogDeleteListTitle;
+
+  /// No description provided for @adminCatalogDeleteListBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Readers stop seeing it at once.'**
+  String get adminCatalogDeleteListBody;
 
   /// No description provided for @adminOrders.
   ///

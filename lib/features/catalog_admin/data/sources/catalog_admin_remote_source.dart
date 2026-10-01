@@ -6,6 +6,7 @@ import '../../../home/domain/entities/banner.dart';
 import '../../../home/domain/entities/season.dart';
 import '../../domain/entities/book_draft.dart';
 import '../../domain/entities/catalog_record.dart';
+import '../../domain/entities/list_draft.dart';
 import '../models/book_draft_json.dart';
 import '../models/catalog_record_model.dart';
 import 'catalog_admin_fake_api.dart';
@@ -85,6 +86,30 @@ class CatalogAdminRemoteSource {
 
   Future<void> moveBanner(String id, int by) =>
       _post(CatalogAdminFakeApi.moveBanner, {'id': id, 'by': by});
+
+  Future<void> saveList(ListDraft d) => _post(
+    d.isBooklist
+        ? CatalogAdminFakeApi.saveBooklist
+        : CatalogAdminFakeApi.saveCollection,
+    {
+      'id': ?d.id,
+      'titleEn': d.titleEn,
+      'titleBn': d.titleBn,
+      'noteEn': d.noteEn,
+      'noteBn': d.noteBn,
+      'section': ?d.section?.name,
+      'expertId': ?d.expertId,
+      'kind': ?d.kind?.name,
+      'bookIds': d.bookIds,
+    },
+  );
+
+  Future<void> deleteList(String id, {required bool booklist}) => _post(
+    booklist
+        ? CatalogAdminFakeApi.deleteBooklist
+        : CatalogAdminFakeApi.deleteCollection,
+    {'id': id},
+  );
 
   Future<dynamic> _post(String path, Map<String, dynamic> body) async {
     final data = (await _dio.post<dynamic>(path, data: body)).data;

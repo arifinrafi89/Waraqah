@@ -1,5 +1,6 @@
 import '../../../../core/models/book.dart';
 import '../models/collection_model.dart';
+import 'seed/expert_picks.dart';
 import 'seed/season_collections.dart';
 
 /// Offline Collections, in the order Home shows them.
@@ -74,5 +75,6 @@ abstract final class CollectionFixtures {
       bookIds: ['bk-cleancode', 'bk-pragmatic', 'bk-ddia'],
     ),
     ...SeasonCollections.all,
+    ...ExpertPicks.all,
   ];
 }

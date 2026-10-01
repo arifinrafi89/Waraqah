@@ -23,6 +23,10 @@ enum RuleError {
   nameBnBlank,
   bannerTitleBlank,
   bannerTargetBlank,
+  listTitleBlank,
+  listNoBooks,
+  listDuplicateBook,
+  listNoteTooLong,
 }
 
 /// What a catalog change must satisfy. The form shows these inline; the

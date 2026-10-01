@@ -46,14 +46,14 @@ void main() {
     expect(find.text('Retry'), findsNothing);
   });
 
-  testWidgets('Religious Section page shows Collections; Literature not', (
+  testWidgets('Religious Section page shows Collections; Children not', (
     tester,
   ) async {
     await openApp(tester, CatalogRoutes.sectionFor(Section.religious));
     expect(find.byType(CollectionTile), findsWidgets);
     expect(find.text('Hadith collections'), findsOneWidget);
 
-    await openApp(tester, CatalogRoutes.sectionFor(Section.literature));
+    await openApp(tester, CatalogRoutes.sectionFor(Section.children));
     expect(find.byType(CollectionTile), findsNothing);
     expect(tester.takeException(), isNull);
   });
@@ -73,7 +73,8 @@ void main() {
       200,
       scrollable: home,
     );
-    await tester.drag(home, const Offset(0, -100));
+    // scrollUntilVisible leaves the strip at the very top; bring it down.
+    await tester.drag(home, const Offset(0, 300));
     await settle(tester);
 
     await tester.tap(find.text('Start with these'));

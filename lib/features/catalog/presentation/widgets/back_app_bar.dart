@@ -7,12 +7,14 @@ import '../../../../core/widgets/screen_app_bar.dart';
 import '../../catalog_routes.dart';
 
 /// App bar for pages pushed inside the Catalog tab: back button, title and
-/// optional subtitle. Back falls through to the Catalog when nothing is below.
+/// optional subtitle and [actions]. Back falls through to the Catalog when
+/// nothing is below.
 class BackAppBar extends StatelessWidget {
-  const BackAppBar({super.key, this.title, this.subtitle});
+  const BackAppBar({super.key, this.title, this.subtitle, this.actions});
 
   final String? title;
   final String? subtitle;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) => Row(
@@ -25,7 +27,11 @@ class BackAppBar extends StatelessWidget {
         ),
       ),
       Expanded(
-        child: ScreenAppBar(title: title, subtitle: subtitle),
+        child: ScreenAppBar(
+          title: title,
+          subtitle: subtitle,
+          actions: actions ?? const [],
+        ),
       ),
     ],
   );

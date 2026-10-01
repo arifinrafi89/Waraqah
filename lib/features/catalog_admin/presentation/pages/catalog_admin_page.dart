@@ -11,10 +11,11 @@ import '../../../admin/admin_routes.dart';
 import '../../domain/entities/catalog_record.dart';
 import '../widgets/banners_admin_tab.dart';
 import '../widgets/books_admin_tab.dart';
+import '../widgets/lists_admin_tab.dart';
 import '../widgets/records_admin_tab.dart';
 
-/// `/admin/catalog`: Books, Categories, Authors, Publishers and Home's
-/// Banners, one tab each.
+/// `/admin/catalog`: Books, Categories, Authors, Publishers, Home's
+/// Banners, and Collections with Staff Booklists, one tab each.
 class CatalogAdminPage extends StatelessWidget {
   const CatalogAdminPage({super.key});
 
@@ -34,6 +35,7 @@ class CatalogAdminPage extends StatelessWidget {
         const RecordsAdminTab(RecordKind.publisher),
       ),
       (l10n.adminCatalogTabBanners, const BannersAdminTab()),
+      (l10n.adminCatalogTabCollections, const ListsAdminTab()),
     ];
     return DefaultTabController(
       length: tabs.length,

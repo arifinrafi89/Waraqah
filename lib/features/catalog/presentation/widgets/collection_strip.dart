@@ -8,7 +8,7 @@ import '../../../../core/widgets/section_header.dart';
 import '../../../../core/widgets/shimmer_box.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/collection.dart';
-import '../providers/catalog_providers.dart';
+import '../providers/expert_providers.dart';
 import 'collection_tile.dart';
 
 /// Horizontal strip of [CollectionTile]s. Home and Section pages use it.
@@ -43,16 +43,28 @@ class CollectionStripSkeleton extends StatelessWidget {
   );
 }
 
-/// A Section's Collections under a header. Shows nothing while loading, on
-/// error, or when the Section has none.
+/// A Section's Collections, or with [expertPicks] its Expert Picks, under a
+/// header. Shows nothing while loading, on error, or when there are none.
 class SectionCollections extends ConsumerWidget {
-  const SectionCollections({super.key, required this.section});
+  const SectionCollections({
+    super.key,
+    required this.section,
+    this.expertPicks = false,
+  });
 
   final Section section;
+  final bool expertPicks;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final collections = ref.watch(collectionsProvider(section)).value;
+    final l10n = AppL10n.of(context)!;
+    final collections = ref
+        .watch(
+          (expertPicks ? expertPicksProvider : staffCollectionsProvider)(
+            section,
+          ),
+        )
+        .value;
     if (collections == null || collections.isEmpty) return const SizedBox();
     return Padding(
       padding: const EdgeInsets.only(top: Insets.sm, bottom: Insets.md),
@@ -62,7 +74,9 @@ class SectionCollections extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: Insets.screen),
             child: SectionHeader(
-              title: AppL10n.of(context)!.collectionStripTitle,
+              title: expertPicks
+                  ? l10n.expertPicksTitle
+                  : l10n.collectionStripTitle,
             ),
           ),
           CollectionStrip(collections: collections),

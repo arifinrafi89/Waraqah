@@ -4,6 +4,7 @@ import '../../../../core/models/book.dart';
 import '../../../../core/network/dio_provider.dart';
 import '../../../../core/state/selection_notifier.dart';
 import '../../../../core/usecase/usecase.dart';
+import '../../../catalog/presentation/providers/booklist_providers.dart';
 import '../../../catalog/presentation/providers/catalog_providers.dart';
 import '../../../home/domain/entities/banner.dart';
 import '../../../home/domain/entities/season.dart';
@@ -55,11 +56,17 @@ final adminBookQueryProvider = selectionProvider<String>('');
 /// Whether the Books tab lists hidden Books too.
 final adminShowHiddenProvider = selectionProvider<bool>(false);
 
-/// After any change: drop every cache that holds the catalog or Banners,
+/// Whether the Collections tab shows Staff Booklists instead.
+final adminShowBooklistsProvider = selectionProvider<bool>(false);
+
+/// After any change: drop every cache that holds the catalog, Banners or
+/// Booklists,
 /// so Home, Search, Section pages and this area read it again.
 void refreshCatalog(Ref ref) => ref
   ..invalidate(bookRepositoryProvider)
   ..invalidate(catalogRecordsRepositoryProvider)
+  ..invalidate(booklistsProvider)
+  ..invalidate(booklistProvider)
   ..invalidate(bannerRepositoryProvider)
   ..invalidate(adminBannersProvider)
   ..invalidate(seasonOverrideProvider)

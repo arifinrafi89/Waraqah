@@ -10,6 +10,7 @@ abstract final class BanglaTitles {
     'bk-davinci': 'দ্য দা ভিঞ্চি কোড',
     'bk-sherlock': 'শার্লক হোমস: আ স্টাডি ইন স্কারলেট',
     'bk-matilda': 'মাটিল্ডা',
+    'bk-alchemist': 'দ্য অ্যালকেমিস্ট',
     'bk-nectar': 'আর-রাহীকুল মাখতূম',
     'bk-bukhari': 'সহীহ আল-বুখারী',
     'bk-riyad': 'রিয়াদুস সালিহীন',

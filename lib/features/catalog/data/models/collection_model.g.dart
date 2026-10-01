@@ -17,6 +17,7 @@ _CollectionModel _$CollectionModelFromJson(Map<String, dynamic> json) =>
           .map((e) => e as String)
           .toList(),
       section: $enumDecodeNullable(_$SectionEnumMap, json['section']),
+      expertId: json['expertId'] as String?,
     );
 
 Map<String, dynamic> _$CollectionModelToJson(_CollectionModel instance) =>
@@ -28,6 +29,7 @@ Map<String, dynamic> _$CollectionModelToJson(_CollectionModel instance) =>
       'noteBn': instance.noteBn,
       'bookIds': instance.bookIds,
       'section': _$SectionEnumMap[instance.section],
+      'expertId': instance.expertId,
     };
 
 const _$SectionEnumMap = {
