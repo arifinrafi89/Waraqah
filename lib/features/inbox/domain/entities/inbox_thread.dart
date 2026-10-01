@@ -41,6 +41,12 @@ abstract class InboxThread with _$InboxThread {
 
     /// Oldest first. The inbox list only carries the latest one.
     @Default(<InboxMessage>[]) List<InboxMessage> messages,
+
+    /// Stars the reader gave the other person after the sale.
+    int? myRating,
+
+    /// Stars the other person gave the reader.
+    int? theirRating,
   }) = _InboxThread;
 }
 
@@ -65,6 +71,9 @@ extension InboxThreadX on InboxThread {
       dealHere && listing.status == P2pListingStatus.reserved;
 
   bool get isSoldHere => dealHere && listing.status == P2pListingStatus.sold;
+
+  /// After the sale, buyer and seller rate each other, once.
+  bool get canRate => isSoldHere && myRating == null;
 
   /// Reserved for, or sold to, a different buyer.
   bool get isTakenElsewhere =>

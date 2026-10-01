@@ -1,4 +1,5 @@
 import '../entities/p2p_listing.dart';
+import '../entities/seller_profile.dart';
 
 abstract interface class P2pRepository {
   /// On sale or reserved; with [onlyAvailable], just what others can buy
@@ -15,4 +16,7 @@ abstract interface class P2pRepository {
 
   /// Copies of a catalog book other readers are selling now.
   Future<List<P2pListing>> fetchListingsForBook(String bookId);
+
+  /// A reader's seller page; `null` for someone unknown.
+  Future<SellerProfile?> fetchSeller(String id);
 }

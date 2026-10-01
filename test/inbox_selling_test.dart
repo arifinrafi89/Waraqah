@@ -77,6 +77,10 @@ void main() {
     await tester.tap(find.widgetWithText(FilledButton, 'Mark as sold').last);
     await settle(tester);
     expect(find.text('Sold to Sadia'), findsOneWidget);
+    expect(find.text('How was the deal with Sadia?'), findsOneWidget);
+    // Sadia rates back a moment later, live.
+    await _waitForReply(tester);
+    expect(find.text('Sadia rated you'), findsOneWidget);
 
     router.push(P2pRoutes.myListings);
     await settle(tester);

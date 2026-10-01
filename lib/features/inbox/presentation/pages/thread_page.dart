@@ -8,6 +8,7 @@ import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../p2p/p2p_routes.dart';
 import '../../domain/entities/inbox_thread.dart';
 import '../../inbox_routes.dart';
 import '../providers/thread_providers.dart';
@@ -75,24 +76,28 @@ class _Who extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppL10n.of(context)!;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          thread.otherName,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: context.texts.titleLarge,
-        ),
-        Text(
-          thread.isBuying ? l10n.inboxBuying : l10n.inboxSelling,
-          style: AppFonts.ui(
-            size: 11,
-            weight: FontWeight.w700,
-            color: context.palette.textFaint,
+    return InkWell(
+      onTap: () => context.push(P2pRoutes.sellerFor(thread.otherId)),
+      borderRadius: BorderRadius.circular(Radii.sm),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            thread.otherName,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: context.texts.titleLarge,
           ),
-        ),
-      ],
+          Text(
+            thread.isBuying ? l10n.inboxBuying : l10n.inboxSelling,
+            style: AppFonts.ui(
+              size: 11,
+              weight: FontWeight.w700,
+              color: context.palette.textFaint,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

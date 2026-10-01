@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../models/p2p_listing_model.dart';
+import '../models/seller_profile_model.dart';
 import 'p2p_fake_api.dart';
 
 /// Talks to the `/p2p` endpoints, answered for now by the fake API.
@@ -39,6 +40,15 @@ class P2pRemoteSource {
     );
     final data = response.data;
     return data == null ? null : P2pListingModel.fromJson(data);
+  }
+
+  Future<SellerProfileModel?> seller(String id) async {
+    final response = await _dio.get<Map<String, dynamic>>(
+      P2pFakeApi.seller,
+      queryParameters: {'id': id},
+    );
+    final data = response.data;
+    return data == null ? null : SellerProfileModel.fromJson(data);
   }
 
   Future<List<P2pListingModel>> _list(

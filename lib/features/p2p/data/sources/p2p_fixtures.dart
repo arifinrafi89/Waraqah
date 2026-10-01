@@ -60,6 +60,7 @@ abstract final class P2pFixtures {
       BookCondition.likeNew,
       status: P2pListingStatus.sold,
       newPrice: 800,
+      negotiable: true,
       handover: HandoverMethod.delivery,
       category: 'Computer Science',
     ),

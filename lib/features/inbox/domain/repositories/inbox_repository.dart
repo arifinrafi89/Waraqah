@@ -47,6 +47,9 @@ abstract interface class InboxRepository {
   /// The seller marks the book sold to this thread's buyer.
   Future<InboxThread> markSold(String threadId);
 
+  /// After the sale, rate the other person once.
+  Future<InboxThread> rate(String threadId, int stars, String? comment);
+
   /// Live changes while the app is open.
   Stream<InboxChange> changes();
 }

@@ -38,6 +38,8 @@ abstract class InboxThreadModel with _$InboxThreadModel {
     @Default(false) bool dealHere,
     @Default(0) int unread,
     @Default(<InboxMessageModel>[]) List<InboxMessageModel> messages,
+    int? myRating,
+    int? theirRating,
   }) = _InboxThreadModel;
 
   factory InboxThreadModel.fromJson(Map<String, dynamic> json) =>
@@ -74,6 +76,8 @@ extension InboxThreadModelX on InboxThreadModel {
     dealHere: dealHere,
     unread: unread,
     messages: [for (final message in messages) message.toEntity()],
+    myRating: myRating,
+    theirRating: theirRating,
   );
 }
 

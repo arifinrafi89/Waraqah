@@ -6,11 +6,13 @@ import '../../../../core/usecase/usecase.dart';
 import '../../data/repositories/p2p_repository_impl.dart';
 import '../../data/sources/p2p_remote_source.dart';
 import '../../domain/entities/p2p_listing.dart';
+import '../../domain/entities/seller_profile.dart';
 import '../../domain/repositories/p2p_repository.dart';
 import '../../domain/usecases/fetch_listings_for_book_usecase.dart';
 import '../../domain/usecases/get_listing.dart';
 import '../../domain/usecases/get_listings.dart';
 import '../../domain/usecases/get_my_listings.dart';
+import '../../domain/usecases/get_seller.dart';
 
 final p2pRepositoryProvider = Provider<P2pRepository>(
   (ref) => P2pRepositoryImpl(P2pRemoteSource(ref.watch(dioProvider))),
@@ -89,4 +91,13 @@ final myListingsProvider = FutureProvider<List<P2pListing>>(
 
 final p2pListingDetailProvider = FutureProvider.family<P2pListing?, String>(
   (ref, id) => ref.watch(getListingProvider).call(id),
+);
+
+final getSellerProvider = Provider<GetSeller>(
+  (ref) => GetSeller(ref.watch(p2pRepositoryProvider)),
+);
+
+/// A reader's seller page: who they are, ratings, what's on sale.
+final sellerProvider = FutureProvider.family<SellerProfile?, String>(
+  (ref, id) => ref.watch(getSellerProvider).call(id),
 );

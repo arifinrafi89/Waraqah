@@ -5,6 +5,8 @@ import 'package:dio/dio.dart';
 
 import '../../domain/entities/inbox_message.dart';
 import 'inbox_fake_actions.dart';
+import 'inbox_fake_json.dart';
+import 'inbox_fake_rating.dart';
 import 'inbox_fake_records.dart';
 import 'inbox_fake_selling.dart';
 import 'inbox_fake_store.dart';
@@ -41,6 +43,9 @@ abstract final class InboxFakeApi {
   /// Body `{threadId}`: the seller marks it sold to this buyer.
   static const String sold = '/inbox/listing/sold';
 
+  /// Body `{threadId, stars, comment?}`: after the sale, once each.
+  static const String rate = '/inbox/rate';
+
   /// A stream of server-sent events, one `data: {seq, threadId,
   /// listingId}` per change, kept open while the app listens.
   static const String live = '/inbox/live';
@@ -73,6 +78,13 @@ abstract final class InboxFakeApi {
       read: (o) => answer(store.readUp(store.threads[_text(o, 'threadId')])),
       release: (o) => answer(store.release(_text(o, 'threadId'))),
       sold: (o) => answer(store.markSold(_text(o, 'threadId'))),
+      rate: (o) => answer(
+        store.rate(
+          _text(o, 'threadId'),
+          _body(o)['stars'] as int? ?? 0,
+          _body(o)['comment'] as String?,
+        ),
+      ),
       live: (_) => ResponseBody(
         store.changes.map(
           (change) => Uint8List.fromList(

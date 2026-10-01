@@ -55,6 +55,10 @@ class InboxRepositoryImpl implements InboxRepository {
       (await _source.markSold(threadId)).toEntity();
 
   @override
+  Future<InboxThread> rate(String threadId, int stars, String? comment) async =>
+      (await _source.rate(threadId, stars, comment)).toEntity();
+
+  @override
   Stream<InboxChange> changes() =>
       _live.changes().map((change) => change.toEntity());
 }

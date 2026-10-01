@@ -304,7 +304,7 @@ as HandoverMethod,
 /// @nodoc
 mixin _$InboxThreadModel {
 
- String get id; ThreadRole get role; String get otherId; String get otherName; ThreadListingModel get listing; bool get dealHere; int get unread; List<InboxMessageModel> get messages;
+ String get id; ThreadRole get role; String get otherId; String get otherName; ThreadListingModel get listing; bool get dealHere; int get unread; List<InboxMessageModel> get messages; int? get myRating; int? get theirRating;
 /// Create a copy of InboxThreadModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -318,20 +318,20 @@ $InboxThreadModelCopyWith<InboxThreadModel> get copyWith => _$InboxThreadModelCo
 @override
 bool operator ==(Object other) {
   final _this = this as InboxThreadModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InboxThreadModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.role, _this.role) || other.role == _this.role)&&(identical(other.otherId, _this.otherId) || other.otherId == _this.otherId)&&(identical(other.otherName, _this.otherName) || other.otherName == _this.otherName)&&(identical(other.listing, _this.listing) || other.listing == _this.listing)&&(identical(other.dealHere, _this.dealHere) || other.dealHere == _this.dealHere)&&(identical(other.unread, _this.unread) || other.unread == _this.unread)&&const DeepCollectionEquality().equals(other.messages, _this.messages));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InboxThreadModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.role, _this.role) || other.role == _this.role)&&(identical(other.otherId, _this.otherId) || other.otherId == _this.otherId)&&(identical(other.otherName, _this.otherName) || other.otherName == _this.otherName)&&(identical(other.listing, _this.listing) || other.listing == _this.listing)&&(identical(other.dealHere, _this.dealHere) || other.dealHere == _this.dealHere)&&(identical(other.unread, _this.unread) || other.unread == _this.unread)&&const DeepCollectionEquality().equals(other.messages, _this.messages)&&(identical(other.myRating, _this.myRating) || other.myRating == _this.myRating)&&(identical(other.theirRating, _this.theirRating) || other.theirRating == _this.theirRating));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as InboxThreadModel;
-  return Object.hash(runtimeType,_this.id,_this.role,_this.otherId,_this.otherName,_this.listing,_this.dealHere,_this.unread,const DeepCollectionEquality().hash(_this.messages));
+  return Object.hash(runtimeType,_this.id,_this.role,_this.otherId,_this.otherName,_this.listing,_this.dealHere,_this.unread,const DeepCollectionEquality().hash(_this.messages),_this.myRating,_this.theirRating);
 }
 
 @override
 String toString() {
   final _this = this as InboxThreadModel;
-  return 'InboxThreadModel(id: ${_this.id}, role: ${_this.role}, otherId: ${_this.otherId}, otherName: ${_this.otherName}, listing: ${_this.listing}, dealHere: ${_this.dealHere}, unread: ${_this.unread}, messages: ${_this.messages})';
+  return 'InboxThreadModel(id: ${_this.id}, role: ${_this.role}, otherId: ${_this.otherId}, otherName: ${_this.otherName}, listing: ${_this.listing}, dealHere: ${_this.dealHere}, unread: ${_this.unread}, messages: ${_this.messages}, myRating: ${_this.myRating}, theirRating: ${_this.theirRating})';
 }
 
 
@@ -342,7 +342,7 @@ abstract mixin class $InboxThreadModelCopyWith<$Res>  {
   factory $InboxThreadModelCopyWith(InboxThreadModel value, $Res Function(InboxThreadModel) _then) = _$InboxThreadModelCopyWithImpl;
 @useResult
 $Res call({
- String id, ThreadRole role, String otherId, String otherName, ThreadListingModel listing, bool dealHere, int unread, List<InboxMessageModel> messages
+ String id, ThreadRole role, String otherId, String otherName, ThreadListingModel listing, bool dealHere, int unread, List<InboxMessageModel> messages, int? myRating, int? theirRating
 });
 
 
@@ -359,7 +359,7 @@ class _$InboxThreadModelCopyWithImpl<$Res>
 
 /// Create a copy of InboxThreadModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? role = null,Object? otherId = null,Object? otherName = null,Object? listing = null,Object? dealHere = null,Object? unread = null,Object? messages = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? role = null,Object? otherId = null,Object? otherName = null,Object? listing = null,Object? dealHere = null,Object? unread = null,Object? messages = null,Object? myRating = freezed,Object? theirRating = freezed,}) {
   return _then(InboxThreadModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
@@ -369,7 +369,9 @@ as String,listing: null == listing ? _self.listing : listing // ignore: cast_nul
 as ThreadListingModel,dealHere: null == dealHere ? _self.dealHere : dealHere // ignore: cast_nullable_to_non_nullable
 as bool,unread: null == unread ? _self.unread : unread // ignore: cast_nullable_to_non_nullable
 as int,messages: null == messages ? _self.messages : messages // ignore: cast_nullable_to_non_nullable
-as List<InboxMessageModel>,
+as List<InboxMessageModel>,myRating: freezed == myRating ? _self.myRating : myRating // ignore: cast_nullable_to_non_nullable
+as int?,theirRating: freezed == theirRating ? _self.theirRating : theirRating // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 /// Create a copy of InboxThreadModel
@@ -463,10 +465,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  ThreadRole role,  String otherId,  String otherName,  ThreadListingModel listing,  bool dealHere,  int unread,  List<InboxMessageModel> messages)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  ThreadRole role,  String otherId,  String otherName,  ThreadListingModel listing,  bool dealHere,  int unread,  List<InboxMessageModel> messages,  int? myRating,  int? theirRating)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _InboxThreadModel() when $default != null:
-return $default(_that.id,_that.role,_that.otherId,_that.otherName,_that.listing,_that.dealHere,_that.unread,_that.messages);case _:
+return $default(_that.id,_that.role,_that.otherId,_that.otherName,_that.listing,_that.dealHere,_that.unread,_that.messages,_that.myRating,_that.theirRating);case _:
   return orElse();
 
 }
@@ -484,10 +486,10 @@ return $default(_that.id,_that.role,_that.otherId,_that.otherName,_that.listing,
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  ThreadRole role,  String otherId,  String otherName,  ThreadListingModel listing,  bool dealHere,  int unread,  List<InboxMessageModel> messages)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  ThreadRole role,  String otherId,  String otherName,  ThreadListingModel listing,  bool dealHere,  int unread,  List<InboxMessageModel> messages,  int? myRating,  int? theirRating)  $default,) {final _that = this;
 switch (_that) {
 case _InboxThreadModel():
-return $default(_that.id,_that.role,_that.otherId,_that.otherName,_that.listing,_that.dealHere,_that.unread,_that.messages);case _:
+return $default(_that.id,_that.role,_that.otherId,_that.otherName,_that.listing,_that.dealHere,_that.unread,_that.messages,_that.myRating,_that.theirRating);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -504,10 +506,10 @@ return $default(_that.id,_that.role,_that.otherId,_that.otherName,_that.listing,
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  ThreadRole role,  String otherId,  String otherName,  ThreadListingModel listing,  bool dealHere,  int unread,  List<InboxMessageModel> messages)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  ThreadRole role,  String otherId,  String otherName,  ThreadListingModel listing,  bool dealHere,  int unread,  List<InboxMessageModel> messages,  int? myRating,  int? theirRating)?  $default,) {final _that = this;
 switch (_that) {
 case _InboxThreadModel() when $default != null:
-return $default(_that.id,_that.role,_that.otherId,_that.otherName,_that.listing,_that.dealHere,_that.unread,_that.messages);case _:
+return $default(_that.id,_that.role,_that.otherId,_that.otherName,_that.listing,_that.dealHere,_that.unread,_that.messages,_that.myRating,_that.theirRating);case _:
   return null;
 
 }
@@ -519,7 +521,7 @@ return $default(_that.id,_that.role,_that.otherId,_that.otherName,_that.listing,
 
 @JsonSerializable(explicitToJson: true)
 class _InboxThreadModel implements InboxThreadModel {
-  const _InboxThreadModel({required this.id, required this.role, required this.otherId, required this.otherName, required this.listing, this.dealHere = false, this.unread = 0,  List<InboxMessageModel> messages = const <InboxMessageModel>[]}): _messages = messages;
+  const _InboxThreadModel({required this.id, required this.role, required this.otherId, required this.otherName, required this.listing, this.dealHere = false, this.unread = 0,  List<InboxMessageModel> messages = const <InboxMessageModel>[], this.myRating, this.theirRating}): _messages = messages;
   factory _InboxThreadModel.fromJson(Map<String, dynamic> json) => _$InboxThreadModelFromJson(json);
 
 @override final  String id;
@@ -536,6 +538,8 @@ class _InboxThreadModel implements InboxThreadModel {
   return EqualUnmodifiableListView(_messages);
 }
 
+@override final  int? myRating;
+@override final  int? theirRating;
 
 /// Create a copy of InboxThreadModel
 /// with the given fields replaced by the non-null parameter values.
@@ -550,18 +554,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _InboxThreadModel&&(identical(other.id, id) || other.id == id)&&(identical(other.role, role) || other.role == role)&&(identical(other.otherId, otherId) || other.otherId == otherId)&&(identical(other.otherName, otherName) || other.otherName == otherName)&&(identical(other.listing, listing) || other.listing == listing)&&(identical(other.dealHere, dealHere) || other.dealHere == dealHere)&&(identical(other.unread, unread) || other.unread == unread)&&const DeepCollectionEquality().equals(other.messages, _messages));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _InboxThreadModel&&(identical(other.id, id) || other.id == id)&&(identical(other.role, role) || other.role == role)&&(identical(other.otherId, otherId) || other.otherId == otherId)&&(identical(other.otherName, otherName) || other.otherName == otherName)&&(identical(other.listing, listing) || other.listing == listing)&&(identical(other.dealHere, dealHere) || other.dealHere == dealHere)&&(identical(other.unread, unread) || other.unread == unread)&&const DeepCollectionEquality().equals(other.messages, _messages)&&(identical(other.myRating, myRating) || other.myRating == myRating)&&(identical(other.theirRating, theirRating) || other.theirRating == theirRating));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,role,otherId,otherName,listing,dealHere,unread,const DeepCollectionEquality().hash(_messages));
+    return Object.hash(runtimeType,id,role,otherId,otherName,listing,dealHere,unread,const DeepCollectionEquality().hash(_messages),myRating,theirRating);
 }
 
 @override
 String toString() {
-    return 'InboxThreadModel(id: $id, role: $role, otherId: $otherId, otherName: $otherName, listing: $listing, dealHere: $dealHere, unread: $unread, messages: $messages)';
+    return 'InboxThreadModel(id: $id, role: $role, otherId: $otherId, otherName: $otherName, listing: $listing, dealHere: $dealHere, unread: $unread, messages: $messages, myRating: $myRating, theirRating: $theirRating)';
 }
 
 
@@ -572,7 +576,7 @@ abstract mixin class _$InboxThreadModelCopyWith<$Res> implements $InboxThreadMod
   factory _$InboxThreadModelCopyWith(_InboxThreadModel value, $Res Function(_InboxThreadModel) _then) = __$InboxThreadModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, ThreadRole role, String otherId, String otherName, ThreadListingModel listing, bool dealHere, int unread, List<InboxMessageModel> messages
+ String id, ThreadRole role, String otherId, String otherName, ThreadListingModel listing, bool dealHere, int unread, List<InboxMessageModel> messages, int? myRating, int? theirRating
 });
 
 
@@ -589,7 +593,7 @@ class __$InboxThreadModelCopyWithImpl<$Res>
 
 /// Create a copy of InboxThreadModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? role = null,Object? otherId = null,Object? otherName = null,Object? listing = null,Object? dealHere = null,Object? unread = null,Object? messages = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? role = null,Object? otherId = null,Object? otherName = null,Object? listing = null,Object? dealHere = null,Object? unread = null,Object? messages = null,Object? myRating = freezed,Object? theirRating = freezed,}) {
   return _then(_InboxThreadModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
@@ -599,7 +603,9 @@ as String,listing: null == listing ? _self.listing : listing // ignore: cast_nul
 as ThreadListingModel,dealHere: null == dealHere ? _self.dealHere : dealHere // ignore: cast_nullable_to_non_nullable
 as bool,unread: null == unread ? _self.unread : unread // ignore: cast_nullable_to_non_nullable
 as int,messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
-as List<InboxMessageModel>,
+as List<InboxMessageModel>,myRating: freezed == myRating ? _self.myRating : myRating // ignore: cast_nullable_to_non_nullable
+as int?,theirRating: freezed == theirRating ? _self.theirRating : theirRating // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 

@@ -6,6 +6,7 @@ import 'composer.dart';
 import 'deal_banner.dart';
 import 'listing_pin.dart';
 import 'message_list.dart';
+import 'rating_card.dart';
 
 /// The book on top, where the deal stands, the conversation, and the box
 /// to write in.
@@ -25,6 +26,7 @@ class ThreadBody extends StatelessWidget {
             children: [
               ListingPin(listing: thread.listing),
               DealBanner(thread: thread),
+              RatingCard(thread: thread),
             ],
           ),
         ),
