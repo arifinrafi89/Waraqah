@@ -448,6 +448,38 @@ class AppL10nBn extends AppL10n {
   String get sectionEmpty => 'এই বিভাগে এখনো কোনো বই নেই।';
 
   @override
+  String get sectionClassRow => 'শ্রেণি';
+
+  @override
+  String get sectionExamRow => 'পরীক্ষা';
+
+  @override
+  String get sectionSubjectRow => 'বিষয়';
+
+  @override
+  String sectionClassChip(int n) {
+    return 'শ্রেণি $n';
+  }
+
+  @override
+  String get sectionExamSsc => 'এসএসসি';
+
+  @override
+  String get sectionExamHsc => 'এইচএসসি';
+
+  @override
+  String get sectionExamAdmission => 'ভর্তি';
+
+  @override
+  String get sectionExamBcs => 'বিসিএস';
+
+  @override
+  String get sectionFilterEmpty => 'এই বাছাইয়ে এখনো কোনো বই নেই।';
+
+  @override
+  String get sectionClearFilters => 'ফিল্টার মুছুন';
+
+  @override
   String get collectionStripTitle => 'সংকলন';
 
   @override

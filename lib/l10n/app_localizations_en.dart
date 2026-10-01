@@ -450,6 +450,38 @@ class AppL10nEn extends AppL10n {
   String get sectionEmpty => 'No books in this Section yet.';
 
   @override
+  String get sectionClassRow => 'Class';
+
+  @override
+  String get sectionExamRow => 'Exam';
+
+  @override
+  String get sectionSubjectRow => 'Subject';
+
+  @override
+  String sectionClassChip(int n) {
+    return 'Class $n';
+  }
+
+  @override
+  String get sectionExamSsc => 'SSC';
+
+  @override
+  String get sectionExamHsc => 'HSC';
+
+  @override
+  String get sectionExamAdmission => 'Admission';
+
+  @override
+  String get sectionExamBcs => 'BCS';
+
+  @override
+  String get sectionFilterEmpty => 'No books for this choice yet.';
+
+  @override
+  String get sectionClearFilters => 'Clear filters';
+
+  @override
   String get collectionStripTitle => 'Collections';
 
   @override

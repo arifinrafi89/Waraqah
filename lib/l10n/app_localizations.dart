@@ -931,6 +931,66 @@ abstract class AppL10n {
   /// **'No books in this Section yet.'**
   String get sectionEmpty;
 
+  /// No description provided for @sectionClassRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Class'**
+  String get sectionClassRow;
+
+  /// No description provided for @sectionExamRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam'**
+  String get sectionExamRow;
+
+  /// No description provided for @sectionSubjectRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get sectionSubjectRow;
+
+  /// No description provided for @sectionClassChip.
+  ///
+  /// In en, this message translates to:
+  /// **'Class {n}'**
+  String sectionClassChip(int n);
+
+  /// No description provided for @sectionExamSsc.
+  ///
+  /// In en, this message translates to:
+  /// **'SSC'**
+  String get sectionExamSsc;
+
+  /// No description provided for @sectionExamHsc.
+  ///
+  /// In en, this message translates to:
+  /// **'HSC'**
+  String get sectionExamHsc;
+
+  /// No description provided for @sectionExamAdmission.
+  ///
+  /// In en, this message translates to:
+  /// **'Admission'**
+  String get sectionExamAdmission;
+
+  /// No description provided for @sectionExamBcs.
+  ///
+  /// In en, this message translates to:
+  /// **'BCS'**
+  String get sectionExamBcs;
+
+  /// No description provided for @sectionFilterEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books for this choice yet.'**
+  String get sectionFilterEmpty;
+
+  /// No description provided for @sectionClearFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filters'**
+  String get sectionClearFilters;
+
   /// No description provided for @collectionStripTitle.
   ///
   /// In en, this message translates to:
