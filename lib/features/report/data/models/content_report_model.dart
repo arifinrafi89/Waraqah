@@ -16,6 +16,9 @@ abstract class ContentReportModel with _$ContentReportModel {
     required DateTime createdAt,
     @Default(ReportStatus.open) ReportStatus status,
     String? note,
+
+    /// Who sent it. Only the server and moderators see this.
+    @JsonKey(includeToJson: false) @Default('me') String reporterId,
   }) = _ContentReportModel;
 
   factory ContentReportModel.fromJson(Map<String, dynamic> json) =>

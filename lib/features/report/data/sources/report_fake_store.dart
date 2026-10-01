@@ -17,10 +17,11 @@ class ReportFakeStore {
   final DateTime Function() now;
   final List<ContentReportModel> reports = [];
   final Map<String, DateTime> _blocked = {};
+  int _ids = 0;
 
   bool isBlocked(String readerId) => _blocked.containsKey(readerId);
 
-  /// The new report, the reader's earlier one on the same target, or
+  /// The new report, the reader's earlier open one on the same target, or
   /// `null` when it can't be reported (unknown, or the reader's own).
   ContentReportModel? report(
     ReportTargetKind kind,
@@ -33,11 +34,17 @@ class ReportFakeStore {
       return null;
     }
     final earlier = reports
-        .where((r) => r.kind == kind && r.targetId == targetId)
+        .where(
+          (r) =>
+              r.kind == kind &&
+              r.targetId == targetId &&
+              r.reporterId == P2pPeople.me &&
+              r.status == ReportStatus.open,
+        )
         .firstOrNull;
     if (earlier != null) return earlier;
     final report = ContentReportModel(
-      id: 'rp-${reports.length + 1}',
+      id: 'rp-${++_ids}',
       kind: kind,
       targetId: targetId,
       reason: reason,

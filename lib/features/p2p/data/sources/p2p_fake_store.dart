@@ -39,6 +39,14 @@ class P2pFakeStore {
     }
   }
 
+  /// A moderator's decision: live, changes requested or rejected, with
+  /// the [reason] the seller sees.
+  void moderate(String id, P2pListingStatus status, {String? reason}) {
+    final listing = _listings[id];
+    if (listing == null) return;
+    _listings[id] = listing.copyWith(status: status, rejectionReason: reason);
+  }
+
   /// What [fromId] gave for the sale of [listingId], if they rated it.
   P2pRating? ratingBy(String listingId, String fromId) => ratings
       .where((r) => r.listingId == listingId && r.fromId == fromId)

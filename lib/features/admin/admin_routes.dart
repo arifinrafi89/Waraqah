@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'domain/entities/admin_section.dart';
 import 'presentation/pages/admin_hub_page.dart';
 import 'presentation/pages/admin_section_page.dart';
-import 'presentation/pages/moderation_center_page.dart';
+import '../moderation/presentation/pages/moderation_center_page.dart';
 import '../orders/presentation/pages/orders_admin_page.dart';
 
 abstract final class AdminRoutes {

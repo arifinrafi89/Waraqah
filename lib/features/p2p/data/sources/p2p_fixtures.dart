@@ -2,6 +2,7 @@ import '../../domain/entities/p2p_listing.dart';
 import '../models/p2p_listing_model.dart';
 import 'p2p_listing_seed.dart';
 import 'p2p_people.dart';
+import 'p2p_review_seed.dart';
 
 /// Seed listings for the used marketplace. Three are the signed-in
 /// reader's own ([P2pPeople.me]).
@@ -105,6 +106,7 @@ abstract final class P2pFixtures {
       newPrice: 600,
       category: 'Computer Science',
     ),
+    ...p2pReviewSeed,
   ];
 
   /// Who each reserved or sold listing went to.
