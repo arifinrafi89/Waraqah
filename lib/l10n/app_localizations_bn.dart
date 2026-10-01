@@ -2130,6 +2130,21 @@ class AppL10nBn extends AppL10n {
   String get adminCatalogAddBook => 'বই যোগ করুন';
 
   @override
+  String get adminCatalogIsbnLookupField => 'খোঁজার জন্য আইএসবিএন';
+
+  @override
+  String get adminCatalogLookUp => 'খুঁজুন';
+
+  @override
+  String get adminCatalogIsbnNotFound => 'পাওয়া যায়নি — নিজে পূরণ করুন।';
+
+  @override
+  String get adminCatalogIsbnInCatalog => 'ক্যাটালগে আগেই আছে';
+
+  @override
+  String get adminCatalogOpen => 'খুলুন';
+
+  @override
   String get adminCatalogEditBook => 'বই সম্পাদনা';
 
   @override

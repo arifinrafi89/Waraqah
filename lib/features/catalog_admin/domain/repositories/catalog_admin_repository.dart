@@ -3,6 +3,7 @@ import '../../../home/domain/entities/banner.dart';
 import '../../../home/domain/entities/season.dart';
 import '../entities/book_draft.dart';
 import '../entities/catalog_record.dart';
+import '../entities/isbn_lookup.dart';
 import '../entities/list_draft.dart';
 
 /// Staff's changes to the catalog. A refused change throws.
@@ -39,4 +40,7 @@ abstract interface class CatalogAdminRepository {
   Future<void> saveList(ListDraft draft);
 
   Future<void> deleteList(String id, {required bool booklist});
+
+  /// `null` when nobody knows [isbn] (an ISBN-13).
+  Future<IsbnLookup?> lookUpIsbn(String isbn);
 }

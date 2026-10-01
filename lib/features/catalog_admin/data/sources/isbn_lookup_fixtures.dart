@@ -1,0 +1,70 @@
+/// Books outside the catalog the fake ISBN lookup knows, by ISBN-13.
+// ponytail: a fixed list; the Go backend should call a real ISBN service.
+abstract final class IsbnLookupFixtures {
+  static const Map<String, Map<String, Object>> byIsbn = {
+    '9780374533557': {
+      'title': 'Thinking, Fast and Slow',
+      'author': 'Daniel Kahneman',
+      'publisher': 'Farrar, Straus and Giroux',
+      'listPriceBdt': 1250,
+    },
+    '9781455586691': {
+      'title': 'Deep Work',
+      'author': 'Cal Newport',
+      'publisher': 'Grand Central',
+      'listPriceBdt': 950,
+    },
+    '9780857197689': {
+      'title': 'The Psychology of Money',
+      'author': 'Morgan Housel',
+      'publisher': 'Harriman House',
+      'listPriceBdt': 890,
+    },
+    '9780399590504': {
+      'title': 'Educated',
+      'author': 'Tara Westover',
+      'publisher': 'Random House',
+      'listPriceBdt': 1100,
+    },
+    '9780143130727': {
+      'title': 'Ikigai',
+      'author': 'Héctor García & Francesc Miralles',
+      'publisher': 'Penguin Books',
+      'listPriceBdt': 750,
+    },
+    '9780807014271': {
+      'title': "Man's Search for Meaning",
+      'author': 'Viktor E. Frankl',
+      'publisher': 'Beacon Press',
+      'listPriceBdt': 650,
+    },
+    '9780812981605': {
+      'title': 'The Power of Habit',
+      'author': 'Charles Duhigg',
+      'publisher': 'Random House',
+      'listPriceBdt': 980,
+    },
+    '9781612680194': {
+      'title': 'Rich Dad Poor Dad',
+      'author': 'Robert T. Kiyosaki',
+      'publisher': 'Plata Publishing',
+      'listPriceBdt': 700,
+    },
+    '9789840005017': {
+      'title': 'Deyal',
+      'titleBn': 'দেয়াল',
+      'author': 'Humayun Ahmed',
+      'publisher': 'Anyaprokash',
+      'language': 'bangla',
+      'listPriceBdt': 500,
+    },
+    '9789840005024': {
+      'title': 'Padma Nadir Majhi',
+      'titleBn': 'পদ্মা নদীর মাঝি',
+      'author': 'Manik Bandopadhyay',
+      'publisher': 'Waraqah Press',
+      'language': 'bangla',
+      'listPriceBdt': 280,
+    },
+  };
+}

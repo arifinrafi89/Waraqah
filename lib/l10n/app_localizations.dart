@@ -3877,6 +3877,36 @@ abstract class AppL10n {
   /// **'Add book'**
   String get adminCatalogAddBook;
 
+  /// No description provided for @adminCatalogIsbnLookupField.
+  ///
+  /// In en, this message translates to:
+  /// **'ISBN to look up'**
+  String get adminCatalogIsbnLookupField;
+
+  /// No description provided for @adminCatalogLookUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Look up'**
+  String get adminCatalogLookUp;
+
+  /// No description provided for @adminCatalogIsbnNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Not found — fill in by hand.'**
+  String get adminCatalogIsbnNotFound;
+
+  /// No description provided for @adminCatalogIsbnInCatalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Already in the catalog'**
+  String get adminCatalogIsbnInCatalog;
+
+  /// No description provided for @adminCatalogOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get adminCatalogOpen;
+
   /// No description provided for @adminCatalogEditBook.
   ///
   /// In en, this message translates to:

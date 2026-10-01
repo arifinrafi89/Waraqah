@@ -23,4 +23,10 @@ abstract class CatalogRecord with _$CatalogRecord {
 extension CatalogRecordX on CatalogRecord {
   /// The Bangla name in Bangla when there is one, else the English name.
   String label(bool isBangla) => isBangla && nameBn.isNotEmpty ? nameBn : name;
+
+  /// Whether [text] is its English or Bangla name, ignoring case.
+  bool isNamed(String text) {
+    final key = text.trim().toLowerCase();
+    return name.toLowerCase() == key || nameBn.toLowerCase() == key;
+  }
 }

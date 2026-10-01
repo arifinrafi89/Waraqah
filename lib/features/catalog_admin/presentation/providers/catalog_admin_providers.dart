@@ -11,6 +11,7 @@ import '../../../home/domain/entities/season.dart';
 import '../../../home/presentation/providers/home_providers.dart';
 import '../../data/repositories/catalog_admin_repository_impl.dart';
 import '../../data/sources/catalog_admin_remote_source.dart';
+import '../../data/sources/catalog_tools_remote_source.dart';
 import '../../domain/entities/catalog_record.dart';
 import '../../domain/repositories/catalog_admin_repository.dart';
 import '../../domain/usecases/get_admin_banners.dart';
@@ -21,6 +22,7 @@ import '../../domain/usecases/season_override.dart';
 final catalogAdminRepositoryProvider = Provider<CatalogAdminRepository>(
   (ref) => CatalogAdminRepositoryImpl(
     CatalogAdminRemoteSource(ref.watch(dioProvider)),
+    CatalogToolsRemoteSource(ref.watch(dioProvider)),
   ),
 );
 

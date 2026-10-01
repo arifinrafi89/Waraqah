@@ -2216,6 +2216,21 @@ class AppL10nEn extends AppL10n {
   String get adminCatalogAddBook => 'Add book';
 
   @override
+  String get adminCatalogIsbnLookupField => 'ISBN to look up';
+
+  @override
+  String get adminCatalogLookUp => 'Look up';
+
+  @override
+  String get adminCatalogIsbnNotFound => 'Not found — fill in by hand.';
+
+  @override
+  String get adminCatalogIsbnInCatalog => 'Already in the catalog';
+
+  @override
+  String get adminCatalogOpen => 'Open';
+
+  @override
   String get adminCatalogEditBook => 'Edit book';
 
   @override
