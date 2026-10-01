@@ -14,6 +14,7 @@ abstract final class GeneralMoreShelf {
       publisherId: 'pub-cengage',
       rating: 4.2,
       tags: ['Academic'],
+      subjectId: 'sub-math',
       categoryId: 'cat-academic',
       coverSeed: 2,
       section: Section.academic,

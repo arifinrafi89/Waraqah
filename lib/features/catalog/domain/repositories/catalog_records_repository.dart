@@ -4,11 +4,15 @@ import '../entities/category.dart';
 import '../entities/collection.dart';
 import '../entities/expert.dart';
 import '../entities/publisher.dart';
+import '../entities/subject.dart';
 
 /// Category, Author, Publisher and Collection records behind a [Book]'s ids.
 abstract interface class CatalogRecordsRepository {
   /// A Section's Categories.
   Future<List<Category>> categories(Section section);
+
+  /// Subjects with Books in [section].
+  Future<List<Subject>> subjects(Section section);
 
   /// `null` when [id] is not a known Author.
   Future<Author?> author(String id);

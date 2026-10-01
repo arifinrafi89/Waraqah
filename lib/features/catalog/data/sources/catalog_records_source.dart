@@ -6,6 +6,7 @@ import '../../domain/entities/collection.dart';
 import '../../domain/entities/category.dart';
 import '../../domain/entities/expert.dart';
 import '../../domain/entities/publisher.dart';
+import '../../domain/entities/subject.dart';
 import '../models/catalog_record_models.dart';
 import '../models/collection_model.dart';
 import '../models/expert_model.dart';
@@ -18,34 +19,46 @@ class CatalogRecordsSource {
 
   final Dio _dio;
 
-  Future<List<Category>> categories(Section section) async {
+  Future<List<Category>> categories(Section section) => _inSection(
+    BookFakeApi.categories,
+    section,
+    (json) => CategoryModel.fromJson(json).toEntity(),
+  );
+
+  /// Subjects with Books in [section].
+  Future<List<Subject>> subjects(Section section) => _inSection(
+    BookFakeApi.subjects,
+    section,
+    (json) => SubjectModel.fromJson(json).toEntity(),
+  );
+
+  Future<List<T>> _inSection<T>(
+    String path,
+    Section section,
+    T Function(Map<String, dynamic>) read,
+  ) async {
     final response = await _dio.get<List<dynamic>>(
-      BookFakeApi.categories,
+      path,
       queryParameters: {'section': section.name},
     );
-    return (response.data ?? [])
-        .cast<Map<String, dynamic>>()
-        .map((json) => CategoryModel.fromJson(json).toEntity())
-        .toList();
+    return [for (final json in response.data ?? const []) read(json)];
   }
+
+  Future<Map<String, dynamic>?> _detail(String path, String id) async =>
+      (await _dio.get<Map<String, dynamic>>(
+        path,
+        queryParameters: {'id': id},
+      )).data;
 
   /// `null` when [id] is not a known Author.
   Future<Author?> author(String id) async {
-    final response = await _dio.get<Map<String, dynamic>>(
-      BookFakeApi.author,
-      queryParameters: {'id': id},
-    );
-    final data = response.data;
+    final data = await _detail(BookFakeApi.author, id);
     return data == null ? null : AuthorModel.fromJson(data).toEntity();
   }
 
   /// `null` when [id] is not a known Publisher.
   Future<Publisher?> publisher(String id) async {
-    final response = await _dio.get<Map<String, dynamic>>(
-      BookFakeApi.publisher,
-      queryParameters: {'id': id},
-    );
-    final data = response.data;
+    final data = await _detail(BookFakeApi.publisher, id);
     return data == null ? null : PublisherModel.fromJson(data).toEntity();
   }
 
@@ -67,11 +80,7 @@ class CatalogRecordsSource {
 
   /// `null` when [id] is not a known Collection.
   Future<Collection?> collection(String id) async {
-    final response = await _dio.get<Map<String, dynamic>>(
-      CollectionFakeApi.detail,
-      queryParameters: {'id': id},
-    );
-    final data = response.data;
+    final data = await _detail(CollectionFakeApi.detail, id);
     return data == null ? null : _collection(data);
   }
 
@@ -85,11 +94,7 @@ class CatalogRecordsSource {
 
   /// `null` when [id] is not a known Expert.
   Future<ExpertDetail?> expert(String id) async {
-    final response = await _dio.get<Map<String, dynamic>>(
-      CollectionFakeApi.expert,
-      queryParameters: {'id': id},
-    );
-    final data = response.data;
+    final data = await _detail(CollectionFakeApi.expert, id);
     if (data == null) return null;
     return (
       expert: ExpertModel.fromJson(data).toEntity(),

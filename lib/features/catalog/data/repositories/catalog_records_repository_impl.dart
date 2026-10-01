@@ -5,6 +5,7 @@ import '../../domain/entities/category.dart';
 import '../../domain/entities/collection.dart';
 import '../../domain/entities/expert.dart';
 import '../../domain/entities/publisher.dart';
+import '../../domain/entities/subject.dart';
 import '../../domain/repositories/catalog_records_repository.dart';
 import '../sources/catalog_records_source.dart';
 
@@ -15,6 +16,7 @@ class CatalogRecordsRepositoryImpl implements CatalogRecordsRepository {
   final _categories = TtlCache<List<Category>>(
     ttl: const Duration(minutes: 30),
   );
+  final _subjects = TtlCache<List<Subject>>(ttl: const Duration(minutes: 30));
   final _authors = TtlCache<Author?>(ttl: const Duration(minutes: 30));
   final _publishers = TtlCache<Publisher?>(ttl: const Duration(minutes: 30));
   final _collections = TtlCache<List<Collection>>(
@@ -27,6 +29,10 @@ class CatalogRecordsRepositoryImpl implements CatalogRecordsRepository {
   @override
   Future<List<Category>> categories(Section section) =>
       _categories.resolve(section.name, () => _source.categories(section));
+
+  @override
+  Future<List<Subject>> subjects(Section section) =>
+      _subjects.resolve(section.name, () => _source.subjects(section));
 
   @override
   Future<Author?> author(String id) =>

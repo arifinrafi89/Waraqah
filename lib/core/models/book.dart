@@ -16,6 +16,9 @@ enum Section {
   children,
 }
 
+/// A public exam a textbook or guide prepares for.
+enum Exam { ssc, hsc, admission, bcs }
+
 enum CardStockStatus { inStock, preorder, outOfStock }
 
 /// The one model shared by every feature, so it lives in `core/` rather than
@@ -48,6 +51,10 @@ abstract class Book with _$Book {
     // Taken off the storefront by Staff: not in lists, search, Home or
     // Collections, but its page still opens from old links.
     @Default(false) bool hidden,
+    // School years (6–12), Exams and Subject a textbook or guide is for.
+    @Default(<int>[]) List<int> classes,
+    @Default(<Exam>[]) List<Exam> exams,
+    String? subjectId,
   }) = _Book;
 
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);

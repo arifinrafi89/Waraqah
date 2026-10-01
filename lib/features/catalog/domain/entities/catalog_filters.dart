@@ -6,7 +6,8 @@ import '../../../../core/models/edition.dart';
 enum SearchSort { relevance, priceLow, priceHigh, newest, bestselling }
 
 /// Everything catalog search can be narrowed by: a query, Section, Category,
-/// Author, Publisher, sort, and the Search page's filters.
+/// Author, Publisher, Class, Exam, Subject, sort, and the Search page's
+/// filters.
 ///
 /// [formats], [languages], [minPrice], [maxPrice] and [inStockOnly] must all
 /// hold for ONE Edition of a Book.
@@ -17,6 +18,9 @@ class CatalogFilters {
     this.categoryId,
     this.authorId,
     this.publisherId,
+    this.classLevel,
+    this.exam,
+    this.subjectId,
     this.sort,
     this.minPrice,
     this.maxPrice,
@@ -32,6 +36,11 @@ class CatalogFilters {
   final String? categoryId;
   final String? authorId;
   final String? publisherId;
+
+  /// School year 6–12.
+  final int? classLevel;
+  final Exam? exam;
+  final String? subjectId;
 
   /// `null` keeps the repository's default order for the page.
   final SearchSort? sort;
@@ -52,7 +61,10 @@ class CatalogFilters {
       section != null ||
       categoryId != null ||
       authorId != null ||
-      publisherId != null;
+      publisherId != null ||
+      classLevel != null ||
+      exam != null ||
+      subjectId != null;
 
   /// How many Search-sheet filters are set (price counts once).
   int get activeCount =>
@@ -81,7 +93,7 @@ class CatalogFilters {
       '$categoryId:$section:$authorId:$publisherId:$query:${sort?.name}:'
       '$minPrice:$maxPrice:${formats.map((f) => f.name).toList()..sort()}:'
       '${languages.map((l) => l.name).toList()..sort()}:$minRating:$inStockOnly:'
-      '$includeHidden';
+      '$includeHidden:$classLevel:${exam?.name}:$subjectId';
 
   @override
   bool operator ==(Object other) =>

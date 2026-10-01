@@ -61,3 +61,17 @@ Map<String, dynamic> _$PublisherModelToJson(_PublisherModel instance) =>
       'name': instance.name,
       'nameBn': instance.nameBn,
     };
+
+_SubjectModel _$SubjectModelFromJson(Map<String, dynamic> json) =>
+    _SubjectModel(
+      id: json['id'] as String,
+      nameEn: json['nameEn'] as String,
+      nameBn: json['nameBn'] as String,
+    );
+
+Map<String, dynamic> _$SubjectModelToJson(_SubjectModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'nameEn': instance.nameEn,
+      'nameBn': instance.nameBn,
+    };

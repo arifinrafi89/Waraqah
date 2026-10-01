@@ -12,10 +12,10 @@ import 'category_fixtures.dart';
 import 'look_inside_fixtures.dart';
 import 'publisher_fixtures.dart';
 import 'series_fixtures.dart';
+import 'subject_fixtures.dart';
 import 'used_options_fixtures.dart';
 
-/// Catalog's fake endpoints: paths and fixture handlers, merged into
-/// `FakeApiInterceptor` by `app/fake_api_routes.dart`.
+/// Catalog's fake endpoints, merged in by `app/fake_api_routes.dart`.
 abstract final class BookFakeApi {
   /// Books on the storefront, narrowed by the query. Hidden Books only with
   /// `includeHidden=true` (Staff's list).
@@ -44,6 +44,9 @@ abstract final class BookFakeApi {
   /// A Section's Categories: `?section=<section>`.
   static const String categories = '/categories';
 
+  /// Every Subject, or only those with Books in `?section=<section>`.
+  static const String subjects = '/subjects';
+
   /// One Author: `?id=<authorId>`, or `null` when unknown.
   static const String author = '/authors/detail';
 
@@ -67,17 +70,12 @@ abstract final class BookFakeApi {
     lookInside: (options) => LookInsideFixtures.byBook[_id(options)]?.toJson(),
     series: (options) => SeriesFixtures.jsonForBook(_id(options)),
     seriesDetail: (options) => SeriesFixtures.jsonForId(_id(options)),
-    categories: (options) => CategoryFixtures.forSection(
-      options.queryParameters['section'] as String?,
-    ),
-    author: (options) => AuthorFixtures.all
-        .where((a) => a.id == _id(options))
-        .firstOrNull
-        ?.toJson(),
-    publisher: (options) => PublisherFixtures.all
-        .where((p) => p.id == _id(options))
-        .firstOrNull
-        ?.toJson(),
+    categories: (options) => CategoryFixtures.forSection(_section(options)),
+    subjects: (options) => SubjectFixtures.forSection(_section(options)),
+    author: (options) =>
+        _byId(AuthorFixtures.all, (a) => a.id, options)?.toJson(),
+    publisher: (options) =>
+        _byId(PublisherFixtures.all, (p) => p.id, options)?.toJson(),
     priceLows: (options) => {
       for (final e in _book(options)?.editions ?? const <Edition>[])
         e.id: (_earlierLows[e.id] ?? e.priceBdt) < e.priceBdt
@@ -88,6 +86,12 @@ abstract final class BookFakeApi {
 
   static String _id(RequestOptions options) =>
       options.queryParameters['id'] as String? ?? '';
+
+  static T? _byId<T>(List<T> all, String Function(T) id, RequestOptions o) =>
+      all.where((x) => id(x) == _id(o)).firstOrNull;
+
+  static String? _section(RequestOptions options) =>
+      options.queryParameters['section'] as String?;
 
   static Book? _book(RequestOptions options) =>
       BookFixtures.all.where((b) => b.id == _id(options)).firstOrNull;
