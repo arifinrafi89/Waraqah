@@ -409,6 +409,66 @@ abstract class AppL10n {
   /// **'Write a Bite'**
   String get bitesWrite;
 
+  /// No description provided for @bitesBite.
+  ///
+  /// In en, this message translates to:
+  /// **'Bite'**
+  String get bitesBite;
+
+  /// No description provided for @bitesNoComments.
+  ///
+  /// In en, this message translates to:
+  /// **'No comments yet. Start the conversation.'**
+  String get bitesNoComments;
+
+  /// No description provided for @bitesCommentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a comment…'**
+  String get bitesCommentHint;
+
+  /// No description provided for @bitesReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply'**
+  String get bitesReply;
+
+  /// No description provided for @bitesReplyingTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Replying to {name}'**
+  String bitesReplyingTo(String name);
+
+  /// No description provided for @bitesCancelReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel reply'**
+  String get bitesCancelReply;
+
+  /// No description provided for @bitesLogInToComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to comment'**
+  String get bitesLogInToComment;
+
+  /// No description provided for @bitesSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get bitesSend;
+
+  /// No description provided for @bitesDeleteComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete comment'**
+  String get bitesDeleteComment;
+
+  /// No description provided for @bitesCommentDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Comment deleted.'**
+  String get bitesCommentDeleted;
+
   /// No description provided for @bitesYou.
   ///
   /// In en, this message translates to:

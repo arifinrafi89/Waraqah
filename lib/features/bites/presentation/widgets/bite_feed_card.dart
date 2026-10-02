@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/tags.dart';
 import '../../../catalog/catalog_routes.dart';
+import '../../bites_routes.dart';
 import '../../domain/entities/bite.dart';
 import 'bite_actions_bar.dart';
 import 'bite_author_row.dart';
@@ -12,9 +13,12 @@ import 'bite_body.dart';
 /// One Bite in a feed: author, text (blurred when a spoiler), the tagged
 /// Book and the like, comment and share actions.
 class BiteFeedCard extends StatelessWidget {
-  const BiteFeedCard({super.key, required this.bite});
+  const BiteFeedCard({super.key, required this.bite, this.inDetail = false});
 
   final Bite bite;
+
+  /// On the detail page itself: the comments button does nothing.
+  final bool inDetail;
 
   @override
   Widget build(BuildContext context) => Card(
@@ -39,7 +43,12 @@ class BiteFeedCard extends StatelessWidget {
                 child: AccentTag(label: bite.bookTitle!),
               ),
             ),
-          BiteActionsBar(bite: bite),
+          BiteActionsBar(
+            bite: bite,
+            onComments: inDetail
+                ? null
+                : () => context.push(BitesRoutes.detailFor(bite.id)),
+          ),
         ],
       ),
     ),

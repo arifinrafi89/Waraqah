@@ -181,6 +181,38 @@ class AppL10nBn extends AppL10n {
   String get bitesWrite => 'বাইট লিখুন';
 
   @override
+  String get bitesBite => 'বাইট';
+
+  @override
+  String get bitesNoComments => 'এখনো কোনো মন্তব্য নেই। আলাপ শুরু করুন।';
+
+  @override
+  String get bitesCommentHint => 'মন্তব্য লিখুন…';
+
+  @override
+  String get bitesReply => 'উত্তর দিন';
+
+  @override
+  String bitesReplyingTo(String name) {
+    return '$name-কে উত্তর দিচ্ছেন';
+  }
+
+  @override
+  String get bitesCancelReply => 'উত্তর বাতিল';
+
+  @override
+  String get bitesLogInToComment => 'মন্তব্য করতে লগ ইন করুন';
+
+  @override
+  String get bitesSend => 'পাঠান';
+
+  @override
+  String get bitesDeleteComment => 'মন্তব্য মুছুন';
+
+  @override
+  String get bitesCommentDeleted => 'মন্তব্য মুছে ফেলা হয়েছে।';
+
+  @override
   String get bitesYou => 'আপনি';
 
   @override

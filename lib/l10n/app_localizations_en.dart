@@ -180,6 +180,38 @@ class AppL10nEn extends AppL10n {
   String get bitesWrite => 'Write a Bite';
 
   @override
+  String get bitesBite => 'Bite';
+
+  @override
+  String get bitesNoComments => 'No comments yet. Start the conversation.';
+
+  @override
+  String get bitesCommentHint => 'Write a comment…';
+
+  @override
+  String get bitesReply => 'Reply';
+
+  @override
+  String bitesReplyingTo(String name) {
+    return 'Replying to $name';
+  }
+
+  @override
+  String get bitesCancelReply => 'Cancel reply';
+
+  @override
+  String get bitesLogInToComment => 'Log in to comment';
+
+  @override
+  String get bitesSend => 'Send';
+
+  @override
+  String get bitesDeleteComment => 'Delete comment';
+
+  @override
+  String get bitesCommentDeleted => 'Comment deleted.';
+
+  @override
   String get bitesYou => 'You';
 
   @override

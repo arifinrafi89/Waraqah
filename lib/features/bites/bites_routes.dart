@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import 'presentation/pages/bite_compose_page.dart';
+import 'presentation/pages/bite_detail_page.dart';
 import 'presentation/pages/bites_page.dart';
 
 abstract final class BitesRoutes {
@@ -15,7 +16,18 @@ abstract final class BitesRoutes {
     queryParameters: {'id': ?id, 'bookId': ?bookId},
   ).toString();
 
+  /// One Bite with its comments; open to guests.
+  static const String detail = '/bites/detail';
+
+  static String detailFor(String id) =>
+      Uri(path: detail, queryParameters: {'id': id}).toString();
+
   static final List<RouteBase> routes = [
+    GoRoute(
+      path: detail,
+      builder: (_, state) =>
+          BiteDetailPage(id: state.uri.queryParameters['id'] ?? ''),
+    ),
     GoRoute(
       path: compose,
       builder: (_, state) => BiteComposePage(
