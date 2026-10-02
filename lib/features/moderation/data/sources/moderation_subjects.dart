@@ -14,7 +14,7 @@ typedef ReportSubject = ({String preview, String ownerId, String ownerName});
 /// Finds the reported Listing, reader, message, Bite, comment or review,
 /// and deletes a removed Bite, comment or review.
 class ModerationSubjects {
-  ModerationSubjects(this.p2p, this.inbox, {this.bites, this.reviews});
+  ModerationSubjects(this.p2p, this.inbox, [this.bites, this.reviews]);
 
   final P2pFakeStore p2p;
   final InboxFakeStore? inbox;

@@ -29,12 +29,7 @@ class ModerationFakeStore {
     this.notifications,
     DateTime Function()? clock,
   }) : now = clock ?? DateTime.now,
-       subjects = ModerationSubjects(
-         p2p,
-         inbox,
-         bites: bites,
-         reviews: reviews,
-       ) {
+       subjects = ModerationSubjects(p2p, inbox, bites, reviews) {
     seedReports(this);
   }
 
