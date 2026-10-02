@@ -9,6 +9,7 @@ import '../../features/home/home_routes.dart';
 import '../../features/inbox/inbox_routes.dart';
 import '../../features/loyalty/loyalty_routes.dart';
 import '../../features/orders/orders_routes.dart';
+import '../../features/shelves/shelves_routes.dart';
 import '../../features/wallet/wallet_routes.dart';
 
 /// Which pages need a signed-in user or a staff account, and where to send
@@ -27,6 +28,8 @@ abstract final class RouteAccess {
     AlertsRoutes.notifications,
     LoyaltyRoutes.points,
     WalletRoutes.wallet,
+    ShelvesRoutes.shelves,
+    ShelvesRoutes.readingStats,
     InboxRoutes.inbox,
   ];
 

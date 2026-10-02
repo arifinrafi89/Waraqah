@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_dimens.dart';
@@ -8,10 +10,28 @@ import '../../domain/entities/bite.dart';
 import 'bite_feed_parts.dart';
 
 class BiteFeedCard extends StatelessWidget {
-  const BiteFeedCard({super.key, required this.bite, required this.onLike});
+  const BiteFeedCard({
+    super.key,
+    required this.bite,
+    required this.onLike,
+    this.onComments,
+    this.onShare,
+    this.onEdit,
+    this.onDelete,
+    this.isSpoiler = false,
+    this.spoilerRevealed = false,
+    this.onRevealSpoiler,
+  });
 
   final Bite bite;
   final VoidCallback onLike;
+  final VoidCallback? onComments;
+  final VoidCallback? onShare;
+  final VoidCallback? onEdit;
+  final VoidCallback? onDelete;
+  final bool isSpoiler;
+  final bool spoilerRevealed;
+  final VoidCallback? onRevealSpoiler;
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +52,66 @@ class BiteFeedCard extends StatelessWidget {
                 Expanded(
                   child: BiteAuthorLine(bite: bite, palette: palette),
                 ),
+                if (onEdit != null || onDelete != null)
+                  PopupMenuButton<String>(
+                    onSelected: (action) {
+                      if (action == 'edit') onEdit?.call();
+                      if (action == 'delete') onDelete?.call();
+                    },
+                    itemBuilder: (context) => [
+                      if (onEdit != null)
+                        PopupMenuItem(
+                          value: 'edit',
+                          child: Text(l10n.bitesEdit),
+                        ),
+                      if (onDelete != null)
+                        PopupMenuItem(
+                          value: 'delete',
+                          child: Text(l10n.bitesDelete),
+                        ),
+                    ],
+                  ),
               ],
             ),
             const SizedBox(height: Insets.md),
-            Text(
-              bite.text,
-              style: AppFonts.ui(size: 15, height: 1.5, color: palette.textDim),
+            GestureDetector(
+              onTap: isSpoiler && !spoilerRevealed ? onRevealSpoiler : null,
+              child: isSpoiler && !spoilerRevealed
+                  ? Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        ImageFiltered(
+                          imageFilter: ui.ImageFilter.blur(
+                            sigmaX: 7,
+                            sigmaY: 7,
+                          ),
+                          child: Text(
+                            bite.text,
+                            style: AppFonts.ui(
+                              size: 15,
+                              height: 1.5,
+                              color: palette.textDim,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          l10n.bitesSpoilerTap,
+                          style: AppFonts.ui(
+                            size: 12,
+                            weight: FontWeight.w800,
+                            color: palette.accent,
+                          ),
+                        ),
+                      ],
+                    )
+                  : Text(
+                      bite.text,
+                      style: AppFonts.ui(
+                        size: 15,
+                        height: 1.5,
+                        color: palette.textDim,
+                      ),
+                    ),
             ),
             if (bite.hasBookTag) ...[
               const SizedBox(height: Insets.sm),
@@ -72,6 +146,13 @@ class BiteFeedCard extends StatelessWidget {
                   icon: Icons.chat_bubble_outline_rounded,
                   count: bite.replies,
                   label: l10n.bitesReply,
+                  onTap: onComments,
+                ),
+                BiteAction(
+                  icon: Icons.share_outlined,
+                  count: 0,
+                  label: l10n.bitesShare,
+                  onTap: onShare,
                 ),
                 BiteAction(
                   icon: Icons.repeat_rounded,

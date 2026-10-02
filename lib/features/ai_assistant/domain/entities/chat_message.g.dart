@@ -6,19 +6,6 @@ part of 'chat_message.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_VendorQuote _$VendorQuoteFromJson(Map<String, dynamic> json) => _VendorQuote(
-  vendor: json['vendor'] as String,
-  priceBdt: (json['priceBdt'] as num).toInt(),
-  isLowest: json['isLowest'] as bool? ?? false,
-);
-
-Map<String, dynamic> _$VendorQuoteToJson(_VendorQuote instance) =>
-    <String, dynamic>{
-      'vendor': instance.vendor,
-      'priceBdt': instance.priceBdt,
-      'isLowest': instance.isLowest,
-    };
-
 _ChatMessage _$ChatMessageFromJson(Map<String, dynamic> json) => _ChatMessage(
   id: json['id'] as String,
   role: $enumDecode(_$ChatRoleEnumMap, json['role']),
@@ -29,11 +16,6 @@ _ChatMessage _$ChatMessageFromJson(Map<String, dynamic> json) => _ChatMessage(
           ?.map((e) => e as String)
           .toList() ??
       const <String>[],
-  quotes:
-      (json['quotes'] as List<dynamic>?)
-          ?.map((e) => VendorQuote.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-      const <VendorQuote>[],
 );
 
 Map<String, dynamic> _$ChatMessageToJson(_ChatMessage instance) =>
@@ -43,7 +25,6 @@ Map<String, dynamic> _$ChatMessageToJson(_ChatMessage instance) =>
       'text': instance.text,
       'recommendedBookId': instance.recommendedBookId,
       'recommendedBookIds': instance.recommendedBookIds,
-      'quotes': instance.quotes,
     };
 
 const _$ChatRoleEnumMap = {

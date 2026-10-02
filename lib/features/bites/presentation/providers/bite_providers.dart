@@ -13,3 +13,10 @@ final biteRepositoryProvider = Provider<BiteRepository>(
 final biteFeedProvider = FutureProvider<List<Bite>>(
   (ref) => ref.watch(biteRepositoryProvider).fetchFeed(limit: 4),
 );
+
+final bitesAboutBookProvider = FutureProvider.family<List<Bite>, String>(
+  (ref, bookId) async =>
+      (await ref.watch(biteRepositoryProvider).fetchFeed(limit: 20))
+          .where((bite) => bite.taggedBookId == bookId)
+          .toList(),
+);

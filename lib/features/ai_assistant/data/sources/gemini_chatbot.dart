@@ -44,7 +44,8 @@ final class GeminiChatbot {
               .map(
                 (book) =>
                     '${book.id}: ${book.title} by ${book.author}; '
-                    '${book.fromPriceBdt} BDT; rating ${book.rating}; '
+                    'Waraqah From-price ৳${book.fromPriceBdt}; '
+                    'rating ${book.rating}; '
                     'category ${book.categoryId}',
               )
               .join('\n');
@@ -67,7 +68,7 @@ final class GeminiChatbot {
                   'application book-search results supplied below for actual '
                   'book results. Never fabricate books, prices, ratings, authors, '
                   'or availability. Answer only questions about Waraqah, its book catalog, '
-                  'book recommendations, vendors, prices, study resources, '
+                  'book recommendations, Waraqah prices, study resources, '
                   'peer-to-peer listings, profile, and app navigation. If a '
                   'question is outside the app, politely say you can only help '
                   'with Waraqah. Do not invent catalog data, prices, or features. '

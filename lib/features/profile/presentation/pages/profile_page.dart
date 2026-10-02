@@ -18,6 +18,7 @@ import '../../../loyalty/presentation/widgets/points_link.dart';
 import '../../../orders/presentation/widgets/my_orders_link.dart';
 import '../../../wallet/presentation/widgets/wallet_link.dart';
 import '../../../wishlist/presentation/widgets/wishlist_link.dart';
+import '../../../shelves/shelves_routes.dart';
 import '../widgets/profile_header.dart';
 import '../providers/profile_providers.dart';
 import '../widgets/profile_action_tile.dart';
@@ -88,6 +89,16 @@ class ProfilePage extends ConsumerWidget {
                       builder: (_) => const SavedAddressesPage(),
                     ),
                   ),
+                ),
+                ProfileActionTile(
+                  icon: Icons.auto_stories_outlined,
+                  title: l10n.profileShelves,
+                  onTap: () => context.push(ShelvesRoutes.shelves),
+                ),
+                ProfileActionTile(
+                  icon: Icons.insights_outlined,
+                  title: l10n.profileReadingStats,
+                  onTap: () => context.push(ShelvesRoutes.readingStats),
                 ),
                 ProfileActionTile(
                   icon: Icons.notifications_none_rounded,

@@ -77,6 +77,58 @@ class AppL10nBn extends AppL10n {
   String get bitesReaderHandle => 'পাঠক';
 
   @override
+  String get bitesTagBook => 'একটি বই ট্যাগ করুন';
+
+  @override
+  String get bitesSearchBooks => 'বই খুঁজুন';
+
+  @override
+  String get bitesSpoiler => 'স্পয়লার আছে';
+
+  @override
+  String get bitesSpoilerHint => 'স্পয়লারের জন্য একটি বই ট্যাগ করতে হবে।';
+
+  @override
+  String get bitesSpoilerTap => 'স্পয়লার দেখতে ট্যাপ করুন';
+
+  @override
+  String get bitesMaxChars => 'সর্বোচ্চ ৫০০ অক্ষর';
+
+  @override
+  String get bitesEdit => 'বাইট সম্পাদনা';
+
+  @override
+  String get bitesDelete => 'বাইট মুছুন';
+
+  @override
+  String get bitesShare => 'লিংক শেয়ার করুন';
+
+  @override
+  String get bitesComments => 'মন্তব্য';
+
+  @override
+  String get bitesAddComment => 'মন্তব্য লিখুন...';
+
+  @override
+  String get bitesReplyTo => 'উত্তর দিন';
+
+  @override
+  String get bitesNoComments => 'এখনও কোনো মন্তব্য নেই।';
+
+  @override
+  String get bitesDeleteConfirm => 'এই বাইটটি মুছবেন?';
+
+  @override
+  String get bitesDeleted => 'বাইট মুছে ফেলা হয়েছে।';
+
+  @override
+  String get bitesEdited => 'বাইট আপডেট হয়েছে।';
+
+  @override
+  String get bitesBookRequired =>
+      'স্পয়লার হিসেবে চিহ্নিত করার আগে একটি বই ট্যাগ করুন।';
+
+  @override
   String get authLogIn => 'লগ ইন';
 
   @override
@@ -481,6 +533,36 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get bookDetailNoReviews => 'এই বইটির এখনো কোনো রিভিউ নেই।';
+
+  @override
+  String get bookReviewWrite => 'রিভিউ লিখুন';
+
+  @override
+  String get bookReviewYourRating => 'আপনার রেটিং';
+
+  @override
+  String get bookReviewHint => 'এই বইটি কেমন লেগেছে?';
+
+  @override
+  String get bookReviewSubmit => 'রিভিউ জমা দিন';
+
+  @override
+  String get bookReviewVerified => 'যাচাইকৃত ক্রয়';
+
+  @override
+  String get bookReviewSubmitted => 'আপনার রিভিউ যোগ হয়েছে।';
+
+  @override
+  String get bookReviewMustRate => 'তারকা রেটিং বাছুন।';
+
+  @override
+  String get bookReviewMustText => 'একটি সংক্ষিপ্ত রিভিউ লিখুন।';
+
+  @override
+  String get bookBitesTitle => 'এই বই সম্পর্কে বাইটস';
+
+  @override
+  String get bookBitesEmpty => 'এই বই সম্পর্কে এখনও কোনো বাইট নেই।';
 
   @override
   String get bookDetailBestPrice => 'শুরু দাম';
@@ -1705,6 +1787,75 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get profileListings => 'লিস্টিং';
+
+  @override
+  String get profileShelves => 'আমার শেলফ';
+
+  @override
+  String get profileReadingStats => 'রিডিং পরিসংখ্যান';
+
+  @override
+  String get readingStatsTitle => 'রিডিং পরিসংখ্যান';
+
+  @override
+  String get readingYearlyGoal => 'বার্ষিক পড়ার লক্ষ্য';
+
+  @override
+  String readingGoalCount(Object finished, Object goal) {
+    return '$goal-এর মধ্যে $finishedটি বই';
+  }
+
+  @override
+  String get readingStreak => 'পড়ার ধারাবাহিকতা';
+
+  @override
+  String readingDays(Object count) {
+    return '$count দিন';
+  }
+
+  @override
+  String get readingBooksPerMonth => 'মাসে বই';
+
+  @override
+  String get readingFavoriteCategories => 'প্রিয় বিভাগ';
+
+  @override
+  String readingFinishedPrompt(Object title) {
+    return 'আপনি $title শেষ করেছেন';
+  }
+
+  @override
+  String get readingFinishedPromptMessage => 'এরপর কী করতে চান?';
+
+  @override
+  String get readingWriteReview => 'রিভিউ লিখুন';
+
+  @override
+  String get readingPostBite => 'একটি বাইট পোস্ট করুন';
+
+  @override
+  String get readingSellBook => 'বইটি বিক্রি করুন';
+
+  @override
+  String get shelvesTitle => 'আমার শেলফ';
+
+  @override
+  String get shelvesWantToRead => 'পড়তে চাই';
+
+  @override
+  String get shelvesReading => 'পড়ছি';
+
+  @override
+  String get shelvesFinished => 'পড়া শেষ';
+
+  @override
+  String get shelvesEmpty => 'এই শেলফে এখনও কোনো বই নেই।';
+
+  @override
+  String get shelvesAddedAfterDelivery => 'ডেলিভারির পর যোগ হয়েছে';
+
+  @override
+  String get shelvesMoveTo => 'শেলফ পরিবর্তন করুন';
 
   @override
   String get profileEditProfile => 'প্রোফাইল সম্পাদনা';

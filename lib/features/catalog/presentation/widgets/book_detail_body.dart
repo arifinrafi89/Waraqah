@@ -4,6 +4,7 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../deals/presentation/widgets/book_bundles.dart';
 import '../providers/book_detail_providers.dart';
 import 'book_about_section.dart';
+import 'book_bites_section.dart';
 import 'book_detail_header.dart';
 import 'book_reviews_section.dart';
 import 'edition_picker.dart';
@@ -45,7 +46,9 @@ class BookDetailBody extends StatelessWidget {
         BookAboutSection(book: book, details: data.details),
         QuestionsSection(bookId: book.id),
         gap,
-        BookReviewsSection(reviews: data.details.reviews),
+        BookBitesSection(bookId: book.id),
+        gap,
+        BookReviewsSection(bookId: book.id, reviews: data.details.reviews),
       ],
     );
   }

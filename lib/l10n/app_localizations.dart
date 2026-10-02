@@ -229,6 +229,108 @@ abstract class AppL10n {
   /// **'reader'**
   String get bitesReaderHandle;
 
+  /// No description provided for @bitesTagBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Tag a book'**
+  String get bitesTagBook;
+
+  /// No description provided for @bitesSearchBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Search books'**
+  String get bitesSearchBooks;
+
+  /// No description provided for @bitesSpoiler.
+  ///
+  /// In en, this message translates to:
+  /// **'Contains spoilers'**
+  String get bitesSpoiler;
+
+  /// No description provided for @bitesSpoilerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Spoilers require a tagged book.'**
+  String get bitesSpoilerHint;
+
+  /// No description provided for @bitesSpoilerTap.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to reveal spoiler'**
+  String get bitesSpoilerTap;
+
+  /// No description provided for @bitesMaxChars.
+  ///
+  /// In en, this message translates to:
+  /// **'500 characters maximum'**
+  String get bitesMaxChars;
+
+  /// No description provided for @bitesEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit bite'**
+  String get bitesEdit;
+
+  /// No description provided for @bitesDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete bite'**
+  String get bitesDelete;
+
+  /// No description provided for @bitesShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share link'**
+  String get bitesShare;
+
+  /// No description provided for @bitesComments.
+  ///
+  /// In en, this message translates to:
+  /// **'Comments'**
+  String get bitesComments;
+
+  /// No description provided for @bitesAddComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a comment...'**
+  String get bitesAddComment;
+
+  /// No description provided for @bitesReplyTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply'**
+  String get bitesReplyTo;
+
+  /// No description provided for @bitesNoComments.
+  ///
+  /// In en, this message translates to:
+  /// **'No comments yet.'**
+  String get bitesNoComments;
+
+  /// No description provided for @bitesDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this Bite?'**
+  String get bitesDeleteConfirm;
+
+  /// No description provided for @bitesDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Bite deleted.'**
+  String get bitesDeleted;
+
+  /// No description provided for @bitesEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'Bite updated.'**
+  String get bitesEdited;
+
+  /// No description provided for @bitesBookRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Tag a book before marking this Bite as a spoiler.'**
+  String get bitesBookRequired;
+
   /// No description provided for @authLogIn.
   ///
   /// In en, this message translates to:
@@ -996,6 +1098,66 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Nobody has reviewed this book yet.'**
   String get bookDetailNoReviews;
+
+  /// No description provided for @bookReviewWrite.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a review'**
+  String get bookReviewWrite;
+
+  /// No description provided for @bookReviewYourRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rating'**
+  String get bookReviewYourRating;
+
+  /// No description provided for @bookReviewHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What did you think of this book?'**
+  String get bookReviewHint;
+
+  /// No description provided for @bookReviewSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit review'**
+  String get bookReviewSubmit;
+
+  /// No description provided for @bookReviewVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified Purchase'**
+  String get bookReviewVerified;
+
+  /// No description provided for @bookReviewSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Your review was added.'**
+  String get bookReviewSubmitted;
+
+  /// No description provided for @bookReviewMustRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a star rating.'**
+  String get bookReviewMustRate;
+
+  /// No description provided for @bookReviewMustText.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a short review.'**
+  String get bookReviewMustText;
+
+  /// No description provided for @bookBitesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bites about this book'**
+  String get bookBitesTitle;
+
+  /// No description provided for @bookBitesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No Bites about this book yet.'**
+  String get bookBitesEmpty;
 
   /// No description provided for @bookDetailBestPrice.
   ///
@@ -3102,6 +3264,132 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Listings'**
   String get profileListings;
+
+  /// No description provided for @profileShelves.
+  ///
+  /// In en, this message translates to:
+  /// **'My shelves'**
+  String get profileShelves;
+
+  /// No description provided for @profileReadingStats.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading stats'**
+  String get profileReadingStats;
+
+  /// No description provided for @readingStatsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading stats'**
+  String get readingStatsTitle;
+
+  /// No description provided for @readingYearlyGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly reading goal'**
+  String get readingYearlyGoal;
+
+  /// No description provided for @readingGoalCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{finished} of {goal} books'**
+  String readingGoalCount(Object finished, Object goal);
+
+  /// No description provided for @readingStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading streak'**
+  String get readingStreak;
+
+  /// No description provided for @readingDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days'**
+  String readingDays(Object count);
+
+  /// No description provided for @readingBooksPerMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Books per month'**
+  String get readingBooksPerMonth;
+
+  /// No description provided for @readingFavoriteCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite categories'**
+  String get readingFavoriteCategories;
+
+  /// No description provided for @readingFinishedPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'You finished {title}'**
+  String readingFinishedPrompt(Object title);
+
+  /// No description provided for @readingFinishedPromptMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'What would you like to do next?'**
+  String get readingFinishedPromptMessage;
+
+  /// No description provided for @readingWriteReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a review'**
+  String get readingWriteReview;
+
+  /// No description provided for @readingPostBite.
+  ///
+  /// In en, this message translates to:
+  /// **'Post a Bite'**
+  String get readingPostBite;
+
+  /// No description provided for @readingSellBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Sell this book'**
+  String get readingSellBook;
+
+  /// No description provided for @shelvesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My shelves'**
+  String get shelvesTitle;
+
+  /// No description provided for @shelvesWantToRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Want to read'**
+  String get shelvesWantToRead;
+
+  /// No description provided for @shelvesReading.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading'**
+  String get shelvesReading;
+
+  /// No description provided for @shelvesFinished.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished'**
+  String get shelvesFinished;
+
+  /// No description provided for @shelvesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books on this shelf yet.'**
+  String get shelvesEmpty;
+
+  /// No description provided for @shelvesAddedAfterDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Added after delivery'**
+  String get shelvesAddedAfterDelivery;
+
+  /// No description provided for @shelvesMoveTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Move to shelf'**
+  String get shelvesMoveTo;
 
   /// No description provided for @profileEditProfile.
   ///

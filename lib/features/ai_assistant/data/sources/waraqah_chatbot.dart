@@ -1,5 +1,6 @@
 import '../../domain/entities/chat_message.dart';
 import '../../../../core/models/book.dart';
+import '../../../../core/utils/formatters.dart';
 import 'assistant_intent.dart';
 
 /// Local chatbot backend for the Waraqah assistant.
@@ -36,7 +37,6 @@ final class WaraqahChatbot {
       role: ChatRole.assistant,
       text: reply.text,
       recommendedBookId: reply.recommendedBookId,
-      quotes: reply.quotes,
     );
   }
 
@@ -54,8 +54,11 @@ final class WaraqahChatbot {
     };
     final priceNote = intent.maxPrice == null
         ? ''
-        : ' under ${intent.maxPrice} taka';
-    return 'Here are $label books$priceNote from the Waraqah catalog.';
+        : ' under ${Bdt.format(intent.maxPrice!)}';
+    final picks = books
+        .map((book) => '${book.title} (${Bdt.format(book.fromPriceBdt)})')
+        .join('; ');
+    return 'Here are $label books$priceNote from the Waraqah catalog: $picks.';
   }
 
   _ChatbotReply _replyFor(String normalized, String originalPrompt) {
@@ -74,14 +77,9 @@ final class WaraqahChatbot {
       'under',
     ])) {
       return const _ChatbotReply(
-        'I can help compare book prices across Waraqah vendors. For a '
-        'budget-friendly study pick, Atomic Habits is currently the best value.',
+        'I can compare Waraqah catalog prices. For a budget-friendly study '
+        'pick, Atomic Habits is currently a strong choice.',
         recommendedBookId: 'bk-atomic',
-        quotes: [
-          VendorQuote(vendor: 'Rokomari', priceBdt: 590, isLowest: true),
-          VendorQuote(vendor: 'Wafilife', priceBdt: 640),
-          VendorQuote(vendor: 'Boi Bazar', priceBdt: 675),
-        ],
       );
     }
 
@@ -144,7 +142,7 @@ final class WaraqahChatbot {
       return const _ChatbotReply(
         'Tell me the subject, mood, author, or budget you have in mind. '
         'For a general personal-growth read, Atomic Habits is a strong place '
-        'to start, and I can attach the best available vendor price.',
+        'to start, and I can show its Waraqah catalog price.',
         recommendedBookId: 'bk-atomic',
       );
     }
@@ -157,7 +155,7 @@ final class WaraqahChatbot {
     }
 
     return _ChatbotReply(
-      'I can help with books, study resources, vendor prices, recommendations, '
+      'I can help with books, study resources, Waraqah prices, recommendations, '
       'and Waraqah\'s peer-to-peer marketplace. About "$originalPrompt": tell '
       'me a subject, author, reading goal, or budget and I will narrow it down.',
     );
@@ -173,13 +171,8 @@ final class WaraqahChatbot {
 }
 
 final class _ChatbotReply {
-  const _ChatbotReply(
-    this.text, {
-    this.recommendedBookId,
-    this.quotes = const [],
-  });
+  const _ChatbotReply(this.text, {this.recommendedBookId});
 
   final String text;
   final String? recommendedBookId;
-  final List<VendorQuote> quotes;
 }

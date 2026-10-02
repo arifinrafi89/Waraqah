@@ -18,14 +18,9 @@ abstract final class AssistantFixtures {
     id: 'ai-reply-1',
     role: ChatRole.assistant,
     text:
-        'Atomic Habits fits well — it is the most borrowed title on campus '
-        'this term. Here is what each vendor is charging right now:',
+        'Atomic Habits fits well for building a consistent reading routine. '
+        'Here is the Waraqah catalog price:',
     recommendedBookId: 'bk-atomic',
-    quotes: [
-      VendorQuote(vendor: 'Rokomari', priceBdt: 590, isLowest: true),
-      VendorQuote(vendor: 'Wafilife', priceBdt: 640),
-      VendorQuote(vendor: 'Boi Bazar', priceBdt: 675),
-    ],
   );
 
   /// Fallback reply for anything the script does not cover.
@@ -33,13 +28,8 @@ abstract final class AssistantFixtures {
     id: 'ai-${DateTime.now().microsecondsSinceEpoch}',
     role: ChatRole.assistant,
     text:
-        'Looking through the catalog for "$prompt". Riyad as-Salihin and '
-        'Sapiens both match closely — the first is the better value at '
-        'Wafilife.',
+        'Looking through the Waraqah catalog for "$prompt". Riyad as-Salihin '
+        'and Sapiens both match closely.',
     recommendedBookId: 'bk-riyad',
-    quotes: const [
-      VendorQuote(vendor: 'Wafilife', priceBdt: 480, isLowest: true),
-      VendorQuote(vendor: 'Rokomari', priceBdt: 525),
-    ],
   );
 }

@@ -78,6 +78,58 @@ class AppL10nEn extends AppL10n {
   String get bitesReaderHandle => 'reader';
 
   @override
+  String get bitesTagBook => 'Tag a book';
+
+  @override
+  String get bitesSearchBooks => 'Search books';
+
+  @override
+  String get bitesSpoiler => 'Contains spoilers';
+
+  @override
+  String get bitesSpoilerHint => 'Spoilers require a tagged book.';
+
+  @override
+  String get bitesSpoilerTap => 'Tap to reveal spoiler';
+
+  @override
+  String get bitesMaxChars => '500 characters maximum';
+
+  @override
+  String get bitesEdit => 'Edit bite';
+
+  @override
+  String get bitesDelete => 'Delete bite';
+
+  @override
+  String get bitesShare => 'Share link';
+
+  @override
+  String get bitesComments => 'Comments';
+
+  @override
+  String get bitesAddComment => 'Add a comment...';
+
+  @override
+  String get bitesReplyTo => 'Reply';
+
+  @override
+  String get bitesNoComments => 'No comments yet.';
+
+  @override
+  String get bitesDeleteConfirm => 'Delete this Bite?';
+
+  @override
+  String get bitesDeleted => 'Bite deleted.';
+
+  @override
+  String get bitesEdited => 'Bite updated.';
+
+  @override
+  String get bitesBookRequired =>
+      'Tag a book before marking this Bite as a spoiler.';
+
+  @override
   String get authLogIn => 'Log In';
 
   @override
@@ -490,6 +542,36 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get bookDetailNoReviews => 'Nobody has reviewed this book yet.';
+
+  @override
+  String get bookReviewWrite => 'Write a review';
+
+  @override
+  String get bookReviewYourRating => 'Your rating';
+
+  @override
+  String get bookReviewHint => 'What did you think of this book?';
+
+  @override
+  String get bookReviewSubmit => 'Submit review';
+
+  @override
+  String get bookReviewVerified => 'Verified Purchase';
+
+  @override
+  String get bookReviewSubmitted => 'Your review was added.';
+
+  @override
+  String get bookReviewMustRate => 'Choose a star rating.';
+
+  @override
+  String get bookReviewMustText => 'Write a short review.';
+
+  @override
+  String get bookBitesTitle => 'Bites about this book';
+
+  @override
+  String get bookBitesEmpty => 'No Bites about this book yet.';
 
   @override
   String get bookDetailBestPrice => 'From price';
@@ -1786,6 +1868,75 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get profileListings => 'Listings';
+
+  @override
+  String get profileShelves => 'My shelves';
+
+  @override
+  String get profileReadingStats => 'Reading stats';
+
+  @override
+  String get readingStatsTitle => 'Reading stats';
+
+  @override
+  String get readingYearlyGoal => 'Yearly reading goal';
+
+  @override
+  String readingGoalCount(Object finished, Object goal) {
+    return '$finished of $goal books';
+  }
+
+  @override
+  String get readingStreak => 'Reading streak';
+
+  @override
+  String readingDays(Object count) {
+    return '$count days';
+  }
+
+  @override
+  String get readingBooksPerMonth => 'Books per month';
+
+  @override
+  String get readingFavoriteCategories => 'Favorite categories';
+
+  @override
+  String readingFinishedPrompt(Object title) {
+    return 'You finished $title';
+  }
+
+  @override
+  String get readingFinishedPromptMessage => 'What would you like to do next?';
+
+  @override
+  String get readingWriteReview => 'Write a review';
+
+  @override
+  String get readingPostBite => 'Post a Bite';
+
+  @override
+  String get readingSellBook => 'Sell this book';
+
+  @override
+  String get shelvesTitle => 'My shelves';
+
+  @override
+  String get shelvesWantToRead => 'Want to read';
+
+  @override
+  String get shelvesReading => 'Reading';
+
+  @override
+  String get shelvesFinished => 'Finished';
+
+  @override
+  String get shelvesEmpty => 'No books on this shelf yet.';
+
+  @override
+  String get shelvesAddedAfterDelivery => 'Added after delivery';
+
+  @override
+  String get shelvesMoveTo => 'Move to shelf';
 
   @override
   String get profileEditProfile => 'Edit profile';
