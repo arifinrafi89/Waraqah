@@ -1,102 +1,46 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/network/dio_provider.dart';
+import '../../../../core/usecase/usecase.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
+import '../../data/repositories/profile_repository_impl.dart';
+import '../../data/sources/profile_remote_source.dart';
+import '../../domain/entities/profile_details.dart';
+import '../../domain/repositories/profile_repository.dart';
+import '../../domain/usecases/get_profile.dart';
+import '../../domain/usecases/save_profile.dart';
 
-class ProfileDetails {
-  const ProfileDetails({required this.name, this.phone = '', this.photo = ''});
+final profileRepositoryProvider = Provider<ProfileRepository>(
+  (ref) => ProfileRepositoryImpl(ProfileRemoteSource(ref.watch(dioProvider))),
+);
 
-  final String name;
-  final String phone;
-  final String photo;
+final getProfileProvider = Provider<GetProfile>(
+  (ref) => GetProfile(ref.watch(profileRepositoryProvider)),
+);
 
-  ProfileDetails copyWith({String? name, String? phone, String? photo}) =>
-      ProfileDetails(
-        name: name ?? this.name,
-        phone: phone ?? this.phone,
-        photo: photo ?? this.photo,
-      );
-}
+final saveProfileProvider = Provider<SaveProfile>(
+  (ref) => SaveProfile(ref.watch(profileRepositoryProvider)),
+);
 
-class ProfileDetailsNotifier extends Notifier<ProfileDetails> {
+/// The signed-in Reader's profile; empty for a Guest. Reloads only when a
+/// different account signs in, not when the name changes.
+class ProfileNotifier extends AsyncNotifier<ProfileDetails> {
   @override
-  ProfileDetails build() =>
-      ProfileDetails(name: ref.watch(sessionProvider)?.name ?? '');
+  Future<ProfileDetails> build() async {
+    final id = ref.watch(sessionProvider.select((user) => user?.id));
+    if (id == null) return const ProfileDetails();
+    return ref.read(getProfileProvider).call(const NoParams());
+  }
 
-  void update({required String name, required String phone, String? photo}) {
-    state = state.copyWith(name: name, phone: phone, photo: photo);
+  /// Throws a `ProfileProblem` when [details] break `ProfileRules`. The new
+  /// name shows everywhere through the session.
+  Future<void> save(ProfileDetails details) async {
+    final saved = await ref.read(saveProfileProvider).call(details);
+    state = AsyncData(saved);
+    await ref.read(sessionProvider.notifier).rename(saved.name);
   }
 }
 
-final profileDetailsProvider =
-    NotifierProvider<ProfileDetailsNotifier, ProfileDetails>(
-      ProfileDetailsNotifier.new,
-    );
-
-class NotificationPreferences {
-  const NotificationPreferences({
-    this.push = true,
-    this.orders = true,
-    this.promotions = false,
-  });
-
-  final bool push;
-  final bool orders;
-  final bool promotions;
-
-  NotificationPreferences copyWith({
-    bool? push,
-    bool? orders,
-    bool? promotions,
-  }) => NotificationPreferences(
-    push: push ?? this.push,
-    orders: orders ?? this.orders,
-    promotions: promotions ?? this.promotions,
-  );
-}
-
-class NotificationPreferencesNotifier
-    extends Notifier<NotificationPreferences> {
-  @override
-  NotificationPreferences build() => const NotificationPreferences();
-
-  void setPush(bool value) => state = state.copyWith(push: value);
-  void setOrders(bool value) => state = state.copyWith(orders: value);
-  void setPromotions(bool value) => state = state.copyWith(promotions: value);
-}
-
-final notificationPreferencesProvider =
-    NotifierProvider<NotificationPreferencesNotifier, NotificationPreferences>(
-      NotificationPreferencesNotifier.new,
-    );
-
-class PrivacyPreferences {
-  const PrivacyPreferences({
-    this.profileVisible = true,
-    this.activityVisible = true,
-  });
-
-  final bool profileVisible;
-  final bool activityVisible;
-
-  PrivacyPreferences copyWith({bool? profileVisible, bool? activityVisible}) =>
-      PrivacyPreferences(
-        profileVisible: profileVisible ?? this.profileVisible,
-        activityVisible: activityVisible ?? this.activityVisible,
-      );
-}
-
-class PrivacyPreferencesNotifier extends Notifier<PrivacyPreferences> {
-  @override
-  PrivacyPreferences build() => const PrivacyPreferences();
-
-  void setProfileVisible(bool value) =>
-      state = state.copyWith(profileVisible: value);
-
-  void setActivityVisible(bool value) =>
-      state = state.copyWith(activityVisible: value);
-}
-
-final privacyPreferencesProvider =
-    NotifierProvider<PrivacyPreferencesNotifier, PrivacyPreferences>(
-      PrivacyPreferencesNotifier.new,
-    );
+final profileProvider = AsyncNotifierProvider<ProfileNotifier, ProfileDetails>(
+  ProfileNotifier.new,
+);

@@ -25,7 +25,7 @@ void main() {
   ) async {
     await openApp(tester, '/profile', role: 'reader');
 
-    final notifications = find.text('Notifications');
+    final notifications = find.text('Settings');
     await tester.ensureVisible(notifications);
     await tester.tap(notifications);
     await tester.pumpAndSettle();

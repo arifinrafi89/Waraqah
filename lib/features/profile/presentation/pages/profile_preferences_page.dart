@@ -5,7 +5,7 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../providers/profile_providers.dart';
+import '../providers/profile_prefs_providers.dart';
 
 class ProfilePreferencesPage extends ConsumerWidget {
   const ProfilePreferencesPage({super.key});

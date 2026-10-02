@@ -68,8 +68,7 @@ class _SignupPanelState extends ConsumerState<SignupPanel> {
     if (mounted) setState(() => _busy = false);
   }
 
-  String _message(AuthFailure failure) =>
-      failure.message(AppL10n.of(context)!);
+  String _message(AuthFailure failure) => failure.message(AppL10n.of(context)!);
 
   @override
   Widget build(BuildContext context) => _contact == null

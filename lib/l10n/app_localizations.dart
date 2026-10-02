@@ -3487,6 +3487,30 @@ abstract class AppL10n {
   /// **'Profile updated'**
   String get profileSaved;
 
+  /// No description provided for @profileRemovePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove photo'**
+  String get profileRemovePhoto;
+
+  /// No description provided for @profileNameLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name must be {min}–{max} characters.'**
+  String profileNameLength(int min, int max);
+
+  /// No description provided for @profilePhoneInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a Bangladesh mobile number, like 01712345678.'**
+  String get profilePhoneInvalid;
+
+  /// No description provided for @profileSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get profileSettings;
+
   /// No description provided for @profileSavedAddresses.
   ///
   /// In en, this message translates to:

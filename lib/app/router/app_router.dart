@@ -71,6 +71,7 @@ abstract final class AppRouter {
       ...BookRequestRoutes.routes,
       ...HandledSaleRoutes.routes,
       ...SellBackRoutes.routes,
+      ...ProfileRoutes.routes,
       ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),

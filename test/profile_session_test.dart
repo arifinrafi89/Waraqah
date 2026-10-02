@@ -1,11 +1,14 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:waraqah/app/fake_api_routes.dart';
+import 'package:waraqah/core/network/dio_provider.dart';
 import 'package:waraqah/core/settings/settings_provider.dart';
 import 'package:waraqah/core/theme/app_theme.dart';
 import 'package:waraqah/features/profile/presentation/pages/profile_page.dart';
@@ -24,7 +27,12 @@ Future<void> _pumpProfile(WidgetTester tester, {Object? saved}) async {
 
   await tester.pumpWidget(
     ProviderScope(
-      overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(prefs),
+        dioProvider.overrideWithValue(
+          Dio()..interceptors.add(FakeApiRoutes.interceptor()),
+        ),
+      ],
       child: MaterialApp(
         theme: AppTheme.light(),
         supportedLocales: AppL10n.supportedLocales,
@@ -33,7 +41,7 @@ Future<void> _pumpProfile(WidgetTester tester, {Object? saved}) async {
       ),
     ),
   );
-  await tester.pump();
+  await tester.pump(const Duration(seconds: 1));
 }
 
 void main() {

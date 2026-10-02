@@ -1926,6 +1926,21 @@ class AppL10nBn extends AppL10n {
   String get profileSaved => 'প্রোফাইল আপডেট হয়েছে';
 
   @override
+  String get profileRemovePhoto => 'ছবি সরান';
+
+  @override
+  String profileNameLength(int min, int max) {
+    return 'নাম $min–$max অক্ষরের হতে হবে।';
+  }
+
+  @override
+  String get profilePhoneInvalid =>
+      'বাংলাদেশি মোবাইল নম্বর লিখুন, যেমন 01712345678।';
+
+  @override
+  String get profileSettings => 'সেটিংস';
+
+  @override
   String get profileSavedAddresses => 'সংরক্ষিত ঠিকানা';
 
   @override

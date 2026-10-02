@@ -2010,6 +2010,21 @@ class AppL10nEn extends AppL10n {
   String get profileSaved => 'Profile updated';
 
   @override
+  String get profileRemovePhoto => 'Remove photo';
+
+  @override
+  String profileNameLength(int min, int max) {
+    return 'Your name must be $min–$max characters.';
+  }
+
+  @override
+  String get profilePhoneInvalid =>
+      'Enter a Bangladesh mobile number, like 01712345678.';
+
+  @override
+  String get profileSettings => 'Settings';
+
+  @override
   String get profileSavedAddresses => 'Saved addresses';
 
   @override

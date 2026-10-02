@@ -34,6 +34,8 @@ import '../features/orders/data/sources/order_fake_api.dart';
 import '../features/orders/data/sources/order_fake_store.dart';
 import '../features/p2p/data/sources/p2p_fake_api.dart';
 import '../features/p2p/data/sources/p2p_fake_store.dart';
+import '../features/profile/data/sources/profile_fake_api.dart';
+import '../features/profile/data/sources/profile_fake_store.dart';
 import '../features/report/data/sources/report_fake_api.dart';
 import '../features/scan/data/sources/scan_fake_api.dart';
 import '../features/sell_back/data/sources/sell_back_fake_api.dart';
@@ -69,6 +71,7 @@ abstract final class FakeApiRoutes {
     final catalogAdmin = CatalogAdminFakeStore();
     return FakeApiInterceptor({
       ...AuthFakeApi.routes(),
+      ...ProfileFakeApi.routes(ProfileFakeStore()),
       ...BookFakeApi.routes,
       ...BookSuggestFakeApi.routes,
       ...BookQuestionsFakeApi.routes(),
