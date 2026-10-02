@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../../domain/entities/auth_failure.dart';
 import '../models/app_user_model.dart';
 import 'auth_fake_api.dart';
 
@@ -45,7 +46,9 @@ class AuthRemoteSource {
       AuthFakeApi.verifySignUpOtp,
       data: {'contact': contact, 'otp': otp},
     );
-    return AppUserModel.fromJson(response.data!);
+    final data = response.data;
+    if (data == null) throw AuthFailure.wrongCode;
+    return AppUserModel.fromJson(data);
   }
 
   Future<void> requestPasswordReset(String contact) async {
@@ -60,9 +63,10 @@ class AuthRemoteSource {
     required String otp,
     required String password,
   }) async {
-    await _dio.post<void>(
+    final response = await _dio.post<Map<String, dynamic>>(
       AuthFakeApi.resetPassword,
       data: {'contact': contact, 'otp': otp, 'password': password},
     );
+    if (response.data == null) throw AuthFailure.wrongCode;
   }
 }

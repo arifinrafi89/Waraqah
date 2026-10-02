@@ -397,6 +397,12 @@ abstract class AppL10n {
   /// **'Enter the 6-digit OTP.'**
   String get authOtpInvalid;
 
+  /// No description provided for @authWrongCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong code. Try again.'**
+  String get authWrongCode;
+
   /// No description provided for @authInvalidMobileNumber.
   ///
   /// In en, this message translates to:

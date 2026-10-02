@@ -50,6 +50,7 @@
   "authVerifyOtp": "Verify OTP",
   "authOtpDemoNote": "Demo code: 123456",
   "authOtpInvalid": "Enter the 6-digit OTP.",
+  "authWrongCode": "Wrong code. Try again.",
   "authInvalidMobileNumber": "Enter a valid Bangladesh mobile number.",
   "authForgotTitle": "Reset your password",
   "authForgotMessage": "Enter your mobile number and we will send you a verification code.",

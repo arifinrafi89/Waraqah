@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/auth_failure.dart';
 import '../providers/auth_providers.dart';
+import 'auth_failure_text.dart';
 import 'otp_form.dart';
 import 'signup_form.dart';
 
@@ -57,6 +58,8 @@ class _SignupPanelState extends ConsumerState<SignupPanel> {
       await ref
           .read(sessionProvider.notifier)
           .verifySignUpOtp(contact: _contact!, otp: otp.trim());
+    } on AuthFailure catch (failure) {
+      if (mounted) setState(() => _error = _message(failure));
     } catch (_) {
       if (mounted) {
         setState(() => _error = AppL10n.of(context)!.commonSomethingWentWrong);
@@ -65,10 +68,8 @@ class _SignupPanelState extends ConsumerState<SignupPanel> {
     if (mounted) setState(() => _busy = false);
   }
 
-  String _message(AuthFailure failure) => switch (failure) {
-    AuthFailure.invalidEmail => AppL10n.of(context)!.authInvalidEmail,
-    AuthFailure.missingPassword => AppL10n.of(context)!.authMissingPassword,
-  };
+  String _message(AuthFailure failure) =>
+      failure.message(AppL10n.of(context)!);
 
   @override
   Widget build(BuildContext context) => _contact == null

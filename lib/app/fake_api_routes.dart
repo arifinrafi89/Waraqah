@@ -68,7 +68,7 @@ abstract final class FakeApiRoutes {
     // force Home's Season.
     final catalogAdmin = CatalogAdminFakeStore();
     return FakeApiInterceptor({
-      ...AuthFakeApi.routes,
+      ...AuthFakeApi.routes(),
       ...BookFakeApi.routes,
       ...BookSuggestFakeApi.routes,
       ...BookQuestionsFakeApi.routes(),

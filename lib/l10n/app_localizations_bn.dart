@@ -163,6 +163,9 @@ class AppL10nBn extends AppL10n {
   String get authOtpInvalid => '৬ সংখ্যার OTP লিখুন।';
 
   @override
+  String get authWrongCode => 'ভুল কোড। আবার চেষ্টা করুন।';
+
+  @override
   String get authInvalidMobileNumber =>
       'একটি সঠিক বাংলাদেশি মোবাইল নম্বর লিখুন।';
 

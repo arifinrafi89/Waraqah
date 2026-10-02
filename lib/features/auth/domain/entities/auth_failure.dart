@@ -1,2 +1,3 @@
-/// Why a sign-in attempt was refused before it reached the server.
-enum AuthFailure implements Exception { invalidEmail, missingPassword }
+/// Why an auth attempt was refused: bad input before it reached the server,
+/// or a one-time code the server didn't accept.
+enum AuthFailure implements Exception { invalidEmail, missingPassword, wrongCode }

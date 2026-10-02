@@ -165,6 +165,9 @@ class AppL10nEn extends AppL10n {
   String get authOtpInvalid => 'Enter the 6-digit OTP.';
 
   @override
+  String get authWrongCode => 'Wrong code. Try again.';
+
+  @override
   String get authInvalidMobileNumber =>
       'Enter a valid Bangladesh mobile number.';
 

@@ -50,6 +50,7 @@
   "authVerifyOtp": "OTP যাচাই করুন",
   "authOtpDemoNote": "ডেমো কোড: ১২৩৪৫৬",
   "authOtpInvalid": "৬ সংখ্যার OTP লিখুন।",
+  "authWrongCode": "ভুল কোড। আবার চেষ্টা করুন।",
   "authInvalidMobileNumber": "একটি সঠিক বাংলাদেশি মোবাইল নম্বর লিখুন।",
   "authForgotTitle": "পাসওয়ার্ড রিসেট করুন",
   "authForgotMessage": "আপনার মোবাইল নম্বর লিখুন, আমরা একটি যাচাইকরণ কোড পাঠাব।",

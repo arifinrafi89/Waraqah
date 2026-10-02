@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/auth_failure.dart';
 import '../providers/auth_providers.dart';
+import 'auth_failure_text.dart';
 import 'login_form.dart';
 
 /// Runs the sign-in and shows its progress and errors.
@@ -33,10 +34,7 @@ class _LoginPanelState extends ConsumerState<LoginPanel> {
           .read(sessionProvider.notifier)
           .signIn(email: email, password: password);
     } on AuthFailure catch (failure) {
-      _error = switch (failure) {
-        AuthFailure.invalidEmail => l10n.authInvalidEmail,
-        AuthFailure.missingPassword => l10n.authMissingPassword,
-      };
+      _error = failure.message(l10n);
     } catch (_) {
       _error = l10n.commonSomethingWentWrong;
     }
