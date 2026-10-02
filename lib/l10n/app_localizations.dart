@@ -3673,6 +3673,54 @@ abstract class AppL10n {
   /// **'Notifications'**
   String get profileNotifications;
 
+  /// No description provided for @profileNotifyOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders and returns'**
+  String get profileNotifyOrders;
+
+  /// No description provided for @profileNotifyUsedBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Used books'**
+  String get profileNotifyUsedBooks;
+
+  /// No description provided for @profileNotifyUsedBooksSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Listings, Waraqah-handled sales, Sell Back and book requests'**
+  String get profileNotifyUsedBooksSub;
+
+  /// No description provided for @profileNotifyAlerts.
+  ///
+  /// In en, this message translates to:
+  /// **'Price and stock alerts'**
+  String get profileNotifyAlerts;
+
+  /// No description provided for @profileNotifyCommunity.
+  ///
+  /// In en, this message translates to:
+  /// **'Community'**
+  String get profileNotifyCommunity;
+
+  /// No description provided for @profileNotifyCommunitySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Likes, comments and new followers on Bites'**
+  String get profileNotifyCommunitySub;
+
+  /// No description provided for @profileNotifyModerationNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Moderation warnings always arrive.'**
+  String get profileNotifyModerationNote;
+
+  /// No description provided for @profileAccountDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account was deleted.'**
+  String get profileAccountDeleted;
+
   /// No description provided for @profileNotificationCenter.
   ///
   /// In en, this message translates to:
@@ -3690,24 +3738,6 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'You are all caught up.'**
   String get profileNoNotifications;
-
-  /// No description provided for @profilePushNotifications.
-  ///
-  /// In en, this message translates to:
-  /// **'Push notifications'**
-  String get profilePushNotifications;
-
-  /// No description provided for @profileOrderUpdates.
-  ///
-  /// In en, this message translates to:
-  /// **'Order updates'**
-  String get profileOrderUpdates;
-
-  /// No description provided for @profilePromotions.
-  ///
-  /// In en, this message translates to:
-  /// **'Offers and recommendations'**
-  String get profilePromotions;
 
   /// No description provided for @profilePrivacy.
   ///

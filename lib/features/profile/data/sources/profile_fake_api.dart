@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../models/profile_details_model.dart';
+import '../models/profile_prefs_model.dart';
 import '../models/saved_address_model.dart';
 import 'address_fake_store.dart';
 import 'geo/bd_geo.dart';
@@ -30,6 +31,16 @@ abstract final class ProfileFakeApi {
   /// Every division, its districts and their upazilas.
   static const String geo = '/geo';
 
+  /// `{muted: [group…], profileVisible, activityVisible}`.
+  static const String prefs = '/profile/prefs';
+
+  /// Body: the settings. Answers them saved.
+  static const String savePrefs = '/profile/prefs/save';
+
+  /// Ends the account. Under `/auth` on the real server; answered here
+  /// because Profile's Settings asks for it.
+  static const String deleteAccount = '/auth/delete';
+
   static Map<String, Object? Function(RequestOptions)> routes(
     ProfileFakeStore store,
     AddressFakeStore addresses,
@@ -45,6 +56,11 @@ abstract final class ProfileFakeApi {
     defaultAddress: (o) =>
         addresses.makeDefault(_id(o)) ? addresses.json() : null,
     geo: (_) => BdGeo.toJson(),
+    prefs: (_) => store.prefs.toJson(),
+    savePrefs: (o) =>
+        (store.prefs = ProfilePrefsModel.fromJson(_body(o))).toJson(),
+    // ponytail: one shared "me", so nothing is wiped; the app signs out.
+    deleteAccount: (_) => {'ok': true},
   };
 
   static Map<String, dynamic> _body(RequestOptions options) =>

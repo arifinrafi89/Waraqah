@@ -2023,6 +2023,31 @@ class AppL10nBn extends AppL10n {
   String get profileNotifications => 'নোটিফিকেশন';
 
   @override
+  String get profileNotifyOrders => 'অর্ডার ও রিটার্ন';
+
+  @override
+  String get profileNotifyUsedBooks => 'পুরোনো বই';
+
+  @override
+  String get profileNotifyUsedBooksSub =>
+      'লিস্টিং, ওয়ারাকাহ-পরিচালিত বিক্রি, সেল ব্যাক ও বইয়ের অনুরোধ';
+
+  @override
+  String get profileNotifyAlerts => 'দাম ও স্টক অ্যালার্ট';
+
+  @override
+  String get profileNotifyCommunity => 'কমিউনিটি';
+
+  @override
+  String get profileNotifyCommunitySub => 'বাইটে লাইক, মন্তব্য ও নতুন ফলোয়ার';
+
+  @override
+  String get profileNotifyModerationNote => 'মডারেশন সতর্কতা সবসময় আসবে।';
+
+  @override
+  String get profileAccountDeleted => 'আপনার অ্যাকাউন্ট মুছে ফেলা হয়েছে।';
+
+  @override
   String get profileNotificationCenter => 'নোটিফিকেশন সেন্টার';
 
   @override
@@ -2030,15 +2055,6 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get profileNoNotifications => 'সব নোটিফিকেশন দেখা হয়েছে।';
-
-  @override
-  String get profilePushNotifications => 'পুশ নোটিফিকেশন';
-
-  @override
-  String get profileOrderUpdates => 'অর্ডার আপডেট';
-
-  @override
-  String get profilePromotions => 'অফার ও সুপারিশ';
 
   @override
   String get profilePrivacy => 'গোপনীয়তা';

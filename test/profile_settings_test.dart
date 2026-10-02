@@ -59,4 +59,45 @@ void main() {
     await settle(tester);
     expect(find.text('Home'), findsNothing);
   });
+
+  testWidgets('settings save on the server and survive a reopen', (
+    tester,
+  ) async {
+    final router = await openApp(tester, '/profile', role: 'reader');
+    await tester.tap(find.text('Settings'));
+    await settle(tester);
+    expect(find.text('Moderation warnings always arrive.'), findsOneWidget);
+    expect(find.text('Push notifications'), findsNothing);
+
+    SwitchListTile tile(String title) =>
+        tester.widget(find.widgetWithText(SwitchListTile, title));
+    expect(tile('Price and stock alerts').value, isTrue);
+    await tester.tap(find.text('Price and stock alerts'));
+    await tester.tap(find.text('Profile visibility'));
+    await settle(tester);
+
+    router.pop();
+    await settle(tester);
+    await tester.tap(find.text('Settings'));
+    await settle(tester);
+    expect(tile('Price and stock alerts').value, isFalse);
+    expect(tile('Profile visibility').value, isFalse);
+    expect(tile('Orders and returns').value, isTrue);
+  });
+
+  testWidgets('delete account confirms, then signs out', (tester) async {
+    final router = await openApp(tester, '/profile/settings', role: 'reader');
+    await tester.ensureVisible(find.text('Delete account'));
+    await tester.pump();
+    await tester.tap(find.text('Delete account'));
+    await tester.pumpAndSettle();
+    expect(
+      find.text('This will permanently remove your account and saved data.'),
+      findsOneWidget,
+    );
+    await tester.tap(find.text('Delete permanently'));
+    await settle(tester);
+    expect(pathOf(router), '/login');
+    expect(find.text('Your account was deleted.'), findsOneWidget);
+  });
 }

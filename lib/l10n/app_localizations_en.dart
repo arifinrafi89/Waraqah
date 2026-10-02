@@ -2108,6 +2108,33 @@ class AppL10nEn extends AppL10n {
   String get profileNotifications => 'Notifications';
 
   @override
+  String get profileNotifyOrders => 'Orders and returns';
+
+  @override
+  String get profileNotifyUsedBooks => 'Used books';
+
+  @override
+  String get profileNotifyUsedBooksSub =>
+      'Listings, Waraqah-handled sales, Sell Back and book requests';
+
+  @override
+  String get profileNotifyAlerts => 'Price and stock alerts';
+
+  @override
+  String get profileNotifyCommunity => 'Community';
+
+  @override
+  String get profileNotifyCommunitySub =>
+      'Likes, comments and new followers on Bites';
+
+  @override
+  String get profileNotifyModerationNote =>
+      'Moderation warnings always arrive.';
+
+  @override
+  String get profileAccountDeleted => 'Your account was deleted.';
+
+  @override
   String get profileNotificationCenter => 'Notification centre';
 
   @override
@@ -2115,15 +2142,6 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get profileNoNotifications => 'You are all caught up.';
-
-  @override
-  String get profilePushNotifications => 'Push notifications';
-
-  @override
-  String get profileOrderUpdates => 'Order updates';
-
-  @override
-  String get profilePromotions => 'Offers and recommendations';
 
   @override
   String get profilePrivacy => 'Privacy';

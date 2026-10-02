@@ -11,7 +11,6 @@ abstract final class AuthFakeApi {
   static const String verifySignUpOtp = '/auth/signup/verify-otp';
   static const String requestPasswordReset = '/auth/password/request-otp';
   static const String resetPassword = '/auth/password/reset';
-  static const String deleteAccount = '/auth/delete';
 
   /// A fresh table per fake backend: it remembers the name each sign-up
   /// typed until the code is verified.
@@ -34,7 +33,6 @@ abstract final class AuthFakeApi {
       requestPasswordReset: _acknowledge,
       resetPassword: (options) =>
           _body(options)['otp'] == AuthFixtures.demoOtp ? {'ok': true} : null,
-      deleteAccount: _acknowledge,
     };
   }
 

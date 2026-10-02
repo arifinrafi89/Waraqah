@@ -1,9 +1,11 @@
 import '../../domain/entities/geo.dart';
 import '../../domain/entities/profile_details.dart';
+import '../../domain/entities/profile_prefs.dart';
 import '../../domain/entities/saved_address.dart';
 import '../../domain/repositories/profile_repository.dart';
 import '../models/geo_model.dart';
 import '../models/profile_details_model.dart';
+import '../models/profile_prefs_model.dart';
 import '../models/saved_address_model.dart';
 import '../sources/address_remote_source.dart';
 import '../sources/profile_remote_source.dart';
@@ -24,6 +26,16 @@ class ProfileRepositoryImpl implements ProfileRepository {
   Future<ProfileDetails> saveProfile(ProfileDetails details) async =>
       (await _source.saveProfile(ProfileDetailsModel.fromEntity(details)))
           .toEntity();
+
+  @override
+  Future<ProfilePrefs> prefs() async => (await _source.prefs()).toEntity();
+
+  @override
+  Future<ProfilePrefs> savePrefs(ProfilePrefs prefs) async =>
+      (await _source.savePrefs(ProfilePrefsModel.fromEntity(prefs))).toEntity();
+
+  @override
+  Future<void> deleteAccount() => _source.deleteAccount();
 
   @override
   Future<List<SavedAddress>> addresses() async =>

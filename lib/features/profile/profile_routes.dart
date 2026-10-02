@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 
 import 'presentation/pages/edit_profile_page.dart';
 import 'presentation/pages/profile_page.dart';
-import 'presentation/pages/profile_preferences_page.dart';
+import 'presentation/pages/profile_settings_page.dart';
 import 'presentation/pages/saved_addresses_page.dart';
 
 abstract final class ProfileRoutes {
@@ -28,7 +28,7 @@ abstract final class ProfileRoutes {
       builder: (_, state) =>
           SavedAddressesPage(adding: state.uri.queryParameters['add'] == '1'),
     ),
-    GoRoute(path: settings, builder: (_, _) => const ProfilePreferencesPage()),
+    GoRoute(path: settings, builder: (_, _) => const ProfileSettingsPage()),
   ];
 
   static final StatefulShellBranch branch = StatefulShellBranch(
