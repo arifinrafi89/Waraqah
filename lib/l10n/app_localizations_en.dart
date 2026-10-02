@@ -57,13 +57,7 @@ class AppL10nEn extends AppL10n {
       'Share a thought about what you are reading...';
 
   @override
-  String get bitesPost => 'Post bite';
-
-  @override
-  String get bitesReply => 'Reply';
-
-  @override
-  String get bitesRepost => 'Repost';
+  String get bitesPost => 'Post';
 
   @override
   String get bitesLike => 'Like';
@@ -72,10 +66,121 @@ class AppL10nEn extends AppL10n {
   String get bitesPosted => 'Your bite was added to the feed.';
 
   @override
-  String get bitesYou => 'You';
+  String get bitesForYou => 'For You';
 
   @override
-  String get bitesReaderHandle => 'reader';
+  String get bitesFollowing => 'Following';
+
+  @override
+  String get bitesFollowingLogin =>
+      'Log in to see Bites from readers you follow.';
+
+  @override
+  String get bitesLogIn => 'Log in';
+
+  @override
+  String get bitesEmpty => 'No Bites here yet.';
+
+  @override
+  String get bitesFollowingEmpty => 'Follow readers to see their Bites here.';
+
+  @override
+  String get bitesEdited => 'edited';
+
+  @override
+  String get bitesNow => 'now';
+
+  @override
+  String bitesMinutesAgo(int n) {
+    return '${n}m';
+  }
+
+  @override
+  String bitesHoursAgo(int n) {
+    return '${n}h';
+  }
+
+  @override
+  String bitesDaysAgo(int n) {
+    return '${n}d';
+  }
+
+  @override
+  String get bitesComments => 'Comments';
+
+  @override
+  String get bitesShare => 'Share';
+
+  @override
+  String get bitesCopied => 'Link copied. Paste it anywhere to share.';
+
+  @override
+  String get bitesMore => 'More';
+
+  @override
+  String get bitesEdit => 'Edit';
+
+  @override
+  String get bitesDelete => 'Delete';
+
+  @override
+  String get bitesDeleteConfirm => 'Delete this Bite?';
+
+  @override
+  String get bitesDeleteBody => 'Its comments are deleted too.';
+
+  @override
+  String get bitesCancel => 'Cancel';
+
+  @override
+  String get bitesDeleted => 'Bite deleted.';
+
+  @override
+  String get bitesMakeQuote => 'Make a quote card';
+
+  @override
+  String bitesSpoilerAbout(String title) {
+    return 'Spoiler about $title: tap to show';
+  }
+
+  @override
+  String get bitesComposeTitle => 'New Bite';
+
+  @override
+  String get bitesEditTitle => 'Edit Bite';
+
+  @override
+  String get bitesTagBook => 'Tag a book';
+
+  @override
+  String get bitesTagHint => 'Search by title or author';
+
+  @override
+  String get bitesRemoveTag => 'Remove tag';
+
+  @override
+  String get bitesSpoiler => 'Spoiler';
+
+  @override
+  String get bitesSpoilerHint =>
+      'Blurred until readers tap it. Needs a book tag.';
+
+  @override
+  String get bitesSave => 'Save';
+
+  @override
+  String get bitesSaved => 'Bite saved.';
+
+  @override
+  String bitesTooLong(int max) {
+    return 'Too long: $max characters at most.';
+  }
+
+  @override
+  String get bitesWrite => 'Write a Bite';
+
+  @override
+  String get bitesYou => 'You';
 
   @override
   String get authLogIn => 'Log In';

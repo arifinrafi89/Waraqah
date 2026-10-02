@@ -4,6 +4,7 @@ import '../../features/alerts/alerts_routes.dart';
 import '../../features/auth/auth_routes.dart';
 import '../../features/auth/domain/entities/app_user.dart';
 import '../../features/auth/domain/entities/user_role.dart';
+import '../../features/bites/bites_routes.dart';
 import '../../features/book_request/book_request_routes.dart';
 import '../../features/checkout/checkout_routes.dart';
 import '../../features/handled_sale/handled_sale_routes.dart';
@@ -41,6 +42,7 @@ abstract final class RouteAccess {
     ProfileRoutes.edit,
     ProfileRoutes.addresses,
     ProfileRoutes.settings,
+    BitesRoutes.compose,
   ];
 
   /// Where to redirect [location] for [user], or `null` to let it open.

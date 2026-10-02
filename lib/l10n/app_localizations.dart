@@ -190,20 +190,8 @@ abstract class AppL10n {
   /// No description provided for @bitesPost.
   ///
   /// In en, this message translates to:
-  /// **'Post bite'**
+  /// **'Post'**
   String get bitesPost;
-
-  /// No description provided for @bitesReply.
-  ///
-  /// In en, this message translates to:
-  /// **'Reply'**
-  String get bitesReply;
-
-  /// No description provided for @bitesRepost.
-  ///
-  /// In en, this message translates to:
-  /// **'Repost'**
-  String get bitesRepost;
 
   /// No description provided for @bitesLike.
   ///
@@ -217,17 +205,215 @@ abstract class AppL10n {
   /// **'Your bite was added to the feed.'**
   String get bitesPosted;
 
+  /// No description provided for @bitesForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'For You'**
+  String get bitesForYou;
+
+  /// No description provided for @bitesFollowing.
+  ///
+  /// In en, this message translates to:
+  /// **'Following'**
+  String get bitesFollowing;
+
+  /// No description provided for @bitesFollowingLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to see Bites from readers you follow.'**
+  String get bitesFollowingLogin;
+
+  /// No description provided for @bitesLogIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in'**
+  String get bitesLogIn;
+
+  /// No description provided for @bitesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No Bites here yet.'**
+  String get bitesEmpty;
+
+  /// No description provided for @bitesFollowingEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow readers to see their Bites here.'**
+  String get bitesFollowingEmpty;
+
+  /// No description provided for @bitesEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'edited'**
+  String get bitesEdited;
+
+  /// No description provided for @bitesNow.
+  ///
+  /// In en, this message translates to:
+  /// **'now'**
+  String get bitesNow;
+
+  /// No description provided for @bitesMinutesAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{n}m'**
+  String bitesMinutesAgo(int n);
+
+  /// No description provided for @bitesHoursAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{n}h'**
+  String bitesHoursAgo(int n);
+
+  /// No description provided for @bitesDaysAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{n}d'**
+  String bitesDaysAgo(int n);
+
+  /// No description provided for @bitesComments.
+  ///
+  /// In en, this message translates to:
+  /// **'Comments'**
+  String get bitesComments;
+
+  /// No description provided for @bitesShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get bitesShare;
+
+  /// No description provided for @bitesCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied. Paste it anywhere to share.'**
+  String get bitesCopied;
+
+  /// No description provided for @bitesMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get bitesMore;
+
+  /// No description provided for @bitesEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get bitesEdit;
+
+  /// No description provided for @bitesDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get bitesDelete;
+
+  /// No description provided for @bitesDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this Bite?'**
+  String get bitesDeleteConfirm;
+
+  /// No description provided for @bitesDeleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Its comments are deleted too.'**
+  String get bitesDeleteBody;
+
+  /// No description provided for @bitesCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get bitesCancel;
+
+  /// No description provided for @bitesDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Bite deleted.'**
+  String get bitesDeleted;
+
+  /// No description provided for @bitesMakeQuote.
+  ///
+  /// In en, this message translates to:
+  /// **'Make a quote card'**
+  String get bitesMakeQuote;
+
+  /// No description provided for @bitesSpoilerAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'Spoiler about {title}: tap to show'**
+  String bitesSpoilerAbout(String title);
+
+  /// No description provided for @bitesComposeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New Bite'**
+  String get bitesComposeTitle;
+
+  /// No description provided for @bitesEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Bite'**
+  String get bitesEditTitle;
+
+  /// No description provided for @bitesTagBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Tag a book'**
+  String get bitesTagBook;
+
+  /// No description provided for @bitesTagHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by title or author'**
+  String get bitesTagHint;
+
+  /// No description provided for @bitesRemoveTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove tag'**
+  String get bitesRemoveTag;
+
+  /// No description provided for @bitesSpoiler.
+  ///
+  /// In en, this message translates to:
+  /// **'Spoiler'**
+  String get bitesSpoiler;
+
+  /// No description provided for @bitesSpoilerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Blurred until readers tap it. Needs a book tag.'**
+  String get bitesSpoilerHint;
+
+  /// No description provided for @bitesSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get bitesSave;
+
+  /// No description provided for @bitesSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Bite saved.'**
+  String get bitesSaved;
+
+  /// No description provided for @bitesTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Too long: {max} characters at most.'**
+  String bitesTooLong(int max);
+
+  /// No description provided for @bitesWrite.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a Bite'**
+  String get bitesWrite;
+
   /// No description provided for @bitesYou.
   ///
   /// In en, this message translates to:
   /// **'You'**
   String get bitesYou;
-
-  /// No description provided for @bitesReaderHandle.
-  ///
-  /// In en, this message translates to:
-  /// **'reader'**
-  String get bitesReaderHandle;
 
   /// No description provided for @authLogIn.
   ///
