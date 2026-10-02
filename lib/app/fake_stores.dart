@@ -1,4 +1,5 @@
 import '../features/alerts/data/sources/alert_fake_store.dart';
+import '../features/bites/data/sources/bite_fake_store.dart';
 import '../features/book_request/data/sources/book_request_fake_store.dart';
 import '../features/cart/data/sources/cart_fake_store.dart';
 import '../features/catalog_admin/data/sources/catalog_admin_fake_store.dart';
@@ -55,11 +56,19 @@ class FakeStores {
   // Blocking a reader hides their listings from the marketplace.
   late final reports = ReportFakeStore(p2p);
 
-  // Moderators approve listings, act on reports and ban readers.
+  // Feeds leave out blocked and banned readers; a banned "me" can't post.
+  late final BiteFakeStore bites = BiteFakeStore(
+    isHidden: (id) => reports.isBlocked(id) || moderation.isBanned(id),
+    isBanned: (id) => moderation.isBanned(id),
+  );
+
+  // Moderators approve listings, act on reports, delete removed Bites and
+  // comments, and ban readers.
   late final moderation = ModerationFakeStore(
     p2p,
     reports,
     inbox: inbox,
+    bites: bites,
     notifications: notifications,
   );
 

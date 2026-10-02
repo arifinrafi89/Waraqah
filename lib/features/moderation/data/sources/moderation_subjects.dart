@@ -1,6 +1,7 @@
 // The fake backend looks reported things up in each feature's own records,
 // like the real server's database will.
-import '../../../bites/data/sources/bite_fixtures.dart';
+import '../../../bites/data/sources/bite_comments.dart';
+import '../../../bites/data/sources/bite_fake_store.dart';
 import '../../../catalog/data/sources/seed/review_seed.dart';
 import '../../../inbox/data/sources/inbox_fake_store.dart';
 import '../../../p2p/data/sources/p2p_fake_store.dart';
@@ -10,12 +11,22 @@ import '../../../report/domain/entities/content_report.dart';
 /// What was reported and whose it is.
 typedef ReportSubject = ({String preview, String ownerId, String ownerName});
 
-/// Finds the reported Listing, reader, message, Bite or review.
+/// Finds the reported Listing, reader, message, Bite, comment or review,
+/// and deletes a removed Bite, comment or review.
 class ModerationSubjects {
-  ModerationSubjects(this.p2p, this.inbox);
+  ModerationSubjects(this.p2p, this.inbox, {this.bites});
 
   final P2pFakeStore p2p;
   final InboxFakeStore? inbox;
+  final BiteFakeStore? bites;
+
+  /// Deletes a removed Bite or comment. Listings are taken down by the
+  /// caller; readers and messages stay.
+  void remove(ReportTargetKind kind, String id) => switch (kind) {
+    ReportTargetKind.bite => bites?.remove(id),
+    ReportTargetKind.comment => bites?.removeComment(id),
+    _ => null,
+  };
 
   ReportSubject find(ReportTargetKind kind, String id) =>
       switch (kind) {
@@ -24,7 +35,7 @@ class ModerationSubjects {
         ReportTargetKind.message => _message(id),
         ReportTargetKind.bite => _bite(id),
         ReportTargetKind.review => _review(id),
-        ReportTargetKind.comment => null,
+        ReportTargetKind.comment => _comment(id),
       } ??
       (preview: id, ownerId: '', ownerName: '?');
 
@@ -61,15 +72,21 @@ class ModerationSubjects {
     return null;
   }
 
-  ReportSubject? _bite(String id) =>
-      switch (BiteFixtures.feed.where((b) => b.id == id).firstOrNull) {
-        final b? => (
-          preview: b.text,
-          ownerId: 'bite:${b.authorName}',
-          ownerName: b.authorName,
-        ),
-        null => null,
-      };
+  ReportSubject? _bite(String id) => switch (bites?.find(id)) {
+    final b? => _by(b.text, b.authorId),
+    null => null,
+  };
+
+  ReportSubject? _comment(String id) => switch (bites?.findComment(id)) {
+    final c? => _by(c.text, c.authorId),
+    null => null,
+  };
+
+  ReportSubject _by(String preview, String ownerId) => (
+    preview: preview,
+    ownerId: ownerId,
+    ownerName: P2pPeople.find(ownerId)?.name ?? '?',
+  );
 
   ReportSubject? _review(String id) {
     final review = ReviewSeed.byBookId.values

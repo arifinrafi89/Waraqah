@@ -14,10 +14,7 @@ class BiteAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) => CircleAvatar(
     radius: 20,
-    backgroundColor: palette.chipFor(bite.avatarSeed),
-    foregroundImage: bite.avatarUrl == null
-        ? null
-        : NetworkImage(bite.avatarUrl!),
+    backgroundColor: palette.chipFor(bite.authorId.hashCode),
     child: Text(
       bite.initial,
       style: AppFonts.ui(
@@ -47,7 +44,7 @@ class BiteAuthorLine extends StatelessWidget {
         ),
       ),
       Text(
-        '@${bite.authorHandle}',
+        bite.authorArea,
         style: AppFonts.ui(size: 11, color: palette.textFaint),
       ),
     ],

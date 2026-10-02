@@ -86,9 +86,11 @@ class _BitesPageState extends ConsumerState<BitesPage> {
         0,
         Bite(
           id: 'local-${DateTime.now().microsecondsSinceEpoch}',
+          authorId: 'me',
           authorName: l10n.bitesYou,
-          authorHandle: l10n.bitesReaderHandle,
+          authorArea: l10n.bitesReaderHandle,
           text: text,
+          createdAt: DateTime.now(),
         ),
       ),
     );

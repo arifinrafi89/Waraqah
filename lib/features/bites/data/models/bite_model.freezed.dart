@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'bite.dart';
+part of 'bite_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,43 +12,46 @@ part of 'bite.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
-mixin _$Bite {
+mixin _$BiteModel {
 
  String get id; String get authorId; String get authorName; String get authorArea; String get text; DateTime get createdAt; DateTime? get editedAt; String? get bookId; String? get bookTitle; bool get spoiler; int get likes; bool get liked; int get comments; bool get isMine;
-/// Create a copy of Bite
+/// Create a copy of BiteModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$BiteCopyWith<Bite> get copyWith => _$BiteCopyWithImpl<Bite>(this as Bite, _$identity);
+$BiteModelCopyWith<BiteModel> get copyWith => _$BiteModelCopyWithImpl<BiteModel>(this as BiteModel, _$identity);
 
+  /// Serializes this BiteModel to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  final _this = this as Bite;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Bite&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.authorId, _this.authorId) || other.authorId == _this.authorId)&&(identical(other.authorName, _this.authorName) || other.authorName == _this.authorName)&&(identical(other.authorArea, _this.authorArea) || other.authorArea == _this.authorArea)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.editedAt, _this.editedAt) || other.editedAt == _this.editedAt)&&(identical(other.bookId, _this.bookId) || other.bookId == _this.bookId)&&(identical(other.bookTitle, _this.bookTitle) || other.bookTitle == _this.bookTitle)&&(identical(other.spoiler, _this.spoiler) || other.spoiler == _this.spoiler)&&(identical(other.likes, _this.likes) || other.likes == _this.likes)&&(identical(other.liked, _this.liked) || other.liked == _this.liked)&&(identical(other.comments, _this.comments) || other.comments == _this.comments)&&(identical(other.isMine, _this.isMine) || other.isMine == _this.isMine));
+  final _this = this as BiteModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BiteModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.authorId, _this.authorId) || other.authorId == _this.authorId)&&(identical(other.authorName, _this.authorName) || other.authorName == _this.authorName)&&(identical(other.authorArea, _this.authorArea) || other.authorArea == _this.authorArea)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.editedAt, _this.editedAt) || other.editedAt == _this.editedAt)&&(identical(other.bookId, _this.bookId) || other.bookId == _this.bookId)&&(identical(other.bookTitle, _this.bookTitle) || other.bookTitle == _this.bookTitle)&&(identical(other.spoiler, _this.spoiler) || other.spoiler == _this.spoiler)&&(identical(other.likes, _this.likes) || other.likes == _this.likes)&&(identical(other.liked, _this.liked) || other.liked == _this.liked)&&(identical(other.comments, _this.comments) || other.comments == _this.comments)&&(identical(other.isMine, _this.isMine) || other.isMine == _this.isMine));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-  final _this = this as Bite;
+  final _this = this as BiteModel;
   return Object.hash(runtimeType,_this.id,_this.authorId,_this.authorName,_this.authorArea,_this.text,_this.createdAt,_this.editedAt,_this.bookId,_this.bookTitle,_this.spoiler,_this.likes,_this.liked,_this.comments,_this.isMine);
 }
 
 @override
 String toString() {
-  final _this = this as Bite;
-  return 'Bite(id: ${_this.id}, authorId: ${_this.authorId}, authorName: ${_this.authorName}, authorArea: ${_this.authorArea}, text: ${_this.text}, createdAt: ${_this.createdAt}, editedAt: ${_this.editedAt}, bookId: ${_this.bookId}, bookTitle: ${_this.bookTitle}, spoiler: ${_this.spoiler}, likes: ${_this.likes}, liked: ${_this.liked}, comments: ${_this.comments}, isMine: ${_this.isMine})';
+  final _this = this as BiteModel;
+  return 'BiteModel(id: ${_this.id}, authorId: ${_this.authorId}, authorName: ${_this.authorName}, authorArea: ${_this.authorArea}, text: ${_this.text}, createdAt: ${_this.createdAt}, editedAt: ${_this.editedAt}, bookId: ${_this.bookId}, bookTitle: ${_this.bookTitle}, spoiler: ${_this.spoiler}, likes: ${_this.likes}, liked: ${_this.liked}, comments: ${_this.comments}, isMine: ${_this.isMine})';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $BiteCopyWith<$Res>  {
-  factory $BiteCopyWith(Bite value, $Res Function(Bite) _then) = _$BiteCopyWithImpl;
+abstract mixin class $BiteModelCopyWith<$Res>  {
+  factory $BiteModelCopyWith(BiteModel value, $Res Function(BiteModel) _then) = _$BiteModelCopyWithImpl;
 @useResult
 $Res call({
  String id, String authorId, String authorName, String authorArea, String text, DateTime createdAt, DateTime? editedAt, String? bookId, String? bookTitle, bool spoiler, int likes, bool liked, int comments, bool isMine
@@ -59,17 +62,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$BiteCopyWithImpl<$Res>
-    implements $BiteCopyWith<$Res> {
-  _$BiteCopyWithImpl(this._self, this._then);
+class _$BiteModelCopyWithImpl<$Res>
+    implements $BiteModelCopyWith<$Res> {
+  _$BiteModelCopyWithImpl(this._self, this._then);
 
-  final Bite _self;
-  final $Res Function(Bite) _then;
+  final BiteModel _self;
+  final $Res Function(BiteModel) _then;
 
-/// Create a copy of Bite
+/// Create a copy of BiteModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? authorId = null,Object? authorName = null,Object? authorArea = null,Object? text = null,Object? createdAt = null,Object? editedAt = freezed,Object? bookId = freezed,Object? bookTitle = freezed,Object? spoiler = null,Object? likes = null,Object? liked = null,Object? comments = null,Object? isMine = null,}) {
-  return _then(Bite(
+  return _then(BiteModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,authorId: null == authorId ? _self.authorId : authorId // ignore: cast_nullable_to_non_nullable
 as String,authorName: null == authorName ? _self.authorName : authorName // ignore: cast_nullable_to_non_nullable
@@ -91,8 +94,8 @@ as bool,
 }
 
 
-/// Adds pattern-matching-related methods to [Bite].
-extension BitePatterns on Bite {
+/// Adds pattern-matching-related methods to [BiteModel].
+extension BiteModelPatterns on BiteModel {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -105,10 +108,10 @@ extension BitePatterns on Bite {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Bite value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _BiteModel value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Bite() when $default != null:
+case _BiteModel() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -127,10 +130,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Bite value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _BiteModel value)  $default,){
 final _that = this;
 switch (_that) {
-case _Bite():
+case _BiteModel():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -148,10 +151,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Bite value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _BiteModel value)?  $default,){
 final _that = this;
 switch (_that) {
-case _Bite() when $default != null:
+case _BiteModel() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -171,7 +174,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String authorId,  String authorName,  String authorArea,  String text,  DateTime createdAt,  DateTime? editedAt,  String? bookId,  String? bookTitle,  bool spoiler,  int likes,  bool liked,  int comments,  bool isMine)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Bite() when $default != null:
+case _BiteModel() when $default != null:
 return $default(_that.id,_that.authorId,_that.authorName,_that.authorArea,_that.text,_that.createdAt,_that.editedAt,_that.bookId,_that.bookTitle,_that.spoiler,_that.likes,_that.liked,_that.comments,_that.isMine);case _:
   return orElse();
 
@@ -192,7 +195,7 @@ return $default(_that.id,_that.authorId,_that.authorName,_that.authorArea,_that.
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String authorId,  String authorName,  String authorArea,  String text,  DateTime createdAt,  DateTime? editedAt,  String? bookId,  String? bookTitle,  bool spoiler,  int likes,  bool liked,  int comments,  bool isMine)  $default,) {final _that = this;
 switch (_that) {
-case _Bite():
+case _BiteModel():
 return $default(_that.id,_that.authorId,_that.authorName,_that.authorArea,_that.text,_that.createdAt,_that.editedAt,_that.bookId,_that.bookTitle,_that.spoiler,_that.likes,_that.liked,_that.comments,_that.isMine);case _:
   throw StateError('Unexpected subclass');
 
@@ -212,7 +215,7 @@ return $default(_that.id,_that.authorId,_that.authorName,_that.authorArea,_that.
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String authorId,  String authorName,  String authorArea,  String text,  DateTime createdAt,  DateTime? editedAt,  String? bookId,  String? bookTitle,  bool spoiler,  int likes,  bool liked,  int comments,  bool isMine)?  $default,) {final _that = this;
 switch (_that) {
-case _Bite() when $default != null:
+case _BiteModel() when $default != null:
 return $default(_that.id,_that.authorId,_that.authorName,_that.authorArea,_that.text,_that.createdAt,_that.editedAt,_that.bookId,_that.bookTitle,_that.spoiler,_that.likes,_that.liked,_that.comments,_that.isMine);case _:
   return null;
 
@@ -222,11 +225,11 @@ return $default(_that.id,_that.authorId,_that.authorName,_that.authorArea,_that.
 }
 
 /// @nodoc
+@JsonSerializable()
 
-
-class _Bite implements Bite {
-  const _Bite({required this.id, required this.authorId, required this.authorName, required this.authorArea, required this.text, required this.createdAt, this.editedAt, this.bookId, this.bookTitle, this.spoiler = false, this.likes = 0, this.liked = false, this.comments = 0, this.isMine = false});
-  
+class _BiteModel implements BiteModel {
+  const _BiteModel({required this.id, required this.authorId, required this.authorName, required this.authorArea, required this.text, required this.createdAt, this.editedAt, this.bookId, this.bookTitle, this.spoiler = false, this.likes = 0, this.liked = false, this.comments = 0, this.isMine = false});
+  factory _BiteModel.fromJson(Map<String, dynamic> json) => _$BiteModelFromJson(json);
 
 @override final  String id;
 @override final  String authorId;
@@ -243,20 +246,23 @@ class _Bite implements Bite {
 @override@JsonKey() final  int comments;
 @override@JsonKey() final  bool isMine;
 
-/// Create a copy of Bite
+/// Create a copy of BiteModel
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$BiteCopyWith<_Bite> get copyWith => __$BiteCopyWithImpl<_Bite>(this, _$identity);
+_$BiteModelCopyWith<_BiteModel> get copyWith => __$BiteModelCopyWithImpl<_BiteModel>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$BiteModelToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Bite&&(identical(other.id, id) || other.id == id)&&(identical(other.authorId, authorId) || other.authorId == authorId)&&(identical(other.authorName, authorName) || other.authorName == authorName)&&(identical(other.authorArea, authorArea) || other.authorArea == authorArea)&&(identical(other.text, text) || other.text == text)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.editedAt, editedAt) || other.editedAt == editedAt)&&(identical(other.bookId, bookId) || other.bookId == bookId)&&(identical(other.bookTitle, bookTitle) || other.bookTitle == bookTitle)&&(identical(other.spoiler, spoiler) || other.spoiler == spoiler)&&(identical(other.likes, likes) || other.likes == likes)&&(identical(other.liked, liked) || other.liked == liked)&&(identical(other.comments, comments) || other.comments == comments)&&(identical(other.isMine, isMine) || other.isMine == isMine));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BiteModel&&(identical(other.id, id) || other.id == id)&&(identical(other.authorId, authorId) || other.authorId == authorId)&&(identical(other.authorName, authorName) || other.authorName == authorName)&&(identical(other.authorArea, authorArea) || other.authorArea == authorArea)&&(identical(other.text, text) || other.text == text)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.editedAt, editedAt) || other.editedAt == editedAt)&&(identical(other.bookId, bookId) || other.bookId == bookId)&&(identical(other.bookTitle, bookTitle) || other.bookTitle == bookTitle)&&(identical(other.spoiler, spoiler) || other.spoiler == spoiler)&&(identical(other.likes, likes) || other.likes == likes)&&(identical(other.liked, liked) || other.liked == liked)&&(identical(other.comments, comments) || other.comments == comments)&&(identical(other.isMine, isMine) || other.isMine == isMine));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,authorId,authorName,authorArea,text,createdAt,editedAt,bookId,bookTitle,spoiler,likes,liked,comments,isMine);
@@ -264,15 +270,15 @@ int get hashCode {
 
 @override
 String toString() {
-    return 'Bite(id: $id, authorId: $authorId, authorName: $authorName, authorArea: $authorArea, text: $text, createdAt: $createdAt, editedAt: $editedAt, bookId: $bookId, bookTitle: $bookTitle, spoiler: $spoiler, likes: $likes, liked: $liked, comments: $comments, isMine: $isMine)';
+    return 'BiteModel(id: $id, authorId: $authorId, authorName: $authorName, authorArea: $authorArea, text: $text, createdAt: $createdAt, editedAt: $editedAt, bookId: $bookId, bookTitle: $bookTitle, spoiler: $spoiler, likes: $likes, liked: $liked, comments: $comments, isMine: $isMine)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$BiteCopyWith<$Res> implements $BiteCopyWith<$Res> {
-  factory _$BiteCopyWith(_Bite value, $Res Function(_Bite) _then) = __$BiteCopyWithImpl;
+abstract mixin class _$BiteModelCopyWith<$Res> implements $BiteModelCopyWith<$Res> {
+  factory _$BiteModelCopyWith(_BiteModel value, $Res Function(_BiteModel) _then) = __$BiteModelCopyWithImpl;
 @override @useResult
 $Res call({
  String id, String authorId, String authorName, String authorArea, String text, DateTime createdAt, DateTime? editedAt, String? bookId, String? bookTitle, bool spoiler, int likes, bool liked, int comments, bool isMine
@@ -283,17 +289,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$BiteCopyWithImpl<$Res>
-    implements _$BiteCopyWith<$Res> {
-  __$BiteCopyWithImpl(this._self, this._then);
+class __$BiteModelCopyWithImpl<$Res>
+    implements _$BiteModelCopyWith<$Res> {
+  __$BiteModelCopyWithImpl(this._self, this._then);
 
-  final _Bite _self;
-  final $Res Function(_Bite) _then;
+  final _BiteModel _self;
+  final $Res Function(_BiteModel) _then;
 
-/// Create a copy of Bite
+/// Create a copy of BiteModel
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? authorId = null,Object? authorName = null,Object? authorArea = null,Object? text = null,Object? createdAt = null,Object? editedAt = freezed,Object? bookId = freezed,Object? bookTitle = freezed,Object? spoiler = null,Object? likes = null,Object? liked = null,Object? comments = null,Object? isMine = null,}) {
-  return _then(_Bite(
+  return _then(_BiteModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,authorId: null == authorId ? _self.authorId : authorId // ignore: cast_nullable_to_non_nullable
 as String,authorName: null == authorName ? _self.authorName : authorName // ignore: cast_nullable_to_non_nullable
@@ -315,46 +321,49 @@ as bool,
 
 }
 
-/// @nodoc
-mixin _$BiteComment {
 
- String get id; String get authorId; String get authorName; String get text; DateTime get createdAt; String? get parentId; bool get isMine; List<BiteComment> get replies;
-/// Create a copy of BiteComment
+/// @nodoc
+mixin _$BiteCommentModel {
+
+ String get id; String get authorId; String get authorName; String get text; DateTime get createdAt; String? get parentId; bool get isMine; List<BiteCommentModel> get replies;
+/// Create a copy of BiteCommentModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$BiteCommentCopyWith<BiteComment> get copyWith => _$BiteCommentCopyWithImpl<BiteComment>(this as BiteComment, _$identity);
+$BiteCommentModelCopyWith<BiteCommentModel> get copyWith => _$BiteCommentModelCopyWithImpl<BiteCommentModel>(this as BiteCommentModel, _$identity);
 
+  /// Serializes this BiteCommentModel to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  final _this = this as BiteComment;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BiteComment&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.authorId, _this.authorId) || other.authorId == _this.authorId)&&(identical(other.authorName, _this.authorName) || other.authorName == _this.authorName)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.parentId, _this.parentId) || other.parentId == _this.parentId)&&(identical(other.isMine, _this.isMine) || other.isMine == _this.isMine)&&const DeepCollectionEquality().equals(other.replies, _this.replies));
+  final _this = this as BiteCommentModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BiteCommentModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.authorId, _this.authorId) || other.authorId == _this.authorId)&&(identical(other.authorName, _this.authorName) || other.authorName == _this.authorName)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.parentId, _this.parentId) || other.parentId == _this.parentId)&&(identical(other.isMine, _this.isMine) || other.isMine == _this.isMine)&&const DeepCollectionEquality().equals(other.replies, _this.replies));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-  final _this = this as BiteComment;
+  final _this = this as BiteCommentModel;
   return Object.hash(runtimeType,_this.id,_this.authorId,_this.authorName,_this.text,_this.createdAt,_this.parentId,_this.isMine,const DeepCollectionEquality().hash(_this.replies));
 }
 
 @override
 String toString() {
-  final _this = this as BiteComment;
-  return 'BiteComment(id: ${_this.id}, authorId: ${_this.authorId}, authorName: ${_this.authorName}, text: ${_this.text}, createdAt: ${_this.createdAt}, parentId: ${_this.parentId}, isMine: ${_this.isMine}, replies: ${_this.replies})';
+  final _this = this as BiteCommentModel;
+  return 'BiteCommentModel(id: ${_this.id}, authorId: ${_this.authorId}, authorName: ${_this.authorName}, text: ${_this.text}, createdAt: ${_this.createdAt}, parentId: ${_this.parentId}, isMine: ${_this.isMine}, replies: ${_this.replies})';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $BiteCommentCopyWith<$Res>  {
-  factory $BiteCommentCopyWith(BiteComment value, $Res Function(BiteComment) _then) = _$BiteCommentCopyWithImpl;
+abstract mixin class $BiteCommentModelCopyWith<$Res>  {
+  factory $BiteCommentModelCopyWith(BiteCommentModel value, $Res Function(BiteCommentModel) _then) = _$BiteCommentModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String authorId, String authorName, String text, DateTime createdAt, String? parentId, bool isMine, List<BiteComment> replies
+ String id, String authorId, String authorName, String text, DateTime createdAt, String? parentId, bool isMine, List<BiteCommentModel> replies
 });
 
 
@@ -362,17 +371,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$BiteCommentCopyWithImpl<$Res>
-    implements $BiteCommentCopyWith<$Res> {
-  _$BiteCommentCopyWithImpl(this._self, this._then);
+class _$BiteCommentModelCopyWithImpl<$Res>
+    implements $BiteCommentModelCopyWith<$Res> {
+  _$BiteCommentModelCopyWithImpl(this._self, this._then);
 
-  final BiteComment _self;
-  final $Res Function(BiteComment) _then;
+  final BiteCommentModel _self;
+  final $Res Function(BiteCommentModel) _then;
 
-/// Create a copy of BiteComment
+/// Create a copy of BiteCommentModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? authorId = null,Object? authorName = null,Object? text = null,Object? createdAt = null,Object? parentId = freezed,Object? isMine = null,Object? replies = null,}) {
-  return _then(BiteComment(
+  return _then(BiteCommentModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,authorId: null == authorId ? _self.authorId : authorId // ignore: cast_nullable_to_non_nullable
 as String,authorName: null == authorName ? _self.authorName : authorName // ignore: cast_nullable_to_non_nullable
@@ -381,15 +390,15 @@ as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: 
 as DateTime,parentId: freezed == parentId ? _self.parentId : parentId // ignore: cast_nullable_to_non_nullable
 as String?,isMine: null == isMine ? _self.isMine : isMine // ignore: cast_nullable_to_non_nullable
 as bool,replies: null == replies ? _self.replies : replies // ignore: cast_nullable_to_non_nullable
-as List<BiteComment>,
+as List<BiteCommentModel>,
   ));
 }
 
 }
 
 
-/// Adds pattern-matching-related methods to [BiteComment].
-extension BiteCommentPatterns on BiteComment {
+/// Adds pattern-matching-related methods to [BiteCommentModel].
+extension BiteCommentModelPatterns on BiteCommentModel {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -402,10 +411,10 @@ extension BiteCommentPatterns on BiteComment {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _BiteComment value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _BiteCommentModel value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _BiteComment() when $default != null:
+case _BiteCommentModel() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -424,10 +433,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _BiteComment value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _BiteCommentModel value)  $default,){
 final _that = this;
 switch (_that) {
-case _BiteComment():
+case _BiteCommentModel():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -445,10 +454,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _BiteComment value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _BiteCommentModel value)?  $default,){
 final _that = this;
 switch (_that) {
-case _BiteComment() when $default != null:
+case _BiteCommentModel() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -466,9 +475,9 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String authorId,  String authorName,  String text,  DateTime createdAt,  String? parentId,  bool isMine,  List<BiteComment> replies)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String authorId,  String authorName,  String text,  DateTime createdAt,  String? parentId,  bool isMine,  List<BiteCommentModel> replies)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _BiteComment() when $default != null:
+case _BiteCommentModel() when $default != null:
 return $default(_that.id,_that.authorId,_that.authorName,_that.text,_that.createdAt,_that.parentId,_that.isMine,_that.replies);case _:
   return orElse();
 
@@ -487,9 +496,9 @@ return $default(_that.id,_that.authorId,_that.authorName,_that.text,_that.create
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String authorId,  String authorName,  String text,  DateTime createdAt,  String? parentId,  bool isMine,  List<BiteComment> replies)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String authorId,  String authorName,  String text,  DateTime createdAt,  String? parentId,  bool isMine,  List<BiteCommentModel> replies)  $default,) {final _that = this;
 switch (_that) {
-case _BiteComment():
+case _BiteCommentModel():
 return $default(_that.id,_that.authorId,_that.authorName,_that.text,_that.createdAt,_that.parentId,_that.isMine,_that.replies);case _:
   throw StateError('Unexpected subclass');
 
@@ -507,9 +516,9 @@ return $default(_that.id,_that.authorId,_that.authorName,_that.text,_that.create
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String authorId,  String authorName,  String text,  DateTime createdAt,  String? parentId,  bool isMine,  List<BiteComment> replies)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String authorId,  String authorName,  String text,  DateTime createdAt,  String? parentId,  bool isMine,  List<BiteCommentModel> replies)?  $default,) {final _that = this;
 switch (_that) {
-case _BiteComment() when $default != null:
+case _BiteCommentModel() when $default != null:
 return $default(_that.id,_that.authorId,_that.authorName,_that.text,_that.createdAt,_that.parentId,_that.isMine,_that.replies);case _:
   return null;
 
@@ -520,10 +529,10 @@ return $default(_that.id,_that.authorId,_that.authorName,_that.text,_that.create
 
 /// @nodoc
 
-
-class _BiteComment implements BiteComment {
-  const _BiteComment({required this.id, required this.authorId, required this.authorName, required this.text, required this.createdAt, this.parentId, this.isMine = false,  List<BiteComment> replies = const <BiteComment>[]}): _replies = replies;
-  
+@JsonSerializable(explicitToJson: true)
+class _BiteCommentModel implements BiteCommentModel {
+  const _BiteCommentModel({required this.id, required this.authorId, required this.authorName, required this.text, required this.createdAt, this.parentId, this.isMine = false,  List<BiteCommentModel> replies = const <BiteCommentModel>[]}): _replies = replies;
+  factory _BiteCommentModel.fromJson(Map<String, dynamic> json) => _$BiteCommentModelFromJson(json);
 
 @override final  String id;
 @override final  String authorId;
@@ -532,28 +541,31 @@ class _BiteComment implements BiteComment {
 @override final  DateTime createdAt;
 @override final  String? parentId;
 @override@JsonKey() final  bool isMine;
- final  List<BiteComment> _replies;
-@override@JsonKey() List<BiteComment> get replies {
+ final  List<BiteCommentModel> _replies;
+@override@JsonKey() List<BiteCommentModel> get replies {
   if (_replies is EqualUnmodifiableListView) return _replies;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_replies);
 }
 
 
-/// Create a copy of BiteComment
+/// Create a copy of BiteCommentModel
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$BiteCommentCopyWith<_BiteComment> get copyWith => __$BiteCommentCopyWithImpl<_BiteComment>(this, _$identity);
+_$BiteCommentModelCopyWith<_BiteCommentModel> get copyWith => __$BiteCommentModelCopyWithImpl<_BiteCommentModel>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$BiteCommentModelToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BiteComment&&(identical(other.id, id) || other.id == id)&&(identical(other.authorId, authorId) || other.authorId == authorId)&&(identical(other.authorName, authorName) || other.authorName == authorName)&&(identical(other.text, text) || other.text == text)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.parentId, parentId) || other.parentId == parentId)&&(identical(other.isMine, isMine) || other.isMine == isMine)&&const DeepCollectionEquality().equals(other.replies, _replies));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BiteCommentModel&&(identical(other.id, id) || other.id == id)&&(identical(other.authorId, authorId) || other.authorId == authorId)&&(identical(other.authorName, authorName) || other.authorName == authorName)&&(identical(other.text, text) || other.text == text)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.parentId, parentId) || other.parentId == parentId)&&(identical(other.isMine, isMine) || other.isMine == isMine)&&const DeepCollectionEquality().equals(other.replies, _replies));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,authorId,authorName,text,createdAt,parentId,isMine,const DeepCollectionEquality().hash(_replies));
@@ -561,18 +573,18 @@ int get hashCode {
 
 @override
 String toString() {
-    return 'BiteComment(id: $id, authorId: $authorId, authorName: $authorName, text: $text, createdAt: $createdAt, parentId: $parentId, isMine: $isMine, replies: $replies)';
+    return 'BiteCommentModel(id: $id, authorId: $authorId, authorName: $authorName, text: $text, createdAt: $createdAt, parentId: $parentId, isMine: $isMine, replies: $replies)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$BiteCommentCopyWith<$Res> implements $BiteCommentCopyWith<$Res> {
-  factory _$BiteCommentCopyWith(_BiteComment value, $Res Function(_BiteComment) _then) = __$BiteCommentCopyWithImpl;
+abstract mixin class _$BiteCommentModelCopyWith<$Res> implements $BiteCommentModelCopyWith<$Res> {
+  factory _$BiteCommentModelCopyWith(_BiteCommentModel value, $Res Function(_BiteCommentModel) _then) = __$BiteCommentModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String authorId, String authorName, String text, DateTime createdAt, String? parentId, bool isMine, List<BiteComment> replies
+ String id, String authorId, String authorName, String text, DateTime createdAt, String? parentId, bool isMine, List<BiteCommentModel> replies
 });
 
 
@@ -580,17 +592,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$BiteCommentCopyWithImpl<$Res>
-    implements _$BiteCommentCopyWith<$Res> {
-  __$BiteCommentCopyWithImpl(this._self, this._then);
+class __$BiteCommentModelCopyWithImpl<$Res>
+    implements _$BiteCommentModelCopyWith<$Res> {
+  __$BiteCommentModelCopyWithImpl(this._self, this._then);
 
-  final _BiteComment _self;
-  final $Res Function(_BiteComment) _then;
+  final _BiteCommentModel _self;
+  final $Res Function(_BiteCommentModel) _then;
 
-/// Create a copy of BiteComment
+/// Create a copy of BiteCommentModel
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? authorId = null,Object? authorName = null,Object? text = null,Object? createdAt = null,Object? parentId = freezed,Object? isMine = null,Object? replies = null,}) {
-  return _then(_BiteComment(
+  return _then(_BiteCommentModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,authorId: null == authorId ? _self.authorId : authorId // ignore: cast_nullable_to_non_nullable
 as String,authorName: null == authorName ? _self.authorName : authorName // ignore: cast_nullable_to_non_nullable
@@ -599,91 +611,94 @@ as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: 
 as DateTime,parentId: freezed == parentId ? _self.parentId : parentId // ignore: cast_nullable_to_non_nullable
 as String?,isMine: null == isMine ? _self.isMine : isMine // ignore: cast_nullable_to_non_nullable
 as bool,replies: null == replies ? _self._replies : replies // ignore: cast_nullable_to_non_nullable
-as List<BiteComment>,
+as List<BiteCommentModel>,
   ));
 }
 
 
 }
 
-/// @nodoc
-mixin _$BiteDetail {
 
- Bite get bite; List<BiteComment> get comments;
-/// Create a copy of BiteDetail
+/// @nodoc
+mixin _$BiteDetailModel {
+
+ BiteModel get bite; List<BiteCommentModel> get comments;
+/// Create a copy of BiteDetailModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$BiteDetailCopyWith<BiteDetail> get copyWith => _$BiteDetailCopyWithImpl<BiteDetail>(this as BiteDetail, _$identity);
+$BiteDetailModelCopyWith<BiteDetailModel> get copyWith => _$BiteDetailModelCopyWithImpl<BiteDetailModel>(this as BiteDetailModel, _$identity);
 
+  /// Serializes this BiteDetailModel to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  final _this = this as BiteDetail;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BiteDetail&&(identical(other.bite, _this.bite) || other.bite == _this.bite)&&const DeepCollectionEquality().equals(other.comments, _this.comments));
+  final _this = this as BiteDetailModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BiteDetailModel&&(identical(other.bite, _this.bite) || other.bite == _this.bite)&&const DeepCollectionEquality().equals(other.comments, _this.comments));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-  final _this = this as BiteDetail;
+  final _this = this as BiteDetailModel;
   return Object.hash(runtimeType,_this.bite,const DeepCollectionEquality().hash(_this.comments));
 }
 
 @override
 String toString() {
-  final _this = this as BiteDetail;
-  return 'BiteDetail(bite: ${_this.bite}, comments: ${_this.comments})';
+  final _this = this as BiteDetailModel;
+  return 'BiteDetailModel(bite: ${_this.bite}, comments: ${_this.comments})';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $BiteDetailCopyWith<$Res>  {
-  factory $BiteDetailCopyWith(BiteDetail value, $Res Function(BiteDetail) _then) = _$BiteDetailCopyWithImpl;
+abstract mixin class $BiteDetailModelCopyWith<$Res>  {
+  factory $BiteDetailModelCopyWith(BiteDetailModel value, $Res Function(BiteDetailModel) _then) = _$BiteDetailModelCopyWithImpl;
 @useResult
 $Res call({
- Bite bite, List<BiteComment> comments
+ BiteModel bite, List<BiteCommentModel> comments
 });
 
 
-$BiteCopyWith<$Res> get bite;
+$BiteModelCopyWith<$Res> get bite;
 
 }
 /// @nodoc
-class _$BiteDetailCopyWithImpl<$Res>
-    implements $BiteDetailCopyWith<$Res> {
-  _$BiteDetailCopyWithImpl(this._self, this._then);
+class _$BiteDetailModelCopyWithImpl<$Res>
+    implements $BiteDetailModelCopyWith<$Res> {
+  _$BiteDetailModelCopyWithImpl(this._self, this._then);
 
-  final BiteDetail _self;
-  final $Res Function(BiteDetail) _then;
+  final BiteDetailModel _self;
+  final $Res Function(BiteDetailModel) _then;
 
-/// Create a copy of BiteDetail
+/// Create a copy of BiteDetailModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? bite = null,Object? comments = null,}) {
-  return _then(BiteDetail(
+  return _then(BiteDetailModel(
 bite: null == bite ? _self.bite : bite // ignore: cast_nullable_to_non_nullable
-as Bite,comments: null == comments ? _self.comments : comments // ignore: cast_nullable_to_non_nullable
-as List<BiteComment>,
+as BiteModel,comments: null == comments ? _self.comments : comments // ignore: cast_nullable_to_non_nullable
+as List<BiteCommentModel>,
   ));
 }
-/// Create a copy of BiteDetail
+/// Create a copy of BiteDetailModel
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$BiteCopyWith<$Res> get bite {
+$BiteModelCopyWith<$Res> get bite {
   
-  return $BiteCopyWith<$Res>(_self.bite, (value) {
+  return $BiteModelCopyWith<$Res>(_self.bite, (value) {
     return _then(_self.copyWith(bite: value));
   });
 }
 }
 
 
-/// Adds pattern-matching-related methods to [BiteDetail].
-extension BiteDetailPatterns on BiteDetail {
+/// Adds pattern-matching-related methods to [BiteDetailModel].
+extension BiteDetailModelPatterns on BiteDetailModel {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -696,10 +711,10 @@ extension BiteDetailPatterns on BiteDetail {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _BiteDetail value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _BiteDetailModel value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _BiteDetail() when $default != null:
+case _BiteDetailModel() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -718,10 +733,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _BiteDetail value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _BiteDetailModel value)  $default,){
 final _that = this;
 switch (_that) {
-case _BiteDetail():
+case _BiteDetailModel():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -739,10 +754,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _BiteDetail value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _BiteDetailModel value)?  $default,){
 final _that = this;
 switch (_that) {
-case _BiteDetail() when $default != null:
+case _BiteDetailModel() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -760,9 +775,9 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Bite bite,  List<BiteComment> comments)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( BiteModel bite,  List<BiteCommentModel> comments)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _BiteDetail() when $default != null:
+case _BiteDetailModel() when $default != null:
 return $default(_that.bite,_that.comments);case _:
   return orElse();
 
@@ -781,9 +796,9 @@ return $default(_that.bite,_that.comments);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Bite bite,  List<BiteComment> comments)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( BiteModel bite,  List<BiteCommentModel> comments)  $default,) {final _that = this;
 switch (_that) {
-case _BiteDetail():
+case _BiteDetailModel():
 return $default(_that.bite,_that.comments);case _:
   throw StateError('Unexpected subclass');
 
@@ -801,9 +816,9 @@ return $default(_that.bite,_that.comments);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Bite bite,  List<BiteComment> comments)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( BiteModel bite,  List<BiteCommentModel> comments)?  $default,) {final _that = this;
 switch (_that) {
-case _BiteDetail() when $default != null:
+case _BiteDetailModel() when $default != null:
 return $default(_that.bite,_that.comments);case _:
   return null;
 
@@ -814,34 +829,37 @@ return $default(_that.bite,_that.comments);case _:
 
 /// @nodoc
 
+@JsonSerializable(explicitToJson: true)
+class _BiteDetailModel implements BiteDetailModel {
+  const _BiteDetailModel({required this.bite,  List<BiteCommentModel> comments = const <BiteCommentModel>[]}): _comments = comments;
+  factory _BiteDetailModel.fromJson(Map<String, dynamic> json) => _$BiteDetailModelFromJson(json);
 
-class _BiteDetail implements BiteDetail {
-  const _BiteDetail({required this.bite,  List<BiteComment> comments = const <BiteComment>[]}): _comments = comments;
-  
-
-@override final  Bite bite;
- final  List<BiteComment> _comments;
-@override@JsonKey() List<BiteComment> get comments {
+@override final  BiteModel bite;
+ final  List<BiteCommentModel> _comments;
+@override@JsonKey() List<BiteCommentModel> get comments {
   if (_comments is EqualUnmodifiableListView) return _comments;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_comments);
 }
 
 
-/// Create a copy of BiteDetail
+/// Create a copy of BiteDetailModel
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$BiteDetailCopyWith<_BiteDetail> get copyWith => __$BiteDetailCopyWithImpl<_BiteDetail>(this, _$identity);
+_$BiteDetailModelCopyWith<_BiteDetailModel> get copyWith => __$BiteDetailModelCopyWithImpl<_BiteDetailModel>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$BiteDetailModelToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BiteDetail&&(identical(other.bite, bite) || other.bite == bite)&&const DeepCollectionEquality().equals(other.comments, _comments));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BiteDetailModel&&(identical(other.bite, bite) || other.bite == bite)&&const DeepCollectionEquality().equals(other.comments, _comments));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,bite,const DeepCollectionEquality().hash(_comments));
@@ -849,49 +867,49 @@ int get hashCode {
 
 @override
 String toString() {
-    return 'BiteDetail(bite: $bite, comments: $comments)';
+    return 'BiteDetailModel(bite: $bite, comments: $comments)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$BiteDetailCopyWith<$Res> implements $BiteDetailCopyWith<$Res> {
-  factory _$BiteDetailCopyWith(_BiteDetail value, $Res Function(_BiteDetail) _then) = __$BiteDetailCopyWithImpl;
+abstract mixin class _$BiteDetailModelCopyWith<$Res> implements $BiteDetailModelCopyWith<$Res> {
+  factory _$BiteDetailModelCopyWith(_BiteDetailModel value, $Res Function(_BiteDetailModel) _then) = __$BiteDetailModelCopyWithImpl;
 @override @useResult
 $Res call({
- Bite bite, List<BiteComment> comments
+ BiteModel bite, List<BiteCommentModel> comments
 });
 
 
-@override $BiteCopyWith<$Res> get bite;
+@override $BiteModelCopyWith<$Res> get bite;
 
 }
 /// @nodoc
-class __$BiteDetailCopyWithImpl<$Res>
-    implements _$BiteDetailCopyWith<$Res> {
-  __$BiteDetailCopyWithImpl(this._self, this._then);
+class __$BiteDetailModelCopyWithImpl<$Res>
+    implements _$BiteDetailModelCopyWith<$Res> {
+  __$BiteDetailModelCopyWithImpl(this._self, this._then);
 
-  final _BiteDetail _self;
-  final $Res Function(_BiteDetail) _then;
+  final _BiteDetailModel _self;
+  final $Res Function(_BiteDetailModel) _then;
 
-/// Create a copy of BiteDetail
+/// Create a copy of BiteDetailModel
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? bite = null,Object? comments = null,}) {
-  return _then(_BiteDetail(
+  return _then(_BiteDetailModel(
 bite: null == bite ? _self.bite : bite // ignore: cast_nullable_to_non_nullable
-as Bite,comments: null == comments ? _self._comments : comments // ignore: cast_nullable_to_non_nullable
-as List<BiteComment>,
+as BiteModel,comments: null == comments ? _self._comments : comments // ignore: cast_nullable_to_non_nullable
+as List<BiteCommentModel>,
   ));
 }
 
-/// Create a copy of BiteDetail
+/// Create a copy of BiteDetailModel
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$BiteCopyWith<$Res> get bite {
+$BiteModelCopyWith<$Res> get bite {
   
-  return $BiteCopyWith<$Res>(_self.bite, (value) {
+  return $BiteModelCopyWith<$Res>(_self.bite, (value) {
     return _then(_self.copyWith(bite: value));
   });
 }

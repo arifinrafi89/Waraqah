@@ -44,26 +44,11 @@ class BiteFeedCard extends StatelessWidget {
             if (bite.hasBookTag) ...[
               const SizedBox(height: Insets.sm),
               Text(
-                '#${bite.taggedBookTitle}',
+                '#${bite.bookTitle}',
                 style: AppFonts.ui(
                   size: 13,
                   weight: FontWeight.w700,
                   color: palette.accent,
-                ),
-              ),
-            ],
-            if (bite.imageUrl != null) ...[
-              const SizedBox(height: Insets.md),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(Radii.md),
-                child: AspectRatio(
-                  aspectRatio: 1.9,
-                  child: Image.network(
-                    bite.imageUrl!,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, _, _) =>
-                        ColoredBox(color: palette.surface2),
-                  ),
                 ),
               ),
             ],
@@ -72,13 +57,8 @@ class BiteFeedCard extends StatelessWidget {
               children: [
                 BiteAction(
                   icon: Icons.chat_bubble_outline_rounded,
-                  count: bite.replies,
+                  count: bite.comments,
                   label: l10n.bitesReply,
-                ),
-                BiteAction(
-                  icon: Icons.repeat_rounded,
-                  count: bite.reposts,
-                  label: l10n.bitesRepost,
                 ),
                 BiteAction(
                   icon: bite.liked

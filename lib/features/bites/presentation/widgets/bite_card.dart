@@ -34,7 +34,7 @@ class BiteCard extends StatelessWidget {
                   height: Sizes.avatar,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: palette.chipFor(bite.avatarSeed),
+                    color: palette.chipFor(bite.authorId.hashCode),
                     shape: BoxShape.circle,
                   ),
                   child: Text(
@@ -59,7 +59,7 @@ class BiteCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        bite.authorHandle,
+                        bite.authorArea,
                         style: AppFonts.ui(
                           size: 10.5,
                           color: palette.textFaint,
@@ -87,7 +87,7 @@ class BiteCard extends StatelessWidget {
                 child: InkWell(
                   onTap: onTagTap,
                   borderRadius: BorderRadius.circular(Radii.sm),
-                  child: AccentTag(label: bite.taggedBookTitle!),
+                  child: AccentTag(label: bite.bookTitle!),
                 ),
               ),
           ],

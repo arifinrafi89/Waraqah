@@ -33,6 +33,8 @@ dependencies:
   # Storage / cache / i18n
   shared_preferences: ^2.5.3
   intl: any
+  # Counts Bite text in graphemes, so a Bangla conjunct is one character.
+  characters: any
 
   # Device
   image_picker: ^1.2.3

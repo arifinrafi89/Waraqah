@@ -1,4 +1,6 @@
-// Moderators change marketplace Listings and the reports readers sent.
+// Moderators change marketplace Listings and the reports readers sent, and
+// delete removed Bites and comments.
+import '../../../bites/data/sources/bite_fake_store.dart';
 import '../../../inbox/data/sources/inbox_fake_store.dart';
 // Sellers hear about decisions, warnings and bans.
 import '../../../notifications/data/sources/notification_fake_store.dart';
@@ -21,10 +23,11 @@ class ModerationFakeStore {
     this.p2p,
     this.reports, {
     InboxFakeStore? inbox,
+    BiteFakeStore? bites,
     this.notifications,
     DateTime Function()? clock,
   }) : now = clock ?? DateTime.now,
-       subjects = ModerationSubjects(p2p, inbox) {
+       subjects = ModerationSubjects(p2p, inbox, bites: bites) {
     seedReports(this);
   }
 

@@ -1,6 +1,7 @@
 import '../core/network/fake_api_interceptor.dart';
 import '../features/alerts/data/sources/alert_fake_api.dart';
 import '../features/auth/data/sources/auth_fake_api.dart';
+import '../features/bites/data/sources/bite_fake_api.dart';
 import '../features/book_request/data/sources/book_request_fake_api.dart';
 import '../features/cart/data/sources/cart_fake_api.dart';
 import '../features/catalog/data/sources/book_fake_api.dart';
@@ -77,6 +78,7 @@ abstract final class FakeApiRoutes {
       ...InboxFakeApi.routes(s.inbox),
       ...ReportFakeApi.routes(s.reports),
       ...ModerationFakeApi.routes(s.moderation),
+      ...BiteFakeApi.routes(s.bites),
       ...ScanFakeApi.routes,
       ...BookRequestFakeApi.routes(s.bookRequests),
       ...HandledSaleFakeApi.routes(s.handledSales),
