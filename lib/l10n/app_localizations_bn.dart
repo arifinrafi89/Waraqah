@@ -2057,6 +2057,138 @@ class AppL10nBn extends AppL10n {
   String get profileNoNotifications => 'সব নোটিফিকেশন দেখা হয়েছে।';
 
   @override
+  String get notificationEmptyBody =>
+      'অর্ডারের খবর, লিস্টিংয়ের সিদ্ধান্ত, বিক্রি ও দামের অ্যালার্ট এখানে দেখাবে।';
+
+  @override
+  String notificationOrderStatus(String number, String status) {
+    return 'অর্ডার $number: $status';
+  }
+
+  @override
+  String get notificationOrderStatusBody => 'অর্ডার দেখতে ট্যাপ করুন।';
+
+  @override
+  String notificationReturnApproved(String number) {
+    return '$number-এর রিটার্ন অনুমোদিত';
+  }
+
+  @override
+  String get notificationReturnApprovedBody => 'টাকা আপনার ওয়ালেটে ফেরত গেছে।';
+
+  @override
+  String notificationReturnRejected(String number) {
+    return '$number-এর রিটার্ন অনুমোদিত হয়নি';
+  }
+
+  @override
+  String get notificationReturnRejectedBody =>
+      'এরপর কী হবে দেখতে অর্ডারটি খুলুন।';
+
+  @override
+  String notificationListingApproved(String title) {
+    return '$title এখন লাইভ';
+  }
+
+  @override
+  String get notificationListingApprovedBody =>
+      'পাঠকেরা এখন এটি দেখতে ও অফার দিতে পারবেন।';
+
+  @override
+  String notificationListingChanges(String title) {
+    return '$title-এ পরিবর্তন দরকার';
+  }
+
+  @override
+  String notificationListingRejected(String title) {
+    return '$title অনুমোদিত হয়নি';
+  }
+
+  @override
+  String get notificationWarning => 'আপনি একটি সতর্কতা পেয়েছেন';
+
+  @override
+  String notificationWarningBody(String strikes, String max) {
+    return '$maxটির মধ্যে $strikesটি স্ট্রাইক। $maxটি হলে আর বিক্রি বা পোস্ট করতে পারবেন না।';
+  }
+
+  @override
+  String get notificationBanned => 'আপনার অ্যাকাউন্ট নিষিদ্ধ করা হয়েছে';
+
+  @override
+  String get notificationBannedBody =>
+      'বারবার সতর্কতার পর আপনার লিস্টিং সরিয়ে নেওয়া হয়েছে।';
+
+  @override
+  String notificationSaleSent(String title) {
+    return '$title পথে আছে';
+  }
+
+  @override
+  String get notificationSaleSentBody => 'বর্ণনামতো পৌঁছালে নিশ্চিত করুন।';
+
+  @override
+  String notificationSaleCompleted(String title) {
+    return '$title: বিক্রি সম্পন্ন';
+  }
+
+  @override
+  String notificationEarned(String amount) {
+    return 'আপনি $amount আয় করেছেন।';
+  }
+
+  @override
+  String notificationSaleRefunded(String title) {
+    return '$title-এর টাকা ফেরত';
+  }
+
+  @override
+  String notificationSalePaid(String title) {
+    return '$title-এর অভিযোগ মীমাংসা হয়েছে';
+  }
+
+  @override
+  String notificationInWallet(String amount) {
+    return '$amount আপনার ওয়ালেটে আছে।';
+  }
+
+  @override
+  String notificationSellBackPaid(String title) {
+    return 'সেল ব্যাকের টাকা দেওয়া হয়েছে: $title';
+  }
+
+  @override
+  String notificationSellBackReturned(String title) {
+    return '$title আপনার কাছে ফেরত আসছে';
+  }
+
+  @override
+  String get notificationSellBackReturnedBody =>
+      'এবার আমরা কিনতে পারিনি; কুরিয়ার এটি ফেরত আনছে।';
+
+  @override
+  String notificationBackInStock(String title) {
+    return '$title আবার স্টকে এসেছে';
+  }
+
+  @override
+  String notificationPriceDrop(String title) {
+    return '$title-এর দাম কমেছে';
+  }
+
+  @override
+  String get notificationAlertBody => 'শেষ হওয়ার আগে দেখতে ট্যাপ করুন।';
+
+  @override
+  String notificationBookWanted(String title) {
+    return 'একজন পাঠক $title চান';
+  }
+
+  @override
+  String get notificationBookWantedBody =>
+      'আপনার একটি কপি লিস্ট করা আছে। আমার লিস্টিংয়ে তাদের অনুরোধ দেখুন।';
+
+  @override
   String get profilePrivacy => 'গোপনীয়তা';
 
   @override

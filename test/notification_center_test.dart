@@ -1,70 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import 'package:waraqah/features/alerts/domain/entities/app_notification.dart';
-import 'package:waraqah/features/alerts/presentation/providers/notification_providers.dart';
+import 'package:waraqah/features/notifications/presentation/widgets/notification_bell.dart';
 
 import 'helpers/app_harness.dart';
 
-class _NotificationSenderProbe extends ConsumerStatefulWidget {
-  const _NotificationSenderProbe();
-
-  @override
-  ConsumerState<_NotificationSenderProbe> createState() =>
-      _NotificationSenderProbeState();
-}
-
-class _NotificationSenderProbeState
-    extends ConsumerState<_NotificationSenderProbe> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text('${ref.watch(unreadNotificationCountProvider)}'),
-        ElevatedButton(
-          onPressed: () => sendNotification(
-            ref,
-            const NotificationRequest(
-              kind: NotificationKind.newMessage,
-              title: 'New message',
-              message: 'A reader replied to your listing.',
-            ),
-          ),
-          child: const Text('Send'),
-        ),
-      ],
-    );
-  }
+/// The bell's badge text, or `null` when there is none.
+String? _badge(WidgetTester tester) {
+  final texts = find.descendant(
+    of: find.byType(NotificationBell),
+    matching: find.byType(Text),
+  );
+  return texts.evaluate().isEmpty
+      ? null
+      : (texts.evaluate().first.widget as Text).data;
 }
 
 void main() {
-  testWidgets('notification centre shows event types and marks items read', (
+  setUpAll(() => GoogleFonts.config.allowRuntimeFetching = false);
+
+  testWidgets('the badge shows the unread count and clears on read', (
     tester,
   ) async {
-    await openApp(tester, '/notifications', role: 'reader');
+    final router = await openApp(tester, '/home', role: 'reader');
+    expect(_badge(tester), '3');
 
-    expect(find.text('Notification centre'), findsOneWidget);
-    expect(find.text('Order on its way'), findsOneWidget);
-    expect(find.text('Listing approved'), findsOneWidget);
-    expect(find.text('New message'), findsOneWidget);
+    await tester.tap(find.byType(NotificationBell));
+    await settle(tester);
+    expect(pathOf(router), '/notifications');
+    expect(find.text('Order WQ-100215: Shipped'), findsOneWidget);
+    expect(find.text('Sapiens dropped in price'), findsOneWidget);
 
-    await tester.tap(find.text('Order on its way'));
-    await tester.pump();
-    expect(find.text('Mark all read'), findsOneWidget);
+    await tester.tap(find.text('Order WQ-100215: Shipped'));
+    await settle(tester);
+    expect(pathOf(router), '/orders/WQ-100215');
+    router.pop();
+    await settle(tester);
+    expect(_badge(tester), isNull, reason: 'no bell on the center');
+    expect(find.byTooltip('Mark all read'), findsOneWidget);
+
+    await tester.tap(find.byTooltip('Mark all read'));
+    await settle(tester);
+    expect(find.byTooltip('Mark all read'), findsNothing);
+    router.pop();
+    await settle(tester);
+    expect(find.byType(NotificationBell), findsOneWidget);
+    expect(_badge(tester), isNull);
   });
 
-  testWidgets('other features can send a notification through the public API', (
+  testWidgets('guests see no bell and are bounced from the center', (
     tester,
   ) async {
-    await tester.pumpWidget(
-      const ProviderScope(child: MaterialApp(home: _NotificationSenderProbe())),
-    );
-    await tester.pump();
+    final router = await openApp(tester, '/notifications');
+    expect(pathOf(router), '/login');
+    expect(find.byType(NotificationBell), findsNothing);
+  });
 
-    expect(find.text('2'), findsOneWidget);
-    await tester.tap(find.text('Send'));
-    await tester.pump();
-    expect(find.text('3'), findsOneWidget);
+  testWidgets('the center renders in Bangla with an empty fallback', (
+    tester,
+  ) async {
+    await openApp(tester, '/notifications', role: 'reader', locale: 'bn');
+    expect(tester.takeException(), isNull);
+    expect(find.text('Sapiens-এর দাম কমেছে'), findsOneWidget);
   });
 }

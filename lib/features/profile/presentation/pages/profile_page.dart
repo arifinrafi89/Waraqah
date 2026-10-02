@@ -11,6 +11,7 @@ import '../../../catalog/presentation/widgets/booklists_links.dart';
 import '../../../donate/presentation/widgets/donate_link.dart';
 import '../../../handled_sale/presentation/widgets/sales_link.dart';
 import '../../../loyalty/presentation/widgets/points_link.dart';
+import '../../../notifications/presentation/widgets/notification_bell.dart';
 import '../../../orders/presentation/widgets/my_orders_link.dart';
 import '../../../p2p/presentation/widgets/my_listings_button.dart';
 import '../../../report/presentation/widgets/blocked_readers_link.dart';
@@ -33,7 +34,10 @@ class ProfilePage extends StatelessWidget {
       bottom: false,
       child: Column(
         children: [
-          ScreenAppBar(title: l10n.profileTitle),
+          ScreenAppBar(
+            title: l10n.profileTitle,
+            actions: const [NotificationBell()],
+          ),
           Expanded(
             child: ListView(
               padding: EdgeInsets.fromLTRB(

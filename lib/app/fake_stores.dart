@@ -7,6 +7,9 @@ import '../features/handled_sale/data/sources/handled_sale_fake_store.dart';
 import '../features/inbox/data/sources/inbox_fake_store.dart';
 import '../features/loyalty/data/sources/points_fake_store.dart';
 import '../features/moderation/data/sources/moderation_fake_store.dart';
+import '../features/notifications/data/sources/notification_fake_store.dart';
+import '../features/notifications/domain/entities/notification_kind.dart';
+import '../features/profile/data/models/profile_prefs_model.dart';
 import '../features/orders/data/sources/order_fake_store.dart';
 import '../features/p2p/data/sources/p2p_fake_store.dart';
 import '../features/profile/data/sources/address_fake_store.dart';
@@ -32,6 +35,12 @@ class FakeStores {
   /// The Reader's profile and saved addresses; checkout delivers to these.
   final profile = ProfileFakeStore();
   final addresses = AddressFakeStore();
+
+  /// Other fake backends send notifications here; "me"'s muted groups come
+  /// from Profile's settings.
+  late final notifications = NotificationFakeStore(
+    muted: (kind) => kind.group != null && profile.prefs.mutes(kind.group!),
+  );
 
   // Offers in the inbox reserve and sell marketplace listings.
   final p2p = P2pFakeStore();

@@ -2144,6 +2144,139 @@ class AppL10nEn extends AppL10n {
   String get profileNoNotifications => 'You are all caught up.';
 
   @override
+  String get notificationEmptyBody =>
+      'Order updates, Listing decisions, sales and price alerts show up here.';
+
+  @override
+  String notificationOrderStatus(String number, String status) {
+    return 'Order $number: $status';
+  }
+
+  @override
+  String get notificationOrderStatusBody => 'Tap to follow your order.';
+
+  @override
+  String notificationReturnApproved(String number) {
+    return 'Return approved for $number';
+  }
+
+  @override
+  String get notificationReturnApprovedBody => 'The refund is in your wallet.';
+
+  @override
+  String notificationReturnRejected(String number) {
+    return 'Return not approved for $number';
+  }
+
+  @override
+  String get notificationReturnRejectedBody =>
+      'Open the order to see what happens next.';
+
+  @override
+  String notificationListingApproved(String title) {
+    return '$title is live';
+  }
+
+  @override
+  String get notificationListingApprovedBody =>
+      'Readers can see it and make offers now.';
+
+  @override
+  String notificationListingChanges(String title) {
+    return 'Changes needed on $title';
+  }
+
+  @override
+  String notificationListingRejected(String title) {
+    return '$title was not approved';
+  }
+
+  @override
+  String get notificationWarning => 'You got a warning';
+
+  @override
+  String notificationWarningBody(String strikes, String max) {
+    return 'Strike $strikes of $max. At $max you can no longer sell or post.';
+  }
+
+  @override
+  String get notificationBanned => 'Your account was banned';
+
+  @override
+  String get notificationBannedBody =>
+      'Your Listings were taken down after repeated warnings.';
+
+  @override
+  String notificationSaleSent(String title) {
+    return '$title is on its way';
+  }
+
+  @override
+  String get notificationSaleSentBody =>
+      'Confirm when it arrives as described.';
+
+  @override
+  String notificationSaleCompleted(String title) {
+    return '$title: sale complete';
+  }
+
+  @override
+  String notificationEarned(String amount) {
+    return 'You earned $amount.';
+  }
+
+  @override
+  String notificationSaleRefunded(String title) {
+    return 'Refund for $title';
+  }
+
+  @override
+  String notificationSalePaid(String title) {
+    return 'Dispute settled for $title';
+  }
+
+  @override
+  String notificationInWallet(String amount) {
+    return '$amount is in your wallet.';
+  }
+
+  @override
+  String notificationSellBackPaid(String title) {
+    return 'Sell Back paid: $title';
+  }
+
+  @override
+  String notificationSellBackReturned(String title) {
+    return '$title is coming back to you';
+  }
+
+  @override
+  String get notificationSellBackReturnedBody =>
+      'We couldn\'t buy it this time; the courier is bringing it back.';
+
+  @override
+  String notificationBackInStock(String title) {
+    return '$title is back in stock';
+  }
+
+  @override
+  String notificationPriceDrop(String title) {
+    return '$title dropped in price';
+  }
+
+  @override
+  String get notificationAlertBody => 'Tap to see it before it\'s gone.';
+
+  @override
+  String notificationBookWanted(String title) {
+    return 'A reader wants $title';
+  }
+
+  @override
+  String get notificationBookWantedBody =>
+      'You have a copy listed. See their request on My Listings.';
+
+  @override
   String get profilePrivacy => 'Privacy';
 
   @override

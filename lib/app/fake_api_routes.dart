@@ -20,6 +20,7 @@ import '../features/deals/data/sources/deals_fake_api.dart';
 import '../features/donate/data/sources/donate_fake_api.dart';
 import '../features/inbox/data/sources/inbox_fake_api.dart';
 import '../features/moderation/data/sources/moderation_fake_api.dart';
+import '../features/notifications/data/sources/notification_fake_api.dart';
 import '../features/orders/data/sources/order_admin_fake_api.dart';
 import '../features/orders/data/sources/order_fake_api.dart';
 import '../features/p2p/data/sources/p2p_fake_api.dart';
@@ -40,6 +41,7 @@ abstract final class FakeApiRoutes {
     return FakeApiInterceptor({
       ...AuthFakeApi.routes(),
       ...ProfileFakeApi.routes(s.profile, s.addresses),
+      ...NotificationFakeApi.routes(s.notifications),
       ...BookFakeApi.routes,
       ...BookSuggestFakeApi.routes,
       ...BookQuestionsFakeApi.routes(),

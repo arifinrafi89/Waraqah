@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../l10n/app_localizations.dart';
-import '../../../alerts/alerts_routes.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
+import '../../../notifications/notifications_routes.dart';
 import '../../profile_routes.dart';
 import 'profile_action_tile.dart';
 
@@ -32,7 +32,7 @@ class ProfileAccountLinks extends ConsumerWidget {
         ProfileActionTile(
           icon: Icons.notifications_none_rounded,
           title: l10n.profileNotificationCenter,
-          onTap: () => context.push(AlertsRoutes.notifications),
+          onTap: () => context.push(NotificationsRoutes.center),
         ),
         ProfileActionTile(
           icon: Icons.tune_rounded,

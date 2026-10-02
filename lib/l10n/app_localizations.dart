@@ -3739,6 +3739,186 @@ abstract class AppL10n {
   /// **'You are all caught up.'**
   String get profileNoNotifications;
 
+  /// No description provided for @notificationEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Order updates, Listing decisions, sales and price alerts show up here.'**
+  String get notificationEmptyBody;
+
+  /// No description provided for @notificationOrderStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Order {number}: {status}'**
+  String notificationOrderStatus(String number, String status);
+
+  /// No description provided for @notificationOrderStatusBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to follow your order.'**
+  String get notificationOrderStatusBody;
+
+  /// No description provided for @notificationReturnApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Return approved for {number}'**
+  String notificationReturnApproved(String number);
+
+  /// No description provided for @notificationReturnApprovedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The refund is in your wallet.'**
+  String get notificationReturnApprovedBody;
+
+  /// No description provided for @notificationReturnRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Return not approved for {number}'**
+  String notificationReturnRejected(String number);
+
+  /// No description provided for @notificationReturnRejectedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the order to see what happens next.'**
+  String get notificationReturnRejectedBody;
+
+  /// No description provided for @notificationListingApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} is live'**
+  String notificationListingApproved(String title);
+
+  /// No description provided for @notificationListingApprovedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Readers can see it and make offers now.'**
+  String get notificationListingApprovedBody;
+
+  /// No description provided for @notificationListingChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes needed on {title}'**
+  String notificationListingChanges(String title);
+
+  /// No description provided for @notificationListingRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} was not approved'**
+  String notificationListingRejected(String title);
+
+  /// No description provided for @notificationWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'You got a warning'**
+  String get notificationWarning;
+
+  /// No description provided for @notificationWarningBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Strike {strikes} of {max}. At {max} you can no longer sell or post.'**
+  String notificationWarningBody(String strikes, String max);
+
+  /// No description provided for @notificationBanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account was banned'**
+  String get notificationBanned;
+
+  /// No description provided for @notificationBannedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Listings were taken down after repeated warnings.'**
+  String get notificationBannedBody;
+
+  /// No description provided for @notificationSaleSent.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} is on its way'**
+  String notificationSaleSent(String title);
+
+  /// No description provided for @notificationSaleSentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm when it arrives as described.'**
+  String get notificationSaleSentBody;
+
+  /// No description provided for @notificationSaleCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'{title}: sale complete'**
+  String notificationSaleCompleted(String title);
+
+  /// No description provided for @notificationEarned.
+  ///
+  /// In en, this message translates to:
+  /// **'You earned {amount}.'**
+  String notificationEarned(String amount);
+
+  /// No description provided for @notificationSaleRefunded.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund for {title}'**
+  String notificationSaleRefunded(String title);
+
+  /// No description provided for @notificationSalePaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Dispute settled for {title}'**
+  String notificationSalePaid(String title);
+
+  /// No description provided for @notificationInWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} is in your wallet.'**
+  String notificationInWallet(String amount);
+
+  /// No description provided for @notificationSellBackPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Sell Back paid: {title}'**
+  String notificationSellBackPaid(String title);
+
+  /// No description provided for @notificationSellBackReturned.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} is coming back to you'**
+  String notificationSellBackReturned(String title);
+
+  /// No description provided for @notificationSellBackReturnedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t buy it this time; the courier is bringing it back.'**
+  String get notificationSellBackReturnedBody;
+
+  /// No description provided for @notificationBackInStock.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} is back in stock'**
+  String notificationBackInStock(String title);
+
+  /// No description provided for @notificationPriceDrop.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} dropped in price'**
+  String notificationPriceDrop(String title);
+
+  /// No description provided for @notificationAlertBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to see it before it\'s gone.'**
+  String get notificationAlertBody;
+
+  /// No description provided for @notificationBookWanted.
+  ///
+  /// In en, this message translates to:
+  /// **'A reader wants {title}'**
+  String notificationBookWanted(String title);
+
+  /// No description provided for @notificationBookWantedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You have a copy listed. See their request on My Listings.'**
+  String get notificationBookWantedBody;
+
   /// No description provided for @profilePrivacy.
   ///
   /// In en, this message translates to:

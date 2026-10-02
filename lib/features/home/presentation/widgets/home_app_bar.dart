@@ -7,9 +7,10 @@ import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/waraqah_wordmark.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../cart/presentation/widgets/cart_button.dart';
+import '../../../notifications/presentation/widgets/notification_bell.dart';
 
-/// Home's top bar: the wordmark, plus quick theme and language toggles and the
-/// cart. The two toggles read and write [settingsProvider].
+/// Home's top bar: the wordmark, plus quick theme and language toggles, the
+/// notification bell and the cart. The two toggles read and write [settingsProvider].
 class HomeAppBar extends ConsumerWidget {
   const HomeAppBar({super.key});
 
@@ -39,6 +40,8 @@ class HomeAppBar extends ConsumerWidget {
             tooltip: isBangla ? l10n.homeAppBarEnglish : l10n.homeAppBarBangla,
             onPressed: () => settings.setLocale(Locale(isBangla ? 'en' : 'bn')),
           ),
+          const SizedBox(width: 8),
+          const NotificationBell(),
           const SizedBox(width: 8),
           const CartButton(),
         ],
