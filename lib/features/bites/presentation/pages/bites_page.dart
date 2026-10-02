@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../bites_routes.dart';
 import '../widgets/bite_actions.dart';
 import '../widgets/bite_feed_tab.dart';
 
@@ -18,6 +20,13 @@ class BitesPage extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(l10n.bitesTitle),
+          actions: [
+            IconButton(
+              tooltip: l10n.quoteTitle,
+              icon: const Icon(Icons.format_quote_rounded),
+              onPressed: () => context.push(BitesRoutes.quote),
+            ),
+          ],
           bottom: TabBar(
             tabs: [
               Tab(text: l10n.bitesForYou),

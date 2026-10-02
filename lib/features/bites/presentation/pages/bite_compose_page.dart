@@ -40,14 +40,16 @@ class BiteComposePage extends ConsumerWidget {
             text: d.bite.text,
             spoiler: d.bite.spoiler,
             tag: d.bite.hasBookTag
-                ? (id: d.bite.bookId!, title: d.bite.bookTitle!)
+                ? (id: d.bite.bookId!, title: d.bite.bookTitle!, author: '')
                 : null,
           ),
         ),
         (_, final bookId?) => load(
           ref.watch(tagBookProvider(bookId)),
           (book) => BiteComposeForm(
-            tag: book == null ? null : (id: book.id, title: book.title),
+            tag: book == null
+                ? null
+                : (id: book.id, title: book.title, author: book.author),
           ),
         ),
         _ => const BiteComposeForm(),

@@ -327,6 +327,33 @@ class AppL10nBn extends AppL10n {
   String get readerYourPage => 'আপনার পাঠক পাতা';
 
   @override
+  String get quoteTitle => 'উদ্ধৃতি কার্ড';
+
+  @override
+  String get quoteHint => 'ভালো লাগা একটি লাইন লিখুন';
+
+  @override
+  String get quoteStyle => 'স্টাইল';
+
+  @override
+  String get quoteStylePaper => 'কাগজ';
+
+  @override
+  String get quoteStyleInk => 'কালি';
+
+  @override
+  String get quoteStyleLeaf => 'পাতা';
+
+  @override
+  String get quoteStyleCover => 'প্রচ্ছদ';
+
+  @override
+  String get quoteShare => 'ছবি শেয়ার করুন';
+
+  @override
+  String get quoteMark => 'ওয়ারাকাহ';
+
+  @override
   String get bitesYou => 'আপনি';
 
   @override

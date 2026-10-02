@@ -338,6 +338,33 @@ class AppL10nEn extends AppL10n {
   String get readerYourPage => 'Your Reader page';
 
   @override
+  String get quoteTitle => 'Quote card';
+
+  @override
+  String get quoteHint => 'Type a line you loved';
+
+  @override
+  String get quoteStyle => 'Style';
+
+  @override
+  String get quoteStylePaper => 'Paper';
+
+  @override
+  String get quoteStyleInk => 'Ink';
+
+  @override
+  String get quoteStyleLeaf => 'Leaf';
+
+  @override
+  String get quoteStyleCover => 'Cover';
+
+  @override
+  String get quoteShare => 'Share image';
+
+  @override
+  String get quoteMark => 'Waraqah';
+
+  @override
   String get bitesYou => 'You';
 
   @override

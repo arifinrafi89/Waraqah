@@ -673,6 +673,60 @@ abstract class AppL10n {
   /// **'Your Reader page'**
   String get readerYourPage;
 
+  /// No description provided for @quoteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quote card'**
+  String get quoteTitle;
+
+  /// No description provided for @quoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Type a line you loved'**
+  String get quoteHint;
+
+  /// No description provided for @quoteStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Style'**
+  String get quoteStyle;
+
+  /// No description provided for @quoteStylePaper.
+  ///
+  /// In en, this message translates to:
+  /// **'Paper'**
+  String get quoteStylePaper;
+
+  /// No description provided for @quoteStyleInk.
+  ///
+  /// In en, this message translates to:
+  /// **'Ink'**
+  String get quoteStyleInk;
+
+  /// No description provided for @quoteStyleLeaf.
+  ///
+  /// In en, this message translates to:
+  /// **'Leaf'**
+  String get quoteStyleLeaf;
+
+  /// No description provided for @quoteStyleCover.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover'**
+  String get quoteStyleCover;
+
+  /// No description provided for @quoteShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share image'**
+  String get quoteShare;
+
+  /// No description provided for @quoteMark.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah'**
+  String get quoteMark;
+
   /// No description provided for @bitesYou.
   ///
   /// In en, this message translates to:
