@@ -4,6 +4,7 @@ import '../../../../core/network/dio_provider.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
 import '../../data/repositories/profile_repository_impl.dart';
+import '../../data/sources/address_remote_source.dart';
 import '../../data/sources/profile_remote_source.dart';
 import '../../domain/entities/profile_details.dart';
 import '../../domain/repositories/profile_repository.dart';
@@ -11,7 +12,10 @@ import '../../domain/usecases/get_profile.dart';
 import '../../domain/usecases/save_profile.dart';
 
 final profileRepositoryProvider = Provider<ProfileRepository>(
-  (ref) => ProfileRepositoryImpl(ProfileRemoteSource(ref.watch(dioProvider))),
+  (ref) => ProfileRepositoryImpl(
+    ProfileRemoteSource(ref.watch(dioProvider)),
+    AddressRemoteSource(ref.watch(dioProvider)),
+  ),
 );
 
 final getProfileProvider = Provider<GetProfile>(

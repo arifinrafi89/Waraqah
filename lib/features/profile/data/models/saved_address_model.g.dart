@@ -8,7 +8,7 @@ part of 'saved_address_model.dart';
 
 _SavedAddressModel _$SavedAddressModelFromJson(Map<String, dynamic> json) =>
     _SavedAddressModel(
-      id: json['id'] as String,
+      id: json['id'] as String? ?? '',
       label: json['label'] as String,
       recipient: json['recipient'] as String,
       phone: json['phone'] as String,
@@ -16,6 +16,7 @@ _SavedAddressModel _$SavedAddressModelFromJson(Map<String, dynamic> json) =>
       upazila: json['upazila'] as String,
       district: json['district'] as String,
       division: json['division'] as String,
+      isDefault: json['isDefault'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$SavedAddressModelToJson(_SavedAddressModel instance) =>
@@ -28,4 +29,5 @@ Map<String, dynamic> _$SavedAddressModelToJson(_SavedAddressModel instance) =>
       'upazila': instance.upazila,
       'district': instance.district,
       'division': instance.division,
+      'isDefault': instance.isDefault,
     };

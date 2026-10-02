@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:waraqah/features/checkout/domain/entities/coupon.dart';
 import 'package:waraqah/features/checkout/domain/entities/order_receipt.dart';
-import 'package:waraqah/features/checkout/domain/entities/saved_address.dart';
 import 'package:waraqah/features/checkout/domain/repositories/checkout_repository.dart';
 import 'package:waraqah/features/checkout/domain/repositories/coupon_admin_repository.dart';
 import 'package:waraqah/features/checkout/domain/usecases/apply_coupon.dart';
@@ -27,9 +26,6 @@ class _Coupons implements CouponAdminRepository, CheckoutRepository {
   @override
   Future<Coupon?> findCoupon(String code) async =>
       saved.where((c) => c.code == code).firstOrNull;
-
-  @override
-  Future<List<SavedAddress>> addresses() => throw UnimplementedError();
 
   @override
   Future<OrderReceipt> placeOrder(PlaceOrderRequest request) =>

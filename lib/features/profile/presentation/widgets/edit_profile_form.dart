@@ -5,13 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_dimens.dart';
-import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/app_buttons.dart';
 import '../../../../core/widgets/app_text_field.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/profile_details.dart';
 import '../../domain/entities/profile_rules.dart';
 import '../providers/profile_providers.dart';
+import 'profile_error_text.dart';
 import 'profile_photo_picker.dart';
 import 'profile_problem_text.dart';
 
@@ -92,14 +92,7 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
         if (_error != null)
           Padding(
             padding: const EdgeInsets.only(top: Insets.md),
-            child: Text(
-              _error!,
-              style: AppFonts.ui(
-                size: 12,
-                weight: FontWeight.w700,
-                color: Theme.of(context).colorScheme.error,
-              ),
-            ),
+            child: ProfileErrorText(_error!),
           ),
         const SizedBox(height: Insets.xl),
         PrimaryButton(

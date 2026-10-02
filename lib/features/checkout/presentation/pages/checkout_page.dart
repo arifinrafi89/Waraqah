@@ -10,7 +10,7 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../cart/cart_routes.dart';
 import '../../../cart/domain/entities/cart.dart';
 import '../../../cart/presentation/providers/cart_providers.dart';
-import '../../domain/entities/saved_address.dart';
+import '../../../profile/domain/entities/saved_address.dart';
 import '../providers/checkout_providers.dart';
 import '../widgets/address_picker.dart';
 import '../widgets/checkout_skeleton.dart';

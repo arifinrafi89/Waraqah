@@ -2076,6 +2076,35 @@ class AppL10nEn extends AppL10n {
   String get profileAddressDeleted => 'Address deleted';
 
   @override
+  String get profileAddressLabelHint => 'Home, Office…';
+
+  @override
+  String get profileRecipient => 'Recipient\'s name';
+
+  @override
+  String get profileDefaultAddress => 'Default';
+
+  @override
+  String get profileMakeDefault => 'Make default';
+
+  @override
+  String get profileAddNewAddress => 'Add a new address';
+
+  @override
+  String get profileAddressLabelMissing =>
+      'Give this address a name, like Home.';
+
+  @override
+  String get profileRecipientMissing => 'Enter who will receive the parcel.';
+
+  @override
+  String get profileAddressLineMissing => 'Enter the house, road and area.';
+
+  @override
+  String get profileAddressPlaceMissing =>
+      'Pick the division, district and upazila.';
+
+  @override
   String get profileNotifications => 'Notifications';
 
   @override

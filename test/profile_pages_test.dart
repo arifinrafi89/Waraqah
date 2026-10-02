@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:waraqah/features/catalog/catalog_routes.dart';
+
+import 'helpers/address_form.dart';
 import 'helpers/app_harness.dart';
 
 void main() {
@@ -44,5 +47,27 @@ void main() {
     expect(find.text('Edit profile'), findsNothing);
     expect(find.text('Saved addresses'), findsNothing);
     expect(find.text('Log In'), findsOneWidget);
+  });
+
+  testWidgets('an address added from checkout is listed there', (tester) async {
+    final router = await openApp(
+      tester,
+      CatalogRoutes.bookDetailFor('bk-atomic'),
+      role: 'reader',
+    );
+    await tester.tap(find.text('Buy now'));
+    await settle(tester);
+    await tester.tap(find.text('Checkout'));
+    await settle(tester);
+    expect(find.text('Home'), findsOneWidget);
+
+    await tester.tap(find.text('Add a new address'));
+    await settle(tester);
+    expect(pathOf(router), '/profile/addresses');
+    await fillOfficeAddress(tester);
+    await saveAddress(tester);
+
+    expect(pathOf(router), '/checkout');
+    expect(find.text('Office'), findsOneWidget);
   });
 }

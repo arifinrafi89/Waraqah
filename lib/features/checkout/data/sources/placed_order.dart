@@ -6,7 +6,7 @@ import '../../../orders/data/models/order_parts_model.dart';
 import '../../../orders/domain/entities/order_status.dart';
 import '../../domain/entities/checkout_totals.dart';
 import '../../domain/entities/payment_method.dart';
-import '../../domain/entities/saved_address.dart';
+import '../../../profile/domain/entities/saved_address.dart';
 
 /// The order the fake server saves when checkout places one: the cart's
 /// lines as they are now, the address, the payment, the totals and, for a

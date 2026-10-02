@@ -3613,6 +3613,60 @@ abstract class AppL10n {
   /// **'Address deleted'**
   String get profileAddressDeleted;
 
+  /// No description provided for @profileAddressLabelHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Home, Office…'**
+  String get profileAddressLabelHint;
+
+  /// No description provided for @profileRecipient.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipient\'s name'**
+  String get profileRecipient;
+
+  /// No description provided for @profileDefaultAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Default'**
+  String get profileDefaultAddress;
+
+  /// No description provided for @profileMakeDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Make default'**
+  String get profileMakeDefault;
+
+  /// No description provided for @profileAddNewAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a new address'**
+  String get profileAddNewAddress;
+
+  /// No description provided for @profileAddressLabelMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Give this address a name, like Home.'**
+  String get profileAddressLabelMissing;
+
+  /// No description provided for @profileRecipientMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter who will receive the parcel.'**
+  String get profileRecipientMissing;
+
+  /// No description provided for @profileAddressLineMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the house, road and area.'**
+  String get profileAddressLineMissing;
+
+  /// No description provided for @profileAddressPlaceMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the division, district and upazila.'**
+  String get profileAddressPlaceMissing;
+
   /// No description provided for @profileNotifications.
   ///
   /// In en, this message translates to:

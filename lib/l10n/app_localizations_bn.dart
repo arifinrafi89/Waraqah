@@ -1993,6 +1993,33 @@ class AppL10nBn extends AppL10n {
   String get profileAddressDeleted => 'ঠিকানা মুছে ফেলা হয়েছে';
 
   @override
+  String get profileAddressLabelHint => 'বাসা, অফিস…';
+
+  @override
+  String get profileRecipient => 'প্রাপকের নাম';
+
+  @override
+  String get profileDefaultAddress => 'ডিফল্ট';
+
+  @override
+  String get profileMakeDefault => 'ডিফল্ট করুন';
+
+  @override
+  String get profileAddNewAddress => 'নতুন ঠিকানা যোগ করুন';
+
+  @override
+  String get profileAddressLabelMissing => 'ঠিকানার একটি নাম দিন, যেমন বাসা।';
+
+  @override
+  String get profileRecipientMissing => 'কে পার্সেল নেবেন তা লিখুন।';
+
+  @override
+  String get profileAddressLineMissing => 'বাসা, রোড ও এলাকা লিখুন।';
+
+  @override
+  String get profileAddressPlaceMissing => 'বিভাগ, জেলা ও উপজেলা বেছে নিন।';
+
+  @override
   String get profileNotifications => 'নোটিফিকেশন';
 
   @override

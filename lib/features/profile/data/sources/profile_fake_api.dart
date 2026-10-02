@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 
 import '../models/profile_details_model.dart';
+import '../models/saved_address_model.dart';
+import 'address_fake_store.dart';
+import 'geo/bd_geo.dart';
 import 'profile_fake_store.dart';
 
 /// Profile's fake endpoints, merged into `FakeApiInterceptor` by
@@ -12,14 +15,41 @@ abstract final class ProfileFakeApi {
   /// Body `{name, phone, photo?}`: answers the saved profile.
   static const String saveProfile = '/profile/save';
 
+  /// The saved addresses, default first.
+  static const String addresses = '/addresses';
+
+  /// Body: an address; no `id` adds it. Answers the addresses.
+  static const String saveAddress = '/addresses/save';
+
+  /// Body `{id}`: answers the addresses.
+  static const String deleteAddress = '/addresses/delete';
+
+  /// Body `{id}`: answers the addresses.
+  static const String defaultAddress = '/addresses/default';
+
+  /// Every division, its districts and their upazilas.
+  static const String geo = '/geo';
+
   static Map<String, Object? Function(RequestOptions)> routes(
     ProfileFakeStore store,
+    AddressFakeStore addresses,
   ) => {
     profile: (_) => store.details.toJson(),
     saveProfile: (o) =>
         store.save(ProfileDetailsModel.fromJson(_body(o)))?.toJson(),
+    ProfileFakeApi.addresses: (_) => addresses.json(),
+    saveAddress: (o) => addresses.save(SavedAddressModel.fromJson(_body(o)))
+        ? addresses.json()
+        : null,
+    deleteAddress: (o) => addresses.delete(_id(o)) ? addresses.json() : null,
+    defaultAddress: (o) =>
+        addresses.makeDefault(_id(o)) ? addresses.json() : null,
+    geo: (_) => BdGeo.toJson(),
   };
 
   static Map<String, dynamic> _body(RequestOptions options) =>
       options.data as Map<String, dynamic>? ?? const {};
+
+  static String _id(RequestOptions options) =>
+      _body(options)['id'] as String? ?? '';
 }

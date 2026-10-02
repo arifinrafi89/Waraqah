@@ -6,15 +6,16 @@ import '../../../cart/data/sources/cart_fake_store.dart';
 import '../../../cart/domain/entities/cart.dart';
 import '../../../loyalty/data/sources/points_fake_store.dart';
 import '../../../orders/data/models/order_parts_model.dart';
+// Orders go to one of the Reader's saved addresses, kept by Profile.
+import '../../../profile/data/models/saved_address_model.dart';
+import '../../../profile/data/sources/address_fake_store.dart';
+import '../../../profile/domain/entities/saved_address.dart';
 import '../../../orders/data/sources/order_fake_store.dart';
 import '../../../wallet/data/sources/wallet_fake_store.dart';
 import '../../domain/entities/checkout_totals.dart';
 import '../../domain/entities/payment_method.dart';
-import '../../domain/entities/saved_address.dart';
 import '../models/coupon_model.dart';
 import '../models/order_receipt_model.dart';
-import '../models/saved_address_model.dart';
-import 'checkout_fixtures.dart';
 import 'coupon_fake_store.dart';
 import 'placed_order.dart';
 
@@ -22,8 +23,6 @@ import 'placed_order.dart';
 /// `app/fake_api_routes.dart`, sharing the fake cart, orders, coupons and
 /// points.
 abstract final class CheckoutFakeApi {
-  static const String addresses = '/addresses';
-
   /// `?code=EID100`; answers the coupon or `null`.
   static const String coupon = '/coupons/check';
 
@@ -39,19 +38,17 @@ abstract final class CheckoutFakeApi {
     CouponFakeStore coupons,
     PointsFakeStore points,
     WalletFakeStore wallet,
+    AddressFakeStore addresses,
   ) {
     return {
-      addresses: (_) => [
-        for (final address in CheckoutFixtures.addresses) address.toJson(),
-      ],
       coupon: (options) => coupons
           .find(options.queryParameters['code'] as String? ?? '')
           ?.toJson(),
       placeOrder: (options) {
         final body = options.data as Map<String, dynamic>? ?? const {};
-        final address = CheckoutFixtures.address(
-          body['addressId'] as String? ?? '',
-        )?.toEntity();
+        final address = addresses
+            .find(body['addressId'] as String? ?? '')
+            ?.toEntity();
         final lines = CartModel.fromJson(cart.toJson()).toEntity();
         final giftJson = body['gift'] as Map<String, dynamic>?;
         final gift = giftJson == null

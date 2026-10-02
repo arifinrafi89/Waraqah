@@ -23,7 +23,11 @@ abstract final class ProfileRoutes {
   /// Opened over the tabs.
   static final List<RouteBase> routes = [
     GoRoute(path: edit, builder: (_, _) => const EditProfilePage()),
-    GoRoute(path: addresses, builder: (_, _) => const SavedAddressesPage()),
+    GoRoute(
+      path: addresses,
+      builder: (_, state) =>
+          SavedAddressesPage(adding: state.uri.queryParameters['add'] == '1'),
+    ),
     GoRoute(path: settings, builder: (_, _) => const ProfilePreferencesPage()),
   ];
 
