@@ -1,4 +1,5 @@
 import '../../../moderation/domain/entities/audit_entry.dart';
+import '../../../notifications/data/sources/notification_sale_sends.dart';
 import '../../../p2p/domain/entities/p2p_listing.dart';
 import '../../../wallet/domain/entities/wallet.dart';
 import '../../domain/entities/handled_sale.dart';
@@ -91,6 +92,14 @@ extension HandledSaleFakeMoney on HandledSaleFakeStore {
       s.status = SaleStatus.released;
       p2p.setStatus(s.listingId, P2pListingStatus.sold, buyerId: s.buyerId);
     }
+    notifications?.saleSettled(
+      buyerId: s.buyerId,
+      sellerId: s.sellerId,
+      saleId: s.id,
+      title: title,
+      refund: refund,
+      amountBdt: refund ? s.buyerPaysBdt : s.sellerGetsBdt,
+    );
     moderation?.record(
       by,
       refund ? AuditAction.refunded : AuditAction.paidSeller,

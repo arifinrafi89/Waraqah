@@ -10,7 +10,7 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../cart/presentation/providers/cart_providers.dart';
 import '../../../catalog/domain/entities/delivery_estimate.dart';
 import '../../domain/entities/checkout_totals.dart';
-import '../../domain/entities/saved_address.dart';
+import '../../../profile/domain/entities/saved_address.dart';
 import '../providers/checkout_providers.dart';
 
 /// Step 2: when the order arrives at the chosen address and what delivery

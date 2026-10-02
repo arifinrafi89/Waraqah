@@ -2,10 +2,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/network/dio_provider.dart';
 import '../../../../core/state/selection_notifier.dart';
-import '../../../../core/usecase/usecase.dart';
 import '../../../cart/domain/entities/cart.dart';
 import '../../../cart/presentation/providers/cart_providers.dart';
 import '../../../loyalty/presentation/providers/points_providers.dart';
+import '../../../profile/domain/entities/saved_address.dart';
+import '../../../profile/presentation/providers/address_providers.dart';
 import '../../../wallet/presentation/providers/wallet_providers.dart';
 import '../../data/repositories/checkout_repository_impl.dart';
 import '../../data/sources/checkout_remote_source.dart';
@@ -13,19 +14,13 @@ import '../../domain/entities/checkout_totals.dart';
 import '../../domain/entities/coupon.dart';
 import '../../domain/entities/order_receipt.dart';
 import '../../domain/entities/payment_method.dart';
-import '../../domain/entities/saved_address.dart';
 import '../../domain/repositories/checkout_repository.dart';
 import '../../domain/usecases/apply_coupon.dart';
-import '../../domain/usecases/get_addresses.dart';
 import '../../domain/usecases/place_order.dart';
 import 'gift_providers.dart';
 
 final checkoutRepositoryProvider = Provider<CheckoutRepository>(
   (ref) => CheckoutRepositoryImpl(CheckoutRemoteSource(ref.watch(dioProvider))),
-);
-
-final getAddressesProvider = Provider<GetAddresses>(
-  (ref) => GetAddresses(ref.watch(checkoutRepositoryProvider)),
 );
 
 final applyCouponProvider = Provider<ApplyCoupon>(
@@ -36,7 +31,7 @@ final placeOrderProvider = Provider<PlaceOrder>(
   (ref) => PlaceOrder(ref.watch(checkoutRepositoryProvider)),
 );
 
-/// The reader's saved addresses, once the cart, points and wallet have
+/// The reader's saved addresses (Profile's), once the cart, points and wallet have
 /// loaded too (all at once), so the page has everything before it stops
 /// shimmering.
 final checkoutAddressesProvider = FutureProvider<List<SavedAddress>>((
@@ -46,18 +41,19 @@ final checkoutAddressesProvider = FutureProvider<List<SavedAddress>>((
     ref.watch(cartProvider.future),
     ref.watch(pointsProvider.future),
     ref.watch(walletProvider.future),
-    ref.watch(getAddressesProvider).call(const NoParams()),
+    ref.watch(addressesProvider.future),
   ).wait;
   return addresses;
 });
 
 final chosenAddressIdProvider = selectionProvider<String?>(null);
 
-/// The address the reader picked, or their first one.
+/// The address the reader picked, or their default one.
 final chosenAddressProvider = Provider<SavedAddress?>((ref) {
   final addresses = ref.watch(checkoutAddressesProvider).value ?? const [];
   final id = ref.watch(chosenAddressIdProvider);
   return addresses.where((a) => a.id == id).firstOrNull ??
+      addresses.where((a) => a.isDefault).firstOrNull ??
       addresses.firstOrNull;
 });
 

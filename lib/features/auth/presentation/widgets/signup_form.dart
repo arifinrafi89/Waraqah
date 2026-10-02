@@ -53,6 +53,7 @@ class _SignupFormState extends State<SignupForm> {
             label: l10n.authFullName,
             hint: l10n.authNameHint,
             icon: Icons.person_outline_rounded,
+            controller: _name,
           ),
           AppTextField(
             label: l10n.authEmailOrPhone,

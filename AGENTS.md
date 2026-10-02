@@ -119,7 +119,9 @@ The app also has:
   - `ref.bookFinished(context, bookId)` opens **Finished Sapiens?**: what readers pay for a copy read once (`FinishedItOffers`: the Like New fair range), **List it for readers** (the add-listing form filled in: title, new price, Like New), or **Sell it back to Waraqah** (Sell Back's quote for the book), or Keep it.
   - **Niloy:** when a book moves to Finished on a shelf, call `ref.bookFinished(context, bookId)`.
   - Until shelves exist, My Listings shows **Finished a book you bought?** with the books from the reader's delivered orders (`boughtBooksProvider`, from Farhan's `myOrdersProvider`).
-- **Accounts** (Niloy, #108): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`).
+- **Accounts are done** (Niloy #108, Rahinur): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`). Sign-up keeps the name; the demo OTP is `123456` (`AuthFixtures.demoOtp`), any other code is refused.
+- **Profile and settings are done** (Rahinur): `ProfileRoutes.edit|addresses|settings` (signed-in only); `/profile`, `/profile/prefs`, `/addresses…`, `/geo`. Edit profile saves name, BD mobile and photo (`ProfileRules`) and renames the session (`SessionNotifier.rename`). Saved addresses (`SavedAddress`, `addressesProvider` in `features/profile`) are the ones checkout uses; the default is preselected, and checkout's "Add a new address" opens `ProfileRoutes.addressesAdd`. Division → district → upazila pickers read `/geo` (`geoProvider`). Settings: one switch per notification group (`ProfilePrefs.muted`), two privacy switches (saved for Bites and reading life), delete account. Theme, language and the Ayah switch stay on the Profile tab (device settings).
+- **Notifications are done** (Rahinur): `features/notifications`, `NotificationsRoutes.center` (`/notifications`, signed-in only), `NotificationBell` (Home's top bar + Profile), live via `/notifications/live`. Fake backends send with `NotificationFakeStore.send(readerId, kind, params:, target:)`, or the one-line helpers in `NotificationSends` / `NotificationSaleSends`; the text comes from ARB per kind (`notificationText`), and a target opens its page (`notificationRoute`). Senders today: order status and returns, Listing decisions, warnings and bans, handled sales, Sell Back, price and stock alerts (`AlertFakeStore.sweep`, run by `CatalogAdminFakeStore.onChanged`), book requests. A muted group is dropped; moderation can't be muted. Offers and messages stay in the inbox.
 - **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
 - `main` passes `flutter analyze` with no issues, and all tests pass.
@@ -171,7 +173,7 @@ lib/
 │   └── utils/              Bdt.format (৳ prices), stock labels, cover gradients
 ├── features/
 │   ├── admin/  ai_assistant/  alerts/  auth/  bites/  book_request/  cart/  catalog/  checkout/
-│   ├── finished_it/  handled_sale/  sell_back/
+│   ├── finished_it/  handled_sale/  sell_back/  notifications/
 │   ├── deals/  donate/  home/  inbox/  loyalty/  moderation/  orders/  p2p/  profile/  report/  scan/
 │   ├── wallet/  wishlist/
 └── l10n/                   app_en.arb, app_bn.arb (+ generated AppL10n)
@@ -234,9 +236,11 @@ features/<feature>/
 - Handlers return JSON built from fixtures in the same `data/sources/` folder.
 - **Remote sources must never catch `DioException` to fall back to fixtures.** Errors surface to the UI's error state.
 - A handler answers `null` when the server would refuse (not allowed, unknown id). The remote source turns a refused change into an error.
-- **Shared fake stores.** Stores that several features change are created once in `fake_api_routes.dart` and passed to each feature's `routes(...)`. For example:
+- **Shared fake stores.** Stores that several features change are created once in `app/fake_stores.dart` (`FakeStores`) and passed to each feature's `routes(...)` in `fake_api_routes.dart`. Tests can pass their own: `FakeApiRoutes.interceptor(stores)`. For example:
   - checkout, orders and the wallet share `OrderFakeStore` and `WalletFakeStore`;
-  - the inbox reserves and sells `P2pFakeStore`'s listings.
+  - the inbox reserves and sells `P2pFakeStore`'s listings;
+  - checkout's `/orders/place` delivers to Profile's `AddressFakeStore`;
+  - orders, moderation, handled sales, Sell Back, alerts (`AlertFakeStore`) and book requests send to `NotificationFakeStore`.
   - A fake backend file may import another feature's `data/sources` for this, with a comment saying why. App code never does (§4.2).
 - **One signed-in reader.** The fake backend has one signed-in reader ("me"), the way the real server will know who is asking from the login token. JSON says what's theirs (`isMine`, `isMyDeal`, a thread's `role`); the app never compares names.
 - **Live updates.** A handler may answer a `ResponseBody` stream. `/inbox/live` streams server-sent events, one `data: {...}` line per change. `InboxLiveSource` reads it through `dioProvider` with `ResponseType.stream`, and the Go backend should stream the same lines. Providers listen to `inboxChangesProvider` and reload what changed.
@@ -333,6 +337,8 @@ Use these words in code, tests and PRs. Don't drift to the "avoid" words.
 | **Expert Pick** | A Collection made by an Expert, with their note on why. | |
 | **Booklist** | Any list of books needed together: a class list, exam prep, book club or a Reader's own list. Bought together: 'Add whole list to cart'. | course list |
 | **Bite** | A short post in the Book-Bites feed | tweet |
+| **Saved address** | A delivery address in the Reader's profile (label, recipient, phone, division → district → upazila). One is the default. | shipping profile |
+| **Notification** | A note in the notification center that something happened to the Reader (order, Listing, sale, alert…). Not offers or messages: those are the inbox. | push, alert (that's a price or stock alert) |
 
 ---
 
@@ -342,10 +348,9 @@ Build **only your own area**. If you need something from another area that isn't
 
 | Person | Area |
 |---|---|
-| **Rahinur** | Storefront & catalog: Section/category/author pages, search (incl. Bangla + Banglish), home feed, seasonal home, collections & Expert Picks, Booklists, Religious section, Academic browsing, design system, `core/`. **Admin:** catalog, banners, collections. |
+| **Rahinur** | Storefront & catalog: Section/category/author pages, search (incl. Bangla + Banglish), home feed, seasonal home, collections & Expert Picks, Booklists, Religious section, Academic browsing, design system, `core/`. Accounts, community & AI (taken over from Niloy): sign up / log in, profile & saved addresses, notifications, shelves & reading stats, Book-Bites (post, like, comment, spoilers, follow, quote cards), reviews, AI assistant. **Admin:** catalog, banners, collections, dashboard. |
 | **Farhan** | Book page & buying new: book page (editions, formats, stock, delivery), wishlist, **cart**, checkout (bKash / Nagad / COD / card), orders & returns, "every way to buy" (new + used on one page), alerts, pre-orders, bundles, flash sales, loyalty points, Smart Basket, gift & donate, wallet; **offers & inbox (chat, arranging meetup or courier), seller profiles & ratings** (taken over from Arifin). **Admin:** orders, returns, coupons. |
 | **Arifin** | Second-hand & moderation: listing flow, listing status, used marketplace, report & block, scan a book, fair price meter, Request a book, Waraqah-handled sales, Sell Back & Certified Used, "Finished it? Sell it". **Admin:** Moderation Center, trade-in grading. |
-| **Niloy** | Accounts, community & AI: sign up / log in, profile & saved addresses, notifications, shelves & reading stats, Book-Bites (post, like, comment, spoilers, follow, quote cards), reviews, AI assistant. **Admin:** dashboard. |
 
 ### Shared pieces
 
@@ -362,8 +367,10 @@ The owner builds these and keeps their shape stable; everyone else uses them.
 | **Make an offer / message a seller** (`ref.offerOn`, `ref.openChat`), inbox badge (`InboxButton`), seller page (`P2pRoutes.sellerFor`) | Farhan | Arifin, everyone showing a listing |
 | Report content (`ref.report`), create a book request, barcode scanner (`ScanButton`) | Arifin | Niloy, Rahinur |
 | `sessionProvider` & roles | (built) | everyone |
-| Saved addresses, send a notification, "book finished" event | Niloy | Farhan, Arifin, everyone |
-| Reviews and "Bites about this book" widgets | Niloy | Farhan (book page) |
+| Saved addresses (`addressesProvider` / `SavedAddress` in `features/profile`) | Rahinur | Farhan (checkout) |
+| Send a notification (fake backend: `NotificationFakeStore.send`) | Rahinur | Farhan, Arifin, everyone |
+| "Book finished" event | Rahinur | Arifin |
+| Reviews and "Bites about this book" widgets | Rahinur | Farhan (book page) |
 
 ---
 
@@ -379,10 +386,9 @@ The owner builds these and keeps their shape stable; everyone else uses them.
 
 **Avoiding conflicts**
 - **ARB keys:** add yours in your own block with your prefixes:
-  - Rahinur: `home`, `search`, `section`, `collection`, `expert`, `booklist`, `adminCatalog`
+  - Rahinur: `home`, `search`, `section`, `collection`, `expert`, `booklist`, `adminCatalog`, and (taken over from Niloy) `auth`, `profile`, `notification`, `shelf`, `bite`, `review`, `ai`, `adminDashboard`, `reader`, `quote`, `reading`. Rahinur's PRs for this area are merged by Rahinur.
   - Farhan: `book`, `cart`, `checkout`, `order`, `wishlist`, `wallet`, `gift`, `adminOrder`, `offer`, `inbox`, `chat`, `seller`
   - Arifin: `listing`, `used`, `sellBack`, `scan`, `request`, `report`, `moderation` (the listing page also has `used…` keys from Farhan: check before adding one)
-  - Niloy: `auth`, `profile`, `notification`, `shelf`, `bite`, `review`, `ai`, `adminDashboard`
 - Routes and fake APIs: only in **your own feature's files**, plus one line in the shared lists when adding a new feature.
 - **Announce before adding a package** to `pubspec.yaml`.
 - **Only stage your own files.** Codegen and `pub get` often rewrite other people's generated files (`*.g.dart`, `*.freezed.dart`, platform plugin files) with **line-ending-only** changes. Check with `git diff --ignore-cr-at-eol` and don't commit those.
@@ -419,11 +425,13 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - The AI assistant still shows an old vendor price table. It's scheduled to use Waraqah's own catalog (Niloy). Don't copy it.
 - Profile stats (books read, Bites posted, listings) are placeholder numbers.
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
-- Book demand (`bookDemandProvider`) isn't shown anywhere yet: the admin dashboard (Niloy) should list it. Sellers see requests on My Listings, but nothing goes to the notification center yet.
+- Book demand (`bookDemandProvider`) isn't shown anywhere yet: the admin dashboard (Rahinur) should list it.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
 - Handled sales don't update live: pull down on a sale, or open it again, to see the other side's move. Wallet refunds show as "Refund for returned/cancelled HS-…" until the wallet has its own reason for them (Farhan).
 - "Finished it? Sell it" opens from My Listings' delivered books until Niloy's shelves have a Finished shelf; then shelves call `ref.bookFinished` and the stand-in card can go.
-- No push alerts while the app is closed: the inbox badge is the notification, by design for now.
+- No push notifications while the app is closed: the notification center and the inbox badge update only while the app is open.
+- Deleting an account signs out but can't wipe the shared demo data (one "me" on the fake backend).
+- Upazila names are English only (divisions and districts have Bangla).
 - Removing a reported message, Bite or review closes the report, but the item itself stays: Bites and reviews have no backend store yet, and the inbox doesn't delete messages. Bans don't stop posting Bites or reviews yet either (Niloy, Farhan).
 - Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Farhan's inbox: refuse sends to and from blocked readers).
 - Bite comments don't exist yet, so nothing reports them. When they land, add `ReportIconButton(target: ReportTarget(kind: ReportTargetKind.comment, id: ...))` (Niloy).

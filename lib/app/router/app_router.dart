@@ -15,6 +15,7 @@ import '../../features/handled_sale/handled_sale_routes.dart';
 import '../../features/home/home_routes.dart';
 import '../../features/inbox/inbox_routes.dart';
 import '../../features/loyalty/loyalty_routes.dart';
+import '../../features/notifications/notifications_routes.dart';
 import '../../features/deals/deals_routes.dart';
 import '../../features/donate/donate_routes.dart';
 import '../../features/orders/orders_routes.dart';
@@ -71,6 +72,8 @@ abstract final class AppRouter {
       ...BookRequestRoutes.routes,
       ...HandledSaleRoutes.routes,
       ...SellBackRoutes.routes,
+      ...ProfileRoutes.routes,
+      ...NotificationsRoutes.routes,
       ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),

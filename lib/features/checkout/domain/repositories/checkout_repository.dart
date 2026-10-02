@@ -2,7 +2,6 @@ import '../entities/coupon.dart';
 import '../entities/gift.dart';
 import '../entities/order_receipt.dart';
 import '../entities/payment_method.dart';
-import '../entities/saved_address.dart';
 
 class PlaceOrderRequest {
   const PlaceOrderRequest({
@@ -28,11 +27,10 @@ class PlaceOrderRequest {
   final bool useWallet;
 }
 
-/// Everything checkout asks the server. Placing an order turns the cart into
+/// Everything checkout asks the server. Addresses come from Profile's
+/// `addressesProvider`. Placing an order turns the cart into
 /// an order and empties the cart.
 abstract interface class CheckoutRepository {
-  Future<List<SavedAddress>> addresses();
-
   /// `null` when no coupon has that code.
   Future<Coupon?> findCoupon(String code);
 

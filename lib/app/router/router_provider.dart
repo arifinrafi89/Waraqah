@@ -10,7 +10,12 @@ import 'app_router.dart';
 /// the route guards, so guarded pages open or close straight away.
 final routerProvider = Provider<GoRouter>((ref) {
   final session = ValueNotifier<AppUser?>(ref.read(sessionProvider));
-  ref.listen(sessionProvider, (_, user) => session.value = user);
+  // Guards only care who is signed in and their role. A rename re-running
+  // them mid-navigation would undo a pop.
+  ref.listen(
+    sessionProvider.select((user) => (user?.id, user?.role)),
+    (_, _) => session.value = ref.read(sessionProvider),
+  );
   final router = AppRouter.create(session: session);
   ref.onDispose(() {
     router.dispose();

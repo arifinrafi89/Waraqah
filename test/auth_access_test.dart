@@ -24,6 +24,9 @@ class _NeverCalledRepository implements AuthRepository {
 
   @override
   Future<void> signOut() async {}
+
+  @override
+  Future<AppUser?> rename(String name) async => null;
 }
 
 void main() {

@@ -33,8 +33,7 @@ extension P2pSellerJson on P2pFakeStore {
       ],
       listings: [
         for (final listing in all)
-          if (listing.sellerId == id &&
-              listing.status == P2pListingStatus.live)
+          if (listing.sellerId == id && listing.status == P2pListingStatus.live)
             listing.copyWith(isMine: id == P2pPeople.me),
       ],
     ).toJson();

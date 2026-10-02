@@ -4,6 +4,9 @@ import 'dart:async';
 // reader's wallet, and moderators' decisions go into their audit log.
 import '../../../checkout/domain/entities/payment_method.dart';
 import '../../../moderation/data/sources/moderation_fake_store.dart';
+// Buyers and sellers hear when a sale moves on.
+import '../../../notifications/data/sources/notification_fake_store.dart';
+import '../../../notifications/data/sources/notification_sale_sends.dart';
 import '../../../p2p/data/sources/p2p_fake_store.dart';
 import '../../../p2p/data/sources/p2p_people.dart';
 import '../../../p2p/domain/entities/p2p_listing.dart';
@@ -22,6 +25,7 @@ class HandledSaleFakeStore {
     this.p2p,
     this.wallet, {
     this.moderation,
+    this.notifications,
     DateTime Function()? clock,
     this.sendDelay = const Duration(seconds: 4),
   }) : now = clock ?? DateTime.now {
@@ -43,6 +47,7 @@ class HandledSaleFakeStore {
   final P2pFakeStore p2p;
   final WalletFakeStore wallet;
   final ModerationFakeStore? moderation;
+  final NotificationFakeStore? notifications;
   final DateTime Function() now;
   final Duration sendDelay;
   final Map<String, FakeSale> sales = {};
@@ -50,6 +55,8 @@ class HandledSaleFakeStore {
   int _ids = 200;
 
   String nameOf(String id) => P2pPeople.find(id)?.name ?? '?';
+
+  String titleOf(FakeSale s) => p2p.find(s.listingId)?.title ?? '';
 
   /// The sale as [viewerId] sees it.
   Map<String, dynamic> json(FakeSale s, [String viewerId = me]) {
@@ -97,7 +104,9 @@ class HandledSaleFakeStore {
     p2p.setStatus(listingId, P2pListingStatus.reserved, buyerId: me);
     // Demo only: the other reader hands the book to the courier.
     Timer(sendDelay, () {
-      if (sale.status == SaleStatus.paid) sale.status = SaleStatus.sent;
+      if (sale.status != SaleStatus.paid) return;
+      sale.status = SaleStatus.sent;
+      notifications?.saleSent(me, sale.id, titleOf(sale));
     });
     return sale;
   }

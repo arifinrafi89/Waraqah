@@ -66,4 +66,11 @@ class AuthRepositoryImpl implements AuthRepository, AuthFlowRepository {
 
   @override
   Future<void> signOut() => _store.clear();
+
+  @override
+  Future<AppUser?> rename(String name) async {
+    final user = _store.read()?.copyWith(name: name);
+    if (user != null) await _store.write(user);
+    return user?.toEntity();
+  }
 }

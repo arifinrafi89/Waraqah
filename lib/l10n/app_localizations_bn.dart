@@ -163,6 +163,9 @@ class AppL10nBn extends AppL10n {
   String get authOtpInvalid => '৬ সংখ্যার OTP লিখুন।';
 
   @override
+  String get authWrongCode => 'ভুল কোড। আবার চেষ্টা করুন।';
+
+  @override
   String get authInvalidMobileNumber =>
       'একটি সঠিক বাংলাদেশি মোবাইল নম্বর লিখুন।';
 
@@ -1923,6 +1926,21 @@ class AppL10nBn extends AppL10n {
   String get profileSaved => 'প্রোফাইল আপডেট হয়েছে';
 
   @override
+  String get profileRemovePhoto => 'ছবি সরান';
+
+  @override
+  String profileNameLength(int min, int max) {
+    return 'নাম $min–$max অক্ষরের হতে হবে।';
+  }
+
+  @override
+  String get profilePhoneInvalid =>
+      'বাংলাদেশি মোবাইল নম্বর লিখুন, যেমন 01712345678।';
+
+  @override
+  String get profileSettings => 'সেটিংস';
+
+  @override
   String get profileSavedAddresses => 'সংরক্ষিত ঠিকানা';
 
   @override
@@ -1975,7 +1993,59 @@ class AppL10nBn extends AppL10n {
   String get profileAddressDeleted => 'ঠিকানা মুছে ফেলা হয়েছে';
 
   @override
+  String get profileAddressLabelHint => 'বাসা, অফিস…';
+
+  @override
+  String get profileRecipient => 'প্রাপকের নাম';
+
+  @override
+  String get profileDefaultAddress => 'ডিফল্ট';
+
+  @override
+  String get profileMakeDefault => 'ডিফল্ট করুন';
+
+  @override
+  String get profileAddNewAddress => 'নতুন ঠিকানা যোগ করুন';
+
+  @override
+  String get profileAddressLabelMissing => 'ঠিকানার একটি নাম দিন, যেমন বাসা।';
+
+  @override
+  String get profileRecipientMissing => 'কে পার্সেল নেবেন তা লিখুন।';
+
+  @override
+  String get profileAddressLineMissing => 'বাসা, রোড ও এলাকা লিখুন।';
+
+  @override
+  String get profileAddressPlaceMissing => 'বিভাগ, জেলা ও উপজেলা বেছে নিন।';
+
+  @override
   String get profileNotifications => 'নোটিফিকেশন';
+
+  @override
+  String get profileNotifyOrders => 'অর্ডার ও রিটার্ন';
+
+  @override
+  String get profileNotifyUsedBooks => 'পুরোনো বই';
+
+  @override
+  String get profileNotifyUsedBooksSub =>
+      'লিস্টিং, ওয়ারাকাহ-পরিচালিত বিক্রি, সেল ব্যাক ও বইয়ের অনুরোধ';
+
+  @override
+  String get profileNotifyAlerts => 'দাম ও স্টক অ্যালার্ট';
+
+  @override
+  String get profileNotifyCommunity => 'কমিউনিটি';
+
+  @override
+  String get profileNotifyCommunitySub => 'বাইটে লাইক, মন্তব্য ও নতুন ফলোয়ার';
+
+  @override
+  String get profileNotifyModerationNote => 'মডারেশন সতর্কতা সবসময় আসবে।';
+
+  @override
+  String get profileAccountDeleted => 'আপনার অ্যাকাউন্ট মুছে ফেলা হয়েছে।';
 
   @override
   String get profileNotificationCenter => 'নোটিফিকেশন সেন্টার';
@@ -1987,13 +2057,143 @@ class AppL10nBn extends AppL10n {
   String get profileNoNotifications => 'সব নোটিফিকেশন দেখা হয়েছে।';
 
   @override
-  String get profilePushNotifications => 'পুশ নোটিফিকেশন';
+  String get notificationEmptyBody =>
+      'অর্ডারের খবর, লিস্টিংয়ের সিদ্ধান্ত, বিক্রি ও দামের অ্যালার্ট এখানে দেখাবে।';
 
   @override
-  String get profileOrderUpdates => 'অর্ডার আপডেট';
+  String notificationOrderStatus(String number, String status) {
+    return 'অর্ডার $number: $status';
+  }
 
   @override
-  String get profilePromotions => 'অফার ও সুপারিশ';
+  String get notificationOrderStatusBody => 'অর্ডার দেখতে ট্যাপ করুন।';
+
+  @override
+  String notificationReturnApproved(String number) {
+    return '$number-এর রিটার্ন অনুমোদিত';
+  }
+
+  @override
+  String get notificationReturnApprovedBody => 'টাকা আপনার ওয়ালেটে ফেরত গেছে।';
+
+  @override
+  String notificationReturnRejected(String number) {
+    return '$number-এর রিটার্ন অনুমোদিত হয়নি';
+  }
+
+  @override
+  String get notificationReturnRejectedBody =>
+      'এরপর কী হবে দেখতে অর্ডারটি খুলুন।';
+
+  @override
+  String notificationListingApproved(String title) {
+    return '$title এখন লাইভ';
+  }
+
+  @override
+  String get notificationListingApprovedBody =>
+      'পাঠকেরা এখন এটি দেখতে ও অফার দিতে পারবেন।';
+
+  @override
+  String notificationListingChanges(String title) {
+    return '$title-এ পরিবর্তন দরকার';
+  }
+
+  @override
+  String notificationListingRejected(String title) {
+    return '$title অনুমোদিত হয়নি';
+  }
+
+  @override
+  String get notificationWarning => 'আপনি একটি সতর্কতা পেয়েছেন';
+
+  @override
+  String notificationWarningBody(String strikes, String max) {
+    return '$maxটির মধ্যে $strikesটি স্ট্রাইক। $maxটি হলে আর বিক্রি বা পোস্ট করতে পারবেন না।';
+  }
+
+  @override
+  String get notificationBanned => 'আপনার অ্যাকাউন্ট নিষিদ্ধ করা হয়েছে';
+
+  @override
+  String get notificationBannedBody =>
+      'বারবার সতর্কতার পর আপনার লিস্টিং সরিয়ে নেওয়া হয়েছে।';
+
+  @override
+  String notificationSaleSent(String title) {
+    return '$title পথে আছে';
+  }
+
+  @override
+  String get notificationSaleSentBody => 'বর্ণনামতো পৌঁছালে নিশ্চিত করুন।';
+
+  @override
+  String notificationSaleCompleted(String title) {
+    return '$title: বিক্রি সম্পন্ন';
+  }
+
+  @override
+  String notificationEarned(String amount) {
+    return 'আপনি $amount আয় করেছেন।';
+  }
+
+  @override
+  String notificationSaleRefunded(String title) {
+    return '$title-এর টাকা ফেরত';
+  }
+
+  @override
+  String notificationSaleSettled(String title) {
+    return '$title-এর অভিযোগ মীমাংসা হয়েছে';
+  }
+
+  @override
+  String get notificationSaleRefundedSeller =>
+      'ক্রেতা টাকা ফেরত পেয়েছেন, আপনার লিস্টিং আবার লাইভ।';
+
+  @override
+  String get notificationSalePaidBuyer => 'বিক্রেতাকে টাকা দেওয়া হয়েছে।';
+
+  @override
+  String notificationInWallet(String amount) {
+    return '$amount আপনার ওয়ালেটে আছে।';
+  }
+
+  @override
+  String notificationSellBackPaid(String title) {
+    return 'সেল ব্যাকের টাকা দেওয়া হয়েছে: $title';
+  }
+
+  @override
+  String notificationSellBackReturned(String title) {
+    return '$title আপনার কাছে ফেরত আসছে';
+  }
+
+  @override
+  String get notificationSellBackReturnedBody =>
+      'এবার আমরা কিনতে পারিনি; কুরিয়ার এটি ফেরত আনছে।';
+
+  @override
+  String notificationBackInStock(String title) {
+    return '$title আবার স্টকে এসেছে';
+  }
+
+  @override
+  String notificationPriceDrop(String title) {
+    return '$title-এর দাম কমেছে';
+  }
+
+  @override
+  String get notificationAlertBody => 'শেষ হওয়ার আগে দেখতে ট্যাপ করুন।';
+
+  @override
+  String notificationBookWanted(String title) {
+    return 'একজন পাঠক $title চান';
+  }
+
+  @override
+  String get notificationBookWantedBody =>
+      'আপনার একটি কপি লিস্ট করা আছে। আমার লিস্টিংয়ে তাদের অনুরোধ দেখুন।';
 
   @override
   String get profilePrivacy => 'গোপনীয়তা';

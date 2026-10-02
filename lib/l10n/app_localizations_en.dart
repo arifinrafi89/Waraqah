@@ -165,6 +165,9 @@ class AppL10nEn extends AppL10n {
   String get authOtpInvalid => 'Enter the 6-digit OTP.';
 
   @override
+  String get authWrongCode => 'Wrong code. Try again.';
+
+  @override
   String get authInvalidMobileNumber =>
       'Enter a valid Bangladesh mobile number.';
 
@@ -2007,6 +2010,21 @@ class AppL10nEn extends AppL10n {
   String get profileSaved => 'Profile updated';
 
   @override
+  String get profileRemovePhoto => 'Remove photo';
+
+  @override
+  String profileNameLength(int min, int max) {
+    return 'Your name must be $min–$max characters.';
+  }
+
+  @override
+  String get profilePhoneInvalid =>
+      'Enter a Bangladesh mobile number, like 01712345678.';
+
+  @override
+  String get profileSettings => 'Settings';
+
+  @override
   String get profileSavedAddresses => 'Saved addresses';
 
   @override
@@ -2058,7 +2076,63 @@ class AppL10nEn extends AppL10n {
   String get profileAddressDeleted => 'Address deleted';
 
   @override
+  String get profileAddressLabelHint => 'Home, Office…';
+
+  @override
+  String get profileRecipient => 'Recipient\'s name';
+
+  @override
+  String get profileDefaultAddress => 'Default';
+
+  @override
+  String get profileMakeDefault => 'Make default';
+
+  @override
+  String get profileAddNewAddress => 'Add a new address';
+
+  @override
+  String get profileAddressLabelMissing =>
+      'Give this address a name, like Home.';
+
+  @override
+  String get profileRecipientMissing => 'Enter who will receive the parcel.';
+
+  @override
+  String get profileAddressLineMissing => 'Enter the house, road and area.';
+
+  @override
+  String get profileAddressPlaceMissing =>
+      'Pick the division, district and upazila.';
+
+  @override
   String get profileNotifications => 'Notifications';
+
+  @override
+  String get profileNotifyOrders => 'Orders and returns';
+
+  @override
+  String get profileNotifyUsedBooks => 'Used books';
+
+  @override
+  String get profileNotifyUsedBooksSub =>
+      'Listings, Waraqah-handled sales, Sell Back and book requests';
+
+  @override
+  String get profileNotifyAlerts => 'Price and stock alerts';
+
+  @override
+  String get profileNotifyCommunity => 'Community';
+
+  @override
+  String get profileNotifyCommunitySub =>
+      'Likes, comments and new followers on Bites';
+
+  @override
+  String get profileNotifyModerationNote =>
+      'Moderation warnings always arrive.';
+
+  @override
+  String get profileAccountDeleted => 'Your account was deleted.';
 
   @override
   String get profileNotificationCenter => 'Notification centre';
@@ -2070,13 +2144,144 @@ class AppL10nEn extends AppL10n {
   String get profileNoNotifications => 'You are all caught up.';
 
   @override
-  String get profilePushNotifications => 'Push notifications';
+  String get notificationEmptyBody =>
+      'Order updates, Listing decisions, sales and price alerts show up here.';
 
   @override
-  String get profileOrderUpdates => 'Order updates';
+  String notificationOrderStatus(String number, String status) {
+    return 'Order $number: $status';
+  }
 
   @override
-  String get profilePromotions => 'Offers and recommendations';
+  String get notificationOrderStatusBody => 'Tap to follow your order.';
+
+  @override
+  String notificationReturnApproved(String number) {
+    return 'Return approved for $number';
+  }
+
+  @override
+  String get notificationReturnApprovedBody => 'The refund is in your wallet.';
+
+  @override
+  String notificationReturnRejected(String number) {
+    return 'Return not approved for $number';
+  }
+
+  @override
+  String get notificationReturnRejectedBody =>
+      'Open the order to see what happens next.';
+
+  @override
+  String notificationListingApproved(String title) {
+    return '$title is live';
+  }
+
+  @override
+  String get notificationListingApprovedBody =>
+      'Readers can see it and make offers now.';
+
+  @override
+  String notificationListingChanges(String title) {
+    return 'Changes needed on $title';
+  }
+
+  @override
+  String notificationListingRejected(String title) {
+    return '$title was not approved';
+  }
+
+  @override
+  String get notificationWarning => 'You got a warning';
+
+  @override
+  String notificationWarningBody(String strikes, String max) {
+    return 'Strike $strikes of $max. At $max you can no longer sell or post.';
+  }
+
+  @override
+  String get notificationBanned => 'Your account was banned';
+
+  @override
+  String get notificationBannedBody =>
+      'Your Listings were taken down after repeated warnings.';
+
+  @override
+  String notificationSaleSent(String title) {
+    return '$title is on its way';
+  }
+
+  @override
+  String get notificationSaleSentBody =>
+      'Confirm when it arrives as described.';
+
+  @override
+  String notificationSaleCompleted(String title) {
+    return '$title: sale complete';
+  }
+
+  @override
+  String notificationEarned(String amount) {
+    return 'You earned $amount.';
+  }
+
+  @override
+  String notificationSaleRefunded(String title) {
+    return 'Refund for $title';
+  }
+
+  @override
+  String notificationSaleSettled(String title) {
+    return 'Dispute settled for $title';
+  }
+
+  @override
+  String get notificationSaleRefundedSeller =>
+      'The buyer got a refund, and your Listing is live again.';
+
+  @override
+  String get notificationSalePaidBuyer => 'The seller was paid.';
+
+  @override
+  String notificationInWallet(String amount) {
+    return '$amount is in your wallet.';
+  }
+
+  @override
+  String notificationSellBackPaid(String title) {
+    return 'Sell Back paid: $title';
+  }
+
+  @override
+  String notificationSellBackReturned(String title) {
+    return '$title is coming back to you';
+  }
+
+  @override
+  String get notificationSellBackReturnedBody =>
+      'We couldn\'t buy it this time; the courier is bringing it back.';
+
+  @override
+  String notificationBackInStock(String title) {
+    return '$title is back in stock';
+  }
+
+  @override
+  String notificationPriceDrop(String title) {
+    return '$title dropped in price';
+  }
+
+  @override
+  String get notificationAlertBody => 'Tap to see it before it\'s gone.';
+
+  @override
+  String notificationBookWanted(String title) {
+    return 'A reader wants $title';
+  }
+
+  @override
+  String get notificationBookWantedBody =>
+      'You have a copy listed. See their request on My Listings.';
 
   @override
   String get profilePrivacy => 'Privacy';

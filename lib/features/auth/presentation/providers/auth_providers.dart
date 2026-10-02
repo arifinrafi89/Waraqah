@@ -52,6 +52,11 @@ class SessionNotifier extends Notifier<AppUser?> {
     state = null;
   }
 
+  /// Shows [name] everywhere once Profile saved it.
+  Future<void> rename(String name) async {
+    state = await ref.read(authRepositoryProvider).rename(name);
+  }
+
   Future<void> signInWithGoogle() async {
     state = await ref.read(authActionsProvider).signInWithGoogle();
   }

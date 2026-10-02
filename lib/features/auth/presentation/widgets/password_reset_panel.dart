@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/theme/app_dimens.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../../../../core/theme/app_typography.dart';
-import '../../../../core/widgets/app_buttons.dart';
-import '../../../../core/widgets/app_text_field.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../domain/entities/auth_failure.dart';
 import '../providers/auth_providers.dart';
+import 'auth_failure_text.dart';
 import 'otp_form.dart';
+import 'reset_contact_form.dart';
+import 'reset_password_form.dart';
 
+/// Password reset in three steps: mobile number, code, new password. The
+/// server checks the code with the new password; a wrong one goes back to
+/// the code step.
 class PasswordResetPanel extends ConsumerStatefulWidget {
   const PasswordResetPanel({super.key});
 
@@ -32,53 +34,46 @@ class _PasswordResetPanelState extends ConsumerState<PasswordResetPanel> {
     super.dispose();
   }
 
-  Future<void> _sendOtp() async {
+  /// Runs [action] with the busy flag on, showing any failure.
+  Future<void> _run(Future<void> Function() action) async {
+    final l10n = AppL10n.of(context)!;
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
+    try {
+      await action();
+    } on AuthFailure catch (failure) {
+      _otp = null;
+      _error = failure.message(l10n);
+    } catch (_) {
+      _error = l10n.commonSomethingWentWrong;
+    }
+    if (mounted) setState(() => _busy = false);
+  }
+
+  void _sendOtp() {
     final mobile = _contact.text.trim();
     if (!RegExp(r'^(?:\+?880|0)1[3-9]\d{8}$').hasMatch(mobile)) {
       setState(() => _error = AppL10n.of(context)!.authInvalidMobileNumber);
       return;
     }
-    setState(() {
-      _busy = true;
-      _error = null;
-    });
-    try {
+    _run(() async {
       await ref.read(sessionProvider.notifier).requestPasswordReset(mobile);
-      if (mounted) setState(() => _savedContact = mobile);
-    } catch (_) {
-      if (mounted) {
-        setState(() => _error = AppL10n.of(context)!.commonSomethingWentWrong);
-      }
-    }
-    if (mounted) {
-      setState(() => _busy = false);
-    }
+      _savedContact = mobile;
+    });
   }
 
-  Future<void> _verifyOtp(String otp) async {
-    if (otp.trim().length != 6) {
-      setState(() => _error = AppL10n.of(context)!.authOtpInvalid);
-      return;
-    }
-    setState(() {
-      _busy = true;
-      _error = null;
-    });
-    if (mounted) {
-      setState(() {
-        _otp = otp.trim();
-        _busy = false;
-      });
-    }
-  }
+  void _takeOtp(String otp) => setState(() {
+    final valid = otp.trim().length == 6;
+    _error = valid ? null : AppL10n.of(context)!.authOtpInvalid;
+    if (valid) _otp = otp.trim();
+  });
 
-  Future<void> _reset() async {
-    if (_savedContact == null || _otp == null || _password.text.isEmpty) return;
-    setState(() {
-      _busy = true;
-      _error = null;
-    });
-    try {
+  void _reset() {
+    if (_password.text.isEmpty) return;
+    final l10n = AppL10n.of(context)!;
+    _run(() async {
       await ref
           .read(sessionProvider.notifier)
           .resetPassword(
@@ -86,95 +81,33 @@ class _PasswordResetPanelState extends ConsumerState<PasswordResetPanel> {
             otp: _otp!,
             password: _password.text,
           );
-      if (mounted) {
-        setState(() => _error = AppL10n.of(context)!.authPasswordReset);
-      }
-    } catch (_) {
-      if (mounted) {
-        setState(() => _error = AppL10n.of(context)!.commonSomethingWentWrong);
-      }
-    }
-    if (mounted) setState(() => _busy = false);
+      _error = l10n.authPasswordReset;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppL10n.of(context)!;
     if (_savedContact == null) {
-      return _contactForm(context, l10n);
+      return ResetContactForm(
+        controller: _contact,
+        isBusy: _busy,
+        errorText: _error,
+        onSubmit: _sendOtp,
+      );
     }
     if (_otp == null) {
       return OtpForm(
         contact: _savedContact!,
         isBusy: _busy,
         errorText: _error,
-        onSubmit: _verifyOtp,
+        onSubmit: _takeOtp,
       );
     }
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, Insets.screen, 20, Insets.md),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        spacing: 13,
-        children: [
-          AppTextField(
-            label: l10n.authPassword,
-            hint: '••••••••',
-            icon: Icons.lock_outline_rounded,
-            obscure: true,
-            controller: _password,
-          ),
-          if (_error != null)
-            Text(
-              _error!,
-              style: AppFonts.ui(size: 12, color: context.palette.accent),
-            ),
-          PrimaryButton(
-            label: l10n.authResetPassword,
-            isBusy: _busy,
-            onPressed: _reset,
-          ),
-        ],
-      ),
+    return ResetPasswordForm(
+      controller: _password,
+      isBusy: _busy,
+      message: _error,
+      onSubmit: _reset,
     );
   }
-
-  Widget _contactForm(BuildContext context, AppL10n l10n) => Padding(
-    padding: const EdgeInsets.fromLTRB(20, Insets.screen, 20, Insets.md),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: 13,
-      children: [
-        Text(
-          l10n.authForgotTitle,
-          style: AppFonts.display(size: 24, color: context.palette.text),
-        ),
-        Text(
-          l10n.authForgotMessage,
-          style: AppFonts.ui(size: 13, color: context.palette.textDim),
-        ),
-        AppTextField(
-          label: l10n.authMobileNumber,
-          hint: l10n.authMobileNumberHint,
-          icon: Icons.phone_iphone_outlined,
-          controller: _contact,
-          keyboardType: TextInputType.phone,
-        ),
-        if (_error != null)
-          Text(
-            _error!,
-            style: AppFonts.ui(
-              size: 12,
-              weight: FontWeight.w700,
-              color: Theme.of(context).colorScheme.error,
-            ),
-          ),
-        PrimaryButton(
-          label: l10n.authSendOtp,
-          isBusy: _busy,
-          onPressed: _sendOtp,
-        ),
-      ],
-    ),
-  );
 }

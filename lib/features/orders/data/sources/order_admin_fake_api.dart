@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 
-// Refunds go to the reader's wallet on the fake backend.
+// Refunds go to the reader's wallet on the fake backend, and the reader
+// hears about every change.
+import '../../../notifications/data/sources/notification_fake_store.dart';
+import '../../../notifications/data/sources/notification_sends.dart';
 import '../../../wallet/data/sources/wallet_fake_store.dart';
 import '../../../wallet/domain/entities/wallet.dart';
 import '../../domain/entities/order_refunds.dart';
@@ -25,16 +28,19 @@ abstract final class OrderAdminFakeApi {
   static Map<String, Object? Function(RequestOptions)> routes(
     OrderFakeStore store,
     WalletFakeStore wallet,
+    NotificationFakeStore notifications,
   ) => {
     orders: (_) => [for (final order in store.all) order.toJson()],
     advance: (options) {
       final body = _body(options);
-      return store
-          .advance(
-            body['number'] as String? ?? '',
-            OrderStatus.values.byName(body['status'] as String),
-          )
-          ?.toJson();
+      final order = store.advance(
+        body['number'] as String? ?? '',
+        OrderStatus.values.byName(body['status'] as String),
+      );
+      if (order != null) {
+        notifications.orderChanged(order.number, body['status'] as String);
+      }
+      return order?.toJson();
     },
     decideReturn: (options) {
       final body = _body(options);
@@ -43,6 +49,9 @@ abstract final class OrderAdminFakeApi {
         body['number'] as String? ?? '',
         approve: approve,
       );
+      if (order != null) {
+        notifications.returnDecided(order.number, approved: approve);
+      }
       if (order == null || !approve) return order?.toJson();
       final refund = order.toEntity().returnRefundBdt;
       wallet.credit(

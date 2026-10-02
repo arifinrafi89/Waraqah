@@ -1,5 +1,8 @@
 // Requests are matched against the marketplace's Listings, like the
 // server will.
+// Sellers who have the book hear about the request.
+import '../../../notifications/data/sources/notification_fake_store.dart';
+import '../../../notifications/data/sources/notification_sends.dart';
 import '../../../p2p/data/models/p2p_listing_model.dart';
 import '../../../p2p/data/sources/p2p_fake_store.dart';
 import '../../../p2p/data/sources/p2p_people.dart';
@@ -13,12 +16,16 @@ import 'book_request_seed.dart';
 /// Every reader's book requests on the fake backend. The signed-in reader
 /// is [P2pPeople.me].
 class BookRequestFakeStore {
-  BookRequestFakeStore(this.p2p, {DateTime Function()? clock})
-    : now = clock ?? DateTime.now {
+  BookRequestFakeStore(
+    this.p2p, {
+    this.notifications,
+    DateTime Function()? clock,
+  }) : now = clock ?? DateTime.now {
     requests.addAll(bookRequestSeed(now()));
   }
 
   final P2pFakeStore p2p;
+  final NotificationFakeStore? notifications;
   final DateTime Function() now;
   final List<BookRequestModel> requests = [];
 
@@ -60,6 +67,10 @@ class BookRequestFakeStore {
       createdAt: now(),
     );
     requests.add(request);
+    notifications?.bookWanted({
+      for (final l in _copies(request, request.requesterId, any: true))
+        l.sellerId,
+    }, request.title);
     return json(request);
   }
 
@@ -94,18 +105,4 @@ class BookRequestFakeStore {
               maxPriceBdt: r.maxPriceBdt,
             ).toJson(),
   ];
-
-  /// Open requests per title, most asked first.
-  List<Map<String, dynamic>> demand() {
-    final counts = <String, int>{};
-    for (final r in requests.where((r) => r.isOpen)) {
-      counts[r.title] = (counts[r.title] ?? 0) + 1;
-    }
-    final sorted = counts.entries.toList()
-      ..sort((a, b) => b.value.compareTo(a.value));
-    return [
-      for (final e in sorted)
-        BookDemandModel(title: e.key, requests: e.value).toJson(),
-    ];
-  }
 }

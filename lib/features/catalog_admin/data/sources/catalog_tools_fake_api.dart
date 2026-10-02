@@ -52,7 +52,11 @@ abstract final class CatalogToolsFakeApi {
               'stock': e.stock,
             },
     ]..sort((a, b) => (a['stock'] as int).compareTo(b['stock'] as int)),
-    editionStock: (o) => _setStock(o.data as Map<String, dynamic>),
+    editionStock: (o) {
+      final saved = _setStock(o.data as Map<String, dynamic>);
+      if (saved != null) store.onChanged?.call();
+      return saved;
+    },
   };
 
   static Map<String, dynamic>? _setStock(Map<String, dynamic> body) {

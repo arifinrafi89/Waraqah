@@ -12,31 +12,43 @@ abstract final class AuthFakeApi {
   static const String requestPasswordReset = '/auth/password/request-otp';
   static const String resetPassword = '/auth/password/reset';
 
-  static final Map<String, Object? Function(RequestOptions)> routes = {
-    login: _login,
-    google: _google,
-    requestSignUpOtp: _acknowledge,
-    verifySignUpOtp: _verifySignUpOtp,
-    requestPasswordReset: _acknowledge,
-    resetPassword: _acknowledge,
-  };
+  /// A fresh table per fake backend: it remembers the name each sign-up
+  /// typed until the code is verified.
+  static Map<String, Object? Function(RequestOptions)> routes() {
+    final names = <String, String>{};
+    return {
+      login: _login,
+      google: _google,
+      requestSignUpOtp: (options) {
+        final body = _body(options);
+        names[_contact(body)] = (body['name'] as String? ?? '').trim();
+        return {'ok': true};
+      },
+      verifySignUpOtp: (options) {
+        final body = _body(options);
+        if (body['otp'] != AuthFixtures.demoOtp) return null;
+        final contact = _contact(body);
+        return AuthFixtures.signUp(contact, names[contact] ?? '');
+      },
+      requestPasswordReset: _acknowledge,
+      resetPassword: (options) =>
+          _body(options)['otp'] == AuthFixtures.demoOtp ? {'ok': true} : null,
+    };
+  }
+
+  static Map<String, dynamic> _body(RequestOptions options) =>
+      options.data as Map<String, dynamic>? ?? const {};
+
+  static String _contact(Map<String, dynamic> body) =>
+      (body['contact'] as String? ?? '').trim().toLowerCase();
 
   static Object _login(RequestOptions options) {
-    final body = options.data as Map<String, dynamic>? ?? const {};
-    final email = (body['email'] as String? ?? '').trim().toLowerCase();
-    return AuthFixtures.accountFor(email);
+    final email = (_body(options)['email'] as String? ?? '').trim();
+    return AuthFixtures.accountFor(email.toLowerCase());
   }
 
   static Object _google(RequestOptions options) =>
       AuthFixtures.accountFor('reader@waraqah.test');
 
   static Object _acknowledge(RequestOptions options) => {'ok': true};
-
-  static Object _verifySignUpOtp(RequestOptions options) {
-    final body = options.data as Map<String, dynamic>? ?? const {};
-    final contact = (body['contact'] as String? ?? '').trim().toLowerCase();
-    return AuthFixtures.accountFor(
-      contact.contains('@') ? contact : 'reader@waraqah.test',
-    );
-  }
 }

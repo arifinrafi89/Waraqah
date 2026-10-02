@@ -10,7 +10,9 @@ import '../../features/handled_sale/handled_sale_routes.dart';
 import '../../features/home/home_routes.dart';
 import '../../features/inbox/inbox_routes.dart';
 import '../../features/loyalty/loyalty_routes.dart';
+import '../../features/notifications/notifications_routes.dart';
 import '../../features/orders/orders_routes.dart';
+import '../../features/profile/profile_routes.dart';
 import '../../features/report/report_routes.dart';
 import '../../features/sell_back/sell_back_routes.dart';
 import '../../features/wallet/wallet_routes.dart';
@@ -28,7 +30,7 @@ abstract final class RouteAccess {
     CheckoutRoutes.checkout,
     OrdersRoutes.orders,
     AlertsRoutes.alerts,
-    AlertsRoutes.notifications,
+    NotificationsRoutes.center,
     LoyaltyRoutes.points,
     WalletRoutes.wallet,
     InboxRoutes.inbox,
@@ -36,6 +38,9 @@ abstract final class RouteAccess {
     BookRequestRoutes.requests,
     HandledSaleRoutes.sales,
     SellBackRoutes.sellBack,
+    ProfileRoutes.edit,
+    ProfileRoutes.addresses,
+    ProfileRoutes.settings,
   ];
 
   /// Where to redirect [location] for [user], or `null` to let it open.

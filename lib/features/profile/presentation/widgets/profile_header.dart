@@ -1,22 +1,30 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/surface_card.dart';
+import '../../../../l10n/app_localizations.dart';
+import 'profile_avatar.dart';
+import 'profile_stat.dart';
 
-/// Avatar, name and campus line, plus the three activity counters.
+/// Avatar, name and contact line (email or phone), plus the activity
+/// counters.
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({
     super.key,
     required this.name,
-    required this.campus,
+    required this.contact,
     required this.stats,
+    this.photo,
     this.onEdit,
   });
 
   final String name;
-  final String campus;
+  final String contact;
+  final Uint8List? photo;
 
   /// Label to value, in display order.
   final Map<String, String> stats;
@@ -34,29 +42,16 @@ class ProfileHeader extends StatelessWidget {
             spacing: Insets.md,
             children: [
               Stack(
+                clipBehavior: Clip.none,
                 children: [
-                  Container(
-                    width: 54,
-                    height: 54,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: palette.accent,
-                      borderRadius: BorderRadius.circular(Radii.card),
-                    ),
-                    child: Text(
-                      name.isEmpty ? '?' : name[0],
-                      style: AppFonts.display(
-                        size: 24,
-                        color: palette.accentInk,
-                      ),
-                    ),
-                  ),
+                  ProfileAvatar(name: name, photo: photo),
                   if (onEdit != null)
                     Positioned(
                       right: -4,
                       bottom: -4,
                       child: IconButton(
                         onPressed: onEdit,
+                        tooltip: AppL10n.of(context)!.profileEditProfile,
                         icon: const Icon(Icons.edit_rounded),
                         iconSize: 13,
                         padding: EdgeInsets.zero,
@@ -78,7 +73,7 @@ class ProfileHeader extends StatelessWidget {
                   children: [
                     Text(name, style: context.texts.titleLarge),
                     Text(
-                      campus,
+                      contact,
                       style: AppFonts.ui(size: 11.5, color: palette.textFaint),
                     ),
                   ],
@@ -91,35 +86,12 @@ class ProfileHeader extends StatelessWidget {
             children: [
               for (final entry in stats.entries)
                 Expanded(
-                  child: _Stat(label: entry.key, value: entry.value),
+                  child: ProfileStat(label: entry.key, value: entry.value),
                 ),
             ],
           ),
         ],
       ),
-    );
-  }
-}
-
-class _Stat extends StatelessWidget {
-  const _Stat({required this.label, required this.value});
-
-  final String label;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    final palette = context.palette;
-    return Column(
-      children: [
-        Text(value, style: AppFonts.numeric(size: 18, color: palette.text)),
-        const SizedBox(height: 2),
-        Text(
-          label,
-          textAlign: TextAlign.center,
-          style: AppFonts.ui(size: 10, color: palette.textFaint),
-        ),
-      ],
     );
   }
 }

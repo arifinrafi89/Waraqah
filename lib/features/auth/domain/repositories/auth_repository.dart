@@ -8,4 +8,8 @@ abstract interface class AuthRepository {
   Future<AppUser> signIn({required String email, required String password});
 
   Future<void> signOut();
+
+  /// Saves a new display name on the device's session, after the profile
+  /// saved it on the server. `null` for a guest.
+  Future<AppUser?> rename(String name);
 }
