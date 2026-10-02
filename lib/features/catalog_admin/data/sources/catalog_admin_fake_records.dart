@@ -7,8 +7,8 @@ import '../../../catalog/data/sources/category_fixtures.dart';
 import '../../../catalog/data/sources/publisher_fixtures.dart';
 import '../../domain/entities/catalog_admin_rules.dart';
 import '../../domain/entities/catalog_record.dart';
-import 'catalog_admin_fake_store.dart';
 import 'record_counts.dart';
+import 'unique_id.dart';
 
 /// Staff's changes to Categories, Authors and Publishers on the fake backend.
 abstract final class CatalogAdminFakeRecords {
@@ -80,7 +80,7 @@ abstract final class CatalogAdminFakeRecords {
   }
 
   static String _newId(RecordKind kind, String name, List<String> ids) =>
-      CatalogAdminFakeStore.uniqueId(
+      uniqueId(
         switch (kind) {
           RecordKind.category => 'cat',
           RecordKind.author => 'au',

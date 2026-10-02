@@ -10,7 +10,7 @@ import '../../../catalog/data/sources/expert_fixtures.dart';
 import '../../../catalog/domain/entities/booklist.dart';
 import '../../domain/entities/list_draft.dart';
 import '../../domain/entities/list_rules.dart';
-import 'catalog_admin_fake_store.dart';
+import 'unique_id.dart';
 
 /// Staff's Collections and Booklists on the fake backend. Each answers
 /// `{id}`, or `null` when refused.
@@ -24,7 +24,7 @@ abstract final class CatalogAdminFakeLists {
             !ExpertFixtures.all.any((e) => e.id == d.expertId))) {
       return null;
     }
-    final id = d.id ?? CatalogAdminFakeStore.uniqueId('col', d.titleEn, ids);
+    final id = d.id ?? uniqueId('col', d.titleEn, ids);
     _put(
       CollectionFixtures.all,
       ids.indexOf(id),
@@ -58,7 +58,7 @@ abstract final class CatalogAdminFakeLists {
     if (!_ok(d, ids) || d.kind == null || d.kind == BooklistKind.personal) {
       return null;
     }
-    final id = d.id ?? CatalogAdminFakeStore.uniqueId('bl', d.titleEn, ids);
+    final id = d.id ?? uniqueId('bl', d.titleEn, ids);
     _put(
       BooklistFixtures.all,
       BooklistFixtures.all.indexWhere((b) => b.id == id),

@@ -448,6 +448,38 @@ class AppL10nBn extends AppL10n {
   String get sectionEmpty => 'এই বিভাগে এখনো কোনো বই নেই।';
 
   @override
+  String get sectionClassRow => 'শ্রেণি';
+
+  @override
+  String get sectionExamRow => 'পরীক্ষা';
+
+  @override
+  String get sectionSubjectRow => 'বিষয়';
+
+  @override
+  String sectionClassChip(int n) {
+    return 'শ্রেণি $n';
+  }
+
+  @override
+  String get sectionExamSsc => 'এসএসসি';
+
+  @override
+  String get sectionExamHsc => 'এইচএসসি';
+
+  @override
+  String get sectionExamAdmission => 'ভর্তি';
+
+  @override
+  String get sectionExamBcs => 'বিসিএস';
+
+  @override
+  String get sectionFilterEmpty => 'এই বাছাইয়ে এখনো কোনো বই নেই।';
+
+  @override
+  String get sectionClearFilters => 'ফিল্টার মুছুন';
+
+  @override
   String get collectionStripTitle => 'সংকলন';
 
   @override
@@ -2044,6 +2076,19 @@ class AppL10nBn extends AppL10n {
   String get adminCatalogErrCategoryWrongSection => 'এই ক্যাটাগরি অন্য সেকশনের';
 
   @override
+  String get adminCatalogErrClassNotAllowed =>
+      'শ্রেণি ৬–১২, আর শুধু স্কুল ও কলেজের বইয়ে।';
+
+  @override
+  String get adminCatalogErrExamNotAllowed => 'এই বিভাগে এই পরীক্ষা নেই।';
+
+  @override
+  String get adminCatalogFieldSubject => 'বিষয়';
+
+  @override
+  String get adminCatalogFieldNoSubject => 'কোনো বিষয় নেই';
+
+  @override
   String get adminCatalogErrNoEditions => 'অন্তত একটি সংস্করণ যোগ করুন';
 
   @override
@@ -2083,6 +2128,121 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get adminCatalogAddBook => 'বই যোগ করুন';
+
+  @override
+  String get adminCatalogIsbnLookupField => 'খোঁজার জন্য আইএসবিএন';
+
+  @override
+  String get adminCatalogLookUp => 'খুঁজুন';
+
+  @override
+  String get adminCatalogIsbnNotFound => 'পাওয়া যায়নি — নিজে পূরণ করুন।';
+
+  @override
+  String get adminCatalogIsbnInCatalog => 'ক্যাটালগে আগেই আছে';
+
+  @override
+  String get adminCatalogOpen => 'খুলুন';
+
+  @override
+  String get adminCatalogMoreTools => 'আরও টুল';
+
+  @override
+  String get adminCatalogLowStock => 'স্টক কম';
+
+  @override
+  String get adminCatalogLowStockEmpty => 'সব বইয়ের যথেষ্ট স্টক আছে।';
+
+  @override
+  String adminCatalogStockLeft(int count) {
+    return '$countটি বাকি';
+  }
+
+  @override
+  String get adminCatalogSetStock => 'স্টক বদলান';
+
+  @override
+  String get adminCatalogImport => 'CSV ইমপোর্ট';
+
+  @override
+  String get adminCatalogImportHint =>
+      'এই হেডারসহ সারি পেস্ট করুন। এক সারি মানে এক সংস্করণ; একই শিরোনাম আর লেখকের সারিগুলো মিলে একটি বই।';
+
+  @override
+  String get adminCatalogImportField => 'CSV সারি';
+
+  @override
+  String get adminCatalogImportExample => 'উদাহরণ বসান';
+
+  @override
+  String get adminCatalogImportCheck => 'যাচাই করুন';
+
+  @override
+  String adminCatalogImportBooks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি বই ইমপোর্ট করুন',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminCatalogImportEditions(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি সংস্করণ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get adminCatalogImportNewAuthor => 'নতুন লেখক';
+
+  @override
+  String get adminCatalogImportNewPublisher => 'নতুন প্রকাশক';
+
+  @override
+  String adminCatalogImportRow(int row) {
+    return 'সারি $row:';
+  }
+
+  @override
+  String get adminCatalogImportColumns => '১২টি কলাম লাগবে';
+
+  @override
+  String get adminCatalogImportBlank => 'শিরোনাম, লেখক আর প্রকাশক লাগবে';
+
+  @override
+  String adminCatalogImportSection(String value) {
+    return 'অজানা বিভাগ “$value”';
+  }
+
+  @override
+  String adminCatalogImportCategory(String value) {
+    return 'অজানা ক্যাটাগরি “$value”';
+  }
+
+  @override
+  String adminCatalogImportFormat(String value) {
+    return 'অজানা ফরম্যাট “$value”';
+  }
+
+  @override
+  String adminCatalogImportLanguage(String value) {
+    return 'অজানা ভাষা “$value”';
+  }
+
+  @override
+  String adminCatalogImportNumber(String value) {
+    return '“$value” পূর্ণসংখ্যা নয়';
+  }
+
+  @override
+  String adminCatalogImportDone(int imported, int skipped) {
+    return '$importedটি বই ইমপোর্ট হয়েছে, $skippedটি বাদ গেছে।';
+  }
 
   @override
   String get adminCatalogEditBook => 'বই সম্পাদনা';

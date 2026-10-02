@@ -4,6 +4,7 @@ import '../../../../core/models/book.dart';
 import '../../domain/entities/author.dart';
 import '../../domain/entities/category.dart';
 import '../../domain/entities/publisher.dart';
+import '../../domain/entities/subject.dart';
 
 part 'catalog_record_models.freezed.dart';
 part 'catalog_record_models.g.dart';
@@ -46,6 +47,18 @@ abstract class PublisherModel with _$PublisherModel {
       _$PublisherModelFromJson(json);
 }
 
+@freezed
+abstract class SubjectModel with _$SubjectModel {
+  const factory SubjectModel({
+    required String id,
+    required String nameEn,
+    required String nameBn,
+  }) = _SubjectModel;
+
+  factory SubjectModel.fromJson(Map<String, dynamic> json) =>
+      _$SubjectModelFromJson(json);
+}
+
 extension CategoryModelX on CategoryModel {
   Category toEntity() =>
       Category(id: id, section: section, nameEn: nameEn, nameBn: nameBn);
@@ -57,4 +70,8 @@ extension AuthorModelX on AuthorModel {
 
 extension PublisherModelX on PublisherModel {
   Publisher toEntity() => Publisher(id: id, name: name, nameBn: nameBn);
+}
+
+extension SubjectModelX on SubjectModel {
+  Subject toEntity() => Subject(id: id, nameEn: nameEn, nameBn: nameBn);
 }

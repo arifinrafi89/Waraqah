@@ -20,7 +20,12 @@ abstract final class BooklistFixtures {
       titleBn: 'অষ্টম শ্রেণির বইয়ের তালিকা',
       noteEn: 'What most Dhaka schools ask for at the start of the year.',
       noteBn: 'বছরের শুরুতে ঢাকার বেশিরভাগ স্কুল যে বইগুলো চায়।',
-      bookIds: ['bk-english-grammar', 'bk-general-math', 'bk-matilda'],
+      bookIds: [
+        'bk-class8-math',
+        'bk-english-grammar',
+        'bk-general-math',
+        'bk-matilda',
+      ],
     ),
     BooklistModel(
       id: 'bl-hsc-physics',
@@ -29,7 +34,12 @@ abstract final class BooklistFixtures {
       titleBn: 'এইচএসসি পদার্থবিজ্ঞান প্রস্তুতি',
       noteEn: 'The maths HSC physics leans on, from basics to calculus.',
       noteBn: 'এইচএসসি পদার্থবিজ্ঞানে যে গণিত লাগে, ভিত্তি থেকে ক্যালকুলাস।',
-      bookIds: ['bk-general-math', 'bk-calculus'],
+      bookIds: [
+        'bk-hsc-physics-1',
+        'bk-hsc-higher-math',
+        'bk-general-math',
+        'bk-calculus',
+      ],
     ),
     BooklistModel(
       id: 'bl-book-club-alchemist',

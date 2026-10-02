@@ -20,6 +20,9 @@ abstract class BookDraft with _$BookDraft {
     @Default(BookLanguage.bangla) BookLanguage originalLanguage,
     @Default(0) int coverSeed,
     @Default(<Edition>[]) List<Edition> editions,
+    @Default(<int>[]) List<int> classes,
+    @Default(<Exam>[]) List<Exam> exams,
+    @Default('') String subjectId,
   }) = _BookDraft;
 
   /// The form for an existing [book].
@@ -34,5 +37,8 @@ abstract class BookDraft with _$BookDraft {
     originalLanguage: book.originalLanguage,
     coverSeed: book.coverSeed,
     editions: book.editions,
+    classes: book.classes,
+    exams: book.exams,
+    subjectId: book.subjectId ?? '',
   );
 }

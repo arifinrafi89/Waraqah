@@ -87,6 +87,7 @@ abstract final class GeneralShelf {
       publisherId: 'pub-prentice-hall',
       rating: 4.6,
       tags: ['Academic', 'Software'],
+      subjectId: 'sub-ict',
       categoryId: 'cat-academic',
       coverSeed: 0,
       section: Section.academic,

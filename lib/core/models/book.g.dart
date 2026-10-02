@@ -30,6 +30,17 @@ _Book _$BookFromJson(Map<String, dynamic> json) => _Book(
   shortTitle: json['shortTitle'] as String?,
   titleBn: json['titleBn'] as String?,
   hidden: json['hidden'] as bool? ?? false,
+  classes:
+      (json['classes'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList() ??
+      const <int>[],
+  exams:
+      (json['exams'] as List<dynamic>?)
+          ?.map((e) => $enumDecode(_$ExamEnumMap, e))
+          .toList() ??
+      const <Exam>[],
+  subjectId: json['subjectId'] as String?,
 );
 
 Map<String, dynamic> _$BookToJson(_Book instance) => <String, dynamic>{
@@ -49,6 +60,9 @@ Map<String, dynamic> _$BookToJson(_Book instance) => <String, dynamic>{
   'shortTitle': instance.shortTitle,
   'titleBn': instance.titleBn,
   'hidden': instance.hidden,
+  'classes': instance.classes,
+  'exams': instance.exams.map((e) => _$ExamEnumMap[e]!).toList(),
+  'subjectId': instance.subjectId,
 };
 
 const _$SectionEnumMap = {
@@ -66,4 +80,11 @@ const _$BookLanguageEnumMap = {
   BookLanguage.bangla: 'bangla',
   BookLanguage.english: 'english',
   BookLanguage.arabic: 'arabic',
+};
+
+const _$ExamEnumMap = {
+  Exam.ssc: 'ssc',
+  Exam.hsc: 'hsc',
+  Exam.admission: 'admission',
+  Exam.bcs: 'bcs',
 };

@@ -2,7 +2,7 @@
 import '../../../home/data/models/banner_model.dart';
 import '../../../home/data/sources/banner_fixtures.dart';
 import '../../domain/entities/catalog_admin_rules.dart';
-import 'catalog_admin_fake_store.dart';
+import 'unique_id.dart';
 
 /// Staff's changes to Home's Banners on the fake backend. Each answers
 /// every Banner in display order, or `null` when refused.
@@ -17,7 +17,7 @@ abstract final class CatalogAdminFakeBanners {
     if (CatalogAdminRules.banner(banner.toEntity()).isNotEmpty) return null;
     final ids = [for (final b in BannerFixtures.all) b.id];
     if (banner.id.isEmpty) {
-      final id = CatalogAdminFakeStore.uniqueId('ban', banner.titleEn, ids);
+      final id = uniqueId('ban', banner.titleEn, ids);
       BannerFixtures.all.add(banner = banner.copyWith(id: id));
     } else if (ids.contains(banner.id)) {
       BannerFixtures.all[ids.indexOf(banner.id)] = banner;

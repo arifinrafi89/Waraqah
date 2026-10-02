@@ -3,7 +3,10 @@ import '../../../home/domain/entities/banner.dart';
 import '../../../home/domain/entities/season.dart';
 import '../entities/book_draft.dart';
 import '../entities/catalog_record.dart';
+import '../entities/import_book.dart';
+import '../entities/isbn_lookup.dart';
 import '../entities/list_draft.dart';
+import '../entities/low_stock_edition.dart';
 
 /// Staff's changes to the catalog. A refused change throws.
 abstract interface class CatalogAdminRepository {
@@ -39,4 +42,18 @@ abstract interface class CatalogAdminRepository {
   Future<void> saveList(ListDraft draft);
 
   Future<void> deleteList(String id, {required bool booklist});
+
+  /// `null` when nobody knows [isbn] (an ISBN-13).
+  Future<IsbnLookup?> lookUpIsbn(String isbn);
+
+  /// Adds [books], creating new Authors and Publishers; the server checks
+  /// each again and skips the ones it refuses.
+  Future<ImportResult> importBooks(List<ImportBook> books);
+
+  /// Printed Editions at or under `CatalogAdminRules.lowStock`, lowest
+  /// first.
+  Future<List<LowStockEdition>> lowStock();
+
+  /// Refused for an eBook or a negative [stock].
+  Future<void> setEditionStock(String editionId, int stock);
 }

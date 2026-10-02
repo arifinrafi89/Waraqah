@@ -10,6 +10,8 @@ import 'seed/islamic_scholars_shelf.dart';
 import 'seed/islamic_shelf.dart';
 import 'seed/prep_school_shelf.dart';
 import 'seed/skills_children_shelf.dart';
+import 'seed/textbook_more_shelf.dart';
+import 'seed/textbook_shelf.dart';
 
 /// Offline catalog used until the Go backend is deployed.
 ///
@@ -32,6 +34,8 @@ abstract final class BookFixtures {
       ...FictionMoreShelf.books,
       ...PrepSchoolShelf.books,
       ...SkillsChildrenShelf.books,
+      ...TextbookShelf.books,
+      ...TextbookMoreShelf.books,
     ])
       book.copyWith(titleBn: BanglaTitles.byBook[book.id]),
   ];

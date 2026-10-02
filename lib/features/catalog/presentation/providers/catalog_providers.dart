@@ -11,10 +11,11 @@ import '../../domain/entities/catalog_filters.dart';
 import '../../domain/entities/category.dart';
 import '../../domain/entities/collection.dart';
 import '../../domain/entities/publisher.dart';
+import '../../domain/entities/subject.dart';
 import '../../domain/repositories/book_repository.dart';
 import '../../domain/usecases/get_collections.dart';
-import '../../domain/usecases/get_section_books.dart';
 import '../../domain/repositories/catalog_records_repository.dart';
+import 'section_filters_provider.dart';
 
 /// The catalog block's public Riverpod surface. Other features (home, the AI
 /// assistant) read [bookRepositoryProvider] and never see the data layer.
@@ -72,9 +73,19 @@ final publisherBooksProvider = FutureProvider.family<List<Book>, String>(
       .searchCatalog(CatalogFilters(publisherId: id)),
 );
 
-/// Every Book in one Section, newest first.
-final sectionBooksProvider = FutureProvider.family<List<Book>, Section>(
-  (ref, section) => GetSectionBooks(ref.watch(bookRepositoryProvider))(section),
+/// The Books in one Section with its page's Class, Exam and Subject picks,
+/// newest first.
+final sectionBooksProvider = FutureProvider.autoDispose
+    .family<List<Book>, Section>(
+      (ref, section) => ref
+          .watch(bookRepositoryProvider)
+          .searchCatalog(ref.watch(sectionFiltersProvider(section))),
+    );
+
+/// Subjects with Books in a Section; every Subject for `null`.
+final subjectsProvider = FutureProvider.family<List<Subject>, Section?>(
+  (ref, section) =>
+      ref.watch(catalogRecordsRepositoryProvider).subjects(section),
 );
 
 /// Every Collection (`null`), or one Section's, Expert Picks included.

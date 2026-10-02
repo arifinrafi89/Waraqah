@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/models/book.dart';
 import '../../../../core/models/edition.dart';
+import '../../../../core/models/section_academics.dart';
 import '../../../catalog/presentation/providers/catalog_providers.dart';
 import '../../domain/entities/book_draft.dart';
 import '../../domain/entities/catalog_admin_rules.dart';
@@ -45,12 +46,19 @@ class BookFormNotifier extends AsyncNotifier<BookForm> {
     return (draft: BookDraft.of(book), hidden: book.hidden, errors: _none);
   }
 
-  /// Changes the draft. A new Section clears a Category from another one.
-  /// Problems already shown are checked again as Staff fix them.
+  /// Changes the draft. A new Section clears a Category from another one,
+  /// and Classes, Exams and Subject it doesn't offer. Problems already
+  /// shown are checked again as Staff fix them.
   Future<void> edit(BookDraft Function(BookDraft) change) async {
     var draft = change(_form.draft);
-    if (draft.section != _form.draft.section) {
-      draft = draft.copyWith(categoryId: '');
+    final section = draft.section;
+    if (section != _form.draft.section) {
+      draft = draft.copyWith(
+        categoryId: '',
+        classes: draft.classes.where(section.classLevels.contains).toList(),
+        exams: draft.exams.where(section.allowedExams.contains).toList(),
+        subjectId: section.hasSubjects ? draft.subjectId : '',
+      );
     }
     _set(draft: draft);
     if (_form.errors.isNotEmpty) await _check();

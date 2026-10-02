@@ -450,6 +450,38 @@ class AppL10nEn extends AppL10n {
   String get sectionEmpty => 'No books in this Section yet.';
 
   @override
+  String get sectionClassRow => 'Class';
+
+  @override
+  String get sectionExamRow => 'Exam';
+
+  @override
+  String get sectionSubjectRow => 'Subject';
+
+  @override
+  String sectionClassChip(int n) {
+    return 'Class $n';
+  }
+
+  @override
+  String get sectionExamSsc => 'SSC';
+
+  @override
+  String get sectionExamHsc => 'HSC';
+
+  @override
+  String get sectionExamAdmission => 'Admission';
+
+  @override
+  String get sectionExamBcs => 'BCS';
+
+  @override
+  String get sectionFilterEmpty => 'No books for this choice yet.';
+
+  @override
+  String get sectionClearFilters => 'Clear filters';
+
+  @override
   String get collectionStripTitle => 'Collections';
 
   @override
@@ -2129,6 +2161,20 @@ class AppL10nEn extends AppL10n {
       'This category is in another section';
 
   @override
+  String get adminCatalogErrClassNotAllowed =>
+      'Classes 6–12, and only on School & College books.';
+
+  @override
+  String get adminCatalogErrExamNotAllowed =>
+      'This Section doesn\'t offer that Exam.';
+
+  @override
+  String get adminCatalogFieldSubject => 'Subject';
+
+  @override
+  String get adminCatalogFieldNoSubject => 'No Subject';
+
+  @override
   String get adminCatalogErrNoEditions => 'Add at least one edition';
 
   @override
@@ -2168,6 +2214,124 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get adminCatalogAddBook => 'Add book';
+
+  @override
+  String get adminCatalogIsbnLookupField => 'ISBN to look up';
+
+  @override
+  String get adminCatalogLookUp => 'Look up';
+
+  @override
+  String get adminCatalogIsbnNotFound => 'Not found — fill in by hand.';
+
+  @override
+  String get adminCatalogIsbnInCatalog => 'Already in the catalog';
+
+  @override
+  String get adminCatalogOpen => 'Open';
+
+  @override
+  String get adminCatalogMoreTools => 'More tools';
+
+  @override
+  String get adminCatalogLowStock => 'Low stock';
+
+  @override
+  String get adminCatalogLowStockEmpty => 'All stocked up.';
+
+  @override
+  String adminCatalogStockLeft(int count) {
+    return '$count left';
+  }
+
+  @override
+  String get adminCatalogSetStock => 'Set stock';
+
+  @override
+  String get adminCatalogImport => 'Import CSV';
+
+  @override
+  String get adminCatalogImportHint =>
+      'Paste rows with this header. One row is one Edition; rows with the same title and Author make one Book.';
+
+  @override
+  String get adminCatalogImportField => 'CSV rows';
+
+  @override
+  String get adminCatalogImportExample => 'Paste example';
+
+  @override
+  String get adminCatalogImportCheck => 'Check';
+
+  @override
+  String adminCatalogImportBooks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Import $count books',
+      one: 'Import 1 book',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminCatalogImportEditions(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count editions',
+      one: '1 edition',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get adminCatalogImportNewAuthor => 'new Author';
+
+  @override
+  String get adminCatalogImportNewPublisher => 'new Publisher';
+
+  @override
+  String adminCatalogImportRow(int row) {
+    return 'Row $row:';
+  }
+
+  @override
+  String get adminCatalogImportColumns => 'needs 12 columns';
+
+  @override
+  String get adminCatalogImportBlank =>
+      'title, Author and Publisher are needed';
+
+  @override
+  String adminCatalogImportSection(String value) {
+    return 'unknown Section “$value”';
+  }
+
+  @override
+  String adminCatalogImportCategory(String value) {
+    return 'unknown Category “$value”';
+  }
+
+  @override
+  String adminCatalogImportFormat(String value) {
+    return 'unknown format “$value”';
+  }
+
+  @override
+  String adminCatalogImportLanguage(String value) {
+    return 'unknown language “$value”';
+  }
+
+  @override
+  String adminCatalogImportNumber(String value) {
+    return '“$value” isn\'t a whole number';
+  }
+
+  @override
+  String adminCatalogImportDone(int imported, int skipped) {
+    return 'Imported $imported books, skipped $skipped.';
+  }
 
   @override
   String get adminCatalogEditBook => 'Edit book';

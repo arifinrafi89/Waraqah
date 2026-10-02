@@ -3,18 +3,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../home/domain/entities/banner.dart';
 import '../../../home/domain/entities/season.dart';
 import '../../domain/entities/catalog_record.dart';
+import '../../domain/entities/import_book.dart';
 import '../../domain/repositories/catalog_admin_repository.dart';
 import '../../domain/usecases/delete_banner.dart';
 import '../../domain/usecases/delete_record.dart';
+import '../../domain/usecases/import_books.dart';
 import '../../domain/usecases/move_banner.dart';
 import '../../domain/usecases/save_banner.dart';
 import '../../domain/usecases/save_record.dart';
 import '../../domain/usecases/season_override.dart';
+import '../../domain/usecases/set_edition_stock.dart';
 import 'catalog_admin_providers.dart';
 
-/// Staff's changes to Categories, Authors, Publishers, Banners and Home's
-/// Season. Each
-/// refreshes the catalog after, so the whole app sees it.
+/// Staff's changes to Categories, Authors, Publishers, Banners, Home's
+/// Season, stock and CSV imports. Each refreshes the catalog after, so the whole app
+/// sees it.
 class CatalogAdminActions {
   CatalogAdminActions(this._ref);
 
@@ -41,6 +44,12 @@ class CatalogAdminActions {
   /// Forces [season] on Home, or `null` to pick it by date again.
   Future<void> setSeason(Season? season) =>
       _refreshAfter(SetSeasonOverride(_repository)(season));
+
+  Future<ImportResult> importBooks(List<ImportBook> books) =>
+      _refreshAfter(ImportBooks(_repository)(books));
+
+  Future<void> setStock(String editionId, int stock) =>
+      _refreshAfter(SetEditionStock(_repository)((editionId, stock)));
 
   Future<T> _refreshAfter<T>(Future<T> change) async {
     final result = await change;
