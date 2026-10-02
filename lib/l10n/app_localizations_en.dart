@@ -57,13 +57,7 @@ class AppL10nEn extends AppL10n {
       'Share a thought about what you are reading...';
 
   @override
-  String get bitesPost => 'Post bite';
-
-  @override
-  String get bitesReply => 'Reply';
-
-  @override
-  String get bitesRepost => 'Repost';
+  String get bitesPost => 'Post';
 
   @override
   String get bitesLike => 'Like';
@@ -72,10 +66,306 @@ class AppL10nEn extends AppL10n {
   String get bitesPosted => 'Your bite was added to the feed.';
 
   @override
-  String get bitesYou => 'You';
+  String get bitesForYou => 'For You';
 
   @override
-  String get bitesReaderHandle => 'reader';
+  String get bitesFollowing => 'Following';
+
+  @override
+  String get bitesFollowingLogin =>
+      'Log in to see Bites from readers you follow.';
+
+  @override
+  String get bitesLogIn => 'Log in';
+
+  @override
+  String get bitesEmpty => 'No Bites here yet.';
+
+  @override
+  String get bitesFollowingEmpty => 'Follow readers to see their Bites here.';
+
+  @override
+  String get bitesEdited => 'edited';
+
+  @override
+  String get bitesNow => 'now';
+
+  @override
+  String bitesMinutesAgo(int n) {
+    return '${n}m';
+  }
+
+  @override
+  String bitesHoursAgo(int n) {
+    return '${n}h';
+  }
+
+  @override
+  String bitesDaysAgo(int n) {
+    return '${n}d';
+  }
+
+  @override
+  String get bitesComments => 'Comments';
+
+  @override
+  String get bitesShare => 'Share';
+
+  @override
+  String get bitesCopied => 'Link copied. Paste it anywhere to share.';
+
+  @override
+  String get bitesMore => 'More';
+
+  @override
+  String get bitesEdit => 'Edit';
+
+  @override
+  String get bitesDelete => 'Delete';
+
+  @override
+  String get bitesDeleteConfirm => 'Delete this Bite?';
+
+  @override
+  String get bitesDeleteBody => 'Its comments are deleted too.';
+
+  @override
+  String get bitesCancel => 'Cancel';
+
+  @override
+  String get bitesDeleted => 'Bite deleted.';
+
+  @override
+  String get bitesMakeQuote => 'Make a quote card';
+
+  @override
+  String bitesSpoilerAbout(String title) {
+    return 'Spoiler about $title: tap to show';
+  }
+
+  @override
+  String get bitesComposeTitle => 'New Bite';
+
+  @override
+  String get bitesEditTitle => 'Edit Bite';
+
+  @override
+  String get bitesTagBook => 'Tag a book';
+
+  @override
+  String get bitesTagHint => 'Search by title or author';
+
+  @override
+  String get bitesRemoveTag => 'Remove tag';
+
+  @override
+  String get bitesSpoiler => 'Spoiler';
+
+  @override
+  String get bitesSpoilerHint =>
+      'Blurred until readers tap it. Needs a book tag.';
+
+  @override
+  String get bitesSave => 'Save';
+
+  @override
+  String get bitesSaved => 'Bite saved.';
+
+  @override
+  String bitesTooLong(int max) {
+    return 'Too long: $max characters at most.';
+  }
+
+  @override
+  String get bitesWrite => 'Write a Bite';
+
+  @override
+  String get bitesBite => 'Bite';
+
+  @override
+  String get bitesNoComments => 'No comments yet. Start the conversation.';
+
+  @override
+  String get bitesCommentHint => 'Write a comment…';
+
+  @override
+  String get bitesReply => 'Reply';
+
+  @override
+  String bitesReplyingTo(String name) {
+    return 'Replying to $name';
+  }
+
+  @override
+  String get bitesCancelReply => 'Cancel reply';
+
+  @override
+  String get bitesLogInToComment => 'Log in to comment';
+
+  @override
+  String get bitesSend => 'Send';
+
+  @override
+  String get bitesDeleteComment => 'Delete comment';
+
+  @override
+  String get bitesCommentDeleted => 'Comment deleted.';
+
+  @override
+  String get bitesAboutBook => 'Bites about this book';
+
+  @override
+  String get bitesPostAboutBook => 'Post a Bite about this book';
+
+  @override
+  String get bitesNoneAboutBook => 'No Bites about this book yet.';
+
+  @override
+  String get bitesSeeAll => 'See all';
+
+  @override
+  String get reviewTitle => 'Reviews';
+
+  @override
+  String reviewSummary(String average, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count reviews',
+      one: '1 review',
+    );
+    return '$average · $_temp0';
+  }
+
+  @override
+  String get reviewNone => 'No reviews yet. Be the first.';
+
+  @override
+  String get reviewWrite => 'Write a review';
+
+  @override
+  String get reviewEdit => 'Edit your review';
+
+  @override
+  String get reviewVerified => 'Verified Purchase';
+
+  @override
+  String get reviewYourRating => 'Your rating';
+
+  @override
+  String reviewStar(int n) {
+    return '$n of 5 stars';
+  }
+
+  @override
+  String get reviewTextHint => 'What did you think? (optional)';
+
+  @override
+  String get reviewSave => 'Save review';
+
+  @override
+  String get reviewSaved => 'Review saved.';
+
+  @override
+  String get reviewDelete => 'Delete';
+
+  @override
+  String get reviewDeleteConfirm => 'Delete your review?';
+
+  @override
+  String get reviewDeleted => 'Review deleted.';
+
+  @override
+  String get reviewCancel => 'Cancel';
+
+  @override
+  String get reviewMore => 'More';
+
+  @override
+  String get reviewYou => 'You';
+
+  @override
+  String get reviewEdited => 'edited';
+
+  @override
+  String get readerTitle => 'Reader';
+
+  @override
+  String readerMemberSince(String date) {
+    return 'Member since $date';
+  }
+
+  @override
+  String readerFollowers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count followers',
+      one: '1 follower',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String readerFollowingCount(int count) {
+    return '$count following';
+  }
+
+  @override
+  String get readerFollow => 'Follow';
+
+  @override
+  String get readerFollowing => 'Following';
+
+  @override
+  String readerSeeBooks(int count) {
+    return 'See their books for sale ($count)';
+  }
+
+  @override
+  String get readerBites => 'Bites';
+
+  @override
+  String get readerNoBites => 'No Bites yet.';
+
+  @override
+  String get readerPrivate => 'This reader keeps their profile private.';
+
+  @override
+  String get readerSeeBites => 'See their Bites';
+
+  @override
+  String get readerYourPage => 'Your Reader page';
+
+  @override
+  String get quoteTitle => 'Quote card';
+
+  @override
+  String get quoteHint => 'Type a line you loved';
+
+  @override
+  String get quoteStyle => 'Style';
+
+  @override
+  String get quoteStylePaper => 'Paper';
+
+  @override
+  String get quoteStyleInk => 'Ink';
+
+  @override
+  String get quoteStyleLeaf => 'Leaf';
+
+  @override
+  String get quoteStyleCover => 'Cover';
+
+  @override
+  String get quoteShare => 'Share image';
+
+  @override
+  String get quoteMark => 'Waraqah';
+
+  @override
+  String get bitesYou => 'You';
 
   @override
   String get authLogIn => 'Log In';
@@ -2282,6 +2572,28 @@ class AppL10nEn extends AppL10n {
   @override
   String get notificationBookWantedBody =>
       'You have a copy listed. See their request on My Listings.';
+
+  @override
+  String notificationNewFollower(String name) {
+    return '$name started following you';
+  }
+
+  @override
+  String get notificationNewFollowerBody =>
+      'Their Bites can show in your Following feed if you follow back.';
+
+  @override
+  String notificationBiteComment(String name) {
+    return '$name commented on your Bite';
+  }
+
+  @override
+  String notificationCommentReply(String name) {
+    return '$name replied to your comment';
+  }
+
+  @override
+  String get notificationCommentReplyBody => 'Open the Bite to read it.';
 
   @override
   String get profilePrivacy => 'Privacy';

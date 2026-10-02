@@ -1,16 +1,44 @@
-import '../../../../core/cache/ttl_cache.dart';
 import '../../domain/entities/bite.dart';
+import '../../domain/entities/bite_query.dart';
 import '../../domain/repositories/bite_repository.dart';
-import '../sources/bite_fixtures.dart';
+import '../models/bite_model.dart';
+import '../sources/bite_remote_source.dart';
 
-/// Cached feed reader. Swaps to Dio once `GET /bites` ships from the Go repo.
+/// No cache: likes and comments change what every feed shows.
 class BiteRepositoryImpl implements BiteRepository {
-  final TtlCache<List<Bite>> _cache = TtlCache(ttl: const Duration(minutes: 2));
+  BiteRepositoryImpl(this._source);
+
+  final BiteRemoteSource _source;
 
   @override
-  Future<List<Bite>> fetchFeed({int limit = 10}) =>
-      _cache.resolve('feed:$limit', () async {
-        await Future<void>.delayed(const Duration(milliseconds: 750));
-        return BiteFixtures.feed.take(limit).toList();
-      });
+  Future<List<Bite>> feed(BiteQuery query) async => [
+    for (final m in await _source.feed(query)) m.toEntity(),
+  ];
+
+  @override
+  Future<BiteDetail> detail(String id) async =>
+      (await _source.detail(id)).toEntity();
+
+  @override
+  Future<Bite> save(BiteDraft draft) async =>
+      (await _source.save(draft)).toEntity();
+
+  @override
+  Future<void> delete(String id) => _source.delete(id);
+
+  @override
+  Future<Bite> like(String id, {required bool liked}) async =>
+      (await _source.like(id, liked: liked)).toEntity();
+
+  @override
+  Future<BiteDetail> comment(
+    String biteId,
+    String text, {
+    String? parentId,
+  }) async =>
+      (await _source.comment(biteId, text, parentId: parentId)).toEntity();
+
+  @override
+  Future<BiteDetail> deleteComment(String id) async =>
+      (await _source.deleteComment(id)).toEntity();
 }

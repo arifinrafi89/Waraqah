@@ -7,6 +7,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../readers/readers_routes.dart';
 import '../../../report/domain/entities/content_report.dart';
 import '../../../report/presentation/widgets/report_menu_button.dart';
 import '../../p2p_routes.dart';
@@ -78,6 +79,16 @@ class SellerPage extends ConsumerWidget {
                         ),
                         children: [
                           SellerSummary(seller: seller),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextButton.icon(
+                              icon: const Icon(Icons.forum_outlined),
+                              label: Text(l10n.readerSeeBites),
+                              onPressed: () => context.push(
+                                ReadersRoutes.readerFor(seller.id),
+                              ),
+                            ),
+                          ),
                           const SizedBox(height: Insets.lg),
                           SellerListings(listings: seller.listings),
                           const SizedBox(height: Insets.lg),

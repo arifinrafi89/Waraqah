@@ -122,6 +122,10 @@ The app also has:
 - **Accounts are done** (Niloy #108, Rahinur): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`). Sign-up keeps the name; the demo OTP is `123456` (`AuthFixtures.demoOtp`), any other code is refused.
 - **Profile and settings are done** (Rahinur): `ProfileRoutes.edit|addresses|settings` (signed-in only); `/profile`, `/profile/prefs`, `/addresses…`, `/geo`. Edit profile saves name, BD mobile and photo (`ProfileRules`) and renames the session (`SessionNotifier.rename`). Saved addresses (`SavedAddress`, `addressesProvider` in `features/profile`) are the ones checkout uses; the default is preselected, and checkout's "Add a new address" opens `ProfileRoutes.addressesAdd`. Division → district → upazila pickers read `/geo` (`geoProvider`). Settings: one switch per notification group (`ProfilePrefs.muted`), two privacy switches (saved for Bites and reading life), delete account. Theme, language and the Ayah switch stay on the Profile tab (device settings).
 - **Notifications are done** (Rahinur): `features/notifications`, `NotificationsRoutes.center` (`/notifications`, signed-in only), `NotificationBell` (Home's top bar + Profile), live via `/notifications/live`. Fake backends send with `NotificationFakeStore.send(readerId, kind, params:, target:)`, or the one-line helpers in `NotificationSends` / `NotificationSaleSends`; the text comes from ARB per kind (`notificationText`), and a target opens its page (`notificationRoute`). Senders today: order status and returns, Listing decisions, warnings and bans, handled sales, Sell Back, price and stock alerts (`AlertFakeStore.sweep`, run by `CatalogAdminFakeStore.onChanged`), book requests. A muted group is dropped; moderation can't be muted. Offers and messages stay in the inbox.
+- **Bites are done** (Rahinur): `features/bites`. Routes: the tab, `BitesRoutes.compose` / `composeFor(id:, bookId:)` (signed-in only), `detailFor(id)`, `forBook(id)`, `quote` / `quoteFor(text:, bookId:)`. Fake API `/bites?feed=forYou|following&bookId=&authorId=` (30 newest), `/bites/detail`, `/bites/post|edit|delete|like`, `/bites/comments/post|delete` (`BiteFakeStore`, seeded by `BiteFixtures`). `BiteRules`: 500 graphemes per Bite, 300 per comment, a spoiler needs a Book tag. For You and Following tabs, a full-page composer with catalog autocomplete for the tag, spoilers blurred until tapped, like, share (copies a link), comments with one level of replies. Feeds leave out blocked and banned readers; a banned Reader can't post or comment. Home's strip reads For You (`biteFeedProvider`).
+- **Reviews are done** (Rahinur): `features/reviews`, `ReviewsRoutes.forBook(id)`; fake API `/reviews?bookId=`, `/reviews/save`, `/reviews/delete` (`ReviewFakeStore`). One review per Reader per Book (`ReviewRules`: 1–5 stars, text up to 1000). The book page shows `BookReviewsPanel` and `BookBitesPanel` (in `features/bites`). Verified Purchase = "me" has a delivered, non-donation order line for the Book. Saving or deleting sets the Book's `rating` to the reviews' average.
+- **Readers and follow are done** (Rahinur): `features/readers`, `ReadersRoutes.readerFor(id)` (`me` for your own page); fake API `/readers/detail`, `/readers/follow` (`FollowFakeStore`). The Reader page respects "profile visible" (a private one shows only the name and Follow). Bite authors, commenters, reviewers, the seller page ("See their Bites") and the Profile header open it. Profile's "Bites posted" and "Listings" come from `/readers/detail?id=me`. Follows, comments and replies send `newFollower`, `biteComment` and `commentReply` notifications (Community group).
+- **Quote cards are done** (Rahinur): `/bites/quote` turns a quote (and an optional Book) into a 4:5 card in four styles and shares it as a PNG with `share_plus` (`quoteSharerProvider`). Opens from the Bites tab and any Bite's menu.
 - **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
 - `main` passes `flutter analyze` with no issues, and all tests pass.
@@ -141,6 +145,8 @@ The app also has:
 | Storage | `shared_preferences` (settings, session) |
 | UI | `google_fonts`, `shimmer`, Material 3 with our own theme |
 | Barcode scanner | `mobile_scanner` (camera; Android, iOS, macOS, web) |
+| Sharing | `share_plus` (quote card images) |
+| Text | `characters` (Bite lengths in graphemes) |
 | Tests | `flutter_test`, `fake_async` |
 | Backend (later) | Go + PostgreSQL, separate repo |
 
@@ -174,7 +180,7 @@ lib/
 ├── features/
 │   ├── admin/  ai_assistant/  alerts/  auth/  bites/  book_request/  cart/  catalog/  checkout/
 │   ├── finished_it/  handled_sale/  sell_back/  notifications/
-│   ├── deals/  donate/  home/  inbox/  loyalty/  moderation/  orders/  p2p/  profile/  report/  scan/
+│   ├── deals/  donate/  home/  inbox/  loyalty/  moderation/  orders/  p2p/  profile/  readers/  report/  reviews/  scan/
 │   ├── wallet/  wishlist/
 └── l10n/                   app_en.arb, app_bn.arb (+ generated AppL10n)
 ```
@@ -240,7 +246,8 @@ features/<feature>/
   - checkout, orders and the wallet share `OrderFakeStore` and `WalletFakeStore`;
   - the inbox reserves and sells `P2pFakeStore`'s listings;
   - checkout's `/orders/place` delivers to Profile's `AddressFakeStore`;
-  - orders, moderation, handled sales, Sell Back, alerts (`AlertFakeStore`) and book requests send to `NotificationFakeStore`.
+  - orders, moderation, handled sales, Sell Back, alerts (`AlertFakeStore`), book requests, Bites and follows send to `NotificationFakeStore`;
+  - moderation deletes removed Bites, comments and reviews in `BiteFakeStore` and `ReviewFakeStore`.
   - A fake backend file may import another feature's `data/sources` for this, with a comment saying why. App code never does (§4.2).
 - **One signed-in reader.** The fake backend has one signed-in reader ("me"), the way the real server will know who is asking from the login token. JSON says what's theirs (`isMine`, `isMyDeal`, a thread's `role`); the app never compares names.
 - **Live updates.** A handler may answer a `ResponseBody` stream. `/inbox/live` streams server-sent events, one `data: {...}` line per change. `InboxLiveSource` reads it through `dioProvider` with `ResponseType.stream`, and the Go backend should stream the same lines. Providers listen to `inboxChangesProvider` and reload what changed.
@@ -337,6 +344,12 @@ Use these words in code, tests and PRs. Don't drift to the "avoid" words.
 | **Expert Pick** | A Collection made by an Expert, with their note on why. | |
 | **Booklist** | Any list of books needed together: a class list, exam prep, book club or a Reader's own list. Bought together: 'Add whole list to cart'. | course list |
 | **Bite** | A short post in the Book-Bites feed | tweet |
+| **Spoiler** | A Bite blurred until tapped; it must tag the Book it spoils. | |
+| **Quote card** | A quote from a Book rendered as an image to share. | |
+| **Review** | A Reader's 1–5 stars and optional text on a Book, one per Book. | rating (that's for buyers and sellers) |
+| **Verified Purchase** | The Reader got this Book delivered from Waraqah. | |
+| **Reader page** | A Reader's public page: area, Bites, followers. The seller page is the same person's used-book side. | profile (that's your own settings) |
+| **Follow** | Seeing a Reader's Bites in your Following feed. | friend, subscribe |
 | **Saved address** | A delivery address in the Reader's profile (label, recipient, phone, division → district → upazila). One is the default. | shipping profile |
 | **Notification** | A note in the notification center that something happened to the Reader (order, Listing, sale, alert…). Not offers or messages: those are the inbox. | push, alert (that's a price or stock alert) |
 
@@ -370,7 +383,7 @@ The owner builds these and keeps their shape stable; everyone else uses them.
 | Saved addresses (`addressesProvider` / `SavedAddress` in `features/profile`) | Rahinur | Farhan (checkout) |
 | Send a notification (fake backend: `NotificationFakeStore.send`) | Rahinur | Farhan, Arifin, everyone |
 | "Book finished" event | Rahinur | Arifin |
-| Reviews and "Bites about this book" widgets | Rahinur | Farhan (book page) |
+| Reviews and "Bites about this book" widgets: done (`BookReviewsPanel`, `BookBitesPanel`) | Rahinur | Farhan (book page) |
 
 ---
 
@@ -386,7 +399,7 @@ The owner builds these and keeps their shape stable; everyone else uses them.
 
 **Avoiding conflicts**
 - **ARB keys:** add yours in your own block with your prefixes:
-  - Rahinur: `home`, `search`, `section`, `collection`, `expert`, `booklist`, `adminCatalog`, and (taken over from Niloy) `auth`, `profile`, `notification`, `shelf`, `bite`, `review`, `ai`, `adminDashboard`, `reader`, `quote`, `reading`. Rahinur's PRs for this area are merged by Rahinur.
+  - Rahinur: `home`, `search`, `section`, `collection`, `expert`, `booklist`, `adminCatalog`, and (taken over from Niloy) `auth`, `profile`, `notification`, `shelf`, `bite`, `review`, `ai`, `adminDashboard`, `reader`, `quote`, `reading`. Teammates merge Rahinur's PRs for this area too.
   - Farhan: `book`, `cart`, `checkout`, `order`, `wishlist`, `wallet`, `gift`, `adminOrder`, `offer`, `inbox`, `chat`, `seller`
   - Arifin: `listing`, `used`, `sellBack`, `scan`, `request`, `report`, `moderation` (the listing page also has `used…` keys from Farhan: check before adding one)
 - Routes and fake APIs: only in **your own feature's files**, plus one line in the shared lists when adding a new feature.
@@ -423,7 +436,7 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 ## 10. Known gaps (don't be surprised by these)
 
 - The AI assistant still shows an old vendor price table. It's scheduled to use Waraqah's own catalog (Niloy). Don't copy it.
-- Profile stats (books read, Bites posted, listings) are placeholder numbers.
+- Profile's "Books read" is a placeholder number until shelves (Plan C).
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
 - Book demand (`bookDemandProvider`) isn't shown anywhere yet: the admin dashboard (Rahinur) should list it.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
@@ -432,9 +445,8 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - No push notifications while the app is closed: the notification center and the inbox badge update only while the app is open.
 - Deleting an account signs out but can't wipe the shared demo data (one "me" on the fake backend).
 - Upazila names are English only (divisions and districts have Bangla).
-- Removing a reported message, Bite or review closes the report, but the item itself stays: Bites and reviews have no backend store yet, and the inbox doesn't delete messages. Bans don't stop posting Bites or reviews yet either (Niloy, Farhan).
+- Removing a reported message closes the report, but the message stays: the inbox doesn't delete messages (Farhan).
 - Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Farhan's inbox: refuse sends to and from blocked readers).
-- Bite comments don't exist yet, so nothing reports them. When they land, add `ReportIconButton(target: ReportTarget(kind: ReportTargetKind.comment, id: ...))` (Niloy).
 - The P2P marketplace filter bar's text is English-only (its search field is translated now), and "Save draft" on the add-listing form doesn't save yet (Arifin's listing flow).
 - Book covers are gradient seeds (`coverSeed`): there's no photo upload until the backend.
 - Admin → Catalog edits (and the forced Season) live in the fake backend's memory, so they last until the app restarts.
@@ -447,3 +459,5 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - ISBN lookup answers from a fixed list (`IsbnLookupFixtures`) until the backend calls a real ISBN service.
 - CSV import is paste-only: there's no file picker.
 - Subjects are seeded (`SubjectFixtures`): Staff can't add or rename them yet.
+- Bite feeds show the 30 newest; no paging yet.
+- Nobody else likes or comments on your Bites in the demo; community notifications are seeded.

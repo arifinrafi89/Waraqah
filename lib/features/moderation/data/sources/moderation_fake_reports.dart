@@ -73,6 +73,7 @@ extension ModerationFakeReports on ModerationFakeStore {
             reason: 'Removed after a report: $why',
           );
         }
+        subjects.remove(report.kind, report.targetId);
         record(by, AuditAction.removed, label, why);
       case ReportAction.warn:
         status = ReportStatus.warned;

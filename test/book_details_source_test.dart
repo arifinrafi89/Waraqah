@@ -8,12 +8,11 @@ BookDetailsSource _source() =>
     BookDetailsSource(Dio()..interceptors.add(FakeApiRoutes.interceptor()));
 
 void main() {
-  test('reads a seeded book through the fake API, reviews included', () async {
+  test('reads a seeded book through the fake API', () async {
     final details = await _source().fetch('bk-atomic');
 
     expect(details!.bookId, 'bk-atomic');
-    expect(details.reviews, isNotEmpty);
-    expect(details.reviews.first.reviewerName, isNotEmpty);
+    expect(details.description, isNotEmpty);
   });
 
   test('a book with nothing extra comes back as null', () async {

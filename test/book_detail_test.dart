@@ -45,9 +45,9 @@ BookDetailsRepositoryImpl _repository([List<Book>? books]) =>
 
 void main() {
   group('BookDetailsRepository.fetchDetails', () {
-    test('returns the seeded reviews and publication facts', () async {
+    test('returns the seeded publication facts', () async {
       final details = await _repository().fetchDetails('bk-atomic');
-      expect(details!.reviews, isNotEmpty);
+      expect(details!.description, isNotEmpty);
     });
 
     test('returns null for an id that is not in the catalog', () async {
@@ -76,8 +76,7 @@ void main() {
         ],
       );
       final details = await _repository([book]).fetchDetails(book.id);
-      expect(details!.reviews, isEmpty);
-      expect(details.description, isNull);
+      expect(details!.description, isNull);
     });
   });
 }

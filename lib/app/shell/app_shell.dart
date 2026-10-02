@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/theme/app_dimens.dart';
 import '../../features/ai_assistant/ai_assistant_routes.dart';
+import '../../features/bites/bites_routes.dart';
 import '../../features/p2p/p2p_routes.dart';
 import '../../features/profile/profile_routes.dart';
 import '../router/shell_tabs.dart';
@@ -39,7 +40,10 @@ class AppShell extends StatelessWidget {
     final isProfile =
         shell.currentIndex == ShellTabs.paths.indexOf(ProfileRoutes.profile);
     final isP2p = shell.currentIndex == ShellTabs.paths.indexOf(P2pRoutes.p2p);
-    final showFab = !isProfile && !isP2p;
+    // Bites has its own compose button where the AI button sits.
+    final isBites =
+        shell.currentIndex == ShellTabs.paths.indexOf(BitesRoutes.bites);
+    final showFab = !isProfile && !isP2p && !isBites;
     return Scaffold(
       body: Stack(
         children: [

@@ -1,4 +1,5 @@
 import '../features/alerts/data/sources/alert_fake_store.dart';
+import '../features/bites/data/sources/bite_fake_store.dart';
 import '../features/book_request/data/sources/book_request_fake_store.dart';
 import '../features/cart/data/sources/cart_fake_store.dart';
 import '../features/catalog_admin/data/sources/catalog_admin_fake_store.dart';
@@ -13,9 +14,12 @@ import '../features/notifications/domain/entities/notification_kind.dart';
 import '../features/profile/data/models/profile_prefs_model.dart';
 import '../features/orders/data/sources/order_fake_store.dart';
 import '../features/p2p/data/sources/p2p_fake_store.dart';
+import '../features/p2p/data/sources/p2p_people.dart';
 import '../features/profile/data/sources/address_fake_store.dart';
 import '../features/profile/data/sources/profile_fake_store.dart';
+import '../features/readers/data/sources/follow_fake_store.dart';
 import '../features/report/data/sources/report_fake_store.dart';
+import '../features/reviews/data/sources/review_fake_store.dart';
 import '../features/sell_back/data/sources/sell_back_fake_store.dart';
 import '../features/wallet/data/sources/wallet_fake_store.dart';
 
@@ -55,11 +59,35 @@ class FakeStores {
   // Blocking a reader hides their listings from the marketplace.
   late final reports = ReportFakeStore(p2p);
 
-  // Moderators approve listings, act on reports and ban readers.
+  // Feeds leave out blocked and banned readers; a banned "me" can't post.
+  // Following shows who "me" follows; authors hear about comments.
+  late final BiteFakeStore bites = BiteFakeStore(
+    isHidden: (id) => reports.isBlocked(id) || moderation.isBanned(id),
+    isBanned: (id) => moderation.isBanned(id),
+    follows: (id) => follows.follows(P2pPeople.me, id),
+    notifications: notifications,
+  );
+
+  /// Blocked readers can't be followed; the followed reader is told.
+  late final follows = FollowFakeStore(
+    notifications: notifications,
+    isBlocked: reports.isBlocked,
+  );
+
+  // Verified Purchase reads orders; a banned "me" can't review.
+  late final ReviewFakeStore reviews = ReviewFakeStore(
+    orders,
+    isBanned: (id) => moderation.isBanned(id),
+  );
+
+  // Moderators approve listings, act on reports, delete removed Bites,
+  // comments and reviews, and ban readers.
   late final moderation = ModerationFakeStore(
     p2p,
     reports,
     inbox: inbox,
+    bites: bites,
+    reviews: reviews,
     notifications: notifications,
   );
 

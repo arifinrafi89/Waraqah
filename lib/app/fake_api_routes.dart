@@ -1,6 +1,7 @@
 import '../core/network/fake_api_interceptor.dart';
 import '../features/alerts/data/sources/alert_fake_api.dart';
 import '../features/auth/data/sources/auth_fake_api.dart';
+import '../features/bites/data/sources/bite_fake_api.dart';
 import '../features/book_request/data/sources/book_request_fake_api.dart';
 import '../features/cart/data/sources/cart_fake_api.dart';
 import '../features/catalog/data/sources/book_fake_api.dart';
@@ -25,7 +26,9 @@ import '../features/orders/data/sources/order_admin_fake_api.dart';
 import '../features/orders/data/sources/order_fake_api.dart';
 import '../features/p2p/data/sources/p2p_fake_api.dart';
 import '../features/profile/data/sources/profile_fake_api.dart';
+import '../features/readers/data/sources/reader_fake_api.dart';
 import '../features/report/data/sources/report_fake_api.dart';
+import '../features/reviews/data/sources/review_fake_api.dart';
 import '../features/scan/data/sources/scan_fake_api.dart';
 import '../features/sell_back/data/sources/sell_back_fake_api.dart';
 import '../features/wallet/data/sources/wallet_fake_api.dart';
@@ -77,6 +80,14 @@ abstract final class FakeApiRoutes {
       ...InboxFakeApi.routes(s.inbox),
       ...ReportFakeApi.routes(s.reports),
       ...ModerationFakeApi.routes(s.moderation),
+      ...BiteFakeApi.routes(s.bites),
+      ...ReviewFakeApi.routes(s.reviews),
+      ...ReaderFakeApi.routes(
+        s.follows,
+        profile: s.profile,
+        bites: s.bites,
+        p2p: s.p2p,
+      ),
       ...ScanFakeApi.routes,
       ...BookRequestFakeApi.routes(s.bookRequests),
       ...HandledSaleFakeApi.routes(s.handledSales),

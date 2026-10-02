@@ -56,13 +56,7 @@ class AppL10nBn extends AppL10n {
   String get bitesComposerHint => 'আপনি যা পড়ছেন সে বিষয়ে একটি ভাবনা লিখুন...';
 
   @override
-  String get bitesPost => 'বাইট পোস্ট করুন';
-
-  @override
-  String get bitesReply => 'উত্তর দিন';
-
-  @override
-  String get bitesRepost => 'আবার পোস্ট করুন';
+  String get bitesPost => 'পোস্ট';
 
   @override
   String get bitesLike => 'ভালো লাগা';
@@ -71,10 +65,296 @@ class AppL10nBn extends AppL10n {
   String get bitesPosted => 'আপনার বাইট ফিডে যোগ হয়েছে।';
 
   @override
-  String get bitesYou => 'আপনি';
+  String get bitesForYou => 'আপনার জন্য';
 
   @override
-  String get bitesReaderHandle => 'পাঠক';
+  String get bitesFollowing => 'ফলো করছেন';
+
+  @override
+  String get bitesFollowingLogin =>
+      'যাদের ফলো করেন তাদের বাইট দেখতে লগ ইন করুন।';
+
+  @override
+  String get bitesLogIn => 'লগ ইন';
+
+  @override
+  String get bitesEmpty => 'এখানে এখনো কোনো বাইট নেই।';
+
+  @override
+  String get bitesFollowingEmpty =>
+      'পাঠকদের ফলো করুন, তাদের বাইট এখানে দেখবেন।';
+
+  @override
+  String get bitesEdited => 'সম্পাদিত';
+
+  @override
+  String get bitesNow => 'এখন';
+
+  @override
+  String bitesMinutesAgo(int n) {
+    return '$n মি.';
+  }
+
+  @override
+  String bitesHoursAgo(int n) {
+    return '$n ঘ.';
+  }
+
+  @override
+  String bitesDaysAgo(int n) {
+    return '$n দিন';
+  }
+
+  @override
+  String get bitesComments => 'মন্তব্য';
+
+  @override
+  String get bitesShare => 'শেয়ার';
+
+  @override
+  String get bitesCopied =>
+      'লিংক কপি হয়েছে। যেকোনো জায়গায় পেস্ট করে শেয়ার করুন।';
+
+  @override
+  String get bitesMore => 'আরও';
+
+  @override
+  String get bitesEdit => 'সম্পাদনা';
+
+  @override
+  String get bitesDelete => 'মুছুন';
+
+  @override
+  String get bitesDeleteConfirm => 'এই বাইটটি মুছবেন?';
+
+  @override
+  String get bitesDeleteBody => 'এর মন্তব্যগুলোও মুছে যাবে।';
+
+  @override
+  String get bitesCancel => 'বাতিল';
+
+  @override
+  String get bitesDeleted => 'বাইট মুছে ফেলা হয়েছে।';
+
+  @override
+  String get bitesMakeQuote => 'উদ্ধৃতি কার্ড বানান';
+
+  @override
+  String bitesSpoilerAbout(String title) {
+    return '$title নিয়ে স্পয়লার: দেখতে ট্যাপ করুন';
+  }
+
+  @override
+  String get bitesComposeTitle => 'নতুন বাইট';
+
+  @override
+  String get bitesEditTitle => 'বাইট সম্পাদনা';
+
+  @override
+  String get bitesTagBook => 'একটি বই ট্যাগ করুন';
+
+  @override
+  String get bitesTagHint => 'নাম বা লেখক দিয়ে খুঁজুন';
+
+  @override
+  String get bitesRemoveTag => 'ট্যাগ সরান';
+
+  @override
+  String get bitesSpoiler => 'স্পয়লার';
+
+  @override
+  String get bitesSpoilerHint =>
+      'পাঠক ট্যাপ না করা পর্যন্ত ঝাপসা থাকবে। বই ট্যাগ লাগবে।';
+
+  @override
+  String get bitesSave => 'সংরক্ষণ';
+
+  @override
+  String get bitesSaved => 'বাইট সংরক্ষিত হয়েছে।';
+
+  @override
+  String bitesTooLong(int max) {
+    return 'বেশি লম্বা: সর্বোচ্চ $max অক্ষর।';
+  }
+
+  @override
+  String get bitesWrite => 'বাইট লিখুন';
+
+  @override
+  String get bitesBite => 'বাইট';
+
+  @override
+  String get bitesNoComments => 'এখনো কোনো মন্তব্য নেই। আলাপ শুরু করুন।';
+
+  @override
+  String get bitesCommentHint => 'মন্তব্য লিখুন…';
+
+  @override
+  String get bitesReply => 'উত্তর দিন';
+
+  @override
+  String bitesReplyingTo(String name) {
+    return '$name-কে উত্তর দিচ্ছেন';
+  }
+
+  @override
+  String get bitesCancelReply => 'উত্তর বাতিল';
+
+  @override
+  String get bitesLogInToComment => 'মন্তব্য করতে লগ ইন করুন';
+
+  @override
+  String get bitesSend => 'পাঠান';
+
+  @override
+  String get bitesDeleteComment => 'মন্তব্য মুছুন';
+
+  @override
+  String get bitesCommentDeleted => 'মন্তব্য মুছে ফেলা হয়েছে।';
+
+  @override
+  String get bitesAboutBook => 'এই বই নিয়ে বাইট';
+
+  @override
+  String get bitesPostAboutBook => 'এই বই নিয়ে বাইট পোস্ট করুন';
+
+  @override
+  String get bitesNoneAboutBook => 'এই বই নিয়ে এখনো কোনো বাইট নেই।';
+
+  @override
+  String get bitesSeeAll => 'সব দেখুন';
+
+  @override
+  String get reviewTitle => 'রিভিউ';
+
+  @override
+  String reviewSummary(String average, int count) {
+    return '$average · $countটি রিভিউ';
+  }
+
+  @override
+  String get reviewNone => 'এখনো কোনো রিভিউ নেই। প্রথমজন হোন।';
+
+  @override
+  String get reviewWrite => 'রিভিউ লিখুন';
+
+  @override
+  String get reviewEdit => 'আপনার রিভিউ সম্পাদনা';
+
+  @override
+  String get reviewVerified => 'যাচাইকৃত ক্রয়';
+
+  @override
+  String get reviewYourRating => 'আপনার রেটিং';
+
+  @override
+  String reviewStar(int n) {
+    return '৫-এর মধ্যে $n তারা';
+  }
+
+  @override
+  String get reviewTextHint => 'কেমন লাগল? (ঐচ্ছিক)';
+
+  @override
+  String get reviewSave => 'রিভিউ সংরক্ষণ';
+
+  @override
+  String get reviewSaved => 'রিভিউ সংরক্ষিত হয়েছে।';
+
+  @override
+  String get reviewDelete => 'মুছুন';
+
+  @override
+  String get reviewDeleteConfirm => 'আপনার রিভিউ মুছবেন?';
+
+  @override
+  String get reviewDeleted => 'রিভিউ মুছে ফেলা হয়েছে।';
+
+  @override
+  String get reviewCancel => 'বাতিল';
+
+  @override
+  String get reviewMore => 'আরও';
+
+  @override
+  String get reviewYou => 'আপনি';
+
+  @override
+  String get reviewEdited => 'সম্পাদিত';
+
+  @override
+  String get readerTitle => 'পাঠক';
+
+  @override
+  String readerMemberSince(String date) {
+    return 'সদস্য $date থেকে';
+  }
+
+  @override
+  String readerFollowers(int count) {
+    return '$count জন ফলোয়ার';
+  }
+
+  @override
+  String readerFollowingCount(int count) {
+    return '$count জনকে ফলো করছেন';
+  }
+
+  @override
+  String get readerFollow => 'ফলো করুন';
+
+  @override
+  String get readerFollowing => 'ফলো করছেন';
+
+  @override
+  String readerSeeBooks(int count) {
+    return 'তাদের বিক্রির বই দেখুন ($count)';
+  }
+
+  @override
+  String get readerBites => 'বাইট';
+
+  @override
+  String get readerNoBites => 'এখনো কোনো বাইট নেই।';
+
+  @override
+  String get readerPrivate => 'এই পাঠক তাদের প্রোফাইল গোপন রাখেন।';
+
+  @override
+  String get readerSeeBites => 'তাদের বাইট দেখুন';
+
+  @override
+  String get readerYourPage => 'আপনার পাঠক পাতা';
+
+  @override
+  String get quoteTitle => 'উদ্ধৃতি কার্ড';
+
+  @override
+  String get quoteHint => 'ভালো লাগা একটি লাইন লিখুন';
+
+  @override
+  String get quoteStyle => 'স্টাইল';
+
+  @override
+  String get quoteStylePaper => 'কাগজ';
+
+  @override
+  String get quoteStyleInk => 'কালি';
+
+  @override
+  String get quoteStyleLeaf => 'পাতা';
+
+  @override
+  String get quoteStyleCover => 'প্রচ্ছদ';
+
+  @override
+  String get quoteShare => 'ছবি শেয়ার করুন';
+
+  @override
+  String get quoteMark => 'ওয়ারাকাহ';
+
+  @override
+  String get bitesYou => 'আপনি';
 
   @override
   String get authLogIn => 'লগ ইন';
@@ -2194,6 +2474,28 @@ class AppL10nBn extends AppL10n {
   @override
   String get notificationBookWantedBody =>
       'আপনার একটি কপি লিস্ট করা আছে। আমার লিস্টিংয়ে তাদের অনুরোধ দেখুন।';
+
+  @override
+  String notificationNewFollower(String name) {
+    return '$name আপনাকে ফলো করা শুরু করেছেন';
+  }
+
+  @override
+  String get notificationNewFollowerBody =>
+      'আপনিও ফলো করলে তাদের বাইট আপনার ফলোয়িং ফিডে দেখাবে।';
+
+  @override
+  String notificationBiteComment(String name) {
+    return '$name আপনার বাইটে মন্তব্য করেছেন';
+  }
+
+  @override
+  String notificationCommentReply(String name) {
+    return '$name আপনার মন্তব্যের উত্তর দিয়েছেন';
+  }
+
+  @override
+  String get notificationCommentReplyBody => 'পড়তে বাইটটি খুলুন।';
 
   @override
   String get profilePrivacy => 'গোপনীয়তা';

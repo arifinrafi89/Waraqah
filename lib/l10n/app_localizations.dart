@@ -190,20 +190,8 @@ abstract class AppL10n {
   /// No description provided for @bitesPost.
   ///
   /// In en, this message translates to:
-  /// **'Post bite'**
+  /// **'Post'**
   String get bitesPost;
-
-  /// No description provided for @bitesReply.
-  ///
-  /// In en, this message translates to:
-  /// **'Reply'**
-  String get bitesReply;
-
-  /// No description provided for @bitesRepost.
-  ///
-  /// In en, this message translates to:
-  /// **'Repost'**
-  String get bitesRepost;
 
   /// No description provided for @bitesLike.
   ///
@@ -217,17 +205,533 @@ abstract class AppL10n {
   /// **'Your bite was added to the feed.'**
   String get bitesPosted;
 
+  /// No description provided for @bitesForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'For You'**
+  String get bitesForYou;
+
+  /// No description provided for @bitesFollowing.
+  ///
+  /// In en, this message translates to:
+  /// **'Following'**
+  String get bitesFollowing;
+
+  /// No description provided for @bitesFollowingLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to see Bites from readers you follow.'**
+  String get bitesFollowingLogin;
+
+  /// No description provided for @bitesLogIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in'**
+  String get bitesLogIn;
+
+  /// No description provided for @bitesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No Bites here yet.'**
+  String get bitesEmpty;
+
+  /// No description provided for @bitesFollowingEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow readers to see their Bites here.'**
+  String get bitesFollowingEmpty;
+
+  /// No description provided for @bitesEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'edited'**
+  String get bitesEdited;
+
+  /// No description provided for @bitesNow.
+  ///
+  /// In en, this message translates to:
+  /// **'now'**
+  String get bitesNow;
+
+  /// No description provided for @bitesMinutesAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{n}m'**
+  String bitesMinutesAgo(int n);
+
+  /// No description provided for @bitesHoursAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{n}h'**
+  String bitesHoursAgo(int n);
+
+  /// No description provided for @bitesDaysAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{n}d'**
+  String bitesDaysAgo(int n);
+
+  /// No description provided for @bitesComments.
+  ///
+  /// In en, this message translates to:
+  /// **'Comments'**
+  String get bitesComments;
+
+  /// No description provided for @bitesShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get bitesShare;
+
+  /// No description provided for @bitesCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied. Paste it anywhere to share.'**
+  String get bitesCopied;
+
+  /// No description provided for @bitesMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get bitesMore;
+
+  /// No description provided for @bitesEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get bitesEdit;
+
+  /// No description provided for @bitesDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get bitesDelete;
+
+  /// No description provided for @bitesDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this Bite?'**
+  String get bitesDeleteConfirm;
+
+  /// No description provided for @bitesDeleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Its comments are deleted too.'**
+  String get bitesDeleteBody;
+
+  /// No description provided for @bitesCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get bitesCancel;
+
+  /// No description provided for @bitesDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Bite deleted.'**
+  String get bitesDeleted;
+
+  /// No description provided for @bitesMakeQuote.
+  ///
+  /// In en, this message translates to:
+  /// **'Make a quote card'**
+  String get bitesMakeQuote;
+
+  /// No description provided for @bitesSpoilerAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'Spoiler about {title}: tap to show'**
+  String bitesSpoilerAbout(String title);
+
+  /// No description provided for @bitesComposeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New Bite'**
+  String get bitesComposeTitle;
+
+  /// No description provided for @bitesEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Bite'**
+  String get bitesEditTitle;
+
+  /// No description provided for @bitesTagBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Tag a book'**
+  String get bitesTagBook;
+
+  /// No description provided for @bitesTagHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by title or author'**
+  String get bitesTagHint;
+
+  /// No description provided for @bitesRemoveTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove tag'**
+  String get bitesRemoveTag;
+
+  /// No description provided for @bitesSpoiler.
+  ///
+  /// In en, this message translates to:
+  /// **'Spoiler'**
+  String get bitesSpoiler;
+
+  /// No description provided for @bitesSpoilerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Blurred until readers tap it. Needs a book tag.'**
+  String get bitesSpoilerHint;
+
+  /// No description provided for @bitesSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get bitesSave;
+
+  /// No description provided for @bitesSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Bite saved.'**
+  String get bitesSaved;
+
+  /// No description provided for @bitesTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Too long: {max} characters at most.'**
+  String bitesTooLong(int max);
+
+  /// No description provided for @bitesWrite.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a Bite'**
+  String get bitesWrite;
+
+  /// No description provided for @bitesBite.
+  ///
+  /// In en, this message translates to:
+  /// **'Bite'**
+  String get bitesBite;
+
+  /// No description provided for @bitesNoComments.
+  ///
+  /// In en, this message translates to:
+  /// **'No comments yet. Start the conversation.'**
+  String get bitesNoComments;
+
+  /// No description provided for @bitesCommentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a comment…'**
+  String get bitesCommentHint;
+
+  /// No description provided for @bitesReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply'**
+  String get bitesReply;
+
+  /// No description provided for @bitesReplyingTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Replying to {name}'**
+  String bitesReplyingTo(String name);
+
+  /// No description provided for @bitesCancelReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel reply'**
+  String get bitesCancelReply;
+
+  /// No description provided for @bitesLogInToComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to comment'**
+  String get bitesLogInToComment;
+
+  /// No description provided for @bitesSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get bitesSend;
+
+  /// No description provided for @bitesDeleteComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete comment'**
+  String get bitesDeleteComment;
+
+  /// No description provided for @bitesCommentDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Comment deleted.'**
+  String get bitesCommentDeleted;
+
+  /// No description provided for @bitesAboutBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Bites about this book'**
+  String get bitesAboutBook;
+
+  /// No description provided for @bitesPostAboutBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Post a Bite about this book'**
+  String get bitesPostAboutBook;
+
+  /// No description provided for @bitesNoneAboutBook.
+  ///
+  /// In en, this message translates to:
+  /// **'No Bites about this book yet.'**
+  String get bitesNoneAboutBook;
+
+  /// No description provided for @bitesSeeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See all'**
+  String get bitesSeeAll;
+
+  /// No description provided for @reviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get reviewTitle;
+
+  /// No description provided for @reviewSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'{average} · {count, plural, =1{1 review} other{{count} reviews}}'**
+  String reviewSummary(String average, int count);
+
+  /// No description provided for @reviewNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet. Be the first.'**
+  String get reviewNone;
+
+  /// No description provided for @reviewWrite.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a review'**
+  String get reviewWrite;
+
+  /// No description provided for @reviewEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit your review'**
+  String get reviewEdit;
+
+  /// No description provided for @reviewVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified Purchase'**
+  String get reviewVerified;
+
+  /// No description provided for @reviewYourRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rating'**
+  String get reviewYourRating;
+
+  /// No description provided for @reviewStar.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} of 5 stars'**
+  String reviewStar(int n);
+
+  /// No description provided for @reviewTextHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What did you think? (optional)'**
+  String get reviewTextHint;
+
+  /// No description provided for @reviewSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save review'**
+  String get reviewSave;
+
+  /// No description provided for @reviewSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Review saved.'**
+  String get reviewSaved;
+
+  /// No description provided for @reviewDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get reviewDelete;
+
+  /// No description provided for @reviewDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete your review?'**
+  String get reviewDeleteConfirm;
+
+  /// No description provided for @reviewDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Review deleted.'**
+  String get reviewDeleted;
+
+  /// No description provided for @reviewCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get reviewCancel;
+
+  /// No description provided for @reviewMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get reviewMore;
+
+  /// No description provided for @reviewYou.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get reviewYou;
+
+  /// No description provided for @reviewEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'edited'**
+  String get reviewEdited;
+
+  /// No description provided for @readerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reader'**
+  String get readerTitle;
+
+  /// No description provided for @readerMemberSince.
+  ///
+  /// In en, this message translates to:
+  /// **'Member since {date}'**
+  String readerMemberSince(String date);
+
+  /// No description provided for @readerFollowers.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 follower} other{{count} followers}}'**
+  String readerFollowers(int count);
+
+  /// No description provided for @readerFollowingCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} following'**
+  String readerFollowingCount(int count);
+
+  /// No description provided for @readerFollow.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow'**
+  String get readerFollow;
+
+  /// No description provided for @readerFollowing.
+  ///
+  /// In en, this message translates to:
+  /// **'Following'**
+  String get readerFollowing;
+
+  /// No description provided for @readerSeeBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'See their books for sale ({count})'**
+  String readerSeeBooks(int count);
+
+  /// No description provided for @readerBites.
+  ///
+  /// In en, this message translates to:
+  /// **'Bites'**
+  String get readerBites;
+
+  /// No description provided for @readerNoBites.
+  ///
+  /// In en, this message translates to:
+  /// **'No Bites yet.'**
+  String get readerNoBites;
+
+  /// No description provided for @readerPrivate.
+  ///
+  /// In en, this message translates to:
+  /// **'This reader keeps their profile private.'**
+  String get readerPrivate;
+
+  /// No description provided for @readerSeeBites.
+  ///
+  /// In en, this message translates to:
+  /// **'See their Bites'**
+  String get readerSeeBites;
+
+  /// No description provided for @readerYourPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Reader page'**
+  String get readerYourPage;
+
+  /// No description provided for @quoteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quote card'**
+  String get quoteTitle;
+
+  /// No description provided for @quoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Type a line you loved'**
+  String get quoteHint;
+
+  /// No description provided for @quoteStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Style'**
+  String get quoteStyle;
+
+  /// No description provided for @quoteStylePaper.
+  ///
+  /// In en, this message translates to:
+  /// **'Paper'**
+  String get quoteStylePaper;
+
+  /// No description provided for @quoteStyleInk.
+  ///
+  /// In en, this message translates to:
+  /// **'Ink'**
+  String get quoteStyleInk;
+
+  /// No description provided for @quoteStyleLeaf.
+  ///
+  /// In en, this message translates to:
+  /// **'Leaf'**
+  String get quoteStyleLeaf;
+
+  /// No description provided for @quoteStyleCover.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover'**
+  String get quoteStyleCover;
+
+  /// No description provided for @quoteShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share image'**
+  String get quoteShare;
+
+  /// No description provided for @quoteMark.
+  ///
+  /// In en, this message translates to:
+  /// **'Waraqah'**
+  String get quoteMark;
+
   /// No description provided for @bitesYou.
   ///
   /// In en, this message translates to:
   /// **'You'**
   String get bitesYou;
-
-  /// No description provided for @bitesReaderHandle.
-  ///
-  /// In en, this message translates to:
-  /// **'reader'**
-  String get bitesReaderHandle;
 
   /// No description provided for @authLogIn.
   ///
@@ -3930,6 +4434,36 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'You have a copy listed. See their request on My Listings.'**
   String get notificationBookWantedBody;
+
+  /// No description provided for @notificationNewFollower.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} started following you'**
+  String notificationNewFollower(String name);
+
+  /// No description provided for @notificationNewFollowerBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Their Bites can show in your Following feed if you follow back.'**
+  String get notificationNewFollowerBody;
+
+  /// No description provided for @notificationBiteComment.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} commented on your Bite'**
+  String notificationBiteComment(String name);
+
+  /// No description provided for @notificationCommentReply.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} replied to your comment'**
+  String notificationCommentReply(String name);
+
+  /// No description provided for @notificationCommentReplyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the Bite to read it.'**
+  String get notificationCommentReplyBody;
 
   /// No description provided for @profilePrivacy.
   ///

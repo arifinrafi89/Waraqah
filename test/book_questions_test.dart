@@ -86,6 +86,12 @@ void main() {
     await tester.tap(find.text('Post'));
     await settle(tester);
     expect(find.textContaining('Question posted'), findsOneWidget);
+    // The list reloads; scroll back up to the Questions section.
+    await tester.scrollUntilVisible(
+      find.text('Is there an audiobook too?'),
+      -250,
+      scrollable: find.byType(Scrollable).first,
+    );
     expect(find.text('Is there an audiobook too?'), findsOneWidget);
     expect(find.text('3 questions'), findsOneWidget);
   });

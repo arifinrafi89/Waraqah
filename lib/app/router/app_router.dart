@@ -21,7 +21,9 @@ import '../../features/donate/donate_routes.dart';
 import '../../features/orders/orders_routes.dart';
 import '../../features/p2p/p2p_routes.dart';
 import '../../features/profile/profile_routes.dart';
+import '../../features/readers/readers_routes.dart';
 import '../../features/report/report_routes.dart';
+import '../../features/reviews/reviews_routes.dart';
 import '../../features/scan/scan_routes.dart';
 import '../../features/sell_back/sell_back_routes.dart';
 import '../../features/wallet/wallet_routes.dart';
@@ -74,6 +76,9 @@ abstract final class AppRouter {
       ...SellBackRoutes.routes,
       ...ProfileRoutes.routes,
       ...NotificationsRoutes.routes,
+      ...BitesRoutes.routes,
+      ...ReviewsRoutes.routes,
+      ...ReadersRoutes.routes,
       ...AdminRoutes.routes,
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => AppShell(shell: shell),
