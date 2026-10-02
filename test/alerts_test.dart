@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:waraqah/features/alerts/alerts_routes.dart';
 import 'package:waraqah/features/alerts/data/sources/alert_fake_api.dart';
+import 'package:waraqah/features/alerts/data/sources/alert_fake_store.dart';
 import 'package:waraqah/features/auth/auth_routes.dart';
 import 'package:waraqah/features/catalog/catalog_routes.dart';
 import 'package:waraqah/features/wishlist/wishlist_routes.dart';
@@ -24,7 +25,7 @@ void main() {
   setUpAll(() => GoogleFonts.config.allowRuntimeFetching = false);
 
   test('alerts fire once stock is back or the price is low enough', () {
-    final api = AlertFakeApi.routes();
+    final api = AlertFakeApi.routes(AlertFakeStore());
     _call(api, AlertFakeApi.set, {
       'kind': 'backInStock',
       'bookId': 'bk-calculus',

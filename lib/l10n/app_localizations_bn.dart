@@ -2143,9 +2143,16 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
-  String notificationSalePaid(String title) {
+  String notificationSaleSettled(String title) {
     return '$title-এর অভিযোগ মীমাংসা হয়েছে';
   }
+
+  @override
+  String get notificationSaleRefundedSeller =>
+      'ক্রেতা টাকা ফেরত পেয়েছেন, আপনার লিস্টিং আবার লাইভ।';
+
+  @override
+  String get notificationSalePaidBuyer => 'বিক্রেতাকে টাকা দেওয়া হয়েছে।';
 
   @override
   String notificationInWallet(String amount) {

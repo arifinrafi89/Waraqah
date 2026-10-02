@@ -1,5 +1,8 @@
 // Moderators change marketplace Listings and the reports readers sent.
 import '../../../inbox/data/sources/inbox_fake_store.dart';
+// Sellers hear about decisions, warnings and bans.
+import '../../../notifications/data/sources/notification_fake_store.dart';
+import '../../../notifications/data/sources/notification_sends.dart';
 import '../../../p2p/data/sources/p2p_fake_store.dart';
 import '../../../p2p/domain/entities/p2p_listing.dart';
 import '../../../report/data/sources/report_fake_store.dart';
@@ -18,6 +21,7 @@ class ModerationFakeStore {
     this.p2p,
     this.reports, {
     InboxFakeStore? inbox,
+    this.notifications,
     DateTime Function()? clock,
   }) : now = clock ?? DateTime.now,
        subjects = ModerationSubjects(p2p, inbox) {
@@ -27,6 +31,7 @@ class ModerationFakeStore {
   final P2pFakeStore p2p;
   final ReportFakeStore reports;
   final ModerationSubjects subjects;
+  final NotificationFakeStore? notifications;
   final DateTime Function() now;
   final Map<String, int> strikes = {};
   final Set<String> banned = {};
@@ -75,6 +80,7 @@ class ModerationFakeStore {
       ),
     };
     p2p.moderate(id, status, reason: reason);
+    notifications?.listingDecided(listing, decision.name, reason);
     record(by, action, listing.title, reason);
     return true;
   }
@@ -84,12 +90,14 @@ class ModerationFakeStore {
     final next = ModerationRules.afterWarning(strikes[ownerId] ?? 0);
     strikes[ownerId] = next.strikes;
     if (next.banned) banned.add(ownerId);
+    notifications?.warned(ownerId, next.strikes, ModerationRules.maxStrikes);
     return next.strikes;
   }
 
   void ban(String ownerId) {
     strikes[ownerId] = ModerationRules.maxStrikes;
     banned.add(ownerId);
+    notifications?.banned(ownerId);
   }
 
   void record(String by, AuditAction action, String subject, [String? why]) =>

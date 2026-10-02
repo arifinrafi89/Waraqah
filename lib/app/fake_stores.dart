@@ -1,3 +1,4 @@
+import '../features/alerts/data/sources/alert_fake_store.dart';
 import '../features/book_request/data/sources/book_request_fake_store.dart';
 import '../features/cart/data/sources/cart_fake_store.dart';
 import '../features/catalog_admin/data/sources/catalog_admin_fake_store.dart';
@@ -22,6 +23,11 @@ import '../features/wallet/data/sources/wallet_fake_store.dart';
 /// every test starts clean. Stores that several features change are built
 /// here once and handed to each feature's routes.
 class FakeStores {
+  FakeStores() {
+    // Staff price and stock changes can fire the reader's alerts.
+    catalogAdmin.onChanged = alerts.sweep;
+  }
+
   // Checkout turns the cart into an order and spends and earns points, the
   // cart prices flash sales and bundles, and staff change orders and
   // coupons, so these are shared.
@@ -50,14 +56,22 @@ class FakeStores {
   late final reports = ReportFakeStore(p2p);
 
   // Moderators approve listings, act on reports and ban readers.
-  late final moderation = ModerationFakeStore(p2p, reports, inbox: inbox);
+  late final moderation = ModerationFakeStore(
+    p2p,
+    reports,
+    inbox: inbox,
+    notifications: notifications,
+  );
 
   // Staff edit the catalog's and Home's fixture lists in place, and can
   // force Home's Season.
   final catalogAdmin = CatalogAdminFakeStore();
 
   // Requests are matched against marketplace Listings.
-  late final bookRequests = BookRequestFakeStore(p2p);
+  late final bookRequests = BookRequestFakeStore(
+    p2p,
+    notifications: notifications,
+  );
 
   // Handled sales hold money, refund into the wallet and log moderators'
   // decisions.
@@ -65,8 +79,12 @@ class FakeStores {
     p2p,
     wallet,
     moderation: moderation,
+    notifications: notifications,
   );
 
   // Sell Back pays into the wallet and stocks Certified Used.
-  late final sellBack = SellBackFakeStore(wallet);
+  late final sellBack = SellBackFakeStore(wallet, notifications: notifications);
+
+  /// Price and stock alerts notify the reader when they first fire.
+  late final alerts = AlertFakeStore(notifications);
 }

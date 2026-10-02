@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../domain/entities/book_request.dart';
+import 'book_request_demand.dart';
 import 'book_request_fake_store.dart';
 
 /// Book requests' fake endpoints, merged into `FakeApiInterceptor` by

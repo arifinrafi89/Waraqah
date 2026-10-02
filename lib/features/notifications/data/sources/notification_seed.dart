@@ -29,7 +29,7 @@ List<AppNotificationModel> notificationSeed(DateTime now) => [
     id: 'nt-seed-3',
     kind: NotificationKind.listingDecided,
     createdAt: now.subtract(const Duration(days: 2)),
-    params: const {'title': 'Atomic Habits', 'decision': 'approved'},
+    params: const {'title': 'Atomic Habits', 'decision': 'approve'},
     target: const NotificationTargetModel(
       kind: NotificationTargetKind.listing,
       id: 'p2p-7',

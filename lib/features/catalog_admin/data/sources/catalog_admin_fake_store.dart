@@ -31,6 +31,10 @@ class CatalogAdminFakeStore {
   /// The Season Staff forced on Home; `null` = picked by date.
   Season? seasonOverride;
 
+  /// Called after prices or stock may have changed (a Book save, a CSV
+  /// import or a stock edit), so price and stock alerts can be checked.
+  void Function()? onChanged;
+
   static const _formatCodes = {
     BookFormat.paperback: 'pb',
     BookFormat.hardcover: 'hc',
@@ -99,6 +103,7 @@ class CatalogAdminFakeStore {
     );
     final i = BookFixtures.all.indexWhere((b) => b.id == id);
     i < 0 ? BookFixtures.all.add(book) : BookFixtures.all[i] = book;
+    onChanged?.call();
     return book;
   }
 

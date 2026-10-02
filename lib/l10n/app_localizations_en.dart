@@ -2231,9 +2231,16 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
-  String notificationSalePaid(String title) {
+  String notificationSaleSettled(String title) {
     return 'Dispute settled for $title';
   }
+
+  @override
+  String get notificationSaleRefundedSeller =>
+      'The buyer got a refund, and your Listing is live again.';
+
+  @override
+  String get notificationSalePaidBuyer => 'The seller was paid.';
 
   @override
   String notificationInWallet(String amount) {

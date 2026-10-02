@@ -1,6 +1,9 @@
 import 'dart:async';
 
 // Sell Back pays into the reader's wallet and stocks Certified Used.
+// The reader hears when their book is paid for or sent back.
+import '../../../notifications/data/sources/notification_fake_store.dart';
+import '../../../notifications/data/sources/notification_sale_sends.dart';
 import '../../../p2p/data/sources/p2p_people.dart';
 import '../../../p2p/domain/entities/p2p_listing.dart';
 import '../../../wallet/data/sources/wallet_fake_store.dart';
@@ -18,6 +21,7 @@ import 'sell_back_seed.dart';
 class SellBackFakeStore {
   SellBackFakeStore(
     this.wallet, {
+    this.notifications,
     DateTime Function()? clock,
     this.pickupDelay = const Duration(seconds: 4),
   }) : now = clock ?? DateTime.now {
@@ -28,6 +32,7 @@ class SellBackFakeStore {
   }
 
   final WalletFakeStore wallet;
+  final NotificationFakeStore? notifications;
   final DateTime Function() now;
   final Duration pickupDelay;
   final List<(String, SellBackModel)> _all = [];
@@ -83,6 +88,7 @@ class SellBackFakeStore {
     final (reader, m) = _all[i];
     if (!accept) {
       _all[i] = (reader, m.copyWith(status: SellBackStatus.returned));
+      notifications?.sellBackReturned(reader, id, m.book.title);
       return true;
     }
     final paid = SellBackRules.quote(
@@ -102,6 +108,7 @@ class SellBackFakeStore {
     if (reader == P2pPeople.me) {
       wallet.credit(paid, WalletReason.sellBack, note: m.book.title);
     }
+    notifications?.sellBackPaid(reader, id, m.book.title, paid);
     CertifiedUsedStock.publish(
       m.book.bookId,
       SellBackRules.resellPrice(m.book.newPriceBdt, condition),

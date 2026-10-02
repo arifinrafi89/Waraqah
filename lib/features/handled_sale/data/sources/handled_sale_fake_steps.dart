@@ -2,6 +2,7 @@ import '../../../p2p/domain/entities/p2p_listing.dart';
 import '../../../wallet/domain/entities/wallet.dart';
 import '../../domain/entities/handled_sale.dart';
 import '../../domain/repositories/handled_sale_repository.dart';
+import '../../../notifications/data/sources/notification_sale_sends.dart';
 import 'fake_sale.dart';
 import 'handled_sale_fake_store.dart';
 
@@ -15,6 +16,7 @@ extension HandledSaleFakeSteps on HandledSaleFakeStore {
     switch (step) {
       case SaleStep.send when !buying && s.status == SaleStatus.paid:
         s.status = SaleStatus.sent;
+        notifications?.saleSent(s.buyerId, s.id, titleOf(s));
       case SaleStep.cancel when buying && s.status == SaleStatus.paid:
         s.status = SaleStatus.cancelled;
         wallet.credit(
@@ -29,6 +31,12 @@ extension HandledSaleFakeSteps on HandledSaleFakeStore {
           s.listingId,
           P2pListingStatus.sold,
           buyerId: HandledSaleFakeStore.me,
+        );
+        notifications?.saleCompleted(
+          s.sellerId,
+          s.id,
+          titleOf(s),
+          s.sellerGetsBdt,
         );
       default:
         return null;

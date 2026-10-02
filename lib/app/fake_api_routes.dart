@@ -36,8 +36,9 @@ import 'fake_stores.dart';
 /// feature. This is the only place allowed to import both `core/network` and
 /// feature fake APIs — `core/` itself must never import a feature.
 abstract final class FakeApiRoutes {
-  static FakeApiInterceptor interceptor() {
-    final s = FakeStores();
+  /// Tests may pass [stores] to look inside the fake backend.
+  static FakeApiInterceptor interceptor([FakeStores? stores]) {
+    final s = stores ?? FakeStores();
     return FakeApiInterceptor({
       ...AuthFakeApi.routes(),
       ...ProfileFakeApi.routes(s.profile, s.addresses),
@@ -53,7 +54,7 @@ abstract final class FakeApiRoutes {
       ...HomeFakeApi.routes(() => s.catalogAdmin.seasonOverride),
       ...CartFakeApi.routes(s.cart),
       ...WishlistFakeApi.routes(),
-      ...AlertFakeApi.routes(),
+      ...AlertFakeApi.routes(s.alerts),
       ...CheckoutFakeApi.routes(
         s.cart,
         s.orders,
@@ -64,7 +65,7 @@ abstract final class FakeApiRoutes {
       ),
       ...OrderFakeApi.routes(s.orders, s.points, s.wallet, s.cart),
       ...PointsFakeApi.routes(s.points),
-      ...OrderAdminFakeApi.routes(s.orders, s.wallet),
+      ...OrderAdminFakeApi.routes(s.orders, s.wallet, s.notifications),
       ...CouponAdminFakeApi.routes(s.coupons),
       ...DealsFakeApi.routes(s.deals),
       ...DonateFakeApi.routes(s.orders),

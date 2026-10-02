@@ -35,11 +35,11 @@ import '../../domain/entities/notification_kind.dart';
               body: l10n.notificationReturnRejectedBody,
             ),
     NotificationKind.listingDecided => switch (p['decision']) {
-      'approved' => (
+      'approve' => (
         title: l10n.notificationListingApproved(title),
         body: l10n.notificationListingApprovedBody,
       ),
-      'changes' => (
+      'requestChanges' => (
         title: l10n.notificationListingChanges(title),
         body: p['reason'] ?? '',
       ),
@@ -64,16 +64,7 @@ import '../../domain/entities/notification_kind.dart';
       title: l10n.notificationSaleCompleted(title),
       body: l10n.notificationEarned(amount),
     ),
-    NotificationKind.saleSettled =>
-      p['outcome'] == 'refund'
-          ? (
-              title: l10n.notificationSaleRefunded(title),
-              body: l10n.notificationInWallet(amount),
-            )
-          : (
-              title: l10n.notificationSalePaid(title),
-              body: l10n.notificationEarned(amount),
-            ),
+    NotificationKind.saleSettled => _settled(l10n, p, title, amount),
     NotificationKind.sellBackPaid => (
       title: l10n.notificationSellBackPaid(title),
       body: l10n.notificationInWallet(amount),
@@ -95,6 +86,34 @@ import '../../domain/entities/notification_kind.dart';
     NotificationKind.bookWanted => (
       title: l10n.notificationBookWanted(title),
       body: l10n.notificationBookWantedBody,
+    ),
+  };
+}
+
+/// A settled dispute, told to the buyer or the seller.
+({String title, String body}) _settled(
+  AppL10n l10n,
+  Map<String, String> p,
+  String title,
+  String amount,
+) {
+  final buyer = p['role'] == 'buyer';
+  return switch (p['outcome']) {
+    'refund' when buyer => (
+      title: l10n.notificationSaleRefunded(title),
+      body: l10n.notificationInWallet(amount),
+    ),
+    'refund' => (
+      title: l10n.notificationSaleSettled(title),
+      body: l10n.notificationSaleRefundedSeller,
+    ),
+    _ when buyer => (
+      title: l10n.notificationSaleSettled(title),
+      body: l10n.notificationSalePaidBuyer,
+    ),
+    _ => (
+      title: l10n.notificationSaleSettled(title),
+      body: l10n.notificationEarned(amount),
     ),
   };
 }

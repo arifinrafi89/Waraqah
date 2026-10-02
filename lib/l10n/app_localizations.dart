@@ -3859,11 +3859,23 @@ abstract class AppL10n {
   /// **'Refund for {title}'**
   String notificationSaleRefunded(String title);
 
-  /// No description provided for @notificationSalePaid.
+  /// No description provided for @notificationSaleSettled.
   ///
   /// In en, this message translates to:
   /// **'Dispute settled for {title}'**
-  String notificationSalePaid(String title);
+  String notificationSaleSettled(String title);
+
+  /// No description provided for @notificationSaleRefundedSeller.
+  ///
+  /// In en, this message translates to:
+  /// **'The buyer got a refund, and your Listing is live again.'**
+  String get notificationSaleRefundedSeller;
+
+  /// No description provided for @notificationSalePaidBuyer.
+  ///
+  /// In en, this message translates to:
+  /// **'The seller was paid.'**
+  String get notificationSalePaidBuyer;
 
   /// No description provided for @notificationInWallet.
   ///
