@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
@@ -7,6 +8,7 @@ import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../orders/presentation/widgets/order_labels.dart';
+import '../../../readers/readers_routes.dart';
 import '../../../report/domain/entities/content_report.dart';
 import '../../../report/presentation/widgets/report_icon_button.dart';
 import '../../domain/entities/review.dart';
@@ -38,12 +40,16 @@ class ReviewTile extends ConsumerWidget {
           Row(
             children: [
               Expanded(
-                child: Text(
-                  review.isMine ? l10n.reviewYou : review.authorName,
-                  style: AppFonts.ui(
-                    size: 13,
-                    weight: FontWeight.w800,
-                    color: palette.text,
+                child: GestureDetector(
+                  onTap: () =>
+                      context.push(ReadersRoutes.readerFor(review.authorId)),
+                  child: Text(
+                    review.isMine ? l10n.reviewYou : review.authorName,
+                    style: AppFonts.ui(
+                      size: 13,
+                      weight: FontWeight.w800,
+                      color: palette.text,
+                    ),
                   ),
                 ),
               ),

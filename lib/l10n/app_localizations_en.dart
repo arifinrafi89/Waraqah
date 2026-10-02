@@ -288,6 +288,56 @@ class AppL10nEn extends AppL10n {
   String get reviewEdited => 'edited';
 
   @override
+  String get readerTitle => 'Reader';
+
+  @override
+  String readerMemberSince(String date) {
+    return 'Member since $date';
+  }
+
+  @override
+  String readerFollowers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count followers',
+      one: '1 follower',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String readerFollowingCount(int count) {
+    return '$count following';
+  }
+
+  @override
+  String get readerFollow => 'Follow';
+
+  @override
+  String get readerFollowing => 'Following';
+
+  @override
+  String readerSeeBooks(int count) {
+    return 'See their books for sale ($count)';
+  }
+
+  @override
+  String get readerBites => 'Bites';
+
+  @override
+  String get readerNoBites => 'No Bites yet.';
+
+  @override
+  String get readerPrivate => 'This reader keeps their profile private.';
+
+  @override
+  String get readerSeeBites => 'See their Bites';
+
+  @override
+  String get readerYourPage => 'Your Reader page';
+
+  @override
   String get bitesYou => 'You';
 
   @override
@@ -2495,6 +2545,28 @@ class AppL10nEn extends AppL10n {
   @override
   String get notificationBookWantedBody =>
       'You have a copy listed. See their request on My Listings.';
+
+  @override
+  String notificationNewFollower(String name) {
+    return '$name started following you';
+  }
+
+  @override
+  String get notificationNewFollowerBody =>
+      'Their Bites can show in your Following feed if you follow back.';
+
+  @override
+  String notificationBiteComment(String name) {
+    return '$name commented on your Bite';
+  }
+
+  @override
+  String notificationCommentReply(String name) {
+    return '$name replied to your comment';
+  }
+
+  @override
+  String get notificationCommentReplyBody => 'Open the Bite to read it.';
 
   @override
   String get profilePrivacy => 'Privacy';

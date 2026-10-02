@@ -20,6 +20,7 @@ class ProfileHeader extends StatelessWidget {
     required this.stats,
     this.photo,
     this.onEdit,
+    this.onOpen,
   });
 
   final String name;
@@ -29,6 +30,9 @@ class ProfileHeader extends StatelessWidget {
   /// Label to value, in display order.
   final Map<String, String> stats;
   final VoidCallback? onEdit;
+
+  /// Opens the Reader's own public page.
+  final VoidCallback? onOpen;
 
   @override
   Widget build(BuildContext context) {
@@ -68,15 +72,22 @@ class ProfileHeader extends StatelessWidget {
                 ],
               ),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(name, style: context.texts.titleLarge),
-                    Text(
-                      contact,
-                      style: AppFonts.ui(size: 11.5, color: palette.textFaint),
-                    ),
-                  ],
+                child: InkWell(
+                  onTap: onOpen,
+                  borderRadius: BorderRadius.circular(Radii.sm),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(name, style: context.texts.titleLarge),
+                      Text(
+                        contact,
+                        style: AppFonts.ui(
+                          size: 11.5,
+                          color: palette.textFaint,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

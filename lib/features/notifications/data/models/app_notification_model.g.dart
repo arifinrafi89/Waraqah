@@ -49,6 +49,9 @@ const _$NotificationKindEnumMap = {
   NotificationKind.sellBackReturned: 'sellBackReturned',
   NotificationKind.alertTriggered: 'alertTriggered',
   NotificationKind.bookWanted: 'bookWanted',
+  NotificationKind.newFollower: 'newFollower',
+  NotificationKind.biteComment: 'biteComment',
+  NotificationKind.commentReply: 'commentReply',
 };
 
 _NotificationTargetModel _$NotificationTargetModelFromJson(
@@ -72,4 +75,6 @@ const _$NotificationTargetKindEnumMap = {
   NotificationTargetKind.sale: 'sale',
   NotificationTargetKind.sellBack: 'sellBack',
   NotificationTargetKind.book: 'book',
+  NotificationTargetKind.bite: 'bite',
+  NotificationTargetKind.reader: 'reader',
 };

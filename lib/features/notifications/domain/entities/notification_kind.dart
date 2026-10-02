@@ -15,6 +15,9 @@ enum NotificationKind {
   sellBackReturned,
   alertTriggered,
   bookWanted,
+  newFollower,
+  biteComment,
+  commentReply,
 }
 
 extension NotificationKindX on NotificationKind {
@@ -25,9 +28,21 @@ extension NotificationKindX on NotificationKind {
     NotificationKind.returnDecided => NotificationGroup.orders,
     NotificationKind.moderationWarning || NotificationKind.banned => null,
     NotificationKind.alertTriggered => NotificationGroup.alerts,
+    NotificationKind.newFollower ||
+    NotificationKind.biteComment ||
+    NotificationKind.commentReply => NotificationGroup.community,
     _ => NotificationGroup.usedBooks,
   };
 }
 
 /// Where tapping a notification goes.
-enum NotificationTargetKind { order, listing, myListings, sale, sellBack, book }
+enum NotificationTargetKind {
+  order,
+  listing,
+  myListings,
+  sale,
+  sellBack,
+  book,
+  bite,
+  reader,
+}

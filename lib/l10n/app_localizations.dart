@@ -601,6 +601,78 @@ abstract class AppL10n {
   /// **'edited'**
   String get reviewEdited;
 
+  /// No description provided for @readerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reader'**
+  String get readerTitle;
+
+  /// No description provided for @readerMemberSince.
+  ///
+  /// In en, this message translates to:
+  /// **'Member since {date}'**
+  String readerMemberSince(String date);
+
+  /// No description provided for @readerFollowers.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 follower} other{{count} followers}}'**
+  String readerFollowers(int count);
+
+  /// No description provided for @readerFollowingCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} following'**
+  String readerFollowingCount(int count);
+
+  /// No description provided for @readerFollow.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow'**
+  String get readerFollow;
+
+  /// No description provided for @readerFollowing.
+  ///
+  /// In en, this message translates to:
+  /// **'Following'**
+  String get readerFollowing;
+
+  /// No description provided for @readerSeeBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'See their books for sale ({count})'**
+  String readerSeeBooks(int count);
+
+  /// No description provided for @readerBites.
+  ///
+  /// In en, this message translates to:
+  /// **'Bites'**
+  String get readerBites;
+
+  /// No description provided for @readerNoBites.
+  ///
+  /// In en, this message translates to:
+  /// **'No Bites yet.'**
+  String get readerNoBites;
+
+  /// No description provided for @readerPrivate.
+  ///
+  /// In en, this message translates to:
+  /// **'This reader keeps their profile private.'**
+  String get readerPrivate;
+
+  /// No description provided for @readerSeeBites.
+  ///
+  /// In en, this message translates to:
+  /// **'See their Bites'**
+  String get readerSeeBites;
+
+  /// No description provided for @readerYourPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Reader page'**
+  String get readerYourPage;
+
   /// No description provided for @bitesYou.
   ///
   /// In en, this message translates to:
@@ -4308,6 +4380,36 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'You have a copy listed. See their request on My Listings.'**
   String get notificationBookWantedBody;
+
+  /// No description provided for @notificationNewFollower.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} started following you'**
+  String notificationNewFollower(String name);
+
+  /// No description provided for @notificationNewFollowerBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Their Bites can show in your Following feed if you follow back.'**
+  String get notificationNewFollowerBody;
+
+  /// No description provided for @notificationBiteComment.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} commented on your Bite'**
+  String notificationBiteComment(String name);
+
+  /// No description provided for @notificationCommentReply.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} replied to your comment'**
+  String notificationCommentReply(String name);
+
+  /// No description provided for @notificationCommentReplyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the Bite to read it.'**
+  String get notificationCommentReplyBody;
 
   /// No description provided for @profilePrivacy.
   ///

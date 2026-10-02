@@ -1,5 +1,7 @@
-// A Bite may tag a catalog Book; authors are marketplace readers.
+// A Bite may tag a catalog Book; authors are marketplace readers, told
+// about comments and replies.
 import '../../../catalog/data/sources/book_fixtures.dart';
+import '../../../notifications/data/sources/notification_fake_store.dart';
 import '../../../p2p/data/sources/p2p_people.dart';
 import '../../domain/entities/bite_rules.dart';
 import 'bite_fixtures.dart';
@@ -12,6 +14,7 @@ class BiteFakeStore {
     bool Function(String readerId)? isHidden,
     bool Function(String readerId)? isBanned,
     bool Function(String readerId)? follows,
+    this.notifications,
     DateTime Function()? clock,
   }) : isHidden = isHidden ?? _no,
        isBanned = isBanned ?? _no,
@@ -31,6 +34,7 @@ class BiteFakeStore {
 
   /// Whether "me" follows the reader.
   final bool Function(String readerId) follows;
+  final NotificationFakeStore? notifications;
   final DateTime Function() now;
 
   /// Newest first.

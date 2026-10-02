@@ -283,6 +283,50 @@ class AppL10nBn extends AppL10n {
   String get reviewEdited => 'সম্পাদিত';
 
   @override
+  String get readerTitle => 'পাঠক';
+
+  @override
+  String readerMemberSince(String date) {
+    return 'সদস্য $date থেকে';
+  }
+
+  @override
+  String readerFollowers(int count) {
+    return '$count জন ফলোয়ার';
+  }
+
+  @override
+  String readerFollowingCount(int count) {
+    return '$count জনকে ফলো করছেন';
+  }
+
+  @override
+  String get readerFollow => 'ফলো করুন';
+
+  @override
+  String get readerFollowing => 'ফলো করছেন';
+
+  @override
+  String readerSeeBooks(int count) {
+    return 'তাদের বিক্রির বই দেখুন ($count)';
+  }
+
+  @override
+  String get readerBites => 'বাইট';
+
+  @override
+  String get readerNoBites => 'এখনো কোনো বাইট নেই।';
+
+  @override
+  String get readerPrivate => 'এই পাঠক তাদের প্রোফাইল গোপন রাখেন।';
+
+  @override
+  String get readerSeeBites => 'তাদের বাইট দেখুন';
+
+  @override
+  String get readerYourPage => 'আপনার পাঠক পাতা';
+
+  @override
   String get bitesYou => 'আপনি';
 
   @override
@@ -2403,6 +2447,28 @@ class AppL10nBn extends AppL10n {
   @override
   String get notificationBookWantedBody =>
       'আপনার একটি কপি লিস্ট করা আছে। আমার লিস্টিংয়ে তাদের অনুরোধ দেখুন।';
+
+  @override
+  String notificationNewFollower(String name) {
+    return '$name আপনাকে ফলো করা শুরু করেছেন';
+  }
+
+  @override
+  String get notificationNewFollowerBody =>
+      'আপনিও ফলো করলে তাদের বাইট আপনার ফলোয়িং ফিডে দেখাবে।';
+
+  @override
+  String notificationBiteComment(String name) {
+    return '$name আপনার বাইটে মন্তব্য করেছেন';
+  }
+
+  @override
+  String notificationCommentReply(String name) {
+    return '$name আপনার মন্তব্যের উত্তর দিয়েছেন';
+  }
+
+  @override
+  String get notificationCommentReplyBody => 'পড়তে বাইটটি খুলুন।';
 
   @override
   String get profilePrivacy => 'গোপনীয়তা';

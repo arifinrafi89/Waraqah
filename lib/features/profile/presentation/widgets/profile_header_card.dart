@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../l10n/app_localizations.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
+import '../../../readers/presentation/providers/reader_providers.dart';
+import '../../../readers/readers_routes.dart';
 import '../../profile_routes.dart';
 import '../providers/profile_providers.dart';
 import 'profile_header.dart';
@@ -18,17 +20,20 @@ class ProfileHeaderCard extends ConsumerWidget {
     final l10n = AppL10n.of(context)!;
     final user = ref.watch(sessionProvider);
     final profile = ref.watch(profileProvider).value;
+    final page = user == null ? null : ref.watch(readerProvider('me')).value;
     return ProfileHeader(
       name: user?.name ?? l10n.authGuestName,
       contact: user?.email ?? l10n.authGuestNote,
       photo: profile?.photo,
       onEdit: user == null ? null : () => context.push(ProfileRoutes.edit),
-      // ponytail: placeholder counts until shelves, Bites and Listings
-      // report them (AGENTS.md §10).
+      onOpen: user == null
+          ? null
+          : () => context.push(ReadersRoutes.readerFor('me')),
+      // ponytail: Books read stays a placeholder until shelves (Plan C).
       stats: {
         l10n.profileBooksRead: '14',
-        l10n.profileBitesPosted: '23',
-        l10n.profileListings: '3',
+        l10n.profileBitesPosted: '${page?.biteCount ?? '–'}',
+        l10n.profileListings: '${page?.liveListingCount ?? '–'}',
       },
     );
   }

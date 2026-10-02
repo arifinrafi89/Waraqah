@@ -4,6 +4,8 @@ import '../../../orders/domain/entities/order_status.dart';
 import '../../../orders/presentation/widgets/order_labels.dart';
 import '../../domain/entities/app_notification.dart';
 import '../../domain/entities/notification_kind.dart';
+import 'notification_community_text.dart';
+import 'notification_settled_text.dart';
 
 /// A notification's title and line, built in the Reader's language from
 /// its kind and params. The server never sends the words.
@@ -64,7 +66,7 @@ import '../../domain/entities/notification_kind.dart';
       title: l10n.notificationSaleCompleted(title),
       body: l10n.notificationEarned(amount),
     ),
-    NotificationKind.saleSettled => _settled(l10n, p, title, amount),
+    NotificationKind.saleSettled => settledText(l10n, p, title, amount),
     NotificationKind.sellBackPaid => (
       title: l10n.notificationSellBackPaid(title),
       body: l10n.notificationInWallet(amount),
@@ -87,33 +89,8 @@ import '../../domain/entities/notification_kind.dart';
       title: l10n.notificationBookWanted(title),
       body: l10n.notificationBookWantedBody,
     ),
-  };
-}
-
-/// A settled dispute, told to the buyer or the seller.
-({String title, String body}) _settled(
-  AppL10n l10n,
-  Map<String, String> p,
-  String title,
-  String amount,
-) {
-  final buyer = p['role'] == 'buyer';
-  return switch (p['outcome']) {
-    'refund' when buyer => (
-      title: l10n.notificationSaleRefunded(title),
-      body: l10n.notificationInWallet(amount),
-    ),
-    'refund' => (
-      title: l10n.notificationSaleSettled(title),
-      body: l10n.notificationSaleRefundedSeller,
-    ),
-    _ when buyer => (
-      title: l10n.notificationSaleSettled(title),
-      body: l10n.notificationSalePaidBuyer,
-    ),
-    _ => (
-      title: l10n.notificationSaleSettled(title),
-      body: l10n.notificationEarned(amount),
-    ),
+    NotificationKind.newFollower ||
+    NotificationKind.biteComment ||
+    NotificationKind.commentReply => communityText(l10n, n.kind, p),
   };
 }

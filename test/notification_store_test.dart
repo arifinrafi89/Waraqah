@@ -13,7 +13,7 @@ NotificationFakeStore _store({Set<NotificationKind> muted = const {}}) =>
 void main() {
   test('starts with the seeds, three unread', () {
     final store = _store();
-    expect(store.mine(), hasLength(4));
+    expect(store.mine(), hasLength(7));
     expect(store.unread, 3);
   });
 
@@ -30,7 +30,7 @@ void main() {
       )
       ..send('p-tanvir', NotificationKind.bookWanted, params: {'title': 'X'});
     expect(store.mine().first.params['number'], 'WQ-1');
-    expect(store.mine(), hasLength(5));
+    expect(store.mine(), hasLength(8));
     expect(store.sentTo('p-tanvir').single.kind, NotificationKind.bookWanted);
   });
 

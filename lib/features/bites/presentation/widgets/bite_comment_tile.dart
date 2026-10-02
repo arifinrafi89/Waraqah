@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../readers/readers_routes.dart';
 import '../../../report/domain/entities/content_report.dart';
 import '../../../report/presentation/widgets/report_icon_button.dart';
 import '../../domain/entities/bite.dart';
@@ -30,7 +32,16 @@ class BiteCommentTile extends ConsumerWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ReaderAvatar(readerId: comment.authorId, name: name, radius: 15),
+          InkWell(
+            onTap: () =>
+                context.push(ReadersRoutes.readerFor(comment.authorId)),
+            customBorder: const CircleBorder(),
+            child: ReaderAvatar(
+              readerId: comment.authorId,
+              name: name,
+              radius: 15,
+            ),
+          ),
           const SizedBox(width: Insets.sm),
           Expanded(
             child: Column(
