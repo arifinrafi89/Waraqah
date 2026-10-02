@@ -26,6 +26,8 @@ void main() {
       find.text('Harper'),
       200,
       scrollable: find.byType(Scrollable).first,
+      // The Publisher loads once About is built; give it time to arrive.
+      duration: const Duration(milliseconds: 300),
     );
     // Center the tag: at the top edge it sits under the header and misses.
     await Scrollable.ensureVisible(

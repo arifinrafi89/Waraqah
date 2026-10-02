@@ -45,4 +45,14 @@ void main() {
     expect(bite['ownerId'], 'p-rafi');
     expect(bite['ownerName'], 'Rafi');
   });
+
+  test('Remove deletes a reported review', () async {
+    await reportAndRemove('review', 'rv-2');
+    final r = await api.dio.get<Map<String, dynamic>>(
+      '/reviews',
+      queryParameters: {'bookId': 'bk-sapiens'},
+    );
+    final ids = (r.data!['reviews'] as List).map((v) => (v as Map)['id']);
+    expect(ids, ['rv-1']);
+  });
 }

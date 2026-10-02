@@ -2,11 +2,11 @@
 // like the real server's database will.
 import '../../../bites/data/sources/bite_comments.dart';
 import '../../../bites/data/sources/bite_fake_store.dart';
-import '../../../catalog/data/sources/seed/review_seed.dart';
 import '../../../inbox/data/sources/inbox_fake_store.dart';
 import '../../../p2p/data/sources/p2p_fake_store.dart';
 import '../../../p2p/data/sources/p2p_people.dart';
 import '../../../report/domain/entities/content_report.dart';
+import '../../../reviews/data/sources/review_fake_store.dart';
 
 /// What was reported and whose it is.
 typedef ReportSubject = ({String preview, String ownerId, String ownerName});
@@ -14,17 +14,19 @@ typedef ReportSubject = ({String preview, String ownerId, String ownerName});
 /// Finds the reported Listing, reader, message, Bite, comment or review,
 /// and deletes a removed Bite, comment or review.
 class ModerationSubjects {
-  ModerationSubjects(this.p2p, this.inbox, {this.bites});
+  ModerationSubjects(this.p2p, this.inbox, {this.bites, this.reviews});
 
   final P2pFakeStore p2p;
   final InboxFakeStore? inbox;
   final BiteFakeStore? bites;
+  final ReviewFakeStore? reviews;
 
-  /// Deletes a removed Bite or comment. Listings are taken down by the
+  /// Deletes a removed Bite, comment or review. Listings are taken down by the
   /// caller; readers and messages stay.
   void remove(ReportTargetKind kind, String id) => switch (kind) {
     ReportTargetKind.bite => bites?.remove(id),
     ReportTargetKind.comment => bites?.removeComment(id),
+    ReportTargetKind.review => reviews?.remove(id),
     _ => null,
   };
 
@@ -88,16 +90,8 @@ class ModerationSubjects {
     ownerName: P2pPeople.find(ownerId)?.name ?? '?',
   );
 
-  ReportSubject? _review(String id) {
-    final review = ReviewSeed.byBookId.values
-        .expand((reviews) => reviews)
-        .where((r) => r.id == id)
-        .firstOrNull;
-    if (review == null) return null;
-    return (
-      preview: review.text,
-      ownerId: 'review:${review.reviewerName}',
-      ownerName: review.reviewerName,
-    );
-  }
+  ReportSubject? _review(String id) => switch (reviews?.find(id)) {
+    final r? => _by(r.text, r.authorId),
+    null => null,
+  };
 }

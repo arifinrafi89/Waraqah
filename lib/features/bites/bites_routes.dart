@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import 'presentation/pages/bite_compose_page.dart';
+import 'presentation/pages/book_bites_page.dart';
 import 'presentation/pages/bite_detail_page.dart';
 import 'presentation/pages/bites_page.dart';
 
@@ -22,7 +23,18 @@ abstract final class BitesRoutes {
   static String detailFor(String id) =>
       Uri(path: detail, queryParameters: {'id': id}).toString();
 
+  /// Every Bite about one Book; open to guests.
+  static const String book = '/bites/book';
+
+  static String forBook(String bookId) =>
+      Uri(path: book, queryParameters: {'id': bookId}).toString();
+
   static final List<RouteBase> routes = [
+    GoRoute(
+      path: book,
+      builder: (_, state) =>
+          BookBitesPage(bookId: state.uri.queryParameters['id'] ?? ''),
+    ),
     GoRoute(
       path: detail,
       builder: (_, state) =>

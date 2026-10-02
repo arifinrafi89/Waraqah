@@ -469,6 +469,138 @@ abstract class AppL10n {
   /// **'Comment deleted.'**
   String get bitesCommentDeleted;
 
+  /// No description provided for @bitesAboutBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Bites about this book'**
+  String get bitesAboutBook;
+
+  /// No description provided for @bitesPostAboutBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Post a Bite about this book'**
+  String get bitesPostAboutBook;
+
+  /// No description provided for @bitesNoneAboutBook.
+  ///
+  /// In en, this message translates to:
+  /// **'No Bites about this book yet.'**
+  String get bitesNoneAboutBook;
+
+  /// No description provided for @bitesSeeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See all'**
+  String get bitesSeeAll;
+
+  /// No description provided for @reviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get reviewTitle;
+
+  /// No description provided for @reviewSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'{average} · {count, plural, =1{1 review} other{{count} reviews}}'**
+  String reviewSummary(String average, int count);
+
+  /// No description provided for @reviewNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet. Be the first.'**
+  String get reviewNone;
+
+  /// No description provided for @reviewWrite.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a review'**
+  String get reviewWrite;
+
+  /// No description provided for @reviewEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit your review'**
+  String get reviewEdit;
+
+  /// No description provided for @reviewVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified Purchase'**
+  String get reviewVerified;
+
+  /// No description provided for @reviewYourRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rating'**
+  String get reviewYourRating;
+
+  /// No description provided for @reviewStar.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} of 5 stars'**
+  String reviewStar(int n);
+
+  /// No description provided for @reviewTextHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What did you think? (optional)'**
+  String get reviewTextHint;
+
+  /// No description provided for @reviewSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save review'**
+  String get reviewSave;
+
+  /// No description provided for @reviewSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Review saved.'**
+  String get reviewSaved;
+
+  /// No description provided for @reviewDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get reviewDelete;
+
+  /// No description provided for @reviewDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete your review?'**
+  String get reviewDeleteConfirm;
+
+  /// No description provided for @reviewDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Review deleted.'**
+  String get reviewDeleted;
+
+  /// No description provided for @reviewCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get reviewCancel;
+
+  /// No description provided for @reviewMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get reviewMore;
+
+  /// No description provided for @reviewYou.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get reviewYou;
+
+  /// No description provided for @reviewEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'edited'**
+  String get reviewEdited;
+
   /// No description provided for @bitesYou.
   ///
   /// In en, this message translates to:

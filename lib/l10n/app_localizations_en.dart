@@ -212,6 +212,82 @@ class AppL10nEn extends AppL10n {
   String get bitesCommentDeleted => 'Comment deleted.';
 
   @override
+  String get bitesAboutBook => 'Bites about this book';
+
+  @override
+  String get bitesPostAboutBook => 'Post a Bite about this book';
+
+  @override
+  String get bitesNoneAboutBook => 'No Bites about this book yet.';
+
+  @override
+  String get bitesSeeAll => 'See all';
+
+  @override
+  String get reviewTitle => 'Reviews';
+
+  @override
+  String reviewSummary(String average, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count reviews',
+      one: '1 review',
+    );
+    return '$average · $_temp0';
+  }
+
+  @override
+  String get reviewNone => 'No reviews yet. Be the first.';
+
+  @override
+  String get reviewWrite => 'Write a review';
+
+  @override
+  String get reviewEdit => 'Edit your review';
+
+  @override
+  String get reviewVerified => 'Verified Purchase';
+
+  @override
+  String get reviewYourRating => 'Your rating';
+
+  @override
+  String reviewStar(int n) {
+    return '$n of 5 stars';
+  }
+
+  @override
+  String get reviewTextHint => 'What did you think? (optional)';
+
+  @override
+  String get reviewSave => 'Save review';
+
+  @override
+  String get reviewSaved => 'Review saved.';
+
+  @override
+  String get reviewDelete => 'Delete';
+
+  @override
+  String get reviewDeleteConfirm => 'Delete your review?';
+
+  @override
+  String get reviewDeleted => 'Review deleted.';
+
+  @override
+  String get reviewCancel => 'Cancel';
+
+  @override
+  String get reviewMore => 'More';
+
+  @override
+  String get reviewYou => 'You';
+
+  @override
+  String get reviewEdited => 'edited';
+
+  @override
   String get bitesYou => 'You';
 
   @override

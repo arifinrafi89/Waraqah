@@ -1,5 +1,5 @@
 // Moderators change marketplace Listings and the reports readers sent, and
-// delete removed Bites and comments.
+// delete removed Bites, comments and reviews.
 import '../../../bites/data/sources/bite_fake_store.dart';
 import '../../../inbox/data/sources/inbox_fake_store.dart';
 // Sellers hear about decisions, warnings and bans.
@@ -8,6 +8,7 @@ import '../../../notifications/data/sources/notification_sends.dart';
 import '../../../p2p/data/sources/p2p_fake_store.dart';
 import '../../../p2p/domain/entities/p2p_listing.dart';
 import '../../../report/data/sources/report_fake_store.dart';
+import '../../../reviews/data/sources/review_fake_store.dart';
 import '../../domain/entities/audit_entry.dart';
 import '../../domain/entities/moderation_rules.dart';
 import '../../domain/entities/queued_listing.dart';
@@ -24,10 +25,16 @@ class ModerationFakeStore {
     this.reports, {
     InboxFakeStore? inbox,
     BiteFakeStore? bites,
+    ReviewFakeStore? reviews,
     this.notifications,
     DateTime Function()? clock,
   }) : now = clock ?? DateTime.now,
-       subjects = ModerationSubjects(p2p, inbox, bites: bites) {
+       subjects = ModerationSubjects(
+         p2p,
+         inbox,
+         bites: bites,
+         reviews: reviews,
+       ) {
     seedReports(this);
   }
 

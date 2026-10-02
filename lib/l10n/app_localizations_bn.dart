@@ -213,6 +213,76 @@ class AppL10nBn extends AppL10n {
   String get bitesCommentDeleted => 'মন্তব্য মুছে ফেলা হয়েছে।';
 
   @override
+  String get bitesAboutBook => 'এই বই নিয়ে বাইট';
+
+  @override
+  String get bitesPostAboutBook => 'এই বই নিয়ে বাইট পোস্ট করুন';
+
+  @override
+  String get bitesNoneAboutBook => 'এই বই নিয়ে এখনো কোনো বাইট নেই।';
+
+  @override
+  String get bitesSeeAll => 'সব দেখুন';
+
+  @override
+  String get reviewTitle => 'রিভিউ';
+
+  @override
+  String reviewSummary(String average, int count) {
+    return '$average · $countটি রিভিউ';
+  }
+
+  @override
+  String get reviewNone => 'এখনো কোনো রিভিউ নেই। প্রথমজন হোন।';
+
+  @override
+  String get reviewWrite => 'রিভিউ লিখুন';
+
+  @override
+  String get reviewEdit => 'আপনার রিভিউ সম্পাদনা';
+
+  @override
+  String get reviewVerified => 'যাচাইকৃত ক্রয়';
+
+  @override
+  String get reviewYourRating => 'আপনার রেটিং';
+
+  @override
+  String reviewStar(int n) {
+    return '৫-এর মধ্যে $n তারা';
+  }
+
+  @override
+  String get reviewTextHint => 'কেমন লাগল? (ঐচ্ছিক)';
+
+  @override
+  String get reviewSave => 'রিভিউ সংরক্ষণ';
+
+  @override
+  String get reviewSaved => 'রিভিউ সংরক্ষিত হয়েছে।';
+
+  @override
+  String get reviewDelete => 'মুছুন';
+
+  @override
+  String get reviewDeleteConfirm => 'আপনার রিভিউ মুছবেন?';
+
+  @override
+  String get reviewDeleted => 'রিভিউ মুছে ফেলা হয়েছে।';
+
+  @override
+  String get reviewCancel => 'বাতিল';
+
+  @override
+  String get reviewMore => 'আরও';
+
+  @override
+  String get reviewYou => 'আপনি';
+
+  @override
+  String get reviewEdited => 'সম্পাদিত';
+
+  @override
   String get bitesYou => 'আপনি';
 
   @override

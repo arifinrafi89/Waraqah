@@ -27,6 +27,7 @@ import '../features/orders/data/sources/order_fake_api.dart';
 import '../features/p2p/data/sources/p2p_fake_api.dart';
 import '../features/profile/data/sources/profile_fake_api.dart';
 import '../features/report/data/sources/report_fake_api.dart';
+import '../features/reviews/data/sources/review_fake_api.dart';
 import '../features/scan/data/sources/scan_fake_api.dart';
 import '../features/sell_back/data/sources/sell_back_fake_api.dart';
 import '../features/wallet/data/sources/wallet_fake_api.dart';
@@ -79,6 +80,7 @@ abstract final class FakeApiRoutes {
       ...ReportFakeApi.routes(s.reports),
       ...ModerationFakeApi.routes(s.moderation),
       ...BiteFakeApi.routes(s.bites),
+      ...ReviewFakeApi.routes(s.reviews),
       ...ScanFakeApi.routes,
       ...BookRequestFakeApi.routes(s.bookRequests),
       ...HandledSaleFakeApi.routes(s.handledSales),

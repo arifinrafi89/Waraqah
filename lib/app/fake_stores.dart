@@ -17,6 +17,7 @@ import '../features/p2p/data/sources/p2p_fake_store.dart';
 import '../features/profile/data/sources/address_fake_store.dart';
 import '../features/profile/data/sources/profile_fake_store.dart';
 import '../features/report/data/sources/report_fake_store.dart';
+import '../features/reviews/data/sources/review_fake_store.dart';
 import '../features/sell_back/data/sources/sell_back_fake_store.dart';
 import '../features/wallet/data/sources/wallet_fake_store.dart';
 
@@ -62,13 +63,20 @@ class FakeStores {
     isBanned: (id) => moderation.isBanned(id),
   );
 
-  // Moderators approve listings, act on reports, delete removed Bites and
-  // comments, and ban readers.
+  // Verified Purchase reads orders; a banned "me" can't review.
+  late final ReviewFakeStore reviews = ReviewFakeStore(
+    orders,
+    isBanned: (id) => moderation.isBanned(id),
+  );
+
+  // Moderators approve listings, act on reports, delete removed Bites,
+  // comments and reviews, and ban readers.
   late final moderation = ModerationFakeStore(
     p2p,
     reports,
     inbox: inbox,
     bites: bites,
+    reviews: reviews,
     notifications: notifications,
   );
 
