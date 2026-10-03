@@ -2,6 +2,7 @@ import '../../domain/entities/p2p_listing.dart';
 import '../models/p2p_listing_model.dart';
 import 'p2p_handled_seed.dart';
 import 'p2p_listing_seed.dart';
+import 'p2p_my_seed.dart';
 import 'p2p_people.dart';
 import 'p2p_review_seed.dart';
 
@@ -76,37 +77,7 @@ abstract final class P2pFixtures {
       note: 'Cover is worn, pages are fine.',
       category: 'Engineering',
     ),
-    seedListing(
-      'p2p-7',
-      'Atomic Habits',
-      P2pPeople.me,
-      350,
-      BookCondition.veryGood,
-      bookId: 'bk-atomic',
-      newPrice: 590,
-      negotiable: true,
-      note: 'Read it twice, still in great shape.',
-    ),
-    seedListing(
-      'p2p-draft-1',
-      'Design Patterns',
-      P2pPeople.me,
-      300,
-      BookCondition.veryGood,
-      status: P2pListingStatus.draft,
-      newPrice: 450,
-      category: 'Software Engineering',
-    ),
-    seedListing(
-      'p2p-review-1',
-      'Artificial Intelligence',
-      P2pPeople.me,
-      400,
-      BookCondition.good,
-      status: P2pListingStatus.inReview,
-      newPrice: 600,
-      category: 'Computer Science',
-    ),
+    ...p2pMySeed,
     ...p2pReviewSeed,
     ...p2pHandledSeed,
   ];

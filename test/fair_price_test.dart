@@ -50,11 +50,8 @@ void main() {
     await settle(tester);
 
     for (var i = 0; i < 3; i++) {
-      // The Stepper builds every step's buttons; tap the open step's.
-      final next = find.text('Next').at(i);
-      await tester.ensureVisible(next);
-      await tester.pump();
-      await tester.tap(next);
+      // The Stepper builds more than one step's buttons; tap the open one.
+      await tester.tap(find.text('Next').hitTestable().first);
       await settle(tester);
     }
     // Calculus is ৳1,750 new; a Good copy fairly sells for 40–55% of it.

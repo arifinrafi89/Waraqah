@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import '../../domain/entities/p2p_listing.dart';
 import '../models/p2p_listing_model.dart';
 import 'p2p_fake_store.dart';
+import 'p2p_listing_writer.dart';
 import 'p2p_people.dart';
 import 'p2p_seller_json.dart';
 
@@ -24,6 +25,11 @@ abstract final class P2pFakeApi {
 
   /// `?id=p-nabila`: a reader's seller page, or `null`.
   static const String seller = '/p2p/seller';
+
+  /// Body: the form's fields, `photos` (slots kept) and `photoData`
+  /// (`{slot: base64}` picked since), `submit` to send for review. Answers
+  /// the Listing, or `null` when it breaks `ListingRules`.
+  static const String save = '/p2p/listings/save';
 
   /// [isBlocked] says whether the signed-in reader blocked a seller; their
   /// listings stay out of the marketplace and the book page.
@@ -57,6 +63,8 @@ abstract final class P2pFakeApi {
               l.sellerId != P2pPeople.me,
         ),
       ),
+      save: (options) =>
+          P2pListingWriter.save(store, options.data as Map<String, dynamic>),
       seller: (options) =>
           store.sellerJson(options.queryParameters['id'] as String? ?? ''),
       listing: (options) {

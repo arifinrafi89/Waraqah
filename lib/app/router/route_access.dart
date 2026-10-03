@@ -13,6 +13,7 @@ import '../../features/inbox/inbox_routes.dart';
 import '../../features/loyalty/loyalty_routes.dart';
 import '../../features/notifications/notifications_routes.dart';
 import '../../features/orders/orders_routes.dart';
+import '../../features/p2p/p2p_routes.dart';
 import '../../features/profile/profile_routes.dart';
 import '../../features/report/report_routes.dart';
 import '../../features/sell_back/sell_back_routes.dart';
@@ -43,6 +44,8 @@ abstract final class RouteAccess {
     ProfileRoutes.addresses,
     ProfileRoutes.settings,
     BitesRoutes.compose,
+    P2pRoutes.addListing,
+    P2pRoutes.myListings,
   ];
 
   /// Where to redirect [location] for [user], or `null` to let it open.

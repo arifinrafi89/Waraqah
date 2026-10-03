@@ -13,6 +13,7 @@ import '../../domain/usecases/get_listing.dart';
 import '../../domain/usecases/get_listings.dart';
 import '../../domain/usecases/get_my_listings.dart';
 import '../../domain/usecases/get_seller.dart';
+import '../../domain/usecases/save_listing.dart';
 
 final p2pRepositoryProvider = Provider<P2pRepository>(
   (ref) => P2pRepositoryImpl(P2pRemoteSource(ref.watch(dioProvider))),
@@ -29,6 +30,10 @@ final getListingsProvider = Provider<GetListings>(
 
 final getMyListingsProvider = Provider<GetMyListings>(
   (ref) => GetMyListings(ref.watch(p2pRepositoryProvider)),
+);
+
+final saveListingProvider = Provider<SaveListing>(
+  (ref) => SaveListing(ref.watch(p2pRepositoryProvider)),
 );
 
 final getListingProvider = Provider<GetListing>(

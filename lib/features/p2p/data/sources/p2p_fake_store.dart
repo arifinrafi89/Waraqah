@@ -14,7 +14,7 @@ class P2pFakeStore {
   }
 
   final DateTime Function() now;
-  final Map<String, P2pListingModel> _listings = {
+  Map<String, P2pListingModel> _listings = {
     for (final listing in P2pFixtures.listings) listing.id: listing,
   };
   final Map<String, String> _buyers = {...P2pFixtures.buyers};
@@ -23,6 +23,16 @@ class P2pFakeStore {
   Iterable<P2pListingModel> get all => _listings.values;
 
   P2pListingModel? find(String id) => _listings[id];
+
+  int _made = 0;
+
+  /// An id for a Listing the signed-in reader just started.
+  String newId() => 'p2p-mine-${++_made}';
+
+  /// Adds or replaces a Listing; a new one comes first.
+  void put(P2pListingModel listing) => _listings.containsKey(listing.id)
+      ? _listings[listing.id] = listing
+      : _listings = {listing.id: listing, ..._listings};
 
   /// Who the listing is reserved for or was sold to.
   String? buyerOf(String listingId) => _buyers[listingId];

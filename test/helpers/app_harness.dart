@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/misc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,7 +15,8 @@ import 'package:waraqah/core/network/dio_provider.dart';
 import 'package:waraqah/core/settings/settings_provider.dart';
 
 /// The real app at phone size, signed in as [role] (a guest when `null`),
-/// opened straight at [location], with [prefs] already saved on the device.
+/// opened straight at [location], with [prefs] already saved on the device
+/// and any provider [overrides].
 /// Returns the app's router.
 Future<GoRouter> openApp(
   WidgetTester tester,
@@ -22,6 +24,7 @@ Future<GoRouter> openApp(
   String? role,
   String? locale,
   Map<String, Object> prefs = const {},
+  List<Override> overrides = const [],
 }) async {
   tester.view.physicalSize = const Size(375, 812);
   tester.view.devicePixelRatio = 1;
@@ -46,6 +49,7 @@ Future<GoRouter> openApp(
       dioProvider.overrideWithValue(
         Dio()..interceptors.add(FakeApiRoutes.interceptor()),
       ),
+      ...overrides,
     ],
   );
   addTearDown(container.dispose);

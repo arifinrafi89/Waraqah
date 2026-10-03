@@ -3691,6 +3691,91 @@ class AppL10nEn extends AppL10n {
   String get listingFinishedCardBody => 'Tap it to sell it on.';
 
   @override
+  String get listingEditTitle => 'Edit listing';
+
+  @override
+  String get listingSendForReview => 'Send for review';
+
+  @override
+  String get listingSentForReview =>
+      'Sent for review. A moderator checks it before it goes live.';
+
+  @override
+  String get listingDraftSaved => 'Draft saved. Finish it from My Listings.';
+
+  @override
+  String get listingSaveFailed => 'Couldn\'t save the listing. Try again.';
+
+  @override
+  String get listingEdit => 'Edit';
+
+  @override
+  String get listingEditResend => 'Edit and send again';
+
+  @override
+  String get listingNote => 'About your copy (optional)';
+
+  @override
+  String get listingNoteHint =>
+      'Anything a buyer should know: marks, missing pages, edition.';
+
+  @override
+  String get listingPhotosHelp =>
+      'Photos of your own copy. Front and back covers are needed, and a photo of any damage you flagged.';
+
+  @override
+  String get listingPhotoFront => 'Front cover';
+
+  @override
+  String get listingPhotoBack => 'Back cover';
+
+  @override
+  String get listingPhotoSpine => 'Spine';
+
+  @override
+  String get listingPhotoInside => 'Inside page';
+
+  @override
+  String get listingPhotoDamage => 'Damage';
+
+  @override
+  String get listingPhotoNeeded => 'Needed';
+
+  @override
+  String get listingPhotoSaved => 'Uploaded';
+
+  @override
+  String get listingPhotoAdd => 'Add a photo';
+
+  @override
+  String get listingPhotoRemove => 'Remove photo';
+
+  @override
+  String get listingProblemTitle => 'Add the book\'s title.';
+
+  @override
+  String get listingProblemTitleLong => 'Keep the title under 120 characters.';
+
+  @override
+  String get listingProblemNoteLong => 'Keep the note under 500 characters.';
+
+  @override
+  String get listingProblemPrice => 'Set your price.';
+
+  @override
+  String get listingProblemPriceHigh =>
+      'That price is too high: up to ৳50,000.';
+
+  @override
+  String get listingProblemFront => 'Add a photo of the front cover.';
+
+  @override
+  String get listingProblemBack => 'Add a photo of the back cover.';
+
+  @override
+  String get listingProblemDamage => 'You flagged damage: add a photo of it.';
+
+  @override
   String get scanTitle => 'Scan a book';
 
   @override
