@@ -5,6 +5,7 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/utils/stock_label.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../widgets/book_list_row.dart';
+import '../widgets/book_local_title.dart';
 
 /// Scrollable list of catalog rows, padded clear of the floating nav bar.
 /// [header] scrolls above the rows, full width.
@@ -41,9 +42,7 @@ class CatalogResultsList extends StatelessWidget {
             book: book,
             stockLabel: l10n.stockStatus(book.cardStockStatus),
             onOpen: onOpen,
-            subtitle: showBanglaTitles && book.titleBn != book.title
-                ? book.titleBn
-                : null,
+            subtitle: showBanglaTitles ? book.otherTitle(context) : null,
           ),
         );
       },

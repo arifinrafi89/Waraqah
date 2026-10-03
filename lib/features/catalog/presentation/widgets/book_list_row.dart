@@ -12,6 +12,7 @@ import '../../../../core/widgets/surface_card.dart';
 import '../../../../core/widgets/tags.dart';
 import 'book_row_price.dart';
 import 'rating_stars.dart';
+import 'book_local_title.dart';
 
 /// One horizontal catalog row: thumbnail, title block, tags, rating, price.
 /// Tapping it opens the book's detail page.
@@ -54,7 +55,7 @@ class BookListRow extends StatelessWidget {
                 SizedBox(
                   width: Sizes.listThumbWidth,
                   child: CoverArt(
-                    title: book.coverLabel,
+                    title: book.localCoverLabel(context),
                     seed: book.coverSeed,
                     aspectRatio: Sizes.listThumbWidth / Sizes.listThumbHeight,
                     fontSize: 8.5,
@@ -75,7 +76,7 @@ class BookListRow extends StatelessWidget {
     spacing: 3,
     children: [
       Text(
-        book.title,
+        book.localTitle(context),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: context.texts.titleSmall,
