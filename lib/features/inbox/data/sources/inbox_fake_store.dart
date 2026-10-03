@@ -67,6 +67,19 @@ class InboxFakeStore {
     return message;
   }
 
+  /// Takes a message a moderator removed out of its thread, and tells
+  /// listening apps.
+  void removeMessage(String messageId) {
+    for (final thread in threads.values) {
+      final at = thread.messages.indexWhere((m) => m.id == messageId);
+      if (at < 0) continue;
+      thread.messages.removeAt(at);
+      if (at < thread.readByMe) thread.readByMe--;
+      changed(thread);
+      return;
+    }
+  }
+
   /// The thread's other person is blocked.
   bool blockedIn(FakeThread thread) => isBlocked(thread.otherOf(me));
 

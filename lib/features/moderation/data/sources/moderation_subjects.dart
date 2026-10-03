@@ -12,7 +12,7 @@ import '../../../reviews/data/sources/review_fake_store.dart';
 typedef ReportSubject = ({String preview, String ownerId, String ownerName});
 
 /// Finds the reported Listing, reader, message, Bite, comment or review,
-/// and deletes a removed Bite, comment or review.
+/// and deletes a removed message, Bite, comment or review.
 class ModerationSubjects {
   ModerationSubjects(this.p2p, this.inbox, [this.bites, this.reviews]);
 
@@ -21,12 +21,13 @@ class ModerationSubjects {
   final BiteFakeStore? bites;
   final ReviewFakeStore? reviews;
 
-  /// Deletes a removed Bite, comment or review. Listings are taken down by the
-  /// caller; readers and messages stay.
+  /// Deletes a removed message, Bite, comment or review. Listings are taken
+  /// down by the caller; readers stay.
   void remove(ReportTargetKind kind, String id) => switch (kind) {
     ReportTargetKind.bite => bites?.remove(id),
     ReportTargetKind.comment => bites?.removeComment(id),
     ReportTargetKind.review => reviews?.remove(id),
+    ReportTargetKind.message => inbox?.removeMessage(id),
     _ => null,
   };
 
