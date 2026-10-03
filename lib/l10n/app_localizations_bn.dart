@@ -2146,6 +2146,25 @@ class AppL10nBn extends AppL10n {
   String get aiPromptHistory => 'ইসলামের ইতিহাস';
 
   @override
+  String aiBasketTotal(int count, String total) {
+    return '$countটি বই · মোট $total';
+  }
+
+  @override
+  String get aiBasketAddAll => 'সব কার্টে যোগ করুন';
+
+  @override
+  String aiBasketAdded(int count) {
+    return '$countটি বই কার্টে যোগ হয়েছে';
+  }
+
+  @override
+  String get aiPromptClass => '৯ম শ্রেণির বই ১০০০ টাকার মধ্যে';
+
+  @override
+  String get aiPromptPlain => 'নতুনদের জন্য বাংলায় সীরাহ';
+
+  @override
   String get homeAppBarLightMode => 'লাইট মোড';
 
   @override

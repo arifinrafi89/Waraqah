@@ -1,3 +1,4 @@
+import '../../../../core/models/edition.dart';
 import 'assistant_intent.dart';
 
 /// What the assistant says, in English or Bangla (`lang` is `bn`). The
@@ -42,16 +43,44 @@ abstract final class AssistantReplies {
       ? 'আমি ওয়ারাকাহর বই, দাম আর স্টক নিয়ে সাহায্য করতে পারি। একটি বিষয়, লেখক বা বাজেট বলুন।'
       : "I can help with Waraqah's books, prices and stock. Tell me a topic, an author or a budget.";
 
-  static String _label(bool bn, AssistantIntent intent) =>
-      switch (intent.kind) {
-        AssistantIntentKind.seerah => bn ? 'সীরাহর বই' : 'books on the Seerah',
-        AssistantIntentKind.hadith => bn ? 'হাদিসের বই' : 'Hadith books',
-        AssistantIntentKind.quran => bn ? 'কুরআনের বই' : 'Quran books',
-        AssistantIntentKind.islamicHistory =>
-          bn ? 'ইসলামের ইতিহাসের বই' : 'Islamic history books',
-        AssistantIntentKind.authorSearch =>
-          bn ? '${intent.query}-এর বই' : 'books by ${intent.query}',
-        _ when intent.isIslamic => bn ? 'ইসলামিক বই' : 'Islamic books',
-        _ => bn ? 'আপনার জন্য কিছু বই' : 'some books for you',
-      };
+  /// A basket for the cart: how many Books and what they cost together.
+  static String basket(bool bn, AssistantIntent intent, int count, int total) {
+    final what = _label(bn, intent);
+    final price = intent.maxPrice;
+    if (bn) {
+      final under = price == null ? '' : ' (৳$price-এর মধ্যে)';
+      return '$what$under: $countটি বই, মোট ৳$total। নিচ থেকে সবগুলো কার্টে যোগ করুন।';
+    }
+    final under = price == null ? '' : ' within ৳$price';
+    return "Here's a basket of $what$under: $count books, ৳$total in all. Add them all to your cart below.";
+  }
+
+  static String _label(bool bn, AssistantIntent intent) {
+    final base = switch (intent.kind) {
+      AssistantIntentKind.seerah => bn ? 'সীরাহর বই' : 'books on the Seerah',
+      AssistantIntentKind.hadith => bn ? 'হাদিসের বই' : 'Hadith books',
+      AssistantIntentKind.quran => bn ? 'কুরআনের বই' : 'Quran books',
+      AssistantIntentKind.islamicHistory =>
+        bn ? 'ইসলামের ইতিহাসের বই' : 'Islamic history books',
+      AssistantIntentKind.authorSearch =>
+        bn ? '${intent.query}-এর বই' : 'books by ${intent.query}',
+      _ when intent.isIslamic => bn ? 'ইসলামিক বই' : 'Islamic books',
+      _ when intent.classLevel != null =>
+        bn
+            ? '${intent.classLevel}ম শ্রেণির বই'
+            : 'books for Class ${intent.classLevel}',
+      _ when intent.exam != null =>
+        bn
+            ? '${intent.exam!.name.toUpperCase()} প্রস্তুতির বই'
+            : '${intent.exam!.name.toUpperCase()} books',
+      _ => bn ? 'আপনার জন্য কিছু বই' : 'some books for you',
+    };
+    final lang = switch (intent.language) {
+      BookLanguage.bangla => bn ? ' (বাংলায়)' : ' in Bangla',
+      BookLanguage.english => bn ? ' (ইংরেজিতে)' : ' in English',
+      BookLanguage.arabic => bn ? ' (আরবিতে)' : ' in Arabic',
+      null => '',
+    };
+    return '$base$lang';
+  }
 }

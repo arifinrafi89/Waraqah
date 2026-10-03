@@ -40,6 +40,8 @@ class AiChatPage extends ConsumerWidget {
             ),
             PromptChipRow(
               prompts: [
+                l10n.aiPromptClass,
+                l10n.aiPromptPlain,
                 l10n.aiPromptBudget,
                 l10n.aiPromptIslamic,
                 l10n.aiPromptExam,

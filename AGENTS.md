@@ -146,6 +146,7 @@ The app also has:
   - Answers come from the fake API: `/assistant/greeting?lang=` and `/assistant/ask` (`{prompt, history, lang}` → `{id, text, bookIds}`), answered by `AssistantBrain`: it detects the request (`AssistantIntent`), picks up to four catalog Books on the storefront within the budget (`assistantBooksFor`), and words the reply in English or Bangla (`AssistantReplies`, server-side text). The app sends the app's language.
   - Each recommended Book shows as a card with Waraqah's From-price and stock (`RecommendationCard`); there are no vendors or price tables any more (`VendorQuote` is gone). The prompt chips come from the ARB files.
   - Built with `--dart-define=GEMINI_API_KEY=...`, Gemini words the answer around the same Books; if it fails, the API's reply stands.
+- **Smarter AI is done** (Arifin): `AssistantParser` reads plain English, Banglish or Bangla (Bangla digits, "1,000", "১০০০ টাকার মধ্যে"): a topic, a budget, Class (6–12), Exam, language and format. "Short seerah for beginners in Bangla" finds Books with a Bangla Edition; "Books for Class 9 under ৳1,000" is a **basket**: the cheapest orderable Edition of each fitting Book, added while the total stays in budget (up to eight), sent as `basket: {editionIds, totalBdt}`. The reply shows `BasketCard` with **Add all to cart** (Farhan's cart, one Edition each). Two new prompt chips try both; Bangla replies use Bangla digits.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
 - `main` passes `flutter analyze` with no issues, and all tests pass.
 
@@ -393,7 +394,7 @@ Everything below is still missing. Arifin builds it, one branch per item, inside
 3. ~~**Shelves**~~ done (see §2): (taken over from Niloy / Rahinur): Want to Read / Reading / Finished; delivered order Books are added automatically; moving a Book to Finished calls `ref.bookFinished`, and My Listings' stand-in card goes; Profile's "Books read" counts the Finished shelf.
 4. ~~**Reading progress and stats:**~~ done (see §2): pages or % read, a yearly goal, a reading streak; a stats page (Books per month, favourite Categories); on finishing, offer to write a Review, post a Bite or sell it.
 5. ~~**AI assistant on our catalog:**~~ done (see §2): remove `VendorQuote` and the vendor price table; answers show Waraqah's own From-price and stock.
-6. **Smarter AI:** "Books for Class 9 under ৳1,000" builds a basket from the catalog and adds it to the cart; plain-words search ("short seerah for beginners in Bangla") maps to `CatalogFilters`.
+6. ~~**Smarter AI:**~~ done (see §2): "Books for Class 9 under ৳1,000" builds a basket from the catalog and adds it to the cart; plain-words search ("short seerah for beginners in Bangla") maps to `CatalogFilters`.
 7. **Admin dashboard:** today's orders and sales, Listings waiting for approval, top searched Books (search terms logged by the fake backend), most requested Books (`bookDemandProvider`).
 8. **Blocking in the inbox:** the server refuses sends to and from a blocked reader; the thread says so.
 9. **Removed messages:** a message a moderator removes leaves the thread.

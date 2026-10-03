@@ -3871,6 +3871,36 @@ abstract class AppL10n {
   /// **'Islamic history'**
   String get aiPromptHistory;
 
+  /// No description provided for @aiBasketTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 book} other{{count} books}} · {total} in all'**
+  String aiBasketTotal(int count, String total);
+
+  /// No description provided for @aiBasketAddAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Add all to cart'**
+  String get aiBasketAddAll;
+
+  /// No description provided for @aiBasketAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 book added to your cart} other{{count} books added to your cart}}'**
+  String aiBasketAdded(int count);
+
+  /// No description provided for @aiPromptClass.
+  ///
+  /// In en, this message translates to:
+  /// **'Books for Class 9 under ৳1,000'**
+  String get aiPromptClass;
+
+  /// No description provided for @aiPromptPlain.
+  ///
+  /// In en, this message translates to:
+  /// **'Short seerah for beginners in Bangla'**
+  String get aiPromptPlain;
+
   /// No description provided for @homeAppBarLightMode.
   ///
   /// In en, this message translates to:
