@@ -3569,10 +3569,59 @@ class AppL10nBn extends AppL10n {
   String get listingFinishedKeep => 'রেখে দিন';
 
   @override
-  String get listingFinishedCardTitle => 'কেনা কোনো বই পড়া শেষ?';
+  String get shelfTitle => 'আমার তাক';
 
   @override
-  String get listingFinishedCardBody => 'বিক্রি করতে বইটিতে চাপুন।';
+  String get shelfWantToRead => 'পড়তে চাই';
+
+  @override
+  String get shelfReading => 'পড়ছি';
+
+  @override
+  String get shelfFinished => 'পড়া শেষ';
+
+  @override
+  String get shelfAdd => 'তাকে রাখুন';
+
+  @override
+  String get shelfRemove => 'তাক থেকে সরান';
+
+  @override
+  String shelfMoved(String shelf) {
+    return '$shelf-এ রাখা হয়েছে।';
+  }
+
+  @override
+  String get shelfRemoved => 'তাক থেকে সরানো হয়েছে।';
+
+  @override
+  String get shelfMoveTo => 'সরান';
+
+  @override
+  String get shelfEmptyWantToRead =>
+      'এখনো কিছু নেই। বইয়ের পাতা থেকে যোগ করুন; কেনা বই পৌঁছালে এখানে আসে।';
+
+  @override
+  String get shelfEmptyReading => 'এখন কিছু পড়ছেন না।';
+
+  @override
+  String get shelfEmptyFinished => 'শেষ করা বই এখানে দেখাবে।';
+
+  @override
+  String shelfAddedOn(String date) {
+    return 'যোগ হয়েছে $date';
+  }
+
+  @override
+  String shelfFinishedOn(String date) {
+    return 'শেষ হয়েছে $date';
+  }
+
+  @override
+  String get shelfProfileLink => 'আমার তাক';
+
+  @override
+  String get shelfProfileLinkBody => 'পড়তে চাই, পড়ছি আর পড়া শেষ';
 
   @override
   String get listingEditTitle => 'লিস্টিং সম্পাদনা';

@@ -6349,17 +6349,101 @@ abstract class AppL10n {
   /// **'Keep it'**
   String get listingFinishedKeep;
 
-  /// No description provided for @listingFinishedCardTitle.
+  /// No description provided for @shelfTitle.
   ///
   /// In en, this message translates to:
-  /// **'Finished a book you bought?'**
-  String get listingFinishedCardTitle;
+  /// **'My shelves'**
+  String get shelfTitle;
 
-  /// No description provided for @listingFinishedCardBody.
+  /// No description provided for @shelfWantToRead.
   ///
   /// In en, this message translates to:
-  /// **'Tap it to sell it on.'**
-  String get listingFinishedCardBody;
+  /// **'Want to Read'**
+  String get shelfWantToRead;
+
+  /// No description provided for @shelfReading.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading'**
+  String get shelfReading;
+
+  /// No description provided for @shelfFinished.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished'**
+  String get shelfFinished;
+
+  /// No description provided for @shelfAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to shelf'**
+  String get shelfAdd;
+
+  /// No description provided for @shelfRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Take off my shelves'**
+  String get shelfRemove;
+
+  /// No description provided for @shelfMoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Moved to {shelf}.'**
+  String shelfMoved(String shelf);
+
+  /// No description provided for @shelfRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken off your shelves.'**
+  String get shelfRemoved;
+
+  /// No description provided for @shelfMoveTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Move to'**
+  String get shelfMoveTo;
+
+  /// No description provided for @shelfEmptyWantToRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing here yet. Add books from their page, and books you buy land here when they arrive.'**
+  String get shelfEmptyWantToRead;
+
+  /// No description provided for @shelfEmptyReading.
+  ///
+  /// In en, this message translates to:
+  /// **'Not reading anything right now.'**
+  String get shelfEmptyReading;
+
+  /// No description provided for @shelfEmptyFinished.
+  ///
+  /// In en, this message translates to:
+  /// **'Books you finish show up here.'**
+  String get shelfEmptyFinished;
+
+  /// No description provided for @shelfAddedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Added {date}'**
+  String shelfAddedOn(String date);
+
+  /// No description provided for @shelfFinishedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished {date}'**
+  String shelfFinishedOn(String date);
+
+  /// No description provided for @shelfProfileLink.
+  ///
+  /// In en, this message translates to:
+  /// **'My shelves'**
+  String get shelfProfileLink;
+
+  /// No description provided for @shelfProfileLinkBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Want to Read, Reading and Finished'**
+  String get shelfProfileLinkBody;
 
   /// No description provided for @listingEditTitle.
   ///

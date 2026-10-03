@@ -21,6 +21,7 @@ import '../features/readers/data/sources/follow_fake_store.dart';
 import '../features/report/data/sources/report_fake_store.dart';
 import '../features/reviews/data/sources/review_fake_store.dart';
 import '../features/sell_back/data/sources/sell_back_fake_store.dart';
+import '../features/shelves/data/sources/shelf_fake_store.dart';
 import '../features/wallet/data/sources/wallet_fake_store.dart';
 
 /// The fake backend's memory: one set per `FakeApiRoutes.interceptor()`, so
@@ -115,4 +116,7 @@ class FakeStores {
 
   /// Price and stock alerts notify the reader when they first fire.
   late final alerts = AlertFakeStore(notifications);
+
+  /// Delivered orders put their Books on the reader's shelves.
+  late final shelves = ShelfFakeStore(orders);
 }

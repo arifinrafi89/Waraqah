@@ -18,6 +18,7 @@ import '../../../report/presentation/widgets/blocked_readers_link.dart';
 import '../../../sell_back/presentation/widgets/sell_back_link.dart';
 import '../../../wallet/presentation/widgets/wallet_link.dart';
 import '../../../wishlist/presentation/widgets/wishlist_link.dart';
+import '../../../shelves/presentation/widgets/shelves_link.dart';
 import '../widgets/profile_account_links.dart';
 import '../widgets/profile_device_settings.dart';
 import '../widgets/profile_header_card.dart';
@@ -51,6 +52,7 @@ class ProfilePage extends StatelessWidget {
                 SizedBox(height: Insets.md),
                 ProfileAccountLinks(),
                 SessionActions(),
+                ShelvesLink(),
                 MyOrdersLink(),
                 WishlistLink(),
                 MyBooklistsLink(),
