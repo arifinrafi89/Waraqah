@@ -67,6 +67,7 @@ The app also has:
     - The **return policy** (`OrdersRoutes.returnPolicy`, `/return-policy`) is open to guests too. Its wording matches the rules in code.
   - **Admin → Orders:** orders, returns and coupons.
   - **Donate books** (`/donate`, `features/donate`) to verified places, and the **Wallet** (`/wallet`, `features/wallet`).
+  - **Admin → Donation places** (Arifin; `AdminSection.donations`, support Staff and super admin): Staff add, edit and remove the verified places (`DonationPlacesAdminPage`, `DonateAdminRoutes.newPlace` / `placeFor(id)`): name, kind, district (from `/geo`), area, story, and the Books they need with copies (catalog `BookPickerSheet`). Rules in `PlaceRules` (name 3–80, story 10–300, at least one Book, 1–100 copies each), checked in the form and by the server. Fake API `/admin/donate/places/save` and `/remove` (`DonatePlacesStore`, which `/donate/recipients` reads too): editing keeps the copies donors already sent; a removed place leaves the Donate page. The places live in the fake backend's memory until restart.
 - **Offers and inbox are done** (Farhan, #109). They follow the Chat & Meetup plan:
   - A buyer makes an offer (price, meetup or courier). It lands in the seller's inbox in a thread: one per buyer per Listing.
   - The seller accepts (the Listing becomes **Reserved**) or declines. Both chat in the thread.
@@ -290,8 +291,8 @@ features/<feature>/
 ### 4.6 Admin area (already built)
 
 - `/admin` is a staff-only hub listing **Admin sections** the viewer may open. It's reached from Profile.
-- Sections are the `AdminSection` enum (`features/admin/domain/entities/admin_section.dart`): `dashboard` (all staff), `catalog` (catalog manager: Books, Categories, Authors, Publishers, Home's Banners, and Collections with Staff Booklists), `orders` (support), `moderation` (moderator), `tradeIn` (catalog manager: grading Sell Back books); super admin opens all. `canOpen(role)` drives both the menu and the guard.
-- Every section is a real page: Dashboard, Catalog, Orders, Moderation and Trade-ins.
+- Sections are the `AdminSection` enum (`features/admin/domain/entities/admin_section.dart`): `dashboard` (all staff), `catalog` (catalog manager: Books, Categories, Authors, Publishers, Home's Banners, and Collections with Staff Booklists), `orders` (support), `moderation` (moderator), `tradeIn` (catalog manager: grading Sell Back books), `donations` (support: the verified donation places); super admin opens all. `canOpen(role)` drives both the menu and the guard.
+- Every section is a real page: Dashboard, Catalog, Orders, Moderation, Trade-ins and Donation places.
 - Each owner **replaces their own line** in `AdminRoutes.routes` with the real page. Link with `AdminRoutes.section(AdminSection.orders)`.
 
 ---
@@ -393,7 +394,7 @@ Build **only your own area**. If you need something from another area that isn't
 
 ### Arifin: finishing the front end
 
-Everything below is still missing. Arifin builds it, one branch per item, inside the owning feature's folder (other owners' code is touched only where the item needs it, and the PR says so).
+All 13 items below are done (PRs #131–#143, one branch each, chained). Arifin built them one branch per item, inside the owning feature's folder (other owners' code is touched only where the item needs it, and the PR says so).
 
 1. ~~**Listing flow, for real:**~~ done (see §2): the add-listing form sends the Listing to the fake API (`inReview`, so it reaches the Moderation Center and My Listings); "Save draft" saves it; Step 3 takes photos (front cover, back cover, spine, one inside page, any damage); a Listing with Changes requested or Rejected can be edited and sent again.
 2. ~~**Marketplace filters:**~~ done (see §2): location from `/geo` (division → district), Category from the catalog, all text from the ARB files.
@@ -407,7 +408,7 @@ Everything below is still missing. Arifin builds it, one branch per item, inside
 10. ~~**Live handled sales:**~~ done (see §2): a sale's page updates when the other side moves.
 11. ~~**Wallet refund reason:**~~ done (see §2): handled-sale refunds get their own `WalletReason`.
 12. ~~**Bangla titles**~~ done (see §2): on book cards and the book page.
-13. **Admin: donation places:** staff add, edit and remove the verified places Donations go to.
+13. ~~**Admin: donation places:**~~ done (see §2): staff add, edit and remove the verified places Donations go to.
 
 ### Shared pieces
 

@@ -5,6 +5,8 @@ import 'presentation/pages/admin_dashboard_page.dart';
 import 'presentation/pages/admin_hub_page.dart';
 import '../catalog_admin/catalog_admin_routes.dart';
 import '../catalog_admin/presentation/pages/catalog_admin_page.dart';
+import '../donate/donate_admin_routes.dart';
+import '../donate/presentation/pages/donation_places_admin_page.dart';
 import '../moderation/presentation/pages/moderation_center_page.dart';
 import '../sell_back/presentation/pages/trade_in_page.dart';
 import '../orders/presentation/pages/orders_admin_page.dart';
@@ -42,6 +44,11 @@ abstract final class AdminRoutes {
         GoRoute(
           path: AdminSection.tradeIn.name,
           builder: (_, _) => const TradeInPage(),
+        ),
+        GoRoute(
+          path: AdminSection.donations.name,
+          builder: (_, _) => const DonationPlacesAdminPage(),
+          routes: DonateAdminRoutes.routes,
         ),
       ],
     ),

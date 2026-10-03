@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:waraqah/core/models/book.dart';
 import 'package:waraqah/features/checkout/domain/entities/payment_method.dart';
 import 'package:waraqah/features/donate/data/sources/donate_fixtures.dart';
+import 'package:waraqah/features/donate/domain/entities/donate_place_draft.dart';
 import 'package:waraqah/features/donate/domain/entities/donation.dart';
 import 'package:waraqah/features/donate/domain/entities/recipient.dart';
 import 'package:waraqah/features/donate/domain/repositories/donate_repository.dart';
@@ -22,6 +23,12 @@ class _Repository implements DonateRepository {
 
   @override
   Future<List<Recipient>> recipients() async => const [];
+
+  @override
+  Future<List<Recipient>> savePlace(DonatePlaceDraft draft) async => const [];
+
+  @override
+  Future<List<Recipient>> removePlace(String id) async => const [];
 }
 
 RecipientNeed _need(int wanted, int received) => RecipientNeed(

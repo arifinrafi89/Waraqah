@@ -22,7 +22,9 @@ import '../features/home/data/sources/ayah_fake_api.dart';
 import '../features/home/data/sources/home_fake_api.dart';
 import '../features/loyalty/data/sources/points_fake_api.dart';
 import '../features/deals/data/sources/deals_fake_api.dart';
+import '../features/donate/data/sources/donate_admin_fake_api.dart';
 import '../features/donate/data/sources/donate_fake_api.dart';
+import '../features/donate/data/sources/donate_places_store.dart';
 import '../features/inbox/data/sources/inbox_fake_api.dart';
 import '../features/moderation/data/sources/moderation_fake_api.dart';
 import '../features/notifications/data/sources/notification_fake_api.dart';
@@ -48,6 +50,7 @@ abstract final class FakeApiRoutes {
   static FakeApiInterceptor interceptor([FakeStores? stores]) {
     final s = stores ?? FakeStores();
     final searches = SearchLog();
+    final places = DonatePlacesStore();
     return FakeApiInterceptor({
       ...AuthFakeApi.routes(),
       ...AssistantFakeApi.routes,
@@ -78,7 +81,8 @@ abstract final class FakeApiRoutes {
       ...OrderAdminFakeApi.routes(s.orders, s.wallet, s.notifications),
       ...CouponAdminFakeApi.routes(s.coupons),
       ...DealsFakeApi.routes(s.deals),
-      ...DonateFakeApi.routes(s.orders),
+      ...DonateFakeApi.routes(s.orders, places),
+      ...DonateAdminFakeApi.routes(places),
       ...WalletFakeApi.routes(s.wallet),
       ...P2pFakeApi.routes(
         s.p2p,

@@ -1,3 +1,4 @@
+import '../../domain/entities/donate_place_draft.dart';
 import '../../domain/entities/donation.dart';
 import '../../domain/entities/recipient.dart';
 import '../../domain/repositories/donate_repository.dart';
@@ -23,4 +24,14 @@ class DonateRepositoryImpl implements DonateRepository {
   @override
   Future<Donation> donate(DonationRequest request) async =>
       (await _source.donate(request)).toEntity();
+
+  @override
+  Future<List<Recipient>> savePlace(DonatePlaceDraft draft) async => [
+    for (final r in await _source.savePlace(draft)) r.toEntity(),
+  ];
+
+  @override
+  Future<List<Recipient>> removePlace(String id) async => [
+    for (final r in await _source.removePlace(id)) r.toEntity(),
+  ];
 }
