@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/models/book.dart';
+
 import '../../domain/entities/p2p_listing.dart';
 
 part 'p2p_listing_model.freezed.dart';
@@ -27,7 +29,10 @@ abstract class P2pListingModel with _$P2pListingModel {
     @Default(0) int coverSeed,
     String? district,
     String? area,
-    String? category,
+
+    /// The catalog Category, and its Section, the server files it under.
+    String? categoryId,
+    Section? section,
     int? newPriceBdt,
     String? note,
   }) = _P2pListingModel;
@@ -56,7 +61,8 @@ extension P2pListingModelX on P2pListingModel {
     coverSeed: coverSeed,
     district: district,
     area: area,
-    category: category,
+    categoryId: categoryId,
+    section: section,
     newPriceBdt: newPriceBdt,
     note: note,
   );

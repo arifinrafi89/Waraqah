@@ -4262,6 +4262,47 @@ class AppL10nBn extends AppL10n {
       'এখনো কোনো অফার নেই। ক্রেতাদের অফার ও মেসেজ এখানে আর আপনার ইনবক্সে আসবে।';
 
   @override
+  String get usedFilterCondition => 'অবস্থা';
+
+  @override
+  String get usedFilterAnyCondition => 'যেকোনো অবস্থা';
+
+  @override
+  String get usedFilterLocation => 'এলাকা';
+
+  @override
+  String get usedFilterAllLocations => 'সারা বাংলাদেশ';
+
+  @override
+  String get usedFilterDistrict => 'জেলা';
+
+  @override
+  String get usedFilterAllDistricts => 'সব জেলা';
+
+  @override
+  String get usedFilterSection => 'বিভাগ';
+
+  @override
+  String get usedFilterAllSections => 'সব বিভাগ';
+
+  @override
+  String get usedFilterCategory => 'ক্যাটাগরি';
+
+  @override
+  String get usedFilterAllCategories => 'সব ক্যাটাগরি';
+
+  @override
+  String get usedFilterPrice => 'দাম';
+
+  @override
+  String get usedFilterAnyPrice => 'যেকোনো দাম';
+
+  @override
+  String usedFilterUnder(String price) {
+    return '$price-এর নিচে';
+  }
+
+  @override
   String get inboxTitle => 'ইনবক্স';
 
   @override

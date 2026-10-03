@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/network/dio_provider.dart';
-import '../../../../core/state/selection_notifier.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../../data/repositories/p2p_repository_impl.dart';
 import '../../data/sources/p2p_remote_source.dart';
@@ -56,39 +55,6 @@ final nearbyListingsProvider = FutureProvider<List<P2pListing>>(
 final p2pListingsProvider = FutureProvider<List<P2pListing>>(
   (ref) => ref.watch(getListingsProvider).call(const ListingsQuery()),
 );
-
-final p2pFilterConditionProvider = selectionProvider<BookCondition?>(null);
-final p2pFilterDistrictProvider = selectionProvider<String?>(null);
-final p2pFilterAreaProvider = selectionProvider<String?>(null);
-final p2pFilterCategoryProvider = selectionProvider<String?>(null);
-final p2pFilterMaxPriceProvider = selectionProvider<int?>(null);
-
-final p2pQueryProvider = selectionProvider<String>('');
-
-final filteredP2pListingsProvider = Provider<List<P2pListing>>((ref) {
-  final query = ref.watch(p2pQueryProvider).trim().toLowerCase();
-  final condition = ref.watch(p2pFilterConditionProvider);
-  final district = ref.watch(p2pFilterDistrictProvider);
-  final area = ref.watch(p2pFilterAreaProvider);
-  final category = ref.watch(p2pFilterCategoryProvider);
-  final maxPrice = ref.watch(p2pFilterMaxPriceProvider);
-  final listings = ref.watch(p2pListingsProvider).value ?? const [];
-
-  return listings.where((listing) {
-    final matches =
-        query.isEmpty ||
-        listing.title.toLowerCase().contains(query) ||
-        listing.sellerName.toLowerCase().contains(query) ||
-        listing.place.toLowerCase().contains(query);
-    if (!matches) return false;
-    if (condition != null && listing.condition != condition) return false;
-    if (district != null && listing.district != district) return false;
-    if (area != null && listing.area != area) return false;
-    if (category != null && listing.category != category) return false;
-    if (maxPrice != null && listing.priceBdt > maxPrice) return false;
-    return true;
-  }).toList();
-});
 
 final myListingsProvider = FutureProvider<List<P2pListing>>(
   (ref) => ref.watch(getMyListingsProvider).call(const NoParams()),

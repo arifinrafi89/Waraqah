@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/models/book.dart';
+
 part 'p2p_listing.freezed.dart';
 
 enum BookCondition { likeNew, veryGood, good, acceptable }
@@ -48,7 +50,10 @@ abstract class P2pListing with _$P2pListing {
     @Default(0) int coverSeed,
     String? district,
     String? area,
-    String? category,
+
+    /// The catalog Category, and its Section, the server files it under.
+    String? categoryId,
+    Section? section,
     int? newPriceBdt,
 
     /// The seller's own words about the copy.

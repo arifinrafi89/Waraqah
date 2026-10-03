@@ -103,6 +103,7 @@ The app also has:
   - Flags are sent as keys (`ListingRules.flags`: highlighting, notes, damage), and Step 2 has the seller's note.
   - A draft (**Edit**) or a Listing a moderator sent back (**Edit and send again**, with the reason shown) opens in the same form from My Listings (`ListingEditButton`). Saving a draft keeps a moderator's reason; sending clears it. Seed: `p2p-changes-1` (Head First Java) waits for a back cover photo.
   - The marketplace's + button starts an empty form. `openApp(..., overrides: [...])` takes provider overrides.
+- **Marketplace filters are done** (Arifin): `P2pMarketplaceFilterBar` (bricks `P2pFilterMenu<T>`, providers in `p2p_filter_providers.dart`): condition; location as a division then one of its districts, from Profile's `/geo` (`geoProvider`); a Section then one of its catalog Categories (`sectionCategoriesProvider`); price. Every label comes from the ARB files (`usedFilter…`), places and Categories in Bangla when the app is. Listings now carry `categoryId` and `section` instead of free-text `category`: the fake backend fills them in from the Listing's catalog Book when it has none (`withCatalogCategory`), and the listing page shows the Category.
 - **Request a book is done** (Arifin): `features/book_request`.
   - `BookRequestRoutes.newFor(title:, bookId:)` (`/request-book`) is the form: title, author, most you'd pay, note (`RequestRules`). Guests log in to send. Search's "Request this book" and the scanner's "not found" open it (the catalog's stand-in page is gone).
   - Sending tells the readers who have the book: the answer says how many (`notifiedSellers`) and how many copies are on sale now (`matchCount`). A Listing matches by catalog Book or by title words (`RequestRules.matches`).
@@ -376,7 +377,7 @@ Build **only your own area**. If you need something from another area that isn't
 Everything below is still missing. Arifin builds it, one branch per item, inside the owning feature's folder (other owners' code is touched only where the item needs it, and the PR says so).
 
 1. ~~**Listing flow, for real:**~~ done (see §2): the add-listing form sends the Listing to the fake API (`inReview`, so it reaches the Moderation Center and My Listings); "Save draft" saves it; Step 3 takes photos (front cover, back cover, spine, one inside page, any damage); a Listing with Changes requested or Rejected can be edited and sent again.
-2. **Marketplace filters:** location from `/geo` (division → district), Category from the catalog, all text from the ARB files.
+2. ~~**Marketplace filters:**~~ done (see §2): location from `/geo` (division → district), Category from the catalog, all text from the ARB files.
 3. **Shelves** (taken over from Niloy / Rahinur): Want to Read / Reading / Finished; delivered order Books are added automatically; moving a Book to Finished calls `ref.bookFinished`, and My Listings' stand-in card goes; Profile's "Books read" counts the Finished shelf.
 4. **Reading progress and stats:** pages or % read, a yearly goal, a reading streak; a stats page (Books per month, favourite Categories); on finishing, offer to write a Review, post a Bite or sell it.
 5. **AI assistant on our catalog:** remove `VendorQuote` and the vendor price table; answers show Waraqah's own From-price and stock.
@@ -471,7 +472,6 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - Upazila names are English only (divisions and districts have Bangla).
 - Removing a reported message closes the report, but the message stays: the inbox doesn't delete messages (Arifin).
 - Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Arifin, in Farhan's inbox: refuse sends to and from blocked readers).
-- The P2P marketplace filter bar's text is English-only (its search field is translated now) (Arifin).
 - Listing photos aren't stored or shown yet: the fake backend keeps only which slots have a photo, and moderators see named tiles.
 - Book covers are gradient seeds (`coverSeed`): there's no photo upload until the backend.
 - Admin → Catalog edits (and the forced Season) live in the fake backend's memory, so they last until the app restarts.

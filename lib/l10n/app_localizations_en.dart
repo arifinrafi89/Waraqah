@@ -4380,6 +4380,47 @@ class AppL10nEn extends AppL10n {
       'No offers yet. Buyers\' offers and messages show up here and in your inbox.';
 
   @override
+  String get usedFilterCondition => 'Condition';
+
+  @override
+  String get usedFilterAnyCondition => 'Any condition';
+
+  @override
+  String get usedFilterLocation => 'Location';
+
+  @override
+  String get usedFilterAllLocations => 'All of Bangladesh';
+
+  @override
+  String get usedFilterDistrict => 'District';
+
+  @override
+  String get usedFilterAllDistricts => 'All districts';
+
+  @override
+  String get usedFilterSection => 'Section';
+
+  @override
+  String get usedFilterAllSections => 'All sections';
+
+  @override
+  String get usedFilterCategory => 'Category';
+
+  @override
+  String get usedFilterAllCategories => 'All categories';
+
+  @override
+  String get usedFilterPrice => 'Price';
+
+  @override
+  String get usedFilterAnyPrice => 'Any price';
+
+  @override
+  String usedFilterUnder(String price) {
+    return 'Under $price';
+  }
+
+  @override
   String get inboxTitle => 'Inbox';
 
   @override

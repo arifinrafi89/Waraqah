@@ -1,5 +1,6 @@
 import '../../domain/entities/p2p_listing.dart';
 import '../models/p2p_listing_model.dart';
+import 'p2p_catalog_link.dart';
 import 'p2p_fixtures.dart';
 import 'p2p_people.dart';
 import 'p2p_ratings.dart';
@@ -72,10 +73,11 @@ class P2pFakeStore {
           .length;
 
   /// The listing as the signed-in reader sees it.
-  Map<String, dynamic> json(P2pListingModel listing) => listing
-      .copyWith(
-        isMine: listing.sellerId == P2pPeople.me,
-        isMyDeal: _buyers[listing.id] == P2pPeople.me,
-      )
-      .toJson();
+  Map<String, dynamic> json(P2pListingModel listing) =>
+      withCatalogCategory(listing)
+          .copyWith(
+            isMine: listing.sellerId == P2pPeople.me,
+            isMyDeal: _buyers[listing.id] == P2pPeople.me,
+          )
+          .toJson();
 }

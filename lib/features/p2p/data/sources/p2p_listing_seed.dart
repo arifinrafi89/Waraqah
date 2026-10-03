@@ -16,7 +16,7 @@ P2pListingModel seedListing(
   bool negotiable = false,
   HandoverMethod handover = HandoverMethod.meetInPerson,
   String? note,
-  String? category,
+  String? categoryId,
   List<String> flags = const [],
   List<String> photos = const [],
 }) {
@@ -37,7 +37,7 @@ P2pListingModel seedListing(
     coverSeed: id.codeUnits.fold(0, (a, b) => a + b),
     district: seller.district,
     area: seller.area,
-    category: category,
+    categoryId: categoryId,
     newPriceBdt: newPrice,
     note: note,
   );

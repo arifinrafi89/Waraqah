@@ -47,7 +47,7 @@ abstract final class P2pListingWriter {
       coverSeed: old?.coverSeed ?? newId.codeUnits.fold(0, (a, b) => a + b),
       district: me.district,
       area: me.area,
-      category: old?.category,
+      categoryId: old?.categoryId,
       newPriceBdt: body['newPriceBdt'] as int?,
       note: note == null || note.isEmpty ? null : note,
     );

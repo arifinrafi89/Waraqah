@@ -6,7 +6,7 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../auth/auth_routes.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
 import '../../../p2p/p2p_routes.dart';
-import '../../../p2p/presentation/providers/p2p_providers.dart';
+import '../../../p2p/presentation/providers/p2p_filter_providers.dart';
 import '../../book_request_routes.dart';
 import '../../domain/entities/book_request.dart';
 import '../providers/book_request_providers.dart';
