@@ -4591,6 +4591,72 @@ abstract class AppL10n {
   /// **'Sales, orders and stock at a glance'**
   String get adminDashboardHint;
 
+  /// No description provided for @adminDashboardOrdersToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders today'**
+  String get adminDashboardOrdersToday;
+
+  /// No description provided for @adminDashboardSalesToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales today'**
+  String get adminDashboardSalesToday;
+
+  /// No description provided for @adminDashboardToShip.
+  ///
+  /// In en, this message translates to:
+  /// **'To ship'**
+  String get adminDashboardToShip;
+
+  /// No description provided for @adminDashboardListings.
+  ///
+  /// In en, this message translates to:
+  /// **'Listings to approve'**
+  String get adminDashboardListings;
+
+  /// No description provided for @adminDashboardReports.
+  ///
+  /// In en, this message translates to:
+  /// **'Open reports'**
+  String get adminDashboardReports;
+
+  /// No description provided for @adminDashboardDisputes.
+  ///
+  /// In en, this message translates to:
+  /// **'Open disputes'**
+  String get adminDashboardDisputes;
+
+  /// No description provided for @adminDashboardTopSearches.
+  ///
+  /// In en, this message translates to:
+  /// **'Top searches'**
+  String get adminDashboardTopSearches;
+
+  /// No description provided for @adminDashboardTopRequested.
+  ///
+  /// In en, this message translates to:
+  /// **'Most requested books'**
+  String get adminDashboardTopRequested;
+
+  /// No description provided for @adminDashboardNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing yet.'**
+  String get adminDashboardNone;
+
+  /// No description provided for @adminDashboardSearches.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 search} other{{count} searches}}'**
+  String adminDashboardSearches(int count);
+
+  /// No description provided for @adminDashboardRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 request} other{{count} requests}}'**
+  String adminDashboardRequests(int count);
+
   /// No description provided for @adminCatalog.
   ///
   /// In en, this message translates to:
@@ -5490,12 +5556,6 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Review used-book listings and reports'**
   String get adminModerationHint;
-
-  /// No description provided for @adminComingSoon.
-  ///
-  /// In en, this message translates to:
-  /// **'This section is being built. Check back soon.'**
-  String get adminComingSoon;
 
   /// No description provided for @moderationCenterTitle.
   ///

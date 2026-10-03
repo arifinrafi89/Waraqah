@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
 
 import 'domain/entities/admin_section.dart';
+import 'presentation/pages/admin_dashboard_page.dart';
 import 'presentation/pages/admin_hub_page.dart';
-import 'presentation/pages/admin_section_page.dart';
 import '../catalog_admin/catalog_admin_routes.dart';
 import '../catalog_admin/presentation/pages/catalog_admin_page.dart';
 import '../moderation/presentation/pages/moderation_center_page.dart';
@@ -16,7 +16,7 @@ abstract final class AdminRoutes {
   /// Location of one Admin section, e.g. `/admin/orders`.
   static String section(AdminSection section) => '$admin/${section.name}';
 
-  /// Each owner swaps their own line's page for the real one.
+  /// Every section has its real page now.
   static final List<RouteBase> routes = [
     GoRoute(
       path: admin,
@@ -24,7 +24,7 @@ abstract final class AdminRoutes {
       routes: [
         GoRoute(
           path: AdminSection.dashboard.name,
-          builder: (_, _) => const AdminSectionPage(AdminSection.dashboard),
+          builder: (_, _) => const AdminDashboardPage(),
         ),
         GoRoute(
           path: AdminSection.catalog.name,

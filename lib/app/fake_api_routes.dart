@@ -1,4 +1,7 @@
 import '../core/network/fake_api_interceptor.dart';
+import '../features/admin/data/sources/dashboard_fake_api.dart';
+import '../features/admin/data/sources/dashboard_fake_store.dart';
+import '../features/admin/data/sources/search_log.dart';
 import '../features/ai_assistant/data/sources/assistant_fake_api.dart';
 import '../features/alerts/data/sources/alert_fake_api.dart';
 import '../features/auth/data/sources/auth_fake_api.dart';
@@ -44,12 +47,13 @@ abstract final class FakeApiRoutes {
   /// Tests may pass [stores] to look inside the fake backend.
   static FakeApiInterceptor interceptor([FakeStores? stores]) {
     final s = stores ?? FakeStores();
+    final searches = SearchLog();
     return FakeApiInterceptor({
       ...AuthFakeApi.routes(),
       ...AssistantFakeApi.routes,
       ...ProfileFakeApi.routes(s.profile, s.addresses),
       ...NotificationFakeApi.routes(s.notifications),
-      ...BookFakeApi.routes,
+      ...searches.counting(BookFakeApi.routes, BookFakeApi.books),
       ...BookSuggestFakeApi.routes,
       ...BookQuestionsFakeApi.routes(),
       ...CollectionFakeApi.routes,
@@ -96,6 +100,16 @@ abstract final class FakeApiRoutes {
       ...HandledSaleFakeApi.routes(s.handledSales),
       ...SellBackFakeApi.routes(s.sellBack),
       ...ShelfFakeApi.routes(s.shelves),
+      ...DashboardFakeApi.routes(
+        DashboardFakeStore(
+          orders: s.orders,
+          p2p: s.p2p,
+          moderation: s.moderation,
+          sales: s.handledSales,
+          requests: s.bookRequests,
+          searches: searches,
+        ),
+      ),
     });
   }
 }

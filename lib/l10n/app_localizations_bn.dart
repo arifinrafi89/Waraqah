@@ -2567,6 +2567,43 @@ class AppL10nBn extends AppL10n {
   String get adminDashboardHint => 'বিক্রি, অর্ডার আর স্টক এক নজরে';
 
   @override
+  String get adminDashboardOrdersToday => 'আজকের অর্ডার';
+
+  @override
+  String get adminDashboardSalesToday => 'আজকের বিক্রি';
+
+  @override
+  String get adminDashboardToShip => 'পাঠাতে বাকি';
+
+  @override
+  String get adminDashboardListings => 'অনুমোদনের অপেক্ষায় লিস্টিং';
+
+  @override
+  String get adminDashboardReports => 'খোলা রিপোর্ট';
+
+  @override
+  String get adminDashboardDisputes => 'খোলা বিরোধ';
+
+  @override
+  String get adminDashboardTopSearches => 'সবচেয়ে বেশি খোঁজা';
+
+  @override
+  String get adminDashboardTopRequested => 'সবচেয়ে বেশি অনুরোধ করা বই';
+
+  @override
+  String get adminDashboardNone => 'এখনো কিছু নেই।';
+
+  @override
+  String adminDashboardSearches(int count) {
+    return '$count বার খোঁজা';
+  }
+
+  @override
+  String adminDashboardRequests(int count) {
+    return '$countটি অনুরোধ';
+  }
+
+  @override
   String get adminCatalog => 'ক্যাটালগ';
 
   @override
@@ -3070,9 +3107,6 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get adminModerationHint => 'পুরোনো বইয়ের লিস্টিং আর রিপোর্ট যাচাই';
-
-  @override
-  String get adminComingSoon => 'এই অংশটি তৈরি হচ্ছে। শীঘ্রই আবার দেখুন।';
 
   @override
   String get moderationCenterTitle => 'মডারেশন সেন্টার';
