@@ -36,7 +36,7 @@ void main() {
       role: 'support',
     );
     expect(pathOf(dashboard), '/admin/dashboard');
-    expect(find.text('Coming soon'), findsOneWidget);
+    expect(find.text('Orders today'), findsOneWidget);
   });
 
   testWidgets('readers go home and guests go to login', (tester) async {

@@ -2678,6 +2678,55 @@ class AppL10nEn extends AppL10n {
   String get adminDashboardHint => 'Sales, orders and stock at a glance';
 
   @override
+  String get adminDashboardOrdersToday => 'Orders today';
+
+  @override
+  String get adminDashboardSalesToday => 'Sales today';
+
+  @override
+  String get adminDashboardToShip => 'To ship';
+
+  @override
+  String get adminDashboardListings => 'Listings to approve';
+
+  @override
+  String get adminDashboardReports => 'Open reports';
+
+  @override
+  String get adminDashboardDisputes => 'Open disputes';
+
+  @override
+  String get adminDashboardTopSearches => 'Top searches';
+
+  @override
+  String get adminDashboardTopRequested => 'Most requested books';
+
+  @override
+  String get adminDashboardNone => 'Nothing yet.';
+
+  @override
+  String adminDashboardSearches(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count searches',
+      one: '1 search',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminDashboardRequests(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count requests',
+      one: '1 request',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get adminCatalog => 'Catalog';
 
   @override
@@ -3192,9 +3241,6 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get adminModerationHint => 'Review used-book listings and reports';
-
-  @override
-  String get adminComingSoon => 'This section is being built. Check back soon.';
 
   @override
   String get moderationCenterTitle => 'Moderation Center';

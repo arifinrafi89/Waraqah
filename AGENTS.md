@@ -109,7 +109,7 @@ The app also has:
   - Sending tells the readers who have the book: the answer says how many (`notifiedSellers`) and how many copies are on sale now (`matchCount`). A Listing matches by catalog Book or by title words (`RequestRules.matches`).
   - **My book requests** (`BookRequestRoutes.requests`, signed-in only, linked from Profile): See copies (the marketplace searching for it) or Close.
   - Sellers see **Readers want your books** on My Listings (`wantedBooksProvider`).
-  - Demand for admins: `bookDemandProvider` (titles, most asked first), ready for the admin dashboard.
+  - Demand for admins: `bookDemandProvider` (titles, most asked first); the Admin dashboard lists it.
   - Fake API `/requests`, `/requests/mine`, `/requests/close`, `/requests/wanted`, `/requests/demand` (`BookRequestFakeStore`, sharing `P2pFakeStore`).
 - **Waraqah-handled sales are done** (Arifin): `features/handled_sale`.
   - A live Listing shows **Let Waraqah handle it** (`HandledSaleCard`). The buyer pays the price plus ৳80 courier delivery by bKash, Nagad or card (no cash on delivery: Waraqah holds the money). The Listing becomes Reserved.
@@ -135,6 +135,10 @@ The app also has:
   - **Reading stats** (`ShelvesRoutes.stats`, the chart icon on the shelves page): the yearly goal (1–365 Books, Set / Change goal), the reading streak (days in a row with progress, counted up to today or yesterday), Books finished each month this year and the top 3 Categories.
   - The finished prompt ("Finished …?", `FinishedItChoices`) now starts with **Write a review** and **Post a Bite** for the Book, then the ways to sell it.
   - Fake API `/shelves/progress`, `/reading/stats`, `/reading/goal` (`ReadingLog` keeps the reading days and goal; seeds a 3-day streak, a goal of 12 and four Books finished this year).
+- **Admin dashboard is done** (Arifin): `AdminDashboardPage` at `AdminRoutes.section(AdminSection.dashboard)` (all Staff; the placeholder `AdminSectionPage` is gone).
+  - Tiles: orders and sales today, orders not shipped yet, Listings to approve, open reports, open disputes. Each opens Orders or the Moderation Center when the viewer's role may (`DashboardStatsGrid`).
+  - Lists: top searches and most requested books (the same demand as `bookDemandProvider`).
+  - Fake API `/admin/dashboard` (`DashboardFakeStore`, reading the orders, P2P, moderation, handled-sale and request stores). Searches are counted by `SearchLog`, which wraps the catalog's `/books` in `fake_api_routes.dart`: live search's growing terms ("sap" → "sapiens") count once, and Staff's `includeHidden` list isn't counted. Seeded with five terms.
 - **Accounts are done** (Niloy #108, Rahinur): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`). Sign-up keeps the name; the demo OTP is `123456` (`AuthFixtures.demoOtp`), any other code is refused.
 - **Profile and settings are done** (Rahinur): `ProfileRoutes.edit|addresses|settings` (signed-in only); `/profile`, `/profile/prefs`, `/addresses…`, `/geo`. Edit profile saves name, BD mobile and photo (`ProfileRules`) and renames the session (`SessionNotifier.rename`). Saved addresses (`SavedAddress`, `addressesProvider` in `features/profile`) are the ones checkout uses; the default is preselected, and checkout's "Add a new address" opens `ProfileRoutes.addressesAdd`. Division → district → upazila pickers read `/geo` (`geoProvider`). Settings: one switch per notification group (`ProfilePrefs.muted`), two privacy switches (saved for Bites and reading life), delete account. Theme, language and the Ayah switch stay on the Profile tab (device settings).
 - **Notifications are done** (Rahinur): `features/notifications`, `NotificationsRoutes.center` (`/notifications`, signed-in only), `NotificationBell` (Home's top bar + Profile), live via `/notifications/live`. Fake backends send with `NotificationFakeStore.send(readerId, kind, params:, target:)`, or the one-line helpers in `NotificationSends` / `NotificationSaleSends`; the text comes from ARB per kind (`notificationText`), and a target opens its page (`notificationRoute`). Senders today: order status and returns, Listing decisions, warnings and bans, handled sales, Sell Back, price and stock alerts (`AlertFakeStore.sweep`, run by `CatalogAdminFakeStore.onChanged`), book requests. A muted group is dropped; moderation can't be muted. Offers and messages stay in the inbox.
@@ -285,7 +289,7 @@ features/<feature>/
 
 - `/admin` is a staff-only hub listing **Admin sections** the viewer may open. It's reached from Profile.
 - Sections are the `AdminSection` enum (`features/admin/domain/entities/admin_section.dart`): `dashboard` (all staff), `catalog` (catalog manager: Books, Categories, Authors, Publishers, Home's Banners, and Collections with Staff Booklists), `orders` (support), `moderation` (moderator), `tradeIn` (catalog manager: grading Sell Back books); super admin opens all. `canOpen(role)` drives both the menu and the guard.
-- Catalog, Orders, Moderation and Trade-ins are real pages; only the dashboard is still a placeholder (Arifin).
+- Every section is a real page: Dashboard, Catalog, Orders, Moderation and Trade-ins.
 - Each owner **replaces their own line** in `AdminRoutes.routes` with the real page. Link with `AdminRoutes.section(AdminSection.orders)`.
 
 ---
@@ -395,7 +399,7 @@ Everything below is still missing. Arifin builds it, one branch per item, inside
 4. ~~**Reading progress and stats:**~~ done (see §2): pages or % read, a yearly goal, a reading streak; a stats page (Books per month, favourite Categories); on finishing, offer to write a Review, post a Bite or sell it.
 5. ~~**AI assistant on our catalog:**~~ done (see §2): remove `VendorQuote` and the vendor price table; answers show Waraqah's own From-price and stock.
 6. ~~**Smarter AI:**~~ done (see §2): "Books for Class 9 under ৳1,000" builds a basket from the catalog and adds it to the cart; plain-words search ("short seerah for beginners in Bangla") maps to `CatalogFilters`.
-7. **Admin dashboard:** today's orders and sales, Listings waiting for approval, top searched Books (search terms logged by the fake backend), most requested Books (`bookDemandProvider`).
+7. ~~**Admin dashboard:**~~ done (see §2): today's orders and sales, Listings waiting for approval, top searched Books (search terms logged by the fake backend), most requested Books (`bookDemandProvider`).
 8. **Blocking in the inbox:** the server refuses sends to and from a blocked reader; the thread says so.
 9. **Removed messages:** a message a moderator removes leaves the thread.
 10. **Live handled sales:** a sale's page updates when the other side moves.
@@ -474,7 +478,6 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 ## 10. Known gaps (don't be surprised by these)
 
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
-- Book demand (`bookDemandProvider`) isn't shown anywhere yet: the admin dashboard (Arifin) should list it.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
 - Handled sales don't update live: pull down on a sale, or open it again, to see the other side's move. Wallet refunds show as "Refund for returned/cancelled HS-…" until the wallet has its own reason for them (Arifin).
 - No push notifications while the app is closed: the notification center and the inbox badge update only while the app is open.
