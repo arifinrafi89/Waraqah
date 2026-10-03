@@ -142,7 +142,10 @@ The app also has:
 - **Reviews are done** (Rahinur): `features/reviews`, `ReviewsRoutes.forBook(id)`; fake API `/reviews?bookId=`, `/reviews/save`, `/reviews/delete` (`ReviewFakeStore`). One review per Reader per Book (`ReviewRules`: 1–5 stars, text up to 1000). The book page shows `BookReviewsPanel` and `BookBitesPanel` (in `features/bites`). Verified Purchase = "me" has a delivered, non-donation order line for the Book. Saving or deleting sets the Book's `rating` to the reviews' average.
 - **Readers and follow are done** (Rahinur): `features/readers`, `ReadersRoutes.readerFor(id)` (`me` for your own page); fake API `/readers/detail`, `/readers/follow` (`FollowFakeStore`). The Reader page respects "profile visible" (a private one shows only the name and Follow). Bite authors, commenters, reviewers, the seller page ("See their Bites") and the Profile header open it. Profile's "Bites posted" and "Listings" come from `/readers/detail?id=me`. Follows, comments and replies send `newFollower`, `biteComment` and `commentReply` notifications (Community group).
 - **Quote cards are done** (Rahinur): `/bites/quote` turns a quote (and an optional Book) into a 4:5 card in four styles and shares it as a PNG with `share_plus` (`quoteSharerProvider`). Opens from the Bites tab and any Bite's menu.
-- **AI assistant** (Niloy; Arifin takes it over): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
+- **AI assistant on our catalog is done** (Arifin, from Niloy's start): `features/ai_assistant`, `AiAssistantRoutes.aiChat`.
+  - Answers come from the fake API: `/assistant/greeting?lang=` and `/assistant/ask` (`{prompt, history, lang}` → `{id, text, bookIds}`), answered by `AssistantBrain`: it detects the request (`AssistantIntent`), picks up to four catalog Books on the storefront within the budget (`assistantBooksFor`), and words the reply in English or Bangla (`AssistantReplies`, server-side text). The app sends the app's language.
+  - Each recommended Book shows as a card with Waraqah's From-price and stock (`RecommendationCard`); there are no vendors or price tables any more (`VendorQuote` is gone). The prompt chips come from the ARB files.
+  - Built with `--dart-define=GEMINI_API_KEY=...`, Gemini words the answer around the same Books; if it fails, the API's reply stands.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
 - `main` passes `flutter analyze` with no issues, and all tests pass.
 
@@ -389,7 +392,7 @@ Everything below is still missing. Arifin builds it, one branch per item, inside
 2. ~~**Marketplace filters:**~~ done (see §2): location from `/geo` (division → district), Category from the catalog, all text from the ARB files.
 3. ~~**Shelves**~~ done (see §2): (taken over from Niloy / Rahinur): Want to Read / Reading / Finished; delivered order Books are added automatically; moving a Book to Finished calls `ref.bookFinished`, and My Listings' stand-in card goes; Profile's "Books read" counts the Finished shelf.
 4. ~~**Reading progress and stats:**~~ done (see §2): pages or % read, a yearly goal, a reading streak; a stats page (Books per month, favourite Categories); on finishing, offer to write a Review, post a Bite or sell it.
-5. **AI assistant on our catalog:** remove `VendorQuote` and the vendor price table; answers show Waraqah's own From-price and stock.
+5. ~~**AI assistant on our catalog:**~~ done (see §2): remove `VendorQuote` and the vendor price table; answers show Waraqah's own From-price and stock.
 6. **Smarter AI:** "Books for Class 9 under ৳1,000" builds a basket from the catalog and adds it to the cart; plain-words search ("short seerah for beginners in Bangla") maps to `CatalogFilters`.
 7. **Admin dashboard:** today's orders and sales, Listings waiting for approval, top searched Books (search terms logged by the fake backend), most requested Books (`bookDemandProvider`).
 8. **Blocking in the inbox:** the server refuses sends to and from a blocked reader; the thread says so.
@@ -469,7 +472,6 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 
 ## 10. Known gaps (don't be surprised by these)
 
-- The AI assistant still shows an old vendor price table. It's scheduled to use Waraqah's own catalog (Arifin). Don't copy it.
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
 - Book demand (`bookDemandProvider`) isn't shown anywhere yet: the admin dashboard (Arifin) should list it.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.

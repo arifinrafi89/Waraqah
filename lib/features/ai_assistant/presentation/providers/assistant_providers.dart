@@ -1,17 +1,28 @@
+import 'dart:ui';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/network/dio_provider.dart';
+import '../../../../core/settings/settings_provider.dart';
 import '../../../catalog/presentation/providers/catalog_providers.dart';
 import '../../data/repositories/assistant_repository_impl.dart';
+import '../../data/sources/assistant_remote_source.dart';
+import '../../data/sources/gemini_chatbot.dart';
 import '../../domain/entities/chat_message.dart';
 import '../../domain/repositories/assistant_repository.dart';
 
-final assistantRepositoryProvider = Provider<AssistantRepository>(
-  (ref) => AssistantRepositoryImpl(
-    ref.watch(dioProvider),
+/// Replies come in the app's language (the device's until one is chosen).
+final assistantRepositoryProvider = Provider<AssistantRepository>((ref) {
+  final dio = ref.watch(dioProvider);
+  return AssistantRepositoryImpl(
+    AssistantRemoteSource(dio),
     ref.watch(bookRepositoryProvider),
-  ),
-);
+    GeminiChatbot(dio),
+    () =>
+        ref.read(settingsProvider).locale?.languageCode ??
+        PlatformDispatcher.instance.locale.languageCode,
+  );
+});
 
 /// Holds the conversation and the "assistant is typing" flag.
 class ConversationNotifier extends AsyncNotifier<List<ChatMessage>> {

@@ -1,83 +1,45 @@
 import 'package:dio/dio.dart';
 
-import '../../../catalog/domain/entities/catalog_filters.dart';
-import '../../../catalog/domain/repositories/book_repository.dart';
 import '../../../../core/models/book.dart';
+import '../../../catalog/domain/repositories/book_repository.dart';
 import '../../domain/entities/chat_message.dart';
 import '../../domain/repositories/assistant_repository.dart';
-import '../sources/assistant_fixtures.dart';
-import '../sources/assistant_intent.dart';
+import '../models/assistant_reply_model.dart';
+import '../sources/assistant_remote_source.dart';
 import '../sources/gemini_chatbot.dart';
-import '../sources/waraqah_chatbot.dart';
 
+/// Answers come from the `/assistant` API, which picks Books from
+/// Waraqah's catalog. Built with a Gemini key, Gemini words the answer
+/// around those same Books; if it fails, the API's own words stand.
 class AssistantRepositoryImpl implements AssistantRepository {
-  AssistantRepositoryImpl(Dio dio, this._books)
-    : _gemini = GeminiChatbot(dio),
-      _local = WaraqahChatbot();
+  /// [_lang] says which language to answer in (`en` or `bn`).
+  AssistantRepositoryImpl(this._source, this._books, this._gemini, this._lang);
 
+  final AssistantRemoteSource _source;
   final BookRepository _books;
   final GeminiChatbot _gemini;
-  final WaraqahChatbot _local;
+  final String Function() _lang;
 
   @override
-  Future<List<ChatMessage>> openConversation() async {
-    await Future<void>.delayed(const Duration(milliseconds: 500));
-    return const [AssistantFixtures.greeting];
-  }
+  Future<List<ChatMessage>> openConversation() async => [
+    (await _source.greeting(_lang())).toEntity(),
+  ];
 
   @override
   Future<ChatMessage> ask(String prompt, List<ChatMessage> history) async {
-    final intent = AssistantIntent.detect(prompt, [
-      for (final message in history) message.text,
-    ]);
-    final books = intent.searchesBooks
-        ? await _searchBooks(intent)
-        : const <Book>[];
-    if (!_gemini.isConfigured) {
-      return _local.replyTo(prompt, intent: intent, books: books);
-    }
-
+    final reply = (await _source.ask(prompt, history, _lang())).toEntity();
+    if (!_gemini.isConfigured) return reply;
     try {
-      final reply = await _gemini.replyTo(prompt, history, books);
+      final books = [
+        for (final id in reply.recommendedBookIds) ?await _books.findById(id),
+      ];
       return reply.copyWith(
-        recommendedBookIds: [for (final book in books) book.id],
+        text: await _gemini.replyTo(prompt, history, books.cast<Book>()),
       );
     } on FormatException {
-      return _local.replyTo(prompt, intent: intent, books: books);
+      return reply;
     } on DioException {
-      return _local.replyTo(prompt, intent: intent, books: books);
+      return reply;
     }
-  }
-
-  Future<List<Book>> _searchBooks(AssistantIntent intent) async {
-    final books = await _books.searchCatalog(
-      CatalogFilters(
-        categoryId: intent.isIslamic ? 'cat-islamic-studies' : null,
-        query: intent.query,
-      ),
-    );
-    final relevantBooks = books.where((book) {
-      final searchableText = [
-        book.title,
-        book.author,
-        ...book.tags,
-      ].join(' ').toLowerCase();
-      return switch (intent.kind) {
-        AssistantIntentKind.quran =>
-          searchableText.contains('quran') || searchableText.contains('tafsir'),
-        AssistantIntentKind.hadith => searchableText.contains('hadith'),
-        AssistantIntentKind.seerah =>
-          searchableText.contains('seerah') ||
-              searchableText.contains('sealed nectar'),
-        AssistantIntentKind.islamicHistory => searchableText.contains(
-          'history',
-        ),
-        _ => true,
-      };
-    });
-    final filtered = intent.maxPrice == null
-        ? relevantBooks
-        : relevantBooks.where((book) => book.fromPriceBdt <= intent.maxPrice!);
-    return filtered.take(4).toList();
   }
 }

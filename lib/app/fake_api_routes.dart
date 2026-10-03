@@ -1,4 +1,5 @@
 import '../core/network/fake_api_interceptor.dart';
+import '../features/ai_assistant/data/sources/assistant_fake_api.dart';
 import '../features/alerts/data/sources/alert_fake_api.dart';
 import '../features/auth/data/sources/auth_fake_api.dart';
 import '../features/bites/data/sources/bite_fake_api.dart';
@@ -45,6 +46,7 @@ abstract final class FakeApiRoutes {
     final s = stores ?? FakeStores();
     return FakeApiInterceptor({
       ...AuthFakeApi.routes(),
+      ...AssistantFakeApi.routes,
       ...ProfileFakeApi.routes(s.profile, s.addresses),
       ...NotificationFakeApi.routes(s.notifications),
       ...BookFakeApi.routes,

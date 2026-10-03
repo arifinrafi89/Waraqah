@@ -6,11 +6,10 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../domain/entities/chat_message.dart';
 import 'recommendation_card.dart';
-import 'vendor_quote_table.dart';
 
 /// One chat turn. User turns fill with the accent colour and sit on the right;
-/// assistant turns are bordered surface cards on the left and may carry a
-/// recommendation card and a price table.
+/// assistant turns are bordered surface cards on the left and may carry
+/// cards for the catalog Books they recommend.
 class ChatBubble extends StatelessWidget {
   const ChatBubble({super.key, required this.message});
 
@@ -44,13 +43,8 @@ class ChatBubble extends StatelessWidget {
               color: isUser ? palette.accentInk : palette.text,
             ),
           ),
-          if (message.recommendedBookIds.isNotEmpty)
-            for (final bookId in message.recommendedBookIds)
-              RecommendationCard(bookId: bookId),
-          if (message.recommendedBookIds.isEmpty && message.hasRecommendation)
-            RecommendationCard(bookId: message.recommendedBookId!),
-          if (message.quotes.isNotEmpty)
-            VendorQuoteTable(quotes: message.quotes),
+          for (final bookId in message.recommendedBookIds)
+            RecommendationCard(bookId: bookId),
         ],
       ),
     );

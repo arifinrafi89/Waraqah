@@ -3820,7 +3820,7 @@ abstract class AppL10n {
   /// No description provided for @aiSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Powered by Gemini'**
+  /// **'Answers from Waraqah\'s catalog'**
   String get aiSubtitle;
 
   /// No description provided for @aiInputHint.
@@ -3838,7 +3838,7 @@ abstract class AppL10n {
   /// No description provided for @aiPromptIslamic.
   ///
   /// In en, this message translates to:
-  /// **'Beneficial Islamic reads'**
+  /// **'Seerah for beginners'**
   String get aiPromptIslamic;
 
   /// No description provided for @aiPromptExam.
@@ -3852,6 +3852,24 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'View book'**
   String get aiViewBook;
+
+  /// No description provided for @aiPromptHadith.
+  ///
+  /// In en, this message translates to:
+  /// **'Hadith collections'**
+  String get aiPromptHadith;
+
+  /// No description provided for @aiPromptQuran.
+  ///
+  /// In en, this message translates to:
+  /// **'Quran and tafsir'**
+  String get aiPromptQuran;
+
+  /// No description provided for @aiPromptHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Islamic history'**
+  String get aiPromptHistory;
 
   /// No description provided for @homeAppBarLightMode.
   ///
