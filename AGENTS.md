@@ -114,7 +114,7 @@ The app also has:
   - Fake API `/requests`, `/requests/mine`, `/requests/close`, `/requests/wanted`, `/requests/demand` (`BookRequestFakeStore`, sharing `P2pFakeStore`).
 - **Waraqah-handled sales are done** (Arifin): `features/handled_sale`.
   - A live Listing shows **Let Waraqah handle it** (`HandledSaleCard`). The buyer pays the price plus ৳80 courier delivery by bKash, Nagad or card (no cash on delivery: Waraqah holds the money). The Listing becomes Reserved.
-  - A sale goes paid → sent (the seller marks it) → completed (the buyer confirms it's as described; the seller gets the price minus a 5% fee, at least ৳10, from `SaleMath`). Before it's sent, the buyer can cancel, and the money goes back to their wallet.
+  - A sale goes paid → sent (the seller marks it) → completed (the buyer confirms it's as described; the seller gets the price minus a 5% fee, at least ৳10, from `SaleMath`). Before it's sent, the buyer can cancel, and the money goes back to their wallet. Refunds (cancelled, or refunded after a dispute) go in as `WalletReason.saleRefund` with the book's title: "Refund for used book: Clean Code".
   - **Report a problem:** a reason, a note and up to 3 photos (Farhan's `ReturnPhotosPicker`). It goes to the Moderation Center's **Disputes** tab, where a moderator refunds the buyer (to the wallet; the Listing goes live again) or pays the seller. Both go into the audit log.
   - Pages: `HandledSaleRoutes.sales` (`/sales`, buying and selling, linked from Profile), `saleFor(id)`, `buyFor(listingId)` and `earnings`: held, earned, paid out, and "Pay ৳X to my bKash". Everything under `/sales` is signed-in only.
   - Fake API `/sales/...` (`HandledSaleFakeStore`, sharing `P2pFakeStore`, `WalletFakeStore` and `ModerationFakeStore`). **Live:** `/sales/live` streams `data: {seq, saleId}` for every move (bought, sent, cancelled, confirmed, disputed, settled), like `/inbox/live`; `saleChangesProvider` reloads the sale's page, My sales, Earnings and the Disputes tab. Seeds: a sale the reader bought (on its way), two they sold (one paid, one completed and paid out), and a dispute. In the demo, another seller sends the book 4 s after it's paid, so tests that buy must `pump(const Duration(seconds: 5))` and `settle`.
@@ -404,7 +404,7 @@ Everything below is still missing. Arifin builds it, one branch per item, inside
 8. ~~**Blocking in the inbox:**~~ done (see §2): the server refuses sends to and from a blocked reader; the thread says so.
 9. ~~**Removed messages:**~~ done (see §2): a message a moderator removes leaves the thread.
 10. ~~**Live handled sales:**~~ done (see §2): a sale's page updates when the other side moves.
-11. **Wallet refund reason:** handled-sale refunds get their own `WalletReason`.
+11. ~~**Wallet refund reason:**~~ done (see §2): handled-sale refunds get their own `WalletReason`.
 12. **Bangla titles** on book cards and the book page.
 13. **Admin: donation places:** staff add, edit and remove the verified places Donations go to.
 
@@ -480,7 +480,6 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
-- Wallet refunds show as "Refund for returned/cancelled HS-…" until the wallet has its own reason for them (Arifin).
 - No push notifications while the app is closed: the notification center and the inbox badge update only while the app is open.
 - Deleting an account signs out but can't wipe the shared demo data (one "me" on the fake backend).
 - Upazila names are English only (divisions and districts have Bangla).
