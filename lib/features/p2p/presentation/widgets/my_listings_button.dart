@@ -6,6 +6,7 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../p2p_routes.dart';
 
 class MyListingsButton extends ConsumerWidget {
@@ -31,7 +32,10 @@ class MyListingsButton extends ConsumerWidget {
               Icon(Icons.list_alt_rounded, color: palette.accent),
               const SizedBox(width: Insets.md),
               Expanded(
-                child: Text('My Listings', style: context.texts.titleMedium),
+                child: Text(
+                  AppL10n.of(context)!.listingMyListings,
+                  style: context.texts.titleMedium,
+                ),
               ),
               Icon(Icons.chevron_right_rounded, color: palette.textFaint),
             ],

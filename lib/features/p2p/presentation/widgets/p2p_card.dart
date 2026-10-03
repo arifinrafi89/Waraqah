@@ -85,7 +85,8 @@ class _ConditionBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.35),
+        // Over a cover, like CoverArt's own title.
+        color: context.palette.scrim,
         borderRadius: BorderRadius.circular(6),
       ),
       child: Text(

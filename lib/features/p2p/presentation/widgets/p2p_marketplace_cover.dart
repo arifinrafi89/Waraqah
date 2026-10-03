@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/cover_art.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../catalog/presentation/widgets/used_labels.dart';
@@ -12,11 +14,13 @@ class P2pMarketplaceCover extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final conditionColor = switch (listing.condition) {
-      BookCondition.likeNew => const Color(0xFF7DD3A8),
-      BookCondition.veryGood => const Color(0xFFB5E3C5),
-      BookCondition.good => const Color(0xFFE8C96B),
-      BookCondition.acceptable => const Color(0xFFE1A7A1),
+    final palette = context.palette;
+    // The better the copy, the stronger the badge.
+    final (badge, ink) = switch (listing.condition) {
+      BookCondition.likeNew => (palette.accent, palette.accentInk),
+      BookCondition.veryGood => (palette.accentSoft, palette.text),
+      BookCondition.good => (palette.surface2, palette.text),
+      BookCondition.acceptable => (palette.surface, palette.danger),
     };
 
     return Stack(
@@ -35,16 +39,12 @@ class P2pMarketplaceCover extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: conditionColor.withValues(alpha: 0.9),
+              color: badge.withValues(alpha: 0.92),
               borderRadius: BorderRadius.circular(999),
             ),
             child: Text(
               AppL10n.of(context)!.conditionLabel(listing.condition),
-              style: const TextStyle(
-                fontSize: 9,
-                fontWeight: FontWeight.w800,
-                color: Colors.black87,
-              ),
+              style: AppFonts.ui(size: 9, weight: FontWeight.w800, color: ink),
             ),
           ),
         ),

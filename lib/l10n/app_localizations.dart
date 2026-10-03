@@ -8149,6 +8149,30 @@ abstract class AppL10n {
   /// **'Under {price}'**
   String usedFilterUnder(String price);
 
+  /// No description provided for @usedSort.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort'**
+  String get usedSort;
+
+  /// No description provided for @usedSortNewest.
+  ///
+  /// In en, this message translates to:
+  /// **'Newest first'**
+  String get usedSortNewest;
+
+  /// No description provided for @usedSortPriceLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Price: low to high'**
+  String get usedSortPriceLow;
+
+  /// No description provided for @usedSortPriceHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Price: high to low'**
+  String get usedSortPriceHigh;
+
   /// No description provided for @inboxTitle.
   ///
   /// In en, this message translates to:
