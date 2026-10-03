@@ -16,6 +16,9 @@ abstract class ShelfEntryModel with _$ShelfEntryModel {
     required Shelf shelf,
     required DateTime addedAt,
     DateTime? finishedAt,
+    @Default(0) int progress,
+    int? pagesRead,
+    int? totalPages,
   }) = _ShelfEntryModel;
 
   factory ShelfEntryModel.fromJson(Map<String, dynamic> json) =>
@@ -28,5 +31,8 @@ extension ShelfEntryModelX on ShelfEntryModel {
     shelf: shelf,
     addedAt: addedAt,
     finishedAt: finishedAt,
+    progress: progress,
+    pagesRead: pagesRead,
+    totalPages: totalPages,
   );
 }

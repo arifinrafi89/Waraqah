@@ -10,8 +10,10 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../sell_back/domain/entities/sell_back.dart';
 import '../../domain/entities/finished_it_offers.dart';
 import 'finished_it_actions.dart';
+import 'finished_share_row.dart';
 
-/// The two ways to pass the book on, with what each is worth.
+/// Review or post about the book, then the two ways to pass it on, with
+/// what each is worth.
 class FinishedItChoices extends ConsumerWidget {
   const FinishedItChoices({super.key, required this.book});
 
@@ -32,6 +34,7 @@ class FinishedItChoices extends ConsumerWidget {
           l10n.listingFinishedTitle(book.title),
           style: context.texts.titleMedium,
         ),
+        FinishedShareRow(bookId: book.bookId),
         Text(l10n.listingFinishedBody, style: dim),
         Text(
           l10n.listingFinishedListRange(

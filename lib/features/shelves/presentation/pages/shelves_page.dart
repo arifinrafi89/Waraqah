@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_dimens.dart';
+import '../../../../core/widgets/app_icon_button.dart';
 import '../../../../core/widgets/async_view.dart';
 import '../../../../core/widgets/segmented_selector.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/shelf_entry.dart';
+import '../../shelves_routes.dart';
 import '../providers/shelf_providers.dart';
 import '../widgets/shelf_labels.dart';
 import '../widgets/shelf_list.dart';
@@ -25,7 +28,16 @@ class ShelvesPage extends ConsumerWidget {
       body: SafeArea(
         child: Column(
           children: [
-            ShelvesAppBar(title: l10n.shelfTitle),
+            ShelvesAppBar(
+              title: l10n.shelfTitle,
+              actions: [
+                AppIconButton(
+                  icon: Icons.insights_rounded,
+                  tooltip: l10n.readingStatsTitle,
+                  onPressed: () => context.push(ShelvesRoutes.stats),
+                ),
+              ],
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: Insets.screen),
               child: SegmentedSelector<Shelf>(

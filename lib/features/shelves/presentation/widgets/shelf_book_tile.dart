@@ -14,6 +14,7 @@ import '../../../catalog/catalog_routes.dart';
 import '../../domain/entities/shelf_entry.dart';
 import 'shelf_actions.dart';
 import 'shelf_labels.dart';
+import 'shelf_progress_row.dart';
 import 'shelf_sheet.dart';
 
 /// One Book on a shelf: cover, title, Author and when it was added or
@@ -64,6 +65,8 @@ class ShelfBookTile extends ConsumerWidget {
                         : l10n.shelfFinishedOn(date),
                     style: AppFonts.ui(size: 11, color: palette.textFaint),
                   ),
+                  if (entry.shelf == Shelf.reading)
+                    ShelfProgressRow(entry: entry),
                 ],
               ),
             ),

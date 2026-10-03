@@ -6,6 +6,8 @@ import '../../../orders/data/sources/order_fake_store.dart';
 import '../../../orders/domain/entities/order_status.dart';
 import '../../domain/entities/shelf_entry.dart';
 import '../models/shelf_entry_model.dart';
+import '../../domain/entities/progress_rules.dart';
+import 'reading_log.dart';
 import 'shelf_seed.dart';
 
 /// "Me"'s shelves on the fake backend. Each Book from a delivered order
@@ -15,6 +17,8 @@ class ShelfFakeStore {
     : _now = clock ?? DateTime.now {
     _entries.addAll(ShelfSeed.entries(_now()));
   }
+
+  late final ReadingLog log = ReadingLog(_now());
 
   final OrderFakeStore orders;
   final DateTime Function() _now;
@@ -37,6 +41,9 @@ class ShelfFakeStore {
             shelf: r.shelf,
             addedAt: r.addedAt,
             finishedAt: r.finishedAt,
+            progress: r.progress,
+            pagesRead: r.pagesRead,
+            totalPages: r.totalPages,
           ).toJson(),
     ];
   }
@@ -56,9 +63,37 @@ class ShelfFakeStore {
       shelf,
       addedAt: now,
       finishedAt: shelf == Shelf.finished ? now : null,
+      progress: shelf == Shelf.finished ? 100 : (old?.progress ?? 0),
+      pagesRead: old?.pagesRead,
+      totalPages: old?.totalPages,
     );
     return true;
   }
+
+  /// Saves how far the reader got, which puts the Book on Reading (or
+  /// Finished at 100%) and counts today as a reading day. `false` when
+  /// the update breaks [ProgressRules] or the Book isn't on a shelf.
+  bool progress(ProgressUpdate update) {
+    final old = _entries[update.bookId];
+    if (old == null || ProgressRules.check(update) != null) return false;
+    final percent = update.totalPages == null
+        ? update.percent
+        : ProgressRules.percentOf(update.pagesRead!, update.totalPages!);
+    final now = _now();
+    final done = percent == 100;
+    _entries[update.bookId] = ShelfRecord(
+      done ? Shelf.finished : Shelf.reading,
+      addedAt: old.shelf == Shelf.reading ? old.addedAt : now,
+      finishedAt: done ? now : null,
+      progress: percent,
+      pagesRead: update.pagesRead,
+      totalPages: update.totalPages,
+    );
+    if (percent > old.progress) log.readOn(now);
+    return true;
+  }
+
+  Map<String, dynamic> statsJson() => log.statsJson(_entries, _now());
 
   /// Books "me" finished, for Profile's count.
   int get finishedCount =>

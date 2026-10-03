@@ -14,6 +14,9 @@ _ShelfEntryModel _$ShelfEntryModelFromJson(Map<String, dynamic> json) =>
       finishedAt: json['finishedAt'] == null
           ? null
           : DateTime.parse(json['finishedAt'] as String),
+      progress: (json['progress'] as num?)?.toInt() ?? 0,
+      pagesRead: (json['pagesRead'] as num?)?.toInt(),
+      totalPages: (json['totalPages'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ShelfEntryModelToJson(_ShelfEntryModel instance) =>
@@ -22,6 +25,9 @@ Map<String, dynamic> _$ShelfEntryModelToJson(_ShelfEntryModel instance) =>
       'shelf': _$ShelfEnumMap[instance.shelf]!,
       'addedAt': instance.addedAt.toIso8601String(),
       'finishedAt': instance.finishedAt?.toIso8601String(),
+      'progress': instance.progress,
+      'pagesRead': instance.pagesRead,
+      'totalPages': instance.totalPages,
     };
 
 const _$ShelfEnumMap = {
