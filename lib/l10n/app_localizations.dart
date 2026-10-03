@@ -4663,6 +4663,174 @@ abstract class AppL10n {
   /// **'{count, plural, =1{1 request} other{{count} requests}}'**
   String adminDashboardRequests(int count);
 
+  /// No description provided for @adminDonate.
+  ///
+  /// In en, this message translates to:
+  /// **'Donation places'**
+  String get adminDonate;
+
+  /// No description provided for @adminDonateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified libraries, schools and madrasas'**
+  String get adminDonateHint;
+
+  /// No description provided for @adminDonateAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add place'**
+  String get adminDonateAdd;
+
+  /// No description provided for @adminDonateEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit place'**
+  String get adminDonateEdit;
+
+  /// No description provided for @adminDonateNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New place'**
+  String get adminDonateNew;
+
+  /// No description provided for @adminDonateEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No verified places yet. Add the first one.'**
+  String get adminDonateEmpty;
+
+  /// No description provided for @adminDonateStill.
+  ///
+  /// In en, this message translates to:
+  /// **'{left} of {wanted} copies still needed'**
+  String adminDonateStill(int left, int wanted);
+
+  /// No description provided for @adminDonateRemoveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {name}?'**
+  String adminDonateRemoveTitle(String name);
+
+  /// No description provided for @adminDonateRemoveBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Donors won\'t see it any more. Donations already placed still go out.'**
+  String get adminDonateRemoveBody;
+
+  /// No description provided for @adminDonateRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get adminDonateRemove;
+
+  /// No description provided for @adminDonateRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Place removed.'**
+  String get adminDonateRemoved;
+
+  /// No description provided for @adminDonateSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Place saved.'**
+  String get adminDonateSaved;
+
+  /// No description provided for @adminDonateName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get adminDonateName;
+
+  /// No description provided for @adminDonateKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Kind of place'**
+  String get adminDonateKind;
+
+  /// No description provided for @adminDonateDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get adminDonateDistrict;
+
+  /// No description provided for @adminDonateArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Area or upazila'**
+  String get adminDonateArea;
+
+  /// No description provided for @adminDonateStory.
+  ///
+  /// In en, this message translates to:
+  /// **'Who they are'**
+  String get adminDonateStory;
+
+  /// No description provided for @adminDonateStoryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Who reads the books there, in a sentence or two.'**
+  String get adminDonateStoryHint;
+
+  /// No description provided for @adminDonateNeeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Books they need'**
+  String get adminDonateNeeds;
+
+  /// No description provided for @adminDonateAddBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Add books'**
+  String get adminDonateAddBooks;
+
+  /// No description provided for @adminDonateCopies.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} copies'**
+  String adminDonateCopies(int count);
+
+  /// No description provided for @adminDonateSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save place'**
+  String get adminDonateSave;
+
+  /// No description provided for @adminDonateProblemName.
+  ///
+  /// In en, this message translates to:
+  /// **'Give the place a name (3–80 characters).'**
+  String get adminDonateProblemName;
+
+  /// No description provided for @adminDonateProblemDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the district.'**
+  String get adminDonateProblemDistrict;
+
+  /// No description provided for @adminDonateProblemArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the area or upazila.'**
+  String get adminDonateProblemArea;
+
+  /// No description provided for @adminDonateProblemStory.
+  ///
+  /// In en, this message translates to:
+  /// **'Say who they are in 10–300 characters.'**
+  String get adminDonateProblemStory;
+
+  /// No description provided for @adminDonateProblemNeeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Add at least one book they need.'**
+  String get adminDonateProblemNeeds;
+
+  /// No description provided for @adminDonateProblemCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Each book needs 1–100 copies.'**
+  String get adminDonateProblemCount;
+
   /// No description provided for @adminCatalog.
   ///
   /// In en, this message translates to:

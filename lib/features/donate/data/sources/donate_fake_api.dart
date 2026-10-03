@@ -4,6 +4,7 @@ import '../../../checkout/domain/entities/payment_method.dart';
 // The fake backend keeps donations with the other orders.
 import '../../../orders/data/sources/order_fake_store.dart';
 import 'donate_fixtures.dart';
+import 'donate_places_store.dart';
 import 'donation_order.dart';
 
 /// Donate's fake endpoints, merged into `FakeApiInterceptor` by
@@ -21,47 +22,20 @@ abstract final class DonateFakeApi {
 
   static Map<String, Object? Function(RequestOptions)> routes(
     OrderFakeStore orders,
+    DonatePlacesStore places,
   ) {
-    final received = {
-      for (final place in DonateFixtures.places)
-        for (final (bookId, _, count) in place.needs)
-          '${place.id}/$bookId': count,
-    };
-    Map<String, Object?> json(DonatePlace place) => {
-      'id': place.id,
-      'name': place.name,
-      'kind': place.kind.name,
-      'district': place.district,
-      'area': place.area,
-      'story': place.story,
-      'needs': [
-        for (final (bookId, wanted, _) in place.needs)
-          if (DonateFixtures.book(bookId) case final book?)
-            if (DonateFixtures.printedEdition(book) case final edition?)
-              {
-                'book': book.toJson(),
-                'editionId': edition.id,
-                'priceBdt': edition.priceBdt,
-                'wanted': wanted,
-                'received': received['${place.id}/$bookId'] ?? 0,
-              },
-      ],
-    };
+    final received = places.received;
     return {
-      recipients: (_) => [
-        for (final place in DonateFixtures.places) json(place),
-      ],
+      recipients: (_) => places.allJson(),
       recipient: (options) {
-        final place = DonateFixtures.place(
+        final place = places.find(
           options.queryParameters['id'] as String? ?? '',
         );
-        return place == null ? null : json(place);
+        return place == null ? null : places.json(place);
       },
       give: (options) {
         final body = options.data as Map<String, dynamic>? ?? const {};
-        final place = DonateFixtures.place(
-          body['recipientId'] as String? ?? '',
-        );
+        final place = places.find(body['recipientId'] as String? ?? '');
         final bookId = body['bookId'] as String? ?? '';
         final quantity = body['quantity'] as int? ?? 0;
         final payment = PaymentMethod.values.byName(body['payment'] as String);

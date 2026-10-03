@@ -11,7 +11,10 @@ enum AdminSection {
   moderation,
 
   /// Grading Sell Back books (Arifin).
-  tradeIn;
+  tradeIn,
+
+  /// The verified places Donations go to (Arifin).
+  donations;
 
   /// Whether [role] may open this section.
   bool canOpen(UserRole role) => switch (this) {
@@ -20,5 +23,6 @@ enum AdminSection {
     orders => role.canManageOrders,
     moderation => role.canModerate,
     tradeIn => role.canManageCatalog,
+    donations => role.canManageOrders,
   };
 }

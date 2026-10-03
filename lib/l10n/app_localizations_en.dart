@@ -2732,6 +2732,100 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
+  String get adminDonate => 'Donation places';
+
+  @override
+  String get adminDonateHint => 'Verified libraries, schools and madrasas';
+
+  @override
+  String get adminDonateAdd => 'Add place';
+
+  @override
+  String get adminDonateEdit => 'Edit place';
+
+  @override
+  String get adminDonateNew => 'New place';
+
+  @override
+  String get adminDonateEmpty => 'No verified places yet. Add the first one.';
+
+  @override
+  String adminDonateStill(int left, int wanted) {
+    return '$left of $wanted copies still needed';
+  }
+
+  @override
+  String adminDonateRemoveTitle(String name) {
+    return 'Remove $name?';
+  }
+
+  @override
+  String get adminDonateRemoveBody =>
+      'Donors won\'t see it any more. Donations already placed still go out.';
+
+  @override
+  String get adminDonateRemove => 'Remove';
+
+  @override
+  String get adminDonateRemoved => 'Place removed.';
+
+  @override
+  String get adminDonateSaved => 'Place saved.';
+
+  @override
+  String get adminDonateName => 'Name';
+
+  @override
+  String get adminDonateKind => 'Kind of place';
+
+  @override
+  String get adminDonateDistrict => 'District';
+
+  @override
+  String get adminDonateArea => 'Area or upazila';
+
+  @override
+  String get adminDonateStory => 'Who they are';
+
+  @override
+  String get adminDonateStoryHint =>
+      'Who reads the books there, in a sentence or two.';
+
+  @override
+  String get adminDonateNeeds => 'Books they need';
+
+  @override
+  String get adminDonateAddBooks => 'Add books';
+
+  @override
+  String adminDonateCopies(int count) {
+    return '$count copies';
+  }
+
+  @override
+  String get adminDonateSave => 'Save place';
+
+  @override
+  String get adminDonateProblemName =>
+      'Give the place a name (3–80 characters).';
+
+  @override
+  String get adminDonateProblemDistrict => 'Pick the district.';
+
+  @override
+  String get adminDonateProblemArea => 'Add the area or upazila.';
+
+  @override
+  String get adminDonateProblemStory =>
+      'Say who they are in 10–300 characters.';
+
+  @override
+  String get adminDonateProblemNeeds => 'Add at least one book they need.';
+
+  @override
+  String get adminDonateProblemCount => 'Each book needs 1–100 copies.';
+
+  @override
   String get adminCatalog => 'Catalog';
 
   @override

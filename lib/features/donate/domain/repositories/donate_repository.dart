@@ -1,3 +1,4 @@
+import '../entities/donate_place_draft.dart';
 import '../entities/donation.dart';
 import '../entities/recipient.dart';
 
@@ -10,4 +11,10 @@ abstract interface class DonateRepository {
 
   /// Places the donation as an order to the recipient.
   Future<Donation> donate(DonationRequest request);
+
+  /// Staff add or change a verified place; answers every place.
+  Future<List<Recipient>> savePlace(DonatePlaceDraft draft);
+
+  /// Staff take a place off the list; answers every place left.
+  Future<List<Recipient>> removePlace(String id);
 }

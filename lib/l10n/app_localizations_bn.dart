@@ -2609,6 +2609,98 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
+  String get adminDonate => 'দানের জায়গা';
+
+  @override
+  String get adminDonateHint => 'যাচাই করা লাইব্রেরি, স্কুল ও মাদ্রাসা';
+
+  @override
+  String get adminDonateAdd => 'জায়গা যোগ করুন';
+
+  @override
+  String get adminDonateEdit => 'জায়গা সম্পাদনা';
+
+  @override
+  String get adminDonateNew => 'নতুন জায়গা';
+
+  @override
+  String get adminDonateEmpty =>
+      'এখনো কোনো যাচাই করা জায়গা নেই। প্রথমটি যোগ করুন।';
+
+  @override
+  String adminDonateStill(int left, int wanted) {
+    return '$wantedটির মধ্যে $leftটি কপি এখনো দরকার';
+  }
+
+  @override
+  String adminDonateRemoveTitle(String name) {
+    return '$name সরাবেন?';
+  }
+
+  @override
+  String get adminDonateRemoveBody =>
+      'দাতারা আর এটি দেখবেন না। আগের দান ঠিকই পৌঁছাবে।';
+
+  @override
+  String get adminDonateRemove => 'সরান';
+
+  @override
+  String get adminDonateRemoved => 'জায়গা সরানো হয়েছে।';
+
+  @override
+  String get adminDonateSaved => 'জায়গা সংরক্ষিত হয়েছে।';
+
+  @override
+  String get adminDonateName => 'নাম';
+
+  @override
+  String get adminDonateKind => 'জায়গার ধরন';
+
+  @override
+  String get adminDonateDistrict => 'জেলা';
+
+  @override
+  String get adminDonateArea => 'এলাকা বা উপজেলা';
+
+  @override
+  String get adminDonateStory => 'তাঁরা কারা';
+
+  @override
+  String get adminDonateStoryHint => 'সেখানে কারা বই পড়ে, এক-দুই বাক্যে।';
+
+  @override
+  String get adminDonateNeeds => 'যে বই দরকার';
+
+  @override
+  String get adminDonateAddBooks => 'বই যোগ করুন';
+
+  @override
+  String adminDonateCopies(int count) {
+    return '$countটি কপি';
+  }
+
+  @override
+  String get adminDonateSave => 'জায়গা সংরক্ষণ';
+
+  @override
+  String get adminDonateProblemName => 'জায়গার একটি নাম দিন (৩–৮০ অক্ষর)।';
+
+  @override
+  String get adminDonateProblemDistrict => 'জেলা বেছে নিন।';
+
+  @override
+  String get adminDonateProblemArea => 'এলাকা বা উপজেলা লিখুন।';
+
+  @override
+  String get adminDonateProblemStory => 'তাঁরা কারা, ১০–৩০০ অক্ষরে লিখুন।';
+
+  @override
+  String get adminDonateProblemNeeds => 'অন্তত একটি দরকারি বই যোগ করুন।';
+
+  @override
+  String get adminDonateProblemCount => 'প্রতিটি বইয়ের ১–১০০ কপি হতে হবে।';
+
+  @override
   String get adminCatalog => 'ক্যাটালগ';
 
   @override

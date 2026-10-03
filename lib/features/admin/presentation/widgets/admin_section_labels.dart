@@ -11,6 +11,7 @@ extension AdminSectionLabels on AdminSection {
     AdminSection.orders => Icons.receipt_long_outlined,
     AdminSection.moderation => Icons.verified_user_outlined,
     AdminSection.tradeIn => Icons.swap_horiz_rounded,
+    AdminSection.donations => Icons.volunteer_activism_outlined,
   };
 
   String label(AppL10n l10n) => switch (this) {
@@ -19,6 +20,7 @@ extension AdminSectionLabels on AdminSection {
     AdminSection.orders => l10n.adminOrders,
     AdminSection.moderation => l10n.adminModeration,
     AdminSection.tradeIn => l10n.sellBackAdminTitle,
+    AdminSection.donations => l10n.adminDonate,
   };
 
   String hint(AppL10n l10n) => switch (this) {
@@ -27,5 +29,6 @@ extension AdminSectionLabels on AdminSection {
     AdminSection.orders => l10n.adminOrdersHint,
     AdminSection.moderation => l10n.adminModerationHint,
     AdminSection.tradeIn => l10n.sellBackAdminHint,
+    AdminSection.donations => l10n.adminDonateHint,
   };
 }
