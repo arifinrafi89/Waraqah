@@ -5,6 +5,7 @@ import '../../../../core/theme/app_palette.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../domain/entities/chat_message.dart';
+import 'basket_card.dart';
 import 'recommendation_card.dart';
 
 /// One chat turn. User turns fill with the accent colour and sit on the right;
@@ -45,6 +46,7 @@ class ChatBubble extends StatelessWidget {
           ),
           for (final bookId in message.recommendedBookIds)
             RecommendationCard(bookId: bookId),
+          if (message.basket case final basket?) BasketCard(basket: basket),
         ],
       ),
     );

@@ -2240,6 +2240,37 @@ class AppL10nEn extends AppL10n {
   String get aiPromptHistory => 'Islamic history';
 
   @override
+  String aiBasketTotal(int count, String total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count books',
+      one: '1 book',
+    );
+    return '$_temp0 · $total in all';
+  }
+
+  @override
+  String get aiBasketAddAll => 'Add all to cart';
+
+  @override
+  String aiBasketAdded(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count books added to your cart',
+      one: '1 book added to your cart',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get aiPromptClass => 'Books for Class 9 under ৳1,000';
+
+  @override
+  String get aiPromptPlain => 'Short seerah for beginners in Bangla';
+
+  @override
   String get homeAppBarLightMode => 'Light mode';
 
   @override

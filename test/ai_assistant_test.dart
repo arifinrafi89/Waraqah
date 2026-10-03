@@ -50,6 +50,8 @@ void main() {
   ) async {
     await openApp(tester, AiAssistantRoutes.aiChat, role: 'reader');
     expect(find.textContaining('Assalamu Alaikum'), findsOneWidget);
+    await tester.ensureVisible(find.text('Seerah for beginners'));
+    await tester.pump();
     await tester.tap(find.text('Seerah for beginners'));
     await settle(tester);
     await settle(tester);
