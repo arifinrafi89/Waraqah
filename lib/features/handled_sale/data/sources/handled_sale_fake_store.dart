@@ -16,6 +16,7 @@ import '../models/earnings_model.dart';
 import '../models/handled_sale_model.dart';
 import 'fake_sale.dart';
 import 'handled_sale_seed.dart';
+import 'sale_changes.dart';
 
 /// Waraqah-handled sales on the fake backend. The signed-in reader is
 /// [P2pPeople.me]; the demo's other sellers send a book [sendDelay] after
@@ -52,6 +53,7 @@ class HandledSaleFakeStore {
   final Duration sendDelay;
   final Map<String, FakeSale> sales = {};
   final List<PayoutModel> payouts = [];
+  final SaleChanges live = SaleChanges();
   int _ids = 200;
 
   String nameOf(String id) => P2pPeople.find(id)?.name ?? '?';
@@ -107,6 +109,7 @@ class HandledSaleFakeStore {
       if (sale.status != SaleStatus.paid) return;
       sale.status = SaleStatus.sent;
       notifications?.saleSent(me, sale.id, titleOf(sale));
+      live.sale(sale.id);
     });
     return sale;
   }

@@ -117,7 +117,7 @@ The app also has:
   - A sale goes paid → sent (the seller marks it) → completed (the buyer confirms it's as described; the seller gets the price minus a 5% fee, at least ৳10, from `SaleMath`). Before it's sent, the buyer can cancel, and the money goes back to their wallet.
   - **Report a problem:** a reason, a note and up to 3 photos (Farhan's `ReturnPhotosPicker`). It goes to the Moderation Center's **Disputes** tab, where a moderator refunds the buyer (to the wallet; the Listing goes live again) or pays the seller. Both go into the audit log.
   - Pages: `HandledSaleRoutes.sales` (`/sales`, buying and selling, linked from Profile), `saleFor(id)`, `buyFor(listingId)` and `earnings`: held, earned, paid out, and "Pay ৳X to my bKash". Everything under `/sales` is signed-in only.
-  - Fake API `/sales/...` (`HandledSaleFakeStore`, sharing `P2pFakeStore`, `WalletFakeStore` and `ModerationFakeStore`). Seeds: a sale the reader bought (on its way), two they sold (one paid, one completed and paid out), and a dispute. In the demo, another seller sends the book 4 s after it's paid, so tests that buy must `pump(const Duration(seconds: 5))` and `settle`.
+  - Fake API `/sales/...` (`HandledSaleFakeStore`, sharing `P2pFakeStore`, `WalletFakeStore` and `ModerationFakeStore`). **Live:** `/sales/live` streams `data: {seq, saleId}` for every move (bought, sent, cancelled, confirmed, disputed, settled), like `/inbox/live`; `saleChangesProvider` reloads the sale's page, My sales, Earnings and the Disputes tab. Seeds: a sale the reader bought (on its way), two they sold (one paid, one completed and paid out), and a dispute. In the demo, another seller sends the book 4 s after it's paid, so tests that buy must `pump(const Duration(seconds: 5))` and `settle`.
 - **Sell Back and Certified Used are done** (Arifin): `features/sell_back`.
   - `SellBackRoutes.sellBack` (`/sell-back`, `sellBackFor(bookId)`; signed-in only; linked from Profile and from the scanner's result): pick the book from the catalog, say its condition and flags, and get an **instant price** (`SellBackRules.quote`: Like New 35% of the cheapest printed Edition, Very Good 30%, Good 25%, Acceptable 15%, 5% off per flag, at least ৳30). Then book a courier pickup. **My Sell Backs** (`SellBackRoutes.mine`) tracks each one: pickup booked → being checked → paid, or sent back.
   - **Admin → Trade-ins** (`AdminSection.tradeIn`, catalog managers and super admin): staff set their own grade, then **Pay ৳X · sell for ৳Y**. Waraqah pays at that grade into the reader's wallet (`WalletReason.sellBack`) and publishes it as **Certified Used** (`SellBackRules.resellPrice`: 65/55/45/35% of new). Or they **Send it back**.
@@ -403,7 +403,7 @@ Everything below is still missing. Arifin builds it, one branch per item, inside
 7. ~~**Admin dashboard:**~~ done (see §2): today's orders and sales, Listings waiting for approval, top searched Books (search terms logged by the fake backend), most requested Books (`bookDemandProvider`).
 8. ~~**Blocking in the inbox:**~~ done (see §2): the server refuses sends to and from a blocked reader; the thread says so.
 9. ~~**Removed messages:**~~ done (see §2): a message a moderator removes leaves the thread.
-10. **Live handled sales:** a sale's page updates when the other side moves.
+10. ~~**Live handled sales:**~~ done (see §2): a sale's page updates when the other side moves.
 11. **Wallet refund reason:** handled-sale refunds get their own `WalletReason`.
 12. **Bangla titles** on book cards and the book page.
 13. **Admin: donation places:** staff add, edit and remove the verified places Donations go to.
@@ -480,7 +480,7 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
-- Handled sales don't update live: pull down on a sale, or open it again, to see the other side's move. Wallet refunds show as "Refund for returned/cancelled HS-…" until the wallet has its own reason for them (Arifin).
+- Wallet refunds show as "Refund for returned/cancelled HS-…" until the wallet has its own reason for them (Arifin).
 - No push notifications while the app is closed: the notification center and the inbox badge update only while the app is open.
 - Deleting an account signs out but can't wipe the shared demo data (one "me" on the fake backend).
 - Upazila names are English only (divisions and districts have Bangla).
