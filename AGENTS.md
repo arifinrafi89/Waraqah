@@ -117,7 +117,7 @@ The app also has:
   - Fake API `/sell-back/...` (`SellBackFakeStore`, sharing `WalletFakeStore`). In the demo the courier picks a book up 4 s after it's booked; tests that book one must `pump(const Duration(seconds: 5))` and `settle`.
 - **"Finished it? Sell it" is done** (Arifin): `features/finished_it`.
   - `ref.bookFinished(context, bookId)` opens **Finished Sapiens?**: what readers pay for a copy read once (`FinishedItOffers`: the Like New fair range), **List it for readers** (the add-listing form filled in: title, new price, Like New), or **Sell it back to Waraqah** (Sell Back's quote for the book), or Keep it.
-  - **Niloy:** when a book moves to Finished on a shelf, call `ref.bookFinished(context, bookId)`.
+  - **Shelves (Arifin):** when a book moves to Finished on a shelf, call `ref.bookFinished(context, bookId)`.
   - Until shelves exist, My Listings shows **Finished a book you bought?** with the books from the reader's delivered orders (`boughtBooksProvider`, from Farhan's `myOrdersProvider`).
 - **Accounts are done** (Niloy #108, Rahinur): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`). Sign-up keeps the name; the demo OTP is `123456` (`AuthFixtures.demoOtp`), any other code is refused.
 - **Profile and settings are done** (Rahinur): `ProfileRoutes.edit|addresses|settings` (signed-in only); `/profile`, `/profile/prefs`, `/addresses…`, `/geo`. Edit profile saves name, BD mobile and photo (`ProfileRules`) and renames the session (`SessionNotifier.rename`). Saved addresses (`SavedAddress`, `addressesProvider` in `features/profile`) are the ones checkout uses; the default is preselected, and checkout's "Add a new address" opens `ProfileRoutes.addressesAdd`. Division → district → upazila pickers read `/geo` (`geoProvider`). Settings: one switch per notification group (`ProfilePrefs.muted`), two privacy switches (saved for Bites and reading life), delete account. Theme, language and the Ayah switch stay on the Profile tab (device settings).
@@ -126,7 +126,7 @@ The app also has:
 - **Reviews are done** (Rahinur): `features/reviews`, `ReviewsRoutes.forBook(id)`; fake API `/reviews?bookId=`, `/reviews/save`, `/reviews/delete` (`ReviewFakeStore`). One review per Reader per Book (`ReviewRules`: 1–5 stars, text up to 1000). The book page shows `BookReviewsPanel` and `BookBitesPanel` (in `features/bites`). Verified Purchase = "me" has a delivered, non-donation order line for the Book. Saving or deleting sets the Book's `rating` to the reviews' average.
 - **Readers and follow are done** (Rahinur): `features/readers`, `ReadersRoutes.readerFor(id)` (`me` for your own page); fake API `/readers/detail`, `/readers/follow` (`FollowFakeStore`). The Reader page respects "profile visible" (a private one shows only the name and Follow). Bite authors, commenters, reviewers, the seller page ("See their Bites") and the Profile header open it. Profile's "Bites posted" and "Listings" come from `/readers/detail?id=me`. Follows, comments and replies send `newFollower`, `biteComment` and `commentReply` notifications (Community group).
 - **Quote cards are done** (Rahinur): `/bites/quote` turns a quote (and an optional Book) into a 4:5 card in four styles and shares it as a PNG with `share_plus` (`quoteSharerProvider`). Opens from the Bites tab and any Bite's menu.
-- **AI assistant** (Niloy): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
+- **AI assistant** (Niloy; Arifin takes it over): answers from Waraqah's catalog with a local bot. It uses Gemini when built with `--dart-define=GEMINI_API_KEY=...`.
 - **There is no backend yet.** All data comes from a **fake API** inside the app (§4.4). A Go backend will come later, in a separate repository. Code as if the API were real: going live must only mean changing the API address.
 - `main` passes `flutter analyze` with no issues, and all tests pass.
 
@@ -265,7 +265,7 @@ features/<feature>/
 
 - `/admin` is a staff-only hub listing **Admin sections** the viewer may open. It's reached from Profile.
 - Sections are the `AdminSection` enum (`features/admin/domain/entities/admin_section.dart`): `dashboard` (all staff), `catalog` (catalog manager: Books, Categories, Authors, Publishers, Home's Banners, and Collections with Staff Booklists), `orders` (support), `moderation` (moderator), `tradeIn` (catalog manager: grading Sell Back books); super admin opens all. `canOpen(role)` drives both the menu and the guard.
-- Catalog, Orders, Moderation and Trade-ins are real pages; only the dashboard is still a placeholder (Niloy).
+- Catalog, Orders, Moderation and Trade-ins are real pages; only the dashboard is still a placeholder (Arifin).
 - Each owner **replaces their own line** in `AdminRoutes.routes` with the real page. Link with `AdminRoutes.section(AdminSection.orders)`.
 
 ---
@@ -361,9 +361,27 @@ Build **only your own area**. If you need something from another area that isn't
 
 | Person | Area |
 |---|---|
-| **Rahinur** | Storefront & catalog: Section/category/author pages, search (incl. Bangla + Banglish), home feed, seasonal home, collections & Expert Picks, Booklists, Religious section, Academic browsing, design system, `core/`. Accounts, community & AI (taken over from Niloy): sign up / log in, profile & saved addresses, notifications, shelves & reading stats, Book-Bites (post, like, comment, spoilers, follow, quote cards), reviews, AI assistant. **Admin:** catalog, banners, collections, dashboard. |
+| **Rahinur** | Storefront & catalog: Section/category/author pages, search (incl. Bangla + Banglish), home feed, seasonal home, collections & Expert Picks, Booklists, Religious section, Academic browsing, design system, `core/`. Accounts & community (taken over from Niloy): sign up / log in, profile & saved addresses, notifications, Book-Bites (post, like, comment, spoilers, follow, quote cards), reviews. **Admin:** catalog, banners, collections. |
 | **Farhan** | Book page & buying new: book page (editions, formats, stock, delivery), wishlist, **cart**, checkout (bKash / Nagad / COD / card), orders & returns, "every way to buy" (new + used on one page), alerts, pre-orders, bundles, flash sales, loyalty points, Smart Basket, gift & donate, wallet; **offers & inbox (chat, arranging meetup or courier), seller profiles & ratings** (taken over from Arifin). **Admin:** orders, returns, coupons. |
-| **Arifin** | Second-hand & moderation: listing flow, listing status, used marketplace, report & block, scan a book, fair price meter, Request a book, Waraqah-handled sales, Sell Back & Certified Used, "Finished it? Sell it". **Admin:** Moderation Center, trade-in grading. |
+| **Arifin** | Second-hand & moderation: listing flow, listing status, used marketplace, report & block, scan a book, fair price meter, Request a book, Waraqah-handled sales, Sell Back & Certified Used, "Finished it? Sell it". **Admin:** Moderation Center, trade-in grading. **Finishing the front end** (taken over from the others, see below). |
+
+### Arifin: finishing the front end
+
+Everything below is still missing. Arifin builds it, one branch per item, inside the owning feature's folder (other owners' code is touched only where the item needs it, and the PR says so).
+
+1. **Listing flow, for real:** the add-listing form sends the Listing to the fake API (`inReview`, so it reaches the Moderation Center and My Listings); "Save draft" saves it; Step 3 takes photos (front cover, back cover, spine, one inside page, any damage); a Listing with Changes requested or Rejected can be edited and sent again.
+2. **Marketplace filters:** location from `/geo` (division → district), Category from the catalog, all text from the ARB files.
+3. **Shelves** (taken over from Niloy / Rahinur): Want to Read / Reading / Finished; delivered order Books are added automatically; moving a Book to Finished calls `ref.bookFinished`, and My Listings' stand-in card goes; Profile's "Books read" counts the Finished shelf.
+4. **Reading progress and stats:** pages or % read, a yearly goal, a reading streak; a stats page (Books per month, favourite Categories); on finishing, offer to write a Review, post a Bite or sell it.
+5. **AI assistant on our catalog:** remove `VendorQuote` and the vendor price table; answers show Waraqah's own From-price and stock.
+6. **Smarter AI:** "Books for Class 9 under ৳1,000" builds a basket from the catalog and adds it to the cart; plain-words search ("short seerah for beginners in Bangla") maps to `CatalogFilters`.
+7. **Admin dashboard:** today's orders and sales, Listings waiting for approval, top searched Books (search terms logged by the fake backend), most requested Books (`bookDemandProvider`).
+8. **Blocking in the inbox:** the server refuses sends to and from a blocked reader; the thread says so.
+9. **Removed messages:** a message a moderator removes leaves the thread.
+10. **Live handled sales:** a sale's page updates when the other side moves.
+11. **Wallet refund reason:** handled-sale refunds get their own `WalletReason`.
+12. **Bangla titles** on book cards and the book page.
+13. **Admin: donation places:** staff add, edit and remove the verified places Donations go to.
 
 ### Shared pieces
 
@@ -372,17 +390,17 @@ The owner builds these and keeps their shape stable; everyone else uses them.
 | Piece | Owner | Used by |
 |---|---|---|
 | `Book` / `Edition` models, design system, `core/` | Rahinur | everyone |
-| Catalog search, collections & Booklists data | Rahinur | Niloy (AI), Farhan |
-| **Add to cart** (new edition, Certified Used, reader listing) | Farhan | Rahinur, Arifin, Niloy |
+| Catalog search, collections & Booklists data | Rahinur | Arifin (AI), Farhan |
+| **Add to cart** (new edition, Certified Used, reader listing) | Farhan | Rahinur, Arifin |
 | Payment method picker, wallet credit (fake backend: `WalletFakeStore.credit(amount, WalletReason.sellBack, note: title)`) | Farhan | Arifin |
-| Certified Used copy and resale value for a book (catalog `UsedOptions`) | Farhan | Rahinur, Niloy |
+| Certified Used copy and resale value for a book (catalog `UsedOptions`) | Farhan | Rahinur, Arifin |
 | Readers' listings for a book (`listingsForBookProvider`), listing statuses | Arifin | Farhan, Rahinur |
 | **Make an offer / message a seller** (`ref.offerOn`, `ref.openChat`), inbox badge (`InboxButton`), seller page (`P2pRoutes.sellerFor`) | Farhan | Arifin, everyone showing a listing |
-| Report content (`ref.report`), create a book request, barcode scanner (`ScanButton`) | Arifin | Niloy, Rahinur |
+| Report content (`ref.report`), create a book request, barcode scanner (`ScanButton`) | Arifin | Rahinur |
 | `sessionProvider` & roles | (built) | everyone |
 | Saved addresses (`addressesProvider` / `SavedAddress` in `features/profile`) | Rahinur | Farhan (checkout) |
 | Send a notification (fake backend: `NotificationFakeStore.send`) | Rahinur | Farhan, Arifin, everyone |
-| "Book finished" event | Rahinur | Arifin |
+| "Book finished" event (shelves) | Arifin | Arifin |
 | Reviews and "Bites about this book" widgets: done (`BookReviewsPanel`, `BookBitesPanel`) | Rahinur | Farhan (book page) |
 
 ---
@@ -399,9 +417,9 @@ The owner builds these and keeps their shape stable; everyone else uses them.
 
 **Avoiding conflicts**
 - **ARB keys:** add yours in your own block with your prefixes:
-  - Rahinur: `home`, `search`, `section`, `collection`, `expert`, `booklist`, `adminCatalog`, and (taken over from Niloy) `auth`, `profile`, `notification`, `shelf`, `bite`, `review`, `ai`, `adminDashboard`, `reader`, `quote`, `reading`. Teammates merge Rahinur's PRs for this area too.
+  - Rahinur: `home`, `search`, `section`, `collection`, `expert`, `booklist`, `adminCatalog`, and (taken over from Niloy) `auth`, `profile`, `notification`, `bite`, `review`, `reader`, `quote`. Teammates merge Rahinur's PRs for this area too.
   - Farhan: `book`, `cart`, `checkout`, `order`, `wishlist`, `wallet`, `gift`, `adminOrder`, `offer`, `inbox`, `chat`, `seller`
-  - Arifin: `listing`, `used`, `sellBack`, `scan`, `request`, `report`, `moderation` (the listing page also has `used…` keys from Farhan: check before adding one)
+  - Arifin: `listing`, `used`, `sellBack`, `scan`, `request`, `report`, `moderation`, and (taken over) `shelf`, `reading`, `ai`, `adminDashboard`, `adminDonate` (the listing page also has `used…` keys from Farhan: check before adding one)
 - Routes and fake APIs: only in **your own feature's files**, plus one line in the shared lists when adding a new feature.
 - **Announce before adding a package** to `pubspec.yaml`.
 - **Only stage your own files.** Codegen and `pub get` often rewrite other people's generated files (`*.g.dart`, `*.freezed.dart`, platform plugin files) with **line-ending-only** changes. Check with `git diff --ignore-cr-at-eol` and don't commit those.
@@ -435,22 +453,22 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 
 ## 10. Known gaps (don't be surprised by these)
 
-- The AI assistant still shows an old vendor price table. It's scheduled to use Waraqah's own catalog (Niloy). Don't copy it.
+- The AI assistant still shows an old vendor price table. It's scheduled to use Waraqah's own catalog (Arifin). Don't copy it.
 - Profile's "Books read" is a placeholder number until shelves (Plan C).
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
-- Book demand (`bookDemandProvider`) isn't shown anywhere yet: the admin dashboard (Rahinur) should list it.
+- Book demand (`bookDemandProvider`) isn't shown anywhere yet: the admin dashboard (Arifin) should list it.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
-- Handled sales don't update live: pull down on a sale, or open it again, to see the other side's move. Wallet refunds show as "Refund for returned/cancelled HS-…" until the wallet has its own reason for them (Farhan).
-- "Finished it? Sell it" opens from My Listings' delivered books until Niloy's shelves have a Finished shelf; then shelves call `ref.bookFinished` and the stand-in card can go.
+- Handled sales don't update live: pull down on a sale, or open it again, to see the other side's move. Wallet refunds show as "Refund for returned/cancelled HS-…" until the wallet has its own reason for them (Arifin).
+- "Finished it? Sell it" opens from My Listings' delivered books until Arifin's shelves have a Finished shelf; then shelves call `ref.bookFinished` and the stand-in card can go.
 - No push notifications while the app is closed: the notification center and the inbox badge update only while the app is open.
 - Deleting an account signs out but can't wipe the shared demo data (one "me" on the fake backend).
 - Upazila names are English only (divisions and districts have Bangla).
-- Removing a reported message closes the report, but the message stays: the inbox doesn't delete messages (Farhan).
-- Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Farhan's inbox: refuse sends to and from blocked readers).
+- Removing a reported message closes the report, but the message stays: the inbox doesn't delete messages (Arifin).
+- Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Arifin, in Farhan's inbox: refuse sends to and from blocked readers).
 - The P2P marketplace filter bar's text is English-only (its search field is translated now), and "Save draft" on the add-listing form doesn't save yet (Arifin's listing flow).
 - Book covers are gradient seeds (`coverSeed`): there's no photo upload until the backend.
 - Admin → Catalog edits (and the forced Season) live in the fake backend's memory, so they last until the app restarts.
-- Bangla titles show only in Search results, not on book cards or the book page.
+- Bangla titles show only in Search results, not on book cards or the book page (Arifin).
 - Ramadan dates are seeded to 2028 (`SeasonFixtures.ramadan`); add later years before then, or let the Go backend own the calendar.
 - A hidden Book can still be bought from an old link (cart, wishlist, scan). To stop sales, set its stock to 0.
 - Experts are seeded (`ExpertFixtures`): there's no way to apply to be one or to manage them yet.
