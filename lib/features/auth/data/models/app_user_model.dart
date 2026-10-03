@@ -15,6 +15,11 @@ abstract class AppUserModel with _$AppUserModel {
     required String name,
     required String email,
     required String role,
+
+    /// Set by the real backend after sign-in; the fake API sends none.
+    String? accessToken,
+    String? refreshToken,
+    String? expiresAt,
   }) = _AppUserModel;
 
   factory AppUserModel.fromJson(Map<String, dynamic> json) =>

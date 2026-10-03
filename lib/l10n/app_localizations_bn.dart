@@ -366,10 +366,10 @@ class AppL10nBn extends AppL10n {
   String get authEmail => 'ইমেইল';
 
   @override
-  String get authEmailOrPhone => 'ইমেইল বা ফোন';
+  String get authEmailOrPhone => 'ইমেইল';
 
   @override
-  String get authEmailOrPhoneHint => 'you@example.com বা ০১XXXXXXXXX';
+  String get authEmailOrPhoneHint => 'you@example.com';
 
   @override
   String get authMobileNumber => 'মোবাইল নম্বর';
@@ -444,6 +444,16 @@ class AppL10nBn extends AppL10n {
 
   @override
   String get authWrongCode => 'ভুল কোড। আবার চেষ্টা করুন।';
+
+  @override
+  String get authWrongCredentials => 'ইমেইল বা পাসওয়ার্ড ভুল।';
+
+  @override
+  String get authGoogleFailed => 'গুগল সাইন-ইন হয়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get authSignUpRefused =>
+      'এই ইমেইল দিয়ে সাইন-আপ শুরু করা গেল না। এতে আগে থেকেই অ্যাকাউন্ট থাকতে পারে।';
 
   @override
   String get authInvalidMobileNumber =>
