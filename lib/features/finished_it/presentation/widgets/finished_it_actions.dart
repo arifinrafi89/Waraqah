@@ -9,7 +9,7 @@ import '../../../sell_back/domain/entities/sell_back.dart';
 import '../../../sell_back/sell_back_routes.dart';
 import 'finished_it_sheet.dart';
 
-/// "Finished it? Sell it". Niloy's shelves call [bookFinished] when a
+/// "Finished it? Sell it". The shelves call [bookFinished] when a
 /// reader marks a book Finished.
 extension FinishedItActions on WidgetRef {
   /// Suggests selling the book the reader just finished.

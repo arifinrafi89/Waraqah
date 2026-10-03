@@ -124,8 +124,12 @@ The app also has:
   - Fake API `/sell-back/...` (`SellBackFakeStore`, sharing `WalletFakeStore`). In the demo the courier picks a book up 4 s after it's booked; tests that book one must `pump(const Duration(seconds: 5))` and `settle`.
 - **"Finished it? Sell it" is done** (Arifin): `features/finished_it`.
   - `ref.bookFinished(context, bookId)` opens **Finished Sapiens?**: what readers pay for a copy read once (`FinishedItOffers`: the Like New fair range), **List it for readers** (the add-listing form filled in: title, new price, Like New), or **Sell it back to Waraqah** (Sell Back's quote for the book), or Keep it.
-  - **Shelves (Arifin):** when a book moves to Finished on a shelf, call `ref.bookFinished(context, bookId)`.
-  - Until shelves exist, My Listings shows **Finished a book you bought?** with the books from the reader's delivered orders (`boughtBooksProvider`, from Farhan's `myOrdersProvider`).
+  - The shelves call it when a book moves to Finished.
+- **Shelves are done** (Arifin): `features/shelves`, `ShelvesRoutes.shelves` (`/shelves`, signed-in only, `ShelvesLink` on Profile).
+  - Want to Read, Reading and Finished (`Shelf`), one at a time on the page; each Book's ⋮ menu moves it or takes it off.
+  - On the book page (under the summary), `ShelfButton(bookId:)` says "Add to shelf" or the shelf it's on, and opens the shelf sheet. Elsewhere: `ref.moveToShelf(context, bookId, shelf)` (guests log in first); `shelfOfProvider(bookId)`, `finishedCountProvider`.
+  - Moving a Book to Finished calls `ref.bookFinished`, so "Finished it? Sell it" now starts there; My Listings' stand-in card (and `boughtBooksProvider`) is gone. Profile's "Books read" counts the Finished shelf.
+  - Fake API `/shelves`, `/shelves/move` (`ShelfFakeStore`, sharing `OrderFakeStore`): each Book from a delivered order (not a gift or Donation) goes on Want to Read once; removing it doesn't bring it back. Seeds: The Hobbit (Reading), The Alchemist and Sherlock Holmes (Finished), Clean Code (Want to Read).
 - **Accounts are done** (Niloy #108, Rahinur): sign-up with a one-time code (OTP), log in, Continue with Google and password reset, all through Auth's fake API (`/auth/...`). Sign-up keeps the name; the demo OTP is `123456` (`AuthFixtures.demoOtp`), any other code is refused.
 - **Profile and settings are done** (Rahinur): `ProfileRoutes.edit|addresses|settings` (signed-in only); `/profile`, `/profile/prefs`, `/addresses…`, `/geo`. Edit profile saves name, BD mobile and photo (`ProfileRules`) and renames the session (`SessionNotifier.rename`). Saved addresses (`SavedAddress`, `addressesProvider` in `features/profile`) are the ones checkout uses; the default is preselected, and checkout's "Add a new address" opens `ProfileRoutes.addressesAdd`. Division → district → upazila pickers read `/geo` (`geoProvider`). Settings: one switch per notification group (`ProfilePrefs.muted`), two privacy switches (saved for Bites and reading life), delete account. Theme, language and the Ayah switch stay on the Profile tab (device settings).
 - **Notifications are done** (Rahinur): `features/notifications`, `NotificationsRoutes.center` (`/notifications`, signed-in only), `NotificationBell` (Home's top bar + Profile), live via `/notifications/live`. Fake backends send with `NotificationFakeStore.send(readerId, kind, params:, target:)`, or the one-line helpers in `NotificationSends` / `NotificationSaleSends`; the text comes from ARB per kind (`notificationText`), and a target opens its page (`notificationRoute`). Senders today: order status and returns, Listing decisions, warnings and bans, handled sales, Sell Back, price and stock alerts (`AlertFakeStore.sweep`, run by `CatalogAdminFakeStore.onChanged`), book requests. A muted group is dropped; moderation can't be muted. Offers and messages stay in the inbox.
@@ -378,7 +382,7 @@ Everything below is still missing. Arifin builds it, one branch per item, inside
 
 1. ~~**Listing flow, for real:**~~ done (see §2): the add-listing form sends the Listing to the fake API (`inReview`, so it reaches the Moderation Center and My Listings); "Save draft" saves it; Step 3 takes photos (front cover, back cover, spine, one inside page, any damage); a Listing with Changes requested or Rejected can be edited and sent again.
 2. ~~**Marketplace filters:**~~ done (see §2): location from `/geo` (division → district), Category from the catalog, all text from the ARB files.
-3. **Shelves** (taken over from Niloy / Rahinur): Want to Read / Reading / Finished; delivered order Books are added automatically; moving a Book to Finished calls `ref.bookFinished`, and My Listings' stand-in card goes; Profile's "Books read" counts the Finished shelf.
+3. ~~**Shelves**~~ done (see §2): (taken over from Niloy / Rahinur): Want to Read / Reading / Finished; delivered order Books are added automatically; moving a Book to Finished calls `ref.bookFinished`, and My Listings' stand-in card goes; Profile's "Books read" counts the Finished shelf.
 4. **Reading progress and stats:** pages or % read, a yearly goal, a reading streak; a stats page (Books per month, favourite Categories); on finishing, offer to write a Review, post a Bite or sell it.
 5. **AI assistant on our catalog:** remove `VendorQuote` and the vendor price table; answers show Waraqah's own From-price and stock.
 6. **Smarter AI:** "Books for Class 9 under ৳1,000" builds a basket from the catalog and adds it to the cart; plain-words search ("short seerah for beginners in Bangla") maps to `CatalogFilters`.
@@ -461,12 +465,10 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 ## 10. Known gaps (don't be surprised by these)
 
 - The AI assistant still shows an old vendor price table. It's scheduled to use Waraqah's own catalog (Arifin). Don't copy it.
-- Profile's "Books read" is a placeholder number until shelves (Plan C).
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
 - Book demand (`bookDemandProvider`) isn't shown anywhere yet: the admin dashboard (Arifin) should list it.
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
 - Handled sales don't update live: pull down on a sale, or open it again, to see the other side's move. Wallet refunds show as "Refund for returned/cancelled HS-…" until the wallet has its own reason for them (Arifin).
-- "Finished it? Sell it" opens from My Listings' delivered books until Arifin's shelves have a Finished shelf; then shelves call `ref.bookFinished` and the stand-in card can go.
 - No push notifications while the app is closed: the notification center and the inbox badge update only while the app is open.
 - Deleting an account signs out but can't wipe the shared demo data (one "me" on the fake backend).
 - Upazila names are English only (divisions and districts have Bangla).

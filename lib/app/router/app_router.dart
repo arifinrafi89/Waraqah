@@ -26,6 +26,7 @@ import '../../features/report/report_routes.dart';
 import '../../features/reviews/reviews_routes.dart';
 import '../../features/scan/scan_routes.dart';
 import '../../features/sell_back/sell_back_routes.dart';
+import '../../features/shelves/shelves_routes.dart';
 import '../../features/wallet/wallet_routes.dart';
 import '../../features/wishlist/wishlist_routes.dart';
 import '../shell/app_shell.dart';
@@ -74,6 +75,7 @@ abstract final class AppRouter {
       ...BookRequestRoutes.routes,
       ...HandledSaleRoutes.routes,
       ...SellBackRoutes.routes,
+      ...ShelvesRoutes.routes,
       ...ProfileRoutes.routes,
       ...NotificationsRoutes.routes,
       ...BitesRoutes.routes,

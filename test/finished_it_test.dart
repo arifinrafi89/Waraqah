@@ -5,12 +5,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:waraqah/features/finished_it/domain/entities/finished_it_offers.dart';
 import 'package:waraqah/features/p2p/p2p_routes.dart';
 import 'package:waraqah/features/sell_back/sell_back_routes.dart';
+import 'package:waraqah/features/shelves/presentation/widgets/shelf_book_tile.dart';
+import 'package:waraqah/features/shelves/shelves_routes.dart';
 
 import 'helpers/app_harness.dart';
 
+/// Moves [title], delivered to the reader so on Want to Read, to Finished.
 Future<void> _finish(WidgetTester tester, String title) async {
-  // The reader also lists Atomic Habits; tap the finished-book chip.
-  await tester.tap(find.widgetWithText(ActionChip, title));
+  await tester.tap(find.text('Want to Read'));
+  await settle(tester);
+  await tester.tap(
+    find.descendant(
+      of: find.widgetWithText(ShelfBookTile, title),
+      matching: find.byTooltip('Move to'),
+    ),
+  );
+  await settle(tester);
+  await tester.tap(find.text('Finished').last);
   await settle(tester);
   expect(find.text('Finished $title?'), findsOneWidget);
 }
@@ -28,8 +39,7 @@ void main() {
   testWidgets('a finished book goes to the listing form, filled in', (
     tester,
   ) async {
-    final router = await openApp(tester, P2pRoutes.myListings, role: 'reader');
-    expect(find.text('Finished a book you bought?'), findsOneWidget);
+    final router = await openApp(tester, ShelvesRoutes.shelves, role: 'reader');
     await _finish(tester, 'Atomic Habits');
     expect(find.textContaining('Readers pay about'), findsOneWidget);
 
@@ -40,7 +50,7 @@ void main() {
   });
 
   testWidgets('or it goes to Sell Back for an instant price', (tester) async {
-    final router = await openApp(tester, P2pRoutes.myListings, role: 'reader');
+    final router = await openApp(tester, ShelvesRoutes.shelves, role: 'reader');
     await _finish(tester, 'Atomic Habits');
     await tester.tap(find.text('Sell it back to Waraqah'));
     await settle(tester);

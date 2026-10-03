@@ -3685,10 +3685,59 @@ class AppL10nEn extends AppL10n {
   String get listingFinishedKeep => 'Keep it';
 
   @override
-  String get listingFinishedCardTitle => 'Finished a book you bought?';
+  String get shelfTitle => 'My shelves';
 
   @override
-  String get listingFinishedCardBody => 'Tap it to sell it on.';
+  String get shelfWantToRead => 'Want to Read';
+
+  @override
+  String get shelfReading => 'Reading';
+
+  @override
+  String get shelfFinished => 'Finished';
+
+  @override
+  String get shelfAdd => 'Add to shelf';
+
+  @override
+  String get shelfRemove => 'Take off my shelves';
+
+  @override
+  String shelfMoved(String shelf) {
+    return 'Moved to $shelf.';
+  }
+
+  @override
+  String get shelfRemoved => 'Taken off your shelves.';
+
+  @override
+  String get shelfMoveTo => 'Move to';
+
+  @override
+  String get shelfEmptyWantToRead =>
+      'Nothing here yet. Add books from their page, and books you buy land here when they arrive.';
+
+  @override
+  String get shelfEmptyReading => 'Not reading anything right now.';
+
+  @override
+  String get shelfEmptyFinished => 'Books you finish show up here.';
+
+  @override
+  String shelfAddedOn(String date) {
+    return 'Added $date';
+  }
+
+  @override
+  String shelfFinishedOn(String date) {
+    return 'Finished $date';
+  }
+
+  @override
+  String get shelfProfileLink => 'My shelves';
+
+  @override
+  String get shelfProfileLinkBody => 'Want to Read, Reading and Finished';
 
   @override
   String get listingEditTitle => 'Edit listing';

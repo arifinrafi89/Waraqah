@@ -31,6 +31,7 @@ import '../features/report/data/sources/report_fake_api.dart';
 import '../features/reviews/data/sources/review_fake_api.dart';
 import '../features/scan/data/sources/scan_fake_api.dart';
 import '../features/sell_back/data/sources/sell_back_fake_api.dart';
+import '../features/shelves/data/sources/shelf_fake_api.dart';
 import '../features/wallet/data/sources/wallet_fake_api.dart';
 import '../features/wishlist/data/sources/wishlist_fake_api.dart';
 import 'fake_stores.dart';
@@ -92,6 +93,7 @@ abstract final class FakeApiRoutes {
       ...BookRequestFakeApi.routes(s.bookRequests),
       ...HandledSaleFakeApi.routes(s.handledSales),
       ...SellBackFakeApi.routes(s.sellBack),
+      ...ShelfFakeApi.routes(s.shelves),
     });
   }
 }
