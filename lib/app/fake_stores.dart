@@ -53,9 +53,9 @@ class FakeStores {
     muted: (kind) => kind.group != null && profile.prefs.mutes(kind.group!),
   );
 
-  // Offers in the inbox reserve and sell marketplace listings.
+  // Offers reserve and sell listings; blocked readers can't message.
   final p2p = P2pFakeStore();
-  late final inbox = InboxFakeStore(p2p);
+  late final inbox = InboxFakeStore(p2p, isBlocked: reports.isBlocked);
 
   // Blocking a reader hides their listings from the marketplace.
   late final reports = ReportFakeStore(p2p);

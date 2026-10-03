@@ -7,16 +7,21 @@ import '../../../../core/theme/app_typography.dart';
 import '../../../../l10n/app_localizations.dart';
 import 'report_actions.dart';
 
-/// Takes the offer bar's place on a blocked seller's listing.
+/// Takes the offer bar's place on a blocked seller's listing, and the
+/// message box's place in a thread with a blocked reader.
 class BlockedSellerBar extends ConsumerWidget {
   const BlockedSellerBar({
     super.key,
     required this.readerId,
     required this.name,
+    this.inThread = false,
   });
 
   final String readerId;
   final String name;
+
+  /// In an inbox thread: says messages are off, not offers.
+  final bool inThread;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,7 +47,9 @@ class BlockedSellerBar extends ConsumerWidget {
               Icon(Icons.block_rounded, color: palette.textFaint),
               Expanded(
                 child: Text(
-                  l10n.reportBlockedNotice(name),
+                  inThread
+                      ? l10n.reportBlockedThread(name)
+                      : l10n.reportBlockedNotice(name),
                   style: AppFonts.ui(size: 12.5, color: palette.textDim),
                 ),
               ),

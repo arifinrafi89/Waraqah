@@ -6313,6 +6313,12 @@ abstract class AppL10n {
   /// **'You blocked {name}. Unblock them to make an offer.'**
   String reportBlockedNotice(String name);
 
+  /// No description provided for @reportBlockedThread.
+  ///
+  /// In en, this message translates to:
+  /// **'You blocked {name}. Unblock to message each other again.'**
+  String reportBlockedThread(String name);
+
   /// No description provided for @reportUnblock.
   ///
   /// In en, this message translates to:

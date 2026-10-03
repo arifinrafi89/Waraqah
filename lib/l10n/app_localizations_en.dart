@@ -3677,6 +3677,11 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
+  String reportBlockedThread(String name) {
+    return 'You blocked $name. Unblock to message each other again.';
+  }
+
+  @override
   String get reportUnblock => 'Unblock';
 
   @override

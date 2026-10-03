@@ -13,6 +13,7 @@ class InboxFakeStore {
     this.p2p, {
     DateTime Function()? clock,
     this.replyDelay = const Duration(seconds: 4),
+    this.isBlocked = _nobody,
   }) : now = clock ?? DateTime.now {
     seedInbox(this);
   }
@@ -24,6 +25,10 @@ class InboxFakeStore {
 
   /// How long the demo's other person takes to answer or rate.
   final Duration replyDelay;
+
+  /// Whether the signed-in reader blocked someone: no messages, offers or
+  /// deals go either way with them.
+  final bool Function(String readerId) isBlocked;
   final Map<String, FakeThread> threads = {};
   final StreamController<Map<String, Object>> _changes =
       StreamController.broadcast();
@@ -62,6 +67,11 @@ class InboxFakeStore {
     return message;
   }
 
+  /// The thread's other person is blocked.
+  bool blockedIn(FakeThread thread) => isBlocked(thread.otherOf(me));
+
   Iterable<FakeThread> about(String listingId) =>
       threads.values.where((thread) => thread.listingId == listingId);
 }
+
+bool _nobody(String _) => false;

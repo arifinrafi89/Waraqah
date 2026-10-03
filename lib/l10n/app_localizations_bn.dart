@@ -3539,6 +3539,11 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
+  String reportBlockedThread(String name) {
+    return 'আপনি $name-কে ব্লক করেছেন। আবার মেসেজ করতে আনব্লক করুন।';
+  }
+
+  @override
   String get reportUnblock => 'আনব্লক';
 
   @override

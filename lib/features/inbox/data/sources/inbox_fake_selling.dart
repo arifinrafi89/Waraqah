@@ -19,7 +19,11 @@ extension InboxFakeSelling on InboxFakeStore {
     final offer = thread?.pendingOffer;
     if (thread == null || offer == null || offer.id != offerId) return null;
     final listing = p2p.find(thread.listingId)!;
-    if (accept && listing.status != P2pListingStatus.live) return null;
+    // A blocked buyer's offer can only be declined.
+    if (accept &&
+        (listing.status != P2pListingStatus.live || blockedIn(thread))) {
+      return null;
+    }
     offer.status = accept ? OfferStatus.accepted : OfferStatus.declined;
     final event = accept
         ? ThreadEvent.offerAccepted

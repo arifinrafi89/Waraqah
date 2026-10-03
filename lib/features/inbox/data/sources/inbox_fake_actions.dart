@@ -12,10 +12,15 @@ extension InboxFakeBuying on InboxFakeStore {
   static const String _me = InboxFakeStore.me;
 
   /// The buyer's thread about a listing, started if needed. A sold book
-  /// can't start a new conversation, and sellers don't message themselves.
+  /// can't start a new conversation, sellers don't message themselves, and
+  /// nobody messages a reader they blocked.
   FakeThread? openFor(String listingId) {
     final listing = p2p.find(listingId);
-    if (listing == null || listing.sellerId == _me) return null;
+    if (listing == null ||
+        listing.sellerId == _me ||
+        isBlocked(listing.sellerId)) {
+      return null;
+    }
     final existing = about(listingId).where((t) => t.buyerId == _me);
     if (existing.isNotEmpty) return existing.first;
     if (listing.status != P2pListingStatus.live &&
@@ -35,6 +40,7 @@ extension InboxFakeBuying on InboxFakeStore {
     final thread = threads[threadId];
     final trimmed = text.trim();
     if (thread == null ||
+        blockedIn(thread) ||
         trimmed.isEmpty ||
         trimmed.length > OfferRules.maxMessageLength) {
       return null;
