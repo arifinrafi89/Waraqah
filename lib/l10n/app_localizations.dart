@@ -3175,6 +3175,12 @@ abstract class AppL10n {
   /// **'Refund for returned {order}'**
   String walletReturnRefund(String order);
 
+  /// No description provided for @walletSaleRefund.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund for used book: {book}'**
+  String walletSaleRefund(String book);
+
   /// No description provided for @walletSellBack.
   ///
   /// In en, this message translates to:

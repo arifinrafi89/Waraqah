@@ -1750,6 +1750,11 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
+  String walletSaleRefund(String book) {
+    return 'পুরোনো বইয়ের রিফান্ড: $book';
+  }
+
+  @override
   String walletSellBack(String book) {
     return 'সেল ব্যাক: $book';
   }

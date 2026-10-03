@@ -84,8 +84,9 @@ extension HandledSaleFakeMoney on HandledSaleFakeStore {
       if (s.buyerId == HandledSaleFakeStore.me) {
         wallet.credit(
           s.buyerPaysBdt,
-          WalletReason.returnRefund,
+          WalletReason.saleRefund,
           orderNumber: s.id,
+          note: title,
         );
       }
     } else {

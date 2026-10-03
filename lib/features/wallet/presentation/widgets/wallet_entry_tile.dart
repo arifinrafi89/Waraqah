@@ -25,6 +25,7 @@ class WalletEntryTile extends StatelessWidget {
     final why = switch (entry.reason) {
       WalletReason.cancelRefund => l10n.walletCancelRefund(order),
       WalletReason.returnRefund => l10n.walletReturnRefund(order),
+      WalletReason.saleRefund => l10n.walletSaleRefund(entry.note ?? order),
       WalletReason.sellBack => l10n.walletSellBack(entry.note ?? ''),
       WalletReason.spent => l10n.walletSpentOn(order),
     };

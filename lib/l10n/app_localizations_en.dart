@@ -1829,6 +1829,11 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
+  String walletSaleRefund(String book) {
+    return 'Refund for used book: $book';
+  }
+
+  @override
   String walletSellBack(String book) {
     return 'Sell Back: $book';
   }

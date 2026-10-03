@@ -4,7 +4,10 @@ part 'wallet.freezed.dart';
 
 /// Why the balance changed: money back from a cancelled or returned order,
 /// a used book sold back to Waraqah, or spent at checkout.
-enum WalletReason { cancelRefund, returnRefund, sellBack, spent }
+/// Why the balance changed. [saleRefund] is a Waraqah-handled sale's
+/// money coming back (cancelled before it was sent, or refunded by a
+/// moderator), with the book's title as the note.
+enum WalletReason { cancelRefund, returnRefund, saleRefund, sellBack, spent }
 
 /// One change to the balance, in taka: positive in, negative out.
 @freezed

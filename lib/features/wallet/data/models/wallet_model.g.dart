@@ -27,6 +27,7 @@ Map<String, dynamic> _$WalletEntryModelToJson(_WalletEntryModel instance) =>
 const _$WalletReasonEnumMap = {
   WalletReason.cancelRefund: 'cancelRefund',
   WalletReason.returnRefund: 'returnRefund',
+  WalletReason.saleRefund: 'saleRefund',
   WalletReason.sellBack: 'sellBack',
   WalletReason.spent: 'spent',
 };

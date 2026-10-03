@@ -21,8 +21,9 @@ extension HandledSaleFakeSteps on HandledSaleFakeStore {
         s.status = SaleStatus.cancelled;
         wallet.credit(
           s.buyerPaysBdt,
-          WalletReason.cancelRefund,
+          WalletReason.saleRefund,
           orderNumber: s.id,
+          note: titleOf(s),
         );
         p2p.setStatus(s.listingId, P2pListingStatus.live);
       case SaleStep.confirm when buying && s.status == SaleStatus.sent:

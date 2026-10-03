@@ -591,6 +591,8 @@
   "@walletCancelRefund": { "placeholders": { "order": { "type": "String" } } },
   "walletReturnRefund": "Refund for returned {order}",
   "@walletReturnRefund": { "placeholders": { "order": { "type": "String" } } },
+  "walletSaleRefund": "Refund for used book: {book}",
+  "@walletSaleRefund": {"placeholders": {"book": {"type": "String"}}},
   "walletSellBack": "Sell Back: {book}",
   "@walletSellBack": { "placeholders": { "book": { "type": "String" } } },
   "walletSpentOn": "Used on {order}",
