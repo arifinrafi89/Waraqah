@@ -91,7 +91,7 @@ The app also has:
   - **Disputes:** empty until Waraqah-handled sales.
   - **Log:** every action, newest first: what, on what, why, who and when.
   - One strike system: a warning adds a strike, the third bans (`ModerationRules.maxStrikes`). Banned sellers' Listings leave the marketplace like blocked ones.
-  - Fake API `/moderation/listings`, `/moderation/listings/decide`, `/moderation/reports`, `/moderation/reports/act`, `/moderation/log` (`ModerationFakeStore`, shared with `P2pFakeStore` and `ReportFakeStore`). It finds reported messages, Bites and reviews in their features' own records (`ModerationSubjects`). Until there are login tokens, the app sends the staff member's name (`by`) for the log.
+  - Fake API `/moderation/listings`, `/moderation/listings/decide`, `/moderation/reports`, `/moderation/reports/act`, `/moderation/log` (`ModerationFakeStore`, shared with `P2pFakeStore` and `ReportFakeStore`). **Remove** on a reported message takes it out of its thread (`InboxFakeStore.removeMessage`), and the thread updates live. It finds reported messages, Bites and reviews in their features' own records (`ModerationSubjects`). Until there are login tokens, the app sends the staff member's name (`by`) for the log.
 - **Scan a book is done** (Arifin): one scanner (`features/scan`, `ScanRoutes.scan`) to look a book up or start a used Listing.
   - The camera reads the EAN-13 barcode on the back of a book (`mobile_scanner`, on Android, iOS, macOS and the web); the ISBN can also be typed. Windows, Linux and tests type it.
   - `Isbn.normalize` checks the check digit and turns an ISBN-10 into an ISBN-13. Fake API `/scan/lookup?isbn=` answers the Book (`ScanFakeApi`).
@@ -402,7 +402,7 @@ Everything below is still missing. Arifin builds it, one branch per item, inside
 6. ~~**Smarter AI:**~~ done (see §2): "Books for Class 9 under ৳1,000" builds a basket from the catalog and adds it to the cart; plain-words search ("short seerah for beginners in Bangla") maps to `CatalogFilters`.
 7. ~~**Admin dashboard:**~~ done (see §2): today's orders and sales, Listings waiting for approval, top searched Books (search terms logged by the fake backend), most requested Books (`bookDemandProvider`).
 8. ~~**Blocking in the inbox:**~~ done (see §2): the server refuses sends to and from a blocked reader; the thread says so.
-9. **Removed messages:** a message a moderator removes leaves the thread.
+9. ~~**Removed messages:**~~ done (see §2): a message a moderator removes leaves the thread.
 10. **Live handled sales:** a sale's page updates when the other side moves.
 11. **Wallet refund reason:** handled-sale refunds get their own `WalletReason`.
 12. **Bangla titles** on book cards and the book page.
@@ -484,7 +484,6 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - No push notifications while the app is closed: the notification center and the inbox badge update only while the app is open.
 - Deleting an account signs out but can't wipe the shared demo data (one "me" on the fake backend).
 - Upazila names are English only (divisions and districts have Bangla).
-- Removing a reported message closes the report, but the message stays: the inbox doesn't delete messages (Arifin).
 - Listing photos aren't stored or shown yet: the fake backend keeps only which slots have a photo, and moderators see named tiles.
 - Book covers are gradient seeds (`coverSeed`): there's no photo upload until the backend.
 - Admin → Catalog edits (and the forced Season) live in the fake backend's memory, so they last until the app restarts.
