@@ -116,7 +116,5 @@ class FakeStores {
 
   /// Price and stock alerts notify the reader when they first fire.
   late final alerts = AlertFakeStore(notifications);
-
-  /// Delivered orders put their Books on the reader's shelves.
-  late final shelves = ShelfFakeStore(orders);
+  late final shelves = ShelfFakeStore(orders); // Delivered orders fill it.
 }
