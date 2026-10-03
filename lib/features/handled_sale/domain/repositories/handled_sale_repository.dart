@@ -34,4 +34,7 @@ abstract interface class HandledSaleRepository {
     required bool refund,
     required String by,
   });
+
+  /// The id of each sale that changes, while the app listens.
+  Stream<String> changes();
 }

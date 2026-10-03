@@ -33,11 +33,19 @@ abstract final class HandledSaleFakeApi {
   /// Body `{id, refund, by}`: answers the open disputes.
   static const String settle = '/sales/disputes/settle';
 
+  /// Server-sent events: `data: {seq, saleId}` per change, so a sale's
+  /// page follows the other side's moves.
+  static const String live = '/sales/live';
+
   static Map<String, Object? Function(RequestOptions)> routes(
     HandledSaleFakeStore store,
   ) {
-    Map<String, dynamic>? answer(FakeSale? sale) =>
-        sale == null ? null : store.json(sale);
+    Map<String, dynamic>? answer(FakeSale? sale) {
+      if (sale == null) return null;
+      store.live.sale(sale.id);
+      return store.json(sale);
+    }
+
     return {
       buy: (o) => answer(
         store.buy(
@@ -74,14 +82,17 @@ abstract final class HandledSaleFakeApi {
       earnings: (_) => store.earningsJson(),
       payout: (_) => store.payout() ? store.earningsJson() : null,
       disputes: (_) => store.disputesJson(),
-      settle: (o) =>
-          store.settle(
-            _text(o, 'id'),
-            refund: _body(o)['refund'] == true,
-            by: _text(o, 'by'),
-          )
-          ? store.disputesJson()
-          : null,
+      settle: (o) {
+        final id = _text(o, 'id');
+        final done = store.settle(
+          id,
+          refund: _body(o)['refund'] == true,
+          by: _text(o, 'by'),
+        );
+        if (done) store.live.sale(id);
+        return done ? store.disputesJson() : null;
+      },
+      live: (_) => store.live.stream(),
     };
   }
 

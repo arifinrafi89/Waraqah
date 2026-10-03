@@ -6,12 +6,17 @@ import '../../domain/repositories/handled_sale_repository.dart';
 import '../models/earnings_model.dart';
 import '../models/handled_sale_model.dart';
 import '../sources/handled_sale_remote_source.dart';
+import '../sources/sale_live_source.dart';
 
 /// No cache: a sale moves on whenever the other side acts.
 class HandledSaleRepositoryImpl implements HandledSaleRepository {
-  HandledSaleRepositoryImpl(this._source);
+  HandledSaleRepositoryImpl(this._source, this._live);
 
   final HandledSaleRemoteSource _source;
+  final SaleLiveSource _live;
+
+  @override
+  Stream<String> changes() => _live.changes();
 
   @override
   Future<HandledSale> buy(String listingId, PaymentMethod method) async =>
