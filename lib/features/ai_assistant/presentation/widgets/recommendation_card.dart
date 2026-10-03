@@ -8,11 +8,14 @@ import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/utils/formatters.dart';
+import '../../../../core/utils/stock_label.dart';
 import '../../../../core/widgets/cover_art.dart';
+import '../../../../core/widgets/shimmer_box.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../providers/recommended_book_provider.dart';
 
-/// The compact book card an assistant reply attaches to its recommendation.
+/// The compact book card an assistant reply attaches to its recommendation:
+/// Waraqah's From-price and whether it's in stock.
 /// Tapping it opens the recommended book's detail page.
 class RecommendationCard extends ConsumerWidget {
   const RecommendationCard({super.key, required this.bookId});
@@ -21,7 +24,14 @@ class RecommendationCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final book = ref.watch(recommendedBookProvider(bookId)).value;
+    final found = ref.watch(recommendedBookProvider(bookId));
+    if (found.isLoading) {
+      return const Padding(
+        padding: EdgeInsets.only(top: 10),
+        child: ShimmerScope(child: ShimmerBox(height: 70, radius: Radii.md)),
+      );
+    }
+    final book = found.value;
     if (book == null) return const SizedBox.shrink();
 
     final palette = context.palette;
@@ -66,7 +76,8 @@ class RecommendationCard extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 2),
                     child: Text(
-                      '${book.author} · ${Bdt.format(book.fromPriceBdt)}',
+                      '${book.author} · ${Bdt.format(book.fromPriceBdt)} · '
+                      '${l10n.stockStatus(book.cardStockStatus)}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppFonts.ui(size: 10, color: palette.textFaint),

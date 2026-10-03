@@ -2213,7 +2213,7 @@ class AppL10nEn extends AppL10n {
   String get aiTitle => 'Reading Assistant';
 
   @override
-  String get aiSubtitle => 'Powered by Gemini';
+  String get aiSubtitle => 'Answers from Waraqah\'s catalog';
 
   @override
   String get aiInputHint => 'Ask about any book...';
@@ -2222,13 +2222,22 @@ class AppL10nEn extends AppL10n {
   String get aiPromptBudget => 'Books under ৳500';
 
   @override
-  String get aiPromptIslamic => 'Beneficial Islamic reads';
+  String get aiPromptIslamic => 'Seerah for beginners';
 
   @override
   String get aiPromptExam => 'Help me prep for exams';
 
   @override
   String get aiViewBook => 'View book';
+
+  @override
+  String get aiPromptHadith => 'Hadith collections';
+
+  @override
+  String get aiPromptQuran => 'Quran and tafsir';
+
+  @override
+  String get aiPromptHistory => 'Islamic history';
 
   @override
   String get homeAppBarLightMode => 'Light mode';

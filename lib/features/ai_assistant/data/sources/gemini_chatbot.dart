@@ -15,7 +15,8 @@ final class GeminiChatbot {
 
   bool get isConfigured => _apiKey.isNotEmpty;
 
-  Future<ChatMessage> replyTo(
+  /// Gemini's words for the reply, about [books] only.
+  Future<String> replyTo(
     String prompt,
     List<ChatMessage> history,
     List<Book> books,
@@ -44,8 +45,8 @@ final class GeminiChatbot {
               .map(
                 (book) =>
                     '${book.id}: ${book.title} by ${book.author}; '
-                    '${book.fromPriceBdt} BDT; rating ${book.rating}; '
-                    'category ${book.categoryId}',
+                    'Waraqah price ${book.fromPriceBdt} BDT; '
+                    '${book.cardStockStatus.name}; rating ${book.rating}',
               )
               .join('\n');
 
@@ -58,8 +59,8 @@ final class GeminiChatbot {
             {
               'text':
                   'You are Waraqah AI, the reading assistant inside the Waraqah '
-                  'app. This is the Reading Assistant for Waraqah, an Islamic '
-                  'book discovery and review app. Maintain conversation context '
+                  'app. Waraqah is a book store in Bangladesh that sells new '
+                  'books itself and hosts used books from readers. Maintain conversation context '
                   'and treat later user messages as refinements of earlier '
                   'requests when appropriate. If the user explicitly requests '
                   'Islamic books, recommend Islamic books. Do not ask the user '
@@ -67,7 +68,8 @@ final class GeminiChatbot {
                   'application book-search results supplied below for actual '
                   'book results. Never fabricate books, prices, ratings, authors, '
                   'or availability. Answer only questions about Waraqah, its book catalog, '
-                  'book recommendations, vendors, prices, study resources, '
+                  "book recommendations, Waraqah's prices and stock, study resources, "
+                  'never other shops or vendors, '
                   'peer-to-peer listings, profile, and app navigation. If a '
                   'question is outside the app, politely say you can only help '
                   'with Waraqah. Do not invent catalog data, prices, or features. '
@@ -86,12 +88,7 @@ final class GeminiChatbot {
       throw const FormatException('Gemini returned no text.');
     }
 
-    return ChatMessage(
-      id: 'ai-${DateTime.now().microsecondsSinceEpoch}',
-      role: ChatRole.assistant,
-      text: text,
-      recommendedBookIds: [for (final book in books) book.id],
-    );
+    return text;
   }
 
   String? _extractText(Map<String, dynamic>? data) {

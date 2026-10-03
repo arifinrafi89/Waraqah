@@ -2119,7 +2119,7 @@ class AppL10nBn extends AppL10n {
   String get aiTitle => 'রিডিং অ্যাসিস্ট্যান্ট';
 
   @override
-  String get aiSubtitle => 'জেমিনি দ্বারা পরিচালিত';
+  String get aiSubtitle => 'ওয়ারাকাহর ক্যাটালগ থেকে উত্তর';
 
   @override
   String get aiInputHint => 'যেকোনো বই সম্পর্কে জিজ্ঞাসা করুন...';
@@ -2128,13 +2128,22 @@ class AppL10nBn extends AppL10n {
   String get aiPromptBudget => '৫০০ টাকার নিচে বই';
 
   @override
-  String get aiPromptIslamic => 'উপকারী ইসলামিক বই';
+  String get aiPromptIslamic => 'নতুনদের জন্য সীরাহ';
 
   @override
   String get aiPromptExam => 'পরীক্ষার প্রস্তুতিতে সাহায্য করুন';
 
   @override
   String get aiViewBook => 'বই দেখুন';
+
+  @override
+  String get aiPromptHadith => 'হাদিসের সংকলন';
+
+  @override
+  String get aiPromptQuran => 'কুরআন ও তাফসির';
+
+  @override
+  String get aiPromptHistory => 'ইসলামের ইতিহাস';
 
   @override
   String get homeAppBarLightMode => 'লাইট মোড';
