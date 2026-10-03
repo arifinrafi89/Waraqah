@@ -7513,6 +7513,84 @@ abstract class AppL10n {
   /// **'No offers yet. Buyers\' offers and messages show up here and in your inbox.'**
   String get usedNoOffersYet;
 
+  /// No description provided for @usedFilterCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'Condition'**
+  String get usedFilterCondition;
+
+  /// No description provided for @usedFilterAnyCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'Any condition'**
+  String get usedFilterAnyCondition;
+
+  /// No description provided for @usedFilterLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get usedFilterLocation;
+
+  /// No description provided for @usedFilterAllLocations.
+  ///
+  /// In en, this message translates to:
+  /// **'All of Bangladesh'**
+  String get usedFilterAllLocations;
+
+  /// No description provided for @usedFilterDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get usedFilterDistrict;
+
+  /// No description provided for @usedFilterAllDistricts.
+  ///
+  /// In en, this message translates to:
+  /// **'All districts'**
+  String get usedFilterAllDistricts;
+
+  /// No description provided for @usedFilterSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Section'**
+  String get usedFilterSection;
+
+  /// No description provided for @usedFilterAllSections.
+  ///
+  /// In en, this message translates to:
+  /// **'All sections'**
+  String get usedFilterAllSections;
+
+  /// No description provided for @usedFilterCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get usedFilterCategory;
+
+  /// No description provided for @usedFilterAllCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'All categories'**
+  String get usedFilterAllCategories;
+
+  /// No description provided for @usedFilterPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get usedFilterPrice;
+
+  /// No description provided for @usedFilterAnyPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Any price'**
+  String get usedFilterAnyPrice;
+
+  /// No description provided for @usedFilterUnder.
+  ///
+  /// In en, this message translates to:
+  /// **'Under {price}'**
+  String usedFilterUnder(String price);
+
   /// No description provided for @inboxTitle.
   ///
   /// In en, this message translates to:

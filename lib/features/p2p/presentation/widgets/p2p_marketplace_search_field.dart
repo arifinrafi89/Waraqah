@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/theme/app_dimens.dart';
 import '../../../../core/widgets/app_text_field.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../providers/p2p_providers.dart';
+import '../providers/p2p_filter_providers.dart';
 
 /// Searches the marketplace by title, seller or area. Starts with the
 /// query another page set (e.g. "See copies" on a book request).

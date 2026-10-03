@@ -25,7 +25,7 @@ final List<P2pListingModel> p2pMySeed = [
     BookCondition.veryGood,
     status: P2pListingStatus.draft,
     newPrice: 450,
-    category: 'Software Engineering',
+    categoryId: 'cat-programming',
   ),
   seedListing(
     'p2p-review-1',
@@ -35,7 +35,7 @@ final List<P2pListingModel> p2pMySeed = [
     BookCondition.good,
     status: P2pListingStatus.inReview,
     newPrice: 600,
-    category: 'Computer Science',
+    categoryId: 'cat-data-systems',
   ),
   // A moderator asked for a back cover photo: the reader can edit it
   // and send it again.
@@ -48,5 +48,6 @@ final List<P2pListingModel> p2pMySeed = [
     status: P2pListingStatus.changesRequested,
     newPrice: 750,
     photos: const ['front'],
+    categoryId: 'cat-programming',
   ).copyWith(rejectionReason: 'Please add a photo of the back cover.'),
 ];

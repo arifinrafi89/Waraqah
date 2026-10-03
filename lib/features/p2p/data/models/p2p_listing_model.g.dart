@@ -38,7 +38,8 @@ _P2pListingModel _$P2pListingModelFromJson(Map<String, dynamic> json) =>
       coverSeed: (json['coverSeed'] as num?)?.toInt() ?? 0,
       district: json['district'] as String?,
       area: json['area'] as String?,
-      category: json['category'] as String?,
+      categoryId: json['categoryId'] as String?,
+      section: $enumDecodeNullable(_$SectionEnumMap, json['section']),
       newPriceBdt: (json['newPriceBdt'] as num?)?.toInt(),
       note: json['note'] as String?,
     );
@@ -63,7 +64,8 @@ Map<String, dynamic> _$P2pListingModelToJson(_P2pListingModel instance) =>
       'coverSeed': instance.coverSeed,
       'district': instance.district,
       'area': instance.area,
-      'category': instance.category,
+      'categoryId': instance.categoryId,
+      'section': _$SectionEnumMap[instance.section],
       'newPriceBdt': instance.newPriceBdt,
       'note': instance.note,
     };
@@ -88,4 +90,15 @@ const _$P2pListingStatusEnumMap = {
   P2pListingStatus.live: 'live',
   P2pListingStatus.reserved: 'reserved',
   P2pListingStatus.sold: 'sold',
+};
+
+const _$SectionEnumMap = {
+  Section.academic: 'academic',
+  Section.religious: 'religious',
+  Section.literature: 'literature',
+  Section.admissionJobPrep: 'admissionJobPrep',
+  Section.schoolCollege: 'schoolCollege',
+  Section.nonFiction: 'nonFiction',
+  Section.skillsTech: 'skillsTech',
+  Section.children: 'children',
 };

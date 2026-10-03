@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../providers/p2p_providers.dart';
+import '../providers/p2p_filter_providers.dart';
 import '../widgets/p2p_marketplace_add_button.dart';
 import '../widgets/p2p_marketplace_filter_bar.dart';
 import '../widgets/p2p_marketplace_grid.dart';

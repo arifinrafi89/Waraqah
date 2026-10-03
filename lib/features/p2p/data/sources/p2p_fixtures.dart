@@ -20,7 +20,7 @@ abstract final class P2pFixtures {
       newPrice: 500,
       negotiable: true,
       note: 'Read once. No highlights or notes.',
-      category: 'Software Engineering',
+      categoryId: 'cat-programming',
     ),
     seedListing(
       'p2p-2',
@@ -30,7 +30,7 @@ abstract final class P2pFixtures {
       BookCondition.acceptable,
       status: P2pListingStatus.sold,
       newPrice: 250,
-      category: 'Computer Science',
+      categoryId: 'cat-data-systems',
     ),
     seedListing(
       'p2p-3',
@@ -42,7 +42,7 @@ abstract final class P2pFixtures {
       negotiable: true,
       handover: HandoverMethod.delivery,
       note: 'A few pencil notes in chapter 2. Can send by courier.',
-      category: 'Algorithms',
+      categoryId: 'cat-data-systems',
     ),
     seedListing(
       'p2p-4',
@@ -53,7 +53,7 @@ abstract final class P2pFixtures {
       status: P2pListingStatus.reserved,
       newPrice: 700,
       negotiable: true,
-      category: 'Software Engineering',
+      categoryId: 'cat-programming',
     ),
     seedListing(
       'p2p-5',
@@ -65,7 +65,7 @@ abstract final class P2pFixtures {
       newPrice: 800,
       negotiable: true,
       handover: HandoverMethod.delivery,
-      category: 'Computer Science',
+      categoryId: 'cat-data-systems',
     ),
     seedListing(
       'p2p-6',
@@ -75,7 +75,7 @@ abstract final class P2pFixtures {
       BookCondition.acceptable,
       newPrice: 400,
       note: 'Cover is worn, pages are fine.',
-      category: 'Engineering',
+      categoryId: 'cat-academic',
     ),
     ...p2pMySeed,
     ...p2pReviewSeed,

@@ -14,7 +14,7 @@ final List<P2pListingModel> p2pHandledSeed = [
     BookCondition.veryGood,
     status: P2pListingStatus.reserved,
     newPrice: 650,
-    category: 'Psychology',
+    categoryId: 'cat-self-help',
   ),
   seedListing(
     'p2p-hs-2',
@@ -24,7 +24,7 @@ final List<P2pListingModel> p2pHandledSeed = [
     BookCondition.good,
     status: P2pListingStatus.sold,
     newPrice: 520,
-    category: 'Self-help',
+    categoryId: 'cat-self-help',
   ),
   seedListing(
     'p2p-hs-3',
@@ -34,7 +34,7 @@ final List<P2pListingModel> p2pHandledSeed = [
     BookCondition.good,
     status: P2pListingStatus.reserved,
     newPrice: 350,
-    category: 'Fiction',
+    categoryId: 'cat-fiction',
   ),
   seedListing(
     'p2p-hs-4',
@@ -44,6 +44,6 @@ final List<P2pListingModel> p2pHandledSeed = [
     BookCondition.likeNew,
     status: P2pListingStatus.reserved,
     newPrice: 900,
-    category: 'History',
+    categoryId: 'cat-academic',
   ),
 ];
