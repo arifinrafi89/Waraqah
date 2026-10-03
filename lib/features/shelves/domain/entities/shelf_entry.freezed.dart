@@ -16,7 +16,8 @@ T _$identity<T>(T value) => value;
 mixin _$ShelfEntry {
 
  Book get book; Shelf get shelf; DateTime get addedAt;/// When it moved to Finished.
- DateTime? get finishedAt;
+ DateTime? get finishedAt;/// How far the reader got, 0–100, and the pages when they count them.
+ int get progress; int? get pagesRead; int? get totalPages;
 /// Create a copy of ShelfEntry
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,20 +29,20 @@ $ShelfEntryCopyWith<ShelfEntry> get copyWith => _$ShelfEntryCopyWithImpl<ShelfEn
 @override
 bool operator ==(Object other) {
   final _this = this as ShelfEntry;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShelfEntry&&(identical(other.book, _this.book) || other.book == _this.book)&&(identical(other.shelf, _this.shelf) || other.shelf == _this.shelf)&&(identical(other.addedAt, _this.addedAt) || other.addedAt == _this.addedAt)&&(identical(other.finishedAt, _this.finishedAt) || other.finishedAt == _this.finishedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShelfEntry&&(identical(other.book, _this.book) || other.book == _this.book)&&(identical(other.shelf, _this.shelf) || other.shelf == _this.shelf)&&(identical(other.addedAt, _this.addedAt) || other.addedAt == _this.addedAt)&&(identical(other.finishedAt, _this.finishedAt) || other.finishedAt == _this.finishedAt)&&(identical(other.progress, _this.progress) || other.progress == _this.progress)&&(identical(other.pagesRead, _this.pagesRead) || other.pagesRead == _this.pagesRead)&&(identical(other.totalPages, _this.totalPages) || other.totalPages == _this.totalPages));
 }
 
 
 @override
 int get hashCode {
   final _this = this as ShelfEntry;
-  return Object.hash(runtimeType,_this.book,_this.shelf,_this.addedAt,_this.finishedAt);
+  return Object.hash(runtimeType,_this.book,_this.shelf,_this.addedAt,_this.finishedAt,_this.progress,_this.pagesRead,_this.totalPages);
 }
 
 @override
 String toString() {
   final _this = this as ShelfEntry;
-  return 'ShelfEntry(book: ${_this.book}, shelf: ${_this.shelf}, addedAt: ${_this.addedAt}, finishedAt: ${_this.finishedAt})';
+  return 'ShelfEntry(book: ${_this.book}, shelf: ${_this.shelf}, addedAt: ${_this.addedAt}, finishedAt: ${_this.finishedAt}, progress: ${_this.progress}, pagesRead: ${_this.pagesRead}, totalPages: ${_this.totalPages})';
 }
 
 
@@ -52,7 +53,7 @@ abstract mixin class $ShelfEntryCopyWith<$Res>  {
   factory $ShelfEntryCopyWith(ShelfEntry value, $Res Function(ShelfEntry) _then) = _$ShelfEntryCopyWithImpl;
 @useResult
 $Res call({
- Book book, Shelf shelf, DateTime addedAt, DateTime? finishedAt
+ Book book, Shelf shelf, DateTime addedAt, DateTime? finishedAt, int progress, int? pagesRead, int? totalPages
 });
 
 
@@ -69,13 +70,16 @@ class _$ShelfEntryCopyWithImpl<$Res>
 
 /// Create a copy of ShelfEntry
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? book = null,Object? shelf = null,Object? addedAt = null,Object? finishedAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? book = null,Object? shelf = null,Object? addedAt = null,Object? finishedAt = freezed,Object? progress = null,Object? pagesRead = freezed,Object? totalPages = freezed,}) {
   return _then(ShelfEntry(
 book: null == book ? _self.book : book // ignore: cast_nullable_to_non_nullable
 as Book,shelf: null == shelf ? _self.shelf : shelf // ignore: cast_nullable_to_non_nullable
 as Shelf,addedAt: null == addedAt ? _self.addedAt : addedAt // ignore: cast_nullable_to_non_nullable
 as DateTime,finishedAt: freezed == finishedAt ? _self.finishedAt : finishedAt // ignore: cast_nullable_to_non_nullable
-as DateTime?,
+as DateTime?,progress: null == progress ? _self.progress : progress // ignore: cast_nullable_to_non_nullable
+as int,pagesRead: freezed == pagesRead ? _self.pagesRead : pagesRead // ignore: cast_nullable_to_non_nullable
+as int?,totalPages: freezed == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 /// Create a copy of ShelfEntry
@@ -169,10 +173,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Book book,  Shelf shelf,  DateTime addedAt,  DateTime? finishedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Book book,  Shelf shelf,  DateTime addedAt,  DateTime? finishedAt,  int progress,  int? pagesRead,  int? totalPages)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ShelfEntry() when $default != null:
-return $default(_that.book,_that.shelf,_that.addedAt,_that.finishedAt);case _:
+return $default(_that.book,_that.shelf,_that.addedAt,_that.finishedAt,_that.progress,_that.pagesRead,_that.totalPages);case _:
   return orElse();
 
 }
@@ -190,10 +194,10 @@ return $default(_that.book,_that.shelf,_that.addedAt,_that.finishedAt);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Book book,  Shelf shelf,  DateTime addedAt,  DateTime? finishedAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Book book,  Shelf shelf,  DateTime addedAt,  DateTime? finishedAt,  int progress,  int? pagesRead,  int? totalPages)  $default,) {final _that = this;
 switch (_that) {
 case _ShelfEntry():
-return $default(_that.book,_that.shelf,_that.addedAt,_that.finishedAt);case _:
+return $default(_that.book,_that.shelf,_that.addedAt,_that.finishedAt,_that.progress,_that.pagesRead,_that.totalPages);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -210,10 +214,10 @@ return $default(_that.book,_that.shelf,_that.addedAt,_that.finishedAt);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Book book,  Shelf shelf,  DateTime addedAt,  DateTime? finishedAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Book book,  Shelf shelf,  DateTime addedAt,  DateTime? finishedAt,  int progress,  int? pagesRead,  int? totalPages)?  $default,) {final _that = this;
 switch (_that) {
 case _ShelfEntry() when $default != null:
-return $default(_that.book,_that.shelf,_that.addedAt,_that.finishedAt);case _:
+return $default(_that.book,_that.shelf,_that.addedAt,_that.finishedAt,_that.progress,_that.pagesRead,_that.totalPages);case _:
   return null;
 
 }
@@ -225,7 +229,7 @@ return $default(_that.book,_that.shelf,_that.addedAt,_that.finishedAt);case _:
 
 
 class _ShelfEntry implements ShelfEntry {
-  const _ShelfEntry({required this.book, required this.shelf, required this.addedAt, this.finishedAt});
+  const _ShelfEntry({required this.book, required this.shelf, required this.addedAt, this.finishedAt, this.progress = 0, this.pagesRead, this.totalPages});
   
 
 @override final  Book book;
@@ -233,6 +237,10 @@ class _ShelfEntry implements ShelfEntry {
 @override final  DateTime addedAt;
 /// When it moved to Finished.
 @override final  DateTime? finishedAt;
+/// How far the reader got, 0–100, and the pages when they count them.
+@override@JsonKey() final  int progress;
+@override final  int? pagesRead;
+@override final  int? totalPages;
 
 /// Create a copy of ShelfEntry
 /// with the given fields replaced by the non-null parameter values.
@@ -244,18 +252,18 @@ _$ShelfEntryCopyWith<_ShelfEntry> get copyWith => __$ShelfEntryCopyWithImpl<_She
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShelfEntry&&(identical(other.book, book) || other.book == book)&&(identical(other.shelf, shelf) || other.shelf == shelf)&&(identical(other.addedAt, addedAt) || other.addedAt == addedAt)&&(identical(other.finishedAt, finishedAt) || other.finishedAt == finishedAt));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShelfEntry&&(identical(other.book, book) || other.book == book)&&(identical(other.shelf, shelf) || other.shelf == shelf)&&(identical(other.addedAt, addedAt) || other.addedAt == addedAt)&&(identical(other.finishedAt, finishedAt) || other.finishedAt == finishedAt)&&(identical(other.progress, progress) || other.progress == progress)&&(identical(other.pagesRead, pagesRead) || other.pagesRead == pagesRead)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,book,shelf,addedAt,finishedAt);
+    return Object.hash(runtimeType,book,shelf,addedAt,finishedAt,progress,pagesRead,totalPages);
 }
 
 @override
 String toString() {
-    return 'ShelfEntry(book: $book, shelf: $shelf, addedAt: $addedAt, finishedAt: $finishedAt)';
+    return 'ShelfEntry(book: $book, shelf: $shelf, addedAt: $addedAt, finishedAt: $finishedAt, progress: $progress, pagesRead: $pagesRead, totalPages: $totalPages)';
 }
 
 
@@ -266,7 +274,7 @@ abstract mixin class _$ShelfEntryCopyWith<$Res> implements $ShelfEntryCopyWith<$
   factory _$ShelfEntryCopyWith(_ShelfEntry value, $Res Function(_ShelfEntry) _then) = __$ShelfEntryCopyWithImpl;
 @override @useResult
 $Res call({
- Book book, Shelf shelf, DateTime addedAt, DateTime? finishedAt
+ Book book, Shelf shelf, DateTime addedAt, DateTime? finishedAt, int progress, int? pagesRead, int? totalPages
 });
 
 
@@ -283,13 +291,16 @@ class __$ShelfEntryCopyWithImpl<$Res>
 
 /// Create a copy of ShelfEntry
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? book = null,Object? shelf = null,Object? addedAt = null,Object? finishedAt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? book = null,Object? shelf = null,Object? addedAt = null,Object? finishedAt = freezed,Object? progress = null,Object? pagesRead = freezed,Object? totalPages = freezed,}) {
   return _then(_ShelfEntry(
 book: null == book ? _self.book : book // ignore: cast_nullable_to_non_nullable
 as Book,shelf: null == shelf ? _self.shelf : shelf // ignore: cast_nullable_to_non_nullable
 as Shelf,addedAt: null == addedAt ? _self.addedAt : addedAt // ignore: cast_nullable_to_non_nullable
 as DateTime,finishedAt: freezed == finishedAt ? _self.finishedAt : finishedAt // ignore: cast_nullable_to_non_nullable
-as DateTime?,
+as DateTime?,progress: null == progress ? _self.progress : progress // ignore: cast_nullable_to_non_nullable
+as int,pagesRead: freezed == pagesRead ? _self.pagesRead : pagesRead // ignore: cast_nullable_to_non_nullable
+as int?,totalPages: freezed == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 

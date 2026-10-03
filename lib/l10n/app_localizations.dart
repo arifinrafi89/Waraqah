@@ -6445,6 +6445,192 @@ abstract class AppL10n {
   /// **'Want to Read, Reading and Finished'**
   String get shelfProfileLinkBody;
 
+  /// No description provided for @readingProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% read'**
+  String readingProgress(int percent);
+
+  /// No description provided for @readingPages.
+  ///
+  /// In en, this message translates to:
+  /// **'Page {page} of {total}'**
+  String readingPages(int page, int total);
+
+  /// No description provided for @readingUpdate.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get readingUpdate;
+
+  /// No description provided for @readingUpdateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How far are you?'**
+  String get readingUpdateTitle;
+
+  /// No description provided for @readingByPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'Percent'**
+  String get readingByPercent;
+
+  /// No description provided for @readingByPages.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages'**
+  String get readingByPages;
+
+  /// No description provided for @readingPageRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Page you\'re on'**
+  String get readingPageRead;
+
+  /// No description provided for @readingTotalPages.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages in the book'**
+  String get readingTotalPages;
+
+  /// No description provided for @readingBadPages.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a page between 0 and the book\'s total (up to 5,000).'**
+  String get readingBadPages;
+
+  /// No description provided for @readingSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get readingSave;
+
+  /// No description provided for @readingCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get readingCancel;
+
+  /// No description provided for @readingSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress saved.'**
+  String get readingSaved;
+
+  /// No description provided for @readingStatsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading stats'**
+  String get readingStatsTitle;
+
+  /// No description provided for @readingGoalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{year} reading goal'**
+  String readingGoalTitle(int year);
+
+  /// No description provided for @readingGoalProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {goal, plural, =1{1 book} other{{goal} books}}'**
+  String readingGoalProgress(int done, int goal);
+
+  /// No description provided for @readingGoalNone.
+  ///
+  /// In en, this message translates to:
+  /// **'{done, plural, =1{1 book} other{{done} books}} finished this year. Set a goal to keep going.'**
+  String readingGoalNone(int done);
+
+  /// No description provided for @readingGoalSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Set goal'**
+  String get readingGoalSet;
+
+  /// No description provided for @readingGoalChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Change goal'**
+  String get readingGoalChange;
+
+  /// No description provided for @readingGoalField.
+  ///
+  /// In en, this message translates to:
+  /// **'Books this year'**
+  String get readingGoalField;
+
+  /// No description provided for @readingGoalBad.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose between 1 and 365 books.'**
+  String get readingGoalBad;
+
+  /// No description provided for @readingStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'{days}-day streak'**
+  String readingStreak(int days);
+
+  /// No description provided for @readingStreakNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No streak yet'**
+  String get readingStreakNone;
+
+  /// No description provided for @readingStreakToday.
+  ///
+  /// In en, this message translates to:
+  /// **'You read today. Keep it up!'**
+  String get readingStreakToday;
+
+  /// No description provided for @readingStreakNotYet.
+  ///
+  /// In en, this message translates to:
+  /// **'Update a book\'s progress today to keep it going.'**
+  String get readingStreakNotYet;
+
+  /// No description provided for @readingPerMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Books finished each month'**
+  String get readingPerMonth;
+
+  /// No description provided for @readingTopCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Favourite categories'**
+  String get readingTopCategories;
+
+  /// No description provided for @readingTopCategoriesNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish a book to see your favourites.'**
+  String get readingTopCategoriesNone;
+
+  /// No description provided for @readingCategoryCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 book} other{{count} books}}'**
+  String readingCategoryCount(int count);
+
+  /// No description provided for @readingFinishedShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell readers what you thought'**
+  String get readingFinishedShare;
+
+  /// No description provided for @readingWriteReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a review'**
+  String get readingWriteReview;
+
+  /// No description provided for @readingPostBite.
+  ///
+  /// In en, this message translates to:
+  /// **'Post a Bite'**
+  String get readingPostBite;
+
   /// No description provided for @listingEditTitle.
   ///
   /// In en, this message translates to:

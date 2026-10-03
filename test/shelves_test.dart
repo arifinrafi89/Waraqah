@@ -27,14 +27,14 @@ void main() {
 
     expect(store.move('bk-atomic', null), isTrue);
     expect(shelves(store), isNot(contains('bk-atomic')));
-    expect(store.finishedCount, 2);
+    expect(store.finishedCount, 4);
 
     expect(store.move('bk-sapiens', Shelf.finished), isTrue);
     final sapiens = store.mine().firstWhere(
       (e) => (e['book'] as Map)['id'] == 'bk-sapiens',
     );
     expect(sapiens['finishedAt'], isNotNull);
-    expect(store.finishedCount, 3);
+    expect(store.finishedCount, 5);
     expect(store.move('bk-nope', Shelf.reading), isFalse);
   });
 
@@ -69,7 +69,7 @@ void main() {
 
   testWidgets('Profile counts the Finished shelf', (tester) async {
     await openApp(tester, ProfileRoutes.profile, role: 'reader');
-    expect(find.text('2'), findsWidgets);
+    expect(find.text('4'), findsWidgets);
   });
 
   testWidgets('guests log in to see shelves', (tester) async {

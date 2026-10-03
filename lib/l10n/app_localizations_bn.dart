@@ -3624,6 +3624,115 @@ class AppL10nBn extends AppL10n {
   String get shelfProfileLinkBody => 'পড়তে চাই, পড়ছি আর পড়া শেষ';
 
   @override
+  String readingProgress(int percent) {
+    return '$percent% পড়া হয়েছে';
+  }
+
+  @override
+  String readingPages(int page, int total) {
+    return '$total-এর মধ্যে $page পৃষ্ঠা';
+  }
+
+  @override
+  String get readingUpdate => 'হালনাগাদ';
+
+  @override
+  String get readingUpdateTitle => 'কতদূর পড়লেন?';
+
+  @override
+  String get readingByPercent => 'শতাংশ';
+
+  @override
+  String get readingByPages => 'পৃষ্ঠা';
+
+  @override
+  String get readingPageRead => 'যে পৃষ্ঠায় আছেন';
+
+  @override
+  String get readingTotalPages => 'বইয়ের মোট পৃষ্ঠা';
+
+  @override
+  String get readingBadPages =>
+      '০ থেকে বইয়ের মোট পৃষ্ঠার মধ্যে লিখুন (সর্বোচ্চ ৫,০০০)।';
+
+  @override
+  String get readingSave => 'সংরক্ষণ';
+
+  @override
+  String get readingCancel => 'বাতিল';
+
+  @override
+  String get readingSaved => 'অগ্রগতি সংরক্ষিত হয়েছে।';
+
+  @override
+  String get readingStatsTitle => 'পড়ার পরিসংখ্যান';
+
+  @override
+  String readingGoalTitle(int year) {
+    return '$year সালের পড়ার লক্ষ্য';
+  }
+
+  @override
+  String readingGoalProgress(int done, int goal) {
+    return '$goalটির মধ্যে $doneটি বই';
+  }
+
+  @override
+  String readingGoalNone(int done) {
+    return 'এ বছর $doneটি বই শেষ। চালিয়ে যেতে একটি লক্ষ্য ঠিক করুন।';
+  }
+
+  @override
+  String get readingGoalSet => 'লক্ষ্য ঠিক করুন';
+
+  @override
+  String get readingGoalChange => 'লক্ষ্য বদলান';
+
+  @override
+  String get readingGoalField => 'এ বছরের বই';
+
+  @override
+  String get readingGoalBad => '১ থেকে ৩৬৫টির মধ্যে বেছে নিন।';
+
+  @override
+  String readingStreak(int days) {
+    return 'টানা $days দিন';
+  }
+
+  @override
+  String get readingStreakNone => 'এখনো টানা পড়া নেই';
+
+  @override
+  String get readingStreakToday => 'আজ পড়েছেন। চালিয়ে যান!';
+
+  @override
+  String get readingStreakNotYet =>
+      'ধারা ধরে রাখতে আজ কোনো বইয়ের অগ্রগতি দিন।';
+
+  @override
+  String get readingPerMonth => 'প্রতি মাসে শেষ করা বই';
+
+  @override
+  String get readingTopCategories => 'প্রিয় ক্যাটাগরি';
+
+  @override
+  String get readingTopCategoriesNone => 'প্রিয় দেখতে একটি বই শেষ করুন।';
+
+  @override
+  String readingCategoryCount(int count) {
+    return '$countটি বই';
+  }
+
+  @override
+  String get readingFinishedShare => 'পাঠকদের জানান কেমন লাগল';
+
+  @override
+  String get readingWriteReview => 'রিভিউ লিখুন';
+
+  @override
+  String get readingPostBite => 'বাইট পোস্ট করুন';
+
+  @override
   String get listingEditTitle => 'লিস্টিং সম্পাদনা';
 
   @override

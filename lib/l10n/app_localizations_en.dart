@@ -3740,6 +3740,134 @@ class AppL10nEn extends AppL10n {
   String get shelfProfileLinkBody => 'Want to Read, Reading and Finished';
 
   @override
+  String readingProgress(int percent) {
+    return '$percent% read';
+  }
+
+  @override
+  String readingPages(int page, int total) {
+    return 'Page $page of $total';
+  }
+
+  @override
+  String get readingUpdate => 'Update';
+
+  @override
+  String get readingUpdateTitle => 'How far are you?';
+
+  @override
+  String get readingByPercent => 'Percent';
+
+  @override
+  String get readingByPages => 'Pages';
+
+  @override
+  String get readingPageRead => 'Page you\'re on';
+
+  @override
+  String get readingTotalPages => 'Pages in the book';
+
+  @override
+  String get readingBadPages =>
+      'Enter a page between 0 and the book\'s total (up to 5,000).';
+
+  @override
+  String get readingSave => 'Save';
+
+  @override
+  String get readingCancel => 'Cancel';
+
+  @override
+  String get readingSaved => 'Progress saved.';
+
+  @override
+  String get readingStatsTitle => 'Reading stats';
+
+  @override
+  String readingGoalTitle(int year) {
+    return '$year reading goal';
+  }
+
+  @override
+  String readingGoalProgress(int done, int goal) {
+    String _temp0 = intl.Intl.pluralLogic(
+      goal,
+      locale: localeName,
+      other: '$goal books',
+      one: '1 book',
+    );
+    return '$done of $_temp0';
+  }
+
+  @override
+  String readingGoalNone(int done) {
+    String _temp0 = intl.Intl.pluralLogic(
+      done,
+      locale: localeName,
+      other: '$done books',
+      one: '1 book',
+    );
+    return '$_temp0 finished this year. Set a goal to keep going.';
+  }
+
+  @override
+  String get readingGoalSet => 'Set goal';
+
+  @override
+  String get readingGoalChange => 'Change goal';
+
+  @override
+  String get readingGoalField => 'Books this year';
+
+  @override
+  String get readingGoalBad => 'Choose between 1 and 365 books.';
+
+  @override
+  String readingStreak(int days) {
+    return '$days-day streak';
+  }
+
+  @override
+  String get readingStreakNone => 'No streak yet';
+
+  @override
+  String get readingStreakToday => 'You read today. Keep it up!';
+
+  @override
+  String get readingStreakNotYet =>
+      'Update a book\'s progress today to keep it going.';
+
+  @override
+  String get readingPerMonth => 'Books finished each month';
+
+  @override
+  String get readingTopCategories => 'Favourite categories';
+
+  @override
+  String get readingTopCategoriesNone =>
+      'Finish a book to see your favourites.';
+
+  @override
+  String readingCategoryCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count books',
+      one: '1 book',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get readingFinishedShare => 'Tell readers what you thought';
+
+  @override
+  String get readingWriteReview => 'Write a review';
+
+  @override
+  String get readingPostBite => 'Post a Bite';
+
+  @override
   String get listingEditTitle => 'Edit listing';
 
   @override

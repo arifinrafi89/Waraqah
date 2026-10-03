@@ -17,8 +17,22 @@ abstract class ShelfEntry with _$ShelfEntry {
 
     /// When it moved to Finished.
     DateTime? finishedAt,
+
+    /// How far the reader got, 0–100, and the pages when they count them.
+    @Default(0) int progress,
+    int? pagesRead,
+    int? totalPages,
   }) = _ShelfEntry;
 }
 
 /// Puts a Book on [shelf], or takes it off every shelf when `null`.
 typedef ShelfMove = ({String bookId, Shelf? shelf});
+
+/// How far the reader got in a Book: a percentage, or pages read of the
+/// Book's total (which sets the percentage).
+typedef ProgressUpdate = ({
+  String bookId,
+  int percent,
+  int? pagesRead,
+  int? totalPages,
+});
