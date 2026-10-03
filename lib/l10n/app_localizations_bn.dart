@@ -4625,6 +4625,18 @@ class AppL10nBn extends AppL10n {
   }
 
   @override
+  String get usedSort => 'সাজান';
+
+  @override
+  String get usedSortNewest => 'নতুন আগে';
+
+  @override
+  String get usedSortPriceLow => 'দাম: কম থেকে বেশি';
+
+  @override
+  String get usedSortPriceHigh => 'দাম: বেশি থেকে কম';
+
+  @override
   String get inboxTitle => 'ইনবক্স';
 
   @override

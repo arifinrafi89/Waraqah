@@ -1,7 +1,6 @@
 import '../core/network/fake_api_interceptor.dart';
 import '../features/admin/data/sources/dashboard_fake_api.dart';
 import '../features/admin/data/sources/dashboard_fake_store.dart';
-import '../features/admin/data/sources/search_log.dart';
 import '../features/ai_assistant/data/sources/assistant_fake_api.dart';
 import '../features/alerts/data/sources/alert_fake_api.dart';
 import '../features/auth/data/sources/auth_fake_api.dart';
@@ -24,7 +23,6 @@ import '../features/loyalty/data/sources/points_fake_api.dart';
 import '../features/deals/data/sources/deals_fake_api.dart';
 import '../features/donate/data/sources/donate_admin_fake_api.dart';
 import '../features/donate/data/sources/donate_fake_api.dart';
-import '../features/donate/data/sources/donate_places_store.dart';
 import '../features/inbox/data/sources/inbox_fake_api.dart';
 import '../features/moderation/data/sources/moderation_fake_api.dart';
 import '../features/notifications/data/sources/notification_fake_api.dart';
@@ -49,14 +47,12 @@ abstract final class FakeApiRoutes {
   /// Tests may pass [stores] to look inside the fake backend.
   static FakeApiInterceptor interceptor([FakeStores? stores]) {
     final s = stores ?? FakeStores();
-    final searches = SearchLog();
-    final places = DonatePlacesStore();
     return FakeApiInterceptor({
       ...AuthFakeApi.routes(),
       ...AssistantFakeApi.routes,
       ...ProfileFakeApi.routes(s.profile, s.addresses),
       ...NotificationFakeApi.routes(s.notifications),
-      ...searches.counting(BookFakeApi.routes, BookFakeApi.books),
+      ...s.searches.counting(BookFakeApi.routes, BookFakeApi.books),
       ...BookSuggestFakeApi.routes,
       ...BookQuestionsFakeApi.routes(),
       ...CollectionFakeApi.routes,
@@ -81,8 +77,8 @@ abstract final class FakeApiRoutes {
       ...OrderAdminFakeApi.routes(s.orders, s.wallet, s.notifications),
       ...CouponAdminFakeApi.routes(s.coupons),
       ...DealsFakeApi.routes(s.deals),
-      ...DonateFakeApi.routes(s.orders, places),
-      ...DonateAdminFakeApi.routes(places),
+      ...DonateFakeApi.routes(s.orders, s.donatePlaces),
+      ...DonateAdminFakeApi.routes(s.donatePlaces),
       ...WalletFakeApi.routes(s.wallet),
       ...P2pFakeApi.routes(
         s.p2p,
@@ -111,7 +107,7 @@ abstract final class FakeApiRoutes {
           moderation: s.moderation,
           sales: s.handledSales,
           requests: s.bookRequests,
-          searches: searches,
+          searches: s.searches,
         ),
       ),
     });

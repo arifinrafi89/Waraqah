@@ -18,6 +18,11 @@ final p2pFilterMaxPriceProvider = selectionProvider<int?>(null);
 
 final p2pQueryProvider = selectionProvider<String>('');
 
+/// How the marketplace orders what's left after the filters.
+enum P2pSort { newest, priceLow, priceHigh }
+
+final p2pSortProvider = selectionProvider<P2pSort>(P2pSort.newest);
+
 /// The marketplace's Listings that match the search and every filter.
 final filteredP2pListingsProvider = Provider<List<P2pListing>>((ref) {
   final query = ref.watch(p2pQueryProvider).trim().toLowerCase();
@@ -27,6 +32,7 @@ final filteredP2pListingsProvider = Provider<List<P2pListing>>((ref) {
   final section = ref.watch(p2pFilterSectionProvider);
   final categoryId = ref.watch(p2pFilterCategoryProvider);
   final maxPrice = ref.watch(p2pFilterMaxPriceProvider);
+  final sort = ref.watch(p2pSortProvider);
   final listings = ref.watch(p2pListingsProvider).value ?? const [];
   final inDivision = division == null
       ? null
@@ -38,7 +44,7 @@ final filteredP2pListingsProvider = Provider<List<P2pListing>>((ref) {
             d.name,
         };
 
-  return listings.where((listing) {
+  final found = listings.where((listing) {
     final matches =
         query.isEmpty ||
         listing.title.toLowerCase().contains(query) ||
@@ -55,4 +61,11 @@ final filteredP2pListingsProvider = Provider<List<P2pListing>>((ref) {
     if (maxPrice != null && listing.priceBdt > maxPrice) return false;
     return true;
   }).toList();
+  // The server sends the newest first.
+  return switch (sort) {
+    P2pSort.newest => found,
+    P2pSort.priceLow => found..sort((a, b) => a.priceBdt.compareTo(b.priceBdt)),
+    P2pSort.priceHigh =>
+      found..sort((a, b) => b.priceBdt.compareTo(a.priceBdt)),
+  };
 });

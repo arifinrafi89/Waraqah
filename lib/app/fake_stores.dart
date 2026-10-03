@@ -1,3 +1,4 @@
+import '../features/admin/data/sources/search_log.dart';
 import '../features/alerts/data/sources/alert_fake_store.dart';
 import '../features/bites/data/sources/bite_fake_store.dart';
 import '../features/book_request/data/sources/book_request_fake_store.dart';
@@ -5,6 +6,7 @@ import '../features/cart/data/sources/cart_fake_store.dart';
 import '../features/catalog_admin/data/sources/catalog_admin_fake_store.dart';
 import '../features/checkout/data/sources/coupon_fake_store.dart';
 import '../features/deals/data/sources/deals_fake_store.dart';
+import '../features/donate/data/sources/donate_places_store.dart';
 import '../features/handled_sale/data/sources/handled_sale_fake_store.dart';
 import '../features/inbox/data/sources/inbox_fake_store.dart';
 import '../features/loyalty/data/sources/points_fake_store.dart';
@@ -60,8 +62,7 @@ class FakeStores {
   // Blocking a reader hides their listings from the marketplace.
   late final reports = ReportFakeStore(p2p);
 
-  // Feeds leave out blocked and banned readers; a banned "me" can't post.
-  // Following shows who "me" follows; authors hear about comments.
+  // Feeds hide blocked and banned readers; follows and comments notify.
   late final BiteFakeStore bites = BiteFakeStore(
     isHidden: (id) => reports.isBlocked(id) || moderation.isBanned(id),
     isBanned: (id) => moderation.isBanned(id),
@@ -81,8 +82,7 @@ class FakeStores {
     isBanned: (id) => moderation.isBanned(id),
   );
 
-  // Moderators approve listings, act on reports, delete removed Bites,
-  // comments and reviews, and ban readers.
+  // Moderators approve, act on reports, delete removed content and ban.
   late final moderation = ModerationFakeStore(
     p2p,
     reports,
@@ -92,8 +92,7 @@ class FakeStores {
     notifications: notifications,
   );
 
-  // Staff edit the catalog's and Home's fixture lists in place, and can
-  // force Home's Season.
+  // Staff edit the catalog's and Home's lists in place and force a Season.
   final catalogAdmin = CatalogAdminFakeStore();
 
   // Requests are matched against marketplace Listings.
@@ -102,8 +101,7 @@ class FakeStores {
     notifications: notifications,
   );
 
-  // Handled sales hold money, refund into the wallet and log moderators'
-  // decisions.
+  // Handled sales hold money, refund the wallet and log decisions.
   late final handledSales = HandledSaleFakeStore(
     p2p,
     wallet,
@@ -117,4 +115,6 @@ class FakeStores {
   /// Price and stock alerts notify the reader when they first fire.
   late final alerts = AlertFakeStore(notifications);
   late final shelves = ShelfFakeStore(orders); // Delivered orders fill it.
+  final searches = SearchLog(); // Catalog searches, for the dashboard.
+  final donatePlaces = DonatePlacesStore(); // Staff edit; donors read.
 }

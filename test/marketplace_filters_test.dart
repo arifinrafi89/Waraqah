@@ -64,6 +64,17 @@ void main() {
     expect(titles(c), isNot(contains('Clean Code')));
   });
 
+  test('Sort orders what the filters leave by price', () async {
+    final c = await loaded();
+    c.read(p2pSortProvider.notifier).select(P2pSort.priceLow);
+    final prices = [
+      for (final l in c.read(filteredP2pListingsProvider)) l.priceBdt,
+    ];
+    expect(prices, [...prices]..sort());
+    c.read(p2pSortProvider.notifier).select(P2pSort.priceHigh);
+    expect(c.read(filteredP2pListingsProvider).first.priceBdt, prices.last);
+  });
+
   testWidgets('the filter bar speaks Bangla and resets with "any"', (
     tester,
   ) async {

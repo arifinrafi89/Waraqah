@@ -39,10 +39,10 @@ class _P2pMarketplaceAddButtonState
         child: FloatingActionButton(
           onPressed: _pushing ? null : _onTap,
           backgroundColor: context.palette.accent,
-          foregroundColor: Colors.black,
+          foregroundColor: context.palette.accentInk,
           elevation: 12,
           shape: const CircleBorder(),
-          child: const Icon(Icons.add_rounded, size: 34, color: Colors.black),
+          child: const Icon(Icons.add_rounded, size: 34),
         ),
       ),
     );

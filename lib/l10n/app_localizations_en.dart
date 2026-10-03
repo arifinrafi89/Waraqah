@@ -4788,6 +4788,18 @@ class AppL10nEn extends AppL10n {
   }
 
   @override
+  String get usedSort => 'Sort';
+
+  @override
+  String get usedSortNewest => 'Newest first';
+
+  @override
+  String get usedSortPriceLow => 'Price: low to high';
+
+  @override
+  String get usedSortPriceHigh => 'Price: high to low';
+
+  @override
   String get inboxTitle => 'Inbox';
 
   @override
