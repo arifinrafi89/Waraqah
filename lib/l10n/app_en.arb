@@ -1191,6 +1191,8 @@
   "@reportUnblocked": {"placeholders": {"name": {"type": "String"}}},
   "reportBlockedNotice": "You blocked {name}. Unblock them to make an offer.",
   "@reportBlockedNotice": {"placeholders": {"name": {"type": "String"}}},
+  "reportBlockedThread": "You blocked {name}. Unblock to message each other again.",
+  "@reportBlockedThread": {"placeholders": {"name": {"type": "String"}}},
   "reportUnblock": "Unblock",
   "reportBlockedTitle": "Blocked readers",
   "reportBlockedEmpty": "You haven't blocked anyone.",

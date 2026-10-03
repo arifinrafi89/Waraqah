@@ -38,6 +38,8 @@ extension InboxFakeReplies on InboxFakeStore {
     if (thread.replied) return;
     thread.replied = true;
     Timer(replyDelay, () {
+      // A reader the signed-in one blocked can't write to them.
+      if (blockedIn(thread)) return;
       post(thread, thread.otherOf(InboxFakeStore.me), text: text);
       changed(thread);
     });

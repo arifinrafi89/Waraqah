@@ -83,6 +83,7 @@ The app also has:
   - Ready-made bricks in `features/report/presentation/widgets/`: `ReportMenuButton` (the ⋮ menu: report, plus block or unblock a reader), `ReportIconButton` (a small flag, on Bites and reviews) and `ReportOnLongPress` (on the other person's messages).
   - Blocking: `ref.block(context, readerId, name)` / `ref.unblock(...)`, `isBlockedProvider(readerId)`. Blocked sellers' Listings leave the marketplace, Home and the book page; their Listing page shows "You blocked …" instead of the offer bar. Profile → **Blocked readers** (`ReportRoutes.blocked`, `/blocked`) lists them to unblock.
   - Fake API: `/reports`, `/blocks`, `/blocks/add`, `/blocks/remove` (`ReportFakeApi`, `ReportFakeStore`, shared with `P2pFakeApi` through `isBlocked`). The server refuses reporting or blocking yourself.
+  - **Blocking in the inbox** (Arifin): the inbox's fake backend (`InboxFakeStore.isBlocked`, from `ReportFakeStore`) refuses to open a chat with, send a message to, or accept an offer from a blocked reader, and their demo replies don't arrive. In the thread, `BlockedSellerBar(inThread: true)` takes the message box's place with Unblock.
   - The add-listing form shows the rules first (`ListingRulesCard`): no photocopies, no pirated books, honest condition.
 - **Moderation Center is done** (Arifin): `features/moderation`, page at `AdminRoutes.section(AdminSection.moderation)`. Four tabs:
   - **Listings to approve:** every Listing `inReview`, with photos, condition, flags, note, price vs new and the seller's strikes. Approve (goes live), Ask for changes or Reject; both need a reason the seller sees (`ModerationRules`: up to 300 characters, with one-tap reasons).
@@ -400,7 +401,7 @@ Everything below is still missing. Arifin builds it, one branch per item, inside
 5. ~~**AI assistant on our catalog:**~~ done (see §2): remove `VendorQuote` and the vendor price table; answers show Waraqah's own From-price and stock.
 6. ~~**Smarter AI:**~~ done (see §2): "Books for Class 9 under ৳1,000" builds a basket from the catalog and adds it to the cart; plain-words search ("short seerah for beginners in Bangla") maps to `CatalogFilters`.
 7. ~~**Admin dashboard:**~~ done (see §2): today's orders and sales, Listings waiting for approval, top searched Books (search terms logged by the fake backend), most requested Books (`bookDemandProvider`).
-8. **Blocking in the inbox:** the server refuses sends to and from a blocked reader; the thread says so.
+8. ~~**Blocking in the inbox:**~~ done (see §2): the server refuses sends to and from a blocked reader; the thread says so.
 9. **Removed messages:** a message a moderator removes leaves the thread.
 10. **Live handled sales:** a sale's page updates when the other side moves.
 11. **Wallet refund reason:** handled-sale refunds get their own `WalletReason`.
@@ -484,7 +485,6 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 - Deleting an account signs out but can't wipe the shared demo data (one "me" on the fake backend).
 - Upazila names are English only (divisions and districts have Bangla).
 - Removing a reported message closes the report, but the message stays: the inbox doesn't delete messages (Arifin).
-- Blocking hides a reader's Listings, but doesn't stop an existing inbox thread with them yet (Arifin, in Farhan's inbox: refuse sends to and from blocked readers).
 - Listing photos aren't stored or shown yet: the fake backend keeps only which slots have a photo, and moderators see named tiles.
 - Book covers are gradient seeds (`coverSeed`): there's no photo upload until the backend.
 - Admin → Catalog edits (and the forced Season) live in the fake backend's memory, so they last until the app restarts.

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/theme/app_dimens.dart';
+import '../../../report/presentation/providers/report_providers.dart';
+import '../../../report/presentation/widgets/blocked_seller_bar.dart';
 import '../../domain/entities/inbox_thread.dart';
 import 'composer.dart';
 import 'deal_banner.dart';
@@ -9,14 +12,14 @@ import 'message_list.dart';
 import 'rating_card.dart';
 
 /// The book on top, where the deal stands, the conversation, and the box
-/// to write in.
-class ThreadBody extends StatelessWidget {
+/// to write in (or, with a blocked reader, a note saying so).
+class ThreadBody extends ConsumerWidget {
   const ThreadBody({super.key, required this.thread});
 
   final InboxThread thread;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
         Padding(
@@ -31,7 +34,14 @@ class ThreadBody extends StatelessWidget {
           ),
         ),
         Expanded(child: MessageList(thread: thread)),
-        Composer(thread: thread),
+        if (ref.watch(isBlockedProvider(thread.otherId)))
+          BlockedSellerBar(
+            readerId: thread.otherId,
+            name: thread.otherName,
+            inThread: true,
+          )
+        else
+          Composer(thread: thread),
       ],
     );
   }
