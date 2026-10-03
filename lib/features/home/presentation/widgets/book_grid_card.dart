@@ -10,6 +10,7 @@ import '../../../../core/widgets/press_scale.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../core/widgets/tags.dart';
 import '../../../catalog/catalog_routes.dart';
+import '../../../catalog/presentation/widgets/book_local_title.dart';
 
 /// A tile in Home's book strips: cover, author, From-price (list price struck
 /// through when discounted) and stock status. Opens the book page.
@@ -34,7 +35,7 @@ class BookGridCard extends StatelessWidget {
               // never overflows at any width or text scale.
               Expanded(
                 child: CoverArt(
-                  title: book.coverLabel,
+                  title: book.localCoverLabel(context),
                   seed: book.coverSeed,
                   aspectRatio: null,
                 ),

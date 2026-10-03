@@ -15,6 +15,7 @@ import '../../../p2p/presentation/providers/p2p_providers.dart';
 import '../../catalog_routes.dart';
 import '../providers/used_options_providers.dart';
 import 'booklist_price_cell.dart';
+import 'book_local_title.dart';
 
 /// One Book on a Booklist with its New, Certified Used and Used prices.
 /// Certified Used goes in the cart on tap; Used and the row open the book
@@ -52,7 +53,7 @@ class BooklistBookRow extends ConsumerWidget {
               SizedBox(
                 width: 46,
                 child: CoverArt(
-                  title: book.coverLabel,
+                  title: book.localCoverLabel(context),
                   seed: book.coverSeed,
                   fontSize: 6,
                   radius: Radii.sm,
@@ -64,7 +65,7 @@ class BooklistBookRow extends ConsumerWidget {
                   spacing: 6,
                   children: [
                     Text(
-                      book.title,
+                      book.localTitle(context),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: context.texts.titleSmall,

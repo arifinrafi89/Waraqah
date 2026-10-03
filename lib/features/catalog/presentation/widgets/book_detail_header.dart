@@ -9,6 +9,7 @@ import '../../../../core/widgets/cover_art.dart';
 import '../../../../core/widgets/tags.dart';
 import '../../catalog_routes.dart';
 import 'rating_stars.dart';
+import 'book_local_title.dart';
 
 /// Cover on the left; title, author, rating and tags on the right.
 class BookDetailHeader extends StatelessWidget {
@@ -26,7 +27,7 @@ class BookDetailHeader extends StatelessWidget {
         SizedBox(
           width: 118,
           child: CoverArt(
-            title: book.coverLabel,
+            title: book.localCoverLabel(context),
             seed: book.coverSeed,
             radius: Radii.md,
           ),
@@ -35,7 +36,12 @@ class BookDetailHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(book.title, style: context.texts.titleLarge),
+              Text(book.localTitle(context), style: context.texts.titleLarge),
+              if (book.otherTitle(context) case final other?)
+                Text(
+                  other,
+                  style: AppFonts.ui(size: 13, color: palette.textDim),
+                ),
               const SizedBox(height: 4),
               InkWell(
                 onTap: () =>
