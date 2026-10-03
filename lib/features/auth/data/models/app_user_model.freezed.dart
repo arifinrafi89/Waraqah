@@ -16,7 +16,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppUserModel {
 
- String get id; String get name; String get email; String get role;
+ String get id; String get name; String get email; String get role;/// Set by the real backend after sign-in; the fake API sends none.
+ String? get accessToken; String? get refreshToken; String? get expiresAt;
 /// Create a copy of AppUserModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +31,20 @@ $AppUserModelCopyWith<AppUserModel> get copyWith => _$AppUserModelCopyWithImpl<A
 @override
 bool operator ==(Object other) {
   final _this = this as AppUserModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppUserModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.role, _this.role) || other.role == _this.role));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppUserModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.role, _this.role) || other.role == _this.role)&&(identical(other.accessToken, _this.accessToken) || other.accessToken == _this.accessToken)&&(identical(other.refreshToken, _this.refreshToken) || other.refreshToken == _this.refreshToken)&&(identical(other.expiresAt, _this.expiresAt) || other.expiresAt == _this.expiresAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as AppUserModel;
-  return Object.hash(runtimeType,_this.id,_this.name,_this.email,_this.role);
+  return Object.hash(runtimeType,_this.id,_this.name,_this.email,_this.role,_this.accessToken,_this.refreshToken,_this.expiresAt);
 }
 
 @override
 String toString() {
   final _this = this as AppUserModel;
-  return 'AppUserModel(id: ${_this.id}, name: ${_this.name}, email: ${_this.email}, role: ${_this.role})';
+  return 'AppUserModel(id: ${_this.id}, name: ${_this.name}, email: ${_this.email}, role: ${_this.role}, accessToken: ${_this.accessToken}, refreshToken: ${_this.refreshToken}, expiresAt: ${_this.expiresAt})';
 }
 
 
@@ -54,7 +55,7 @@ abstract mixin class $AppUserModelCopyWith<$Res>  {
   factory $AppUserModelCopyWith(AppUserModel value, $Res Function(AppUserModel) _then) = _$AppUserModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String email, String role
+ String id, String name, String email, String role, String? accessToken, String? refreshToken, String? expiresAt
 });
 
 
@@ -71,13 +72,16 @@ class _$AppUserModelCopyWithImpl<$Res>
 
 /// Create a copy of AppUserModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? email = null,Object? role = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? email = null,Object? role = null,Object? accessToken = freezed,Object? refreshToken = freezed,Object? expiresAt = freezed,}) {
   return _then(AppUserModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
-as String,
+as String,accessToken: freezed == accessToken ? _self.accessToken : accessToken // ignore: cast_nullable_to_non_nullable
+as String?,refreshToken: freezed == refreshToken ? _self.refreshToken : refreshToken // ignore: cast_nullable_to_non_nullable
+as String?,expiresAt: freezed == expiresAt ? _self.expiresAt : expiresAt // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -162,10 +166,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String email,  String role)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String email,  String role,  String? accessToken,  String? refreshToken,  String? expiresAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AppUserModel() when $default != null:
-return $default(_that.id,_that.name,_that.email,_that.role);case _:
+return $default(_that.id,_that.name,_that.email,_that.role,_that.accessToken,_that.refreshToken,_that.expiresAt);case _:
   return orElse();
 
 }
@@ -183,10 +187,10 @@ return $default(_that.id,_that.name,_that.email,_that.role);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String email,  String role)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String email,  String role,  String? accessToken,  String? refreshToken,  String? expiresAt)  $default,) {final _that = this;
 switch (_that) {
 case _AppUserModel():
-return $default(_that.id,_that.name,_that.email,_that.role);case _:
+return $default(_that.id,_that.name,_that.email,_that.role,_that.accessToken,_that.refreshToken,_that.expiresAt);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -203,10 +207,10 @@ return $default(_that.id,_that.name,_that.email,_that.role);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String email,  String role)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String email,  String role,  String? accessToken,  String? refreshToken,  String? expiresAt)?  $default,) {final _that = this;
 switch (_that) {
 case _AppUserModel() when $default != null:
-return $default(_that.id,_that.name,_that.email,_that.role);case _:
+return $default(_that.id,_that.name,_that.email,_that.role,_that.accessToken,_that.refreshToken,_that.expiresAt);case _:
   return null;
 
 }
@@ -218,13 +222,17 @@ return $default(_that.id,_that.name,_that.email,_that.role);case _:
 @JsonSerializable()
 
 class _AppUserModel implements AppUserModel {
-  const _AppUserModel({required this.id, required this.name, required this.email, required this.role});
+  const _AppUserModel({required this.id, required this.name, required this.email, required this.role, this.accessToken, this.refreshToken, this.expiresAt});
   factory _AppUserModel.fromJson(Map<String, dynamic> json) => _$AppUserModelFromJson(json);
 
 @override final  String id;
 @override final  String name;
 @override final  String email;
 @override final  String role;
+/// Set by the real backend after sign-in; the fake API sends none.
+@override final  String? accessToken;
+@override final  String? refreshToken;
+@override final  String? expiresAt;
 
 /// Create a copy of AppUserModel
 /// with the given fields replaced by the non-null parameter values.
@@ -239,18 +247,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppUserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.role, role) || other.role == role));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppUserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.role, role) || other.role == role)&&(identical(other.accessToken, accessToken) || other.accessToken == accessToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,name,email,role);
+    return Object.hash(runtimeType,id,name,email,role,accessToken,refreshToken,expiresAt);
 }
 
 @override
 String toString() {
-    return 'AppUserModel(id: $id, name: $name, email: $email, role: $role)';
+    return 'AppUserModel(id: $id, name: $name, email: $email, role: $role, accessToken: $accessToken, refreshToken: $refreshToken, expiresAt: $expiresAt)';
 }
 
 
@@ -261,7 +269,7 @@ abstract mixin class _$AppUserModelCopyWith<$Res> implements $AppUserModelCopyWi
   factory _$AppUserModelCopyWith(_AppUserModel value, $Res Function(_AppUserModel) _then) = __$AppUserModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String email, String role
+ String id, String name, String email, String role, String? accessToken, String? refreshToken, String? expiresAt
 });
 
 
@@ -278,13 +286,16 @@ class __$AppUserModelCopyWithImpl<$Res>
 
 /// Create a copy of AppUserModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? email = null,Object? role = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? email = null,Object? role = null,Object? accessToken = freezed,Object? refreshToken = freezed,Object? expiresAt = freezed,}) {
   return _then(_AppUserModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
-as String,
+as String,accessToken: freezed == accessToken ? _self.accessToken : accessToken // ignore: cast_nullable_to_non_nullable
+as String?,refreshToken: freezed == refreshToken ? _self.refreshToken : refreshToken // ignore: cast_nullable_to_non_nullable
+as String?,expiresAt: freezed == expiresAt ? _self.expiresAt : expiresAt // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

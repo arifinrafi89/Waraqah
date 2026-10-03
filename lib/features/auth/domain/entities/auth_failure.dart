@@ -4,4 +4,13 @@ enum AuthFailure implements Exception {
   invalidEmail,
   missingPassword,
   wrongCode,
+
+  /// The server refused the email and password.
+  wrongCredentials,
+
+  /// The server refused the Google sign-in.
+  googleFailed,
+
+  /// The server would not start the sign-up (an address that is already registered).
+  signUpRefused,
 }

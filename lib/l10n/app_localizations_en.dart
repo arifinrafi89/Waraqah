@@ -377,10 +377,10 @@ class AppL10nEn extends AppL10n {
   String get authEmail => 'Email';
 
   @override
-  String get authEmailOrPhone => 'Email or phone';
+  String get authEmailOrPhone => 'Email';
 
   @override
-  String get authEmailOrPhoneHint => 'you@example.com or 01XXXXXXXXX';
+  String get authEmailOrPhoneHint => 'you@example.com';
 
   @override
   String get authMobileNumber => 'Mobile number';
@@ -456,6 +456,16 @@ class AppL10nEn extends AppL10n {
 
   @override
   String get authWrongCode => 'Wrong code. Try again.';
+
+  @override
+  String get authWrongCredentials => 'Wrong email or password.';
+
+  @override
+  String get authGoogleFailed => 'Google sign-in did not work. Try again.';
+
+  @override
+  String get authSignUpRefused =>
+      'We could not start sign-up with that email. It may already have an account.';
 
   @override
   String get authInvalidMobileNumber =>

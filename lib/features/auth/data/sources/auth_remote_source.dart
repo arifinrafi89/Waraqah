@@ -19,12 +19,21 @@ class AuthRemoteSource {
       AuthFakeApi.login,
       data: {'email': email, 'password': password},
     );
-    return AppUserModel.fromJson(response.data!);
+    final data = response.data;
+    if (data == null) throw AuthFailure.wrongCredentials;
+    return AppUserModel.fromJson(data);
   }
 
-  Future<AppUserModel> signInWithGoogle() async {
-    final response = await _dio.post<Map<String, dynamic>>(AuthFakeApi.google);
-    return AppUserModel.fromJson(response.data!);
+  /// [idToken] is the Google ID token from `google_sign_in`; the real backend verifies it.
+  /// The fake API ignores the body.
+  Future<AppUserModel> signInWithGoogle({String? idToken}) async {
+    final response = await _dio.post<Map<String, dynamic>>(
+      AuthFakeApi.google,
+      data: {'idToken': ?idToken},
+    );
+    final data = response.data;
+    if (data == null) throw AuthFailure.googleFailed;
+    return AppUserModel.fromJson(data);
   }
 
   Future<void> requestSignUpOtp({
@@ -32,10 +41,11 @@ class AuthRemoteSource {
     required String contact,
     required String password,
   }) async {
-    await _dio.post<void>(
+    final response = await _dio.post<Map<String, dynamic>>(
       AuthFakeApi.requestSignUpOtp,
       data: {'name': name, 'contact': contact, 'password': password},
     );
+    if (response.data == null) throw AuthFailure.signUpRefused;
   }
 
   Future<AppUserModel> verifySignUpOtp({

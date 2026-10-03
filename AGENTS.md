@@ -278,7 +278,7 @@ features/<feature>/
   - A fake backend file may import another feature's `data/sources` for this, with a comment saying why. App code never does (§4.2).
 - **One signed-in reader.** The fake backend has one signed-in reader ("me"), the way the real server will know who is asking from the login token. JSON says what's theirs (`isMine`, `isMyDeal`, a thread's `role`); the app never compares names.
 - **Live updates.** A handler may answer a `ResponseBody` stream. `/inbox/live` streams server-sent events, one `data: {...}` line per change. `InboxLiveSource` reads it through `dioProvider` with `ResponseType.stream`, and the Go backend should stream the same lines. Providers listen to `inboxChangesProvider` and reload what changed.
-- Going live later = point `ApiConfig.baseUrl` at the Go service and remove the interceptor.
+- **Going live:** build with `--dart-define=API_BASE_URL=http://localhost:8080/v1` (Android emulator `http://10.0.2.2:8080/v1`). With no value the app keeps the fake API (`ApiConfig.useFakeApi`). With one, `AppBootstrap` skips the fake interceptor and installs `AuthInterceptor`, which sends the signed-in session's `Authorization: Bearer` token and, on a `401`, calls `/auth/refresh` once and retries (`StoredSessionTokens`). A refused refresh token ends the session (`SessionExpiry`). The backend's API contract is the fake API; see its repository.
 
 ### 4.5 Accounts and roles (already built)
 
@@ -481,6 +481,7 @@ In the demo, the other person in a thread replies about 4 s after you first writ
 ## 10. Known gaps (don't be surprised by these)
 
 - `.env` is still tracked in git even though `.gitignore` lists it. It holds a publishable key, not a secret; it should be removed from tracking.
+- Session tokens are kept with the saved account in SharedPreferences, not in secure storage. Google sign-in sends `{idToken}` once `google_sign_in` is wired to a real OAuth client; until then the body is empty (the fake API ignores it, the real backend refuses it).
 - The fake backend has one signed-in reader, so every reader account sees the same cart, orders, wallet and inbox until the Go backend exists.
 - No push notifications while the app is closed: the notification center and the inbox badge update only while the app is open.
 - Deleting an account signs out but can't wipe the shared demo data (one "me" on the fake backend).

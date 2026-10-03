@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/network/dio_provider.dart';
+import '../../../../core/network/session_tokens.dart';
 import '../../../../core/settings/settings_provider.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../../data/repositories/auth_repository_impl.dart';
@@ -12,6 +13,9 @@ import '../../domain/repositories/auth_repository.dart';
 import '../../domain/repositories/auth_flow_repository.dart';
 import '../../domain/usecases/sign_in.dart';
 import '../../domain/usecases/sign_out.dart';
+
+/// Tells the session its refresh token was refused. The real one is set in `AppBootstrap`.
+final sessionExpiryProvider = Provider<SessionExpiry>((ref) => SessionExpiry());
 
 final authRepositoryProvider = Provider<AuthRepository>(
   (ref) => AuthRepositoryImpl(
@@ -38,7 +42,15 @@ final authActionsProvider = Provider<AuthFlowRepository>(
 /// listens to it, so signing in or out opens or closes guarded pages at once.
 class SessionNotifier extends Notifier<AppUser?> {
   @override
-  AppUser? build() => ref.watch(authRepositoryProvider).savedUser();
+  AppUser? build() {
+    // A refused refresh token ends the session: back to guest.
+    final sub = ref
+        .read(sessionExpiryProvider)
+        .stream
+        .listen((_) => state = null);
+    ref.onDispose(sub.cancel);
+    return ref.watch(authRepositoryProvider).savedUser();
+  }
 
   /// Throws `AuthFailure` for bad input, or a Dio error if the request fails.
   Future<void> signIn({required String email, required String password}) async {

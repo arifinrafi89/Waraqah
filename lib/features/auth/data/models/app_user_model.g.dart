@@ -12,6 +12,9 @@ _AppUserModel _$AppUserModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       email: json['email'] as String,
       role: json['role'] as String,
+      accessToken: json['accessToken'] as String?,
+      refreshToken: json['refreshToken'] as String?,
+      expiresAt: json['expiresAt'] as String?,
     );
 
 Map<String, dynamic> _$AppUserModelToJson(_AppUserModel instance) =>
@@ -20,4 +23,7 @@ Map<String, dynamic> _$AppUserModelToJson(_AppUserModel instance) =>
       'name': instance.name,
       'email': instance.email,
       'role': instance.role,
+      'accessToken': instance.accessToken,
+      'refreshToken': instance.refreshToken,
+      'expiresAt': instance.expiresAt,
     };

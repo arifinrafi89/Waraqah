@@ -754,13 +754,13 @@ abstract class AppL10n {
   /// No description provided for @authEmailOrPhone.
   ///
   /// In en, this message translates to:
-  /// **'Email or phone'**
+  /// **'Email'**
   String get authEmailOrPhone;
 
   /// No description provided for @authEmailOrPhoneHint.
   ///
   /// In en, this message translates to:
-  /// **'you@example.com or 01XXXXXXXXX'**
+  /// **'you@example.com'**
   String get authEmailOrPhoneHint;
 
   /// No description provided for @authMobileNumber.
@@ -906,6 +906,24 @@ abstract class AppL10n {
   /// In en, this message translates to:
   /// **'Wrong code. Try again.'**
   String get authWrongCode;
+
+  /// No description provided for @authWrongCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong email or password.'**
+  String get authWrongCredentials;
+
+  /// No description provided for @authGoogleFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Google sign-in did not work. Try again.'**
+  String get authGoogleFailed;
+
+  /// No description provided for @authSignUpRefused.
+  ///
+  /// In en, this message translates to:
+  /// **'We could not start sign-up with that email. It may already have an account.'**
+  String get authSignUpRefused;
 
   /// No description provided for @authInvalidMobileNumber.
   ///

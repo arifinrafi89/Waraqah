@@ -7,5 +7,8 @@ extension AuthFailureText on AuthFailure {
     AuthFailure.invalidEmail => l10n.authInvalidEmail,
     AuthFailure.missingPassword => l10n.authMissingPassword,
     AuthFailure.wrongCode => l10n.authWrongCode,
+    AuthFailure.wrongCredentials => l10n.authWrongCredentials,
+    AuthFailure.googleFailed => l10n.authGoogleFailed,
+    AuthFailure.signUpRefused => l10n.authSignUpRefused,
   };
 }
