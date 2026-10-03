@@ -9,12 +9,14 @@ class P2pAddListingField extends StatelessWidget {
     required this.hint,
     this.onChanged,
     this.initialValue,
+    this.maxLines = 1,
   });
 
   final String label;
   final String hint;
   final ValueChanged<String>? onChanged;
   final String? initialValue;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,8 @@ class P2pAddListingField extends StatelessWidget {
           TextFormField(
             initialValue: initialValue,
             onChanged: onChanged,
+            minLines: 1,
+            maxLines: maxLines,
             decoration: InputDecoration(
               hintText: hint,
               filled: true,

@@ -6361,6 +6361,168 @@ abstract class AppL10n {
   /// **'Tap it to sell it on.'**
   String get listingFinishedCardBody;
 
+  /// No description provided for @listingEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit listing'**
+  String get listingEditTitle;
+
+  /// No description provided for @listingSendForReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Send for review'**
+  String get listingSendForReview;
+
+  /// No description provided for @listingSentForReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent for review. A moderator checks it before it goes live.'**
+  String get listingSentForReview;
+
+  /// No description provided for @listingDraftSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft saved. Finish it from My Listings.'**
+  String get listingDraftSaved;
+
+  /// No description provided for @listingSaveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t save the listing. Try again.'**
+  String get listingSaveFailed;
+
+  /// No description provided for @listingEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get listingEdit;
+
+  /// No description provided for @listingEditResend.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit and send again'**
+  String get listingEditResend;
+
+  /// No description provided for @listingNote.
+  ///
+  /// In en, this message translates to:
+  /// **'About your copy (optional)'**
+  String get listingNote;
+
+  /// No description provided for @listingNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Anything a buyer should know: marks, missing pages, edition.'**
+  String get listingNoteHint;
+
+  /// No description provided for @listingPhotosHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos of your own copy. Front and back covers are needed, and a photo of any damage you flagged.'**
+  String get listingPhotosHelp;
+
+  /// No description provided for @listingPhotoFront.
+  ///
+  /// In en, this message translates to:
+  /// **'Front cover'**
+  String get listingPhotoFront;
+
+  /// No description provided for @listingPhotoBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back cover'**
+  String get listingPhotoBack;
+
+  /// No description provided for @listingPhotoSpine.
+  ///
+  /// In en, this message translates to:
+  /// **'Spine'**
+  String get listingPhotoSpine;
+
+  /// No description provided for @listingPhotoInside.
+  ///
+  /// In en, this message translates to:
+  /// **'Inside page'**
+  String get listingPhotoInside;
+
+  /// No description provided for @listingPhotoDamage.
+  ///
+  /// In en, this message translates to:
+  /// **'Damage'**
+  String get listingPhotoDamage;
+
+  /// No description provided for @listingPhotoNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'Needed'**
+  String get listingPhotoNeeded;
+
+  /// No description provided for @listingPhotoSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploaded'**
+  String get listingPhotoSaved;
+
+  /// No description provided for @listingPhotoAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a photo'**
+  String get listingPhotoAdd;
+
+  /// No description provided for @listingPhotoRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove photo'**
+  String get listingPhotoRemove;
+
+  /// No description provided for @listingProblemTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the book\'s title.'**
+  String get listingProblemTitle;
+
+  /// No description provided for @listingProblemTitleLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep the title under 120 characters.'**
+  String get listingProblemTitleLong;
+
+  /// No description provided for @listingProblemNoteLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep the note under 500 characters.'**
+  String get listingProblemNoteLong;
+
+  /// No description provided for @listingProblemPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Set your price.'**
+  String get listingProblemPrice;
+
+  /// No description provided for @listingProblemPriceHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'That price is too high: up to ৳50,000.'**
+  String get listingProblemPriceHigh;
+
+  /// No description provided for @listingProblemFront.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a photo of the front cover.'**
+  String get listingProblemFront;
+
+  /// No description provided for @listingProblemBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a photo of the back cover.'**
+  String get listingProblemBack;
+
+  /// No description provided for @listingProblemDamage.
+  ///
+  /// In en, this message translates to:
+  /// **'You flagged damage: add a photo of it.'**
+  String get listingProblemDamage;
+
   /// No description provided for @scanTitle.
   ///
   /// In en, this message translates to:

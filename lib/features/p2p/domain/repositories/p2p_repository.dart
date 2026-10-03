@@ -1,5 +1,6 @@
 import '../entities/p2p_listing.dart';
 import '../entities/seller_profile.dart';
+import '../usecases/save_listing.dart';
 
 abstract interface class P2pRepository {
   /// On sale or reserved; with [onlyAvailable], just what others can buy
@@ -19,4 +20,7 @@ abstract interface class P2pRepository {
 
   /// A reader's seller page; `null` for someone unknown.
   Future<SellerProfile?> fetchSeller(String id);
+
+  /// Saves the reader's own Listing (a draft, or sent for review).
+  Future<P2pListing> saveListing(SaveListingParams params);
 }

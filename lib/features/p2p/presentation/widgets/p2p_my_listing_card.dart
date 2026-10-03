@@ -8,8 +8,10 @@ import '../../../../core/utils/formatters.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../catalog/presentation/widgets/used_labels.dart';
+import '../../domain/entities/listing_rules.dart';
 import '../../domain/entities/p2p_listing.dart';
 import '../../p2p_routes.dart';
+import 'listing_edit_button.dart';
 import 'p2p_labels.dart';
 
 /// One of the reader's own listings with its status. Opens the listing,
@@ -69,11 +71,16 @@ class P2pMyListingCard extends StatelessWidget {
               '${Bdt.format(listing.priceBdt)}',
               style: AppFonts.ui(size: 13, color: palette.textFaint),
             ),
-            if (listing.status == P2pListingStatus.rejected &&
-                listing.rejectionReason != null)
+            // A moderator's reason, for changes or a rejection.
+            if (listing.rejectionReason case final reason?)
               Text(
-                '${l10n.listingReasonPrefix}${listing.rejectionReason}',
-                style: AppFonts.ui(size: 13, color: palette.danger),
+                '${l10n.listingReasonPrefix}$reason',
+                style: AppFonts.ui(size: 13, color: statusColor),
+              ),
+            if (ListingRules.canEdit(listing.status))
+              Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: ListingEditButton(listing: listing),
               ),
           ],
         ),

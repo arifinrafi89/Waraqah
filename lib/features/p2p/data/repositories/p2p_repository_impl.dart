@@ -1,6 +1,7 @@
 import '../../domain/entities/p2p_listing.dart';
 import '../../domain/entities/seller_profile.dart';
 import '../../domain/repositories/p2p_repository.dart';
+import '../../domain/usecases/save_listing.dart';
 import '../models/p2p_listing_model.dart';
 import '../models/seller_profile_model.dart';
 import '../sources/p2p_remote_source.dart';
@@ -41,4 +42,8 @@ class P2pRepositoryImpl implements P2pRepository {
   @override
   Future<SellerProfile?> fetchSeller(String id) async =>
       (await _source.seller(id))?.toEntity();
+
+  @override
+  Future<P2pListing> saveListing(SaveListingParams params) async =>
+      (await _source.save(params)).toEntity();
 }

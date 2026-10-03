@@ -3575,6 +3575,92 @@ class AppL10nBn extends AppL10n {
   String get listingFinishedCardBody => 'বিক্রি করতে বইটিতে চাপুন।';
 
   @override
+  String get listingEditTitle => 'লিস্টিং সম্পাদনা';
+
+  @override
+  String get listingSendForReview => 'যাচাইয়ের জন্য পাঠান';
+
+  @override
+  String get listingSentForReview =>
+      'যাচাইয়ের জন্য পাঠানো হয়েছে। লাইভ হওয়ার আগে একজন মডারেটর এটি দেখবেন।';
+
+  @override
+  String get listingDraftSaved =>
+      'খসড়া সংরক্ষিত হয়েছে। মাই লিস্টিংস থেকে শেষ করুন।';
+
+  @override
+  String get listingSaveFailed =>
+      'লিস্টিং সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get listingEdit => 'সম্পাদনা';
+
+  @override
+  String get listingEditResend => 'সম্পাদনা করে আবার পাঠান';
+
+  @override
+  String get listingNote => 'আপনার কপি সম্পর্কে (ঐচ্ছিক)';
+
+  @override
+  String get listingNoteHint =>
+      'ক্রেতার যা জানা দরকার: দাগ, হারানো পৃষ্ঠা, সংস্করণ।';
+
+  @override
+  String get listingPhotosHelp =>
+      'নিজের কপির ছবি দিন। সামনের ও পেছনের মলাট লাগবে, আর চিহ্নিত কোনো ক্ষতির ছবি।';
+
+  @override
+  String get listingPhotoFront => 'সামনের মলাট';
+
+  @override
+  String get listingPhotoBack => 'পেছনের মলাট';
+
+  @override
+  String get listingPhotoSpine => 'বাঁধাই';
+
+  @override
+  String get listingPhotoInside => 'ভেতরের পৃষ্ঠা';
+
+  @override
+  String get listingPhotoDamage => 'ক্ষতি';
+
+  @override
+  String get listingPhotoNeeded => 'লাগবে';
+
+  @override
+  String get listingPhotoSaved => 'আপলোড হয়েছে';
+
+  @override
+  String get listingPhotoAdd => 'ছবি যোগ করুন';
+
+  @override
+  String get listingPhotoRemove => 'ছবি সরান';
+
+  @override
+  String get listingProblemTitle => 'বইয়ের নাম লিখুন।';
+
+  @override
+  String get listingProblemTitleLong => 'নাম ১২০ অক্ষরের মধ্যে রাখুন।';
+
+  @override
+  String get listingProblemNoteLong => 'নোট ৫০০ অক্ষরের মধ্যে রাখুন।';
+
+  @override
+  String get listingProblemPrice => 'দাম ঠিক করুন।';
+
+  @override
+  String get listingProblemPriceHigh => 'দাম অনেক বেশি: সর্বোচ্চ ৳৫০,০০০।';
+
+  @override
+  String get listingProblemFront => 'সামনের মলাটের ছবি দিন।';
+
+  @override
+  String get listingProblemBack => 'পেছনের মলাটের ছবি দিন।';
+
+  @override
+  String get listingProblemDamage => 'ক্ষতি চিহ্নিত করেছেন: তার একটি ছবি দিন।';
+
+  @override
   String get scanTitle => 'বই স্ক্যান করুন';
 
   @override
